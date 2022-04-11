@@ -10,8 +10,8 @@ To contribute to our API documentation, some basic knowledge of [git](https://gi
 
 The following tools can also be helpful but are not strictly required:
 
-- [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the automatic checks on your own machine, and to run the automatic fixer in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push.
 - [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by https://stoplight.io (where our documentation is hosted). However, any file editor is fine technically.
+- [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the automatic checks on your own machine, and to run the automatic fixer in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push and you can also run the automatic fixer manually on GitHub.
 
 ## Getting started
 
@@ -104,3 +104,5 @@ Then, run any of the following commands:
 *   `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors
 *   `yarn docs:lint:fix` to automatically fix issues reported by the previous command (when possible)
 *   `yarn api:lint` to check for syntax errors or design guidelines violations inside the OpenAPI files (always need to be fixed manually)
+
+## 
