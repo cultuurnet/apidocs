@@ -14,7 +14,7 @@ jobs:
       - name: Split
         uses: nxtlvlsoftware/git-subtree-action@1.1
         with:
-          repo: 'cultuurnet/udb3-json-schema'
+          repo: 'cultuurnet/udb3-json-schemas'
           path: 'projects/uitdatabank/models'
           deploy_key: ${{ secrets.DEPLOY_KEY_UDB3_JSON_SCHEMAS }}
           force: true
