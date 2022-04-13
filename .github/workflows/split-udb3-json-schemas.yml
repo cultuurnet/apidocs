@@ -5,7 +5,7 @@ env:
 jobs:
   split:
     runs-on: ubuntu-latest
-    name: Update downstream ${{ matrix.path }} package
+    name: Update downstream cultuurnet/udb3-json-schemas package
     steps:
       - name: Checkout
         uses: actions/checkout@v2
