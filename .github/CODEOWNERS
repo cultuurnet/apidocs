@@ -2,3 +2,18 @@
 
 # Global owners (also need to be duplicated in later rules)
 * @bertramakers
+
+# Authentication owners
+/projects/authentication @bertramakers @erwin1
+
+# museumPASSmusées owners
+/projects/museumpassmusees @bertramakers @Stiksels
+
+# UiTdatabank owners
+/projects/uitdatabank @bertramakers @LucWollants
+
+# UiTdatabank Markdown docs owners
+/projects/uitdatabank/docs @bertramakers @LucWollants @corneelwille
+
+# Widgets owners
+/projects/widgets @bertramakers @corneelwille
