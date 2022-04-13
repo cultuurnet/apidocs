@@ -1747,8 +1747,8 @@
         ]
       },
       "patch": {
-        "summary": "Update one or multiple videos",
-        "operationId": "patch-events-videos",
+        "summary": "videos - patch",
+        "operationId": "event-videos-patch",
         "responses": {
           "204": {
             "description": "No Content. The videos are updated."
