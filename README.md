@@ -188,14 +188,14 @@ If you open a pull request it will also include the status of the checks.
 
 ## Automatically fixing (some) errors ✅
 
-Warnings or errors reported by `yarn api:lint` (a.k.a. the `CI / openapi` check on GitHub) always need to be fixed manually in the OpenAPI file(s) of your project.
+Warnings or errors reported by `yarn api:lint` (a.k.a. the `Linting / openapi` check on GitHub) always need to be fixed manually in the OpenAPI file(s) of your project.
 
-Warnings or errors reported by `yarn docs:lint` (a.k.a. the `CI / docs` check on GitHub) can sometimes be fixed automatically, depending on the exact issue. For example formatting issues can be fixed automatically, but dead links not.
+Warnings or errors reported by `yarn docs:lint` (a.k.a. the `Linting / docs` check on GitHub) can sometimes be fixed automatically, depending on the exact issue. For example formatting issues can be fixed automatically, but dead links not.
 
 If you have `node` and `yarn` installed locally and ran `yarn install` to install all required packages, you can run `yarn docs:lint:fix` to try to fix the linting issues. Any issues that can be fixed will be fixed, and you can then commit them.
 
 You can also run the same script on GitHub itself.
-First, navigate to the ["Fix docs linting errors"](https://github.com/cultuurnet/apidocs/actions/workflows/docs-linting-fix.yml) Action. Then click "Run workflow" and select the branch you are working on. 
+First, navigate to the ["Linting docs fix"](https://github.com/cultuurnet/apidocs/actions/workflows/linting-docs-fix.yml) Action. Then click "Run workflow" and select the branch you are working on. 
 Finally, hit the green "Run workflow" button.
 
 ![](readme-images/run-workflow.png)
