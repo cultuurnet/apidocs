@@ -519,7 +519,8 @@
         }
       ],
       "get": {
-        "summary": "Get event history",
+        "summary": "history - get [internal]",
+        "operationId": "event-history-get",
         "tags": [
           "Events"
         ],
@@ -611,7 +612,6 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event-history",
         "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
         "x-internal": true,
         "security": [
@@ -631,8 +631,8 @@
         }
       ],
       "put": {
-        "summary": "Update audience",
-        "operationId": "put-event-audience",
+        "summary": "audience - update",
+        "operationId": "event-audience-put",
         "responses": {
           "204": {
             "description": "No Content. The event's audience was successfully updated."
@@ -720,8 +720,8 @@
         }
       ],
       "put": {
-        "summary": "Update available from",
-        "operationId": "put-event-available-from",
+        "summary": "availableFrom - update",
+        "operationId": "event-availableFrom-put",
         "responses": {
           "204": {
             "description": "No Content. The event's availableFrom was successfully updated."
@@ -799,8 +799,8 @@
         }
       ],
       "put": {
-        "summary": "Update bookingAvailability",
-        "operationId": "put-event-bookingAvailability",
+        "summary": "bookingAvailability - update",
+        "operationId": "event-bookingAvailability-put",
         "responses": {
           "204": {
             "description": "No Content. The bookingAvailability has been updated successfully."
@@ -878,7 +878,7 @@
         }
       ],
       "put": {
-        "summary": "Update calendar",
+        "summary": "calendar - put",
         "tags": [
           "Events"
         ],
@@ -921,7 +921,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "put-event-calendar",
+        "operationId": "event-calendar-put",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1073,7 +1073,7 @@
         }
       ],
       "get": {
-        "summary": "Get calendar summary",
+        "summary": "calendar summary - get",
         "tags": [
           "Events"
         ],
@@ -1105,7 +1105,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event-calendar-summary",
+        "operationId": "event-calendar-summary-get",
         "description": "Returns a human-readable summary of the calendar information of the event. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/events/{eventId}/calsum` path.",
         "parameters": [
           {
@@ -1223,8 +1223,8 @@
         }
       ],
       "put": {
-        "summary": "Update facilities",
-        "operationId": "put-event-facilities",
+        "summary": "facilities - update",
+        "operationId": "event-facilities-put",
         "responses": {
           "204": {
             "description": "No Content. The facilities have been successfully updated."
@@ -1300,8 +1300,8 @@
         }
       ],
       "put": {
-        "summary": "Update location",
-        "operationId": "put-event-location",
+        "summary": "location - update",
+        "operationId": "event-location-put",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1357,7 +1357,8 @@
         }
       ],
       "patch": {
-        "operationId": "patch-event-subEvents",
+        "summary": "subEvent - patch",
+        "operationId": "event-subEvent-patch",
         "description": "Updates the given subEvents on the event with the given `eventId`.\n\nAllows partial updates, omitted properties will be ignored and remain unchanged. Omitted subEvents will also remain unchanged.\n\nEvery subEvent to update requires an `id` property that is an integer that corresponds to their index in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\n<!-- theme: warning -->\n\n> Note! If you change the `startDate` of a subEvent, the subEvents will be re-ordered on the parent event afterwards because subEvents are always sorted chronologically.\n\nOnly events with calendar type `single` and `multiple` have subEvents, so only events with those calendar types support this endpoint.",
         "tags": [
           "Events"
@@ -1396,7 +1397,6 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "summary": "Update subEvents",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1485,8 +1485,8 @@
         }
       ],
       "put": {
-        "summary": "Update type",
-        "operationId": "put-event-type",
+        "summary": "terms > eventtype - update",
+        "operationId": "event-terms-eventtype-put",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1542,8 +1542,8 @@
         }
       ],
       "delete": {
-        "summary": "Delete theme",
-        "operationId": "delete-event-theme",
+        "summary": "terms > theme - delete",
+        "operationId": "event-terms-theme-delete",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1582,8 +1582,8 @@
         }
       ],
       "put": {
-        "summary": "Update theme",
-        "operationId": "put-event-theme",
+        "summary": "terms > theme - update",
+        "operationId": "event-terms-theme-put",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1639,8 +1639,8 @@
         }
       ],
       "post": {
-        "summary": "Add a video",
-        "operationId": "post-event-video",
+        "summary": "videos - add",
+        "operationId": "event-videos-post",
         "responses": {
           "200": {
             "description": "The video was added to the event.",
@@ -1812,8 +1812,8 @@
         }
       ],
       "delete": {
-        "summary": "Delete a video from an event",
-        "operationId": "delete-event-video",
+        "summary": "videos - delete",
+        "operationId": "event-videos-delete",
         "responses": {
           "204": {
             "description": "No Content. The video was deleted from the event."
@@ -1849,7 +1849,7 @@
         }
       ],
       "post": {
-        "summary": "Copy an event",
+        "summary": "event - create copy [internal]",
         "tags": [
           "Events"
         ],
@@ -1915,7 +1915,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "copy-event",
+        "operationId": "event-copies-post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2068,9 +2068,9 @@
         }
       ],
       "put": {
-        "operationId": "put-event-major-info",
+        "summary": "major-info - update [deprecated]",
+        "operationId": "event-major-info-put",
         "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `eventId`.\n\nThe major info contains:\n\n* `name`: The name of the event in the event's `mainLanguage`, as a string\n* `type`: Id of the event's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the event's `theme` taxonomy `term`, as a string\n* `location`: Object with the id of the event's location, as a place's uuid (string)\n* `calendar`: Object with the event's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the event. If the event has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /event/{eventId}/major-info`.",
-        "summary": "Update major info (deprecated)",
         "deprecated": true,
         "tags": [
           "Events"
