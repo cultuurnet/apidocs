@@ -1,0 +1,14 @@
+{
+  "name": "publiq/udb3-json-schemas",
+  "description": "UiTdatabank JSON schemas, useful for validating JSON request bodies.",
+  "type": "library",
+  "license": "GPL-3.0-only",
+  "authors": [
+    {
+      "name": "publiq vzw",
+      "email": "info@publiq.be"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}
