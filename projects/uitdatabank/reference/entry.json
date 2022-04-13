@@ -22,7 +22,7 @@
   "paths": {
     "/events": {
       "post": {
-        "summary": "Create event",
+        "summary": "Event - create",
         "tags": [
           "Events"
         ],
@@ -237,7 +237,7 @@
         }
       ],
       "get": {
-        "summary": "Get event details",
+        "summary": "Event - get",
         "tags": [
           "Events"
         ],
@@ -256,42 +256,12 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event",
+        "operationId": "event-get",
         "description": "Returns the details of the event for the given `eventId`."
       },
-      "delete": {
-        "summary": "Delete event",
-        "operationId": "delete-event",
-        "responses": {
-          "204": {
-            "description": "No Content. The event's `workflowStatus` was successfully updated to `DELETED`."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "tags": [
-          "Events"
-        ]
-      },
       "put": {
-        "summary": "Update event",
-        "operationId": "put-event",
+        "summary": "Event - update",
+        "operationId": "event-put",
         "responses": {
           "200": {
             "description": "The event was updated successfully",
@@ -507,6 +477,36 @@
           },
           "description": "The details of the event to update."
         },
+        "tags": [
+          "Events"
+        ]
+      },
+      "delete": {
+        "summary": "Event - delete",
+        "operationId": "event-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The event's `workflowStatus` was successfully updated to `DELETED`."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
         "tags": [
           "Events"
         ]
