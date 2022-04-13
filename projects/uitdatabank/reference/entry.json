@@ -22,7 +22,7 @@
   "paths": {
     "/events": {
       "post": {
-        "summary": "Event - create",
+        "summary": "event - create",
         "tags": [
           "Events"
         ],
@@ -76,7 +76,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "post-events",
+        "operationId": "event-post",
         "description": "Creates a new event.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create an event with just its required fields.",
         "security": [
           {
@@ -237,7 +237,7 @@
         }
       ],
       "get": {
-        "summary": "Event - get",
+        "summary": "event - get",
         "tags": [
           "Events"
         ],
@@ -260,7 +260,7 @@
         "description": "Returns the details of the event for the given `eventId`."
       },
       "put": {
-        "summary": "Event - update",
+        "summary": "event - update",
         "operationId": "event-put",
         "responses": {
           "200": {
@@ -482,7 +482,7 @@
         ]
       },
       "delete": {
-        "summary": "Event - delete",
+        "summary": "event - delete",
         "operationId": "event-delete",
         "responses": {
           "204": {
