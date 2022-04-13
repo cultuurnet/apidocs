@@ -1,0 +1,8 @@
+{
+  "$ref": "./common-mainImage.json",
+  "title": "event.image",
+  "description": "URL to the main image of the [event](./event.json). Will be automatically be set by UiTdatabank to the URL of the first image in `mediaObject`.",
+  "examples": [
+    "https://io-test.uitdatabank.be/images/example.png"
+  ]
+}

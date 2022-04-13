@@ -1,0 +1,12 @@
+{
+  "title": "organizer-url-put",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "./organizer-url.json"
+    }
+  },
+  "required": [
+    "url"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "organizer.name.put",
+  "type": "object",
+  "properties": {
+    "name": {
+      "$ref": "./common-name-localized.json",
+      "description": "The new name of the organizer (requires at least one character)"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

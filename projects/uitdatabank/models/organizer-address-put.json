@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-address-localized.json",
+  "title": "organizer.address.put",
+  "description": "New address of the organizer, localized in a single language."
+}

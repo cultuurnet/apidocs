@@ -1,0 +1,21 @@
+{
+  "title": "videos.post",
+  "type": "object",
+  "properties": {
+    "url": {
+      "$ref": "./common-string-uri-video.json"
+    },
+    "language": {
+      "$ref": "./common-language.json",
+      "description": "The language of the video.\nCan be one of `nl`, `fr`, `de`, or `en`."
+    },
+    "copyrightHolder": {
+      "$ref": "./common-copyrightHolder.json",
+      "description": "The copyright holder of the video source."
+    }
+  },
+  "required": [
+    "url",
+    "language"
+  ]
+}

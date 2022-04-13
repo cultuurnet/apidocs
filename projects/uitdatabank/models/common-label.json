@@ -1,0 +1,11 @@
+{
+  "title": "label",
+  "description": "String of 2-255 characters. Can contain any characters except for semicolons (`;`).",
+  "type": "string",
+  "minLength": 2,
+  "maxLength": 255,
+  "pattern": "^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$",
+  "examples": [
+    "example label 12345!"
+  ]
+}

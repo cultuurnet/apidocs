@@ -1,0 +1,15 @@
+{
+  "title": "creator",
+  "type": "string",
+  "description": "The unique identifier of the user or API client that created the document.",
+  "examples": [
+    "auth0|45c0d021-c78f-445f-adef-be3355b23e4f",
+    "rLlc90TSFBDRQbZwzP5vm2niDXI1CZef@clients",
+    "a9363e98-8a24-46a9-ad29-f175d7181138",
+    "google-oauth2|108326107941662286958",
+    "example@emails-are-legacy-but-may-occur.com"
+  ],
+  "minLength": 1,
+  "pattern": "\\S",
+  "readOnly": true
+}

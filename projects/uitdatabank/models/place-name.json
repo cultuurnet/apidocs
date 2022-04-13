@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-name.json",
+  "title": "place.name",
+  "description": "The human-readable, localized name of the [place](./place.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./place-mainLanguage.json) property."
+}

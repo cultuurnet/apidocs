@@ -1,0 +1,11 @@
+{
+  "title": "uri.readOnly",
+  "description": "A URI with the HTTP or HTTPS protocol. (Read-only)",
+  "type": "string",
+  "format": "uri",
+  "pattern": "^http[s]?:\\/\\/",
+  "readOnly": true,
+  "examples": [
+    "https://www.example.com"
+  ]
+}

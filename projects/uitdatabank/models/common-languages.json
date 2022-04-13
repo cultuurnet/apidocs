@@ -1,0 +1,22 @@
+{
+  "type": "array",
+  "title": "languages",
+  "readOnly": true,
+  "minItems": 1,
+  "items": {
+    "type": "string",
+    "enum": [
+      "nl",
+      "fr",
+      "de",
+      "en"
+    ],
+    "example": "nl"
+  },
+  "examples": [
+    [
+      "nl",
+      "fr"
+    ]
+  ]
+}

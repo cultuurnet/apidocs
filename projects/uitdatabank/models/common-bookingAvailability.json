@@ -1,0 +1,18 @@
+{
+  "title": "bookingAvailability",
+  "type": "object",
+  "description": "Indicates whether the there are tickets or reservations available. Currently only contains a `type` that can be `Available` or `Unavailable`, but can later be expanded with more detailed info.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Available",
+        "Unavailable"
+      ],
+      "description": "One of two possible types.\n\n- `Available`:Tickets or reservations available\n- `Unavailable`: No more tickets or reservations available."
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

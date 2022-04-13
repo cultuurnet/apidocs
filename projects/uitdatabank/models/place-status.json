@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-status.json",
+  "title": "place.status",
+  "description": "Indicates if the [place](./place.json) is still open for visitations or not."
+}

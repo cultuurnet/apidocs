@@ -1,0 +1,102 @@
+{
+  "title": "bookingInfo",
+  "type": "object",
+  "description": "Booking info to buy tickets or reserve a place, containing one or more phone numbers, email addresses, and/or website URLs.",
+  "properties": {
+    "phone": {
+      "type": "string",
+      "description": "Phone number for booking purposes.",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address for booking purposes.",
+      "format": "email",
+      "example": "info@example.com"
+    },
+    "url": {
+      "$ref": "./common-string-uri.json",
+      "description": "URL to a website for booking purposes."
+    },
+    "urlLabel": {
+      "type": "object",
+      "description": "Call-to-action text to show for the link to the booking url",
+      "minProperties": 1,
+      "examples": [
+        {
+          "nl": "Nederlandse tekst",
+          "fr": "Texte français",
+          "de": "Deutscher Text",
+          "en": "English text"
+        }
+      ],
+      "properties": {
+        "nl": {
+          "type": "string",
+          "description": "Dutch description",
+          "example": "Nederlandse beschrijving",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "fr": {
+          "type": "string",
+          "description": "French description",
+          "example": "Description français",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "de": {
+          "type": "string",
+          "description": "German description",
+          "example": "Deutscher Beschreibung",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "description": "English description",
+          "example": "English description",
+          "pattern": "\\S",
+          "minLength": 1
+        }
+      }
+    },
+    "availabilityStarts": {
+      "description": "The date & time when the booking period starts",
+      "type": "string",
+      "format": "date-time",
+      "example": "2021-05-17T22:00:00+00:00",
+      "examples": [
+        "2021-05-17T22:00:00+00:00"
+      ]
+    },
+    "availabilityEnds": {
+      "description": "The date & time when the booking period ends",
+      "type": "string",
+      "format": "date-time",
+      "example": "2021-05-17T22:00:00+00:00",
+      "examples": [
+        "2021-05-17T22:00:00+00:00"
+      ]
+    }
+  },
+  "dependentRequired": {
+    "url": ["urlLabel"]
+  },
+  "examples": [
+    {
+      "phone": "+32/01234567890",
+      "email": "info@example.com",
+      "url": "https://www.example.com",
+      "urlLabel": {
+        "nl": "Nederlandse tekst",
+        "fr": "Texte français",
+        "de": "Deutscher Text",
+        "en": "English text"
+      },
+      "availabilityStarts": "2021-05-17T22:00:00+00:00",
+      "availabilityEnds": "2021-05-17T22:00:00+00:00"
+    }
+  ]
+}

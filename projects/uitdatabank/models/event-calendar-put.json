@@ -1,0 +1,87 @@
+{
+  "title": "event.calendar.put",
+  "type": "object",
+  "description": "",
+  "allOf": [
+    {
+      "properties": {
+        "calendarType": {
+          "$ref": "./event-calendarType.json"
+        },
+        "status": {
+          "$ref": "./event-status.json"
+        },
+        "bookingAvailability": {
+          "$ref": "./event-bookingAvailability.json"
+        },
+        "subEvent": {
+          "$ref": "./event-subEvent-put.json"
+        },
+        "openingHours": {
+          "$ref": "./event-openingHours.json"
+        },
+        "startDate": {
+          "$ref": "./event-startDate.json"
+        },
+        "endDate": {
+          "$ref": "./event-endDate.json"
+        }
+      },
+      "required": [
+        "calendarType"
+      ]
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "single"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "subEvent"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "multiple"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "subEvent"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "periodic"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "startDate",
+          "endDate"
+        ]
+      }
+    }
+  ]
+}

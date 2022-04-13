@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-videos-post.json",
+  "title": "event.videos.post",
+  "description": "Describes the request body to add a video to an event."
+}

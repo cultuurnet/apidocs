@@ -1,0 +1,76 @@
+{
+  "title": "organizer.post.deprecated",
+  "type": "object",
+  "deprecated": true,
+  "properties": {
+    "@id": {
+      "$ref": "./organizer-@id.json"
+    },
+    "mainLanguage": {
+      "$ref": "./organizer-mainLanguage.json"
+    },
+    "website": {
+      "$ref": "./organizer-url.json"
+    },
+    "name": {
+      "$ref": "./common-name-localized.json",
+      "description": "The name of the organizer, localized in the language specified in the mainLanguage property."
+    },
+    "address": {
+      "$ref": "./common-address-localized.json",
+      "description": "The address of the organizer, localized in the language specified in the mainLanguage property."
+    },
+    "contact": {
+      "$ref": "./organizer-contact.json"
+    },
+    "labels": {
+      "$ref": "./organizer-labels.json"
+    },
+    "hiddenLabels": {
+      "$ref": "./organizer-hiddenLabels.json"
+    }
+  },
+  "required": [
+    "mainLanguage",
+    "website",
+    "name"
+  ],
+  "examples": [
+    {
+      "@id": "https://io-test.uitdatabank.be/organizers/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "mainLanguage": "nl",
+      "website": "https://www.publiq.be/",
+      "name": "publiq",
+      "address": {
+        "streetAddress": "Wetstraat 1",
+        "postalCode": "1000",
+        "addressLocality": "Brussel",
+        "addressCountry": "BE"
+      },
+      "contact": [
+        {
+          "type": "url",
+          "value": "https://www.publiq.be"
+        },
+        {
+          "type": "email",
+          "value": "info@publiq.be"
+        },
+        {
+          "type": "phone",
+          "value": "016 10 20 30"
+        }
+      ],
+      "labels": [
+        "label1",
+        "label2",
+        "label3"
+      ],
+      "hiddenLabels": [
+        "label1",
+        "label2",
+        "label3"
+      ]
+    }
+  ]
+}

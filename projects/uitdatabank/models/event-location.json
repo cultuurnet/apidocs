@@ -1,0 +1,5 @@
+{
+  "$ref": "./place-reference.json",
+  "title": "event.location",
+  "description": "A reference to a [place](./place.json) linked to the event. When writing an event it should only contain an `@id` property. When reading an event it will contain all the properties from the [place](./place.json)."
+}

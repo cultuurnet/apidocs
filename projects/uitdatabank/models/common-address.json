@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "title": "address",
+  "description": "An internationalized address with one or more localized addresses.\n\nImportant: Only add a localized address if it's an official variant!",
+  "minProperties": 1,
+  "properties": {
+    "nl": {
+      "$ref": "./common-address-localized.json",
+      "description": "An address in the `nl` (Dutch) language."
+    },
+    "fr": {
+      "$ref": "./common-address-localized.json",
+      "description": "An address in the `fr` (French) language."
+    },
+    "de": {
+      "$ref": "./common-address-localized.json",
+      "description": "An address in the `de` (German) language."
+    },
+    "en": {
+      "$ref": "./common-address-localized.json",
+      "description": "An address in the `en` (English) language."
+    }
+  },
+  "examples": [
+    {
+      "nl": {
+        "addressCountry": "BE",
+        "addressLocality": "Brussel",
+        "postalCode": "1000",
+        "streetAddress": "Wetstraat 1"
+      },
+      "fr": {
+        "addressCountry": "BE",
+        "addressLocality": "Bruxelles",
+        "postalCode": "1000",
+        "streetAddress": "Rue de la Loi 1"
+      }
+    }
+  ]
+}

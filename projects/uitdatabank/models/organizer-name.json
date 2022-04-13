@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-name.json",
+  "title": "organizer.name",
+  "description": "The human-readable, localized name of the [organizer](./organizer.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./organizer-mainLanguage.json) property."
+}

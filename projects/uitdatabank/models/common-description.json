@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "title": "description",
+  "description": "An internationalized description with one or more localized descriptions.",
+  "minProperties": 1,
+  "properties": {
+    "nl": {
+      "$ref": "./common-description-localized.json",
+      "description": "A human-readable description in the `nl` (Dutch) language."
+    },
+    "fr": {
+      "$ref": "./common-description-localized.json",
+      "description": "A human-readable description in the `fr` (French) language."
+    },
+    "de": {
+      "$ref": "./common-description-localized.json",
+      "description": "A human-readable description in the `de` (German) language."
+    },
+    "en": {
+      "$ref": "./common-description-localized.json",
+      "description": "A human-readable description in the `en` (English) language."
+    }
+  },
+  "examples": [
+    {
+      "nl": "Voorbeeld beschrijving. Lorem ipsum dolor sit amet.",
+      "fr": "Description d'exemple. Lorem ipsum dolor sit amet.",
+      "de": "Beispiel Beschreibung. Lorem ipsum dolor sit amet.",
+      "en": "Example description. Lorem ipsum dolor sit amet."
+    }
+  ]
+}

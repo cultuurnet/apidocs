@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-bookingInfo.json",
+  "title": "place.bookingInfo",
+  "description": "Booking info of the [place](./place.json), containing one or more phone numbers, email addresses, and/or website URLs."
+}

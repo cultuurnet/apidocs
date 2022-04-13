@@ -1,0 +1,29 @@
+{
+  "title": "coordinates",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "format": "float",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "format": "float",
+      "minimum": -180,
+      "maximum": 180
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ],
+  "readOnly": true,
+  "examples": [
+    {
+      "latitude": 50.8816177,
+      "longitude": 4.7137986
+    }
+  ]
+}

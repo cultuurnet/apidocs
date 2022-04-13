@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "title": "address.localized",
+  "description": "An address localized in a single language.",
+  "properties": {
+    "addressCountry": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Country code in the ISO-3166 format. For example `BE`.",
+      "maxLength": 2,
+      "pattern": "^[A-Z][A-Z]$"
+    },
+    "addressLocality": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "Municipality of the address in the relevant locale, for example `Brussel` for `nl` or `Bruxelles` for `fr`."
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postal code of the municipality, for example `1000`. Formatted as a string because some international postal codes use letters.",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "streetAddress": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "Street address in the relevant locale, for example `Wetstraat 1` for `nl` or `Rue de la Loi 1` for `fr`."
+    }
+  },
+  "required": [
+    "addressCountry",
+    "addressLocality",
+    "postalCode",
+    "streetAddress"
+  ],
+  "examples": [
+    {
+      "addressCountry": "BE",
+      "addressLocality": "Brussel",
+      "postalCode": "1000",
+      "streetAddress": "Wetstraat 1"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "title": "place.reference",
+  "examples": [
+    {
+      "@id": "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+    }
+  ],
+  "properties": {
+    "@id": {
+      "$ref": "./place-@id.json"
+    }
+  },
+  "required": [
+    "@id"
+  ]
+}

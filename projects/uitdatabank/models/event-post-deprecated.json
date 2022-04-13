@@ -1,0 +1,38 @@
+{
+  "title": "event.post (deprecated)",
+  "type": "object",
+  "properties": {
+    "mainLanguage": {
+      "$ref": "./event-mainLanguage.json"
+    },
+    "name": {
+      "$ref": "./event-name.json"
+    },
+    "type": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "description": "The term (type) used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique id of the term (type)."
+        }
+      }
+    },
+    "location": {
+      "$ref": "./event-location.json"
+    },
+    "calendar": {
+      "$ref": "./event-calendar-put.json"
+    }
+  },
+  "required": [
+    "mainLanguage",
+    "name",
+    "type",
+    "location",
+    "calendar"
+  ]
+}

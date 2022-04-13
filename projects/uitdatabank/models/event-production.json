@@ -1,0 +1,41 @@
+{
+  "description": "The production that the [event](./event.json) belongs to.\n\nA production is a group of events that share the same subject but are taking place in different locations and/or are organized by different organizers.\n\nFor example a theatre show that is scheduled to be performed at different locations, or a movie that will be screened at different cinema's.",
+  "type": "object",
+  "examples": [
+    {
+      "id": "10ce7cb1-7bc9-4ce4-a256-460f56c49965",
+      "title": "Kommil Foo - OOGST",
+      "otherEvents": [
+        "https://io-test.uitdatabank.be/events/b815e4e6-d79f-40f2-b329-50e566e23367",
+        "https://io-test.uitdatabank.be/events/eb155497-46b9-4fb2-9457-d073fe02322e"
+      ]
+    }
+  ],
+  "title": "event.production",
+  "properties": {
+    "id": {
+      "$ref": "./common-string-uuid.json",
+      "description": "The unique id of the production, formatted as UUID. For example `10ce7cb1-7bc9-4ce4-a256-460f56c49965`."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The human-readable name of the production. Not localized but in the original language of the events. Automatically added by UiTdatabank.",
+      "example": "Kommil Foo - OOGST"
+    },
+    "otherEvents": {
+      "type": "array",
+      "description": "A list of globally unique URIs of other events that are part of this production. See also [@id](./event-@id.json). Automatically added by UiTdatabank.",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "./event-@id.json"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "otherEvents"
+  ],
+  "readOnly": true
+}

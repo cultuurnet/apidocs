@@ -1,0 +1,291 @@
+{
+  "title": "place",
+  "type": "object",
+  "description": "A cultural, leisure, or sports-related location that can be visited or where an event can be located at.",
+  "examples": [
+    {
+      "@id": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3",
+      "mainLanguage": "nl",
+      "name": {
+        "nl": "Nederlandse naam",
+        "fr": "Nom français",
+        "de": "Deutscher Name",
+        "en": "English name"
+      },
+      "address": {
+        "nl": {
+          "addressCountry": "BE",
+          "addressLocality": "Brussel",
+          "postalCode": "1000",
+          "streetAddress": "Wetstraat 1"
+        },
+        "fr": {
+          "addressCountry": "BE",
+          "addressLocality": "Bruxelles",
+          "postalCode": "1000",
+          "streetAddress": "Rue de la Loi 1"
+        },
+        "de": {
+          "addressCountry": "BE",
+          "addressLocality": "Brüssel",
+          "postalCode": "1000",
+          "streetAddress": "Wetstraat 1"
+        },
+        "en": {
+          "addressCountry": "BE",
+          "addressLocality": "Brussels",
+          "postalCode": "1000",
+          "streetAddress": "Wetstraat 1"
+        }
+      },
+      "geo": {
+        "latitude": 50.8816177,
+        "longitude": 4.7137986
+      },
+      "calendarType": "periodic",
+      "startDate": "2021-05-17T22:00:00+00:00",
+      "endDate": "2021-05-17T22:00:00+00:00",
+      "status": {
+        "type": "Available",
+        "reason": {
+          "nl": "Nederlandse reden",
+          "fr": "Raison français",
+          "de": "Deutscher Grund",
+          "en": "English reason"
+        }
+      },
+      "openingHours": [
+        {
+          "opens": "17:00",
+          "closes": "17:00",
+          "dayOfWeek": [
+            "monday"
+          ]
+        }
+      ],
+      "availableFrom": "2021-05-17T22:00:00+00:00",
+      "availableTo": "2021-05-17T22:00:00+00:00",
+      "sameAs": [
+        "http://www.uitinvlaanderen.be/agenda/e/test-place/85b04295-479c-40f5-b3dd-469dfb4387b3"
+      ],
+      "terms": [
+        {
+          "id": "0.14.0.0.0",
+          "label": "Monument",
+          "domain": "eventtype"
+        }
+      ],
+      "created": "2021-05-17T22:00:00+00:00",
+      "modified": "2021-05-17T22:00:00+00:00",
+      "creator": "string",
+      "workflowStatus": "DRAFT",
+      "languages": [
+        "nl"
+      ],
+      "completedLanguages": [
+        "nl"
+      ],
+      "typicalAgeRange": "6-12",
+      "description": {
+        "nl": "Nederlandse beschrijving",
+        "fr": "Description français",
+        "de": "Deutscher Beschreibung",
+        "en": "English description"
+      },
+      "priceInfo": [
+        {
+          "category": "base",
+          "price": 10.5,
+          "priceCurrency": "EUR",
+          "name": {
+            "nl": "Basistarief",
+            "fr": "Tarif de base",
+            "de": "Base tariff",
+            "en": "Basisrate"
+          }
+        }
+      ],
+      "contactPoint": {
+        "phone": [
+          "string"
+        ],
+        "email": [
+          "info@example.com"
+        ],
+        "url": [
+          "https://www.example.com"
+        ]
+      },
+      "bookingInfo": {
+        "phone": "string",
+        "email": "info@example.com",
+        "url": "https://www.example.com",
+        "urlLabel": {
+          "nl": "Nederlandse beschrijving",
+          "fr": "Description français",
+          "de": "Deutscher Beschreibung",
+          "en": "English description"
+        },
+        "availabilityStarts": "2021-05-17T22:00:00+00:00",
+        "availabilityEnds": "2021-05-17T22:00:00+00:00"
+      },
+      "mediaObject": [
+        {
+          "@id": "https://io-test.uitdatabank.be/images/85b04295-479c-40f5-b3dd-469dfb4387b3",
+          "id": "85b04295-479c-40f5-b3dd-469dfb4387b3",
+          "contentUrl": "https://images-test.uitdatabank.be/85b04295-479c-40f5-b3dd-469dfb4387b3.png",
+          "thumbnailUrl": "https://images-test.uitdatabank.be/85b04295-479c-40f5-b3dd-469dfb4387b3.png",
+          "description": "string",
+          "copyrightHolder": "string",
+          "inLanguage": "nl"
+        }
+      ],
+      "image": "https://images-test.uitdatabank.be/85b04295-479c-40f5-b3dd-469dfb4387b3.png",
+      "videos": [
+        {
+          "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+          "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+          "embedUrl": "https://www.youtube.com/embed/cEItmb_a20D",
+          "language": "nl",
+          "copyrightHolder": "publiq"
+        }
+      ],
+      "labels": [
+        "label1"
+      ],
+      "hiddenLabels": [
+        "label2"
+      ],
+      "bookingAvailability": {
+        "type": "Available"
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "properties": {
+        "@id": {
+          "$ref": "./place-@id.json"
+        },
+        "mainLanguage": {
+          "$ref": "./place-mainLanguage.json"
+        },
+        "name": {
+          "$ref": "./place-name.json"
+        },
+        "terms": {
+          "$ref": "./place-terms.json"
+        },
+        "calendarType": {
+          "$ref": "./place-calendarType.json"
+        },
+        "address": {
+          "$ref": "./place-address.json"
+        },
+        "geo": {
+          "$ref": "./place-geo.json"
+        },
+        "organizer": {
+          "$ref": "./place-organizer.json"
+        },
+        "startDate": {
+          "$ref": "./place-startDate.json"
+        },
+        "endDate": {
+          "$ref": "./place-endDate.json"
+        },
+        "status": {
+          "$ref": "./place-status.json"
+        },
+        "openingHours": {
+          "$ref": "./place-openingHours.json"
+        },
+        "availableFrom": {
+          "$ref": "./place-availableFrom.json"
+        },
+        "availableTo": {
+          "$ref": "./place-availableTo.json"
+        },
+        "workflowStatus": {
+          "$ref": "./place-workflowStatus.json"
+        },
+        "languages": {
+          "$ref": "./place-languages.json"
+        },
+        "completedLanguages": {
+          "$ref": "./place-completedLanguages.json"
+        },
+        "typicalAgeRange": {
+          "$ref": "./place-typicalAgeRange.json"
+        },
+        "description": {
+          "$ref": "./place-description.json"
+        },
+        "priceInfo": {
+          "$ref": "./place-priceInfo.json"
+        },
+        "contactPoint": {
+          "$ref": "./place-contactPoint.json"
+        },
+        "bookingInfo": {
+          "$ref": "./place-bookingInfo.json"
+        },
+        "mediaObject": {
+          "$ref": "./place-mediaObject.json"
+        },
+        "image": {
+          "$ref": "./place-image.json"
+        },
+        "videos": {
+          "$ref": "./place-videos.json"
+        },
+        "labels": {
+          "$ref": "./place-labels.json"
+        },
+        "hiddenLabels": {
+          "$ref": "./place-hiddenLabels.json"
+        },
+        "bookingAvailability": {
+          "$ref": "./place-bookingAvailability.json"
+        },
+        "creator": {
+          "$ref": "./place-creator.json"
+        },
+        "created": {
+          "$ref": "./place-created.json"
+        },
+        "modified": {
+          "$ref": "./place-modified.json"
+        },
+        "sameAs": {
+          "$ref": "./place-sameAs.json"
+        }
+      },
+      "required": [
+        "mainLanguage",
+        "name",
+        "terms",
+        "calendarType",
+        "address"
+      ]
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "periodic"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "startDate",
+          "endDate"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "uri",
+  "description": "A URI with the HTTP or HTTPS protocol.",
+  "type": "string",
+  "format": "uri",
+  "pattern": "^http[s]?:\\/\\/",
+  "examples": [
+    "https://www.example.com"
+  ]
+}

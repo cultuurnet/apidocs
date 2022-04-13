@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "title": "name",
+  "description": "An internationalized name with one or more localized names.",
+  "minProperties": 1,
+  "properties": {
+    "nl": {
+      "$ref": "./common-name-localized.json",
+      "description": "A human-readable name in the `nl` (Dutch) language."
+    },
+    "fr": {
+      "$ref": "./common-name-localized.json",
+      "description": "A human-readable name in the `fr` (French) language."
+    },
+    "de": {
+      "$ref": "./common-name-localized.json",
+      "description": "A human-readable name in the `de` (German) language."
+    },
+    "en": {
+      "$ref": "./common-name-localized.json",
+      "description": "A human-readable name in the `en` (English) language."
+    }
+  },
+  "examples": [
+    {
+      "nl": "Voorbeeld van een naam",
+      "fr": "Exemple d'un nom",
+      "de": "Beispiel eines Namens",
+      "en": "Example of a name"
+    }
+  ]
+}

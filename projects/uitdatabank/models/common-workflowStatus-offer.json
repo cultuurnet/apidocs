@@ -1,0 +1,14 @@
+{
+  "title": "workflowStatus",
+  "type": "string",
+  "description": "The status in the moderation workflow.\n\nCan be one of four types:\n\n- `DRAFT`: Should not be visible on publication channels yet\n- `READY_FOR_VALIDATION`: Submitted for validation. Some publication channels may choose to show these.\n- `APPROVED`: Approved, will be visible on all publication channels (depending on the `availableFrom` and `availableTo`)\n- `DELETED`: Removed and should not be visible on any publication channels.",
+  "enum": [
+    "DRAFT",
+    "READY_FOR_VALIDATION",
+    "APPROVED",
+    "DELETED"
+  ],
+  "examples": [
+    "DRAFT"
+  ]
+}

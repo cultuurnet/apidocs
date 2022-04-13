@@ -1,0 +1,11 @@
+{
+  "title": "language",
+  "type": "string",
+  "example": "nl",
+  "enum": [
+    "nl",
+    "fr",
+    "de",
+    "en"
+  ]
+}

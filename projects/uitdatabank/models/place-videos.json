@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-videos.json",
+  "title": "place.videos",
+  "description": "Describes an array of video objects that are linked to a place."
+}

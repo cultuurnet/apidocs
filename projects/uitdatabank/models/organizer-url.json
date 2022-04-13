@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-string-uri.json",
+  "title": "organizer.url",
+  "description": "The unique website of the organizer."
+}

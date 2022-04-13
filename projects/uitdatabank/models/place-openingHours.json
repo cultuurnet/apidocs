@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-openingHours.json",
+  "title": "place.openingHours",
+  "description": "A list of multiple open/closed times and weekdays indicating when the [place](./place.json) is open."
+}

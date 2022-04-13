@@ -1,0 +1,60 @@
+{
+  "type": "array",
+  "title": "event.terms",
+  "description": "A list of taxonomy terms used to categorize the [event](./event.json).\n\nTerms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide.\n\nAn event requires at least one term, to define its type. (For example a concert, theater show, ...)",
+  "uniqueItems": true,
+  "minItems": 1,
+  "contains": {
+    "properties": {
+      "domain": {"const": "eventtype"}
+    }
+  },
+  "minContains": 1,
+  "maxContains": 1,
+  "items": {
+    "title": "",
+    "type": "object",
+    "description": "A taxonomy term used to categorize events.\n\nAll events require exactly one term of the `eventtype` domain, and can optionally contain other terms.\n\nWhen reading events, all properties will be available. When creating or updating events only the `id` is required to be included.",
+    "examples": [
+      {
+        "id": "0.50.4.0.0",
+        "label": "Concert",
+        "domain": "eventtype"
+      }
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique id of the term. For example `0.50.4.0.0`.",
+        "example": "0.50.4.0.0"
+      },
+      "label": {
+        "type": "string",
+        "description": "Human-readable label of the term. Currently only available in Dutch. For example `Concert`.",
+        "example": "Concert"
+      },
+      "domain": {
+        "type": "string",
+        "example": "eventtype",
+        "description": "The domain of the term. Can be one of `eventtype`, `theme`, or `facility`.",
+        "enum": [
+          "eventtype",
+          "theme",
+          "facility"
+        ]
+      }
+    },
+    "required": [
+      "id"
+    ]
+  },
+  "examples": [
+    [
+      {
+        "id": "0.50.4.0.0",
+        "label": "Concert",
+        "domain": "eventtype"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-creator.json",
+  "title": "event.creator",
+  "description": "The unique identifier of the creator of the [event](./event.json). Usually a UUID, but can historally be an e-mail address.\n\nAdded automatically by UiTdatabank based on the authentication credentials used to create the event."
+}

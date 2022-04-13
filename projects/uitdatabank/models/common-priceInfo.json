@@ -1,0 +1,106 @@
+{
+  "type": "array",
+  "title": "priceInfo",
+  "description": "A list of prices for tickets/reservations.",
+  "minItems": 1,
+  "contains": {
+    "properties": {
+      "category": {
+        "const": "base"
+      }
+    }
+  },
+  "minContains": 1,
+  "maxContains": 1,
+  "items": {
+    "allOf": [
+      {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "base",
+              "tariff"
+            ],
+            "example": "base",
+            "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs."
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0,
+            "example": 10.5,
+            "description": "The price of a ticket in this category."
+          },
+          "priceCurrency": {
+            "type": "string",
+            "enum": [
+              "EUR"
+            ],
+            "description": "The currency of the price. Currently only `EUR` is supported."
+          },
+          "name": {
+            "$ref": "./common-name.json",
+            "description": "Name of a tariff inside priceInfo. Required if category is set to `tariff`. For the `base` category UiTdatabank will set a default. Requires at least one value, for the language specified in the `mainLanguage` property."
+          }
+        },
+        "required": [
+          "category",
+          "price",
+          "priceCurrency"
+        ]
+      },
+      {
+        "if": {
+          "required": ["category"],
+          "properties": {
+            "category": {
+              "const": "tariff"
+            }
+          }
+        },
+        "then": {
+          "required": ["name"]
+        }
+      }
+    ]
+  },
+  "examples": [
+    [
+      {
+        "category": "base",
+        "price": 10.5,
+        "priceCurrency": "EUR",
+        "name": {
+          "nl": "Basistarief",
+          "fr": "Tarif de base",
+          "en": "Base tariff",
+          "de": "Basisrate"
+        }
+      }
+    ],
+    [
+      {
+        "category": "base",
+        "price": 10.5,
+        "priceCurrency": "EUR",
+        "name": {
+          "nl": "Basistarief",
+          "fr": "Tarif de base",
+          "en": "Base tariff",
+          "de": "Basisrate"
+        }
+      },
+      {
+        "category": "tariff",
+        "price": 8,
+        "priceCurrency": "EUR",
+        "name": {
+          "nl": "Jongeren (<18j)",
+          "en": "Youth (<18yo)"
+        }
+      }
+    ]
+  ]
+}

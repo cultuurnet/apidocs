@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-bookingAvailability.json",
+  "title": "place.bookingAvailability",
+  "description": "Indicates whether the place still has tickets or reservations available. Currently only contains a `type` that can be `Available` or `Unavailable`, but can later be expanded with more detailed info."
+}

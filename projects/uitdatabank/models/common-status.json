@@ -1,0 +1,79 @@
+{
+  "title": "status",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": [
+        "Available",
+        "TemporarilyUnavailable",
+        "Unavailable"
+      ],
+      "example": "Available",
+      "description": "One of three possible status types.\n\n- `Available`: Happening or open as scheduled\n- `TemporarilyUnavailable`: Postponed or temporarily closed\n- `Unavailable`: Cancelled or permanently closed",
+      "type": "string"
+    },
+    "reason": {
+      "description": "The reason of the status, as a localized human-readable text.",
+      "type": "object",
+      "examples": [
+        {
+          "nl": "Nederlandse tekst",
+          "fr": "Texte français",
+          "de": "Deutscher Text",
+          "en": "English text"
+        }
+      ],
+      "properties": {
+        "nl": {
+          "type": "string",
+          "description": "Dutch reason",
+          "example": "Nederlandse reden",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "fr": {
+          "type": "string",
+          "description": "French reason",
+          "example": "Raison français",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "de": {
+          "type": "string",
+          "description": "German reason",
+          "example": "Deutscher Grund",
+          "pattern": "\\S",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "description": "English reason",
+          "example": "English reason",
+          "pattern": "\\S",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "examples": [
+    {
+      "type": "Available"
+    },
+    {
+      "type": "TemporarilyUnavailable",
+      "reason": {
+        "nl": "Uitgesteld wegens covid-19",
+        "en": "Postponed due to covid-19"
+      }
+    },
+    {
+      "type": "Unavailable",
+      "reason": {
+        "nl": "Permanent gesloten"
+      }
+    }
+  ]
+}

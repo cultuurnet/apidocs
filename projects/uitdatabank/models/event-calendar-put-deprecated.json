@@ -1,0 +1,107 @@
+{
+  "title": "event.calendar.put (deprecated)",
+  "deprecated": true,
+  "type": "object",
+  "description": "",
+  "properties": {
+    "calendarType": {
+      "$ref": "./event-calendarType.json"
+    },
+    "status": {
+      "$ref": "./event-status.json"
+    },
+    "bookingAvailability": {
+      "$ref": "./event-bookingAvailability.json"
+    },
+    "timeSpans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "$ref": "./event-startDate.json"
+          },
+          "end": {
+            "$ref": "./event-endDate.json"
+          },
+          "status": {
+            "$ref": "./event-status.json"
+          },
+          "bookingAvailability": {
+            "$ref": "./event-bookingAvailability.json"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ]
+      }
+    },
+    "openingHours": {
+      "$ref": "./event-openingHours.json"
+    },
+    "startDate": {
+      "$ref": "./event-startDate.json"
+    },
+    "endDate": {
+      "$ref": "./event-endDate.json"
+    }
+  },
+  "required": [
+    "calendarType"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "single"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "timeSpans"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "multiple"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "timeSpans"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "periodic"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "startDate",
+          "endDate"
+        ]
+      }
+    }
+  ]
+}

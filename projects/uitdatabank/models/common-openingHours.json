@@ -1,0 +1,84 @@
+{
+  "title": "openingHours",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "examples": [
+      {
+        "opens": "09:00",
+        "closes": "17:00",
+        "dayOfWeek": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ]
+      }
+    ],
+    "properties": {
+      "opens": {
+        "type": "string",
+        "title": "openingHoursTime",
+        "examples": [
+          "17:00"
+        ],
+        "pattern": "^\\d?\\d:\\d\\d$"
+      },
+      "closes": {
+        "type": "string",
+        "title": "openingHoursTime",
+        "examples": [
+          "17:00"
+        ],
+        "pattern": "^\\d?\\d:\\d\\d$"
+      },
+      "dayOfWeek": {
+        "type": "array",
+        "uniqueItems": true,
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "example": "monday"
+        }
+      }
+    },
+    "required": [
+      "opens",
+      "closes",
+      "dayOfWeek"
+    ]
+  },
+  "examples": [
+    [
+      {
+        "opens": "13:00",
+        "closes": "17:00",
+        "dayOfWeek": [
+          "monday"
+        ]
+      },
+      {
+        "opens": "09:00",
+        "closes": "17:00",
+        "dayOfWeek": [
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ]
+      }
+    ]
+  ]
+}

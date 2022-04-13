@@ -1,0 +1,56 @@
+{
+  "title": "newsArticle.post",
+  "type": "object",
+  "x-internal": true,
+  "properties": {
+    "headline": {
+      "type": "string",
+      "description": "The headline of the news article.",
+      "example": "API reward for publiq"
+    },
+    "inLanguage": {
+      "$ref": "common-language.json",
+      "description": "The language of the news article"
+    },
+    "text": {
+      "type": "string",
+      "description": "The text of the news article."
+    },
+    "about": {
+      "type": "string",
+      "description": "The id of the event linked to the news article."
+    },
+    "publisher": {
+      "type": "string",
+      "description": "The publisher of the news article."
+    },
+    "publisherLogo": {
+      "$ref": "./common-string-uri.json",
+      "description": "The url pointing to the logo of the publisher of the news article."
+    },
+    "url": {
+      "$ref": "./common-string-uri.json",
+      "description": "The link pointing to the published news article itself."
+    }
+  },
+  "required": [
+    "headline",
+    "inLanguage",
+    "text",
+    "about",
+    "publisher",
+    "publisherLogo",
+    "url"
+  ],
+  "examples": [
+    {
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "This year publiq won an API reward for it's innovative RESTful API",
+      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
+      "publisher": "BILL",
+      "publisherLogo": "https://www.bill.be/img/favicon.png",
+      "url": "https://www.bill.be/blog/publiq-award"
+    }
+  ]
+}

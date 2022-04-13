@@ -1,0 +1,66 @@
+{
+  "x-internal": true,
+  "title": "newsArticle",
+  "type": "object",
+  "description": "A news article that is linked to an event.",
+  "properties": {
+    "id": {
+      "$ref": "./common-string-uuid.json",
+      "description": "The uuid of the news article."
+    },
+    "headline": {
+      "type": "string",
+      "description": "The headline of the news article.",
+      "example": "API reward for publiq"
+    },
+    "inLanguage": {
+      "$ref": "./common-language.json",
+      "description": "The language of the news article"
+    },
+    "text": {
+      "type": "string",
+      "example": "This year publiq won an API reward for it's innovative RESTful API",
+      "description": "The text of the news article."
+    },
+    "about": {
+      "type": "string",
+      "example": "17284745-7bcf-461a-aad0-d3ad54880e75",
+      "description": "The id of the event linked to the news article."
+    },
+    "publisher": {
+      "type": "string",
+      "example": "BILL",
+      "description": "The publisher of the news article."
+    },
+    "publisherLogo": {
+      "$ref": "./common-string-uri.json",
+      "description": "The url pointing to the logo of the publisher of the news article."
+    },
+    "url": {
+      "$ref": "./common-string-uri.json",
+      "description": "The link pointing to the published news article itself."
+    }
+  },
+  "required": [
+    "id",
+    "headline",
+    "inLanguage",
+    "text",
+    "about",
+    "publisher",
+    "publisherLogo",
+    "url"
+  ],
+  "examples": [
+    {
+      "id": "7ef7075c-e2da-4837-af92-a5176e3a348f",
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "This year publiq won an API reward for it's innovative RESTful API",
+      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
+      "publisher": "BILL",
+      "publisherLogo": "https://www.bill.be/img/favicon.png",
+      "url": "https://www.bill.be/blog/publiq-award"
+    }
+  ]
+}

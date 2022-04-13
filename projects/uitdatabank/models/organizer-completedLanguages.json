@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-languages.json",
+  "title": "organizer.completedLanguages",
+  "description": "List of languages that _every_ localizable property on the [organizer](./organizer.json) is available in.\n\nAdded automatically by UiTdatabank based on the languages present in localized properties.\n\nSee also [languages](./organizer-languages.json)."
+}

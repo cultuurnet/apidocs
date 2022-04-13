@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": "typicalAgeRange",
+  "examples": [
+    "6-12",
+    "-12",
+    "6-"
+  ],
+  "pattern": "^[\\d]*-[\\d]*$"
+}

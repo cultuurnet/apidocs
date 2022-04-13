@@ -1,0 +1,47 @@
+{
+  "title": "organizer.contact",
+  "type": "array",
+  "description": "Contact info of the [organizer](./organizer.json) in a legacy format, containing one or more phone numbers, email addresses and/or website URLs.\n\nA type is used to categories the kind of contact information. The type can be either: url, email or phone.",
+  "examples": [
+    [
+      {
+        "type": "url",
+        "value": "https://www.publiq.be"
+      },
+      {
+        "type": "email",
+        "value": "info@publiq.be"
+      },
+      {
+        "type": "phone",
+        "value": "016 10 20 30"
+      }
+    ]
+  ],
+  "items": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "The type of the given contact information.",
+        "enum": [
+          "url",
+          "phone",
+          "email"
+        ],
+        "example": "url"
+      },
+      "value": {
+        "type": "string",
+        "description": "The real value of the given contact information.",
+        "example": "https://www.publiq.be",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "required": [
+      "type",
+      "value"
+    ]
+  }
+}

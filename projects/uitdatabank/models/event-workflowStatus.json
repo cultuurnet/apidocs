@@ -1,0 +1,4 @@
+{
+  "$ref": "./common-workflowStatus-offer.json",
+  "title": "event.workflowStatus"
+}

@@ -1,0 +1,71 @@
+{
+  "title": "event.subEvent",
+  "type": "array",
+  "description": "A list of occurrences of the [event](./event.json) when using the `single` or `multiple` [calendarType](./event-calendarType.json).",
+  "examples": [
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "status": {
+          "type": "Available"
+        },
+        "bookingAvailability": {
+          "type": "Available"
+        }
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "status": {
+          "type": "Available"
+        },
+        "bookingAvailability": {
+          "type": "Available"
+        }
+      },
+      {
+        "id": 1,
+        "startDate": "2021-05-20T16:00:00+00:00",
+        "endDate": "2021-05-20T22:00:00+00:00",
+        "status": {
+          "type": "Available"
+        },
+        "bookingAvailability": {
+          "type": "Available"
+        }
+      }
+    ]
+  ],
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer",
+        "description": "Index of the subEvent on the parent event. `0` for the first subEvent, `1` for the second event, and so on.",
+        "example": 0
+      },
+      "startDate": {
+        "$ref": "./event-startDate.json"
+      },
+      "endDate": {
+        "$ref": "./event-endDate.json"
+      },
+      "status": {
+        "$ref": "./event-status.json"
+      },
+      "bookingAvailability": {
+        "$ref": "./event-bookingAvailability.json"
+      }
+    },
+    "required": [
+      "startDate",
+      "endDate"
+    ]
+  }
+}

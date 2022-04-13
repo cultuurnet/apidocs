@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "title": "images",
+  "minItems": 1,
+  "items": {
+    "$ref": "./image.json"
+  },
+  "examples": [
+    [
+      {
+        "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
+        "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
+        "contentUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+        "thumbnailUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+        "description": "Een voorbeeld beschrijving",
+        "copyrightHolder": "Jan",
+        "inLanguage": "nl"
+      }
+    ]
+  ]
+}

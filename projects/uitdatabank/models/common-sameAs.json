@@ -1,0 +1,15 @@
+{
+  "type": "array",
+  "title": "sameAs",
+  "uniqueItems": true,
+  "minItems": 1,
+  "examples": [
+    [
+      "http://www.uitinvlaanderen.be/agenda/e/example/85b04295-479c-40f5-b3dd-469dfb4387b3"
+    ]
+  ],
+  "items": {
+    "$ref": "./common-string-uri.json"
+  },
+  "readOnly": true
+}

@@ -1,0 +1,8 @@
+{
+  "title": "uuid",
+  "type": "string",
+  "format": "uuid",
+  "examples": [
+    "46e9ea9f-fc42-4759-a81b-4308467b7c35"
+  ]
+}

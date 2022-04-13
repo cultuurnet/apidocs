@@ -1,0 +1,59 @@
+{
+  "type": "array",
+  "title": "place.terms",
+  "description": "A list of taxonomy terms used to categorize the [place](./place.json).\n\nTerms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide.\n\nA place requires at least one term, to define its type. (For example a museum, monument, ...)",
+  "uniqueItems": true,
+  "minItems": 1,
+  "contains": {
+    "properties": {
+      "domain": {"const": "eventtype"}
+    }
+  },
+  "minContains": 1,
+  "maxContains": 1,
+  "examples": [
+    [
+      {
+        "id": "0.14.0.0.0",
+        "label": "Monument",
+        "domain": "eventtype"
+      }
+    ]
+  ],
+  "items": {
+    "title": "",
+    "type": "object",
+    "description": "A taxonomy term used to categorize places.\n\nAll places require exactly one term of the `eventtype` domain, and can optionally contain other terms.\n\nWhen reading places, all properties will be available. When creating or updating places only the `id` is required to be included.",
+    "examples": [
+      {
+        "id": "0.14.0.0.0",
+        "label": "Concert",
+        "domain": "eventtype"
+      }
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique id of the term. For example `0.14.0.0.0`.",
+        "example": "0.14.0.0.0"
+      },
+      "label": {
+        "type": "string",
+        "description": "Human-readable label of the term. Currently only available in Dutch. For example `Concert`.",
+        "example": "Monument"
+      },
+      "domain": {
+        "type": "string",
+        "example": "eventtype",
+        "description": "The domain of the term. Can be one of `eventtype` or `facility`.",
+        "enum": [
+          "facility",
+          "eventtype"
+        ]
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

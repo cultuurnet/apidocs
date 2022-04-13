@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "title": "organizer-main-image-put",
+  "description": "",
+  "examples": [
+    {
+      "imageId": "4b349765-9499-4d35-b295-c82ede576cf0"
+    }
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "imageId": {
+      "$ref": "./common-string-uuid.json",
+      "description": "The id of the image to set as main image on the organizer."
+    }
+  },
+  "required": [
+    "imageId"
+  ]
+}

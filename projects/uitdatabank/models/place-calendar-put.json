@@ -1,0 +1,48 @@
+{
+  "title": "place.calendar.put",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "calendarType": {
+      "$ref": "./place-calendarType.json"
+    },
+    "status": {
+      "$ref": "./place-status.json"
+    },
+    "bookingAvailability": {
+      "$ref": "./place-bookingAvailability.json"
+    },
+    "openingHours": {
+      "$ref": "./place-openingHours.json"
+    },
+    "startDate": {
+      "$ref": "./place-startDate.json"
+    },
+    "endDate": {
+      "$ref": "./place-endDate.json"
+    }
+  },
+  "required": [
+    "calendarType"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "calendarType"
+        ],
+        "properties": {
+          "calendarType": {
+            "const": "periodic"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "startDate",
+          "endDate"
+        ]
+      }
+    }
+  ]
+}

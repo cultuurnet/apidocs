@@ -1,0 +1,41 @@
+{
+  "title": "place-post-deprecated",
+  "type": "object",
+  "properties": {
+    "mainLanguage": {
+      "$ref": "./place-mainLanguage.json"
+    },
+    "name": {
+      "$ref": "./common-name-localized.json",
+      "description": "The name of the place."
+    },
+    "type": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "description": "The term (type) used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "GnPFp9uvOUyqhOckIFMKmg",
+          "description": "Unique id of the term (type)."
+        }
+      }
+    },
+    "address": {
+      "$ref": "./common-address-localized.json",
+      "description": "The address of the place in the main language."
+    },
+    "calendar": {
+      "$ref": "./place-calendar-put.json"
+    }
+  },
+  "required": [
+    "mainLanguage",
+    "name",
+    "type",
+    "address",
+    "calendar"
+  ]
+}

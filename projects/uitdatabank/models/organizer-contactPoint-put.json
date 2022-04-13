@@ -1,0 +1,4 @@
+{
+  "$ref": "./common-contactPoint.json",
+  "title": "organizer.contactPoint.put"
+}

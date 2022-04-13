@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-videos-patch.json",
+  "title": "event.videos.patch",
+  "description": "Describes the request body to update one or more videos on an event."
+}

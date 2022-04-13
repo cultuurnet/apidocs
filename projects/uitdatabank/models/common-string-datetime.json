@@ -1,0 +1,8 @@
+{
+  "title": "datetime",
+  "type": "string",
+  "format": "date-time",
+  "examples": [
+    "2021-05-17T22:00:00+00:00"
+  ]
+}

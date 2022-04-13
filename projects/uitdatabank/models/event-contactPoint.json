@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-contactPoint.json",
+  "title": "event.contactPoint",
+  "description": "Contact info of the [event](./event.json), containing one or more phone numbers, email addresses, and/or website URLs."
+}

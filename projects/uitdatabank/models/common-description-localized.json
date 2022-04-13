@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": "description.localized",
+  "description": "A human-readable description localized in a single value.",
+  "minLength": 1,
+  "pattern": "\\S",
+  "examples": [
+    "Example description. Lorem ipsum dolor sit amet."
+  ]
+}
