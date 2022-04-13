@@ -1,5 +1,7 @@
 name: Split UDB3 JSON schemas
-on: push
+on:
+  push:
+  workflow_dispatch:
 env:
   GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN_UDB3_JSON_SCHEMAS }}
 jobs:
