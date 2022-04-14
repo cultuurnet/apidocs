@@ -1737,7 +1737,7 @@
         }
       ],
       "post": {
-        "summary": "event - create copy [internal]",
+        "summary": "event - create copy",
         "tags": [
           "Events"
         ],
@@ -1956,7 +1956,7 @@
         }
       ],
       "get": {
-        "summary": "history - get [internal]",
+        "summary": "history - get",
         "operationId": "event-history-get",
         "tags": [
           "Events"
@@ -2068,7 +2068,7 @@
         }
       ],
       "put": {
-        "summary": "major-info - update [deprecated]",
+        "summary": "major-info - update",
         "operationId": "event-major-info-put",
         "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `eventId`.\n\nThe major info contains:\n\n* `name`: The name of the event in the event's `mainLanguage`, as a string\n* `type`: Id of the event's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the event's `theme` taxonomy `term`, as a string\n* `location`: Object with the id of the event's location, as a place's uuid (string)\n* `calendar`: Object with the event's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the event. If the event has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /event/{eventId}/major-info`.",
         "deprecated": true,
