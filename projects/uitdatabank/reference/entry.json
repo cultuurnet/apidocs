@@ -3986,37 +3986,6 @@
           "$ref": "#/components/parameters/organizerId"
         }
       ],
-      "delete": {
-        "summary": "organizer - delete",
-        "description": "<!-- theme: info !-->\n> Note: only users with the permissions `Organisaties beheren` can delete an organizer.\n\nDelete the organizer with the given `organizerId`.",
-        "operationId": "delete-organizer",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer was deleted successfully."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "x-internal": true
-      },
       "get": {
         "summary": "organizer - get",
         "operationId": "organizer-get",
@@ -4268,6 +4237,37 @@
         "tags": [
           "Organizers"
         ]
+      },
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "<!-- theme: info !-->\n> Note: only users with the permissions `Organisaties beheren` can delete an organizer.\n\nDelete the organizer with the given `organizerId`.",
+        "operationId": "delete-organizer",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer was deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
       }
     },
     "/organizers/{organizerId}/contact-point": {
