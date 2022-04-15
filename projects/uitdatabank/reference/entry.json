@@ -3832,9 +3832,9 @@
     },
     "/organizers": {
       "post": {
-        "summary": "Create organizer",
+        "summary": "organizer - create",
         "description": "Creates a new organizer.\n\n<!-- theme: info -->\n\n> Organizers are required to have a unique `url` value to avoid accidental duplicate organizers.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create an organizer with just its required fields.",
-        "operationId": "post-organizer",
+        "operationId": "organizer-post",
         "tags": [
           "Organizers"
         ],
@@ -3987,7 +3987,7 @@
         }
       ],
       "delete": {
-        "summary": "Delete organizer",
+        "summary": "organizer - delete",
         "description": "<!-- theme: info !-->\n> Note: only users with the permissions `Organisaties beheren` can delete an organizer.\n\nDelete the organizer with the given `organizerId`.",
         "operationId": "delete-organizer",
         "tags": [
@@ -4018,8 +4018,8 @@
         "x-internal": true
       },
       "get": {
-        "summary": "Get organizer details",
-        "operationId": "get-organizer",
+        "summary": "organizer - get",
+        "operationId": "organizer-get",
         "responses": {
           "200": {
             "description": "Organizer details",
@@ -4129,8 +4129,8 @@
         ]
       },
       "put": {
-        "summary": "Update organizer completely",
-        "operationId": "put-organizers-organizerId",
+        "summary": "organizer - update",
+        "operationId": "organizer-put",
         "responses": {
           "200": {
             "description": "The organizer has been updated successfully.",
@@ -4277,9 +4277,9 @@
         }
       ],
       "put": {
-        "summary": "Update contact point",
+        "summary": "contactPoint - update",
         "description": "Updates the contact point information of the organizer with the given `organizerId`. A contact point has a list of the following properties:\n* Url: an array of valid urls\n* Email: an array of valid emails\n* Phone: an array of phone numbers\n\nAll properties are optional.",
-        "operationId": "put-organizer-contact-point",
+        "operationId": "organizer-contactPoint-put",
         "tags": [
           "Organizers"
         ],
@@ -4353,9 +4353,9 @@
         }
       ],
       "put": {
-        "summary": "Update url",
+        "summary": "url - update",
         "description": "Updates the url of the organizer with the given `organizerId`. The provided url can not be in use on another organizer.",
-        "operationId": "put-organizer-url",
+        "operationId": "organizer-url-put",
         "tags": [
           "Organizers"
         ],
@@ -4434,9 +4434,9 @@
         }
       ],
       "put": {
-        "summary": "Add label",
+        "summary": "label - add",
         "description": "Adds the given label to the organizer with the given `organizerId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the organizer.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "put-organizer-label",
+        "operationId": "organizer-label-add",
         "tags": [
           "Organizers"
         ],
@@ -4484,9 +4484,9 @@
         ]
       },
       "delete": {
-        "summary": "Delete label",
+        "summary": "label - delete",
         "description": "Deletes the given label from the organizer with the given `organizerId`.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "delete-organizer-label",
+        "operationId": "organizer-label-delete",
         "tags": [
           "Organizers"
         ],
@@ -4544,9 +4544,9 @@
         }
       ],
       "put": {
-        "summary": "Update description",
+        "summary": "description - update",
         "description": "Updates the description of the organizer with the given `organizerId`. The new description of the request body will be set on the organizer in the given `language`. The new description needs to be at least one character long.",
-        "operationId": "put-organizer-description",
+        "operationId": "organizer-description-put",
         "tags": [
           "Organizers"
         ],
@@ -4658,9 +4658,9 @@
         }
       ],
       "put": {
-        "summary": "Update name",
+        "summary": "name - update",
         "description": "Updates the name of the organizer with the given `organizerId`. The new name of the request body will be set on the organizer in the given `language`. The new name needs to be at least one character long.",
-        "operationId": "put-organizer-name",
+        "operationId": "organizer-name-put",
         "tags": [
           "Organizers"
         ],
@@ -4736,9 +4736,9 @@
         }
       ],
       "put": {
-        "summary": "Update name nl",
+        "summary": "name (nl) - update",
         "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/name/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1name~1{language}/put) instead.\n\nUpdates the name of the organizer with the given `organizerId`. The new name of the request body will be set on the organizer with default language `nl`. The new name needs to be at least one character long.",
-        "operationId": "put-organizer-name-nl",
+        "operationId": "organizer-name-nl-put",
         "tags": [
           "Organizers"
         ],
@@ -4815,9 +4815,9 @@
         }
       ],
       "put": {
-        "summary": "Update address nl",
+        "summary": "address (nl) - update",
         "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/address/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1address~1{language}/put) instead.\n\n\nUpdates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the default language `nl`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
-        "operationId": "put-organizer-address-nl",
+        "operationId": "organizer-address-nl-put",
         "tags": [
           "Organizers"
         ],
@@ -4931,9 +4931,9 @@
         }
       ],
       "put": {
-        "summary": "Update address",
+        "summary": "address - update",
         "description": "Updates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the given `language`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
-        "operationId": "put-organizer-address",
+        "operationId": "organizer-address-put",
         "tags": [
           "Organizers"
         ],
@@ -5012,8 +5012,8 @@
         }
       ],
       "post": {
-        "summary": "Add an image",
-        "operationId": "post-organizer-image",
+        "summary": "images - add",
+        "operationId": "organizer-images-post",
         "responses": {
           "204": {
             "description": "The image was added to the organizer."
@@ -5087,8 +5087,8 @@
         ]
       },
       "patch": {
-        "summary": "Update image(s)",
-        "operationId": "patch-organizer-images",
+        "summary": "images - patch",
+        "operationId": "organizer-images-patch",
         "responses": {
           "204": {
             "description": "The images were updated."
@@ -5147,7 +5147,7 @@
         }
       ],
       "delete": {
-        "summary": "Delete image",
+        "summary": "images - delete",
         "tags": [
           "Organizers"
         ],
@@ -5165,7 +5165,7 @@
             "$ref": "#/components/responses/OrganizerNotFound"
           }
         },
-        "operationId": "delete-organizer-image",
+        "operationId": "organizer-image-delete",
         "description": "Remove an image from an organizer.",
         "security": [
           {
@@ -5189,7 +5189,7 @@
         }
       ],
       "put": {
-        "summary": "Set main image",
+        "summary": "mainImage - update",
         "tags": [
           "Organizers"
         ],
@@ -5232,7 +5232,7 @@
             "$ref": "#/components/responses/OrganizerNotFound"
           }
         },
-        "operationId": "put-organizer-main-image",
+        "operationId": "organizer-mainImage-update",
         "description": "Sets the main image of an organizer. This only requires the `imageId` of the image to set as main.\n\n<!-- theme: info -->\n> For backwards compatible reasons `mediaObjectId` is also supported.",
         "security": [
           {
