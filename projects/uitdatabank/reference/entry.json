@@ -4361,7 +4361,7 @@
         }
       ],
       "put": {
-        "summary": "address (nl) - update",
+        "summary": "address.nl - update",
         "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/address/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1address~1{language}/put) instead.\n\n\nUpdates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the default language `nl`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
         "operationId": "organizer-address-nl-put",
         "tags": [
@@ -5111,7 +5111,7 @@
         }
       ],
       "put": {
-        "summary": "name (nl) - update",
+        "summary": "name.nl - update",
         "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/name/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1name~1{language}/put) instead.\n\nUpdates the name of the organizer with the given `organizerId`. The new name of the request body will be set on the organizer with default language `nl`. The new name needs to be at least one character long.",
         "operationId": "organizer-name-nl-put",
         "tags": [
