@@ -5263,9 +5263,9 @@
     },
     "/news-articles": {
       "get": {
-        "summary": "Get all news articles",
+        "summary": "news article - search",
         "description": "Returns the details of all news articles matching the provided search. The search can be created based on a combination of 3 query parameters:\n- `publisher`\n- `about`\n- `url`\n\nBasic pagination is supported and the results are limited to 30 news articles.\n\nThe extra query parameter `page` can be used to get news articles after the first 30 results.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
-        "operationId": "get-all-news-articles",
+        "operationId": "news-articles-get",
         "responses": {
           "200": {
             "description": "News Articles details",
@@ -5392,8 +5392,8 @@
         ]
       },
       "post": {
-        "summary": "Add a news article",
-        "operationId": "add-news-article",
+        "summary": "news article - create",
+        "operationId": "news-articles-post",
         "responses": {
           "201": {
             "description": "The News Article was created successfully",
@@ -5459,9 +5459,9 @@
         }
       ],
       "get": {
-        "summary": "Get a news article",
+        "summary": "news article - get",
         "description": "Returns the details of a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
-        "operationId": "get-news-article",
+        "operationId": "news-article-get",
         "responses": {
           "200": {
             "description": "News Article details",
@@ -5519,8 +5519,8 @@
         ]
       },
       "delete": {
-        "summary": "Delete a news article",
-        "operationId": "delete-news-article",
+        "summary": "news article - delete",
+        "operationId": "news-article-delete",
         "responses": {
           "204": {
             "description": "The News Article with the given article id was deleted."
@@ -5533,8 +5533,8 @@
         ]
       },
       "put": {
-        "summary": "Update a news article",
-        "operationId": "put-news-article",
+        "summary": "news article - update",
+        "operationId": "news-article-put",
         "responses": {
           "200": {
             "description": "The News Article was update successfully.",
