@@ -2909,118 +2909,6 @@
         }
       }
     },
-    "/places/{placeId}/history": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/placeId"
-        }
-      ],
-      "get": {
-        "summary": "history - get",
-        "tags": [
-          "Places"
-        ],
-        "responses": {
-          "200": {
-            "description": "Place history.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "description": "",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string",
-                        "description": "A human-readable description of the update to the place. (Always in Dutch.)"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2021-08-26T16:54:38+00:00",
-                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
-                      },
-                      "author": {
-                        "type": "string",
-                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
-                      },
-                      "api": {
-                        "type": "string",
-                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
-                      },
-                      "auth0ClientId": {
-                        "type": "string",
-                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "auth0ClientName": {
-                        "type": "string",
-                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "apiKey": {
-                        "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      },
-                      "consumerName": {
-                        "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "date"
-                    ]
-                  }
-                },
-                "examples": {
-                  "Auth0 client": {
-                    "value": [
-                      {
-                        "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
-                        "auth0ClientName": "UiTdatabase JWT Provider",
-                        "api": "JSON-LD API"
-                      }
-                    ]
-                  },
-                  "UiTID v1 consumer": {
-                    "value": [
-                      {
-                        "date": "2021-10-04T09:40:59+00:00",
-                        "description": "Reservatie-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
-                        "api": "JSON-LD API",
-                        "consumerName": "UiTdatabank Acceptatie"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
-        "operationId": "place-history-get",
-        "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
-        "x-internal": true,
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
     "/places/{placeId}/calendar": {
       "parameters": [
         {
@@ -3383,6 +3271,118 @@
           },
           "description": ""
         }
+      }
+    },
+    "/places/{placeId}/history": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "get": {
+        "summary": "history - get",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "200": {
+            "description": "Place history.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "A human-readable description of the update to the place. (Always in Dutch.)"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-08-26T16:54:38+00:00",
+                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
+                      },
+                      "author": {
+                        "type": "string",
+                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
+                      },
+                      "api": {
+                        "type": "string",
+                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
+                      },
+                      "auth0ClientId": {
+                        "type": "string",
+                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "auth0ClientName": {
+                        "type": "string",
+                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "apiKey": {
+                        "type": "string",
+                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      },
+                      "consumerName": {
+                        "type": "string",
+                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "date"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Auth0 client": {
+                    "value": [
+                      {
+                        "date": "2021-09-30T14:57:17+00:00",
+                        "description": "Kalender-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
+                        "auth0ClientName": "UiTdatabase JWT Provider",
+                        "api": "JSON-LD API"
+                      }
+                    ]
+                  },
+                  "UiTID v1 consumer": {
+                    "value": [
+                      {
+                        "date": "2021-10-04T09:40:59+00:00",
+                        "description": "Reservatie-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
+                        "api": "JSON-LD API",
+                        "consumerName": "UiTdatabank Acceptatie"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "operationId": "place-history-get",
+        "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places/{placeId}/type/{termId}": {
