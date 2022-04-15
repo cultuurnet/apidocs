@@ -512,6 +512,225 @@
         ]
       }
     },
+    "/events/{eventId}/copies": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "event - create copy",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "201": {
+            "description": "The event was copied successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "eventId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "eventId": "83a12220-9459-4fc8-b1ed-71b3d1668e65",
+                      "url": "https://io-test.uitdatabank.be/events/83a12220-9459-4fc8-b1ed-71b3d1668e65"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (subEvent) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "operationId": "event-copies-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "../models/event-calendar-put.json"
+                  },
+                  {
+                    "$ref": "../models/event-calendar-put-deprecated.json"
+                  }
+                ]
+              },
+              "examples": {
+                "single": {
+                  "value": {
+                    "calendarType": "single",
+                    "subEvent": [
+                      {
+                        "startDate": "2021-05-17T22:00:00+00:00",
+                        "endDate": "2021-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Available"
+                        },
+                        "bookingAvailability": {
+                          "type": "Available"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "multiple": {
+                  "value": {
+                    "calendarType": "multiple",
+                    "subEvent": [
+                      {
+                        "startDate": "2020-05-17T22:00:00+00:00",
+                        "endDate": "2020-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Unavailable",
+                          "reason": {
+                            "nl": "Geannuleerd wegens COVID-19",
+                            "en": "Cancelled due to COVID-19"
+                          }
+                        },
+                        "bookingAvailability": {
+                          "type": "Unavailable"
+                        }
+                      },
+                      {
+                        "startDate": "2021-05-17T22:00:00+00:00",
+                        "endDate": "2021-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Available"
+                        },
+                        "bookingAvailability": {
+                          "type": "Available"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "periodic": {
+                  "value": {
+                    "calendarType": "periodic",
+                    "startDate": "2021-05-17T22:00:00+00:00",
+                    "endDate": "2021-05-17T22:00:00+00:00",
+                    "openingHours": [
+                      {
+                        "opens": "13:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "monday"
+                        ]
+                      },
+                      {
+                        "opens": "09:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday",
+                          "sunday"
+                        ]
+                      }
+                    ],
+                    "status": {
+                      "type": "Available"
+                    },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    }
+                  }
+                },
+                "permanent": {
+                  "value": {
+                    "calendarType": "permanent",
+                    "openingHours": [
+                      {
+                        "opens": "13:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "monday"
+                        ]
+                      },
+                      {
+                        "opens": "09:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday",
+                          "sunday"
+                        ]
+                      }
+                    ],
+                    "status": {
+                      "type": "Available"
+                    },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "New calendar information for the event copy."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Creates a new event based on all the properties of an existing event with the given `eventId`. Only the calendar information will be completely replaced with a new one, which has to be included in the request body.\n\nThe schema of the request body is the same as the one for the [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) endpoint.",
+        "x-internal": true
+      }
+    },
     "/events/{eventId}/audience": {
       "parameters": [
         {
@@ -1178,6 +1397,118 @@
         }
       }
     },
+    "/events/{eventId}/history": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "get": {
+        "summary": "history - get",
+        "operationId": "event-history-get",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "Event history.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "A human-readable description of the update to the event. (Always in Dutch.)"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-08-26T16:54:38+00:00",
+                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
+                      },
+                      "author": {
+                        "type": "string",
+                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
+                      },
+                      "api": {
+                        "type": "string",
+                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
+                      },
+                      "auth0ClientId": {
+                        "type": "string",
+                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "auth0ClientName": {
+                        "type": "string",
+                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "apiKey": {
+                        "type": "string",
+                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      },
+                      "consumerName": {
+                        "type": "string",
+                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "date"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Auth0 client": {
+                    "value": [
+                      {
+                        "date": "2021-09-30T14:57:17+00:00",
+                        "description": "Kalender-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
+                        "auth0ClientName": "UiTdatabase JWT Provider",
+                        "api": "JSON-LD API"
+                      }
+                    ]
+                  },
+                  "UiTID v1 consumer": {
+                    "value": [
+                      {
+                        "date": "2021-10-04T09:40:59+00:00",
+                        "description": "Reservatie-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
+                        "api": "JSON-LD API",
+                        "consumerName": "UiTdatabank Acceptatie"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/location/{placeId}": {
       "parameters": [
         {
@@ -1235,6 +1566,227 @@
         ],
         "tags": [
           "Events"
+        ]
+      }
+    },
+    "/events/{eventId}/major-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "major-info - update",
+        "operationId": "event-major-info-put",
+        "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `eventId`.\n\nThe major info contains:\n\n* `name`: The name of the event in the event's `mainLanguage`, as a string\n* `type`: Id of the event's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the event's `theme` taxonomy `term`, as a string\n* `location`: Object with the id of the event's location, as a place's uuid (string)\n* `calendar`: Object with the event's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the event. If the event has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /event/{eventId}/major-info`.",
+        "deprecated": true,
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The major-info has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "theme": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "calendar": {
+                    "$ref": "../models/event-calendar-put-deprecated.json"
+                  }
+                },
+                "required": [
+                  "name",
+                  "type",
+                  "location",
+                  "calendar"
+                ]
+              },
+              "examples": {
+                "Single day": {
+                  "value": {
+                    "name": "Single day example",
+                    "type": "0.50.4.0.0",
+                    "theme": "1.8.3.3.0",
+                    "location": {
+                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
+                    },
+                    "calendar": {
+                      "calendarType": "single",
+                      "timeSpans": [
+                        {
+                          "start": "2021-05-17T22:00:00+00:00",
+                          "end": "2021-05-17T22:00:00+00:00",
+                          "status": {
+                            "type": "Available"
+                          },
+                          "bookingAvailability": {
+                            "type": "Available"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Multiple days": {
+                  "value": {
+                    "name": "Multiple days example",
+                    "type": "0.50.4.0.0",
+                    "theme": "1.8.3.3.0",
+                    "location": {
+                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
+                    },
+                    "calendar": {
+                      "calendarType": "multiple",
+                      "timeSpans": [
+                        {
+                          "start": "2021-05-17T22:00:00+00:00",
+                          "end": "2021-05-17T22:00:00+00:00",
+                          "status": {
+                            "type": "Available"
+                          },
+                          "bookingAvailability": {
+                            "type": "Available"
+                          }
+                        },
+                        {
+                          "start": "2021-05-18T22:00:00+00:00",
+                          "end": "2021-05-18T22:00:00+00:00",
+                          "status": {
+                            "type": "Available"
+                          },
+                          "bookingAvailability": {
+                            "type": "Available"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Periodic with opening hours": {
+                  "value": {
+                    "name": "Periodic with opening hours",
+                    "type": "0.50.4.0.0",
+                    "theme": "1.8.3.3.0",
+                    "location": {
+                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
+                    },
+                    "calendar": {
+                      "calendarType": "periodic",
+                      "startDate": "2021-05-17T22:00:00+00:00",
+                      "endDate": "2021-05-17T22:00:00+00:00",
+                      "openingHours": [
+                        {
+                          "opens": "13:00",
+                          "closes": "17:00",
+                          "dayOfWeek": [
+                            "monday"
+                          ]
+                        },
+                        {
+                          "opens": "09:00",
+                          "closes": "17:00",
+                          "dayOfWeek": [
+                            "tuesday",
+                            "wednesday",
+                            "thursday",
+                            "friday",
+                            "saturday",
+                            "sunday"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Permanent with opening hours": {
+                  "value": {
+                    "name": "Periodic with opening hours",
+                    "type": "0.50.4.0.0",
+                    "theme": "1.8.3.3.0",
+                    "location": {
+                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
+                    },
+                    "calendar": {
+                      "calendarType": "permanent",
+                      "openingHours": [
+                        {
+                          "opens": "13:00",
+                          "closes": "17:00",
+                          "dayOfWeek": [
+                            "monday"
+                          ]
+                        },
+                        {
+                          "opens": "09:00",
+                          "closes": "17:00",
+                          "dayOfWeek": [
+                            "tuesday",
+                            "wednesday",
+                            "thursday",
+                            "friday",
+                            "saturday",
+                            "sunday"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       }
     },
@@ -1720,558 +2272,6 @@
         "tags": [
           "Events"
         ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/copies": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "post": {
-        "summary": "event - create copy",
-        "tags": [
-          "Events"
-        ],
-        "responses": {
-          "201": {
-            "description": "The event was copied successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "eventId": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "eventId": "83a12220-9459-4fc8-b1ed-71b3d1668e65",
-                      "url": "https://io-test.uitdatabank.be/events/83a12220-9459-4fc8-b1ed-71b3d1668e65"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (subEvent) are missing"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "operationId": "event-copies-post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "../models/event-calendar-put.json"
-                  },
-                  {
-                    "$ref": "../models/event-calendar-put-deprecated.json"
-                  }
-                ]
-              },
-              "examples": {
-                "single": {
-                  "value": {
-                    "calendarType": "single",
-                    "subEvent": [
-                      {
-                        "startDate": "2021-05-17T22:00:00+00:00",
-                        "endDate": "2021-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Available"
-                        },
-                        "bookingAvailability": {
-                          "type": "Available"
-                        }
-                      }
-                    ]
-                  }
-                },
-                "multiple": {
-                  "value": {
-                    "calendarType": "multiple",
-                    "subEvent": [
-                      {
-                        "startDate": "2020-05-17T22:00:00+00:00",
-                        "endDate": "2020-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Unavailable",
-                          "reason": {
-                            "nl": "Geannuleerd wegens COVID-19",
-                            "en": "Cancelled due to COVID-19"
-                          }
-                        },
-                        "bookingAvailability": {
-                          "type": "Unavailable"
-                        }
-                      },
-                      {
-                        "startDate": "2021-05-17T22:00:00+00:00",
-                        "endDate": "2021-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Available"
-                        },
-                        "bookingAvailability": {
-                          "type": "Available"
-                        }
-                      }
-                    ]
-                  }
-                },
-                "periodic": {
-                  "value": {
-                    "calendarType": "periodic",
-                    "startDate": "2021-05-17T22:00:00+00:00",
-                    "endDate": "2021-05-17T22:00:00+00:00",
-                    "openingHours": [
-                      {
-                        "opens": "13:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "monday"
-                        ]
-                      },
-                      {
-                        "opens": "09:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "tuesday",
-                          "wednesday",
-                          "thursday",
-                          "friday",
-                          "saturday",
-                          "sunday"
-                        ]
-                      }
-                    ],
-                    "status": {
-                      "type": "Available"
-                    },
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
-                  }
-                },
-                "permanent": {
-                  "value": {
-                    "calendarType": "permanent",
-                    "openingHours": [
-                      {
-                        "opens": "13:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "monday"
-                        ]
-                      },
-                      {
-                        "opens": "09:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "tuesday",
-                          "wednesday",
-                          "thursday",
-                          "friday",
-                          "saturday",
-                          "sunday"
-                        ]
-                      }
-                    ],
-                    "status": {
-                      "type": "Available"
-                    },
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "New calendar information for the event copy."
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "description": "Creates a new event based on all the properties of an existing event with the given `eventId`. Only the calendar information will be completely replaced with a new one, which has to be included in the request body.\n\nThe schema of the request body is the same as the one for the [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) endpoint.",
-        "x-internal": true
-      }
-    },
-    "/events/{eventId}/history": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "get": {
-        "summary": "history - get",
-        "operationId": "event-history-get",
-        "tags": [
-          "Events"
-        ],
-        "responses": {
-          "200": {
-            "description": "Event history.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "description": "",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string",
-                        "description": "A human-readable description of the update to the event. (Always in Dutch.)"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2021-08-26T16:54:38+00:00",
-                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
-                      },
-                      "author": {
-                        "type": "string",
-                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
-                      },
-                      "api": {
-                        "type": "string",
-                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
-                      },
-                      "auth0ClientId": {
-                        "type": "string",
-                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "auth0ClientName": {
-                        "type": "string",
-                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "apiKey": {
-                        "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      },
-                      "consumerName": {
-                        "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "date"
-                    ]
-                  }
-                },
-                "examples": {
-                  "Auth0 client": {
-                    "value": [
-                      {
-                        "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
-                        "auth0ClientName": "UiTdatabase JWT Provider",
-                        "api": "JSON-LD API"
-                      }
-                    ]
-                  },
-                  "UiTID v1 consumer": {
-                    "value": [
-                      {
-                        "date": "2021-10-04T09:40:59+00:00",
-                        "description": "Reservatie-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
-                        "api": "JSON-LD API",
-                        "consumerName": "UiTdatabank Acceptatie"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
-        "x-internal": true,
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/major-info": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "put": {
-        "summary": "major-info - update",
-        "operationId": "event-major-info-put",
-        "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `eventId`.\n\nThe major info contains:\n\n* `name`: The name of the event in the event's `mainLanguage`, as a string\n* `type`: Id of the event's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the event's `theme` taxonomy `term`, as a string\n* `location`: Object with the id of the event's location, as a place's uuid (string)\n* `calendar`: Object with the event's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the event. If the event has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /event/{eventId}/major-info`.",
-        "deprecated": true,
-        "tags": [
-          "Events"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The major-info has been updated successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  },
-                  "theme": {
-                    "type": "string"
-                  },
-                  "location": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "calendar": {
-                    "$ref": "../models/event-calendar-put-deprecated.json"
-                  }
-                },
-                "required": [
-                  "name",
-                  "type",
-                  "location",
-                  "calendar"
-                ]
-              },
-              "examples": {
-                "Single day": {
-                  "value": {
-                    "name": "Single day example",
-                    "type": "0.50.4.0.0",
-                    "theme": "1.8.3.3.0",
-                    "location": {
-                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
-                    },
-                    "calendar": {
-                      "calendarType": "single",
-                      "timeSpans": [
-                        {
-                          "start": "2021-05-17T22:00:00+00:00",
-                          "end": "2021-05-17T22:00:00+00:00",
-                          "status": {
-                            "type": "Available"
-                          },
-                          "bookingAvailability": {
-                            "type": "Available"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                },
-                "Multiple days": {
-                  "value": {
-                    "name": "Multiple days example",
-                    "type": "0.50.4.0.0",
-                    "theme": "1.8.3.3.0",
-                    "location": {
-                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
-                    },
-                    "calendar": {
-                      "calendarType": "multiple",
-                      "timeSpans": [
-                        {
-                          "start": "2021-05-17T22:00:00+00:00",
-                          "end": "2021-05-17T22:00:00+00:00",
-                          "status": {
-                            "type": "Available"
-                          },
-                          "bookingAvailability": {
-                            "type": "Available"
-                          }
-                        },
-                        {
-                          "start": "2021-05-18T22:00:00+00:00",
-                          "end": "2021-05-18T22:00:00+00:00",
-                          "status": {
-                            "type": "Available"
-                          },
-                          "bookingAvailability": {
-                            "type": "Available"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                },
-                "Periodic with opening hours": {
-                  "value": {
-                    "name": "Periodic with opening hours",
-                    "type": "0.50.4.0.0",
-                    "theme": "1.8.3.3.0",
-                    "location": {
-                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
-                    },
-                    "calendar": {
-                      "calendarType": "periodic",
-                      "startDate": "2021-05-17T22:00:00+00:00",
-                      "endDate": "2021-05-17T22:00:00+00:00",
-                      "openingHours": [
-                        {
-                          "opens": "13:00",
-                          "closes": "17:00",
-                          "dayOfWeek": [
-                            "monday"
-                          ]
-                        },
-                        {
-                          "opens": "09:00",
-                          "closes": "17:00",
-                          "dayOfWeek": [
-                            "tuesday",
-                            "wednesday",
-                            "thursday",
-                            "friday",
-                            "saturday",
-                            "sunday"
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                },
-                "Permanent with opening hours": {
-                  "value": {
-                    "name": "Periodic with opening hours",
-                    "type": "0.50.4.0.0",
-                    "theme": "1.8.3.3.0",
-                    "location": {
-                      "id": "DA5499B2-9C79-48D3-A02D-8F471308100D"
-                    },
-                    "calendar": {
-                      "calendarType": "permanent",
-                      "openingHours": [
-                        {
-                          "opens": "13:00",
-                          "closes": "17:00",
-                          "dayOfWeek": [
-                            "monday"
-                          ]
-                        },
-                        {
-                          "opens": "09:00",
-                          "closes": "17:00",
-                          "dayOfWeek": [
-                            "tuesday",
-                            "wednesday",
-                            "thursday",
-                            "friday",
-                            "saturday",
-                            "sunday"
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": ""
-        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
