@@ -5017,6 +5017,90 @@
         ]
       }
     },
+    "/organizers/{organizerId}/images/main": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "mainImage - update",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "Main image was set"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/imageId",
+                          "error": "The required properties imageId is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "operationId": "organizer-mainImage-update",
+        "description": "Sets the main image of an organizer. This only requires the `imageId` of the image to set as main.\n\n<!-- theme: info -->\n> For backwards compatible reasons `mediaObjectId` is also supported.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-main-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "imageId": "4b349765-9499-4d35-b295-c82ede576cf0"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image id of the new main image."
+        }
+      }
+    },
     "/organizers/{organizerId}/name/{language}": {
       "parameters": [
         {
@@ -5175,90 +5259,6 @@
           }
         ],
         "deprecated": true
-      }
-    },
-    "/organizers/{organizerId}/images/main": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "put": {
-        "summary": "mainImage - update",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "Main image was set"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/imageId",
-                          "error": "The required properties imageId is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "operationId": "organizer-mainImage-update",
-        "description": "Sets the main image of an organizer. This only requires the `imageId` of the image to set as main.\n\n<!-- theme: info -->\n> For backwards compatible reasons `mediaObjectId` is also supported.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-main-image-put.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "imageId": "4b349765-9499-4d35-b295-c82ede576cf0"
-                  }
-                }
-              }
-            }
-          },
-          "description": "The image id of the new main image."
-        }
       }
     },
     "/news-articles": {
