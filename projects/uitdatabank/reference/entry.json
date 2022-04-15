@@ -2284,7 +2284,7 @@
     },
     "/places": {
       "post": {
-        "summary": "Create place",
+        "summary": "place - create",
         "tags": [
           "Places"
         ],
@@ -2357,7 +2357,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "post-places",
+        "operationId": "place-post",
         "description": "Creates a new place.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create a place with just its required fields.",
         "security": [
           {
@@ -2534,7 +2534,7 @@
         }
       ],
       "get": {
-        "summary": "Get place details",
+        "summary": "place - get",
         "tags": [
           "Places"
         ],
@@ -2553,12 +2553,12 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "get-place",
+        "operationId": "place-get",
         "description": "Returns the details of the place for the given `placeId`."
       },
       "delete": {
-        "summary": "Delete place",
-        "operationId": "delete-place",
+        "summary": "place - delete",
+        "operationId": "place-delete",
         "responses": {
           "204": {
             "description": "No Content. The place's `workflowStatus` was successfully updated to `DELETED`."
@@ -2588,8 +2588,8 @@
         "x-internal": false
       },
       "put": {
-        "summary": "Update place",
-        "operationId": "put-place",
+        "summary": "place - update",
+        "operationId": "place-put",
         "responses": {
           "200": {
             "description": "The place was updated successfully",
@@ -2837,8 +2837,8 @@
         }
       ],
       "put": {
-        "summary": "Update available from",
-        "operationId": "put-place-available-from",
+        "summary": "availableFrom - update",
+        "operationId": "place-availableFrom-put",
         "responses": {
           "204": {
             "description": "No Content. The place availableFrom was successfully updated."
@@ -2916,7 +2916,7 @@
         }
       ],
       "get": {
-        "summary": "Get place history",
+        "summary": "history - get",
         "tags": [
           "Places"
         ],
@@ -3008,7 +3008,7 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "get-place-history",
+        "operationId": "place-history-get",
         "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
         "x-internal": true,
         "security": [
@@ -3028,7 +3028,7 @@
         }
       ],
       "put": {
-        "summary": "Update calendar",
+        "summary": "calendar - update",
         "tags": [
           "Places"
         ],
@@ -3071,7 +3071,7 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "put-place-calendar",
+        "operationId": "place-calendar-put",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3168,7 +3168,7 @@
         }
       ],
       "get": {
-        "summary": "Get calendar summary",
+        "summary": "calendar summary - get",
         "tags": [
           "Places"
         ],
@@ -3200,7 +3200,7 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "get-place-calendar-summary",
+        "operationId": "place-calendar-summary-get",
         "description": "Returns a human-readable summary of the calendar information of the place. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/places/{placeId}/calsum` path.",
         "parameters": [
           {
@@ -3318,8 +3318,8 @@
         }
       ],
       "put": {
-        "summary": "Update facilities",
-        "operationId": "put-place-facilities",
+        "summary": "facilities - update",
+        "operationId": "place-facilities-put",
         "responses": {
           "204": {
             "description": "No Content. The facilities have been successfully updated."
@@ -3395,8 +3395,8 @@
         }
       ],
       "put": {
-        "summary": "Update type",
-        "operationId": "put-place-type",
+        "summary": "type - update",
+        "operationId": "place-type-put",
         "responses": {
           "204": {
             "description": "No Content"
@@ -3452,8 +3452,8 @@
         }
       ],
       "post": {
-        "summary": "Add a video",
-        "operationId": "post-place-video",
+        "summary": "videos - add",
+        "operationId": "place-videos-post",
         "responses": {
           "200": {
             "description": "The video was added to the place.",
@@ -3560,8 +3560,8 @@
         ]
       },
       "patch": {
-        "summary": "Update one or multiple videos",
-        "operationId": "patch-places-videos",
+        "summary": "videos - patch",
+        "operationId": "places-videos-patch",
         "responses": {
           "204": {
             "description": "No Content. The videos are updated."
@@ -3626,8 +3626,8 @@
         }
       ],
       "delete": {
-        "summary": "Delete a video from a place",
-        "operationId": "delete-place-video",
+        "summary": "videos - delete",
+        "operationId": "place-videos-delete",
         "responses": {
           "204": {
             "description": "No Content. The video was deleted from the place."
@@ -3663,9 +3663,9 @@
         }
       ],
       "put": {
-        "operationId": "put-place-major-info",
+        "operationId": "place-major-info-put",
         "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `placeId`.\n\nThe major info contains:\n\n* `name`: The name of the place in the place's `mainLanguage`, as a string\n* `type`: Id of the place's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the place's `theme` taxonomy `term`, as a string\n* `address`: Object with the address of the place (see schema below)\n* `calendar`: Object with the place's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the place. If the place has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /place/{placeId}/major-info`",
-        "summary": "Update major info (deprecated)",
+        "summary": "major-info update",
         "deprecated": true,
         "responses": {
           "204": {
