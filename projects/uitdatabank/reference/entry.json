@@ -4657,6 +4657,178 @@
         ]
       }
     },
+    "/organizers/{organizerId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "organizer-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the organizer."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
+                    "language": "nl",
+                    "copyrightHolder": "publiq",
+                    "description": "Picture of the last publiq event"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to an organizer."
+        },
+        "description": "Add an image to an organizer.\n\nThe image objects contains the following properties:\n* `id`: the id of the image which is required\n* `language`: an optional language of the image and description\n* `copyrightHolder`: the optional copyright holder of the image\n* `description`: the description of the image which is also optional\n\n<!-- theme: info -->\n> The optional fields that are not provided will get the values from the properties of the orginally uploaded image.",
+        "tags": [
+          "Organizers"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "images - patch",
+        "operationId": "organizer-images-patch",
+        "responses": {
+          "204": {
+            "description": "The images were updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-images-patch.json"
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "Organizers"
+        ]
+      }
+    },
+    "/organizers/{organizerId}/images/{imageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        },
+        {
+          "$ref": "#/components/parameters/imageId"
+        }
+      ],
+      "delete": {
+        "summary": "images - delete",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image was removed from the organizer."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "operationId": "organizer-image-delete",
+        "description": "Remove an image from an organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/organizers/{organizerId}/url": {
       "parameters": [
         {
@@ -5003,178 +5175,6 @@
           }
         ],
         "deprecated": true
-      }
-    },
-    "/organizers/{organizerId}/images": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        }
-      ],
-      "post": {
-        "summary": "images - add",
-        "operationId": "organizer-images-post",
-        "responses": {
-          "204": {
-            "description": "The image was added to the organizer."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/url",
-                          "error": "The required properties url is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-image-post.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
-                    "language": "nl",
-                    "copyrightHolder": "publiq",
-                    "description": "Picture of the last publiq event"
-                  }
-                }
-              }
-            }
-          },
-          "description": "The image to add to an organizer."
-        },
-        "description": "Add an image to an organizer.\n\nThe image objects contains the following properties:\n* `id`: the id of the image which is required\n* `language`: an optional language of the image and description\n* `copyrightHolder`: the optional copyright holder of the image\n* `description`: the description of the image which is also optional\n\n<!-- theme: info -->\n> The optional fields that are not provided will get the values from the properties of the orginally uploaded image.",
-        "tags": [
-          "Organizers"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
-      "patch": {
-        "summary": "images - patch",
-        "operationId": "organizer-images-patch",
-        "responses": {
-          "204": {
-            "description": "The images were updated."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-images-patch.json"
-              }
-            }
-          },
-          "description": ""
-        },
-        "tags": [
-          "Organizers"
-        ]
-      }
-    },
-    "/organizers/{organizerId}/images/{imageId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        },
-        {
-          "$ref": "#/components/parameters/imageId"
-        }
-      ],
-      "delete": {
-        "summary": "images - delete",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "The image was removed from the organizer."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "operationId": "organizer-image-delete",
-        "description": "Remove an image from an organizer.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
       }
     },
     "/organizers/{organizerId}/images/main": {
