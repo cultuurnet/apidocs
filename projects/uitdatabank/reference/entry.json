@@ -4436,9 +4436,9 @@
         "deprecated": true
       },
       "delete": {
-        "summary": "Delete address",
+        "summary": "address - delete",
         "description": "Delete the address of the organizer with the given `organizerId`.",
-        "operationId": "delete-organizer-address",
+        "operationId": "organizer-address-delete",
         "tags": [
           "Organizers"
         ],
@@ -4624,8 +4624,8 @@
         ]
       },
       "delete": {
-        "summary": "Delete description",
-        "operationId": "delete-organizer-description",
+        "summary": "description - delete",
+        "operationId": "organizer-description-delete",
         "responses": {
           "204": {
             "description": "No Content. The description was deleted."
