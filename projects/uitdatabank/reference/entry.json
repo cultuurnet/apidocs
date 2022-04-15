@@ -2556,37 +2556,6 @@
         "operationId": "place-get",
         "description": "Returns the details of the place for the given `placeId`."
       },
-      "delete": {
-        "summary": "place - delete",
-        "operationId": "place-delete",
-        "responses": {
-          "204": {
-            "description": "No Content. The place's `workflowStatus` was successfully updated to `DELETED`."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
-        "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "tags": [
-          "Places"
-        ],
-        "x-internal": false
-      },
       "put": {
         "summary": "place - update",
         "operationId": "place-put",
@@ -2828,6 +2797,37 @@
         "tags": [
           "Places"
         ]
+      },
+      "delete": {
+        "summary": "place - delete",
+        "operationId": "place-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The place's `workflowStatus` was successfully updated to `DELETED`."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Places"
+        ],
+        "x-internal": false
       }
     },
     "/places/{placeId}/available-from": {
