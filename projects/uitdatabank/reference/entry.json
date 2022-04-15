@@ -5518,20 +5518,6 @@
           "News articles"
         ]
       },
-      "delete": {
-        "summary": "news article - delete",
-        "operationId": "news-article-delete",
-        "responses": {
-          "204": {
-            "description": "The News Article with the given article id was deleted."
-          }
-        },
-        "description": "Delete a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
-        "x-internal": true,
-        "tags": [
-          "News articles"
-        ]
-      },
       "put": {
         "summary": "news article - update",
         "operationId": "news-article-put",
@@ -5591,6 +5577,20 @@
             }
           }
         },
+        "tags": [
+          "News articles"
+        ]
+      },
+      "delete": {
+        "summary": "news article - delete",
+        "operationId": "news-article-delete",
+        "responses": {
+          "204": {
+            "description": "The News Article with the given article id was deleted."
+          }
+        },
+        "description": "Delete a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
+        "x-internal": true,
         "tags": [
           "News articles"
         ]
