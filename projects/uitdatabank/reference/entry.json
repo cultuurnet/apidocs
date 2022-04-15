@@ -519,7 +519,7 @@
         }
       ],
       "post": {
-        "summary": "event - create copy",
+        "summary": "event - copy",
         "tags": [
           "Events"
         ],
