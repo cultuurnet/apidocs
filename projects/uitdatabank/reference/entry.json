@@ -5262,6 +5262,66 @@
       }
     },
     "/news-articles": {
+      "post": {
+        "summary": "news article - create",
+        "operationId": "news-articles-post",
+        "responses": {
+          "201": {
+            "description": "The News Article was created successfully",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "../models/newsArticle.json"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/newsArticle.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required property url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
+        "x-internal": true,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/newsArticle-post.json"
+              }
+            }
+          }
+        },
+        "tags": [
+          "News articles"
+        ]
+      },
       "get": {
         "summary": "news article - search",
         "description": "Returns the details of all news articles matching the provided search. The search can be created based on a combination of 3 query parameters:\n- `publisher`\n- `about`\n- `url`\n\nBasic pagination is supported and the results are limited to 30 news articles.\n\nThe extra query parameter `page` can be used to get news articles after the first 30 results.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
@@ -5387,66 +5447,6 @@
             "description": "The page the results should start from"
           }
         ],
-        "tags": [
-          "News articles"
-        ]
-      },
-      "post": {
-        "summary": "news article - create",
-        "operationId": "news-articles-post",
-        "responses": {
-          "201": {
-            "description": "The News Article was created successfully",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "../models/newsArticle.json"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/newsArticle.json"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/url",
-                          "error": "The required property url is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
-        "x-internal": true,
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/newsArticle-post.json"
-              }
-            }
-          }
-        },
         "tags": [
           "News articles"
         ]
