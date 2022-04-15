@@ -4829,84 +4829,6 @@
         ]
       }
     },
-    "/organizers/{organizerId}/url": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        }
-      ],
-      "put": {
-        "summary": "url - update",
-        "description": "Updates the url of the organizer with the given `organizerId`. The provided url can not be in use on another organizer.",
-        "operationId": "organizer-url-put",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer url has been updated successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (url) are missing"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-url-put.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "url": "https://www.publiq.be"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
     "/organizers/{organizerId}/labels/{labelName}": {
       "parameters": [
         {
@@ -5259,6 +5181,84 @@
           }
         ],
         "deprecated": true
+      }
+    },
+    "/organizers/{organizerId}/url": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "put": {
+        "summary": "url - update",
+        "description": "Updates the url of the organizer with the given `organizerId`. The provided url can not be in use on another organizer.",
+        "operationId": "organizer-url-put",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer url has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (url) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-url-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "url": "https://www.publiq.be"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/news-articles": {
