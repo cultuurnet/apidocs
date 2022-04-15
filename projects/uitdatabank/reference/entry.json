@@ -4839,9 +4839,9 @@
         }
       ],
       "put": {
-        "summary": "label - add",
+        "summary": "labels - add",
         "description": "Adds the given label to the organizer with the given `organizerId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the organizer.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "organizer-label-add",
+        "operationId": "organizer-labels-add",
         "tags": [
           "Organizers"
         ],
@@ -4889,9 +4889,9 @@
         ]
       },
       "delete": {
-        "summary": "label - delete",
+        "summary": "labels - delete",
         "description": "Deletes the given label from the organizer with the given `organizerId`.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "organizer-label-delete",
+        "operationId": "organizer-labels-delete",
         "tags": [
           "Organizers"
         ],
