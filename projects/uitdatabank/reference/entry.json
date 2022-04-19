@@ -22,7 +22,7 @@
   "paths": {
     "/events": {
       "post": {
-        "summary": "Create event",
+        "summary": "event - create",
         "tags": [
           "Events"
         ],
@@ -76,7 +76,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "post-events",
+        "operationId": "event-post",
         "description": "Creates a new event.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create an event with just its required fields.",
         "security": [
           {
@@ -237,7 +237,7 @@
         }
       ],
       "get": {
-        "summary": "Get event details",
+        "summary": "event - get",
         "tags": [
           "Events"
         ],
@@ -256,42 +256,12 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event",
+        "operationId": "event-get",
         "description": "Returns the details of the event for the given `eventId`."
       },
-      "delete": {
-        "summary": "Delete event",
-        "operationId": "delete-event",
-        "responses": {
-          "204": {
-            "description": "No Content. The event's `workflowStatus` was successfully updated to `DELETED`."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "tags": [
-          "Events"
-        ]
-      },
       "put": {
-        "summary": "Update event",
-        "operationId": "put-event",
+        "summary": "event - update",
+        "operationId": "event-put",
         "responses": {
           "200": {
             "description": "The event was updated successfully",
@@ -510,99 +480,16 @@
         "tags": [
           "Events"
         ]
-      }
-    },
-    "/events/{eventId}/history": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "get": {
-        "summary": "Get event history",
-        "tags": [
-          "Events"
-        ],
+      },
+      "delete": {
+        "summary": "event - delete",
+        "operationId": "event-delete",
         "responses": {
-          "200": {
-            "description": "Event history.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "description": "",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string",
-                        "description": "A human-readable description of the update to the event. (Always in Dutch.)"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2021-08-26T16:54:38+00:00",
-                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
-                      },
-                      "author": {
-                        "type": "string",
-                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
-                      },
-                      "api": {
-                        "type": "string",
-                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
-                      },
-                      "auth0ClientId": {
-                        "type": "string",
-                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "auth0ClientName": {
-                        "type": "string",
-                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "apiKey": {
-                        "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      },
-                      "consumerName": {
-                        "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "date"
-                    ]
-                  }
-                },
-                "examples": {
-                  "Auth0 client": {
-                    "value": [
-                      {
-                        "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
-                        "auth0ClientName": "UiTdatabase JWT Provider",
-                        "api": "JSON-LD API"
-                      }
-                    ]
-                  },
-                  "UiTID v1 consumer": {
-                    "value": [
-                      {
-                        "date": "2021-10-04T09:40:59+00:00",
-                        "description": "Reservatie-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
-                        "api": "JSON-LD API",
-                        "consumerName": "UiTdatabank Acceptatie"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
+          "204": {
+            "description": "No Content. The event's `workflowStatus` was successfully updated to `DELETED`."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -611,9 +498,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event-history",
-        "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
-        "x-internal": true,
+        "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -621,7 +506,229 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
+        ],
+        "tags": [
+          "Events"
         ]
+      }
+    },
+    "/events/{eventId}/copies": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "event - copy",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "201": {
+            "description": "The event was copied successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "eventId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "eventId": "83a12220-9459-4fc8-b1ed-71b3d1668e65",
+                      "url": "https://io-test.uitdatabank.be/events/83a12220-9459-4fc8-b1ed-71b3d1668e65"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (subEvent) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "operationId": "event-copies-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "../models/event-calendar-put.json"
+                  },
+                  {
+                    "$ref": "../models/event-calendar-put-deprecated.json"
+                  }
+                ]
+              },
+              "examples": {
+                "single": {
+                  "value": {
+                    "calendarType": "single",
+                    "subEvent": [
+                      {
+                        "startDate": "2021-05-17T22:00:00+00:00",
+                        "endDate": "2021-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Available"
+                        },
+                        "bookingAvailability": {
+                          "type": "Available"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "multiple": {
+                  "value": {
+                    "calendarType": "multiple",
+                    "subEvent": [
+                      {
+                        "startDate": "2020-05-17T22:00:00+00:00",
+                        "endDate": "2020-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Unavailable",
+                          "reason": {
+                            "nl": "Geannuleerd wegens COVID-19",
+                            "en": "Cancelled due to COVID-19"
+                          }
+                        },
+                        "bookingAvailability": {
+                          "type": "Unavailable"
+                        }
+                      },
+                      {
+                        "startDate": "2021-05-17T22:00:00+00:00",
+                        "endDate": "2021-05-17T22:00:00+00:00",
+                        "status": {
+                          "type": "Available"
+                        },
+                        "bookingAvailability": {
+                          "type": "Available"
+                        }
+                      }
+                    ]
+                  }
+                },
+                "periodic": {
+                  "value": {
+                    "calendarType": "periodic",
+                    "startDate": "2021-05-17T22:00:00+00:00",
+                    "endDate": "2021-05-17T22:00:00+00:00",
+                    "openingHours": [
+                      {
+                        "opens": "13:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "monday"
+                        ]
+                      },
+                      {
+                        "opens": "09:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday",
+                          "sunday"
+                        ]
+                      }
+                    ],
+                    "status": {
+                      "type": "Available"
+                    },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    }
+                  }
+                },
+                "permanent": {
+                  "value": {
+                    "calendarType": "permanent",
+                    "openingHours": [
+                      {
+                        "opens": "13:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "monday"
+                        ]
+                      },
+                      {
+                        "opens": "09:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "tuesday",
+                          "wednesday",
+                          "thursday",
+                          "friday",
+                          "saturday",
+                          "sunday"
+                        ]
+                      }
+                    ],
+                    "status": {
+                      "type": "Available"
+                    },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "New calendar information for the event copy."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Creates a new event based on all the properties of an existing event with the given `eventId`. Only the calendar information will be completely replaced with a new one, which has to be included in the request body.\n\nThe schema of the request body is the same as the one for the [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) endpoint.",
+        "x-internal": true
       }
     },
     "/events/{eventId}/audience": {
@@ -631,8 +738,8 @@
         }
       ],
       "put": {
-        "summary": "Update audience",
-        "operationId": "put-event-audience",
+        "summary": "audience - update",
+        "operationId": "event-audience-put",
         "responses": {
           "204": {
             "description": "No Content. The event's audience was successfully updated."
@@ -720,8 +827,8 @@
         }
       ],
       "put": {
-        "summary": "Update available from",
-        "operationId": "put-event-available-from",
+        "summary": "availableFrom - update",
+        "operationId": "event-availableFrom-put",
         "responses": {
           "204": {
             "description": "No Content. The event's availableFrom was successfully updated."
@@ -799,8 +906,8 @@
         }
       ],
       "put": {
-        "summary": "Update bookingAvailability",
-        "operationId": "put-event-bookingAvailability",
+        "summary": "bookingAvailability - update",
+        "operationId": "event-bookingAvailability-put",
         "responses": {
           "204": {
             "description": "No Content. The bookingAvailability has been updated successfully."
@@ -878,7 +985,7 @@
         }
       ],
       "put": {
-        "summary": "Update calendar",
+        "summary": "calendar - put",
         "tags": [
           "Events"
         ],
@@ -921,7 +1028,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "put-event-calendar",
+        "operationId": "event-calendar-put",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1073,7 +1180,7 @@
         }
       ],
       "get": {
-        "summary": "Get calendar summary",
+        "summary": "calendar summary - get",
         "tags": [
           "Events"
         ],
@@ -1105,7 +1212,7 @@
             "$ref": "#/components/responses/EventNotFound"
           }
         },
-        "operationId": "get-event-calendar-summary",
+        "operationId": "event-calendar-summary-get",
         "description": "Returns a human-readable summary of the calendar information of the event. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/events/{eventId}/calsum` path.",
         "parameters": [
           {
@@ -1223,8 +1330,8 @@
         }
       ],
       "put": {
-        "summary": "Update facilities",
-        "operationId": "put-event-facilities",
+        "summary": "facilities - update",
+        "operationId": "event-facilities-put",
         "responses": {
           "204": {
             "description": "No Content. The facilities have been successfully updated."
@@ -1290,6 +1397,118 @@
         }
       }
     },
+    "/events/{eventId}/history": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "get": {
+        "summary": "history - get",
+        "operationId": "event-history-get",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "Event history.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "A human-readable description of the update to the event. (Always in Dutch.)"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-08-26T16:54:38+00:00",
+                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
+                      },
+                      "author": {
+                        "type": "string",
+                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
+                      },
+                      "api": {
+                        "type": "string",
+                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
+                      },
+                      "auth0ClientId": {
+                        "type": "string",
+                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "auth0ClientName": {
+                        "type": "string",
+                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "apiKey": {
+                        "type": "string",
+                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      },
+                      "consumerName": {
+                        "type": "string",
+                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      }
+                    },
+                    "required": [
+                      "description",
+                      "date"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Auth0 client": {
+                    "value": [
+                      {
+                        "date": "2021-09-30T14:57:17+00:00",
+                        "description": "Kalender-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
+                        "auth0ClientName": "UiTdatabase JWT Provider",
+                        "api": "JSON-LD API"
+                      }
+                    ]
+                  },
+                  "UiTID v1 consumer": {
+                    "value": [
+                      {
+                        "date": "2021-10-04T09:40:59+00:00",
+                        "description": "Reservatie-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
+                        "api": "JSON-LD API",
+                        "consumerName": "UiTdatabank Acceptatie"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/location/{placeId}": {
       "parameters": [
         {
@@ -1300,8 +1519,8 @@
         }
       ],
       "put": {
-        "summary": "Update location",
-        "operationId": "put-event-location",
+        "summary": "location - update",
+        "operationId": "event-location-put",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1350,717 +1569,6 @@
         ]
       }
     },
-    "/events/{eventId}/sub-events": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "patch": {
-        "operationId": "patch-event-subEvents",
-        "description": "Updates the given subEvents on the event with the given `eventId`.\n\nAllows partial updates, omitted properties will be ignored and remain unchanged. Omitted subEvents will also remain unchanged.\n\nEvery subEvent to update requires an `id` property that is an integer that corresponds to their index in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\n<!-- theme: warning -->\n\n> Note! If you change the `startDate` of a subEvent, the subEvents will be re-ordered on the parent event afterwards because subEvents are always sorted chronologically.\n\nOnly events with calendar type `single` and `multiple` have subEvents, so only events with those calendar types support this endpoint.",
-        "tags": [
-          "Events"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The subEvents have been updated successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
-                      "title": "Calendar type not supported",
-                      "status": 400,
-                      "detail": "Not allowed to update subEvents on calendar type: \"permanent\". Only subEvents on single and multiple calendar types can be updated."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "summary": "Update subEvents",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/event-subEvent-patch.json"
-              },
-              "examples": {
-                "Updating the dates of the first subEvent": {
-                  "value": [
-                    {
-                      "id": 0,
-                      "startDate": "2021-05-17T22:00:00+00:00",
-                      "endDate": "2021-05-17T22:00:00+00:00"
-                    }
-                  ]
-                },
-                "Updating the status of the second subEvent": {
-                  "value": [
-                    {
-                      "id": 1,
-                      "status": {
-                        "type": "Unavailable",
-                        "reason": {
-                          "nl": "Afgelast wegens corona"
-                        }
-                      }
-                    }
-                  ]
-                },
-                "Updating the booking availability of the third subEvent": {
-                  "value": [
-                    {
-                      "id": 2,
-                      "bookingAvailability": {
-                        "type": "Unavailable"
-                      }
-                    }
-                  ]
-                },
-                "Updating multiple": {
-                  "value": [
-                    {
-                      "id": 0,
-                      "startDate": "2021-05-17T22:00:00+00:00",
-                      "endDate": "2021-05-17T22:00:00+00:00"
-                    },
-                    {
-                      "id": 1,
-                      "status": {
-                        "type": "Unavailable",
-                        "reason": {
-                          "nl": "Afgelast wegens corona"
-                        }
-                      }
-                    },
-                    {
-                      "id": 2,
-                      "bookingAvailability": {
-                        "type": "Unavailable"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed."
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/type/{termId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        },
-        {
-          "$ref": "#/components/parameters/termId"
-        }
-      ],
-      "put": {
-        "summary": "Update type",
-        "operationId": "put-event-type",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as an event type."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "tags": [
-          "Events"
-        ],
-        "description": "Updates the event's type (examples of types are `Concert`, `Opendeurdag`, `Lessenreeks`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as event types.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/theme": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "delete": {
-        "summary": "Delete theme",
-        "operationId": "delete-event-theme",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "tags": [
-          "Events"
-        ],
-        "description": "Deletes the event's current theme based on the given `eventId`.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the request is successful a `204 No Content` will be returned.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/theme/{termId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        },
-        {
-          "$ref": "#/components/parameters/termId"
-        }
-      ],
-      "put": {
-        "summary": "Update theme",
-        "operationId": "put-event-theme",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a theme."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "tags": [
-          "Events"
-        ],
-        "description": "Updates the event's theme (examples of themes are `Audiovisuele kunst`, `Moderne dans`, `Actie en avontuur`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `theme` domain can be used as theme.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `theme` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/videos": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "post": {
-        "summary": "Add a video",
-        "operationId": "post-event-video",
-        "responses": {
-          "200": {
-            "description": "The video was added to the event.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "videoId": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
-                    }
-                  }
-                },
-                "examples": {
-                  "The new videoId": {
-                    "value": {
-                      "videoId": "b504cf44-9ab8-4641-9934-38d1cc67242c"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/url",
-                          "error": "The required properties url is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/event-videos-post.json"
-              },
-              "examples": {
-                "Video from Youtube and with Copyright": {
-                  "value": {
-                    "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
-                    "language": "nl",
-                    "copyrightHolder": "publiq"
-                  }
-                },
-                "Video from Vimeo": {
-                  "value": {
-                    "url": "https://www.vimeo.com/4dwe2",
-                    "language": "nl"
-                  }
-                },
-                "Video from Youtube with Url Shortener": {
-                  "value": {
-                    "url": "https://youtu.be/bsaAOun-dec",
-                    "language": "nl",
-                    "copyrightHolder": "publiq"
-                  }
-                }
-              }
-            }
-          },
-          "description": "The new video to add to an event."
-        },
-        "description": "Add a video as a URL reference to an event\n\nThe video objects contains:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
-        "tags": [
-          "Events"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
-      "patch": {
-        "summary": "Update one or multiple videos",
-        "operationId": "patch-events-videos",
-        "responses": {
-          "204": {
-            "description": "No Content. The videos are updated."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "description": "Update one or more videos of an event.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
-        "tags": [
-          "Events"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/event-videos-patch.json"
-              },
-              "examples": {
-                "Videos to be updated.": {
-                  "value": [
-                    {
-                      "id": "46e9ea9f-fc42-4759-a81b-4308467b7c35",
-                      "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
-                      "copyrightHolder": "publiq"
-                    },
-                    {
-                      "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
-                      "language": "fr"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "description": "An array of videos to be changed."
-        }
-      }
-    },
-    "/events/{eventId}/videos/{videoId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        },
-        {
-          "$ref": "#/components/parameters/videoId"
-        }
-      ],
-      "delete": {
-        "summary": "Delete a video from an event",
-        "operationId": "delete-event-video",
-        "responses": {
-          "204": {
-            "description": "No Content. The video was deleted from the event."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "description": "Delete an embedded video from an event based on the event id and the video id.",
-        "tags": [
-          "Events"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/events/{eventId}/copies": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/eventId"
-        }
-      ],
-      "post": {
-        "summary": "Copy an event",
-        "tags": [
-          "Events"
-        ],
-        "responses": {
-          "201": {
-            "description": "The event was copied successfully.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "eventId": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "eventId": "83a12220-9459-4fc8-b1ed-71b3d1668e65",
-                      "url": "https://io-test.uitdatabank.be/events/83a12220-9459-4fc8-b1ed-71b3d1668e65"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (subEvent) are missing"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "operationId": "copy-event",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "../models/event-calendar-put.json"
-                  },
-                  {
-                    "$ref": "../models/event-calendar-put-deprecated.json"
-                  }
-                ]
-              },
-              "examples": {
-                "single": {
-                  "value": {
-                    "calendarType": "single",
-                    "subEvent": [
-                      {
-                        "startDate": "2021-05-17T22:00:00+00:00",
-                        "endDate": "2021-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Available"
-                        },
-                        "bookingAvailability": {
-                          "type": "Available"
-                        }
-                      }
-                    ]
-                  }
-                },
-                "multiple": {
-                  "value": {
-                    "calendarType": "multiple",
-                    "subEvent": [
-                      {
-                        "startDate": "2020-05-17T22:00:00+00:00",
-                        "endDate": "2020-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Unavailable",
-                          "reason": {
-                            "nl": "Geannuleerd wegens COVID-19",
-                            "en": "Cancelled due to COVID-19"
-                          }
-                        },
-                        "bookingAvailability": {
-                          "type": "Unavailable"
-                        }
-                      },
-                      {
-                        "startDate": "2021-05-17T22:00:00+00:00",
-                        "endDate": "2021-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Available"
-                        },
-                        "bookingAvailability": {
-                          "type": "Available"
-                        }
-                      }
-                    ]
-                  }
-                },
-                "periodic": {
-                  "value": {
-                    "calendarType": "periodic",
-                    "startDate": "2021-05-17T22:00:00+00:00",
-                    "endDate": "2021-05-17T22:00:00+00:00",
-                    "openingHours": [
-                      {
-                        "opens": "13:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "monday"
-                        ]
-                      },
-                      {
-                        "opens": "09:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "tuesday",
-                          "wednesday",
-                          "thursday",
-                          "friday",
-                          "saturday",
-                          "sunday"
-                        ]
-                      }
-                    ],
-                    "status": {
-                      "type": "Available"
-                    },
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
-                  }
-                },
-                "permanent": {
-                  "value": {
-                    "calendarType": "permanent",
-                    "openingHours": [
-                      {
-                        "opens": "13:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "monday"
-                        ]
-                      },
-                      {
-                        "opens": "09:00",
-                        "closes": "17:00",
-                        "dayOfWeek": [
-                          "tuesday",
-                          "wednesday",
-                          "thursday",
-                          "friday",
-                          "saturday",
-                          "sunday"
-                        ]
-                      }
-                    ],
-                    "status": {
-                      "type": "Available"
-                    },
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "description": "New calendar information for the event copy."
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "description": "Creates a new event based on all the properties of an existing event with the given `eventId`. Only the calendar information will be completely replaced with a new one, which has to be included in the request body.\n\nThe schema of the request body is the same as the one for the [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) endpoint.",
-        "x-internal": true
-      }
-    },
     "/events/{eventId}/major-info": {
       "parameters": [
         {
@@ -2068,9 +1576,9 @@
         }
       ],
       "put": {
-        "operationId": "put-event-major-info",
+        "summary": "major-info - update",
+        "operationId": "event-major-info-put",
         "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `eventId`.\n\nThe major info contains:\n\n* `name`: The name of the event in the event's `mainLanguage`, as a string\n* `type`: Id of the event's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the event's `theme` taxonomy `term`, as a string\n* `location`: Object with the id of the event's location, as a place's uuid (string)\n* `calendar`: Object with the event's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the event. If the event has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /event/{eventId}/major-info`.",
-        "summary": "Update major info (deprecated)",
         "deprecated": true,
         "tags": [
           "Events"
@@ -2282,9 +1790,501 @@
         ]
       }
     },
+    "/events/{eventId}/sub-events": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "patch": {
+        "summary": "subEvent - patch",
+        "operationId": "event-subEvent-patch",
+        "description": "Updates the given subEvents on the event with the given `eventId`.\n\nAllows partial updates, omitted properties will be ignored and remain unchanged. Omitted subEvents will also remain unchanged.\n\nEvery subEvent to update requires an `id` property that is an integer that corresponds to their index in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\n<!-- theme: warning -->\n\n> Note! If you change the `startDate` of a subEvent, the subEvents will be re-ordered on the parent event afterwards because subEvents are always sorted chronologically.\n\nOnly events with calendar type `single` and `multiple` have subEvents, so only events with those calendar types support this endpoint.",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The subEvents have been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+                      "title": "Calendar type not supported",
+                      "status": 400,
+                      "detail": "Not allowed to update subEvents on calendar type: \"permanent\". Only subEvents on single and multiple calendar types can be updated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-subEvent-patch.json"
+              },
+              "examples": {
+                "Updating the dates of the first subEvent": {
+                  "value": [
+                    {
+                      "id": 0,
+                      "startDate": "2021-05-17T22:00:00+00:00",
+                      "endDate": "2021-05-17T22:00:00+00:00"
+                    }
+                  ]
+                },
+                "Updating the status of the second subEvent": {
+                  "value": [
+                    {
+                      "id": 1,
+                      "status": {
+                        "type": "Unavailable",
+                        "reason": {
+                          "nl": "Afgelast wegens corona"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "Updating the booking availability of the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable"
+                      }
+                    }
+                  ]
+                },
+                "Updating multiple": {
+                  "value": [
+                    {
+                      "id": 0,
+                      "startDate": "2021-05-17T22:00:00+00:00",
+                      "endDate": "2021-05-17T22:00:00+00:00"
+                    },
+                    {
+                      "id": 1,
+                      "status": {
+                        "type": "Unavailable",
+                        "reason": {
+                          "nl": "Afgelast wegens corona"
+                        }
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/type/{termId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/termId"
+        }
+      ],
+      "put": {
+        "summary": "terms > eventtype - update",
+        "operationId": "event-terms-eventtype-put",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "status": 400,
+                      "detail": "Term with id \"1.2.1.0.0\" can not be used as an event type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the event's type (examples of types are `Concert`, `Opendeurdag`, `Lessenreeks`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as event types.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/theme": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "delete": {
+        "summary": "terms > theme - delete",
+        "operationId": "event-terms-theme-delete",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Deletes the event's current theme based on the given `eventId`.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/theme/{termId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/termId"
+        }
+      ],
+      "put": {
+        "summary": "terms > theme - update",
+        "operationId": "event-terms-theme-put",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "status": 400,
+                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a theme."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the event's theme (examples of themes are `Audiovisuele kunst`, `Moderne dans`, `Actie en avontuur`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `theme` domain can be used as theme.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `theme` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/videos": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "videos - add",
+        "operationId": "event-videos-post",
+        "responses": {
+          "200": {
+            "description": "The video was added to the event.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "videoId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                    }
+                  }
+                },
+                "examples": {
+                  "The new videoId": {
+                    "value": {
+                      "videoId": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-videos-post.json"
+              },
+              "examples": {
+                "Video from Youtube and with Copyright": {
+                  "value": {
+                    "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                    "language": "nl",
+                    "copyrightHolder": "publiq"
+                  }
+                },
+                "Video from Vimeo": {
+                  "value": {
+                    "url": "https://www.vimeo.com/4dwe2",
+                    "language": "nl"
+                  }
+                },
+                "Video from Youtube with Url Shortener": {
+                  "value": {
+                    "url": "https://youtu.be/bsaAOun-dec",
+                    "language": "nl",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The new video to add to an event."
+        },
+        "description": "Add a video as a URL reference to an event\n\nThe video objects contains:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "videos - patch",
+        "operationId": "event-videos-patch",
+        "responses": {
+          "204": {
+            "description": "No Content. The videos are updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Update one or more videos of an event.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-videos-patch.json"
+              },
+              "examples": {
+                "Videos to be updated.": {
+                  "value": [
+                    {
+                      "id": "46e9ea9f-fc42-4759-a81b-4308467b7c35",
+                      "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                      "copyrightHolder": "publiq"
+                    },
+                    {
+                      "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "language": "fr"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "An array of videos to be changed."
+        }
+      }
+    },
+    "/events/{eventId}/videos/{videoId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/videoId"
+        }
+      ],
+      "delete": {
+        "summary": "videos - delete",
+        "operationId": "event-videos-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The video was deleted from the event."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Delete an embedded video from an event based on the event id and the video id.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places": {
       "post": {
-        "summary": "Create place",
+        "summary": "place - create",
         "tags": [
           "Places"
         ],
@@ -2357,7 +2357,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "post-places",
+        "operationId": "place-post",
         "description": "Creates a new place.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create a place with just its required fields.",
         "security": [
           {
@@ -2534,7 +2534,7 @@
         }
       ],
       "get": {
-        "summary": "Get place details",
+        "summary": "place - get",
         "tags": [
           "Places"
         ],
@@ -2553,43 +2553,12 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "get-place",
+        "operationId": "place-get",
         "description": "Returns the details of the place for the given `placeId`."
       },
-      "delete": {
-        "summary": "Delete place",
-        "operationId": "delete-place",
-        "responses": {
-          "204": {
-            "description": "No Content. The place's `workflowStatus` was successfully updated to `DELETED`."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
-        "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "tags": [
-          "Places"
-        ],
-        "x-internal": false
-      },
       "put": {
-        "summary": "Update place",
-        "operationId": "put-place",
+        "summary": "place - update",
+        "operationId": "place-put",
         "responses": {
           "200": {
             "description": "The place was updated successfully",
@@ -2828,6 +2797,37 @@
         "tags": [
           "Places"
         ]
+      },
+      "delete": {
+        "summary": "place - delete",
+        "operationId": "place-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The place's `workflowStatus` was successfully updated to `DELETED`."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Places"
+        ],
+        "x-internal": false
       }
     },
     "/places/{placeId}/available-from": {
@@ -2837,8 +2837,8 @@
         }
       ],
       "put": {
-        "summary": "Update available from",
-        "operationId": "put-place-available-from",
+        "summary": "availableFrom - update",
+        "operationId": "place-availableFrom-put",
         "responses": {
           "204": {
             "description": "No Content. The place availableFrom was successfully updated."
@@ -2909,118 +2909,6 @@
         }
       }
     },
-    "/places/{placeId}/history": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/placeId"
-        }
-      ],
-      "get": {
-        "summary": "Get place history",
-        "tags": [
-          "Places"
-        ],
-        "responses": {
-          "200": {
-            "description": "Place history.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "description": "",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string",
-                        "description": "A human-readable description of the update to the place. (Always in Dutch.)"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2021-08-26T16:54:38+00:00",
-                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
-                      },
-                      "author": {
-                        "type": "string",
-                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
-                      },
-                      "api": {
-                        "type": "string",
-                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
-                      },
-                      "auth0ClientId": {
-                        "type": "string",
-                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "auth0ClientName": {
-                        "type": "string",
-                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
-                      },
-                      "apiKey": {
-                        "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      },
-                      "consumerName": {
-                        "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
-                      }
-                    },
-                    "required": [
-                      "description",
-                      "date"
-                    ]
-                  }
-                },
-                "examples": {
-                  "Auth0 client": {
-                    "value": [
-                      {
-                        "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
-                        "auth0ClientName": "UiTdatabase JWT Provider",
-                        "api": "JSON-LD API"
-                      }
-                    ]
-                  },
-                  "UiTID v1 consumer": {
-                    "value": [
-                      {
-                        "date": "2021-10-04T09:40:59+00:00",
-                        "description": "Reservatie-info aangepast",
-                        "author": "google-oauth2|108326107941342286958",
-                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
-                        "api": "JSON-LD API",
-                        "consumerName": "UiTdatabank Acceptatie"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
-        "operationId": "get-place-history",
-        "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
-        "x-internal": true,
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
     "/places/{placeId}/calendar": {
       "parameters": [
         {
@@ -3028,7 +2916,7 @@
         }
       ],
       "put": {
-        "summary": "Update calendar",
+        "summary": "calendar - update",
         "tags": [
           "Places"
         ],
@@ -3071,7 +2959,7 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "put-place-calendar",
+        "operationId": "place-calendar-put",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3168,7 +3056,7 @@
         }
       ],
       "get": {
-        "summary": "Get calendar summary",
+        "summary": "calendar summary - get",
         "tags": [
           "Places"
         ],
@@ -3200,7 +3088,7 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "operationId": "get-place-calendar-summary",
+        "operationId": "place-calendar-summary-get",
         "description": "Returns a human-readable summary of the calendar information of the place. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/places/{placeId}/calsum` path.",
         "parameters": [
           {
@@ -3318,8 +3206,8 @@
         }
       ],
       "put": {
-        "summary": "Update facilities",
-        "operationId": "put-place-facilities",
+        "summary": "facilities - update",
+        "operationId": "place-facilities-put",
         "responses": {
           "204": {
             "description": "No Content. The facilities have been successfully updated."
@@ -3385,255 +3273,97 @@
         }
       }
     },
-    "/places/{placeId}/type/{termId}": {
+    "/places/{placeId}/history": {
       "parameters": [
         {
           "$ref": "#/components/parameters/placeId"
-        },
-        {
-          "$ref": "#/components/parameters/termId"
         }
       ],
-      "put": {
-        "summary": "Update type",
-        "operationId": "put-place-type",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a place type."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
+      "get": {
+        "summary": "history - get",
         "tags": [
           "Places"
         ],
-        "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/places/{placeId}/videos": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/placeId"
-        }
-      ],
-      "post": {
-        "summary": "Add a video",
-        "operationId": "post-place-video",
         "responses": {
           "200": {
-            "description": "The video was added to the place.",
+            "description": "Place history.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "videoId": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
-                    }
-                  }
-                },
-                "examples": {
-                  "The new videoId": {
-                    "value": {
-                      "videoId": "b504cf44-9ab8-4641-9934-38d1cc67242c"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/url",
-                          "error": "The required properties url is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/EventNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/place-videos-post.json"
-              },
-              "examples": {
-                "Video from Youtube and with Copyright": {
-                  "value": {
-                    "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
-                    "language": "nl",
-                    "copyrightHolder": "publiq"
-                  }
-                },
-                "Video from Vimeo": {
-                  "value": {
-                    "url": "https://www.vimeo.com/4dwe2",
-                    "language": "nl"
-                  }
-                },
-                "Video from Youtube with Url Shortener": {
-                  "value": {
-                    "url": "https://youtu.be/bsaAOun-dec",
-                    "language": "nl",
-                    "copyrightHolder": "publiq"
-                  }
-                }
-              }
-            }
-          },
-          "description": "The new video to add to a place."
-        },
-        "description": "Add a video as a URL reference to place\n\nThe video objects contains:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
-        "tags": [
-          "Places"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
-      "patch": {
-        "summary": "Update one or multiple videos",
-        "operationId": "patch-places-videos",
-        "responses": {
-          "204": {
-            "description": "No Content. The videos are updated."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
-          }
-        },
-        "description": "Update one or more videos of a place.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/place-videos-patch.json"
-              },
-              "examples": {
-                "Videos to be updated.": {
-                  "value": [
-                    {
-                      "id": "30a880ba-c406-4308-8031-eb39c334f8c2",
-                      "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
-                      "language": "fr",
-                      "copyrightHolder": "publiq"
+                  "type": "array",
+                  "description": "",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "description": "A human-readable description of the update to the place. (Always in Dutch.)"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-08-26T16:54:38+00:00",
+                        "description": "The date and time that the update happened in an ISO-8601 format with a timezone offset. For example `2021-08-26T16:54:38+00:00`."
+                      },
+                      "author": {
+                        "type": "string",
+                        "description": "Identifier of the user who made the change. Should not be treated as a semantic user id though, because it can be an email, v1 user id, or v2 user id. Should only be displayed and used by admins that look at the history log to look up the user in the correct system."
+                      },
+                      "api": {
+                        "type": "string",
+                        "description": "Human-readable name of the API that was used to make the change. Not always present in older history logs."
+                      },
+                      "auth0ClientId": {
+                        "type": "string",
+                        "description": "The id of the Auth0 client that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "auth0ClientName": {
+                        "type": "string",
+                        "description": "Name of the client in Auth0 that made the change. (If it was an Auth0 API client.)"
+                      },
+                      "apiKey": {
+                        "type": "string",
+                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      },
+                      "consumerName": {
+                        "type": "string",
+                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                      }
                     },
-                    {
-                      "id": "55f3859b-ad56-426e-acd8-435401372019",
-                      "copyrightHolder": "Creative Commons"
-                    }
-                  ]
+                    "required": [
+                      "description",
+                      "date"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Auth0 client": {
+                    "value": [
+                      {
+                        "date": "2021-09-30T14:57:17+00:00",
+                        "description": "Kalender-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
+                        "auth0ClientName": "UiTdatabase JWT Provider",
+                        "api": "JSON-LD API"
+                      }
+                    ]
+                  },
+                  "UiTID v1 consumer": {
+                    "value": [
+                      {
+                        "date": "2021-10-04T09:40:59+00:00",
+                        "description": "Reservatie-info aangepast",
+                        "author": "google-oauth2|108326107941342286958",
+                        "apiKey": "deb306a6-6f46-4c98-89ce-b03ec4fd11e2",
+                        "api": "JSON-LD API",
+                        "consumerName": "UiTdatabank Acceptatie"
+                      }
+                    ]
+                  }
                 }
               }
             }
-          },
-          "description": "An array of videos to be changed."
-        },
-        "tags": [
-          "Places"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/places/{placeId}/videos/{videoId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/placeId"
-        },
-        {
-          "$ref": "#/components/parameters/videoId"
-        }
-      ],
-      "delete": {
-        "summary": "Delete a video from a place",
-        "operationId": "delete-place-video",
-        "responses": {
-          "204": {
-            "description": "No Content. The video was deleted from the place."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -3642,10 +3372,9 @@
             "$ref": "#/components/responses/PlaceNotFound"
           }
         },
-        "description": "Delete an embedded video from an place based on the place id and the video id.",
-        "tags": [
-          "Places"
-        ],
+        "operationId": "place-history-get",
+        "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3663,9 +3392,9 @@
         }
       ],
       "put": {
-        "operationId": "put-place-major-info",
+        "operationId": "place-major-info-put",
         "description": "<!-- theme: danger -->\n\n> The major-info endpoint is deprecated and should not be used in new integrations!\n\nUpdates the \"major info\" of the event with the given `placeId`.\n\nThe major info contains:\n\n* `name`: The name of the place in the place's `mainLanguage`, as a string\n* `type`: Id of the place's `eventtype` taxonomy `term`, as a string\n* `theme` (optional): Id of the place's `theme` taxonomy `term`, as a string\n* `address`: Object with the address of the place (see schema below)\n* `calendar`: Object with the place's calendar information (see schema below)\n\nAll properties are required (except for `theme`) and will overwrite existing values of these properties on the place. If the place has a `theme` `term` before this update, but there is no `theme` in this major-info update, the `theme` will be removed.\n\n<!-- theme: success -->\n> For backward-compatibility with older integrations, this operation can also be requested via `POST /place/{placeId}/major-info`",
-        "summary": "Update major info (deprecated)",
+        "summary": "major-info - update",
         "deprecated": true,
         "responses": {
           "204": {
@@ -3830,11 +3559,282 @@
         ]
       }
     },
+    "/places/{placeId}/type/{termId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/termId"
+        }
+      ],
+      "put": {
+        "summary": "type - update",
+        "operationId": "place-type-put",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "status": 400,
+                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a place type."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/videos": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "post": {
+        "summary": "videos - add",
+        "operationId": "place-videos-post",
+        "responses": {
+          "200": {
+            "description": "The video was added to the place.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "videoId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                    }
+                  }
+                },
+                "examples": {
+                  "The new videoId": {
+                    "value": {
+                      "videoId": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-videos-post.json"
+              },
+              "examples": {
+                "Video from Youtube and with Copyright": {
+                  "value": {
+                    "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                    "language": "nl",
+                    "copyrightHolder": "publiq"
+                  }
+                },
+                "Video from Vimeo": {
+                  "value": {
+                    "url": "https://www.vimeo.com/4dwe2",
+                    "language": "nl"
+                  }
+                },
+                "Video from Youtube with Url Shortener": {
+                  "value": {
+                    "url": "https://youtu.be/bsaAOun-dec",
+                    "language": "nl",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The new video to add to a place."
+        },
+        "description": "Add a video as a URL reference to place\n\nThe video objects contains:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
+        "tags": [
+          "Places"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "videos - patch",
+        "operationId": "places-videos-patch",
+        "responses": {
+          "204": {
+            "description": "No Content. The videos are updated."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "description": "Update one or more videos of a place.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-videos-patch.json"
+              },
+              "examples": {
+                "Videos to be updated.": {
+                  "value": [
+                    {
+                      "id": "30a880ba-c406-4308-8031-eb39c334f8c2",
+                      "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                      "language": "fr",
+                      "copyrightHolder": "publiq"
+                    },
+                    {
+                      "id": "55f3859b-ad56-426e-acd8-435401372019",
+                      "copyrightHolder": "Creative Commons"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "An array of videos to be changed."
+        },
+        "tags": [
+          "Places"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/videos/{videoId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/videoId"
+        }
+      ],
+      "delete": {
+        "summary": "videos - delete",
+        "operationId": "place-videos-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The video was deleted from the place."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "description": "Delete an embedded video from an place based on the place id and the video id.",
+        "tags": [
+          "Places"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/organizers": {
       "post": {
-        "summary": "Create organizer",
+        "summary": "organizer - create",
         "description": "Creates a new organizer.\n\n<!-- theme: info -->\n\n> Organizers are required to have a unique `url` value to avoid accidental duplicate organizers.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create an organizer with just its required fields.",
-        "operationId": "post-organizer",
+        "operationId": "organizer-post",
         "tags": [
           "Organizers"
         ],
@@ -3986,40 +3986,9 @@
           "$ref": "#/components/parameters/organizerId"
         }
       ],
-      "delete": {
-        "summary": "Delete organizer",
-        "description": "<!-- theme: info !-->\n> Note: only users with the permissions `Organisaties beheren` can delete an organizer.\n\nDelete the organizer with the given `organizerId`.",
-        "operationId": "delete-organizer",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer was deleted successfully."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "x-internal": true
-      },
       "get": {
-        "summary": "Get organizer details",
-        "operationId": "get-organizer",
+        "summary": "organizer - get",
+        "operationId": "organizer-get",
         "responses": {
           "200": {
             "description": "Organizer details",
@@ -4129,8 +4098,8 @@
         ]
       },
       "put": {
-        "summary": "Update organizer completely",
-        "operationId": "put-organizers-organizerId",
+        "summary": "organizer - update",
+        "operationId": "organizer-put",
         "responses": {
           "200": {
             "description": "The organizer has been updated successfully.",
@@ -4268,6 +4237,234 @@
         "tags": [
           "Organizers"
         ]
+      },
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "<!-- theme: info !-->\n> Note: only users with the permissions `Organisaties beheren` can delete an organizer.\n\nDelete the organizer with the given `organizerId`.",
+        "operationId": "delete-organizer",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer was deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      }
+    },
+    "/organizers/{organizerId}/address/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "address - update",
+        "description": "Updates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the given `language`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
+        "operationId": "organizer-address-put",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer address has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (streetAddress) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-address-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "streetAddress": "Kerkstraat 2",
+                    "postalCode": "3000",
+                    "addressLocality": "Leuven",
+                    "addressCountry": "BE"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/organizers/{organizerId}/address": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "put": {
+        "summary": "address.nl - update",
+        "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/address/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1address~1{language}/put) instead.\n\n\nUpdates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the default language `nl`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
+        "operationId": "organizer-address-nl-put",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer address has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (streetAddress) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-address-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "streetAddress": "Kerkstraat 2",
+                    "postalCode": "3000",
+                    "addressLocality": "Leuven",
+                    "addressCountry": "BE"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "deprecated": true
+      },
+      "delete": {
+        "summary": "address - delete",
+        "description": "Delete the address of the organizer with the given `organizerId`.",
+        "operationId": "organizer-address-delete",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer address has been deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
       }
     },
     "/organizers/{organizerId}/contact-point": {
@@ -4277,9 +4474,9 @@
         }
       ],
       "put": {
-        "summary": "Update contact point",
+        "summary": "contactPoint - update",
         "description": "Updates the contact point information of the organizer with the given `organizerId`. A contact point has a list of the following properties:\n* Url: an array of valid urls\n* Email: an array of valid emails\n* Phone: an array of phone numbers\n\nAll properties are optional.",
-        "operationId": "put-organizer-contact-point",
+        "operationId": "organizer-contactPoint-put",
         "tags": [
           "Organizers"
         ],
@@ -4346,194 +4543,6 @@
         ]
       }
     },
-    "/organizers/{organizerId}/url": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        }
-      ],
-      "put": {
-        "summary": "Update url",
-        "description": "Updates the url of the organizer with the given `organizerId`. The provided url can not be in use on another organizer.",
-        "operationId": "put-organizer-url",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer url has been updated successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (url) are missing"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-url-put.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "url": "https://www.publiq.be"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/organizers/{organizerId}/labels/{labelName}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        },
-        {
-          "$ref": "#/components/parameters/labelName"
-        }
-      ],
-      "put": {
-        "summary": "Add label",
-        "description": "Adds the given label to the organizer with the given `organizerId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the organizer.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "put-organizer-label",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The label has been added successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
-      "delete": {
-        "summary": "Delete label",
-        "description": "Deletes the given label from the organizer with the given `organizerId`.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "delete-organizer-label",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The label has been deleted from the organizer successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
     "/organizers/{organizerId}/description/{language}": {
       "parameters": [
         {
@@ -4544,9 +4553,9 @@
         }
       ],
       "put": {
-        "summary": "Update description",
+        "summary": "description - update",
         "description": "Updates the description of the organizer with the given `organizerId`. The new description of the request body will be set on the organizer in the given `language`. The new description needs to be at least one character long.",
-        "operationId": "put-organizer-description",
+        "operationId": "organizer-description-put",
         "tags": [
           "Organizers"
         ],
@@ -4615,8 +4624,8 @@
         ]
       },
       "delete": {
-        "summary": "Delete description",
-        "operationId": "delete-organizer-description",
+        "summary": "description - delete",
+        "operationId": "organizer-description-delete",
         "responses": {
           "204": {
             "description": "No Content. The description was deleted."
@@ -4648,6 +4657,372 @@
         ]
       }
     },
+    "/organizers/{organizerId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "organizer-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the organizer."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
+                    "language": "nl",
+                    "copyrightHolder": "publiq",
+                    "description": "Picture of the last publiq event"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to an organizer."
+        },
+        "description": "Add an image to an organizer.\n\nThe image objects contains the following properties:\n* `id`: the id of the image which is required\n* `language`: an optional language of the image and description\n* `copyrightHolder`: the optional copyright holder of the image\n* `description`: the description of the image which is also optional\n\n<!-- theme: info -->\n> The optional fields that are not provided will get the values from the properties of the orginally uploaded image.",
+        "tags": [
+          "Organizers"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "images - patch",
+        "operationId": "organizer-images-patch",
+        "responses": {
+          "204": {
+            "description": "The images were updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-images-patch.json"
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "Organizers"
+        ]
+      }
+    },
+    "/organizers/{organizerId}/images/{imageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        },
+        {
+          "$ref": "#/components/parameters/imageId"
+        }
+      ],
+      "delete": {
+        "summary": "images - delete",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image was removed from the organizer."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "operationId": "organizer-image-delete",
+        "description": "Remove an image from an organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/organizers/{organizerId}/labels/{labelName}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        },
+        {
+          "$ref": "#/components/parameters/labelName"
+        }
+      ],
+      "put": {
+        "summary": "labels - add",
+        "description": "Adds the given label to the organizer with the given `organizerId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the organizer.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
+        "operationId": "organizer-labels-add",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The label has been added successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "status": 400,
+                      "detail": "The provided label name is not valid."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "labels - delete",
+        "description": "Deletes the given label from the organizer with the given `organizerId`.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
+        "operationId": "organizer-labels-delete",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The label has been deleted from the organizer successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "status": 400,
+                      "detail": "The provided label name is not valid."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/organizers/{organizerId}/images/main": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "mainImage - update",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "Main image was set"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/imageId",
+                          "error": "The required properties imageId is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/OrganizerNotFound"
+          }
+        },
+        "operationId": "organizer-mainImage-update",
+        "description": "Sets the main image of an organizer. This only requires the `imageId` of the image to set as main.\n\n<!-- theme: info -->\n> For backwards compatible reasons `mediaObjectId` is also supported.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-main-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "imageId": "4b349765-9499-4d35-b295-c82ede576cf0"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image id of the new main image."
+        }
+      }
+    },
     "/organizers/{organizerId}/name/{language}": {
       "parameters": [
         {
@@ -4658,9 +5033,9 @@
         }
       ],
       "put": {
-        "summary": "Update name",
+        "summary": "name - update",
         "description": "Updates the name of the organizer with the given `organizerId`. The new name of the request body will be set on the organizer in the given `language`. The new name needs to be at least one character long.",
-        "operationId": "put-organizer-name",
+        "operationId": "organizer-name-put",
         "tags": [
           "Organizers"
         ],
@@ -4736,9 +5111,9 @@
         }
       ],
       "put": {
-        "summary": "Update name nl",
+        "summary": "name.nl - update",
         "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/name/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1name~1{language}/put) instead.\n\nUpdates the name of the organizer with the given `organizerId`. The new name of the request body will be set on the organizer with default language `nl`. The new name needs to be at least one character long.",
-        "operationId": "put-organizer-name-nl",
+        "operationId": "organizer-name-nl-put",
         "tags": [
           "Organizers"
         ],
@@ -4808,25 +5183,25 @@
         "deprecated": true
       }
     },
-    "/organizers/{organizerId}/address": {
+    "/organizers/{organizerId}/url": {
       "parameters": [
         {
           "$ref": "#/components/parameters/organizerId"
         }
       ],
       "put": {
-        "summary": "Update address nl",
-        "description": "<!-- theme: warning -->\n\n> This endpoint is deprecated, use [`PUT /organizers/{organizerId}/address/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1address~1{language}/put) instead.\n\n\nUpdates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the default language `nl`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
-        "operationId": "put-organizer-address-nl",
+        "summary": "url - update",
+        "description": "Updates the url of the organizer with the given `organizerId`. The provided url can not be in use on another organizer.",
+        "operationId": "organizer-url-put",
         "tags": [
           "Organizers"
         ],
         "responses": {
           "204": {
-            "description": "No Content. The organizer address has been updated successfully."
+            "description": "No Content. The organizer url has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4841,7 +5216,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/",
-                          "error": "The required properties (streetAddress) are missing"
+                          "error": "The required properties (url) are missing"
                         }
                       ]
                     }
@@ -4864,131 +5239,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/organizer-address-put.json"
+                "$ref": "../models/organizer-url-put.json"
               },
               "examples": {
                 "Example": {
                   "value": {
-                    "streetAddress": "Kerkstraat 2",
-                    "postalCode": "3000",
-                    "addressLocality": "Leuven",
-                    "addressCountry": "BE"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "deprecated": true
-      },
-      "delete": {
-        "summary": "Delete address",
-        "description": "Delete the address of the organizer with the given `organizerId`.",
-        "operationId": "delete-organizer-address",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer address has been deleted successfully."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "x-internal": true
-      }
-    },
-    "/organizers/{organizerId}/address/{language}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        },
-        {
-          "$ref": "#/components/parameters/language"
-        }
-      ],
-      "put": {
-        "summary": "Update address",
-        "description": "Updates the address of the organizer with the given `organizerId`. The new address of the request body will be set on the organizer in the given `language`.\n\nAn address consists of the following properties which are all required:\n* streetAddress: the street name and street number\n* postalCode: the postal code\n* addressLocality: the town or city\n* addressCountry: the 2-character country code",
-        "operationId": "put-organizer-address",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content. The organizer address has been updated successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (streetAddress) are missing"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-address-put.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "streetAddress": "Kerkstraat 2",
-                    "postalCode": "3000",
-                    "addressLocality": "Leuven",
-                    "addressCountry": "BE"
+                    "url": "https://www.publiq.be"
                   }
                 }
               }
@@ -5005,23 +5261,30 @@
         ]
       }
     },
-    "/organizers/{organizerId}/images": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        }
-      ],
+    "/news-articles": {
       "post": {
-        "summary": "Add an image",
-        "operationId": "post-organizer-image",
+        "summary": "news article - create",
+        "operationId": "news-articles-post",
         "responses": {
-          "204": {
-            "description": "The image was added to the organizer."
+          "201": {
+            "description": "The News Article was created successfully",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "../models/newsArticle.json"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/newsArticle.json"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/problem+json": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5034,7 +5297,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/url",
-                          "error": "The required properties url is missing."
+                          "error": "The required property url is missing."
                         }
                       ]
                     }
@@ -5042,230 +5305,27 @@
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
           }
         },
+        "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
+        "x-internal": true,
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/organizer-image-post.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
-                    "language": "nl",
-                    "copyrightHolder": "publiq",
-                    "description": "Picture of the last publiq event"
-                  }
-                }
+                "$ref": "../models/newsArticle-post.json"
               }
             }
-          },
-          "description": "The image to add to an organizer."
-        },
-        "description": "Add an image to an organizer.\n\nThe image objects contains the following properties:\n* `id`: the id of the image which is required\n* `language`: an optional language of the image and description\n* `copyrightHolder`: the optional copyright holder of the image\n* `description`: the description of the image which is also optional\n\n<!-- theme: info -->\n> The optional fields that are not provided will get the values from the properties of the orginally uploaded image.",
-        "tags": [
-          "Organizers"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
           }
+        },
+        "tags": [
+          "News articles"
         ]
       },
-      "patch": {
-        "summary": "Update image(s)",
-        "operationId": "patch-organizer-images",
-        "responses": {
-          "204": {
-            "description": "The images were updated."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-images-patch.json"
-              }
-            }
-          },
-          "description": ""
-        },
-        "tags": [
-          "Organizers"
-        ]
-      }
-    },
-    "/organizers/{organizerId}/images/{imageId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/organizerId"
-        },
-        {
-          "$ref": "#/components/parameters/imageId"
-        }
-      ],
-      "delete": {
-        "summary": "Delete image",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "The image was removed from the organizer."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "operationId": "delete-organizer-image",
-        "description": "Remove an image from an organizer.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      }
-    },
-    "/organizers/{organizerId}/images/main": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
-        }
-      ],
-      "put": {
-        "summary": "Set main image",
-        "tags": [
-          "Organizers"
-        ],
-        "responses": {
-          "204": {
-            "description": "Main image was set"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/imageId",
-                          "error": "The required properties imageId is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
-          }
-        },
-        "operationId": "put-organizer-main-image",
-        "description": "Sets the main image of an organizer. This only requires the `imageId` of the image to set as main.\n\n<!-- theme: info -->\n> For backwards compatible reasons `mediaObjectId` is also supported.",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-main-image-put.json"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "imageId": "4b349765-9499-4d35-b295-c82ede576cf0"
-                  }
-                }
-              }
-            }
-          },
-          "description": "The image id of the new main image."
-        }
-      }
-    },
-    "/news-articles": {
       "get": {
-        "summary": "Get all news articles",
+        "summary": "news article - search",
         "description": "Returns the details of all news articles matching the provided search. The search can be created based on a combination of 3 query parameters:\n- `publisher`\n- `about`\n- `url`\n\nBasic pagination is supported and the results are limited to 30 news articles.\n\nThe extra query parameter `page` can be used to get news articles after the first 30 results.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
-        "operationId": "get-all-news-articles",
+        "operationId": "news-articles-get",
         "responses": {
           "200": {
             "description": "News Articles details",
@@ -5390,66 +5450,6 @@
         "tags": [
           "News articles"
         ]
-      },
-      "post": {
-        "summary": "Add a news article",
-        "operationId": "add-news-article",
-        "responses": {
-          "201": {
-            "description": "The News Article was created successfully",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "../models/newsArticle.json"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/newsArticle.json"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/url",
-                          "error": "The required property url is missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
-        "x-internal": true,
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/newsArticle-post.json"
-              }
-            }
-          }
-        },
-        "tags": [
-          "News articles"
-        ]
       }
     },
     "/news-articles/{articleId}": {
@@ -5459,9 +5459,9 @@
         }
       ],
       "get": {
-        "summary": "Get a news article",
+        "summary": "news article - get",
         "description": "Returns the details of a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
-        "operationId": "get-news-article",
+        "operationId": "news-article-get",
         "responses": {
           "200": {
             "description": "News Article details",
@@ -5518,23 +5518,9 @@
           "News articles"
         ]
       },
-      "delete": {
-        "summary": "Delete a news article",
-        "operationId": "delete-news-article",
-        "responses": {
-          "204": {
-            "description": "The News Article with the given article id was deleted."
-          }
-        },
-        "description": "Delete a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
-        "x-internal": true,
-        "tags": [
-          "News articles"
-        ]
-      },
       "put": {
-        "summary": "Update a news article",
-        "operationId": "put-news-article",
+        "summary": "news article - update",
+        "operationId": "news-article-put",
         "responses": {
           "200": {
             "description": "The News Article was update successfully.",
@@ -5591,6 +5577,20 @@
             }
           }
         },
+        "tags": [
+          "News articles"
+        ]
+      },
+      "delete": {
+        "summary": "news article - delete",
+        "operationId": "news-article-delete",
+        "responses": {
+          "204": {
+            "description": "The News Article with the given article id was deleted."
+          }
+        },
+        "description": "Delete a news article with the given article id.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
+        "x-internal": true,
         "tags": [
           "News articles"
         ]
