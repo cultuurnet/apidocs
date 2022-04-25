@@ -1,0 +1,9 @@
+{
+  "title": "event.attendanceMode.put",
+  "type": "object",
+  "properties": {
+    "attendanceMode": {
+      "$ref": "./event-attendanceMode.json"
+    }
+  }
+}
