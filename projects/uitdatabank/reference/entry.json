@@ -773,12 +773,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "attendanceMode": {
-                    "$ref": "../models/event-attendanceMode.json"
-                  }
-                }
+                "$ref": "../models/event-attendanceMode-put.json"
               },
               "examples": {
                 "Example": {
@@ -788,7 +783,8 @@
                 }
               }
             }
-          }
+          },
+          "description": ""
         }
       }
     },
