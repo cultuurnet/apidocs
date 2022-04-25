@@ -624,6 +624,72 @@
         ]
       }
     },
+    "/events/{eventId}/attendance-mode": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "eventId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Update attendance mode",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The event's attendance mode was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "operationId": "put-event-attendance-mode",
+        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- offline: the event takes places on a real location\n- online: the events takes places on a virtual location\n- mixed: the event takes places both on a real location and a virtual location\n\nA virtual location is a special kind of location with UUID `00000000-0000-0000-0000-000000000000`",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attendanceMode": {
+                    "$ref": "../models/event-attendanceMode.json"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "attendanceMode": "online"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/events/{eventId}/audience": {
       "parameters": [
         {
