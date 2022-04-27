@@ -776,9 +776,15 @@
                 "$ref": "../models/event-attendanceMode-put.json"
               },
               "examples": {
-                "Example": {
+                "Example Online": {
                   "value": {
                     "attendanceMode": "online"
+                  }
+                },
+                "Example offline": {
+                  "value": {
+                    "attendanceMode": "online",
+                    "location": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3"
                   }
                 }
               }
