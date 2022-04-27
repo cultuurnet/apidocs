@@ -4,8 +4,12 @@
   "properties": {
     "attendanceMode": {
       "$ref": "./event-attendanceMode.json"
+    },
+    "location": {
+      "$ref": "./place-@id.json"
     }
   },
+  "additionalProperties": false,
   "required": [
     "attendanceMode"
   ],
@@ -22,23 +26,6 @@
         "$ref": "./event-attendanceMode.json"
       }
     },
-    "required": [
-      "attendanceMode"
-    ],
-    "additionalProperties": false
-  },
-  "else": {
-    "properties": {
-      "attendanceMode": {
-        "$ref": "./event-attendanceMode.json"
-      },
-      "location": {
-        "$ref": "./place-@id.json"
-      }
-    },
-    "required": [
-      "attendanceMode"
-    ],
     "additionalProperties": false
   }
 }
