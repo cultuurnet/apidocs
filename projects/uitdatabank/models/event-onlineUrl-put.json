@@ -1,0 +1,12 @@
+{
+  "title": "event.onlineUrl.put",
+  "type": "object",
+  "properties": {
+    "onlineUrl": {
+      "$ref": "./event-onlineUrl.json"
+    }
+  },
+  "required": [
+    "onlineUrl"
+  ]
+}
