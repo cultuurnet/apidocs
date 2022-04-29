@@ -1895,7 +1895,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/event-attendanceMode-put.json"
+                "$ref": "../models/event-onlineUrl-put.json"
               },
               "examples": {
                 "Example": {
