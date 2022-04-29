@@ -1853,6 +1853,63 @@
         ]
       }
     },
+    "/events/{eventId}/online-url": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "online-url - update",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The online url mode was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "operationId": "event-online-url-put",
+        "description": "Updates the online url of an event. Only events with attendance mode `online` or `mixed` can have an online url.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-attendanceMode-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "onlineUrl": "https://www.publiq.be/livestream"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
     "/events/{eventId}/sub-events": {
       "parameters": [
         {
