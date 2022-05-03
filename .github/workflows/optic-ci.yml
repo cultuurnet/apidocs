@@ -1,21 +1,22 @@
 name: Optic CI
 on: [ pull_request ]
 jobs:
-  list-openapi-files:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - uses: actions/checkout@v2
-      - id: set-matrix
-        run: echo "::set-output name=matrix::$(ls ./projects/**/reference/**/*.{json,yml,yaml} | jq -R -s -c 'split("\n")[:-1]')"
+  #list-openapi-files:
+  #  runs-on: ubuntu-latest
+  #  outputs:
+  #    matrix: ${{ steps.set-matrix.outputs.matrix }}
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - id: set-matrix
+  #      run: echo "::set-output name=matrix::$(ls projects/**/reference/**/*.{json,yml,yaml} | jq -R -s -c 'split("\n")[:-1]')"
   optic-ci:
     needs: list-openapi-files
     name: Check for breaking changes in OpenAPI files
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        open-api-file: ${{ fromJson(needs.list-openapi-files.outputs.matrix) }}
+        #open-api-file: ${{ fromJson(needs.list-openapi-files.outputs.matrix) }}
+        open-api-file: ["projects/uitdatabank/reference/entry.json", "projects/uitdatabank/reference/taxonomy.json"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
