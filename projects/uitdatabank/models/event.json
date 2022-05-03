@@ -1,6 +1,5 @@
 {
   "description": "A cultural, sport, or leisure activity.",
-  "type": "object",
   "examples": [
     {
       "@id": "https://io-test.uitdatabank.be/event/85b04295-479c-40f5-b3dd-469dfb4387b3",
@@ -328,7 +327,7 @@
           "$ref": "./event-attendanceMode.json"
         },
         "onlineUrl": {
-          "$ref": "./event-onlineUrl.json"
+          "$ref": "./common-string-uri.json"
         },
         "status": {
           "$ref": "./event-status.json"
@@ -469,5 +468,6 @@
         ]
       }
     }
-  ]
+  ],
+  "type": "object"
 }
