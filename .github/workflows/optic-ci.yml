@@ -1,4 +1,4 @@
-name: optic-ci
+name: Optic CI
 on: [ pull_request ]
 jobs:
   list-openapi-files:
