@@ -1,0 +1,28 @@
+name: optic-ci
+on: [ pull_request ]
+jobs:
+  list-openapi-files:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: echo "::set-output name=matrix::$(ls ./projects/**/reference/**/*.{json,yml,yaml} | jq -R -s -c 'split("\n")[:-1]')"
+  optic-ci:
+    needs: list-openapi-files
+    name: Check for breaking changes in OpenAPI files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        open-api-file: ${{ fromJson(needs.list-openapi-files.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Run Optic CI
+        uses: opticdev/optic-ci-starter@main
+        with:
+          file: ${{ matrix.open-api-file }}
+          ruleset: default
