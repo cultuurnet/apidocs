@@ -1,6 +1,0 @@
-{
-  "type": "string",
-  "title": "event.onlineUrl",
-  "description": "The url to follow the event online.",
-  "format": "uri"
-}
