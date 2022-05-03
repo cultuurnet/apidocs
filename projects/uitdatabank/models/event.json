@@ -327,7 +327,7 @@
           "$ref": "./event-attendanceMode.json"
         },
         "onlineUrl": {
-          "$ref": "./common-string-uri.json"
+          "$ref": "./event-onlineUrl.json"
         },
         "status": {
           "$ref": "./event-status.json"
