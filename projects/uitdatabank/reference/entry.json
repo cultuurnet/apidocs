@@ -760,7 +760,7 @@
           }
         },
         "operationId": "event-attendance-mode-put",
-        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- `offline`: the event takes places on a real location\n- `online`: the events takes places on a virtual location\n- `mixed`: the event takes places both on a real location and a virtual location\n\nWhen changing from attendance mode `online` to either `offline` or `mixed` it is important to pass the uri of the location. This location uri will be used to replace the virtual location with the existing real location.\n\nA virtual location is a special kind of location with UUID `00000000-0000-0000-0000-000000000000`",
+        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- `offline`: the event takes places on a real location\n- `online`: the events takes places on a virtual location\n- `mixed`: the event takes places both on a real location and a virtual location\n\nWhen changing from attendance mode online to either offline or mixed it is required to include the location property with the URI or UUID of the (physical) [location](/models/place.json) that the event is taking place at.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
