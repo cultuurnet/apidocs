@@ -1860,7 +1860,7 @@
         }
       ],
       "put": {
-        "summary": "online-url - update",
+        "summary": "onlineUrl - update",
         "tags": [
           "Events"
         ],
