@@ -1866,7 +1866,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content. The online url mode was successfully updated."
+            "description": "No Content. The onlineUrl was successfully updated."
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
