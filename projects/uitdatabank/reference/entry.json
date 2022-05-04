@@ -738,7 +738,7 @@
         }
       ],
       "put": {
-        "summary": "attendance-mode - update",
+        "summary": "attendanceMode - update",
         "tags": [
           "Events"
         ],
