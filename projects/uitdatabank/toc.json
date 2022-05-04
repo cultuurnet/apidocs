@@ -26,21 +26,7 @@
     },
     {
       "type": "divider",
-      "title": "API References"
-    },
-    {
-      "type": "item",
-      "title": "Entry API",
-      "uri": "reference/entry.json"
-    },
-    {
-      "type": "item",
-      "title": "Taxonomy API",
-      "uri": "reference/taxonomy.json"
-    },
-    {
-      "type": "divider",
-      "title": "Model schemas"
+      "title": "Models"
     },
     {
       "type": "item",
@@ -56,6 +42,20 @@
       "type": "item",
       "title": "Organizer",
       "uri": "models/organizer.json"
+    },
+    {
+      "type": "divider",
+      "title": "API References"
+    },
+    {
+      "type": "item",
+      "title": "Entry API",
+      "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Taxonomy API",
+      "uri": "reference/taxonomy.json"
     }
   ]
 }
