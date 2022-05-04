@@ -1,0 +1,31 @@
+{
+  "title": "event.attendanceMode.put",
+  "type": "object",
+  "properties": {
+    "attendanceMode": {
+      "$ref": "./event-attendanceMode.json"
+    },
+    "location": {
+      "$ref": "./place-@id.json"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "attendanceMode"
+  ],
+  "if": {
+    "properties": {
+      "attendanceMode": {
+        "const": "online"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "attendanceMode": {
+        "$ref": "./event-attendanceMode.json"
+      }
+    },
+    "additionalProperties": false
+  }
+}

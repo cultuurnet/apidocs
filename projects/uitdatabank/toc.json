@@ -122,6 +122,11 @@
             },
             {
               "type": "item",
+              "title": "attendanceMode",
+              "uri": "models/event-attendanceMode.json"
+            },
+            {
+              "type": "item",
               "title": "location",
               "uri": "models/event-location.json"
             },
