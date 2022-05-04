@@ -44,6 +44,7 @@
       ],
       "availableFrom": "2021-05-17T22:00:00+00:00",
       "availableTo": "2021-05-17T22:00:00+00:00",
+      "attendanceMode": "offline",
       "location": {
         "@id": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3",
         "mainLanguage": "nl",
@@ -321,6 +322,9 @@
         },
         "endDate": {
           "$ref": "./event-endDate.json"
+        },
+        "attendanceMode": {
+          "$ref": "./event-attendanceMode.json"
         },
         "status": {
           "$ref": "./event-status.json"

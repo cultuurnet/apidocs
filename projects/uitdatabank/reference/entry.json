@@ -731,6 +731,69 @@
         "x-internal": true
       }
     },
+    "/events/{eventId}/attendance-mode": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "attendanceMode - update",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The event's attendance mode was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "operationId": "event-attendance-mode-put",
+        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- `offline`: the event takes places on a real location\n- `online`: the events takes places on a virtual location\n- `mixed`: the event takes places both on a real location and a virtual location\n\nWhen changing from attendance mode online to either offline or mixed it is required to include the location property with the URI or UUID of the (physical) [location](/models/place.json) that the event is taking place at.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-attendanceMode-put.json"
+              },
+              "examples": {
+                "Example Online": {
+                  "value": {
+                    "attendanceMode": "online"
+                  }
+                },
+                "Example offline": {
+                  "value": {
+                    "attendanceMode": "offline",
+                    "location": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
     "/events/{eventId}/audience": {
       "parameters": [
         {
