@@ -1908,6 +1908,33 @@
           },
           "description": ""
         }
+      },
+      "delete": {
+        "summary": "onlineUrl - delete",
+        "operationId": "event-online-url-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The onlineUrl was successfully deleted."
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/EventNotFound"
+          }
+        },
+        "description": "Delete the onlineUrl of an event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/events/{eventId}/sub-events": {
