@@ -13,6 +13,22 @@
         }
       },
       "severity": "error"
+    },
+    "operation-summary": {
+      "description": "Operations must have a summary",
+      "given": "$.paths.[*].[get,post,put,delete,options]",
+      "then": {
+        "field": "summary",
+        "function": "truthy"
+      }
+    },
+    "operation-description": {
+      "description": "Operations must have a description",
+      "given": "$.paths.[*].[get,post,put,delete,options]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      }
     }
   }
 }
