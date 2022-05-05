@@ -1,7 +1,10 @@
 {
-  "extends": "spectral:oas",
+  "extends": [["spectral:oas", "all"]],
   "formats": ["oas3"],
   "rules": {
+    "info-license": "off",
+    "license-url": "off",
+    "tag-description": "off",
     "alphabetical-tags": {
       "description": "Tags should be sorted alphabetically",
       "given": "$",
