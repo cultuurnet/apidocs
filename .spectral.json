@@ -5,7 +5,7 @@
     "info-license": "off",
     "license-url": "off",
     "tag-description": "off",
-    "alphabetical-tags": {
+    "publiq-alphabetical-tags": {
       "description": "Tags should be sorted alphabetically",
       "given": "$",
       "then": {
@@ -17,7 +17,7 @@
       },
       "severity": "error"
     },
-    "operation-summary": {
+    "publiq-operation-summary": {
       "description": "Operations must have a summary",
       "given": "$.paths.[*].[get,post,put,delete,options]",
       "then": {
@@ -25,7 +25,7 @@
         "function": "truthy"
       }
     },
-    "operation-description": {
+    "publiq-operation-description": {
       "description": "Operations must have a description",
       "given": "$.paths.[*].[get,post,put,delete,options]",
       "then": {
