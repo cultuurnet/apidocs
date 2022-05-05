@@ -1934,6 +1934,9 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
+        ],
+        "tags": [
+          "Events"
         ]
       }
     },
