@@ -215,7 +215,9 @@
     "/passes/{cardNumber}": {
       "get": {
         "summary": "Retrieve pass",
-        "tags": [],
+        "tags": [
+          "Passholders"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -255,7 +257,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\nThe caller of this request must have the ADMIN role for a specific museum.",
+        "description": "Retrieve information related to a museum pass.\n\nThe caller of this request must have the Point-Of-Sale role for a specific museum.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -271,6 +273,60 @@
           "in": "path",
           "required": true,
           "description": "The card number of the museum pass."
+        }
+      ]
+    },
+    "/passholders/{passholderId}/picture": {
+      "get": {
+        "summary": "Retrieve pass",
+        "tags": [
+          "Passholders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possbile error types:\n\nhttps://api.publiq.be/probs/museumpass/passholder-not-found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-passholders-passholderId-picture",
+        "description": "Retrieve the picture of a passholder.\n\nTODO: define format?\n\nThe caller of this request must have the Points-Of-Sale role for a specific museum.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true
         }
       ]
     },
@@ -322,11 +378,17 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Passholders"
+        ]
       }
     }
   },
   "tags": [
+    {
+      "name": "Passholders"
+    },
     {
       "name": "Vouchers"
     }
