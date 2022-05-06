@@ -1,0 +1,186 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "museumPASSmusées Partner API",
+    "version": "1.0",
+    "description": "With museumPASSmusées Partner API you can ....TODO.....\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=mpm-partner-api)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!",
+    "contact": {
+      "name": "publiq helpdesk",
+      "email": "vragen@publiq.be"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://test-partner-api.museumpassmusees.be",
+      "description": "Testing"
+    },
+    {
+      "url": "https://partner-api.museumpassmusees.be",
+      "description": "Production"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Error": {
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/stoplight-docs-errors/main/models/Error.json",
+        "x-internal": true
+      },
+      "VoucherList": {
+        "title": "VoucherList",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "vouchers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "vouchers"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "CLIENT_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "",
+            "refreshUrl": "",
+            "scopes": {}
+          }
+        },
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://publiq.stoplight.io/docs/authentication/docs/client-access-token.md) for more info."
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized. Your request is missing the required credentials to authenticate. See the Authentication documentation for more info.\n\n* type: https://api.publiq.be/probs/auth/unauthorized\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/unauthorized",
+                  "title": "Unauthorized",
+                  "status": 401
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. Your request was successfully authenticated but you do not have permission to perform this particular request.\n\n* type: https://api.publiq.be/probs/auth/forbidden\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/forbidden",
+                  "title": "Forbidden",
+                  "status": 403,
+                  "detail": "user must be admin of organizer abcd1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/voucher-lists": {
+      "post": {
+        "summary": "Generate a list of vouchers",
+        "operationId": "post-voucher-lists",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoucherList"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "a6c002ca-41ee-4e02-9558-1bead1b54ebc",
+                      "vouchers": [
+                        "5454482138103",
+                        "5428704143561",
+                        "5458143034508"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possbile error types:\n\n* https://api.publiq.be/probs/body/invalid-data (if numberOfVouchers is not within its boundaries)\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Generate a list of vouchers for a partner. The partner is implied by the client access token.\n\n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the PARTNER role for a specific partner.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "numberOfVouchers": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "description": "The total number of vouchers to generate"
+                  }
+                },
+                "required": [
+                  "numberOfVouchers"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vouchers"
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "tags": [
+    {
+      "name": "Vouchers"
+    }
+  ]
+}
