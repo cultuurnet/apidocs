@@ -145,7 +145,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Generate a list of vouchers for a partner. The partner is implied by the client access token.\n\n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the PARTNER role for a specific partner.",
+        "description": "Generate a list of vouchers for a partner. The partner is implied by the client access token.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the PARTNER role for a specific partner.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
