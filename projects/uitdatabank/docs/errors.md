@@ -69,3 +69,11 @@ Example error response:
   "label": "reserved_label_example"
 }
 ```
+
+## invalid-workflow-status-transition
+
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/invalid-workflow-status-transition`
+*   **Title**: `Invalid workflowStatus transition`
+*   **Status**: `400`
+
+The `workflowStatus` of an event can only transition from `DRAFT` to `READY_FOR_VALIDATION`, from `READY_FOR_VALIDATION` to either `APPROVED` or `REJECTED`, or from any workflowStatus to `DELETED`. Other transitions are not possible, for example back from `REJECTED` to `READY_FOR_VALIDATION`.
