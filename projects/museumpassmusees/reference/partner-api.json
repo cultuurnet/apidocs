@@ -28,12 +28,15 @@
       "VoucherList": {
         "title": "VoucherList",
         "type": "object",
+        "examples": [],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "ID of the voucher list. This ID can be used for logging purposes."
           },
           "vouchers": {
             "type": "array",
+            "description": "List of vouchers.",
             "items": {
               "type": "string"
             }
@@ -42,8 +45,7 @@
         "required": [
           "id",
           "vouchers"
-        ],
-        "examples": []
+        ]
       },
       "Pass": {
         "title": "Pass",
@@ -79,34 +81,45 @@
         "properties": {
           "passholderId": {
             "type": "string",
+            "description": "ID of the passholder linked to this pass.",
             "readOnly": true
           },
           "firstName": {
             "type": "string",
+            "description": "Firstname of the passholder. **Attention**: this field is not always available.",
             "readOnly": true
           },
           "lastName": {
             "type": "string",
+            "description": "Lastname of the passholder. **Attention**: this field is not always available.",
             "readOnly": true
           },
-          "canDoVisitsNow": {
-            "type": "boolean",
+          "currentVisitAdmission": {
+            "type": "string",
+            "enum": [
+              "ALLOWED",
+              "NOT_ALLOWED",
+              "NOT_ALLOWED_MAXIMUM_REACHED"
+            ],
+            "description": "Current visit admimission state of the passholder linked to this pass. Possible values<br>`ALLOWED`: The passholder is allowed to visit a museum.<br>`NOT_ALLOWED`: The passholder is not allowed to visit a museum. e.g. because his subscription is expired or he doesn't have a valid subscription.<br>`NOT_ALLOWED_MAXIMUM_REACHED`: The passholder is unregistered and has reached his maximum visits. (currently set to 2)",
             "readOnly": true
           },
           "dateOfBirth": {
             "type": "string",
             "format": "date",
+            "description": "Date of birth of the passholder. **Attention**: this field is not always available.",
             "readOnly": true
           },
           "subscriptionEndDate": {
             "type": "string",
             "format": "date",
+            "description": "End date of the museumpass subscription.",
             "readOnly": true
           }
         },
         "required": [
           "passholderId",
-          "canDoVisitsNow",
+          "currentVisitAdmission",
           "subscriptionEndDate"
         ]
       }
