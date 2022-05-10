@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://test-partner-api.museumpassmusees.be",
+      "url": "https://partner-api-test.museumpassmusees.be",
       "description": "Testing"
     },
     {
