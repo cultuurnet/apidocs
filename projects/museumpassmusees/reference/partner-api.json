@@ -42,41 +42,72 @@
         "required": [
           "id",
           "vouchers"
-        ]
+        ],
+        "examples": []
       },
       "Pass": {
         "title": "Pass",
         "type": "object",
         "examples": [
           {
-            "cardNumber": "90-0086652-49",
             "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
             "firstName": "Sophie",
             "lastName": "Peeters",
-            "canDoVisitsNow": true
+            "canDoVisitsNow": true,
+            "dateOfBirth": "1983-04-01",
+            "subscriptionEndDate": "2022-12-15"
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "canDoVisitsNow": true,
+            "subscriptionEndDate": "2022-12-15"
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "firstName": "Sophie",
+            "lastName": "Peeters",
+            "canDoVisitsNow": false,
+            "dateOfBirth": "1983-04-01",
+            "subscriptionEndDate": "2022-01-04"
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "canDoVisitsNow": false,
+            "subscriptionEndDate": "2022-12-15"
           }
         ],
         "properties": {
-          "cardNumber": {
-            "type": "string"
-          },
           "passholderId": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "firstName": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "lastName": {
-            "type": "string"
+            "type": "string",
+            "readOnly": true
           },
           "canDoVisitsNow": {
-            "type": "boolean"
+            "type": "boolean",
+            "readOnly": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "readOnly": true
+          },
+          "subscriptionEndDate": {
+            "type": "string",
+            "format": "date",
+            "readOnly": true
           }
         },
         "required": [
-          "cardNumber",
           "passholderId",
-          "canDoVisitsNow"
+          "canDoVisitsNow",
+          "subscriptionEndDate"
         ]
       }
     },
@@ -180,7 +211,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Generate a list of vouchers for a partner. The partner is implied by the client access token.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the ADMIN role for a specific partner.",
+        "description": "Generate a list of vouchers for a given partner.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the _Voucher generator_ role for a specific partner.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -192,6 +223,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "partnerId": {
+                    "type": "string",
+                    "description": "The partner that will be invoiced for the generated vouchers."
+                  },
                   "numberOfVouchers": {
                     "type": "integer",
                     "minimum": 1,
@@ -200,8 +235,17 @@
                   }
                 },
                 "required": [
+                  "partnerId",
                   "numberOfVouchers"
                 ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "partnerId": "72d95b03-359c-4b89-ba09-73ca2792ecab",
+                    "numberOfVouchers": 1
+                  }
+                }
               }
             }
           }
@@ -257,7 +301,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\nThe caller of this request must have the Point-Of-Sale role for a specific museum.",
+        "description": "Retrieve information related to a museum pass.\n\nThe caller of this request must have the _Museum Visit_ role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -278,13 +322,13 @@
     },
     "/passholders/{passholderId}/picture": {
       "get": {
-        "summary": "Retrieve pass",
+        "summary": "Retrieve passholder picture",
         "tags": [
           "Passholders"
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "OK\n\nThe bytes of the image in PNG or JPG format.",
             "content": {
               "application/octet-stream": {
                 "schema": {
@@ -312,7 +356,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-picture",
-        "description": "Retrieve the picture of a passholder.\n\nTODO: define format?\n\nThe caller of this request must have the Points-Of-Sale role for a specific museum.",
+        "description": "Retrieve the picture of a passholder.\n\nThe caller of this request must have the _Museum Visit_ role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -355,7 +399,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers a visit of a passholder at a museum.\n\nThe caller of this request must have the Point-Of-Sale role for a specific museum.",
+        "description": "Registers a visit of a passholder at a given museum.\n\nThe caller of this request must have the _Museum Visit_ role for the given museum.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -370,10 +414,14 @@
                   "passholderId": {
                     "type": "string",
                     "description": "ID of the passholder that visits the museum"
+                  },
+                  "museumId": {
+                    "type": "string"
                   }
                 },
                 "required": [
-                  "passholderId"
+                  "passholderId",
+                  "museumId"
                 ]
               }
             }
