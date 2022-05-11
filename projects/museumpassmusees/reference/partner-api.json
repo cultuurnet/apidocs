@@ -351,7 +351,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\n> **Important**:\n> <br>Only 3 fields are always for a pass: `passholderId`, `subscriptionEndDate`, `visit`.\n> <br><br>The other fields like `firstName`, `lastName` and `picture` are sometimes omitted from the response, because they are still unknown or irrelevant.\n> <br><br>The `visit.allowed` boolean indicates whether this pass is allowed to visit a museum at the time of the request. In case that boolean is false the `visit.reason` will contain more information why that is not possible.\n\n\nThe caller of this request must have the _visit registrar_ role.",
+        "description": "Retrieve information related to a museum pass.\n\n> **Important**:\n> <br>Only 3 fields are always available: `passholderId`, `subscriptionEndDate`, `visit`.\n> <br><br>The other fields like `firstName`, `lastName` and `picture` can be omitted from the response, because they are still unknown or irrelevant.\n> <br><br>The `visit.allowed` boolean indicates whether this pass is allowed to visit a museum at the time of the request. In case that boolean is false the `visit.reason` will contain more information why that is not possible.\n\n\nThe caller of this request must have the _visit registrar_ role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
