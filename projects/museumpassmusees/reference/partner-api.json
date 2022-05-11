@@ -158,7 +158,6 @@
           },
           "picture": {
             "type": "object",
-            "format": "date",
             "description": "Picture of the passholder. **Attention**: this field is not always available.",
             "properties": {
               "url": {
