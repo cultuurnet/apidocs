@@ -117,7 +117,7 @@
             "properties": {
               "allowed": {
                 "type": "boolean",
-                "description": "Indicates whether the passholder of this pass is allowed to visit a museum at this moment. If this is `true`, a subsequent call to `POST /visits` should succeed. If this is `false`, the client should display an error message, based on the `reason`."
+                "description": "Indicates whether the passholder of this pass is allowed to visit a museum at the time of the request. If this is `true`, a subsequent call to `POST /visits` should succeed. If this is `false`, the client should display an error message, based on the `reason`."
               },
               "reason": {
                 "type": "string",
@@ -154,13 +154,13 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time.",
+                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time. The expirary time can be found in the `picture.expiresAt` field. A new valid url can be easily retrieved by retrieving the `Pass` again.",
                 "readOnly": true
               },
               "expiresAt": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Date after which the url will stop working. A new url can be easily retrieved by retrieving the `Pass` again.",
+                "description": "Date after which the picture url will stop working. ",
                 "readOnly": true
               }
             },
@@ -351,7 +351,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\nTODO: documenteer dat firstname etc niet beschikbaar zijn met unregistered passholders\n\nThe caller of this request must have the _visit registrar_ role.",
+        "description": "Retrieve information related to a museum pass.\n\n> **Important**:\n> <br>Only 3 fields are always for a pass: `passholderId`, `subscriptionEndDate`, `visit`.\n> <br><br>The other fields like `firstName`, `lastName` and `picture` are sometimes omitted from the response, because they are still unknown or irrelevant.\n> <br><br>The `visit.allowed` boolean indicates whether this pass is allowed to visit a museum at the time of the request. In case that boolean is false the `visit.reason` will contain more information why that is not possible.\n\n\nThe caller of this request must have the _visit registrar_ role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
