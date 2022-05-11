@@ -53,29 +53,47 @@
         "examples": [
           {
             "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": true
+            },
             "firstName": "Sophie",
             "lastName": "Peeters",
-            "canDoVisitsNow": true,
-            "dateOfBirth": "1983-04-01",
-            "subscriptionEndDate": "2022-12-15"
+            "dateOfBirth": "1992-04-14",
+            "picture": {
+              "url": "https://media.museumpassmusees.be/profile/0feb87bd-462d-4f24-a25d-df64ab99300e.png?token=Zl1icdJnbRygckq8eySn8N4Hc7Ae9t",
+              "expiresAt": "2022-05-24T14:15:22Z"
+            }
           },
           {
             "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
-            "canDoVisitsNow": true,
-            "subscriptionEndDate": "2022-12-15"
-          },
-          {
-            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-01-31",
+            "visit": {
+              "allowed": false,
+              "reason": "EXPIRED"
+            },
             "firstName": "Sophie",
             "lastName": "Peeters",
-            "canDoVisitsNow": false,
-            "dateOfBirth": "1983-04-01",
-            "subscriptionEndDate": "2022-01-04"
+            "dateOfBirth": "1992-04-14",
+            "picture": {
+              "url": "https://media.museumpassmusees.be/profile/0feb87bd-462d-4f24-a25d-df64ab99300e.png?token=Zl1icdJnbRygckq8eySn8N4Hc7Ae9t",
+              "expiresAt": "2022-05-24T14:15:22Z"
+            }
           },
           {
             "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
-            "canDoVisitsNow": false,
-            "subscriptionEndDate": "2022-12-15"
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": true
+            }
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": false,
+              "reason": "CARD_BLOCKED"
+            }
           }
         ],
         "properties": {
@@ -83,6 +101,35 @@
             "type": "string",
             "description": "ID of the passholder linked to this pass.",
             "readOnly": true
+          },
+          "subscriptionEndDate": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of the museumpass subscription of this pass.",
+            "readOnly": true
+          },
+          "visit": {
+            "type": "object",
+            "required": [
+              "allowed"
+            ],
+            "description": "Current museum visit information for this pass.",
+            "properties": {
+              "allowed": {
+                "type": "boolean",
+                "description": "Indicates whether the passholder of this pass is allowed to visit a museum at this moment. If this is `true`, a subsequent call to `POST /visits` should succeed. If this is `false`, the client should display an error message, based on the `reason`."
+              },
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "EXPIRED",
+                  "MAXIMUM_UNREGISTERED_VISITS_REACHED",
+                  "CARD_BLOCKED",
+                  "PASSHOLDER_BLOCKED"
+                ],
+                "description": "The reason why a visit is currently not allowed. This field is only available when `allowed=false`."
+              }
+            }
           },
           "firstName": {
             "type": "string",
@@ -94,33 +141,40 @@
             "description": "Lastname of the passholder. **Attention**: this field is not always available.",
             "readOnly": true
           },
-          "currentVisitAdmission": {
-            "type": "string",
-            "enum": [
-              "ALLOWED",
-              "NOT_ALLOWED",
-              "NOT_ALLOWED_MAXIMUM_REACHED"
-            ],
-            "description": "Current visit admimission state of the passholder linked to this pass. Possible values<br>`ALLOWED`: The passholder is allowed to visit a museum.<br>`NOT_ALLOWED`: The passholder is not allowed to visit a museum. e.g. because his subscription is expired or he doesn't have a valid subscription.<br>`NOT_ALLOWED_MAXIMUM_REACHED`: The passholder is unregistered and has reached his maximum visits. (currently set to 2)",
-            "readOnly": true
-          },
           "dateOfBirth": {
             "type": "string",
             "format": "date",
             "description": "Date of birth of the passholder. **Attention**: this field is not always available.",
             "readOnly": true
           },
-          "subscriptionEndDate": {
-            "type": "string",
+          "picture": {
+            "type": "object",
             "format": "date",
-            "description": "End date of the museumpass subscription.",
+            "description": "Picture of the passholder. **Attention**: this field is not always available.",
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time.",
+                "readOnly": true
+              },
+              "expiresAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date after which the url will stop working. A new url can be easily retrieved by retrieving the `Pass` again.",
+                "readOnly": true
+              }
+            },
+            "required": [
+              "url",
+              "expiresAt"
+            ],
             "readOnly": true
           }
         },
         "required": [
           "passholderId",
-          "currentVisitAdmission",
-          "subscriptionEndDate"
+          "subscriptionEndDate",
+          "visit"
         ]
       }
     },
@@ -224,7 +278,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Generate a list of vouchers for a given partner.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the _Voucher generator_ role for a specific partner.",
+        "description": "Generate a list of vouchers for the partner identified by the client access token.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. This will be invoiced to the partner.\n\nThe caller of this request must have the _Voucher generator_ role for the partner.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -236,10 +290,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "partnerId": {
-                    "type": "string",
-                    "description": "The partner that will be invoiced for the generated vouchers."
-                  },
                   "numberOfVouchers": {
                     "type": "integer",
                     "minimum": 1,
@@ -248,7 +298,6 @@
                   }
                 },
                 "required": [
-                  "partnerId",
                   "numberOfVouchers"
                 ]
               },
@@ -262,19 +311,13 @@
               }
             }
           }
-        },
-        "tags": [
-          "Vouchers"
-        ]
+        }
       },
       "parameters": []
     },
     "/passes/{cardNumber}": {
       "get": {
-        "summary": "Retrieve pass",
-        "tags": [
-          "Passholders"
-        ],
+        "summary": "Look up pass by card number",
         "responses": {
           "200": {
             "description": "OK",
@@ -282,17 +325,8 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Pass"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\nhttps://api.publiq.be/probs/museumpass/card-not-active\nhttps://api.publiq.be/probs/museumpass/passholder-not-active",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -314,7 +348,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\nThe caller of this request must have the _Museum Visit_ role.",
+        "description": "Retrieve information related to a museum pass.\n\nTODO: documenteer dat firstname etc niet beschikbaar zijn met unregistered passholders\n\nThe caller of this request must have the _visit registrar_ role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -333,67 +367,13 @@
         }
       ]
     },
-    "/passholders/{passholderId}/picture": {
-      "get": {
-        "summary": "Retrieve passholder picture",
-        "tags": [
-          "Passholders"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK\n\nThe bytes of the image in PNG or JPG format.",
-            "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "object",
-                  "properties": {}
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "description": "Not Found. Possbile error types:\n\nhttps://api.publiq.be/probs/museumpass/passholder-not-found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-passholders-passholderId-picture",
-        "description": "Retrieve the picture of a passholder.\n\nThe caller of this request must have the _Museum Visit_ role.",
-        "security": [
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "passholderId",
-          "in": "path",
-          "required": true
-        }
-      ]
-    },
     "/visits": {
       "post": {
         "summary": "Register a museum visit",
         "operationId": "post-visits",
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Visit registered."
           },
           "400": {
             "description": "Bad Request. Possbile error types:\n\nhttps://api.publiq.be/probs/museumpass/passholder-not-found\nhttps://api.publiq.be/probs/museumpass/visit-maximum-reached\nhttps://api.publiq.be/probs/museumpass/museum-not-active\nhttps://api.publiq.be/probs/museumpass/card-not-active\nhttps://api.publiq.be/probs/museumpass/subscription-not-active\nhttps://api.publiq.be/probs/museumpass/passholder-not-active\n",
@@ -412,7 +392,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers a visit of a passholder at a given museum.\n\nThe caller of this request must have the _Museum Visit_ role for the given museum.",
+        "description": "Registers a visit of a passholder at the museum museum identified by the client access token.\n\nThe caller of this request must have the _visit registrar_ role for the museum.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -427,31 +407,16 @@
                   "passholderId": {
                     "type": "string",
                     "description": "ID of the passholder that visits the museum"
-                  },
-                  "museumId": {
-                    "type": "string"
                   }
                 },
                 "required": [
-                  "passholderId",
-                  "museumId"
+                  "passholderId"
                 ]
               }
             }
           }
-        },
-        "tags": [
-          "Passholders"
-        ]
+        }
       }
     }
-  },
-  "tags": [
-    {
-      "name": "Passholders"
-    },
-    {
-      "name": "Vouchers"
-    }
-  ]
+  }
 }
