@@ -28,7 +28,16 @@
       "VoucherList": {
         "title": "VoucherList",
         "type": "object",
-        "examples": [],
+        "examples": [
+          {
+            "id": "a6c002ca-41ee-4e02-9558-1bead1b54ebc",
+            "vouchers": [
+              "5454482138103",
+              "5428704143561",
+              "5458143034508"
+            ]
+          }
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -246,18 +255,7 @@
                 "schema": {
                   "$ref": "#/components/schemas/VoucherList"
                 },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "id": "a6c002ca-41ee-4e02-9558-1bead1b54ebc",
-                      "vouchers": [
-                        "5454482138103",
-                        "5428704143561",
-                        "5458143034508"
-                      ]
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           },
