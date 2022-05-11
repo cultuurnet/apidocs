@@ -41,6 +41,7 @@
         "properties": {
           "id": {
             "type": "string",
+            "format": "uuid",
             "description": "ID of the voucher list. This ID can be used for logging purposes."
           },
           "vouchers": {
