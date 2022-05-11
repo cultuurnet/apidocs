@@ -162,6 +162,7 @@
             "properties": {
               "url": {
                 "type": "string",
+                "format": "uri",
                 "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time. The expirary time can be found in the `picture.expiresAt` field. A new valid url can be easily retrieved by retrieving the `Pass` again.",
                 "readOnly": true
               },
