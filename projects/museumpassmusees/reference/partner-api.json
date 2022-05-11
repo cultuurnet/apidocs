@@ -311,7 +311,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Vouchers"
+        ]
       },
       "parameters": []
     },
@@ -353,6 +356,9 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
+        ],
+        "tags": [
+          "Passholders"
         ]
       },
       "parameters": [
@@ -415,8 +421,22 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Visits"
+        ]
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Passholders"
+    },
+    {
+      "name": "Visits"
+    },
+    {
+      "name": "Vouchers"
+    }
+  ]
 }
