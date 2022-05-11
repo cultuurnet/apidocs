@@ -415,6 +415,13 @@
                 "required": [
                   "passholderId"
                 ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "passholderId": "a6c002ca-41ee-4e02-9558-1bead1b54ebc"
+                  }
+                }
               }
             }
           }
