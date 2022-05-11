@@ -1,6 +1,5 @@
 {
   "description": "A cultural, sport, or leisure activity.",
-  "type": "object",
   "examples": [
     {
       "@id": "https://io-test.uitdatabank.be/event/85b04295-479c-40f5-b3dd-469dfb4387b3",
@@ -44,7 +43,8 @@
       ],
       "availableFrom": "2021-05-17T22:00:00+00:00",
       "availableTo": "2021-05-17T22:00:00+00:00",
-      "attendanceMode": "offline",
+      "attendanceMode": "mixed",
+      "onlineUrl": "https://www.publiq.be/livestream",
       "location": {
         "@id": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3",
         "mainLanguage": "nl",
@@ -326,6 +326,9 @@
         "attendanceMode": {
           "$ref": "./event-attendanceMode.json"
         },
+        "onlineUrl": {
+          "$ref": "./event-onlineUrl.json"
+        },
         "status": {
           "$ref": "./event-status.json"
         },
@@ -465,5 +468,6 @@
         ]
       }
     }
-  ]
+  ],
+  "type": "object"
 }
