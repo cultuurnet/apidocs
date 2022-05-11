@@ -48,7 +48,11 @@
             "type": "array",
             "description": "List of vouchers.",
             "items": {
-              "type": "string"
+              "type": "string",
+              "minLength": 13,
+              "maxLength": 13,
+              "minItems": 1,
+              "maxItems": 20
             }
           }
         },
