@@ -109,14 +109,12 @@
           "passholderId": {
             "type": "string",
             "format": "uuid",
-            "description": "ID of the passholder linked to this pass.",
-            "readOnly": true
+            "description": "ID of the passholder linked to this pass."
           },
           "subscriptionEndDate": {
             "type": "string",
             "format": "date",
-            "description": "End date of the museumpass subscription of this pass.",
-            "readOnly": true
+            "description": "End date of the museumpass subscription of this pass."
           },
           "visit": {
             "type": "object",
@@ -143,19 +141,16 @@
           },
           "firstName": {
             "type": "string",
-            "description": "Firstname of the passholder. **Attention**: this field is not always available.",
-            "readOnly": true
+            "description": "Firstname of the passholder. **Attention**: this field is not always available."
           },
           "lastName": {
             "type": "string",
-            "description": "Lastname of the passholder. **Attention**: this field is not always available.",
-            "readOnly": true
+            "description": "Lastname of the passholder. **Attention**: this field is not always available."
           },
           "dateOfBirth": {
             "type": "string",
             "format": "date",
-            "description": "Date of birth of the passholder. **Attention**: this field is not always available.",
-            "readOnly": true
+            "description": "Date of birth of the passholder. **Attention**: this field is not always available."
           },
           "picture": {
             "type": "object",
@@ -164,21 +159,18 @@
               "url": {
                 "type": "string",
                 "format": "uri",
-                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time. The expirary time can be found in the `picture.expiresAt` field. A new valid url can be easily retrieved by retrieving the `Pass` again.",
-                "readOnly": true
+                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time. The expirary time can be found in the `picture.expiresAt` field. A new valid url can be easily retrieved by retrieving the `Pass` again."
               },
               "expiresAt": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Date after which the picture url will stop working. ",
-                "readOnly": true
+                "description": "Date after which the picture url will stop working."
               }
             },
             "required": [
               "url",
               "expiresAt"
-            ],
-            "readOnly": true
+            ]
           }
         },
         "required": [
