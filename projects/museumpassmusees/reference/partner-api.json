@@ -108,6 +108,7 @@
         "properties": {
           "passholderId": {
             "type": "string",
+            "format": "uuid",
             "description": "ID of the passholder linked to this pass.",
             "readOnly": true
           },
