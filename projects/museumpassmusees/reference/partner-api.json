@@ -395,7 +395,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers a visit of a passholder at the museum museum identified by the client access token.\n\nThe caller of this request must have the _visit registrar_ role for the museum.",
+        "description": "Registers a visit of a passholder at the museum identified by the client access token.\n\nThe caller of this request must have the _visit registrar_ role for the museum.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
