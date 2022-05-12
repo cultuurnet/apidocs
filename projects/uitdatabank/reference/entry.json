@@ -4060,15 +4060,6 @@
                 ]
               },
               "examples": {
-                "Organizer with required fields": {
-                  "value": {
-                    "mainLanguage": "nl",
-                    "name": {
-                      "nl": "Nederlandse naam"
-                    },
-                    "url": "https://www.publiq.be"
-                  }
-                },
                 "Organizer with all possible fields": {
                   "value": {
                     "mainLanguage": "nl",
@@ -4114,6 +4105,15 @@
                         "inLanguage": "nl"
                       }
                     ]
+                  }
+                },
+                "Organizer with required fields": {
+                  "value": {
+                    "mainLanguage": "nl",
+                    "name": {
+                      "nl": "Nederlandse naam"
+                    },
+                    "url": "https://www.publiq.be"
                   }
                 }
               }
