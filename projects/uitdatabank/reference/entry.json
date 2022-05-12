@@ -3762,6 +3762,59 @@
         ]
       }
     },
+    "/places/{placeId}/name/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "name - update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The name was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/PlaceNotFound"
+          }
+        },
+        "operationId": "place-name-put",
+        "description": "Update the name of a place based on the given `placeId` and `language` inside the URL.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-name-put.json"
+              },
+              "examples": {}
+            }
+          }
+        }
+      }
+    },
     "/places/{placeId}/type/{termId}": {
       "parameters": [
         {
