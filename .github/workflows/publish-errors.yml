@@ -1,5 +1,8 @@
 name: Publish errors documentation
-on: push
+on:
+  push:
+    paths:
+      - 'projects/errors/**'
 jobs:
   publish:
     runs-on: ubuntu-latest
