@@ -1,4 +1,4 @@
-name: Publish museumPASSmusées documentation
+name: Publish museumpassmusees documentation
 on:
   push:
     paths:
