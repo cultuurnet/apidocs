@@ -1,5 +1,8 @@
 name: Publish widgets documentation
-on: push
+on:
+  push:
+    paths:
+      - 'projects/widgets/**'
 jobs:
   publish:
     runs-on: ubuntu-latest

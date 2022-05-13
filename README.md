@@ -37,7 +37,7 @@ Clone this repository to your local machine.
 
 Anyone can contribute to our API documentation. To make the process as smooth as possible, please take the following guidelines into consideration:
 
-*   Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`.
+*   Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`. Branches that change/fix the tooling across all projects should be prefixed with `platform/`.
 *   Do not edit multiple projects in the same branch unless the changes are related to each other.
 *   Avoid branches with a lot of changes that are not related, even within the same project. If you need to add a lot of documentation, aim for small incremental steps so the review process stays manageable and you get feedback early on.
 *   Use [atomic commits](https://curiousprogrammer.dev/blog/why-i-create-atomic-commits-in-git/).
