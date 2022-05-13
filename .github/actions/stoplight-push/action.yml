@@ -22,21 +22,18 @@ runs:
       uses: tj-actions/branch-names@v5.2
 
     - name: Set branch_name ENV variable
-      id: branch-name-env-variable
+      shell: bash
       run: echo "branch_name=${{ steps.branch-name.outputs.current_branch }}" >> $GITHUB_ENV
 
     - name: Replace image URLs in .md files
-      needs: branch-name-env-variable
       shell: bash
       run: cd projects/${{ inputs.name }}/docs && find . -type f -name '*.md' -exec sed -i -r 's_\]\([./]+/assets/_](https://raw.githubusercontent.com/cultuurnet/apidocs/${{ env.branch_name }}/projects/${{ inputs.name }}/assets/_g' {} +
 
     - name: Decide on branch name for Stoplight.io
-      needs: branch-name-env-variable
-      id: branch-name-stoplight
       if: ${{ inputs.rename-main-to-unreleased == 'true' && env.branch_name == 'main' }}
+      shell: bash
       run: echo "branch_name=unreleased" >> $GITHUB_ENV
 
     - name: Publish
-      needs: branch-name-env-variable
       shell: bash
       run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ env.branch_name }} --ci-token ${{ inputs.token }} --verbose
