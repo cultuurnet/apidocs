@@ -196,15 +196,15 @@ Make sure to pull these changes in your local copy of the docs before making mor
 
 ## Publishing your changes 🚢
 
-Any branches you create will automatically be published as extra branches on https://docs.publiq.be in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
+Any branches you create will automatically be published as extra versions on https://docs.publiq.be in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
 
-When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` branch of the project you made changes to on https://docs.publiq.be (visible to any visitor).
+When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on https://docs.publiq.be (visible to any visitor).
 
 ![](readme-images/unreleased-branch.png)
 
-When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` branch by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
+When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` version by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
 
-The workflow will detect that you have run it manually, and push the changes to the actual `Stable` branch on Stoplight instead of the `Unreleased` branch.
+The workflow will detect that you have run it manually, and push the changes to the `Stable` version on Stoplight instead of the `Unreleased` version.
 
 ## Useful tools and resources 📚
 
