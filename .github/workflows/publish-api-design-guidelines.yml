@@ -2,7 +2,7 @@ name: Publish api design guidelines documentation
 on:
   push:
     paths:
-      - 'projects/api-design-guidelines'
+      - 'projects/api-design-guidelines/**'
 jobs:
   publish:
     runs-on: ubuntu-latest
