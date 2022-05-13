@@ -42,7 +42,7 @@
           },
           "name": {
             "$ref": "./common-name.json",
-            "description": "Name of a tariff inside priceInfo. Required if category is set to `tariff`. For the `base` category UiTdatabank will set a default. Requires at least one value, for the language specified in the `mainLanguage` property."
+            "description": "Name of a tariff inside priceInfo. Required if category is set to `tariff`. For the `base` category UiTdatabank will set a default. Requires at least one value, for the language specified in the `mainLanguage` property. Names must be unique for a single language when using multiple tarrifs."
           }
         },
         "required": [
