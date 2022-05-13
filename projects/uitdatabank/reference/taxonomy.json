@@ -37,6 +37,7 @@
                   "properties": {
                     "terms": {
                       "type": "array",
+                      "description": "Flat list containing every existing taxonomy term.",
                       "items": {
                         "title": "Term",
                         "type": "object",
@@ -193,25 +194,29 @@
                           },
                           "name": {
                             "type": "object",
-                            "description": "Localized human-readable names of the term, as an object with languages as properties.",
+                            "description": "Internationalized human-readable name of the term, with one or more localized values.",
                             "required": [
                               "nl"
                             ],
                             "properties": {
                               "nl": {
                                 "type": "string",
+                                "description": "A human-readable name in the `nl` (Dutch) language.",
                                 "example": "Voorzieningen voor rolstoelgebruikers"
                               },
                               "fr": {
                                 "type": "string",
+                                "description": "A human-readable name in the `fr` (French) language.",
                                 "example": "Facilités pour fauteuils roulants"
                               },
                               "de": {
                                 "type": "string",
+                                "description": "A human-readable name in the `de` (German) language.",
                                 "example": "EInrichtung für Rollstuhlfahrer"
                               },
                               "en": {
                                 "type": "string",
+                                "description": "A human-readable name in the `en` (English) language.",
                                 "example": "Wheelchair facilities"
                               }
                             }

@@ -1,6 +1,6 @@
 {
   "title": "mainLanguage",
-  "description": "Original language of the document when it was created. Every translatable property is required to have at least a value for this language.",
+  "description": "Original language of the resource when it was created. Every translatable property is required to have at least a value for this language.",
   "type": "string",
   "enum": [
     "nl",

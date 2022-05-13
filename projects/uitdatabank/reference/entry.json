@@ -38,24 +38,26 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "description": "The id of the created event."
+                      "description": "UUID of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
-                      "description": "The id of the created event (deprecated and replaced with `id`)."
+                      "deprecated": true,
+                      "description": "Deprecated, use `id` instead."
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/places/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
                       "format": "uri",
-                      "description": "The url of the JSON-LD representation of the created event."
+                      "description": "URL of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -274,24 +276,28 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "UUID of the updated event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `id` instead.",
                       "deprecated": true
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/events/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "URL of the updated event to use in subsequent requests or to store as a reference in your application.",
                       "format": "uri"
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -533,10 +539,12 @@
                   "type": "object",
                   "properties": {
                     "eventId": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "UUID of the new event to use in subsequent requests or to store as a reference in your application."
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "URL of the new event to use in subsequent requests or to store as a reference in your application."
                     }
                   }
                 },
@@ -1678,22 +1686,27 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the event."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "location": {
                     "type": "object",
+                    "description": "Reference to the location that the event is taking place at.",
                     "required": [
                       "id"
                     ],
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "UUID of the location that the event is taking place at."
                       }
                     }
                   },
@@ -2243,7 +2256,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the event."
                     }
                   }
                 },
@@ -2470,7 +2484,8 @@
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -2739,10 +2754,10 @@
                     },
                     "commandId": {
                       "type": "string",
-                      "description": "The command id of the import job.",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -3578,36 +3593,20 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the place."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "address": {
-                    "type": "object",
-                    "required": [
-                      "streetAddress",
-                      "postalCode",
-                      "addressLocality",
-                      "addressCountry"
-                    ],
-                    "properties": {
-                      "streetAddress": {
-                        "type": "string"
-                      },
-                      "postalCode": {
-                        "type": "string"
-                      },
-                      "addressLocality": {
-                        "type": "string"
-                      },
-                      "addressCountry": {
-                        "type": "string"
-                      }
-                    }
+                    "$ref": "../models/common-address-localized.json",
+                    "description": "The address the place is located at, in the main language of the place."
                   },
                   "calendar": {
                     "$ref": "../models/place-calendar-put.json"
@@ -3790,7 +3789,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the place."
                     }
                   }
                 },
@@ -5482,6 +5482,7 @@
                   "properties": {
                     "hydra:member": {
                       "type": "array",
+                      "description": "News article results for the requested page.",
                       "items": {
                         "$ref": "../models/newsArticle.json"
                       }

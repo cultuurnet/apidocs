@@ -1,5 +1,6 @@
 {
   "title": "status",
+  "description": "Indicates if the event/place is still happening as scheduled or not.",
   "type": "object",
   "properties": {
     "type": {

@@ -1,6 +1,7 @@
 {
   "type": "array",
   "title": "sameAs",
+  "description": "One or more URIs that represent the same resource on another API or website, not necessarily in JSON-LD format.",
   "uniqueItems": true,
   "minItems": 1,
   "examples": [
