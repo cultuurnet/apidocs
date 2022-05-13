@@ -34,6 +34,13 @@
         "field": "description",
         "function": "truthy"
       }
+    },
+    "publiq-properties-description": {
+      "given": "$..[properties][?(@.type)]",
+      "then": {
+        "field": "description",
+        "function": "truthyCustomErrorMessage"
+      }
     }
   }
 }
