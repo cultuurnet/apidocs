@@ -1,4 +1,6 @@
 {
+  "functionsDir": "./spectral/functions",
+  "functions": ["truthyCustomErrorMessage"],
   "extends": [["spectral:oas", "all"]],
   "formats": ["oas3"],
   "rules": {
