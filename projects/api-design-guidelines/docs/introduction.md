@@ -1,5 +1,3 @@
-TEMPORARY TEST 2
-
 # Introduction
 
 Welcome to publiq's API design and documentation guidelines! 👋
