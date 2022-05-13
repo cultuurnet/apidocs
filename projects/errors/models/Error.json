@@ -1,0 +1,50 @@
+{
+  "title": "Error",
+  "type": "object",
+  "description": "RFC7807 error model for all publiq APIs.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "A URI reference that identifies the problem type. Can be used to recognize specific errors in your application code by comparing the complete URI."
+    },
+    "title": {
+      "type": "string",
+      "description": "A short, human-readable summary of the problem type."
+    },
+    "status": {
+      "type": "integer",
+      "description": "The HTTP status code."
+    },
+    "detail": {
+      "type": "string",
+      "description": "A human-readable explanation specific to this occurrence of the problem. "
+    },
+    "schemaErrors": {
+      "type": "array",
+      "description": "A list of one or more schema validation errors (usually related to problems in the request body).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "jsonPointer": {
+            "type": "string",
+            "format": "json-pointer",
+            "description": "RFC6901 compliant pointer that indicates what property/value was invalid."
+          },
+          "error": {
+            "type": "string",
+            "description": "A human-readable (but often technical) reason why the property was invalid."
+          }
+        },
+        "required": [
+          "jsonPointer",
+          "error"
+        ]
+      }
+    }
+  },
+  "required": [
+    "type",
+    "title",
+    "status"
+  ]
+}
