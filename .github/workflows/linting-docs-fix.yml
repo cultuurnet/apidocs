@@ -1,4 +1,4 @@
-name: Linting docs fix
+name: Fix linting errors in docs
 on: workflow_dispatch
 jobs:
   docs-lint-fix:
