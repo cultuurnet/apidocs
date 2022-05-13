@@ -1,5 +1,8 @@
 name: Publish uitdatabank documentation
-on: push
+on:
+  push:
+    paths:
+      - 'projects/uitdatabank/**'
 jobs:
   publish:
     runs-on: ubuntu-latest
