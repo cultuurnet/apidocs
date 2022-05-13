@@ -175,7 +175,7 @@ You can uninstall the pre-commit hook by running:
 In any case the checks will also run on GitHub and you should receive an email if they fail. 
 If you open a pull request it will also include the status of the checks.
 
-## Automatically fixing (some) errors ✅
+## Automatically fixing (some) errors 🧹
 
 Warnings or errors reported by `yarn api:lint` (a.k.a. the `Linting / openapi` check on GitHub) always need to be fixed manually in the OpenAPI file(s) of your project.
 
@@ -196,15 +196,15 @@ Make sure to pull these changes in your local copy of the docs before making mor
 
 ## Publishing your changes 🚢
 
-Any branches you create will automatically be published as extra branches on https://docs.publiq.be in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
+Any branches you create will automatically be published as extra versions on https://docs.publiq.be in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
 
-When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` branch of the project you made changes to on https://docs.publiq.be (visible to any visitor).
+When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on https://docs.publiq.be (visible to any visitor).
 
 ![](readme-images/unreleased-branch.png)
 
-When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` branch by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
+When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` version by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
 
-The workflow will detect that you have run it manually, and push the changes to the actual `Stable` branch on Stoplight instead of the `Unreleased` branch.
+The workflow will detect that you have run it manually, and push the changes to the `Stable` version on Stoplight instead of the `Unreleased` version.
 
 ## Useful tools and resources 📚
 
