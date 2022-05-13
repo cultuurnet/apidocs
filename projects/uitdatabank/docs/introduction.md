@@ -1,5 +1,3 @@
-TEMPORARY EDIT
-
 <!-- focus: false -->
 
 ![](../assets/images/uitdatabank.png)

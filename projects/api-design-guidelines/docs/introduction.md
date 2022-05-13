@@ -1,5 +1,3 @@
-TEMPORARY EDIT
-
 # Introduction
 
 Welcome to publiq's API design and documentation guidelines! 👋

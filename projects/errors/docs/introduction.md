@@ -1,5 +1,3 @@
-TEMPORARY EDIT
-
 # Introduction
 
 Handling errors is an important part of every API integration.

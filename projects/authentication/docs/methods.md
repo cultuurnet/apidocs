@@ -1,5 +1,3 @@
-TEMPORARY EDIT
-
 # Overview
 
 Each publiq API supports one of three authentication methods, depending on the security that it requires.
