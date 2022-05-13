@@ -1,5 +1,8 @@
 name: Publish authentication documentation
-on: push
+on:
+  push:
+    paths:
+      - 'projects/authentication/**'
 jobs:
   publish:
     runs-on: ubuntu-latest
