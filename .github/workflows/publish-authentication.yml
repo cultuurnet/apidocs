@@ -14,3 +14,4 @@ jobs:
         with:
           name: authentication
           token: ${{ secrets.CI_TOKEN_AUTHENTICATION }}
+          rename-main-to-unreleased: true

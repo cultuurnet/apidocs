@@ -14,3 +14,4 @@ jobs:
         with:
           name: museumpassmusees
           token: ${{ secrets.CI_TOKEN_MPM }}
+          rename-main-to-unreleased: true

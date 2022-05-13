@@ -14,3 +14,4 @@ jobs:
         with:
           name: api-design-guidelines
           token: ${{ secrets.CI_TOKEN_GUIDELINES }}
+          rename-main-to-unreleased: true

@@ -14,3 +14,4 @@ jobs:
         with:
           name: uitdatabank
           token: ${{ secrets.CI_TOKEN_UITDATABANK }}
+          rename-main-to-unreleased: true

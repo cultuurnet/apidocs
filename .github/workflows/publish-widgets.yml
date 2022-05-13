@@ -14,3 +14,4 @@ jobs:
         with:
           name: widgets
           token: ${{ secrets.CI_TOKEN_WIDGETS }}
+          rename-main-to-unreleased: true

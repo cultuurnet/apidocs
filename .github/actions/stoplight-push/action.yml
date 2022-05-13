@@ -7,6 +7,10 @@ inputs:
   token:
     required: true
     description: "CI token of the project on Stoplight to push to"
+  rename-main-to-unreleased:
+    required: false
+    default: "true"
+    description: 'Whether to rename the main branch to unreleased or not (if that is the branch that is being published). Defaults to "true".'
 runs:
   using: "composite"
   steps:
@@ -17,10 +21,22 @@ runs:
       id: branch-name
       uses: tj-actions/branch-names@v5.2
 
+    - name: Set branch_name ENV variable
+      id: branch-name-env-variable
+      run: echo "branch_name=${{ steps.branch-name.outputs.current_branch }}" >> $GITHUB_ENV
+
     - name: Replace image URLs in .md files
+      needs: branch-name-env-variable
       shell: bash
-      run: cd projects/${{ inputs.name }}/docs && find . -type f -name '*.md' -exec sed -i -r 's_\]\([./]+/assets/_](https://raw.githubusercontent.com/cultuurnet/apidocs/${{ steps.branch-name.outputs.current_branch }}/projects/${{ inputs.name }}/assets/_g' {} +
+      run: cd projects/${{ inputs.name }}/docs && find . -type f -name '*.md' -exec sed -i -r 's_\]\([./]+/assets/_](https://raw.githubusercontent.com/cultuurnet/apidocs/${{ env.branch_name }}/projects/${{ inputs.name }}/assets/_g' {} +
+
+    - name: Decide on branch name for Stoplight.io
+      needs: branch-name-env-variable
+      id: branch-name-stoplight
+      if: ${{ inputs.rename-main-to-unreleased == 'true' && env.branch_name == 'main' }}
+      run: echo "branch_name=unreleased" >> $GITHUB_ENV
 
     - name: Publish
+      needs: branch-name-env-variable
       shell: bash
-      run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ steps.branch-name.outputs.current_branch }} --ci-token ${{ inputs.token }} --verbose
+      run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ env.branch_name }} --ci-token ${{ inputs.token }} --verbose
