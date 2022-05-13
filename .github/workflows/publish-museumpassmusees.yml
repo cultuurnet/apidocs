@@ -1,8 +1,9 @@
-name: Publish museumPASSmusées documentation
+name: Publish museumpassmusees documentation
 on:
   push:
     paths:
       - 'projects/museumpassmusees/**'
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -14,3 +15,4 @@ jobs:
         with:
           name: museumpassmusees
           token: ${{ secrets.CI_TOKEN_MPM }}
+          event: ${{ github.event_name }}
