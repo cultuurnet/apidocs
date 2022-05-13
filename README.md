@@ -9,7 +9,6 @@ This repository contains all the API documentation available at https://docs.pub
 *   [Contribution guidelines](#contribution-guidelines-)
 *   [Adding a new project](#adding-a-new-project-)
 *   [Project structure](#project-structure-)
-*   [Opening your project in Stoplight Studio](#opening-your-project-in-stoplight-studio-)
 *   [OpenAPI files](#openapi-files-)
 *   [Docs](#docs-)
 *   [Sidebar](#sidebar-)
@@ -38,7 +37,7 @@ Clone this repository to your local machine.
 
 Anyone can contribute to our API documentation. To make the process as smooth as possible, please take the following guidelines into consideration:
 
-*   Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`.
+*   Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`. Branches that change/fix the tooling across all projects should be prefixed with `platform/`.
 *   Do not edit multiple projects in the same branch unless the changes are related to each other.
 *   Avoid branches with a lot of changes that are not related, even within the same project. If you need to add a lot of documentation, aim for small incremental steps so the review process stays manageable and you get feedback early on.
 *   Use [atomic commits](https://curiousprogrammer.dev/blog/why-i-create-atomic-commits-in-git/).
@@ -85,17 +84,6 @@ Our documentation is hosted by [Stoplight](https://stoplight.io), which expects 
     ├─ ...
 
 It is important to adhere to this structure to avoid problems on the hosted version of our docs at https://docs.publiq.be or inside the Stoplight Studio editor.
-
-## Opening your project in Stoplight Studio 🤖
-
-If you are just starting out with API documentation in this repository, it is advised to work with the [Stoplight Studio](https://stoplight.io/studio/) editor because it gives you a preview of how your documentation will look when published on https://docs.publiq.be.
-
-When opening your project in Stoplight Studio, it is important to **open a single project**.
-If you instead open the whole repository, or the whole `projects` folder at once, Stoplight Studio will not correctly find your OpenAPI files, docs, images, and sidebar configuration file!
-
-Start the app and on the start screen click "Open Existing Folder". Then pick the directory of your project in your local copy of this repository.
-
-Stoplight Studio offers 3 tabs in its sidebar to browse your files: `APIs`, `Docs`, and `Files`. While you can use whichever one you prefer, the `Files` tab give the most complete view of all the files in your project (including all the files from `APIs` and `Docs`).
 
 ## OpenAPI file(s) 🔌
 
