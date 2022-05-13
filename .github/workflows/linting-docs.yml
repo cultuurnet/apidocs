@@ -1,4 +1,4 @@
-name: Linting
+name: Linting (Docs)
 on: push
 jobs:
   docs:
