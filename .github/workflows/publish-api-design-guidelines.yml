@@ -15,4 +15,4 @@ jobs:
         with:
           name: api-design-guidelines
           token: ${{ secrets.CI_TOKEN_GUIDELINES }}
-          event: ${{ github.event }}
+          event: ${{ github.event_name }}

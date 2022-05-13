@@ -15,4 +15,4 @@ jobs:
         with:
           name: errors
           token: ${{ secrets.CI_TOKEN_ERRORS }}
-          event: ${{ github.event }}
+          event: ${{ github.event_name }}

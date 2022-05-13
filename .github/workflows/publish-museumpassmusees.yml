@@ -15,4 +15,4 @@ jobs:
         with:
           name: museumpassmusees
           token: ${{ secrets.CI_TOKEN_MPM }}
-          event: ${{ github.event }}
+          event: ${{ github.event_name }}

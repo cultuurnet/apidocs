@@ -15,4 +15,4 @@ jobs:
         with:
           name: widgets
           token: ${{ secrets.CI_TOKEN_WIDGETS }}
-          event: ${{ github.event }}
+          event: ${{ github.event_name }}

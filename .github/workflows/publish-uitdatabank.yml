@@ -15,4 +15,4 @@ jobs:
         with:
           name: uitdatabank
           token: ${{ secrets.CI_TOKEN_UITDATABANK }}
-          event: ${{ github.event }}
+          event: ${{ github.event_name }}
