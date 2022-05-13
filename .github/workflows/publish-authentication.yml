@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'projects/authentication/**'
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -14,3 +15,4 @@ jobs:
         with:
           name: authentication
           token: ${{ secrets.CI_TOKEN_AUTHENTICATION }}
+          event: ${{ github.event_name }}
