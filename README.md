@@ -175,7 +175,7 @@ You can uninstall the pre-commit hook by running:
 In any case the checks will also run on GitHub and you should receive an email if they fail. 
 If you open a pull request it will also include the status of the checks.
 
-## Automatically fixing (some) errors ✅
+## Automatically fixing (some) errors 🧹
 
 Warnings or errors reported by `yarn api:lint` (a.k.a. the `Linting / openapi` check on GitHub) always need to be fixed manually in the OpenAPI file(s) of your project.
 
