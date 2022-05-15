@@ -2,8 +2,6 @@
   "type": "object",
   "title": "place.name.put",
   "additionalProperties": false,
-  "minProperties": 1,
-  "maxProperties": 1,
   "properties": {
     "name": {
       "$ref": "./common-name-localized.json"
