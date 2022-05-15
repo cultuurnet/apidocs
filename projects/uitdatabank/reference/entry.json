@@ -1885,7 +1885,7 @@
           }
         },
         "operationId": "event-name-put",
-        "description": "Update the name of an event based on the given `eventId` and `language` inside the URL.",
+        "description": "Updates the localized name of an event based on the given `eventId` and `language` inside the URL.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3794,7 +3794,7 @@
           }
         },
         "operationId": "place-name-put",
-        "description": "Update the name of a place based on the given `placeId` and `language` inside the URL.",
+        "description": "Updates the localized name of a place based on the given `placeId` and `language` inside the URL.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
