@@ -70,6 +70,33 @@
         "function": "ifRequestBodyThen400ResponseRequired"
       },
       "severity": "error"
+    },
+    "publiq-bad-request-content": {
+      "description": "Responses with a 4xx status code must have a 'content' property.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406']",
+      "then": {
+        "field": "content",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-content-type": {
+      "description": "Responses with a 4xx status code must have an 'application/problem+json' content-type.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406'][content]",
+      "then": {
+        "field": "application/problem+json",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-content-type-schema": {
+      "description": "Responses with a 4xx status code must have a 'schema' property.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406'][content]['application/problem+json']",
+      "then": {
+        "field": "schema",
+        "function": "truthy"
+      },
+      "severity": "error"
     }
   }
 }
