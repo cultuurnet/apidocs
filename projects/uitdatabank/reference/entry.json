@@ -90,6 +90,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new event to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -482,7 +483,7 @@
               }
             }
           },
-          "description": "The details of the event to update."
+          "description": "The complete details of the event to update."
         },
         "tags": [
           "Events"
@@ -799,7 +800,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New attendanceMode to set on the event, and optionally a new location (when moving from attendanceMode `online` to `mixed` or `offline`)."
         }
       }
     },
@@ -888,7 +889,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New audienceType to set on the event."
         }
       }
     },
@@ -967,7 +968,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the event."
         }
       }
     },
@@ -1035,7 +1036,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New bookingAvailability to set on the event."
         },
         "tags": [
           "Events"
@@ -1465,7 +1466,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -1855,7 +1856,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for an event (whether they have been updated or not)."
         },
         "security": [
           {
@@ -1920,7 +1921,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New onlineUrl to set on the event."
         }
       },
       "delete": {
@@ -2534,6 +2535,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new place to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -2958,7 +2960,7 @@
               }
             }
           },
-          "description": "The details of the place to update."
+          "description": "The complete details of the place to update."
         },
         "tags": [
           "Places"
@@ -3071,7 +3073,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the place."
         }
       }
     },
@@ -3435,7 +3437,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -3694,7 +3696,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for a place (whether they have been updated or not)."
         },
         "security": [
           {
@@ -4048,6 +4050,7 @@
           }
         },
         "requestBody": {
+          "description": "The complete details of the new organizer to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -4311,6 +4314,7 @@
         },
         "description": "Updates the organizer with the given `organizerId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing (optional) properties on the organizer that are not included in the update request will be removed from the organizer.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the organizer even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
         "requestBody": {
+          "description": "The complete details of the organizer to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -4477,6 +4481,7 @@
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4558,6 +4563,7 @@
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -4657,6 +4663,7 @@
           }
         },
         "requestBody": {
+          "description": "New contact point to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -4750,6 +4757,7 @@
           }
         },
         "requestBody": {
+          "description": "New description to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4933,7 +4941,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Images to update on the organizer. Images previously added to the organizer but not included in this request will be preserved."
         },
         "tags": [
           "Organizers"
@@ -5225,6 +5233,7 @@
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -5303,6 +5312,7 @@
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -5382,6 +5392,7 @@
           }
         },
         "requestBody": {
+          "description": "New url to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -5456,6 +5467,7 @@
         "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the new news article to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -5716,6 +5728,7 @@
         "description": "Updates an existing news article.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the news article to update.",
           "content": {
             "application/json": {
               "schema": {

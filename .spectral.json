@@ -44,6 +44,24 @@
         "function": "truthyCustomErrorMessage"
       },
       "severity": "error"
+    },
+    "publiq-requestBody-description": {
+      "description": "Request bodies must have a description.",
+      "given": "$[paths][*][get,post,put,patch,delete,options,head][requestBody]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-response-description": {
+      "description": "Responses must have a description for each content-type.",
+      "given": "$[paths][*][get,post,put,patch,delete,options,head][responses][*]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      },
+      "severity": "error"
     }
   }
 }
