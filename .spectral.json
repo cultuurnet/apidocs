@@ -21,7 +21,7 @@
     },
     "publiq-operation-summary": {
       "description": "Operations must have a summary",
-      "given": "$.paths.[*].[get,post,put,delete,options]",
+      "given": "$paths[*][*][get,post,put,patch,delete,options,head]",
       "then": {
         "field": "summary",
         "function": "truthy"
@@ -29,7 +29,7 @@
     },
     "publiq-operation-description": {
       "description": "Operations must have a description",
-      "given": "$.paths.[*].[get,post,put,delete,options]",
+      "given": "$[paths][*][get,post,put,patch,delete,options,head]",
       "then": {
         "field": "description",
         "function": "truthy"
