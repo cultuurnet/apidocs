@@ -25,7 +25,8 @@
       "then": {
         "field": "summary",
         "function": "truthy"
-      }
+      },
+      "severity": "error"
     },
     "publiq-operation-description": {
       "description": "Operations must have a description",
@@ -33,14 +34,16 @@
       "then": {
         "field": "description",
         "function": "truthy"
-      }
+      },
+      "severity": "error"
     },
     "publiq-properties-description": {
       "given": "$..[properties][?(@.type)]",
       "then": {
         "field": "description",
         "function": "truthyCustomErrorMessage"
-      }
+      },
+      "severity": "error"
     }
   }
 }
