@@ -1,6 +1,6 @@
 {
   "functionsDir": "./spectral/functions",
-  "functions": ["truthyCustomErrorMessage"],
+  "functions": ["truthyCustomErrorMessage", "ifRequestBodyThen400ResponseRequired"],
   "extends": [["spectral:oas", "all"]],
   "formats": ["oas3"],
   "rules": {
@@ -60,6 +60,14 @@
       "then": {
         "field": "description",
         "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-request-body-400-response": {
+      "description": "Requests with a body must have a response with status code 400.",
+      "given": "$[paths][*][*]",
+      "then": {
+        "function": "ifRequestBodyThen400ResponseRequired"
       },
       "severity": "error"
     }
