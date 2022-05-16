@@ -47,7 +47,7 @@
     },
     "publiq-requestBody-description": {
       "description": "Request bodies must have a description.",
-      "given": "$[paths][*][get,post,put,patch,delete,options,head][requestBody]",
+      "given": "$[paths][*][*][requestBody]",
       "then": {
         "field": "description",
         "function": "truthy"
@@ -56,7 +56,7 @@
     },
     "publiq-response-description": {
       "description": "Responses must have a description for each content-type.",
-      "given": "$[paths][*][get,post,put,patch,delete,options,head][responses][*]",
+      "given": "$[paths][*][*][responses][*]",
       "then": {
         "field": "description",
         "function": "truthy"
