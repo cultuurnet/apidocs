@@ -55,7 +55,7 @@
       "severity": "error"
     },
     "publiq-response-description": {
-      "description": "Responses must have a description for each content-type.",
+      "description": "Responses must have a description for each status code.",
       "given": "$[paths][*][*][responses][*]",
       "then": {
         "field": "description",
