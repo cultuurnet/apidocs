@@ -52,7 +52,7 @@
               "minLength": 13,
               "maxLength": 13,
               "minItems": 1,
-              "maxItems": 20
+              "maxItems": 10
             }
           }
         },
@@ -289,7 +289,7 @@
                   "numberOfVouchers": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 20,
+                    "maximum": 10,
                     "description": "The total number of vouchers to generate"
                   }
                 },
