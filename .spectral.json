@@ -89,15 +89,9 @@
             "minProperties": 1,
             "additionalProperties": false,
             "properties": {
-              "application/json": {
-                "type": "object"
-              },
-              "application/ld+json": {
-                "type": "object"
-              },
-              "multipart/form-data": {
-                "type": "object"
-              }
+              "application/json": {},
+              "application/ld+json": {},
+              "multipart/form-data": {}
             }
           }
         }
