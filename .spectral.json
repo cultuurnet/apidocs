@@ -127,6 +127,15 @@
         "function": "formatUriNotUrl"
       },
       "severity": "warn"
+    },
+    "publiq-strings-with-format-do-not-need-minLength": {
+      "description": "Strings with a 'format' property should not have a 'minLength' property",
+      "given": "$..[?(@.type == 'string' && @.format)]",
+      "then": {
+        "field": "minLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
     }
   }
 }
