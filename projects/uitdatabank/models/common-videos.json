@@ -1,6 +1,7 @@
 {
   "title": "videos",
   "type": "array",
+  "description": "Describes a list of video objects that are linked to a resource.",
   "items": {
     "type": "object",
     "description": "A video object that is linked to an event or a place.",

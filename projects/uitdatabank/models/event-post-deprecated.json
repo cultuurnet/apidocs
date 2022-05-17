@@ -25,7 +25,8 @@
       "$ref": "./event-location.json"
     },
     "calendar": {
-      "$ref": "./event-calendar-put.json"
+      "$ref": "./event-calendar-put.json",
+      "description": "Calendar info for the event."
     }
   },
   "required": [

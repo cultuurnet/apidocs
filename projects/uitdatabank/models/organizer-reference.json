@@ -1,6 +1,7 @@
 {
   "type": "object",
   "title": "organizer.reference",
+  "description": "The related organizer.",
   "examples": [
     {
       "@id": "https://io-test.uitdatabank.be/organizers/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"

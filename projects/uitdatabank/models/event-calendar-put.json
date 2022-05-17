@@ -1,7 +1,7 @@
 {
   "title": "event.calendar.put",
   "type": "object",
-  "description": "",
+  "description": "Request body to update the calendar information of an event.",
   "allOf": [
     {
       "properties": {

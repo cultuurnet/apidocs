@@ -1,9 +1,20 @@
 {
-  "extends": "spectral:oas",
+  "functionsDir": "./spectral/functions",
+  "functions": [
+    "doesNotEqual",
+    "formatUriNotUrl",
+    "response400Required",
+    "response400MustMentionBodyErrors",
+    "truthyCustomErrorMessage"
+  ],
+  "extends": [["spectral:oas", "all"]],
   "formats": ["oas3"],
   "rules": {
-    "alphabetical-tags": {
-      "description": "Tags should be sorted alphabetically",
+    "info-license": "off",
+    "license-url": "off",
+    "tag-description": "off",
+    "publiq-alphabetical-tags": {
+      "description": "Tags must be sorted alphabetically",
       "given": "$",
       "then": {
         "field": "tags",
@@ -13,6 +24,241 @@
         }
       },
       "severity": "error"
+    },
+    "publiq-operation-summary": {
+      "description": "Operations must have a summary",
+      "given": "$paths[*][*][get,post,put,patch,delete,options,head]",
+      "then": {
+        "field": "summary",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-operation-description": {
+      "description": "Operations must have a description",
+      "given": "$[paths][*][get,post,put,patch,delete,options,head]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-properties-description": {
+      "given": "$..[properties][?(@.type)]",
+      "then": {
+        "field": "description",
+        "function": "truthyCustomErrorMessage"
+      },
+      "severity": "error"
+    },
+    "publiq-requestBody-description": {
+      "description": "Request bodies must have a description.",
+      "given": "$[paths][*][*][requestBody]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-response-description": {
+      "description": "Responses must have a description for each status code.",
+      "given": "$[paths][*][*][responses][*]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-get-delete-no-request-body": {
+      "description": "Operations with GET or DELETE method must not have a 'requestBody' property.",
+      "given": "$[paths][*][get,delete]",
+      "then": {
+        "field": "requestBody",
+        "function": "falsy"
+      },
+      "severity": "error"
+    },
+    "publiq-request-body-allowed-content-types": {
+      "description": "Request bodies must only use content-types 'application/json', 'application/ld+json', or 'multipart/form-data' (discouraged)",
+      "given": "$[paths][*][*][requestBody][content]",
+      "then": {
+        "function": "schema",
+        "functionOptions": {
+          "schema": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+              "application/json": {},
+              "application/ld+json": {},
+              "multipart/form-data": {}
+            }
+          }
+        }
+      },
+      "severity": "error"
+    },
+    "publiq-request-body-400-response": {
+      "description": "Requests with a body must have a response with status code 400.",
+      "given": "$[paths][*][?(@.requestBody)]",
+      "then": {
+        "function": "response400Required"
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-content": {
+      "description": "Responses with a 4xx status code must have a 'content' property.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406']",
+      "then": {
+        "field": "content",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-content-type": {
+      "description": "Responses with a 4xx status code must (only) have an 'application/problem+json' content-type.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406'][content]",
+      "then": {
+        "function": "schema",
+        "functionOptions": {
+          "schema": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "application/problem+json": {}
+            },
+            "required": ["application/problem+json"]
+          }
+        }
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-content-type-schema": {
+      "description": "Responses with a 4xx status code must have a 'schema' property.",
+      "given": "$[paths][*][*][responses]['400','401','403','404','405','406'][content]['application/problem+json']",
+      "then": {
+        "field": "schema",
+        "function": "truthy"
+      },
+      "severity": "error"
+    },
+    "publiq-bad-request-400-body-errors": {
+      "given": "$[paths][*][?(@.requestBody)]",
+      "then": {
+        "function": "response400MustMentionBodyErrors"
+      },
+      "severity": "error"
+    },
+    "publiq-paths-kebab-case": {
+      "description": "Paths must be kebab-case (e.g. `path-parameter`).",
+      "given": "$[paths][*]~",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^(\\/[a-z0-9-.]+|\\/{[a-zA-Z0-9_]+})+$"
+        }
+      },
+      "severity": "error"
+    },
+    "publiq-properties-camel-case": {
+      "description": "Property names must be camelCase.",
+      "given": "$..[properties][*]~",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z@][a-zA-Z0-9:]*$"
+        }
+      }
+    },
+    "publiq-request-headers-casing": {
+      "description": "Request header names must only contain lowercase characters and hyphens (-).",
+      "given": "$[paths]..[parameters][?(@.in == 'header')]",
+      "then": {
+        "field": "name",
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z][a-z\\-]*$"
+        }
+      }
+    },
+    "publiq-response-headers-casing": {
+      "description": "Response header names must only contain lowercase characters and hyphens (-).",
+      "given": "$[paths][*][*][responses][*][headers][*]~",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z][a-z\\-]*$"
+        }
+      }
+    },
+    "publiq-response-headers-description-required": {
+      "description": "Response headers must have a description.",
+      "given": "$[paths][*][*][responses][*][headers][*]",
+      "then": {
+        "field": "description",
+        "function": "truthy"
+      }
+    },
+    "publiq-response-headers-type-required": {
+      "description": "Response headers must have a 'type' property in their 'schema'.",
+      "given": "$[paths][*][*][responses][*][headers][*][schema]",
+      "then": {
+        "field": "type",
+        "function": "truthy"
+      }
+    },
+    "publiq-response-headers-example-required": {
+      "description": "Response headers must have an 'example' property in their 'schema'.",
+      "given": "$[paths][*][*][responses][*][headers][*][schema]",
+      "then": {
+        "field": "example",
+        "function": "truthy"
+      }
+    },
+    "publiq-format-uri-not-url": {
+      "given": "$..[parameter,properties,items]..[format]",
+      "then": {
+        "function": "formatUriNotUrl"
+      },
+      "severity": "warn"
+    },
+    "publiq-strings-with-format-do-not-need-minLength": {
+      "description": "Strings with a 'format' property should not have a 'minLength' property.",
+      "given": "$..[?(@.type == 'string' && @.format)]",
+      "then": {
+        "field": "minLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
+    },
+    "publiq-strings-with-enum-do-not-need-minLength": {
+      "description": "Strings with an 'enum' property should not have a 'minLength' property.",
+      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "then": {
+        "field": "minLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
+    },
+    "publiq-strings-with-enum-do-not-need-maxLength": {
+      "description": "Strings with an 'enum' property should not have a 'maxLength' property.",
+      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "then": {
+        "field": "maxLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
+    },
+    "publiq-examples-strings-real-value": {
+      "description": "Examples must not use 'string' as a value.",
+      "given": "$..[examples]..[*]",
+      "then": {
+        "function": "doesNotEqual",
+        "functionOptions": {
+          "value": "string"
+        }
+      },
+      "severity": "warn"
     }
   }
 }

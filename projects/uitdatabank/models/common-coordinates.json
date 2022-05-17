@@ -1,18 +1,21 @@
 {
   "title": "coordinates",
+  "description": "Geographical coordinates that specify a point on the Earth's surface.",
   "type": "object",
   "properties": {
     "latitude": {
       "type": "number",
       "format": "float",
       "minimum": -90,
-      "maximum": 90
+      "maximum": 90,
+      "description": "A geographic coordinate that specifies the north–south position of a point on the Earth's surface from the equator to one of the poles."
     },
     "longitude": {
       "type": "number",
       "format": "float",
       "minimum": -180,
-      "maximum": 180
+      "maximum": 180,
+      "description": "A geographic coordinate that specifies the east–west position of a point on the Earth's surface from Greenwich, England."
     }
   },
   "required": [

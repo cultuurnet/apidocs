@@ -1,7 +1,7 @@
 {
   "title": "creator",
   "type": "string",
-  "description": "The unique identifier of the user or API client that created the document.",
+  "description": "The unique identifier of the user or API client that created the resource.",
   "examples": [
     "auth0|45c0d021-c78f-445f-adef-be3355b23e4f",
     "rLlc90TSFBDRQbZwzP5vm2niDXI1CZef@clients",

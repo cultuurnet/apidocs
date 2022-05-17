@@ -2,7 +2,7 @@
   "title": "event.calendar.put (deprecated)",
   "deprecated": true,
   "type": "object",
-  "description": "",
+  "description": "Request body to update the calendar information of an event (deprecated format).",
   "properties": {
     "calendarType": {
       "$ref": "./event-calendarType.json"
@@ -15,6 +15,7 @@
     },
     "timeSpans": {
       "type": "array",
+      "description": "List of date ranges that the event is scheduled to take place on.",
       "items": {
         "type": "object",
         "properties": {

@@ -6,7 +6,8 @@
     "description": "With UiTdatabank's Entry API you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be"
+      "email": "vragen@publiq.be",
+      "url": "https://docs.publiq.be"
     }
   },
   "servers": [
@@ -37,24 +38,26 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "description": "The id of the created event."
+                      "description": "UUID of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
-                      "description": "The id of the created event (deprecated and replaced with `id`)."
+                      "deprecated": true,
+                      "description": "Deprecated, use `id` instead."
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/places/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
                       "format": "uri",
-                      "description": "The url of the JSON-LD representation of the created event."
+                      "description": "URL of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -67,7 +70,29 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -87,6 +112,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new event to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -180,7 +206,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -190,7 +216,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -273,24 +299,28 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "UUID of the updated event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `id` instead.",
                       "deprecated": true
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/events/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "URL of the updated event to use in subsequent requests or to store as a reference in your application.",
                       "format": "uri"
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -315,9 +345,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -428,7 +473,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -438,7 +483,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -475,7 +520,7 @@
               }
             }
           },
-          "description": "The details of the event to update."
+          "description": "The complete details of the event to update."
         },
         "tags": [
           "Events"
@@ -532,10 +577,12 @@
                   "type": "object",
                   "properties": {
                     "eventId": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "UUID of the new event to use in subsequent requests or to store as a reference in your application."
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "URL of the new event to use in subsequent requests or to store as a reference in your application."
                     }
                   }
                 },
@@ -747,7 +794,29 @@
             "description": "No Content. The event's attendance mode was successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (attendanceMode) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -790,7 +859,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New attendanceMode to set on the event, and optionally a new location (when moving from attendanceMode `online` to `mixed` or `offline`)."
         }
       }
     },
@@ -879,7 +948,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New audienceType to set on the event."
         }
       }
     },
@@ -958,7 +1027,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the event."
         }
       }
     },
@@ -1026,7 +1095,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New bookingAvailability to set on the event."
         },
         "tags": [
           "Events"
@@ -1456,7 +1525,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -1677,22 +1746,27 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the event."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "location": {
                     "type": "object",
+                    "description": "Reference to the location that the event is taking place at.",
                     "required": [
                       "id"
                     ],
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "UUID of the location that the event is taking place at."
                       }
                     }
                   },
@@ -1841,7 +1915,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for an event (whether they have been updated or not)."
         },
         "security": [
           {
@@ -1869,7 +1943,29 @@
             "description": "No Content. The onlineUrl was successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (onlineUrl) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1906,7 +2002,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New onlineUrl to set on the event."
         }
       },
       "delete": {
@@ -1917,10 +2013,10 @@
             "description": "No Content. The onlineUrl was successfully deleted."
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
-            "description": "Forbidden"
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/EventNotFound"
@@ -2242,7 +2338,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the event."
                     }
                   }
                 },
@@ -2342,6 +2439,31 @@
         "responses": {
           "204": {
             "description": "No Content. The videos are updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -2469,7 +2591,8 @@
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -2493,9 +2616,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -2518,6 +2656,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new place to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -2618,7 +2757,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -2628,7 +2767,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -2738,10 +2877,10 @@
                     },
                     "commandId": {
                       "type": "string",
-                      "description": "The command id of the import job.",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -2766,9 +2905,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -2886,7 +3040,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -2896,7 +3050,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -2942,7 +3096,7 @@
               }
             }
           },
-          "description": "The details of the place to update."
+          "description": "The complete details of the place to update."
         },
         "tags": [
           "Places"
@@ -3055,7 +3209,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the place."
         }
       }
     },
@@ -3419,7 +3573,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -3491,7 +3645,7 @@
                     "value": [
                       {
                         "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
+                        "description": "Locatie aangemaakt in UiTdatabank",
                         "author": "google-oauth2|108326107941342286958",
                         "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
                         "auth0ClientName": "UiTdatabase JWT Provider",
@@ -3577,36 +3731,20 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the place."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "address": {
-                    "type": "object",
-                    "required": [
-                      "streetAddress",
-                      "postalCode",
-                      "addressLocality",
-                      "addressCountry"
-                    ],
-                    "properties": {
-                      "streetAddress": {
-                        "type": "string"
-                      },
-                      "postalCode": {
-                        "type": "string"
-                      },
-                      "addressLocality": {
-                        "type": "string"
-                      },
-                      "addressCountry": {
-                        "type": "string"
-                      }
-                    }
+                    "$ref": "../models/common-address-localized.json",
+                    "description": "The address the place is located at, in the main language of the place."
                   },
                   "calendar": {
                     "$ref": "../models/place-calendar-put.json"
@@ -3694,7 +3832,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for a place (whether they have been updated or not)."
         },
         "security": [
           {
@@ -3789,7 +3927,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the place."
                     }
                   }
                 },
@@ -3889,6 +4028,31 @@
         "responses": {
           "204": {
             "description": "No Content. The videos are updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -4047,6 +4211,7 @@
           }
         },
         "requestBody": {
+          "description": "The complete details of the new organizer to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -4310,6 +4475,7 @@
         },
         "description": "Updates the organizer with the given `organizerId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing (optional) properties on the organizer that are not included in the update request will be removed from the organizer.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the organizer even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
         "requestBody": {
+          "description": "The complete details of the organizer to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -4476,6 +4642,7 @@
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4557,6 +4724,7 @@
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -4656,6 +4824,7 @@
           }
         },
         "requestBody": {
+          "description": "New contact point to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -4749,6 +4918,7 @@
           }
         },
         "requestBody": {
+          "description": "New description to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4781,7 +4951,24 @@
             "description": "No Content. The description was deleted."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
+                      "title": "Path parameter invalid",
+                      "details": "The provided language route parameter is not supported.",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -4898,9 +5085,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/0",
+                          "error": "The required properties (id) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4932,7 +5134,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Images to update on the organizer. Images previously added to the organizer but not included in this request will be preserved."
         },
         "tags": [
           "Organizers"
@@ -5092,12 +5294,7 @@
     "/organizers/{organizerId}/images/main": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/organizerId"
         }
       ],
       "put": {
@@ -5112,7 +5309,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5125,7 +5322,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/imageId",
-                          "error": "The required properties imageId is missing."
+                          "error": "The required properties (imageId) are missing."
                         }
                       ]
                     }
@@ -5229,6 +5426,7 @@
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -5307,6 +5505,7 @@
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -5386,6 +5585,7 @@
           }
         },
         "requestBody": {
+          "description": "New url to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -5434,7 +5634,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5460,6 +5660,7 @@
         "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the new news article to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -5486,6 +5687,7 @@
                   "properties": {
                     "hydra:member": {
                       "type": "array",
+                      "description": "News article results for the requested page.",
                       "items": {
                         "$ref": "../models/newsArticle.json"
                       }
@@ -5690,7 +5892,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5719,6 +5921,7 @@
         "description": "Updates an existing news article.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the news article to update.",
           "content": {
             "application/json": {
               "schema": {
