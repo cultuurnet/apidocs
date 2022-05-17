@@ -170,8 +170,19 @@
         }
       }
     },
+    "publiq-request-headers-casing": {
+      "description": "Request header names must only contain lowercase characters and hyphens (-).",
+      "given": "$[paths]..[parameters][?(@.in == 'header')]",
+      "then": {
+        "field": "name",
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z][a-z\\-]*$"
+        }
+      }
+    },
     "publiq-response-headers-casing": {
-      "description": "Response headers must only contain lowercase characters and hyphens (-).",
+      "description": "Response header names must only contain lowercase characters and hyphens (-).",
       "given": "$[paths][*][*][responses][*][headers][*]~",
       "then": {
         "function": "pattern",
