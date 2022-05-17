@@ -1,5 +1,6 @@
 {
   "title": "datetime.readOnly",
+  "description": "Datetime in ISO-8601 format.",
   "type": "string",
   "format": "date-time",
   "readOnly": true,

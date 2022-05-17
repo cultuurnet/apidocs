@@ -1,6 +1,7 @@
 {
   "type": "array",
   "title": "images",
+  "description": "List of one or more image objects.",
   "minItems": 1,
   "items": {
     "$ref": "./image.json"

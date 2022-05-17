@@ -1,6 +1,7 @@
 {
   "$ref": "./common-string-uri-readOnly.json",
   "title": "common.mainImage",
+  "description": "URL of the main image of the resource.",
   "examples": [
     "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg"
   ]

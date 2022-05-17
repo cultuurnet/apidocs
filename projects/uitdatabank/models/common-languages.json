@@ -1,6 +1,7 @@
 {
   "type": "array",
   "title": "languages",
+  "description": "List of one or more languages.",
   "readOnly": true,
   "minItems": 1,
   "items": {

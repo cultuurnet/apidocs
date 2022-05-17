@@ -1,5 +1,6 @@
 {
   "title": "openingHours",
+  "description": "List of one or more objects describing containing time ranges and one or more days of the week they are applicable for.",
   "type": "array",
   "items": {
     "type": "object",
@@ -19,7 +20,7 @@
     "properties": {
       "opens": {
         "type": "string",
-        "title": "openingHoursTime",
+        "description": "Opening time on the related weekDays.",
         "examples": [
           "17:00"
         ],
@@ -27,7 +28,7 @@
       },
       "closes": {
         "type": "string",
-        "title": "openingHoursTime",
+        "description": "Closing time on the related weekdays.",
         "examples": [
           "17:00"
         ],
@@ -37,6 +38,7 @@
         "type": "array",
         "uniqueItems": true,
         "minItems": 1,
+        "description": "One or more weekdays that the open/closing times are applicable for.",
         "items": {
           "type": "string",
           "enum": [
@@ -48,7 +50,7 @@
             "saturday",
             "sunday"
           ],
-          "example": "monday"
+          "description": "A single weekday."
         }
       }
     },

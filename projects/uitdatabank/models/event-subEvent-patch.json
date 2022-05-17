@@ -15,14 +15,12 @@
         "type": "string",
         "format": "date-time",
         "example": "2021-05-17T22:00:00+00:00",
-        "minLength": 1,
         "description": "The date & time that the subEvent starts."
       },
       "endDate": {
         "type": "string",
         "format": "date-time",
         "example": "2021-05-17T22:00:00+00:00",
-        "minLength": 1,
         "description": "The date & time that the subEvent ends."
       },
       "status": {
@@ -31,7 +29,6 @@
         "properties": {
           "type": {
             "type": "string",
-            "minLength": 1,
             "example": "Available",
             "description": "Required if `status` is included.\nOne of three possible status types.\n\n- `Available`: The subEvent is happening as scheduled\n- `TemporarilyUnavailable`: The subEvent will be postponed\n- `Unavailable`: The subEvent is permanently cancelled",
             "enum": [
@@ -77,7 +74,6 @@
         "properties": {
           "type": {
             "type": "string",
-            "minLength": 1,
             "description": "Required if `bookingAvailability` is included.\nOne of two possible status types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
             "example": "Available",
             "enum": [

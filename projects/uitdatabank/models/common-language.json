@@ -1,5 +1,6 @@
 {
   "title": "language",
+  "description": "Language code used for localization.",
   "type": "string",
   "example": "nl",
   "enum": [
