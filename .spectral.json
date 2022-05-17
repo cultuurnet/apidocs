@@ -1,6 +1,7 @@
 {
   "functionsDir": "./spectral/functions",
   "functions": [
+    "doesNotEqual",
     "formatUriNotUrl",
     "response400Required",
     "response400MustMentionBodyErrors",
@@ -152,6 +153,17 @@
       "then": {
         "field": "maxLength",
         "function": "falsy"
+      },
+      "severity": "warn"
+    },
+    "publiq-examples-strings-real-value": {
+      "description": "Examples must not use 'string' as a value.",
+      "given": "$..[examples]..[*]",
+      "then": {
+        "function": "doesNotEqual",
+        "functionOptions": {
+          "value": "string"
+        }
       },
       "severity": "warn"
     }

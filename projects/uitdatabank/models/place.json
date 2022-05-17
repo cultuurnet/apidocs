@@ -77,7 +77,7 @@
       ],
       "created": "2021-05-17T22:00:00+00:00",
       "modified": "2021-05-17T22:00:00+00:00",
-      "creator": "string",
+      "creator": "auth0|45c0d021-c78f-445f-adef-be3355b23e4f",
       "workflowStatus": "DRAFT",
       "languages": [
         "nl"
@@ -107,7 +107,7 @@
       ],
       "contactPoint": {
         "phone": [
-          "string"
+          "016/112233"
         ],
         "email": [
           "info@example.com"
@@ -117,7 +117,7 @@
         ]
       },
       "bookingInfo": {
-        "phone": "string",
+        "phone": "016/112233",
         "email": "info@example.com",
         "url": "https://www.example.com",
         "urlLabel": {
@@ -135,8 +135,8 @@
           "id": "85b04295-479c-40f5-b3dd-469dfb4387b3",
           "contentUrl": "https://images-test.uitdatabank.be/85b04295-479c-40f5-b3dd-469dfb4387b3.png",
           "thumbnailUrl": "https://images-test.uitdatabank.be/85b04295-479c-40f5-b3dd-469dfb4387b3.png",
-          "description": "string",
-          "copyrightHolder": "string",
+          "description": "Een voorbeeld afbeelding",
+          "copyrightHolder": "John Doe",
           "inLanguage": "nl"
         }
       ],

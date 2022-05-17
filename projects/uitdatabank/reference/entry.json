@@ -206,7 +206,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -216,7 +216,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -473,7 +473,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -483,7 +483,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -2757,7 +2757,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -2767,7 +2767,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -3040,7 +3040,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -3050,7 +3050,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -3645,7 +3645,7 @@
                     "value": [
                       {
                         "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
+                        "description": "Locatie aangemaakt in UiTdatabank",
                         "author": "google-oauth2|108326107941342286958",
                         "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
                         "auth0ClientName": "UiTdatabase JWT Provider",
