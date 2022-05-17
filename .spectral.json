@@ -70,7 +70,7 @@
       "severity": "error"
     },
     "publiq-get-delete-no-request-body": {
-      "description": "Operations with GET or DELETE method must not have a requestBody",
+      "description": "Operations with GET or DELETE method must not have a 'requestBody' property.",
       "given": "$[paths][*][get,delete]",
       "then": {
         "field": "requestBody",
