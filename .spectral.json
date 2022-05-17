@@ -13,7 +13,7 @@
     "license-url": "off",
     "tag-description": "off",
     "publiq-alphabetical-tags": {
-      "description": "Tags should be sorted alphabetically",
+      "description": "Tags must be sorted alphabetically",
       "given": "$",
       "then": {
         "field": "tags",
@@ -111,7 +111,7 @@
       "severity": "error"
     },
     "publiq-paths-kebab-case": {
-      "description": "Paths should be kebab-case (e.g. `path-parameter`).",
+      "description": "Paths must be kebab-case (e.g. `path-parameter`).",
       "given": "$.paths[*]~",
       "then": {
         "function": "pattern",
