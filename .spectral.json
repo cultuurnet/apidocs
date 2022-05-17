@@ -78,6 +78,32 @@
       },
       "severity": "error"
     },
+    "publiq-request-body-allowed-content-types": {
+      "description": "Request bodies must only use content-types 'application/json', 'application/ld+json', or 'multipart/form-data' (discouraged)",
+      "given": "$[paths][*][*][requestBody][content]",
+      "then": {
+        "function": "schema",
+        "functionOptions": {
+          "schema": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+              "application/json": {
+                "type": "object"
+              },
+              "application/ld+json": {
+                "type": "object"
+              },
+              "multipart/form-data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "severity": "error"
+    },
     "publiq-request-body-400-response": {
       "description": "Requests with a body must have a response with status code 400.",
       "given": "$[paths][*][?(@.requestBody)]",
