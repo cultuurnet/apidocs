@@ -69,6 +69,15 @@
       },
       "severity": "error"
     },
+    "publiq-get-delete-no-request-body": {
+      "description": "Operations with GET or DELETE method must not have a requestBody",
+      "given": "$[paths][*][get,delete]",
+      "then": {
+        "field": "requestBody",
+        "function": "falsy"
+      },
+      "severity": "error"
+    },
     "publiq-request-body-400-response": {
       "description": "Requests with a body must have a response with status code 400.",
       "given": "$[paths][*][?(@.requestBody)]",
