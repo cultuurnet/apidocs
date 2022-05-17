@@ -108,6 +108,17 @@
         "function": "response400MustMentionBodyErrors"
       },
       "severity": "error"
+    },
+    "publiq-paths-kebab-case": {
+      "description": "Paths should be kebab-case (e.g. `path-parameter`).",
+      "given": "$.paths[*]~",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^(\\/[a-z0-9-.]+|\\/{[a-zA-Z0-9_]+})+$"
+        }
+      },
+      "severity": "error"
     }
   }
 }
