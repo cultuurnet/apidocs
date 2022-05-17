@@ -129,7 +129,7 @@
       "severity": "warn"
     },
     "publiq-strings-with-format-do-not-need-minLength": {
-      "description": "Strings with a 'format' property should not have a 'minLength' property",
+      "description": "Strings with a 'format' property should not have a 'minLength' property.",
       "given": "$..[?(@.type == 'string' && @.format)]",
       "then": {
         "field": "minLength",
@@ -138,7 +138,7 @@
       "severity": "warn"
     },
     "publiq-strings-with-enum-do-not-need-minLength": {
-      "description": "Strings with an 'enum' property should not have a 'minLength' property",
+      "description": "Strings with an 'enum' property should not have a 'minLength' property.",
       "given": "$..[?(@.type == 'string' && @.enum)]",
       "then": {
         "field": "minLength",
@@ -147,7 +147,7 @@
       "severity": "warn"
     },
     "publiq-strings-with-enum-do-not-need-maxLength": {
-      "description": "Strings with an 'enum' property should not have a 'maxLength' property",
+      "description": "Strings with an 'enum' property should not have a 'maxLength' property.",
       "given": "$..[?(@.type == 'string' && @.enum)]",
       "then": {
         "field": "maxLength",
