@@ -172,7 +172,7 @@
     },
     "publiq-response-headers-casing": {
       "description": "Response headers must only contain lowercase characters and hyphens (-).",
-      "given": "$..[responses][*][headers][*]~",
+      "given": "$[paths][*][*][responses][*][headers][*]~",
       "then": {
         "function": "pattern",
         "functionOptions": {
@@ -182,7 +182,7 @@
     },
     "publiq-response-headers-description-required": {
       "description": "Response headers must have a description.",
-      "given": "$..[responses][*][headers][*]",
+      "given": "$[paths][*][*][responses][*][headers][*]",
       "then": {
         "field": "description",
         "function": "truthy"
@@ -190,7 +190,7 @@
     },
     "publiq-response-headers-type-required": {
       "description": "Response headers must have a 'type' property in their 'schema'.",
-      "given": "$..[responses][*][headers][*][schema]",
+      "given": "$[paths][*][*][responses][*][headers][*][schema]",
       "then": {
         "field": "type",
         "function": "truthy"
@@ -198,7 +198,7 @@
     },
     "publiq-response-headers-example-required": {
       "description": "Response headers must have an 'example' property in their 'schema'.",
-      "given": "$..[responses][*][headers][*][schema]",
+      "given": "$[paths][*][*][responses][*][headers][*][schema]",
       "then": {
         "field": "example",
         "function": "truthy"
