@@ -282,6 +282,7 @@
           }
         ],
         "requestBody": {
+          "description": "Amount of new vouchers to generate for the new list.",
           "content": {
             "application/json": {
               "schema": {
@@ -401,6 +402,7 @@
           }
         ],
         "requestBody": {
+          "description": "New museum visit.",
           "content": {
             "application/json": {
               "schema": {
