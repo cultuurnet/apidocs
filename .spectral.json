@@ -1,9 +1,10 @@
 {
   "functionsDir": "./spectral/functions",
   "functions": [
-    "truthyCustomErrorMessage",
+    "formatUriNotUrl",
     "response400Required",
-    "response400MustMentionBodyErrors"
+    "response400MustMentionBodyErrors",
+    "truthyCustomErrorMessage"
   ],
   "extends": [["spectral:oas", "all"]],
   "formats": ["oas3"],
@@ -119,6 +120,13 @@
         }
       },
       "severity": "error"
+    },
+    "publiq-format-uri-not-url": {
+      "given": "$..[parameter,properties,items]..[format]",
+      "then": {
+        "function": "formatUriNotUrl"
+      },
+      "severity": "warn"
     }
   }
 }
