@@ -136,6 +136,24 @@
         "function": "falsy"
       },
       "severity": "warn"
+    },
+    "publiq-strings-with-enum-do-not-need-minLength": {
+      "description": "Strings with an 'enum' property should not have a 'minLength' property",
+      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "then": {
+        "field": "minLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
+    },
+    "publiq-strings-with-enum-do-not-need-maxLength": {
+      "description": "Strings with an 'enum' property should not have a 'maxLength' property",
+      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "then": {
+        "field": "maxLength",
+        "function": "falsy"
+      },
+      "severity": "warn"
     }
   }
 }
