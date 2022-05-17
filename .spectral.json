@@ -122,6 +122,16 @@
       },
       "severity": "error"
     },
+    "publiq-properties-camel-case": {
+      "description": "Property names must be camelCase.",
+      "given": "$..[properties][*]~",
+      "then": {
+        "function": "pattern",
+        "functionOptions": {
+          "match": "^[a-z@][a-zA-Z0-9:]*$"
+        }
+      }
+    },
     "publiq-format-uri-not-url": {
       "given": "$..[parameter,properties,items]..[format]",
       "then": {
