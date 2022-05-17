@@ -259,7 +259,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possbile error types:\n\n* https://api.publiq.be/probs/body/invalid-data (if numberOfVouchers is not within its boundaries)\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -337,7 +337,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found. Possbile error types:\n\nhttps://api.publiq.be/probs/museumpass/pass-not-found",
+            "description": "Not Found. Possible error types:\n\nhttps://api.publiq.be/probs/museumpass/pass-not-found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -379,7 +379,7 @@
             "description": "Visit registered."
           },
           "400": {
-            "description": "Bad Request. Possbile error types:\n\nhttps://api.publiq.be/probs/museumpass/passholder-not-found\nhttps://api.publiq.be/probs/museumpass/visit-maximum-reached\nhttps://api.publiq.be/probs/museumpass/museum-not-active\nhttps://api.publiq.be/probs/museumpass/card-not-active\nhttps://api.publiq.be/probs/museumpass/subscription-not-active\nhttps://api.publiq.be/probs/museumpass/passholder-not-active\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/museumpass/passholder-not-found\n* https://api.publiq.be/probs/museumpass/visit-maximum-reached\n* https://api.publiq.be/probs/museumpass/museum-not-active\n* https://api.publiq.be/probs/museumpass/card-not-active\n* https://api.publiq.be/probs/museumpass/subscription-not-active\n* https://api.publiq.be/probs/museumpass/passholder-not-active",
             "content": {
               "application/problem+json": {
                 "schema": {
