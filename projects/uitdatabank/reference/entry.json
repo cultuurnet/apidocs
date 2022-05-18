@@ -5682,7 +5682,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NewsArticleNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "x-internal": true,
@@ -5735,7 +5735,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NewsArticleNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates an existing news article.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
