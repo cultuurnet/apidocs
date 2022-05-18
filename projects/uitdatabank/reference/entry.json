@@ -1637,6 +1637,26 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitdatabank/attendance-mode-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Attendance mode not supported": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/attendance-mode-not-supported",
+                      "title": "Attendance mode not supported",
+                      "status": 400,
+                      "detail": "Cannot update the location of an online event to a real location. Set the attendanceMode to mixed or offline first."
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
