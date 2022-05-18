@@ -279,7 +279,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-get",
@@ -374,7 +374,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the event with the given `eventId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing and optional properties on the event that are not included in the update request will be removed from the event.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the event even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
@@ -540,7 +540,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
@@ -629,7 +629,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-copies-post",
@@ -825,7 +825,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-attendance-mode-put",
@@ -908,7 +908,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -997,7 +997,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -1071,7 +1071,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe bookingAvailability of any subEvents that the event has will also be updated to match the general bookingAvailability.\n\n<!-- theme: warning -->\n\n> Note that you cannot update the bookingAvailability of an event with [calendar type](/models/event-calendarType.json) `periodic` or `permanent`. For now, they can only have \"Available\" as bookingAvailability.",
@@ -1157,7 +1157,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-calendar-put",
@@ -1321,7 +1321,7 @@
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van preventieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-calendar-summary-get",
@@ -1474,7 +1474,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -1606,7 +1606,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
@@ -1644,7 +1644,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the event's location to a new place based on the given `eventId` and `placeId` in the URL.\n\nIf the `eventId` does not exist a `404 Not Found` response will be returned. If the `placeId` does not exist a `400 Bad Request` response will be returned. Otherwise a `204 No Content` will be returned if successful. (See response examples below.)",
@@ -1696,7 +1696,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -1934,7 +1934,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-online-url-put",
@@ -1979,7 +1979,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete the onlineUrl of an event.",
@@ -2040,7 +2040,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -2144,7 +2144,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2181,7 +2181,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2221,7 +2221,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2305,7 +2305,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -2392,7 +2392,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more videos of an event.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
@@ -2457,7 +2457,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete an embedded video from an event based on the event id and the video id.",
@@ -3099,7 +3099,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3621,7 +3621,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -3854,7 +3854,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
