@@ -2759,7 +2759,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-get",
@@ -2854,7 +2854,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the place with the given `placeId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing and optional properties on the place that are not included in the update request will be removed from the place.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the place even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
@@ -3036,7 +3036,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
@@ -3180,7 +3180,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-calendar-put",
@@ -3289,7 +3289,7 @@
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van prplaceieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-calendar-summary-get",
@@ -3442,7 +3442,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3573,7 +3573,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-history-get",
@@ -3770,7 +3770,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3941,7 +3941,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more videos of a place.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
@@ -4007,7 +4007,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete an embedded video from an place based on the place id and the video id.",
