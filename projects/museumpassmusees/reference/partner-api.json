@@ -338,7 +338,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found. Possible error types:\n\nhttps://api.publiq.be/probs/museumpass/pass-not-found",
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found",
             "content": {
               "application/problem+json": {
                 "schema": {
