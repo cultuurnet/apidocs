@@ -4276,7 +4276,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Returns an the organizer with the given `organizerId`",
@@ -4452,7 +4452,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -4518,7 +4518,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -4600,7 +4600,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -4651,7 +4651,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -4700,7 +4700,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -4794,7 +4794,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -4837,7 +4837,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -4899,7 +4899,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -4974,7 +4974,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
@@ -5026,7 +5026,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "organizer-image-delete",
@@ -5068,7 +5068,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -5098,7 +5098,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -5158,7 +5158,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "organizer-mainImage-update",
@@ -5242,7 +5242,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -5321,7 +5321,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -5401,7 +5401,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
