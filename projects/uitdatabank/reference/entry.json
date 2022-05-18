@@ -5946,7 +5946,7 @@
         }
       },
       "NotFound": {
-        "description": "The requested resource (URL) could not be found.\nThis can be due to one of multiple reasons:\n\n* The endpoint has a typo and/or does not exist on the API\n* One of the path parameters contains a value that is invalid or does not exist\n* One of the required query parameters is missing\n* One of the query parameters has an invalid value\n\nThe `detail` property of the response should contain more specific information.",
+        "description": "The requested resource (URL) could not be found.\nThis can be due to one of multiple reasons:\n\n* The endpoint has a typo and/or does not exist on the API\n* One of the path parameters contains a value that is invalid or does not exist\n* One of the required query parameters is missing\n* One of the query parameters has an invalid value\n\nThe `detail` property of the response should contain more specific information.\n\nThe `type` will always be `https://api.publiq.be/probs/url/not-found`.",
         "content": {
           "application/problem+json": {
             "schema": {
