@@ -1,0 +1,449 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "museumPASSmusées Partner API",
+    "version": "1.0",
+    "description": "With the museumPASSmusées Partner API you can look up the card of a passholder and check if they are allowed to visit your museum and register their visit so your museum gets reimbursed for it.\n\nIt also enables you to sell museumPASSmusées subscriptions to new passholders by generating voucher codes and selling those to new passholders to use in the online order process on [museumpassmusees.be](https://museumpassmusees.be).\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=mpm-partner-api)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!",
+    "contact": {
+      "name": "publiq helpdesk",
+      "email": "vragen@publiq.be",
+      "url": "https://docs.publiq.be"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://partner-api-test.museumpassmusees.be",
+      "description": "Testing"
+    },
+    {
+      "url": "https://partner-api.museumpassmusees.be",
+      "description": "Production"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Error": {
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
+        "x-internal": true
+      },
+      "VoucherList": {
+        "title": "VoucherList",
+        "type": "object",
+        "examples": [
+          {
+            "id": "a6c002ca-41ee-4e02-9558-1bead1b54ebc",
+            "vouchers": [
+              "5454482138103",
+              "5428704143561",
+              "5458143034508"
+            ]
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID of the voucher list. This ID can be used for logging purposes."
+          },
+          "vouchers": {
+            "type": "array",
+            "description": "List of vouchers.",
+            "items": {
+              "type": "string",
+              "minLength": 13,
+              "maxLength": 13,
+              "minItems": 1,
+              "maxItems": 10
+            }
+          }
+        },
+        "required": [
+          "id",
+          "vouchers"
+        ]
+      },
+      "Pass": {
+        "title": "Pass",
+        "type": "object",
+        "examples": [
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": true
+            },
+            "firstName": "Sophie",
+            "lastName": "Peeters",
+            "dateOfBirth": "1992-04-14",
+            "picture": {
+              "url": "https://media.museumpassmusees.be/profile/0feb87bd-462d-4f24-a25d-df64ab99300e.png?token=Zl1icdJnbRygckq8eySn8N4Hc7Ae9t",
+              "expiresAt": "2022-05-24T14:15:22Z"
+            }
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-01-31",
+            "visit": {
+              "allowed": false,
+              "reason": "EXPIRED"
+            },
+            "firstName": "Sophie",
+            "lastName": "Peeters",
+            "dateOfBirth": "1992-04-14",
+            "picture": {
+              "url": "https://media.museumpassmusees.be/profile/0feb87bd-462d-4f24-a25d-df64ab99300e.png?token=Zl1icdJnbRygckq8eySn8N4Hc7Ae9t",
+              "expiresAt": "2022-05-24T14:15:22Z"
+            }
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": true
+            }
+          },
+          {
+            "passholderId": "0feb87bd-462d-4f24-a25d-df64ab99300e",
+            "subscriptionEndDate": "2022-08-24",
+            "visit": {
+              "allowed": false,
+              "reason": "CARD_BLOCKED"
+            }
+          }
+        ],
+        "properties": {
+          "passholderId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID of the passholder linked to this pass."
+          },
+          "subscriptionEndDate": {
+            "type": "string",
+            "format": "date",
+            "description": "End date of the museumpass subscription of this pass."
+          },
+          "visit": {
+            "type": "object",
+            "required": [
+              "allowed"
+            ],
+            "description": "Current museum visit information for this pass.",
+            "properties": {
+              "allowed": {
+                "type": "boolean",
+                "description": "Indicates whether the passholder of this pass is allowed to visit a museum at the time of the request. If this is `true`, a subsequent call to `POST /visits` should succeed. If this is `false`, the client should display an error message, based on the `reason`."
+              },
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "EXPIRED",
+                  "MAXIMUM_UNREGISTERED_VISITS_REACHED",
+                  "CARD_BLOCKED",
+                  "PASSHOLDER_BLOCKED"
+                ],
+                "description": "The reason why a visit is currently not allowed. This field is only available when `allowed=false`."
+              }
+            }
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Firstname of the passholder. **Attention**: this field is not always available."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Lastname of the passholder. **Attention**: this field is not always available."
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of birth of the passholder. **Attention**: this field is not always available."
+          },
+          "picture": {
+            "type": "object",
+            "description": "Picture of the passholder. **Attention**: this field is not always available.",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL to the picture of the passholder. **Important:** This URL can be used without further authentication, but it expires after a certain amount of time. The expirary time can be found in the `picture.expiresAt` field. A new valid url can be easily retrieved by retrieving the `Pass` again."
+              },
+              "expiresAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date after which the picture url will stop working."
+              }
+            },
+            "required": [
+              "url",
+              "expiresAt"
+            ]
+          }
+        },
+        "required": [
+          "passholderId",
+          "subscriptionEndDate",
+          "visit"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "CLIENT_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "",
+            "refreshUrl": "",
+            "scopes": {}
+          }
+        },
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://publiq.stoplight.io/docs/authentication/docs/client-access-token.md) for more info."
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized. Your request is missing the required credentials to authenticate. See the Authentication documentation for more info.\n\n* type: https://api.publiq.be/probs/auth/unauthorized\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/unauthorized",
+                  "title": "Unauthorized",
+                  "status": 401
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. Your request was successfully authenticated but you do not have permission to perform this particular request.\n\n* type: https://api.publiq.be/probs/auth/forbidden\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/forbidden",
+                  "title": "Forbidden",
+                  "status": 403,
+                  "detail": "user must be admin of organizer abcd1234"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/voucher-lists": {
+      "post": {
+        "summary": "Generate a list of vouchers",
+        "operationId": "post-voucher-lists",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoucherList"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Generate a list of vouchers for the partner identified by the client access token.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. These will be invoiced to the partner when called in the production environment.\n\nThe caller of this request must have the _Voucher generator_ role for the partner.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "description": "Amount of new vouchers to generate for the new list.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "numberOfVouchers": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10,
+                    "description": "The total number of vouchers to generate"
+                  }
+                },
+                "required": [
+                  "numberOfVouchers"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "numberOfVouchers": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vouchers"
+        ]
+      },
+      "parameters": []
+    },
+    "/passes/{cardNumber}": {
+      "get": {
+        "x-internal": true,
+        "summary": "Look up pass by card number",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pass"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-passes",
+        "description": "Retrieve information related to a museum pass.\n\n> **Important**:\n>\n> Only 3 fields are always available: `passholderId`, `subscriptionEndDate`, `visit`.\n>\n> The other fields like `firstName`, `lastName` and `picture` can be omitted from the response because they are still unknown when a passholder has not registered online yet, or irrelevant when the card is blocked.\n>\n> The `visit.allowed` boolean indicates whether this pass is allowed to visit a museum at the time of the request. In case that boolean is `false` the `visit.reason` will indicate why that is not possible.\n\n\nThe caller of this request must have the _visit registrar_ role.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardNumber",
+          "in": "path",
+          "required": true,
+          "description": "The card number of the museum pass."
+        }
+      ]
+    },
+    "/visits": {
+      "post": {
+        "x-internal": true,
+        "summary": "Register a museum visit",
+        "operationId": "post-visits",
+        "responses": {
+          "201": {
+            "description": "Visit registered."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/museumpass/passholder-not-found\n* https://api.publiq.be/probs/museumpass/visit-maximum-reached\n* https://api.publiq.be/probs/museumpass/museum-not-active\n* https://api.publiq.be/probs/museumpass/card-not-active\n* https://api.publiq.be/probs/museumpass/subscription-not-active\n* https://api.publiq.be/probs/museumpass/passholder-not-active",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Registers a visit of a passholder at the museum identified by the client access token.\n\nThe caller of this request must have the _visit registrar_ role for the museum.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "description": "New museum visit.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "passholderId": {
+                    "type": "string",
+                    "description": "ID of the passholder that visits the museum"
+                  }
+                },
+                "required": [
+                  "passholderId"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "passholderId": "a6c002ca-41ee-4e02-9558-1bead1b54ebc"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Visits"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Passholders"
+    },
+    {
+      "name": "Visits"
+    },
+    {
+      "name": "Vouchers"
+    }
+  ]
+}
