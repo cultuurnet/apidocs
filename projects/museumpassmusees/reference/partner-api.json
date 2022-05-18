@@ -317,6 +317,7 @@
     },
     "/passes/{cardNumber}": {
       "get": {
+        "x-internal": true,
         "summary": "Look up pass by card number",
         "responses": {
           "200": {
@@ -372,6 +373,7 @@
     },
     "/visits": {
       "post": {
+        "x-internal": true,
         "summary": "Register a museum visit",
         "operationId": "post-visits",
         "responses": {
