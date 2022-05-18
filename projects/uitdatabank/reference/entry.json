@@ -1320,26 +1320,6 @@
           "200": {
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van preventieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/query-parameter-invalid",
-                      "title": "Query parameter invalid",
-                      "status": 400,
-                      "detail": "Query parameter \"langCode\" does not support value \"es\"."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "404": {
             "$ref": "#/components/responses/EventNotFound"
           }
@@ -1656,26 +1636,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Location with id \"74e62b6c-9df4-42e4-bcd5-f4c242b4df2e\" does not exist."
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -2177,26 +2137,6 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as an event type."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2273,26 +2213,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a theme."
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -3368,26 +3288,6 @@
           "200": {
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van prplaceieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/query-parameter-invalid",
-                      "title": "Query parameter invalid",
-                      "status": 400,
-                      "detail": "Query parameter \"langCode\" does not support value \"es\"."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "404": {
             "$ref": "#/components/responses/PlaceNotFound"
           }
@@ -3862,26 +3762,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a place type."
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -4607,7 +4487,7 @@
             "description": "No Content. The organizer address has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4883,7 +4763,7 @@
             "description": "No Content. The organizer description has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4949,26 +4829,6 @@
         "responses": {
           "204": {
             "description": "No Content. The description was deleted."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "details": "The provided language route parameter is not supported.",
-                      "status": 400
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -5201,26 +5061,6 @@
           "204": {
             "description": "No Content. The label has been added successfully."
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -5250,26 +5090,6 @@
         "responses": {
           "204": {
             "description": "No Content. The label has been deleted from the organizer successfully."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -5391,7 +5211,7 @@
             "description": "No Content. The organizer name has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
