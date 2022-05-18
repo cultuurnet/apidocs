@@ -12,6 +12,9 @@ This page contains an overview of all possible error types inside the `https://a
 
 The URL you requested is not available. Possible causes include:
 
-*   The endpoint does not exist
+*   The requested endpoint does not exist on the API
 *   An id or slug of a resource in the path does not exist or is invalid
+*   A required query parameter is missing
+*   A query parameter has an invalid value
 
+The `detail` property in the JSON body should provide more info about what exactly caused the error.
