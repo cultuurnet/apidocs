@@ -7,7 +7,7 @@ This page contains an overview of all possible error types inside the `https://a
 ## not-found
 
 *   **Type:** `https://api.publiq.be/probs/url/not-found`
-*   **Title**: `URL not found`
+*   **Title**: `Not Found`
 *   **Status**: `404`
 
 The URL you requested is not available. Possible causes include:
