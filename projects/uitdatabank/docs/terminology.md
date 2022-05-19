@@ -39,7 +39,7 @@ A location for events that have no [physical location](#physical-location), like
 *   Test: https://io-test.uitdatabank.be/place/00000000-0000-0000-0000-000000000000 
 *   Production: https://io.uitdatabank.be/place/00000000-0000-0000-0000-000000000000
 
-Online events will automatically become related to the nil location. Other events cannot be located at the nil location.
+Online events will automatically become related to the nil location. Offline or mixed events have to be located at a [physical location](#physical-location) and cannot be located at the nil location.
 
 ### Physical location
 
