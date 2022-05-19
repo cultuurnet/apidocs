@@ -1,5 +1,9 @@
 name: Publish api design guidelines documentation
-on: push
+on:
+  push:
+    paths:
+      - 'projects/api-design-guidelines/**'
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -11,3 +15,4 @@ jobs:
         with:
           name: api-design-guidelines
           token: ${{ secrets.CI_TOKEN_GUIDELINES }}
+          event: ${{ github.event_name }}

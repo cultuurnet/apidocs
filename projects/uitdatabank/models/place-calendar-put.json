@@ -1,7 +1,7 @@
 {
   "title": "place.calendar.put",
   "type": "object",
-  "description": "",
+  "description": "Request body to update the calendar information of a place.",
   "properties": {
     "calendarType": {
       "$ref": "./place-calendarType.json"

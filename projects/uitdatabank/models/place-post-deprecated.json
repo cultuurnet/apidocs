@@ -28,7 +28,8 @@
       "description": "The address of the place in the main language."
     },
     "calendar": {
-      "$ref": "./place-calendar-put.json"
+      "$ref": "./place-calendar-put.json",
+      "description": "Calendar info for the place."
     }
   },
   "required": [

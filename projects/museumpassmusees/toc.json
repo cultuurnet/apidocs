@@ -11,8 +11,8 @@
     },
     {
       "type": "item",
-      "title": "Example API",
-      "uri": "reference/example-api.json"
+      "title": "Partner API",
+      "uri": "reference/partner-api.json"
     }
   ]
 }

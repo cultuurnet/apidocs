@@ -1,6 +1,7 @@
 {
   "type": "string",
   "title": "typicalAgeRange",
+  "description": "Indicates the minimum and maximum age that a resource is suitable for.",
   "examples": [
     "6-12",
     "-12",

@@ -1,7 +1,6 @@
 {
   "title": "place.@id",
   "type": "string",
-  "minLength": 1,
   "format": "uri",
   "pattern": "^http[s]?:\\/\\/.+?\\/place[s]?\\/([0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12})[\\/]?",
   "description": "A unique URI that acts as globally unique ID for the [place](./place.json). Based on JSON-LD node identifiers. https://www.w3.org/TR/json-ld/#node-identifiers",

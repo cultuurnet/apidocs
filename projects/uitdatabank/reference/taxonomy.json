@@ -6,7 +6,8 @@
     "description": "UiTdatabank's taxonomy API is used to programmatically retrieve lists of taxonomy terms like event types, place types, themes and facilities.\n\n**Authentication**\n\nThe taxonomy API requires no authentication.\n\n**Environments**\n\nThe taxonomy API only has one environment, the production environment. Since the taxonomy terms are the same on all environments, you can also connect to this environment from your testing environment to retrieve taxonomy terms.",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be"
+      "email": "vragen@publiq.be",
+      "url": "https://docs.publiq.be"
     }
   },
   "servers": [
@@ -36,6 +37,7 @@
                   "properties": {
                     "terms": {
                       "type": "array",
+                      "description": "Flat list containing every existing taxonomy term.",
                       "items": {
                         "title": "Term",
                         "type": "object",
@@ -192,25 +194,29 @@
                           },
                           "name": {
                             "type": "object",
-                            "description": "Localized human-readable names of the term, as an object with languages as properties.",
+                            "description": "Internationalized human-readable name of the term, with one or more localized values.",
                             "required": [
                               "nl"
                             ],
                             "properties": {
                               "nl": {
                                 "type": "string",
+                                "description": "A human-readable name in the `nl` (Dutch) language.",
                                 "example": "Voorzieningen voor rolstoelgebruikers"
                               },
                               "fr": {
                                 "type": "string",
+                                "description": "A human-readable name in the `fr` (French) language.",
                                 "example": "Facilités pour fauteuils roulants"
                               },
                               "de": {
                                 "type": "string",
+                                "description": "A human-readable name in the `de` (German) language.",
                                 "example": "EInrichtung für Rollstuhlfahrer"
                               },
                               "en": {
                                 "type": "string",
+                                "description": "A human-readable name in the `en` (English) language.",
                                 "example": "Wheelchair facilities"
                               }
                             }

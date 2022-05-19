@@ -6,7 +6,8 @@
     "description": "With UiTdatabank's Entry API you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be"
+      "email": "vragen@publiq.be",
+      "url": "https://docs.publiq.be"
     }
   },
   "servers": [
@@ -37,24 +38,26 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "description": "The id of the created event."
+                      "description": "UUID of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
-                      "description": "The id of the created event (deprecated and replaced with `id`)."
+                      "deprecated": true,
+                      "description": "Deprecated, use `id` instead."
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/places/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
                       "format": "uri",
-                      "description": "The url of the JSON-LD representation of the created event."
+                      "description": "URL of the created event to use in subsequent requests or to store as a reference in your application."
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -67,7 +70,29 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -87,6 +112,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new event to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -180,7 +206,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -190,7 +216,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -253,7 +279,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-get",
@@ -273,24 +299,28 @@
                     "id": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "UUID of the updated event to use in subsequent requests or to store as a reference in your application."
                     },
                     "eventId": {
                       "type": "string",
                       "format": "uuid",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `id` instead.",
                       "deprecated": true
                     },
                     "url": {
                       "type": "string",
                       "example": "https://io-test.uitdatabank.be/events/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "URL of the updated event to use in subsequent requests or to store as a reference in your application.",
                       "format": "uri"
                     },
                     "commandId": {
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -315,9 +345,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -329,7 +374,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the event with the given `eventId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing and optional properties on the event that are not included in the update request will be removed from the event.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the event even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
@@ -428,7 +473,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -438,7 +483,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -475,7 +520,7 @@
               }
             }
           },
-          "description": "The details of the event to update."
+          "description": "The complete details of the event to update."
         },
         "tags": [
           "Events"
@@ -495,7 +540,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Does a soft-delete of the event. The event will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
@@ -532,10 +577,12 @@
                   "type": "object",
                   "properties": {
                     "eventId": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "UUID of the new event to use in subsequent requests or to store as a reference in your application."
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "URL of the new event to use in subsequent requests or to store as a reference in your application."
                     }
                   }
                 },
@@ -582,7 +629,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-copies-post",
@@ -747,7 +794,29 @@
             "description": "No Content. The event's attendance mode was successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (attendanceMode) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -756,11 +825,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-attendance-mode-put",
-        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- `offline`: the event takes places on a real location\n- `online`: the events takes places on a virtual location\n- `mixed`: the event takes places both on a real location and a virtual location\n\nWhen changing from attendance mode online to either offline or mixed it is required to include the location property with the URI or UUID of the (physical) [location](/models/place.json) that the event is taking place at.",
+        "description": "Updates the attendance mode of an event. There are three different attendance modes:\n- `offline`: the event takes places on a physical location\n- `online`: the events takes places on an online location\n- `mixed`: the event takes places both on a real location and a online location\n\nWhen changing from attendance mode online to either offline or mixed it is required to include the location property with the URI or UUID of the (physical) [location](/models/place.json) that the event is taking place at.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -790,7 +859,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New attendanceMode to set on the event, and optionally a new location (when moving from attendanceMode `online` to `mixed` or `offline`)."
         }
       }
     },
@@ -839,7 +908,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -879,7 +948,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New audienceType to set on the event."
         }
       }
     },
@@ -928,7 +997,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -958,7 +1027,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the event."
         }
       }
     },
@@ -1002,7 +1071,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe bookingAvailability of any subEvents that the event has will also be updated to match the general bookingAvailability.\n\n<!-- theme: warning -->\n\n> Note that you cannot update the bookingAvailability of an event with [calendar type](/models/event-calendarType.json) `periodic` or `permanent`. For now, they can only have \"Available\" as bookingAvailability.",
@@ -1026,7 +1095,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New bookingAvailability to set on the event."
         },
         "tags": [
           "Events"
@@ -1088,7 +1157,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-calendar-put",
@@ -1251,28 +1320,8 @@
           "200": {
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van preventieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/query-parameter-invalid",
-                      "title": "Query parameter invalid",
-                      "status": 400,
-                      "detail": "Query parameter \"langCode\" does not support value \"es\"."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-calendar-summary-get",
@@ -1425,7 +1474,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -1456,7 +1505,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -1557,7 +1606,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
@@ -1589,19 +1638,19 @@
             "description": "No Content"
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitdatabank/attendance-mode-not-supported",
             "content": {
               "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
                 "examples": {
-                  "Example": {
+                  "Attendance mode not supported": {
                     "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
+                      "type": "https://api.publiq.be/probs/uitdatabank/attendance-mode-not-supported",
+                      "title": "Attendance mode not supported",
                       "status": 400,
-                      "detail": "Location with id \"74e62b6c-9df4-42e4-bcd5-f4c242b4df2e\" does not exist."
+                      "detail": "Cannot update the location of an online event to a real location. Set the attendanceMode to mixed or offline first."
                     }
                   }
                 }
@@ -1615,7 +1664,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the event's location to a new place based on the given `eventId` and `placeId` in the URL.\n\nIf the `eventId` does not exist a `404 Not Found` response will be returned. If the `placeId` does not exist a `400 Bad Request` response will be returned. Otherwise a `204 No Content` will be returned if successful. (See response examples below.)",
@@ -1667,7 +1716,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -1677,22 +1726,27 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the event."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "location": {
                     "type": "object",
+                    "description": "Reference to the location that the event is taking place at.",
                     "required": [
                       "id"
                     ],
                     "properties": {
                       "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "UUID of the location that the event is taking place at."
                       }
                     }
                   },
@@ -1841,7 +1895,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for an event (whether they have been updated or not)."
         },
         "security": [
           {
@@ -1922,7 +1976,29 @@
             "description": "No Content. The onlineUrl was successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (onlineUrl) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1931,7 +2007,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "event-online-url-put",
@@ -1959,7 +2035,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New onlineUrl to set on the event."
         }
       },
       "delete": {
@@ -1970,13 +2046,13 @@
             "description": "No Content. The onlineUrl was successfully deleted."
           },
           "401": {
-            "description": "Unauthorized"
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
-            "description": "Forbidden"
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete the onlineUrl of an event.",
@@ -2037,7 +2113,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -2134,26 +2210,6 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as an event type."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2161,7 +2217,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2198,7 +2254,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2231,26 +2287,6 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a theme."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2258,7 +2294,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -2295,7 +2331,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the event."
                     }
                   }
                 },
@@ -2341,7 +2378,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -2396,6 +2433,31 @@
           "204": {
             "description": "No Content. The videos are updated."
           },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2403,7 +2465,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more videos of an event.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
@@ -2468,7 +2530,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete an embedded video from an event based on the event id and the video id.",
@@ -2522,7 +2584,8 @@
                       "type": "string",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -2546,9 +2609,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -2571,6 +2649,7 @@
           }
         ],
         "requestBody": {
+          "description": "The complete details of the new place to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -2671,7 +2750,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -2681,7 +2760,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -2753,7 +2832,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-get",
@@ -2791,10 +2870,10 @@
                     },
                     "commandId": {
                       "type": "string",
-                      "description": "The command id of the import job.",
                       "example": "92973349-967e-44d7-83a2-e1972d9e1622",
                       "format": "uuid",
-                      "deprecated": true
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
                     }
                   },
                   "required": [
@@ -2819,9 +2898,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -2833,7 +2927,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates the place with the given `placeId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing and optional properties on the place that are not included in the update request will be removed from the place.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the place even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
@@ -2939,7 +3033,7 @@
                     ],
                     "contactPoint": {
                       "phone": [
-                        "string"
+                        "016/112233"
                       ],
                       "email": [
                         "info@example.com"
@@ -2949,7 +3043,7 @@
                       ]
                     },
                     "bookingInfo": {
-                      "phone": "string",
+                      "phone": "016/112233",
                       "email": "info@example.com",
                       "url": "https://www.example.com",
                       "urlLabel": {
@@ -2995,7 +3089,7 @@
               }
             }
           },
-          "description": "The details of the place to update."
+          "description": "The complete details of the place to update."
         },
         "tags": [
           "Places"
@@ -3015,7 +3109,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Does a soft-delete of the place. The place will continue to exist but it's `workflowStatus` will be changed to `DELETED`. This will remove it from all publication channels.",
@@ -3078,7 +3172,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3108,7 +3202,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New availableFrom to set on the place."
         }
       }
     },
@@ -3159,7 +3253,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-calendar-put",
@@ -3267,28 +3361,8 @@
           "200": {
             "description": "The calendar summary in either plain text or HTML.\n\nFor example:\n```\nVan 6 januari 2021 tot 23 juni 2021 (geannuleerd)\n```\n\nOr:\n```\n<span class=\\\"cf-from cf-meta\\\">Van</span> <span class=\\\"cf-date\\\">6 januari 2021</span> <span class=\\\"cf-to cf-meta\\\">tot</span> <span class=\\\"cf-date\\\">23 juni 2021</span> <span title=\\\"Deze activiteit is waarschijnlijk geannuleerd omwille van prplaceieve coronamaatregelen.\\\" class=\\\"cf-status\\\">(geannuleerd)</span>\n```"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/query-parameter-invalid",
-                      "title": "Query parameter invalid",
-                      "status": 400,
-                      "detail": "Query parameter \"langCode\" does not support value \"es\"."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-calendar-summary-get",
@@ -3441,7 +3515,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3472,7 +3546,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of facilities to set on the event. Facilities previously set on the event but not included in this list will be removed from the event. Other terms will be preserved."
         }
       }
     },
@@ -3544,7 +3618,7 @@
                     "value": [
                       {
                         "date": "2021-09-30T14:57:17+00:00",
-                        "description": "Kalender-info aangepast",
+                        "description": "Locatie aangemaakt in UiTdatabank",
                         "author": "google-oauth2|108326107941342286958",
                         "auth0ClientId": "JGJ3rAJLurRM9DHDE072zVhF3azl57mo",
                         "auth0ClientName": "UiTdatabase JWT Provider",
@@ -3572,7 +3646,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "place-history-get",
@@ -3620,7 +3694,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -3630,36 +3704,20 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A human-readable name in the main language of the place."
                   },
                   "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `eventtype` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "theme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The `theme` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
                   },
                   "address": {
-                    "type": "object",
-                    "required": [
-                      "streetAddress",
-                      "postalCode",
-                      "addressLocality",
-                      "addressCountry"
-                    ],
-                    "properties": {
-                      "streetAddress": {
-                        "type": "string"
-                      },
-                      "postalCode": {
-                        "type": "string"
-                      },
-                      "addressLocality": {
-                        "type": "string"
-                      },
-                      "addressCountry": {
-                        "type": "string"
-                      }
-                    }
+                    "$ref": "../models/common-address-localized.json",
+                    "description": "The address the place is located at, in the main language of the place."
                   },
                   "calendar": {
                     "$ref": "../models/place-calendar-put.json"
@@ -3747,7 +3805,7 @@
               }
             }
           },
-          "description": ""
+          "description": "All required fields for a place (whether they have been updated or not)."
         },
         "security": [
           {
@@ -3831,26 +3889,6 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "Term with id \"1.2.1.0.0\" can not be used as a place type."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -3858,7 +3896,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -3895,7 +3933,8 @@
                     "videoId": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c"
+                      "example": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                      "description": "UUID used to identify the video on the place."
                     }
                   }
                 },
@@ -3941,7 +3980,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/EventNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -3996,6 +4035,31 @@
           "204": {
             "description": "No Content. The videos are updated."
           },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/url",
+                          "error": "The required properties url is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -4003,7 +4067,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more videos of a place.\n\nThe video object(s) must contain\n\n* `id`: The id of the video object to be changed.\n\nThe video object(s) can contain:\n\n* `url`: The full URL of the video. Currently only *Vimeo* and *Youtube* are supported as video source locations.\n* `language`: The updated language of a video\n* `copyrightHolder`: The copyright holder of the video material. Although this field is optional it is strongly recommended to add a reference to the entity owning the rights on the video material.",
@@ -4069,7 +4133,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/PlaceNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Delete an embedded video from an place based on the place id and the video id.",
@@ -4153,6 +4217,7 @@
           }
         },
         "requestBody": {
+          "description": "The complete details of the new organizer to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -4337,7 +4402,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Returns an the organizer with the given `organizerId`",
@@ -4416,6 +4481,7 @@
         },
         "description": "Updates the organizer with the given `organizerId` by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> Any existing (optional) properties on the organizer that are not included in the update request will be removed from the organizer.\n\n<!-- theme: info -->\n\n> Certain existing `labels` or `hiddenLabels` may be kept on the organizer even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove specific labels.",
         "requestBody": {
+          "description": "The complete details of the organizer to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -4512,7 +4578,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -4547,7 +4613,7 @@
             "description": "No Content. The organizer address has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4578,10 +4644,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4659,10 +4726,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New address to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -4709,7 +4777,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -4758,10 +4826,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New contact point to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -4820,7 +4889,7 @@
             "description": "No Content. The organizer description has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4851,10 +4920,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New description to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -4886,9 +4956,6 @@
           "204": {
             "description": "No Content. The description was deleted."
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid"
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -4896,7 +4963,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "tags": [
@@ -4958,7 +5025,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
@@ -5004,9 +5071,24 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/0",
+                          "error": "The required properties (id) are missing."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -5018,7 +5100,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Update one or more images of an organizer.\n\nThe images to update are identified by their `id`. It is possible to update one or more of the following properties:\n\n* The `language` of an image\n* The `description` of an image\n* The `copyrightHolder` of an image\n\nOnly images included in the `PATCH` request will be updated. Other images that also exist on the organizer will not be removed or updated.",
@@ -5038,7 +5120,7 @@
               }
             }
           },
-          "description": ""
+          "description": "Images to update on the organizer. Images previously added to the organizer but not included in this request will be preserved."
         },
         "tags": [
           "Organizers"
@@ -5070,7 +5152,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "organizer-image-delete",
@@ -5105,26 +5187,6 @@
           "204": {
             "description": "No Content. The label has been added successfully."
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -5132,7 +5194,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -5155,26 +5217,6 @@
           "204": {
             "description": "No Content. The label has been deleted from the organizer successfully."
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/url/path-parameter-invalid",
-                      "title": "Path parameter invalid",
-                      "status": 400,
-                      "detail": "The provided label name is not valid."
-                    }
-                  }
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -5182,7 +5224,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "security": [
@@ -5198,12 +5240,7 @@
     "/organizers/{organizerId}/images/main": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/organizerId"
         }
       ],
       "put": {
@@ -5218,7 +5255,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5231,7 +5268,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/imageId",
-                          "error": "The required properties imageId is missing."
+                          "error": "The required properties (imageId) are missing."
                         }
                       ]
                     }
@@ -5247,7 +5284,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "operationId": "organizer-mainImage-update",
@@ -5300,7 +5337,7 @@
             "description": "No Content. The organizer name has been updated successfully."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/path-parameter-invalid\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -5331,10 +5368,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the given language in the URL).",
           "content": {
             "application/json": {
               "schema": {
@@ -5409,10 +5447,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New name to set on the organizer (localized in the `nl` language).",
           "content": {
             "application/json": {
               "schema": {
@@ -5488,10 +5527,11 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "$ref": "#/components/responses/OrganizerNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "requestBody": {
+          "description": "New url to set on the organizer.",
           "content": {
             "application/json": {
               "schema": {
@@ -5540,7 +5580,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5566,6 +5606,7 @@
         "description": "Creates a news article.\n\n<!-- theme: warning -->\n\n> If a news article with the same `url` and `about` already exists, this request will result in a `400` error response to prevent duplicates. If you want to update the existing news article instead, find it programmatically using [`GET /news-articles`](reference/entry.json/paths/~1news-articles/get) with `url` and `about` query parameters, and send a [`PUT /news-articles/{articleId}`](/reference/entry.json/paths/~1news-articles~1{articleId}/put) request instead.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles`. However the preferred path is `/news-articles`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the new news article to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -5592,6 +5633,7 @@
                   "properties": {
                     "hydra:member": {
                       "type": "array",
+                      "description": "News article results for the requested page.",
                       "items": {
                         "$ref": "../models/newsArticle.json"
                       }
@@ -5766,7 +5808,7 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NewsArticleNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "x-internal": true,
@@ -5796,7 +5838,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -5819,12 +5861,13 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NewsArticleNotFound"
+            "$ref": "#/components/responses/NotFound"
           }
         },
         "description": "Updates an existing news article.\n\n<!-- theme: info -->\n\n> For backward compatibility with older API clients, this path is also available at `/news_articles/{articleId}`. However the preferred path is `/news-articles/{articleId}`.",
         "x-internal": true,
         "requestBody": {
+          "description": "The complete details of the news article to update.",
           "content": {
             "application/json": {
               "schema": {
@@ -5856,7 +5899,7 @@
   "components": {
     "schemas": {
       "Error": {
-        "$ref": "https://raw.githubusercontent.com/cultuurnet/stoplight-docs-errors/main/models/Error.json",
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
         "x-internal": true
       }
     },
@@ -6028,8 +6071,8 @@
           }
         }
       },
-      "EventNotFound": {
-        "description": "No event found for the given `eventId`.",
+      "NotFound": {
+        "description": "The requested resource (URL) could not be found.\nThis can be due to one of multiple reasons:\n\n* The endpoint has a typo and/or does not exist on the API\n* One of the path parameters contains a value that is invalid or does not exist\n* One of the required query parameters is missing\n* One of the query parameters has an invalid value\n\nThe `detail` property of the response should contain more specific information.\n\nThe `type` will always be `https://api.publiq.be/probs/url/not-found`.",
         "content": {
           "application/problem+json": {
             "schema": {
@@ -6038,70 +6081,10 @@
             "examples": {
               "Example": {
                 "value": {
-                  "type": "https://api.publiq.be/probs/uitdatabank/event-not-found",
-                  "title": "Event not found",
+                  "type": "https://api.publiq.be/probs/url/not-found",
+                  "title": "URL not found",
                   "status": 404,
-                  "detail": "The event with id \"76C6AC08-763C-492E-A68C-CBC43A857229\" was not found."
-                }
-              }
-            }
-          }
-        }
-      },
-      "PlaceNotFound": {
-        "description": "No place found for the given `placeId`.",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/uitdatabank/place-not-found",
-                  "title": "Place not found",
-                  "status": 404,
-                  "detail": "The place with id \"76C6AC08-763C-492E-A68C-CBC43A857229\" was not found."
-                }
-              }
-            }
-          }
-        }
-      },
-      "OrganizerNotFound": {
-        "description": "No organizer found for the given `organizerId`.",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/uitdatabank/organizer-not-found",
-                  "title": "Organizer not found",
-                  "status": 404,
-                  "detail": "The organizer with id \"76C6AC08-763C-492E-A68C-CBC43A857229\" was not found."
-                }
-              }
-            }
-          }
-        }
-      },
-      "NewsArticleNotFound": {
-        "description": "No news article found for the given `articleId`.",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/uitdatabank/news-article-not-found",
-                  "title": "News article not found",
-                  "status": 404,
-                  "detail": "The news article with id \"a96bb713-45fc-421b-bc04-86cc78030859\" was not found."
+                  "detail": "The resource with id \"76C6AC08-763C-492E-A68C-CBC43A857229\" was not found."
                 }
               }
             }
