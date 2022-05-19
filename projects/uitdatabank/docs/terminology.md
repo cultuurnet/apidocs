@@ -70,6 +70,16 @@ By linking events and places to an organizer, they can easily be grouped or link
 
 To prevent accidental duplicates, every organizer must have a unique website URL.
 
+### Dummy organizer
+
+Events and places with a dummy organizer do not have an organizer `@id`, only an embedded organizer with a name and sometimes contact information.
+
+An example of an event with a dummy organizer: https://io.uitdatabank.be/event/206b6d13-5739-4b44-800a-6056bc34ce92
+
+These events and places were imported from UiTdatabank v2, where their organizer did not have to be a separate resource that would be linked.
+
+No new events or places can be created with a dummy organizer in UiTdatabank v3.
+
 ## Online calendar
 
 A website or mobile application that enables its users to find events to attend or places to visit, powered by UiTdatabank's Search API v3.
