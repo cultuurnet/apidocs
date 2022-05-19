@@ -54,11 +54,11 @@ A location reserved for events that do not have a fixed location, but are bookab
 
 ### Dummy location
 
-Events with a dummy location do not have a location `@id`, only a location name and address.
+Events with a dummy location do not have a location `@id`, only an embedded location with a name and address.
 
 An example of an event with a dummy location: https://io.uitdatabank.be/event/e160f0f3-89a8-45d7-94a6-34fda89fd69c
 
-These events were imported from UiTdatabank v2, where an event's location did not have to be a separate place that would be related.
+These events were imported from UiTdatabank v2, where their location did not have to be a separate resource that would be linked.
 
 No new events can be created with a dummy location in UiTdatabank v3.
 
