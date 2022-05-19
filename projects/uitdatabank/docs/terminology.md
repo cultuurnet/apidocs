@@ -26,7 +26,7 @@ Places created as a draft that do not get published can still be used as [locati
 
 ## Offer
 
-The collective name both for events and places, usually used to indicate. Translated from the Dutch "Aanbod" to indicate the events/places that users of [online calendars](#online-calendar) can attend or visit.
+The collective name for events and places. Usually used to indicate the events and places that users of [online calendars](#online-calendar) can attend or visit. (Translated from the Dutch "Aanbod".)
 
 ## Location
 
