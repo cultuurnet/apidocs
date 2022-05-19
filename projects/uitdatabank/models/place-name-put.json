@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "title": "place.name.put",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "$ref": "./common-name-localized.json"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
