@@ -3844,7 +3844,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "No Content. The name was successfully updated."
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
