@@ -64,9 +64,9 @@ No new events can be created with a dummy location in UiTdatabank v3.
 
 ## Organizer
 
-An API resource with a unique id that represents an organization or person that organizes [events](#event).
+An API resource with a unique id that represents an organization or person that organizes [events](#event) or runs a [place](#place) that can be visited.
 
-By linking events to a separate organizer resource, events can easily be grouped by their organizer in [online calendars](#online-calendar) to find related events from the same organizer.
+By linking events and places to an organizer, they can easily be grouped or linked in [online calendars](#online-calendar) to find related events or places from the same organizer.
 
 To prevent accidental duplicates, every organizer must have a unique website URL.
 
