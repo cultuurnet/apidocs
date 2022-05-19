@@ -2,20 +2,6 @@
 
 On this page you can get a grasp of common UiTdatabank terminology and concepts, referenced throughout the API documentation.
 
-## Overview
-
-*   [Event](#event)
-    *   [Online event](#online-event)
-*   [Place](#place)
-*   [Offer](#offer)
-*   [Location](#location)
-    *   [Nil location](#nil-location)
-    *   [Physical location](#physical-location)
-    *   [Location in consultation with the school](#location-in-consultation-with-the-school)
-    *   [Dummy location](#dummy-location)
-*   [Organizer](#organizer)
-*   [Online calendar](#online-calendar)
-
 ## Event
 
 An API resource with a unique id that represents a cultural, leisure or sport-related activity. Usually happening on one or multiple specific dates and times, or on a pre-defined weekly schedule.
