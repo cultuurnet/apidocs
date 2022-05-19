@@ -3844,7 +3844,10 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content. The name was successfully updated.",
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3852,9 +3855,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data"
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
