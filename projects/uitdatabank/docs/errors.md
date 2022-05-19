@@ -77,3 +77,13 @@ Example error response:
 *   **Status**: `400`
 
 The `workflowStatus` of an event can only transition from `DRAFT` to `READY_FOR_VALIDATION`, from `READY_FOR_VALIDATION` to either `APPROVED` or `REJECTED`, or from any workflowStatus to `DELETED`. Other transitions are not possible, for example back from `REJECTED` to `READY_FOR_VALIDATION`.
+
+## attendance-mode-not-supported
+
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/attendance-mode-not-supported`
+*   **Title**: `Attendance mode not supported`
+*   **Status**: `400`
+
+The action you are trying to perform on an event cannot be done because its `attendanceMode` does not support this action.
+
+For example, you cannot update the location of an event with attendanceMode `online` to a physical location. Or you cannot set the location of an event with attendanceMode `mixed` or `offline` to the nil location (`https://io.uitdatabank.be/places/00000000-0000-0000-0000-000000000000`).
