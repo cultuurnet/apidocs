@@ -1963,7 +1963,8 @@
               },
               "examples": {}
             }
-          }
+          },
+          "description": "The new name of the event."
         }
       }
     },
@@ -3883,7 +3884,8 @@
               },
               "examples": {}
             }
-          }
+          },
+          "description": "The new name of the place."
         }
       }
     },
