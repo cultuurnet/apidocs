@@ -63,6 +63,7 @@
         ]
       },
       "Pass": {
+        "x-internal": true,
         "title": "Pass",
         "type": "object",
         "examples": [
