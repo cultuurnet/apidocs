@@ -2,7 +2,7 @@
   "title": "event.priceInfo.put",
   "type": "object",
   "properties": {
-    "onlineUrl": {
+    "priceInfo": {
       "$ref": "./event-priceInfo.json"
     }
   },
