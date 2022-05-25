@@ -3991,6 +3991,108 @@
         }
       }
     },
+    "/places/{placeId}/price-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "priceInfo - update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The priceInfo was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "error": "Tariff name \"Kinderen\" must be unique.",
+                          "jsonPointer": "/priceInfo/1/name/nl"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "place-price-info-put",
+        "description": "Updates the price info of a place.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-priceInfo-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "priceInfo": [
+                      {
+                        "category": "base",
+                        "price": 10.5,
+                        "priceCurrency": "EUR",
+                        "name": {
+                          "nl": "Basistarief",
+                          "fr": "Tarif de base",
+                          "de": "Base tariff",
+                          "en": "Basisrate"
+                        }
+                      },
+                      {
+                        "category": "tariff",
+                        "price": 5.5,
+                        "priceCurrency": "EUR",
+                        "name": {
+                          "nl": "Kinderen",
+                          "fr": "Enfants",
+                          "de": "Kinder",
+                          "en": "Children"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "description": "New priceInfo to set on the place."
+        }
+      }
+    },
     "/places/{placeId}/type/{termId}": {
       "parameters": [
         {
