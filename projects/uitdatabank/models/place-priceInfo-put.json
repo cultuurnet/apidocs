@@ -1,12 +1,4 @@
 {
   "title": "place.priceInfo.put",
-  "type": "object",
-  "properties": {
-    "priceInfo": {
-      "$ref": "./place-priceInfo.json"
-    }
-  },
-  "required": [
-    "priceInfo"
-  ]
+  "type": "array"
 }

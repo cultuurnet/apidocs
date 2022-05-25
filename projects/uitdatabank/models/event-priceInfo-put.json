@@ -1,12 +1,4 @@
 {
   "title": "event.priceInfo.put",
-  "type": "object",
-  "properties": {
-    "priceInfo": {
-      "$ref": "./event-priceInfo.json"
-    }
-  },
-  "required": [
-    "priceInfo"
-  ]
+  "type": "array"
 }
