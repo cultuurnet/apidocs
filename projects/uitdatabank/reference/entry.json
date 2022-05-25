@@ -2141,36 +2141,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/event-priceInfo-put.json"
+                "$ref": "../models/event-priceInfo.json"
               },
-              "examples": {
-                "Example": {
-                  "value": [
-                    {
-                      "category": "base",
-                      "price": 10.5,
-                      "priceCurrency": "EUR",
-                      "name": {
-                        "nl": "Basistarief",
-                        "fr": "Tarif de base",
-                        "de": "Base tariff",
-                        "en": "Basisrate"
-                      }
-                    },
-                    {
-                      "category": "tariff",
-                      "price": 5.5,
-                      "priceCurrency": "EUR",
-                      "name": {
-                        "nl": "Kinderen",
-                        "fr": "Enfants",
-                        "de": "Kinder",
-                        "en": "Children"
-                      }
-                    }
-                  ]
-                }
-              }
+              "examples": {}
             }
           },
           "description": "New priceInfo to set on the event."
@@ -4053,36 +4026,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/place-priceInfo-put.json"
+                "$ref": "../models/place-priceInfo.json"
               },
-              "examples": {
-                "Example": {
-                  "value": [
-                    {
-                      "category": "base",
-                      "price": 10.5,
-                      "priceCurrency": "EUR",
-                      "name": {
-                        "nl": "Basistarief",
-                        "fr": "Tarif de base",
-                        "de": "Base tariff",
-                        "en": "Basisrate"
-                      }
-                    },
-                    {
-                      "category": "tariff",
-                      "price": 5.5,
-                      "priceCurrency": "EUR",
-                      "name": {
-                        "nl": "Kinderen",
-                        "fr": "Enfants",
-                        "de": "Kinder",
-                        "en": "Children"
-                      }
-                    }
-                  ]
-                }
-              }
+              "examples": {}
             }
           },
           "description": "New priceInfo to set on the place."
