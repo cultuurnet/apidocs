@@ -1,0 +1,12 @@
+{
+  "title": "event.priceInfo.put",
+  "type": "object",
+  "properties": {
+    "onlineUrl": {
+      "$ref": "./event-priceInfo.json"
+    }
+  },
+  "required": [
+    "priceInfo"
+  ]
+}
