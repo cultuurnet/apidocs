@@ -2145,32 +2145,30 @@
               },
               "examples": {
                 "Example": {
-                  "value": {
-                    "priceInfo": [
-                      {
-                        "category": "base",
-                        "price": 10.5,
-                        "priceCurrency": "EUR",
-                        "name": {
-                          "nl": "Basistarief",
-                          "fr": "Tarif de base",
-                          "de": "Base tariff",
-                          "en": "Basisrate"
-                        }
-                      },
-                      {
-                        "category": "tariff",
-                        "price": 5.5,
-                        "priceCurrency": "EUR",
-                        "name": {
-                          "nl": "Kinderen",
-                          "fr": "Enfants",
-                          "de": "Kinder",
-                          "en": "Children"
-                        }
+                  "value": [
+                    {
+                      "category": "base",
+                      "price": 10.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "de": "Base tariff",
+                        "en": "Basisrate"
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "category": "tariff",
+                      "price": 5.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Kinderen",
+                        "fr": "Enfants",
+                        "de": "Kinder",
+                        "en": "Children"
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -4059,32 +4057,30 @@
               },
               "examples": {
                 "Example": {
-                  "value": {
-                    "priceInfo": [
-                      {
-                        "category": "base",
-                        "price": 10.5,
-                        "priceCurrency": "EUR",
-                        "name": {
-                          "nl": "Basistarief",
-                          "fr": "Tarif de base",
-                          "de": "Base tariff",
-                          "en": "Basisrate"
-                        }
-                      },
-                      {
-                        "category": "tariff",
-                        "price": 5.5,
-                        "priceCurrency": "EUR",
-                        "name": {
-                          "nl": "Kinderen",
-                          "fr": "Enfants",
-                          "de": "Kinder",
-                          "en": "Children"
-                        }
+                  "value": [
+                    {
+                      "category": "base",
+                      "price": 10.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "de": "Base tariff",
+                        "en": "Basisrate"
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "category": "tariff",
+                      "price": 5.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Kinderen",
+                        "fr": "Enfants",
+                        "de": "Kinder",
+                        "en": "Children"
+                      }
+                    }
+                  ]
                 }
               }
             }
