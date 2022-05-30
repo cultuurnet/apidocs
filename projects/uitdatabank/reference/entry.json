@@ -273,7 +273,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/event.json"
+                  "$ref": "../models/event-with-read-example.json"
                 }
               }
             }

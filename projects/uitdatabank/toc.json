@@ -31,7 +31,7 @@
     {
       "type": "item",
       "title": "Event",
-      "uri": "models/event.json"
+      "uri": "models/event-with-read-example.json"
     },
     {
       "type": "item",
