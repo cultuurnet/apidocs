@@ -4385,7 +4385,7 @@
               "schema": {
                 "anyOf": [
                   {
-                    "$ref": "../models/organizer.json"
+                    "$ref": "../models/organizer-with-write-example.json"
                   },
                   {
                     "$ref": "../models/organizer-post-deprecated.json"
@@ -4478,7 +4478,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/organizer.json"
+                  "$ref": "../models/organizer-with-read-example.json"
                 },
                 "examples": {
                   "Example": {
@@ -4647,7 +4647,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/organizer.json"
+                "$ref": "../models/organizer-with-write-example.json"
               },
               "examples": {
                 "Organizer with required fields": {
