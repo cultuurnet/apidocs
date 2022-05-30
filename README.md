@@ -16,7 +16,7 @@ This repository contains all the API documentation available at https://docs.pub
 *   [Links](#links-)
 *   [Automatic checks](#automatic-checks-)
 *   [Automatically fixing (some) errors](#automatically-fixing-some-errors-)
-*   [Publishing your changes](#publishing-your-changes-)    
+*   [Publishing your changes](#publishing-your-changes-)
 *   [Useful tools and resource](#useful-tools-and-resources-)
 
 ## Requirements 🐙
@@ -172,7 +172,7 @@ You can uninstall the pre-commit hook by running:
 
     rm .git/hooks/pre-commit
 
-In any case the checks will also run on GitHub and you should receive an email if they fail. 
+In any case the checks will also run on GitHub and you should receive an email if they fail.
 If you open a pull request it will also include the status of the checks.
 
 ## Automatically fixing (some) errors 🧹
@@ -184,14 +184,14 @@ Warnings or errors reported by `yarn docs:lint` (a.k.a. the `Linting / docs` che
 If you have `node` and `yarn` installed locally and ran `yarn install` to install all required packages, you can run `yarn docs:lint:fix` to try to fix the linting issues. Any issues that can be fixed will be fixed, and you can then commit them.
 
 You can also run the same script on GitHub itself.
-First, navigate to the ["Linting docs fix"](https://github.com/cultuurnet/apidocs/actions/workflows/linting-docs-fix.yml) Action. Then click "Run workflow" and select the branch you are working on. 
+First, navigate to the ["Linting docs fix"](https://github.com/cultuurnet/apidocs/actions/workflows/linting-docs-fix.yml) Action. Then click "Run workflow" and select the branch you are working on.
 Finally, hit the green "Run workflow" button.
 
 ![](readme-images/run-workflow.png)
 
 Note that this workflow can only fix errors in changes that you have already pushed to GitHub.
 
-If the workflow fixed any errors, it will automatically commit them back to your branch. 
+If the workflow fixed any errors, it will automatically commit them back to your branch.
 Make sure to pull these changes in your local copy of the docs before making more changes to avoid merge conflicts!
 
 ## Publishing your changes 🚢

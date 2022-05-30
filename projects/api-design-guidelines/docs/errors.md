@@ -90,7 +90,7 @@ Read more:
 
 ### For invalid URLs
 
-Every invalid URL should return a `404`, even if the error is in a query parameter or a specific path parameter. 
+Every invalid URL should return a `404`, even if the error is in a query parameter or a specific path parameter.
 The URL is the locator of a resource, so if a resource cannot be returned due to an error in the URL it means the resource is `Not Found` regardless of which part of the URL is incorrect.
 
 For every `404` the type https://api.publiq.be/probs/url/not-found must be used. You can specify more info in the `detail` property, for example that a given query parameter is invalid, that a given id does not exist, and so on.
