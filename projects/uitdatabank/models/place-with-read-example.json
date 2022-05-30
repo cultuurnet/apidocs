@@ -1,4 +1,5 @@
 {
+  "title": "place",
   "$ref": "./place.json",
   "examples": [
     {
