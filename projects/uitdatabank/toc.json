@@ -36,7 +36,7 @@
     {
       "type": "item",
       "title": "Place",
-      "uri": "models/place.json"
+      "uri": "models/place-with-read-example.json"
     },
     {
       "type": "item",

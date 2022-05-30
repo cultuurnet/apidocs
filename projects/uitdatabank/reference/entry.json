@@ -2907,7 +2907,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "../models/place.json"
+                  "$ref": "../models/place-with-read-example.json"
                 }
               }
             }
