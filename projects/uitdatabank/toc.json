@@ -41,7 +41,7 @@
     {
       "type": "item",
       "title": "Organizer",
-      "uri": "models/organizer.json"
+      "uri": "models/organizer-with-read-example.json"
     },
     {
       "type": "divider",
