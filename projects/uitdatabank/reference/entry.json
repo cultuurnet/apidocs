@@ -4567,7 +4567,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/organizer-with-write-example.json"
+                "$ref": "../models/organizer.json"
               },
               "examples": {
                 "Organizer with required fields": {
