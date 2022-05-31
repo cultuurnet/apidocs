@@ -1,0 +1,86 @@
+{
+  "title": "organizer",
+  "$ref": "./organizer.json",
+  "examples": [
+    {
+      "@id": "https://io-test.uitdatabank.be/organizers/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "mainLanguage": "nl",
+      "languages": [
+        "nl",
+        "fr",
+        "de",
+        "en"
+      ],
+      "completedLanguages": [
+        "nl",
+        "fr"
+      ],
+      "url": "https://www.publiq.be",
+      "name": {
+        "nl": "Nederlandse tekst",
+        "fr": "Texte français",
+        "de": "Deutscher Text",
+        "en": "English text"
+      },
+      "description": {
+        "nl": "Nederlandse beschrijving",
+        "fr": "Description français",
+        "de": "Deutscher Bezeichnung",
+        "en": "English description"
+      },
+      "address": {
+        "nl": {
+          "addressCountry": "BE",
+          "addressLocality": "Brussel",
+          "postalCode": "1000",
+          "streetAddress": "Wetstraat 1"
+        },
+        "fr": {
+          "addressCountry": "BE",
+          "addressLocality": "Bruxelles",
+          "postalCode": "1000",
+          "streetAddress": "Rue de la Loi 1"
+        }
+      },
+      "geo": {
+        "latitude": 50.8816177,
+        "longitude": 4.7137986
+      },
+      "created": "2021-05-17T22:00:00+00:00",
+      "modified": "2021-05-17T22:00:00+00:00",
+      "creator": "auth0|CE1423AC-655C-4025-86E5-247E06164C85",
+      "workflowStatus": "ACTIVE",
+      "contactPoint": {
+        "phone": [
+          "+32/1234567890"
+        ],
+        "email": [
+          "info@publiq.be"
+        ],
+        "url": [
+          "https://www.publiq.be"
+        ]
+      },
+      "images": [
+        {
+          "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
+          "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
+          "contentUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+          "thumbnailUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+          "description": "Een voorbeeld beschrijving",
+          "copyrightHolder": "Jan",
+          "inLanguage": "nl"
+        }
+      ],
+      "mainImage": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+      "labels": [
+        "label1",
+        "label2"
+      ],
+      "hiddenLabels": [
+        "labelA",
+        "labelB"
+      ]
+    }
+  ]
+}

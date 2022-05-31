@@ -31,17 +31,17 @@
     {
       "type": "item",
       "title": "Event",
-      "uri": "models/event.json"
+      "uri": "models/event-with-read-example.json"
     },
     {
       "type": "item",
       "title": "Place",
-      "uri": "models/place.json"
+      "uri": "models/place-with-read-example.json"
     },
     {
       "type": "item",
       "title": "Organizer",
-      "uri": "models/organizer.json"
+      "uri": "models/organizer-with-read-example.json"
     },
     {
       "type": "divider",
