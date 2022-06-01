@@ -230,6 +230,15 @@
                         "inLanguage": "nl"
                       }
                     ],
+                    "videos": [
+                      {
+                        "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                        "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                        "embedUrl": "https://www.youtube.com/embed/cEItmb_a20D",
+                        "language": "nl",
+                        "copyrightHolder": "publiq"
+                      }
+                    ],
                     "labels": [
                       "label1"
                     ],
