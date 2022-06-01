@@ -138,15 +138,6 @@
                     "calendarType": "single",
                     "startDate": "2021-05-17T22:00:00+00:00",
                     "endDate": "2021-05-17T22:00:00+00:00",
-                    "status": {
-                      "type": "Available",
-                      "reason": {
-                        "nl": "Nederlandse reden",
-                        "fr": "Raison français",
-                        "de": "Deutscher Grund",
-                        "en": "English reason"
-                      }
-                    },
                     "subEvent": [
                       {
                         "id": 0,
@@ -244,10 +235,7 @@
                     ],
                     "hiddenLabels": [
                       "label2"
-                    ],
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
+                    ]
                   }
                 }
               }
