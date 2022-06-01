@@ -142,19 +142,7 @@
                       {
                         "id": 0,
                         "startDate": "2021-05-17T22:00:00+00:00",
-                        "endDate": "2021-05-17T22:00:00+00:00",
-                        "status": {
-                          "type": "Available",
-                          "reason": {
-                            "nl": "Nederlandse reden",
-                            "fr": "Raison français",
-                            "de": "Deutscher Grund",
-                            "en": "English reason"
-                          }
-                        },
-                        "bookingAvailability": {
-                          "type": "Available"
-                        }
+                        "endDate": "2021-05-17T22:00:00+00:00"
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
