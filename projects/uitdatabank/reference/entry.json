@@ -158,7 +158,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "location": {
                       "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
                     },
@@ -434,7 +433,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "location": {
                       "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
                     },
@@ -2798,7 +2796,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "terms": [
                       {
                         "id": "0.14.0.0.0",
@@ -3081,7 +3078,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "terms": [
                       {
                         "id": "0.14.0.0.0",
