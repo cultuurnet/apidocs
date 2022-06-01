@@ -397,11 +397,8 @@
                       "type": "Available"
                     },
                     "calendarType": "single",
-                    "startDate": "2021-05-17T22:00:00+00:00",
-                    "endDate": "2021-05-17T22:00:00+00:00",
                     "subEvent": [
                       {
-                        "id": 0,
                         "startDate": "2021-05-17T22:00:00+00:00",
                         "endDate": "2021-05-17T22:00:00+00:00",
                         "status": {
