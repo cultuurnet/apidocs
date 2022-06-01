@@ -138,15 +138,6 @@
                     "calendarType": "single",
                     "startDate": "2021-05-17T22:00:00+00:00",
                     "endDate": "2021-05-17T22:00:00+00:00",
-                    "status": {
-                      "type": "Available",
-                      "reason": {
-                        "nl": "Nederlandse reden",
-                        "fr": "Raison français",
-                        "de": "Deutscher Grund",
-                        "en": "English reason"
-                      }
-                    },
                     "subEvent": [
                       {
                         "id": 0,
@@ -167,7 +158,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "location": {
                       "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
                     },
@@ -239,15 +229,21 @@
                         "inLanguage": "nl"
                       }
                     ],
+                    "videos": [
+                      {
+                        "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                        "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                        "embedUrl": "https://www.youtube.com/embed/cEItmb_a20D",
+                        "language": "nl",
+                        "copyrightHolder": "publiq"
+                      }
+                    ],
                     "labels": [
                       "label1"
                     ],
                     "hiddenLabels": [
                       "label2"
-                    ],
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
+                    ]
                   }
                 }
               }
@@ -402,9 +398,6 @@
                       "de": "Deutscher Name",
                       "en": "English name"
                     },
-                    "calendarType": "single",
-                    "startDate": "2021-05-17T22:00:00+00:00",
-                    "endDate": "2021-05-17T22:00:00+00:00",
                     "status": {
                       "type": "Available",
                       "reason": {
@@ -414,6 +407,12 @@
                         "en": "English reason"
                       }
                     },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    },
+                    "calendarType": "single",
+                    "startDate": "2021-05-17T22:00:00+00:00",
+                    "endDate": "2021-05-17T22:00:00+00:00",
                     "subEvent": [
                       {
                         "id": 0,
@@ -434,7 +433,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "location": {
                       "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
                     },
@@ -506,15 +504,21 @@
                         "inLanguage": "nl"
                       }
                     ],
+                    "videos": [
+                      {
+                        "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                        "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                        "embedUrl": "https://www.youtube.com/embed/cEItmb_a20D",
+                        "language": "nl",
+                        "copyrightHolder": "publiq"
+                      }
+                    ],
                     "labels": [
                       "label1"
                     ],
                     "hiddenLabels": [
                       "label2"
-                    ],
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
+                    ]
                   }
                 }
               }
@@ -2782,15 +2786,6 @@
                     "calendarType": "periodic",
                     "startDate": "2021-05-17T22:00:00+00:00",
                     "endDate": "2021-05-17T22:00:00+00:00",
-                    "status": {
-                      "type": "Available",
-                      "reason": {
-                        "nl": "Nederlandse reden",
-                        "fr": "Raison français",
-                        "de": "Deutscher Grund",
-                        "en": "English reason"
-                      }
-                    },
                     "openingHours": [
                       {
                         "opens": "17:00",
@@ -2801,7 +2796,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "terms": [
                       {
                         "id": "0.14.0.0.0",
@@ -2878,10 +2872,7 @@
                     ],
                     "hiddenLabels": [
                       "label2"
-                    ],
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
+                    ]
                   }
                 }
               }
@@ -3062,9 +3053,6 @@
                         "streetAddress": "Wetstraat 1"
                       }
                     },
-                    "calendarType": "periodic",
-                    "startDate": "2021-05-17T22:00:00+00:00",
-                    "endDate": "2021-05-17T22:00:00+00:00",
                     "status": {
                       "type": "Available",
                       "reason": {
@@ -3074,6 +3062,12 @@
                         "en": "English reason"
                       }
                     },
+                    "bookingAvailability": {
+                      "type": "Available"
+                    },
+                    "calendarType": "periodic",
+                    "startDate": "2021-05-17T22:00:00+00:00",
+                    "endDate": "2021-05-17T22:00:00+00:00",
                     "openingHours": [
                       {
                         "opens": "17:00",
@@ -3084,7 +3078,6 @@
                       }
                     ],
                     "availableFrom": "2021-05-17T22:00:00+00:00",
-                    "availableTo": "2021-05-17T22:00:00+00:00",
                     "terms": [
                       {
                         "id": "0.14.0.0.0",
@@ -3161,10 +3154,7 @@
                     ],
                     "hiddenLabels": [
                       "label2"
-                    ],
-                    "bookingAvailability": {
-                      "type": "Available"
-                    }
+                    ]
                   }
                 }
               }
