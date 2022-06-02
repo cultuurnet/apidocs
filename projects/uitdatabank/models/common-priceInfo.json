@@ -38,7 +38,8 @@
             "enum": [
               "EUR"
             ],
-            "description": "The currency of the price. Currently only `EUR` is supported."
+            "default": "EUR",
+            "description": "The currency of the price. Currently only `EUR` is supported.",
           },
           "name": {
             "$ref": "./common-name.json",
