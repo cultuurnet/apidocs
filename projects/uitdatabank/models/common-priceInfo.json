@@ -39,7 +39,7 @@
               "EUR"
             ],
             "default": "EUR",
-            "description": "The currency of the price. Currently only `EUR` is supported.",
+            "description": "The currency of the price. Currently only `EUR` is supported."
           },
           "name": {
             "$ref": "./common-name.json",
