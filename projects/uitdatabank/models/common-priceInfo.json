@@ -38,6 +38,7 @@
             "enum": [
               "EUR"
             ],
+            "default": "EUR",
             "description": "The currency of the price. Currently only `EUR` is supported."
           },
           "name": {
@@ -47,8 +48,7 @@
         },
         "required": [
           "category",
-          "price",
-          "priceCurrency"
+          "price"
         ]
       },
       {
