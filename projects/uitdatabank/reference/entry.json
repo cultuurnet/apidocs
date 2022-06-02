@@ -384,7 +384,7 @@
                       "en": "English name"
                     },
                     "status": {
-                      "type": "Available",
+                      "type": "Unavailable",
                       "reason": {
                         "nl": "Nederlandse reden",
                         "fr": "Raison français",
@@ -393,7 +393,7 @@
                       }
                     },
                     "bookingAvailability": {
-                      "type": "Available"
+                      "type": "Unavailable"
                     },
                     "calendarType": "single",
                     "subEvent": [
