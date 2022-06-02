@@ -92,6 +92,8 @@ It is important to adhere to this structure to avoid problems on the hosted vers
 
 The complete technical overview of your API's endpoints must be documented in an [OpenAPI](https://www.openapis.org/) file (previously called "Swagger"). If you have multiple APIs inside your project, your project may have multiple OpenAPI files.
 
+An OpenAPI file allows you to describe your entire API (endpoints, operations, authentication, contact information, ...) in a structured format. This results in a consistent overview of all your endpoints on https://docs.publiq.be, and can also be used in other automated tools like https://postman.publiq.be to  discover your API's features. Additionally your OpenAPI file can be used _inside your API itself_, for example for automatic request validation (depending on the technologies used to build your API).
+
 Every OpenAPI file must follow version 3.x of the OpenAPI spec, preferably [3.1.0](https://spec.openapis.org/oas/latest.html) or later when possible.
 
 Preferably the OpenAPI files are formatted as JSON, but YAML is also allowed if necessary.
