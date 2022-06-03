@@ -3,7 +3,8 @@
     "remark-preset-lint-recommended": null,
     "remark-lint-no-dead-urls": {
         "skipUrlPatterns": [
-            "https://helpdesk.publiq.be"
+            "https://helpdesk.publiq.be",
+            "https://www.uitinhasselt.be"
         ]
     },
     "remark-validate-links": null
