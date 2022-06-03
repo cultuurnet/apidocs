@@ -5302,12 +5302,14 @@
         "x-examples": {
           "example-1": {
             "value": {
-              "available": {
-                "id": "SOCIALTARIFF-1",
-                "name": "UiTPAS Kansentarief",
-                "price": 1.5,
-                "remaining": 1
-              }
+              "available": [
+                {
+                  "id": "SOCIALTARIFF-1",
+                  "name": "UiTPAS Kansentarief",
+                  "price": 1.5,
+                  "remaining": 1
+                }
+              ]
             }
           }
         },
