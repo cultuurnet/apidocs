@@ -15,5 +15,11 @@
 # UiTdatabank Markdown docs owners
 /projects/uitdatabank/docs @bertramakers @LucWollants @corneelwille
 
+# UiTPAS owners
+/projects/uitpas @bertramakers @erwin1
+
+# UiTPAS Markdown docs owners
+/projects/uitpas/docs @bertramakers @erwin1 @JurgenG @brusselsregular
+
 # Widgets owners
 /projects/widgets @bertramakers @corneelwille
