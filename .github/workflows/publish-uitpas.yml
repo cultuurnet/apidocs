@@ -13,6 +13,6 @@ jobs:
       - name: Publish
         uses: ./.github/actions/stoplight-push
         with:
-          name: uitdatabank
+          name: uitpas
           token: ${{ secrets.CI_TOKEN_UITPAS }}
           event: ${{ github.event_name }}
