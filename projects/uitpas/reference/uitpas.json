@@ -4325,7 +4325,7 @@
         "x-examples": {
           "Example": {
             "value": {
-              "id": "SOCIALLTARIFF-1",
+              "id": "SOCIALTARIFF-1",
               "name": "UiTPAS Kansentarief",
               "price": 1.5,
               "type": "SOCIALTARIFF"
