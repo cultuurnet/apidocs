@@ -461,7 +461,7 @@
               }
             }
           },
-          "description": ""
+          "description": "One or more new ticket sales to register."
         }
       },
       "get": {
@@ -873,7 +873,7 @@
               }
             }
           },
-          "description": ""
+          "description": "New list of card systems that an event is related to. Will overwrite the old list."
         },
         "description": "Update the `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nThis update is used to toggle the `enabled` state for specific card systems or distribution keys.\n\nTo update the `enabled` state, you MUST retrieve the possible `EventCardSystem` objects first using  `GET /events/{eventId}/card-systems`. \nNote that you can reuse the response from the `GET` request, \naltering the `enabled` state, or you can also omit the name properties. \nOnly the required fields are used in this update request.\n\n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_UPDATE` permission for the organizer of this event.\n",
         "security": [
@@ -1366,6 +1366,7 @@
           }
         ],
         "requestBody": {
+          "description": "Details of the new passholder to register.",
           "content": {
             "application/json": {
               "schema": {
@@ -2261,6 +2262,7 @@
         },
         "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
         "requestBody": {
+          "description": "Passholder details of the current user to register.",
           "content": {
             "application/json": {
               "schema": {
@@ -3527,6 +3529,7 @@
           "Rewards"
         ],
         "requestBody": {
+          "description": "Details of the new reward to create.",
           "content": {
             "application/json": {
               "schema": {
@@ -3756,6 +3759,7 @@
           }
         ],
         "requestBody": {
+          "description": "New details for the reward. Will overwrite the previous details.",
           "content": {
             "application/json": {
               "schema": {
@@ -4008,6 +4012,7 @@
           "Rewards"
         ],
         "requestBody": {
+          "description": "Reward (id) to mark as redeemed, and for which UiTPAS number specifically.",
           "content": {
             "application/json": {
               "schema": {
