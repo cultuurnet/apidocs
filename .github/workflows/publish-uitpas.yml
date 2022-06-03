@@ -1,0 +1,18 @@
+name: Publish uitpas documentation
+on:
+  push:
+    paths:
+      - 'projects/uitpas/**'
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish
+        uses: ./.github/actions/stoplight-push
+        with:
+          name: uitdatabank
+          token: ${{ secrets.CI_TOKEN_UITPAS }}
+          event: ${{ github.event_name }}
