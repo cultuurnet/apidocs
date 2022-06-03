@@ -4322,15 +4322,11 @@
         "title": "Tariff",
         "description": "The Tariff describes the discounted price a passholder has to pay for a given ticket. ",
         "x-internal": false,
-        "x-examples": {
-          "Example": {
-            "value": {
-              "id": "SOCIALTARIFF-1",
-              "name": "UiTPAS Kansentarief",
-              "price": 1.5,
-              "type": "SOCIALTARIFF"
-            }
-          }
+        "example": {
+          "id": "SOCIALTARIFF-1",
+          "name": "UiTPAS Kansentarief",
+          "price": 1.5,
+          "type": "SOCIALTARIFF"
         },
         "x-tags": [
           "Models"
@@ -4367,32 +4363,30 @@
         "title": "MembershipPrice",
         "description": "The MembershipPrice describes the price an UiTPAS membership in a specific cardsystem for a new or existing passholder.  ",
         "x-internal": false,
-        "x-examples": {
-          "Example": {
-            "price": 5,
-            "cardSystem": {
-              "id": 1,
-              "name": "UiTPAS Dender",
-              "branding": {
-                "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                "primaryColor": "rgba(0,0,0,1.0)",
-                "secondaryColor": "rgba(97,166,14,1.0)"
+        "example": {
+          "price": 5,
+          "cardSystem": {
+            "id": 1,
+            "name": "UiTPAS Dender",
+            "branding": {
+              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+              "primaryColor": "rgba(0,0,0,1.0)",
+              "secondaryColor": "rgba(97,166,14,1.0)"
+            },
+            "links": {
+              "website": "https://www.uitpas.be"
+            },
+            "cities": [
+              {
+                "postalCode": "9300",
+                "name": "Aalst"
               },
-              "links": {
-                "website": "https://www.uitpas.be"
-              },
-              "cities": [
-                {
-                  "postalCode": "9300",
-                  "name": "Aalst"
-                },
-                {
-                  "postalCode": "9400",
-                  "name": "Ninove"
-                }
-              ],
-              "permanent": true
-            }
+              {
+                "postalCode": "9400",
+                "name": "Ninove"
+              }
+            ],
+            "permanent": true
           }
         },
         "x-tags": [
@@ -4415,68 +4409,14 @@
       "TicketSale": {
         "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDER_SEARCH permission. It is not required for ticket sale registrations.",
         "type": "object",
-        "x-examples": {
-          "New registration": {
-            "regularPrice": 10,
-            "regularPriceLabel": "Volwassenen",
-            "tariff": {
-              "id": "COUPON1234"
-            },
-            "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
-            "uitpasNumber": "1234567890"
+        "example": {
+          "regularPrice": 10,
+          "regularPriceLabel": "Volwassenen",
+          "tariff": {
+            "id": "COUPON1234"
           },
-          "After registration": {
-            "id": "12345",
-            "regularPrice": 10,
-            "regularPriceLabel": "Volwassenen",
-            "tariff": {
-              "id": "COUPON1234",
-              "name": "Cultuurbon 6 euro",
-              "price": 1.5
-            },
-            "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
-            "uitpasNumber": "1234567890",
-            "passholder": {
-              "id": "772ecd3f-dfa3-42ee-8feb-f09dfab71902",
-              "name": "Peeters",
-              "firstName": "Marc",
-              "inszNumber": "00000009007",
-              "cardSystemMemberships": [
-                {
-                  "cardSystem": {
-                    "id": 1,
-                    "name": "UiTPAS Dender",
-                    "branding": {
-                      "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                      "primaryColor": "rgba(0,0,0,1.0)",
-                      "secondaryColor": "rgba(97,166,14,1.0)"
-                    },
-                    "links": {
-                      "website": "https://www.uitpas.be"
-                    },
-                    "cities": [
-                      {
-                        "postalCode": "9300",
-                        "name": "Aalst"
-                      },
-                      {
-                        "postalCode": "9400",
-                        "name": "Ninove"
-                      }
-                    ],
-                    "permanent": true
-                  },
-                  "uitpasNumber": "0560002524314",
-                  "status": "ACTIVE",
-                  "socialTariff": {
-                    "endDate": "2022-08-24T14:15:22Z",
-                    "inGracePeriod": false,
-                    "expired": false
-                  }
-                }
-              ]
-            }
-          }
+          "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+          "uitpasNumber": "1234567890"
         },
         "title": "TicketSale",
         "x-tags": [
@@ -4684,60 +4624,58 @@
           "Models"
         ],
         "description": "Person who holds an UiTPAS, the end-user of an UiTPAS. \n\nA `Passholder` can be identified by its `id`. However, there are cases where the passholder identifies using one of its UiTPAS numbers. That number is CardSystem specific, so it can be found under `cardSystemMemberships`. Every passholder should have at least one cardsystem membership.",
-        "x-examples": {
-          "Example": {
-            "id": "1be0fb53-0695-405b-ac09-deafead650af",
-            "name": "Peeters",
-            "firstName": "Marc",
-            "inszNumber": "00000009007",
-            "dateOfBirth": "2000-01-01",
+        "example": {
+          "id": "1be0fb53-0695-405b-ac09-deafead650af",
+          "name": "Peeters",
+          "firstName": "Marc",
+          "inszNumber": "00000009007",
+          "dateOfBirth": "2000-01-01",
+          "postalCode": "9300",
+          "address": {
             "postalCode": "9300",
-            "address": {
-              "postalCode": "9300",
-              "city": "Aalst"
-            },
-            "creationDate": "2012-08-24T14:15:22Z",
-            "registrationOrganizer": {
-              "id": "1234",
-              "name": "Example UiTPAS Organizer"
-            },
-            "points": 10,
-            "uitidStatus": "UNREGISTERED",
-            "cardSystemMemberships": [
-              {
-                "cardSystem": {
-                  "id": 1,
-                  "name": "UiTPAS Dender",
-                  "branding": {
-                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                    "primaryColor": "rgba(0,0,0,1.0)",
-                    "secondaryColor": "rgba(97,166,14,1.0)"
-                  },
-                  "links": {
-                    "website": "https://www.uitpas.be"
-                  },
-                  "cities": [
-                    {
-                      "postalCode": "9300",
-                      "name": "Aalst"
-                    },
-                    {
-                      "postalCode": "9400",
-                      "name": "Ninove"
-                    }
-                  ],
-                  "permanent": true
+            "city": "Aalst"
+          },
+          "creationDate": "2012-08-24T14:15:22Z",
+          "registrationOrganizer": {
+            "id": "1234",
+            "name": "Example UiTPAS Organizer"
+          },
+          "points": 10,
+          "uitidStatus": "UNREGISTERED",
+          "cardSystemMemberships": [
+            {
+              "cardSystem": {
+                "id": 1,
+                "name": "UiTPAS Dender",
+                "branding": {
+                  "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                  "primaryColor": "rgba(0,0,0,1.0)",
+                  "secondaryColor": "rgba(97,166,14,1.0)"
                 },
-                "uitpasNumber": "0930012345615",
-                "status": "ACTIVE",
-                "socialTariff": {
-                  "endDate": "2022-08-24T14:15:22Z",
-                  "inGracePeriod": false,
-                  "expired": false
-                }
+                "links": {
+                  "website": "https://www.uitpas.be"
+                },
+                "cities": [
+                  {
+                    "postalCode": "9300",
+                    "name": "Aalst"
+                  },
+                  {
+                    "postalCode": "9400",
+                    "name": "Ninove"
+                  }
+                ],
+                "permanent": true
+              },
+              "uitpasNumber": "0930012345615",
+              "status": "ACTIVE",
+              "socialTariff": {
+                "endDate": "2022-08-24T14:15:22Z",
+                "inGracePeriod": false,
+                "expired": false
               }
-            ]
-          }
+            }
+          ]
         },
         "properties": {
           "id": {
@@ -4903,20 +4841,18 @@
       "PassholderSelfRegistration": {
         "title": "PassholderSelfRegistration",
         "type": "object",
-        "x-examples": {
-          "Example": {
-            "name": "Lastname",
-            "firstName": "Firstname",
-            "cardSystem": {
-              "id": 27
-            },
-            "email": "firstname.lastname@example.com",
-            "dateOfBirth": "1980-01-01",
-            "postalCode": "9000",
-            "city": "Gent",
-            "registrationOrganizer": {
-              "id": "d2f898b1-455e-44ee-b08a-c4c05b1ab900"
-            }
+        "example": {
+          "name": "Lastname",
+          "firstName": "Firstname",
+          "cardSystem": {
+            "id": 27
+          },
+          "email": "firstname.lastname@example.com",
+          "dateOfBirth": "1980-01-01",
+          "postalCode": "9000",
+          "city": "Gent",
+          "registrationOrganizer": {
+            "id": "d2f898b1-455e-44ee-b08a-c4c05b1ab900"
           }
         },
         "properties": {
@@ -4966,25 +4902,17 @@
           "Models"
         ],
         "description": "The `Pass` entity includes basic information about the UiTPAS and its related `Passholder`.  ",
-        "x-examples": {
-          "Example with warning message": {
-            "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
-            "uitpasNumber": "0560002524314",
-            "points": 12,
-            "postalCode": "1000",
-            "messages": [
-              {
-                "level": "WARN",
-                "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
-              }
-            ]
-          },
-          "Example without messages": {
-            "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
-            "uitpasNumber": "0560002524314",
-            "points": 12,
-            "postalCode": "1000"
-          }
+        "example": {
+          "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+          "uitpasNumber": "0560002524314",
+          "points": 12,
+          "postalCode": "1000",
+          "messages": [
+            {
+              "level": "WARN",
+              "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
+            }
+          ]
         },
         "properties": {
           "passholderId": {
@@ -5095,30 +5023,28 @@
         "x-tags": [
           "Models"
         ],
-        "x-examples": {
-          "Example": {
-            "id": 1,
-            "name": "UiTPAS Dender",
-            "branding": {
-              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-              "primaryColor": "rgba(0,0,0,1.0)",
-              "secondaryColor": "rgba(97,166,14,1.0)"
+        "example": {
+          "id": 1,
+          "name": "UiTPAS Dender",
+          "branding": {
+            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+            "primaryColor": "rgba(0,0,0,1.0)",
+            "secondaryColor": "rgba(97,166,14,1.0)"
+          },
+          "links": {
+            "website": "https://www.uitpas.be"
+          },
+          "cities": [
+            {
+              "postalCode": "9300",
+              "name": "Aalst"
             },
-            "links": {
-              "website": "https://www.uitpas.be"
-            },
-            "cities": [
-              {
-                "postalCode": "9300",
-                "name": "Aalst"
-              },
-              {
-                "postalCode": "9400",
-                "name": "Ninove"
-              }
-            ],
-            "permanent": true
-          }
+            {
+              "postalCode": "9400",
+              "name": "Ninove"
+            }
+          ],
+          "permanent": true
         },
         "properties": {
           "id": {
@@ -5177,7 +5103,6 @@
         "type": "object",
         "title": "Report",
         "description": "The status of a started report export.",
-        "x-examples": {},
         "x-tags": [
           "Models"
         ],
@@ -5235,19 +5160,17 @@
       "EventCardSystem": {
         "title": "EventCardSystem",
         "type": "object",
-        "x-examples": {
-          "Example": {
-            "id": 1,
-            "name": "UiTPAS Dender",
-            "enabled": true,
-            "manualDistributionKeys": [
-              {
-                "id": 123,
-                "name": "€1,5 halve dag",
-                "enabled": true
-              }
-            ]
-          }
+        "example": {
+          "id": 1,
+          "name": "UiTPAS Dender",
+          "enabled": true,
+          "manualDistributionKeys": [
+            {
+              "id": 123,
+              "name": "€1,5 halve dag",
+              "enabled": true
+            }
+          ]
         },
         "x-tags": [
           "Models"
@@ -5299,19 +5222,16 @@
         "title": "TariffsResponse",
         "description": "Response object for tariffs",
         "type": "object",
-        "x-examples": {
-          "example-1": {
-            "value": {
-              "available": [
-                {
-                  "id": "SOCIALTARIFF-1",
-                  "name": "UiTPAS Kansentarief",
-                  "price": 1.5,
-                  "remaining": 1
-                }
-              ]
+        "example": {
+          "available": [
+            {
+              "id": "SOCIALTARIFF-1",
+              "name": "UiTPAS Kansentarief",
+              "price": 1.5,
+              "type": "SOCIALTARIFF",
+              "remaining": 1
             }
-          }
+          ]
         },
         "properties": {
           "available": {
@@ -5326,14 +5246,12 @@
         ]
       },
       "TariffAvailibility": {
-        "x-examples": {
-          "Example": {
-            "id": "SOCIALTARIFF-1",
-            "name": "UiTPAS Kansentarief",
-            "price": 1.5,
-            "type": "SOCIALTARIFF",
-            "remaining": 1
-          }
+        "example": {
+          "id": "SOCIALTARIFF-1",
+          "name": "UiTPAS Kansentarief",
+          "price": 1.5,
+          "type": "SOCIALTARIFF",
+          "remaining": 1
         },
         "description": "The `TariffAvailibility` includes all information about the `Tariff`, which describes the discounted price a passholder has to pay for a given ticket, and the `remaining` number of tickets this passholder can buy for this event at this Tariff.",
         "title": "TariffAvailibility",
@@ -5362,11 +5280,9 @@
       "Period": {
         "title": "Period",
         "type": "object",
-        "x-examples": {
-          "Example": {
-            "begin": "2019-08-24T14:15:22Z",
-            "end": "2019-08-24T14:15:22Z"
-          }
+        "example": {
+          "begin": "2019-08-24T14:15:22Z",
+          "end": "2019-08-24T14:15:22Z"
         },
         "x-tags": [
           "Models"
@@ -5632,20 +5548,18 @@
         "x-tags": [
           "Models"
         ],
-        "x-examples": {
-          "Example": {
-            "option1": {
-              "name": {
-                "nl": "Option 1"
-              },
-              "count": 3
+        "example": {
+          "option1": {
+            "name": {
+              "nl": "Option 1"
             },
-            "option2": {
-              "name": {
-                "nl": "Option 2"
-              },
-              "count": 4
-            }
+            "count": 3
+          },
+          "option2": {
+            "name": {
+              "nl": "Option 2"
+            },
+            "count": 4
           }
         }
       },
@@ -5674,11 +5588,9 @@
         "x-tags": [
           "Models"
         ],
-        "x-examples": {
-          "Example": {
-            "postalCode": "9300",
-            "name": "Aalst"
-          }
+        "example": {
+          "postalCode": "9300",
+          "name": "Aalst"
         },
         "properties": {
           "postalCode": {
