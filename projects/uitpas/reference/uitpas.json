@@ -1045,7 +1045,8 @@
               ]
             },
             "in": "query",
-            "name": "sort[name]"
+            "name": "sort[name]",
+            "description": "Sorts the organizers by their name in ascending or descending order."
           }
         ]
       }
@@ -1158,14 +1159,16 @@
               "type": "string"
             },
             "in": "query",
-            "name": "inszNumber"
+            "name": "inszNumber",
+            "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "uitpasNumber"
+            "name": "uitpasNumber",
+            "description": "Unique UiTPAS number of an individual passholder to look up."
           },
           {
             "schema": {
@@ -1173,21 +1176,23 @@
             },
             "in": "query",
             "name": "chipNumber",
-            "description": "Hexadecimal notation of the chipNumber of the UiTPAS"
+            "description": "Hexadecimal notation of the chip number of an individual UiTPAS card."
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "name"
+            "name": "name",
+            "description": "Complete or partial last name of a passholder to look up."
           },
           {
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "name": "firstName"
+            "name": "firstName",
+            "description": "Complete or partial first name of a passholder to look up."
           },
           {
             "schema": {
@@ -1195,7 +1200,7 @@
             },
             "in": "query",
             "name": "schoolId",
-            "description": "Filter passholders that are member of this school (organizerId of the school). Use * to filter passholders that are linked to any school."
+            "description": "Organizer ID of a school, to only return passholders linked to a specific school. Use `*` to return passholders that are linked to any school. Note: Only used in very specific cases for educational integrations."
           },
           {
             "$ref": "#/components/parameters/start"
@@ -1212,7 +1217,8 @@
               ]
             },
             "in": "query",
-            "name": "sort[name]"
+            "name": "sort[name]",
+            "description": "Sorts the passholders by their last name in ascending or descending order."
           },
           {
             "schema": {
@@ -1220,7 +1226,7 @@
             },
             "in": "query",
             "name": "organizerId",
-            "description": "Filter passholders based on the card systems of the give organizer. If omitted, the results will be fitered based on the organizers you have permission to."
+            "description": "A specific organizer ID to only return passholders that are linked to a card system related to this organizer. If omitted, the results will return passholders linked to the organizers you have permission to access."
           },
           {
             "schema": {
@@ -1229,7 +1235,7 @@
             },
             "in": "query",
             "name": "dateOfBirthFrom",
-            "description": "Include only passholders with a dateOfBirth of this value (including) or more recent. Format yyyy-mm-dd e.g. 2003-01-01"
+            "description": "Returns only passholders with a date of birth of this value (including) or more recent. Format `yyyy-mm-dd`, e.g. `2003-01-01`"
           },
           {
             "schema": {
@@ -1238,7 +1244,7 @@
             },
             "in": "query",
             "name": "dateOfBirthTo",
-            "description": "Include only passholders with a dateOfBirth of this value (including) or older. Format yyyy-mm-dd e.g. 2003-01-01"
+            "description": "Returns only passholders with a date of birth of this value (including) or older. Format `yyyy-mm-dd`, e.g. `2003-01-01`"
           }
         ]
       },
