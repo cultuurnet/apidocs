@@ -2994,12 +2994,7 @@
     "/chip-numbers/{chipNumber}": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "chipNumber",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/chipNumber"
         }
       ],
       "get": {
@@ -5656,6 +5651,15 @@
         "in": "path",
         "required": true,
         "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
+      },
+      "chipNumber": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "chipNumber",
+        "in": "path",
+        "required": true,
+        "description": "Hexadecimal notation of the chip number of an individual UiTPAS card."
       },
       "passholderId": {
         "schema": {
