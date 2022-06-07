@@ -3129,9 +3129,6 @@
                           "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
                           "inSpotlight": false,
                           "points": 10,
-                          "types": [
-                            "string"
-                          ],
                           "forKids": false,
                           "sport": false,
                           "labels": "",
