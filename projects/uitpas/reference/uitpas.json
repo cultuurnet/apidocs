@@ -645,21 +645,10 @@
             "required": true
           },
           {
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "in": "query",
-            "name": "start"
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "default": 20,
-              "minimum": 0
-            },
-            "in": "query",
-            "name": "limit"
+            "$ref": "#/components/parameters/limit"
           }
         ]
       }
@@ -1042,21 +1031,10 @@
             "description": "Include only organizers linked to this card system"
           },
           {
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "in": "query",
-            "name": "start"
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 20
-            },
-            "in": "query",
-            "name": "limit"
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
@@ -1220,21 +1198,10 @@
             "description": "Filter passholders that are member of this school (organizerId of the school). Use * to filter passholders that are linked to any school."
           },
           {
-            "schema": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "in": "query",
-            "name": "start"
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "minimum": 0,
-              "default": 20
-            },
-            "in": "query",
-            "name": "limit"
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
@@ -2679,13 +2646,22 @@
                   "Example": {
                     "value": [
                       {
-                        "status": "STARTED",
-                        "id": 0,
-                        "message": "string",
+                        "status": "AVAILABLE",
+                        "id": 123456,
                         "period": {
                           "startDate": "2019-08-24",
                           "endDate": "2019-08-24"
-                        }
+                        },
+                        "creationDate": "2022-06-07T10:01:32+00:00"
+                      },
+                      {
+                        "status": "FAILED",
+                        "id": 345681,
+                        "period": {
+                          "startDate": "2000-01-01",
+                          "endDate": "2020-06-07"
+                        },
+                        "message": "Geen financieel overzicht beschikbaar voor periode 2000/01/01 - 2000/06/07"
                       }
                     ]
                   }
@@ -3289,23 +3265,10 @@
         ],
         "parameters": [
           {
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query",
-            "name": "start",
-            "description": "Start index of the results. Default 0.",
-            "style": "form"
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "default": 20
-            },
-            "in": "query",
-            "name": "limit",
-            "description": "Maximum number of results.",
-            "style": "form"
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
@@ -4290,22 +4253,10 @@
             "description": "Type of the redeemed reward."
           },
           {
-            "schema": {
-              "type": "integer",
-              "default": 0
-            },
-            "in": "query",
-            "name": "start",
-            "description": "Start index of the redeemed rewards."
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "default": 20
-            },
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the number of redeemed rewards in the response."
+            "$ref": "#/components/parameters/limit"
           }
         ]
       }
@@ -4377,21 +4328,10 @@
             "description": "Include only permanent (`true`) card systems or temporary (`false`) card systems."
           },
           {
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query",
-            "name": "start",
-            "description": "Start index of the results. Default 0"
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "integer",
-              "default": 20
-            },
-            "in": "query",
-            "name": "limit",
-            "description": "Maximum number of results"
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
@@ -5750,7 +5690,28 @@
         "in": "header"
       }
     },
-    "parameters": {},
+    "parameters": {
+      "start": {
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        },
+        "in": "query",
+        "name": "start",
+        "description": "Position to start returning results from. When set to `0` the results starting from the very first position will be returned. When set to for example `10` the results 0-9 will be skipped and the ones starting from position 10 will be returned. Can be used in combination with `limit` for pagination."
+      },
+      "limit":{
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 0
+        },
+        "in": "query",
+        "name": "limit",
+        "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination."
+      }
+    },
     "responses": {
       "Unauthorized": {
         "description": "Unauthorized. Your request is missing the required credentials to authenticate. See the Authentication documentation for more info.\n\n* type: https://api.publiq.be/probs/auth/unauthorized\n* detail: might contain a developer-readable explanation of the reason",
