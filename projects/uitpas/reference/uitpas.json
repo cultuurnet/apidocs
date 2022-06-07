@@ -1673,7 +1673,8 @@
                         "UITID_UNREGISTERED",
                         "UITID_REGISTERED",
                         "UITPAS_ALREADY_LINKED"
-                      ]
+                      ],
+                      "description": "* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first"
                     }
                   },
                   "required": [
@@ -1719,7 +1720,7 @@
             }
           }
         },
-        "description": "Retrieves the email address status in UiTPAS and UiTID for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTID.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS and must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS and must login on UiTID first\n\nAfter [UiTID authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTID for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
+        "description": "Retrieves the email address status in UiTPAS and UiTID for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTID.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first\n\nAfter [UiTID authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTID for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
         "tags": [
           "UiTID"
         ],
@@ -3992,7 +3993,8 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/reward-not-found\n* https://api.publiq.be/probs/uitpas/reward-period-constraint\n* https://api.publiq.be/probs/uitpas/reward-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-points-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-no-applicable-cardsystems\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n","content": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/reward-not-found\n* https://api.publiq.be/probs/uitpas/reward-period-constraint\n* https://api.publiq.be/probs/uitpas/reward-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-points-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-no-applicable-cardsystems\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "content": {
               "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
@@ -4330,11 +4332,13 @@
           },
           "name": {
             "type": "string",
-            "readOnly": true
+            "readOnly": true,
+            "description": "Human-readable name of the tariff"
           },
           "price": {
             "type": "number",
-            "readOnly": true
+            "readOnly": true,
+            "description": "Discounted price to pay for this tariff, in euro."
           },
           "type": {
             "type": "string",
@@ -4343,7 +4347,8 @@
               "COUPON",
               "REWARD"
             ],
-            "readOnly": true
+            "readOnly": true,
+            "description": "Type of discount being applied."
           }
         },
         "required": [
@@ -4386,7 +4391,7 @@
         ],
         "properties": {
           "price": {
-            "description": "",
+            "description": "Price for the card system membership, in euro.",
             "type": "number"
           },
           "cardSystem": {
@@ -4430,6 +4435,7 @@
           },
           "tariffId": {
             "type": "string",
+            "description": "Unique ID of the tariff that was paid for the ticket. (Deprecated, use `tariff.id` instead.)",
             "deprecated": true
           },
           "tariff": {
@@ -4477,15 +4483,18 @@
       "Organizer": {
         "title": "Organizer",
         "type": "object",
+        "description": "An organisation that partners with UiTPAS to provide discounts and/or rewards, and/or allows points to be collected at their events.",
         "x-tags": [
           "Models"
         ],
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique ID of an UiTPAS organizer. (Same as its ID in UiTdatabank)"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name of an UiTPAS organizer."
           }
         },
         "required": [
@@ -4501,10 +4510,12 @@
         "description": "Paginated response object for passholders",
         "properties": {
           "totalItems": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Total amount of passholder results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
+            "description": "List of passholder results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Passholder"
             }
@@ -4521,11 +4532,11 @@
         "properties": {
           "totalItems": {
             "type": "integer",
-            "description": "Total number of rewards for the request."
+            "description": "Total number of reward results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
-            "description": "List of rewards starting at index `start` and limited to `limit` items.",
+            "description": "List of reward results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Reward"
             }
@@ -4560,11 +4571,11 @@
         "properties": {
           "totalItems": {
             "type": "integer",
-            "description": "Total number of redeemed rewards for the request."
+            "description": "Total number of redeemed reward results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
-            "description": "List of redeemed rewards starting at index `start` and limited to `limit` items.",
+            "description": "List of redeemed reward results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/RedeemedReward"
             }
@@ -4580,10 +4591,12 @@
         "description": "Paginated response object for organizers",
         "properties": {
           "totalItems": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Total number of organizer results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
+            "description": "List of organizer results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Organizer"
             }
@@ -4599,10 +4612,12 @@
         "description": "Paginated response object for ticket sales",
         "properties": {
           "totalItems": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Total number of ticket sale results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
+            "description": "List of ticket sale results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/TicketSale"
             }
@@ -4676,13 +4691,16 @@
             "readOnly": true
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Last name of the passholder."
           },
           "firstName": {
-            "type": "string"
+            "type": "string",
+            "description": "First name of the passholder."
           },
           "inszNumber": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
           },
           "cardSystemMemberships": {
             "type": "array",
@@ -4693,7 +4711,8 @@
             "readOnly": true
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "description": "Email address of the passholder. Not present for every passholder, but always unique."
           },
           "creationDate": {
             "type": "string",
@@ -4703,18 +4722,8 @@
           },
           "dateOfBirth": {
             "type": "string",
-            "format": "date"
-          },
-          "postalCode": {
-            "type": "string",
-            "deprecated": true,
-            "description": "This field is always available in responses.",
-            "readOnly": true
-          },
-          "city": {
-            "type": "string",
-            "deprecated": true,
-            "readOnly": true
+            "format": "date",
+            "description": "Date that the passholder was born."
           },
           "gender": {
             "type": "string",
@@ -4722,14 +4731,15 @@
               "MALE",
               "FEMALE",
               "X"
-            ]
+            ],
+            "description": "Gender of the passholder."
           },
           "registrationOrganizer": {
             "$ref": "#/components/schemas/Organizer"
           },
           "points": {
             "type": "integer",
-            "description": "This field is always available in responses.",
+            "description": "Amount of points the passholder has currently saved (and not used). This field is always available in responses.",
             "readOnly": true
           },
           "uitidStatus": {
@@ -4738,41 +4748,62 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTID registered. This field is always available in responses.",
             "readOnly": true
           },
           "address": {
             "type": "object",
+            "description": "Address that the passholder lives at. Always present in responses.",
             "required": [
               "postalCode",
               "city"
             ],
             "properties": {
               "street": {
-                "type": "string"
+                "type": "string",
+                "description": "Street name of the address."
               },
               "number": {
-                "type": "string"
+                "type": "string",
+                "description": "House number."
               },
               "box": {
-                "type": "string"
+                "type": "string",
+                "description": "Postal box number."
               },
               "postalCode": {
-                "type": "string"
+                "type": "string",
+                "description": "Postal code of the municipality."
               },
               "city": {
-                "type": "string"
+                "type": "string",
+                "description": "Human-readable name of the municipality."
               },
               "country": {
-                "type": "string"
+                "type": "string",
+                "description": "Country."
               }
             }
           },
+          "postalCode": {
+            "type": "string",
+            "deprecated": true,
+            "description": "Postal code of the municipality that the passholder lives in. Deprecated in favor of `address.postalCode`",
+            "readOnly": true
+          },
+          "city": {
+            "type": "string",
+            "deprecated": true,
+            "readOnly": true,
+            "description": "Name of the municipality that the passholder lives in. Deprecated in favor of `address.city`."
+          },
           "phoneNumber": {
-            "type": "string"
+            "type": "string",
+            "description": "Phone number that the passholder has registered, for example for SMS alerts."
           },
           "optInPreferences": {
             "type": "object",
+            "description": "Opt-ins that the passholder has given for alerts and notifications.",
             "properties": {
               "serviceMails": {
                 "type": "boolean"
@@ -4799,7 +4830,8 @@
             ]
           },
           "nationality": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name of the passholder's nationality."
           },
           "parentalConsent": {
             "type": "boolean",
@@ -4818,7 +4850,7 @@
           },
           "registrationCardSystemId": {
             "type": "integer",
-            "description": "Only used in passholder registration. Set to the id of the CardSystem of which the passholder has to become a member.",
+            "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
           }
         },
@@ -4849,23 +4881,29 @@
         },
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Last name of the new passholder."
           },
           "firstName": {
-            "type": "string"
+            "type": "string",
+            "description": "First name of the new passholder."
           },
           "dateOfBirth": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "description": "Date that the new passholder was born."
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "description": "Email address of the new passholder. Must be unique."
           },
           "postalCode": {
-            "type": "string"
+            "type": "string",
+            "description": "Postal code of the municipality that the new passholder lives in."
           },
           "city": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name of the municipality that the new passholder lives in."
           },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
@@ -4966,6 +5004,7 @@
       },
       "CardSystemMembership": {
         "title": "CardSystemMembership",
+        "description": "Membership info of an individual passholder in a specific card system.",
         "type": "object",
         "x-tags": [
           "Models"
@@ -4984,20 +5023,25 @@
               "ACTIVE",
               "BLOCKED"
             ],
+            "description": "Whether the membership is active or blocked.",
             "readOnly": true
           },
           "socialTariff": {
             "type": "object",
+            "description": "If the passholder has right to a social tariff, this object contains details like the end date.",
             "properties": {
               "endDate": {
                 "type": "string",
-                "format": "date-time"
+                "format": "date-time",
+                "description": "Date that the right to a social tariff expires (inclusive)."
               },
               "inGracePeriod": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed."
               },
               "expired": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whether the right to a social tariff has expired or not."
               }
             },
             "required": [
@@ -5011,6 +5055,7 @@
       },
       "CardSystem": {
         "title": "CardSystem",
+        "description": "A region, usually one or multiple municipalities in Belgium, that uses UiTPAS and provides discounts and/or rewards. For example \"Paspartoe\" (Brussels), UiTPAS Leuven, UiTPAS Hasselt, UiTPAS Gent, and so on.",
         "type": "object",
         "x-tags": [
           "Models"
@@ -5105,21 +5150,24 @@
               "STARTED",
               "AVAILABLE",
               "FAILED"
-            ]
+            ],
+            "description": "Whether the report has started (but not ready yet), is available for download, or failed to be created."
           },
           "id": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Unique ID of the report export. Can be used to retrieve the status of the export."
           },
           "message": {
             "type": "string",
-            "description": "Optional message describing why the report failed."
+            "description": "Included if `status` is `FAILED`. Describes why it was not possible to export the report."
           },
           "period": {
             "$ref": "#/components/schemas/ReportPeriod"
           },
           "creationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Date that the report was created (if successful)."
           }
         },
         "required": [
@@ -5130,15 +5178,17 @@
       "ReportPeriod": {
         "title": "ReportPeriod",
         "type": "object",
-        "description": "Start and end date of the reporting period  ",
+        "description": "Start and end date of the reporting period",
         "properties": {
           "startDate": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "description": "Minimum date of all transactions to include in the report. (Inclusive)"
           },
           "endDate": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "description": "Maximum date of all transactions to include in the report. (Inclusive)"
           }
         },
         "required": [
@@ -5183,15 +5233,18 @@
           },
           "manualDistributionKeys": {
             "type": "array",
+            "description": "List of distribution keys, used to determine the price of discounted UiTPAS tariffs, which can be enabled or disabled manually for the event.",
             "items": {
               "type": "object",
-              "description": "Manual distribution key",
+              "description": "Distribution key that can be enabled or disabled manually for the related event.",
               "properties": {
                 "id": {
-                  "type": "integer"
+                  "type": "integer",
+                  "description": "Unique ID of the manual distribution key."
                 },
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Human-readable name of the distribution key."
                 },
                 "enabled": {
                   "type": "boolean",
@@ -5228,6 +5281,7 @@
         "properties": {
           "available": {
             "type": "array",
+            "description": "List of available tariffs.",
             "items": {
               "$ref": "#/components/schemas/TariffAvailibility"
             }
@@ -5257,7 +5311,8 @@
               "remaining": {
                 "type": "integer",
                 "example": 1,
-                "readOnly": true
+                "readOnly": true,
+                "description": "Global amount of remaining tickets at this tariff."
               }
             },
             "required": [
@@ -5283,11 +5338,13 @@
         "properties": {
           "begin": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Start date of the period (inclusive)."
           },
           "end": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "End date of the period (inclusive)."
           }
         },
         "required": [
@@ -5356,7 +5413,8 @@
             "enum": [
               "PHYSICAL",
               "ONLINE"
-            ]
+            ],
+            "description": "Whether the reward can be redeemed online, or has to be redeemed in a physical location."
           },
           "owningCardSystem": {
             "$ref": "#/components/schemas/CardSystem"
@@ -5517,19 +5575,23 @@
       "Facet": {
         "title": "Facet",
         "type": "object",
+        "description": "Each property is a possible filter value, mapping to an object with a human-readable name and amount of results if the filter value is applied in combination with the other active filters.",
         "additionalProperties": {
           "type": "object",
           "properties": {
             "name": {
               "type": "object",
+              "description": "Internationalized human-readable name for the filter value.",
               "properties": {
                 "nl": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "Human-readable name for the filter value localized in Dutch."
                 }
               }
             },
             "count": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Amount of results if the filter is applied in combination with the other active filters."
             }
           },
           "required": [
@@ -5564,10 +5626,12 @@
         "description": "Paginated response object for card systems",
         "properties": {
           "totalItems": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Total number of card system results (can be more than the amount of results in the response)."
           },
           "member": {
             "type": "array",
+            "description": "List of card system results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/CardSystem"
             }
