@@ -1404,12 +1404,7 @@
     "/passholders/{passholderId}": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "passholderId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/passholderId"
         }
       ],
       "delete": {
@@ -2011,13 +2006,7 @@
       },
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "passholderId",
-          "in": "path",
-          "required": true,
-          "description": "The id of the passholder"
+          "$ref": "#/components/parameters/passholderId"
         }
       ]
     },
@@ -2297,13 +2286,7 @@
     "/passholders/{passholderId}/school": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "passholderId",
-          "in": "path",
-          "required": true,
-          "description": "The id of the passholder"
+          "$ref": "#/components/parameters/passholderId"
         }
       ],
       "get": {
@@ -5697,6 +5680,15 @@
       }
     },
     "parameters": {
+      "passholderId": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "passholderId",
+        "in": "path",
+        "description": "Unique ID of an UiTPAS passholder.",
+        "required": true
+      },
       "start": {
         "schema": {
           "type": "integer",
