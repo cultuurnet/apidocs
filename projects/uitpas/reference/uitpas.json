@@ -692,7 +692,7 @@
           "404": {
             "description": "Not Found",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -817,7 +817,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card-system\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/distributionkey-not-found\n* https://api.publiq.be/probs/uitpas/invalid-distributionkey\n* https://api.publiq.be/probs/uitpas/event-already-has-ticketsales\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -833,7 +833,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -941,7 +941,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -988,7 +988,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/group-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1150,7 +1150,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1445,7 +1445,7 @@
           "404": {
             "description": "Not Found",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1853,7 +1853,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -2046,7 +2046,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-already-registered\n* https://api.publiq.be/probs/uitpas/uitid-already-registered\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2165,7 +2165,7 @@
           "404": {
             "description": "Not Found\n\nIf the user does not have a passholder. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2342,7 +2342,7 @@
           "404": {
             "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/school-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2377,7 +2377,7 @@
           "400": {
             "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/school-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2393,7 +2393,7 @@
           "404": {
             "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2444,7 +2444,7 @@
           "404": {
             "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2520,7 +2520,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2586,7 +2586,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2671,7 +2671,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2755,7 +2755,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/report-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2828,7 +2828,7 @@
           "404": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/report-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 },
@@ -3634,7 +3634,7 @@
           "404": {
             "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/reward-not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -3726,7 +3726,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card-system\n* https://api.publiq.be/probs/uitpas/reward-not-editable\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -3742,7 +3742,7 @@
           "404": {
             "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/reward-not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -3876,7 +3876,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -4134,7 +4134,7 @@
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\n",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
