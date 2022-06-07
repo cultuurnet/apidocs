@@ -3341,7 +3341,7 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sort on reward name",
+            "description": "Sorts the rewards by their name in ascending or descending order.",
             "style": "form"
           },
           {
