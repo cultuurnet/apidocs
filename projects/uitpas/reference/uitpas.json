@@ -2909,12 +2909,7 @@
     "/insz-numbers/{inszNumber}": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "inszNumber",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/inszNumber"
         }
       ],
       "get": {
@@ -5652,6 +5647,15 @@
         "in": "path",
         "required": true,
         "description": "Unique UiTPAS number of a registered pass."
+      },
+      "inszNumber": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "inszNumber",
+        "in": "path",
+        "required": true,
+        "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
       },
       "passholderId": {
         "schema": {
