@@ -2450,13 +2450,7 @@
     "/organizers/{organizerId}/financial-reports/periods": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true,
-          "description": "The id of the organizer"
+          "$ref": "#/components/parameters/organizerId"
         }
       ],
       "get": {
@@ -2524,12 +2518,7 @@
     "/organizers/{organizerId}/financial-reports": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/organizerId"
         }
       ],
       "post": {
@@ -2696,12 +2685,7 @@
     "/organizers/{organizerId}/financial-reports/{reportId}": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/organizerId"
         },
         {
           "schema": {
@@ -2778,12 +2762,7 @@
     "/organizers/{organizerId}/financial-reports/{reportId}.zip": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "organizerId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/organizerId"
         },
         {
           "schema": {
@@ -5688,6 +5667,15 @@
         "in": "path",
         "description": "Unique ID of an UiTPAS passholder.",
         "required": true
+      },
+      "organizerId": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "organizerId",
+        "in": "path",
+        "required": true,
+        "description": "Unique ID of an UiTPAS organizer. (Same as its ID in UiTdatabank)"
       },
       "start": {
         "schema": {
