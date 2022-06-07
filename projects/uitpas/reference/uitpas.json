@@ -2688,12 +2688,7 @@
           "$ref": "#/components/parameters/organizerId"
         },
         {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "reportId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/reportId"
         }
       ],
       "get": {
@@ -2765,12 +2760,7 @@
           "$ref": "#/components/parameters/organizerId"
         },
         {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "reportId",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/reportId"
         }
       ],
       "get": {
@@ -5676,6 +5666,15 @@
         "in": "path",
         "required": true,
         "description": "Unique ID of an UiTPAS organizer. (Same as its ID in UiTdatabank)"
+      },
+      "reportId": {
+        "schema": {
+          "type": "integer"
+        },
+        "name": "reportId",
+        "in": "path",
+        "required": true,
+        "description": "Unique ID of the generated financial report."
       },
       "start": {
         "schema": {
