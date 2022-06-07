@@ -2824,12 +2824,7 @@
     "/passes/{uitpasNumber}": {
       "parameters": [
         {
-          "schema": {
-            "type": "string"
-          },
-          "name": "uitpasNumber",
-          "in": "path",
-          "required": true
+          "$ref": "#/components/parameters/uitpasNumber"
         }
       ],
       "get": {
@@ -5649,6 +5644,15 @@
       }
     },
     "parameters": {
+      "uitpasNumber": {
+        "schema": {
+          "type": "string"
+        },
+        "name": "uitpasNumber",
+        "in": "path",
+        "required": true,
+        "description": "Unique UiTPAS number of a registered pass."
+      },
       "passholderId": {
         "schema": {
           "type": "string"
