@@ -1548,7 +1548,7 @@
             },
             "in": "header",
             "required": true,
-            "name": "Authorization",
+            "name": "authorization",
             "description": "HTTP Basic auth using uitpasNumber as the username and dateOfBirth as password"
           },
           {
@@ -2841,7 +2841,7 @@
               }
             },
             "headers": {
-              "Content-Disposition": {
+              "content-disposition": {
                 "schema": {
                   "type": "string",
                   "example": "attachment; filename=\"financialOverview_organizerX_20210526_1512.zip\""
