@@ -4807,23 +4807,23 @@
             "properties": {
               "serviceMails": {
                 "type": "boolean",
-                "description": "TODO"
+                "description": "@todo add description"
               },
               "infoMails": {
                 "type": "boolean",
-                "description": "TODO"
+                "description": "@todo add description"
               },
               "sms": {
                 "type": "boolean",
-                "description": "TODO"
+                "description": "@todo add description"
               },
               "post": {
                 "type": "boolean",
-                "description": "TODO"
+                "description": "@todo add description"
               },
               "milestoneMails": {
                 "type": "boolean",
-                "description": "TODO"
+                "description": "@todo add description"
               }
             },
             "required": [
