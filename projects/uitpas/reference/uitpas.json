@@ -4712,7 +4712,7 @@
           },
           "email": {
             "type": "string",
-            "description": "Email address of the passholder. Not present for every passholder, but always unique."
+            "description": "Email address of the passholder. Not present for every passholder, but always unique. @todo Double-check that this is correct."
           },
           "creationDate": {
             "type": "string",
@@ -4781,7 +4781,7 @@
               },
               "country": {
                 "type": "string",
-                "description": "Country."
+                "description": "@todo Specify if this is a country code, country name, or something else..."
               }
             }
           },
@@ -4908,7 +4908,7 @@
           },
           "city": {
             "type": "string",
-            "description": "Human-readable name of the municipality that the new passholder lives in."
+            "description": "Human-readable name of the municipality that the new passholder lives in. @todo Why is this required and even possible? Can this not be determined from postalCode?"
           },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
@@ -5038,15 +5038,15 @@
               "endDate": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Date that the right to a social tariff expires (inclusive)."
+                "description": "Date that the right to a social tariff expires (inclusive). @todo Double-check that this is correct."
               },
               "inGracePeriod": {
                 "type": "boolean",
-                "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed."
+                "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed. @todo Double-check that this is correct."
               },
               "expired": {
                 "type": "boolean",
-                "description": "Whether the right to a social tariff has expired or not."
+                "description": "Whether the right to a social tariff has expired or not. @todo Is this immediately after endDate, or after endDate and inGracePeriod?"
               }
             },
             "required": [
@@ -5172,7 +5172,7 @@
           "creationDate": {
             "type": "string",
             "format": "date-time",
-            "description": "Date that the report was created (if successful)."
+            "description": "Date that the report was created (if successful). @todo Double-check that this is correct. Was this the date that the report was requested, or was ready?"
           }
         },
         "required": [
@@ -5188,12 +5188,12 @@
           "startDate": {
             "type": "string",
             "format": "date",
-            "description": "Minimum date of all transactions to include in the report. (Inclusive)"
+            "description": "Minimum date of all transactions to include in the report. (Inclusive) @todo Double-check that this is correct."
           },
           "endDate": {
             "type": "string",
             "format": "date",
-            "description": "Maximum date of all transactions to include in the report. (Inclusive)"
+            "description": "Maximum date of all transactions to include in the report. (Inclusive) @todo Double-check that this is correct."
           }
         },
         "required": [
@@ -5253,7 +5253,7 @@
                 },
                 "enabled": {
                   "type": "boolean",
-                  "description": "State of this manual distribution key in the card system for the event."
+                  "description": "State of this manual distribution key in the card system for the event. @todo Is this state global or per event? Not clear from current description."
                 }
               },
               "required": [
@@ -5317,7 +5317,7 @@
                 "type": "integer",
                 "example": 1,
                 "readOnly": true,
-                "description": "Global amount of remaining tickets at this tariff."
+                "description": "Global amount of remaining tickets at this tariff. @todo Double-check that this is correct (is it global or per passholder?)"
               }
             },
             "required": [
