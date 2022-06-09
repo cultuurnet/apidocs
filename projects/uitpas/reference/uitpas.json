@@ -4806,19 +4806,24 @@
             "description": "Opt-ins that the passholder has given for alerts and notifications.",
             "properties": {
               "serviceMails": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "TODO"
               },
               "infoMails": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "TODO"
               },
               "sms": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "TODO"
               },
               "post": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "TODO"
               },
               "milestoneMails": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "TODO"
               }
             },
             "required": [
