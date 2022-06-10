@@ -4712,7 +4712,7 @@
           },
           "email": {
             "type": "string",
-            "description": "Email address of the passholder. Not present for every passholder, but always unique. @todo Double-check that this is correct."
+            "description": "Contact email address of the passholder. Not present for every passholder. Multiple passholders can have the same email address."
           },
           "creationDate": {
             "type": "string",
@@ -4753,7 +4753,7 @@
           },
           "address": {
             "type": "object",
-            "description": "Address that the passholder lives at. Always present in responses.",
+            "description": "Address that the passholder lives at. Always present in responses. Passholders living outside of Belgium (usually near the border) will only have a `postalCode` and `city` in their address.",
             "required": [
               "postalCode",
               "city"
@@ -4781,7 +4781,7 @@
               },
               "country": {
                 "type": "string",
-                "description": "@todo Specify if this is a country code, country name, or something else..."
+                "description": "ISO 3166-1 alpha-2 country code."
               }
             }
           },
@@ -4803,27 +4803,27 @@
           },
           "optInPreferences": {
             "type": "object",
-            "description": "Opt-ins that the passholder has given for alerts and notifications.",
+            "description": "Permissions that the passholder has given to be contacted.",
             "properties": {
               "serviceMails": {
                 "type": "boolean",
-                "description": "@todo add description"
-              },
-              "infoMails": {
-                "type": "boolean",
-                "description": "@todo add description"
-              },
-              "sms": {
-                "type": "boolean",
-                "description": "@todo add description"
-              },
-              "post": {
-                "type": "boolean",
-                "description": "@todo add description"
+                "description": "Important information about the functionality of UiTPAS."
               },
               "milestoneMails": {
                 "type": "boolean",
-                "description": "@todo add description"
+                "description": "Notification when you reach an important UiTPAS milestone, for example a specific amount of points or an exclusive reward becomes available to you."
+              },
+              "infoMails": {
+                "type": "boolean",
+                "description": "Rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "sms": {
+                "type": "boolean",
+                "description": "Free (sporadic) SMS messages with rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "post": {
+                "type": "boolean",
+                "description": "Sporadic post mail with information about UiTPAS. Will be sent to the passholder's postal address."
               }
             },
             "required": [
@@ -4904,11 +4904,11 @@
           },
           "postalCode": {
             "type": "string",
-            "description": "Postal code of the municipality that the new passholder lives in."
+            "description": "Postal code of the Belgian municipality that the new passholder lives in."
           },
           "city": {
             "type": "string",
-            "description": "Human-readable name of the municipality that the new passholder lives in. @todo Why is this required and even possible? Can this not be determined from postalCode?"
+            "description": "Human-readable name of the Belgian municipality that the new passholder lives in."
           },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
@@ -5038,15 +5038,15 @@
               "endDate": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Date that the right to a social tariff expires (inclusive). @todo Double-check that this is correct."
+                "description": "Exact moment that the passholder's right to a social tariff expires."
               },
               "inGracePeriod": {
                 "type": "boolean",
-                "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed. @todo Double-check that this is correct."
+                "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed."
               },
               "expired": {
                 "type": "boolean",
-                "description": "Whether the right to a social tariff has expired or not. @todo Is this immediately after endDate, or after endDate and inGracePeriod?"
+                "description": "If true, the passholder's right to a social tariff has completely expired (the end date has passed and the passholder is no longer in a grace period)."
               }
             },
             "required": [
@@ -5144,7 +5144,7 @@
       "Report": {
         "type": "object",
         "title": "Report",
-        "description": "The status of a started report export.",
+        "description": "The status of a report export.",
         "x-tags": [
           "Models"
         ],
@@ -5172,28 +5172,29 @@
           "creationDate": {
             "type": "string",
             "format": "date-time",
-            "description": "Date that the report was created (if successful). @todo Double-check that this is correct. Was this the date that the report was requested, or was ready?"
+            "description": "Date that the report export was initially requested."
           }
         },
         "required": [
           "status",
-          "id"
+          "id",
+          "creationDate"
         ]
       },
       "ReportPeriod": {
         "title": "ReportPeriod",
         "type": "object",
-        "description": "Start and end date of the reporting period",
+        "description": "Date range for which to export a list of financial transactions.",
         "properties": {
           "startDate": {
             "type": "string",
             "format": "date",
-            "description": "Minimum date of all transactions to include in the report. (Inclusive) @todo Double-check that this is correct."
+            "description": "Minimum date of all transactions to include in the report. (Inclusive)"
           },
           "endDate": {
             "type": "string",
             "format": "date",
-            "description": "Maximum date of all transactions to include in the report. (Inclusive) @todo Double-check that this is correct."
+            "description": "Maximum date of all transactions to include in the report. (Inclusive)"
           }
         },
         "required": [
@@ -5253,7 +5254,7 @@
                 },
                 "enabled": {
                   "type": "boolean",
-                  "description": "State of this manual distribution key in the card system for the event. @todo Is this state global or per event? Not clear from current description."
+                  "description": "Whether the distribution key is enabled or not for this specific event."
                 }
               },
               "required": [
@@ -5317,7 +5318,7 @@
                 "type": "integer",
                 "example": 1,
                 "readOnly": true,
-                "description": "Global amount of remaining tickets at this tariff. @todo Double-check that this is correct (is it global or per passholder?)"
+                "description": "Amount of tickets available at this price for this event, for the given passholder."
               }
             },
             "required": [
