@@ -63,7 +63,6 @@
         ]
       },
       "Pass": {
-        "x-internal": true,
         "title": "Pass",
         "type": "object",
         "examples": [
@@ -182,7 +181,6 @@
         },
         "required": [
           "passholderId",
-          "subscriptionEndDate",
           "visit"
         ]
       }
@@ -276,7 +274,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Generate a list of vouchers for the partner identified by the client access token.\n \n<!-- theme: warning -->\n\n> **Warning**: This API generates vouchers and marks them as sold in the museumPASSmusees system. These will be invoiced to the partner when called in the production environment.\n\nThe caller of this request must have the _Voucher generator_ role for the partner.",
+        "description": "Generate a list of vouchers for the partner identified by the client access token.\n\nVouchers may sold to new or existing passholders so they can register a new pass or extend their current subscription on [https://www.museumpassmusees.be](https://www.museumpassmusees.be).\n \n<!-- theme: warning -->\n\n> **All vouchers generated in the _production_ environment will be invoiced to the partner.** Vouchers generated in the _test_ environment will **not** be invoiced.\n\n## Permissions\n\nThe caller of this request must have the `voucher generator` role for the partner.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -318,7 +316,6 @@
     },
     "/passes/{cardNumber}": {
       "get": {
-        "x-internal": true,
         "summary": "Look up pass by card number",
         "responses": {
           "200": {
@@ -350,7 +347,7 @@
           }
         },
         "operationId": "get-passes",
-        "description": "Retrieve information related to a museum pass.\n\n> **Important**:\n>\n> Only 3 fields are always available: `passholderId`, `subscriptionEndDate`, `visit`.\n>\n> The other fields like `firstName`, `lastName` and `picture` can be omitted from the response because they are still unknown when a passholder has not registered online yet, or irrelevant when the card is blocked.\n>\n> The `visit.allowed` boolean indicates whether this pass is allowed to visit a museum at the time of the request. In case that boolean is `false` the `visit.reason` will indicate why that is not possible.\n\n\nThe caller of this request must have the _visit registrar_ role.",
+        "description": "Retrieve information related to a museum pass.\n\nOnly 2 fields are always available: `passholderId` and `visit`.\n\nAlways use `visit` to determine if the passholder may visit your museum (determined by the client access token used). The `visit.allowed` boolean indicates whether the passholder is allowed to visit your museum at the time of the request. In case that boolean is `false` the `visit.reason` will indicate why that is not possible and you should show a human-readable error message in your app.\n\nIf `visit.allowed` is `true`, you may grant the passholder entry to the museum and register their visit using [`POST /visits`](./partner-api.json/paths/~1visits/post) with the `passholderId` from the response.\n\nIn most cases `subscriptionEndDate` is also present in the response, but not if the passholder only ever had one active subscription that was later cancelled. Note that this field is purely informational and should never be used to determine if the passholder may visit your museum or not, as other factors may influence this check.\n\nThe other fields like `firstName`, `lastName` and `picture` are present when the passholder has registered their pass online, except if the pass is blocked.\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.\n",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -374,7 +371,6 @@
     },
     "/visits": {
       "post": {
-        "x-internal": true,
         "summary": "Register a museum visit",
         "operationId": "post-visits",
         "responses": {
@@ -398,7 +394,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers a visit of a passholder at the museum identified by the client access token.\n\nThe caller of this request must have the _visit registrar_ role for the museum.",
+        "description": "Registers a visit of a passholder at your museum (determined by the client access token used).\n\nTo retrieve the `passholderId` of a passholder, look up their pass using [`GET /passes/{cardNumber}`](./partner-api.json/paths/~1passes~1{cardNumber}/get). The response to that request will also indicate if the passholder may visit your museum.\n\nIf the passholder may not visit your museum and you still try to register a visit for them, the server will return a `403 Forbidden` error response.\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
