@@ -182,7 +182,6 @@
         },
         "required": [
           "passholderId",
-          "subscriptionEndDate",
           "visit"
         ]
       }
