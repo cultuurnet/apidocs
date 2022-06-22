@@ -1,6 +1,6 @@
 # Terminology
 
-On this page you can quickly get a grasp of common UiTPAS terminology and concepts, referenced throughout the API documentation.
+On this page you can quickly get a grasp of common UiTPAS terminology and concepts, referenced throughout the API documentation.  
 
 ## Passholder
 
