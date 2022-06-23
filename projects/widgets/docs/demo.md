@@ -12,4 +12,6 @@ The beginning of an awesome article...
 
 [introduction](introduction.md)
 
-[client access token](https://foobar)
+- foo
+- bar
+- lorem
