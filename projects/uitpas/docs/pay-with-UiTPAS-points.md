@@ -51,11 +51,11 @@ Your application then starts its typical flow of guiding the passholder through 
 
 At some point during the checkout process on your website or application, you provide the passholder a way to enter their UiTPAS number if they have one.
 
-Optionally the UiTPAS number can already be verified at this stage by [retrieving pass](/projects/uitpas/reference/uitpas.json/paths/~1passes~1{uitpasNumber}) information. This endpoint also provides basic information like the passholder's points balance and postalCode.
+Optionally the UiTPAS number can already be verified at this stage by [retrieving pass](/reference/uitpas.json/paths/~1passes~1{uitpasNumber}) information. This endpoint also provides basic information like the passholder's points balance and postalCode.
 
 ### 4. Check if the passholder can redeem the reward
 
-Now we need to [check if the passholder can redeem this reward](/uitpas/reference/uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
+Now we need to [check if the passholder can redeem this reward](/reference/uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
 It's possible that the passholder doesn't have enough points, or that there's a limit on the number of times the reward can be redeemed.
 
 Example request:
@@ -95,11 +95,11 @@ After you've checked that the passholder can redeem the reward, it's best practi
 
 In your application you should **clearly show the current point balance** of the passholder **and how many points will be deducted by redeeming the reward**.
 
-You can get the current point balance of the passholder using the [retrieving pass endpoint](/projects/uitpas/reference/uitpas.json/paths/~1passes~1{uitpasNumber}).
+You can get the current point balance of the passholder using the [retrieving pass endpoint](/reference/uitpas.json/paths/~1passes~1{uitpasNumber}).
 
 ### 6. Redeem the reward
 
-You can now redeem the reward for the passholder.
+You can now [redeem the reward for the passholder](/reference/uitpas.json/paths/~1rewards~1redeemed).
 
 When you receive a confirming 201 response, you can now give the passholder what he or she way buying in your flow, for example a ticket.
 
