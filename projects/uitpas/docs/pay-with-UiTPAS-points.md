@@ -99,7 +99,9 @@ You can get the current point balance of the passholder using the [retrieving pa
 
 ### 6. Redeem the reward
 
-You can now [redeem the reward for the passholder](/reference/uitpas.json/paths/~1rewards~1redeemed).
+You can now [redeem the reward for the passholder](/reference/uitpas.json/paths/~1rewards~1redeemed/post).
+
+[request available UiTPAS tariffs](/reference/uitpas.json/paths/~1tariffs/get)
 
 When you receive a confirming 201 response, you can now give the passholder what he or she way buying in your flow, for example a ticket.
 
