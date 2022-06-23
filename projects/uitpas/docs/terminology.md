@@ -69,4 +69,4 @@ To actually receive these free welcome rewards, **the passholders still needs to
 
 Points rewards are rewards that a passholder can redeem for points. 
 
-Unlike welcome rewards, the passholder doesn't receive these rewards when buying an UiTPAS, but choses to redeem this reward for points.
+Unlike welcome rewards, the passholder doesn't receive these rewards when buying an UiTPAS, but chooses to redeem this reward for points.

@@ -31,37 +31,17 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 To start the flow, you first need to know which reward you'll be redeeming.
 
-You can find a list in the [**rewards section of uitpas.be**](https://www.uitpas.be/voordelen-zoeken#/voordelen). When you open the detail page of a reward, you'll find the reward-id at the end of the URL:
+#### Get an existing reward
+
+You can find a list in the [**rewards section of uitpas.be**](https://www.uitpas.be/voordelen-zoeken#/voordelen). When you open the detail page of a reward, **you'll find the reward-id at the end of the URL**:
 ![](../assets/images/finding-rewards-id.png)
 
-Alternatively, if the reward doesn't exist or your application needs a more dynamic setup you can **[create the reward](/projects/uitpas/reference/uitpas.json/paths/~1rewards)**.
+#### Create a new reward
+
+Alternatively, if the reward doesn't exist or your application needs a more dynamic setup you can **[create the reward by following this guide](creating-rewards.md)**.
 In the response you'll receive the reward-id that you can then use in the next steps.
 
-Example request:
-
-```json
-POST /rewards HTTP/1.1
-Content-Type: application/json
-Host: https://api-test.uitpas.be
-Authorization: Bearer YOUR_ACCESS_TOKEN'
-{
-  "title": "Free ticket Design Museum Brussels",
-  "type": "POINTS",
-  "categories": [
-    "Doen"
-  ],
-  "promotionalDescription": "this is the mandatory description",
-  "publicationPeriod": {
-    "begin": "2021-08-24T14:15:22Z",
-    "end": "2022-08-24T14:15:22Z"
-  },
-  "moreInfoURL": "https://example.org/more-info-about-this-reward",
-  "redeemType": "ONLINE",
-  "points": 10
-}
-```
-
-### 2. Passholder wants to buy something with UiTPAS-points
+### 2. Passholder wants to buy something with UiTPAS points
 
 A passholder on your website or application wants to buy something with UiTPAS points.
 

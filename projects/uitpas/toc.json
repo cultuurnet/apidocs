@@ -67,6 +67,22 @@
       ]
     },
     {
+      "type": "group",
+      "title": "Rewards",
+      "items": [
+        {
+          "type": "item",
+          "title": "Letting passholders pay with UiTPAS points in your application",
+          "uri": "docs/pay-with-UiTPAS-points.md"
+        },
+        {
+          "type": "item",
+          "title": "Creating rewards",
+          "uri": "docs/creating-rewards.md"
+        }
+      ]
+    },
+    {
       "type": "divider",
       "title": "API references"
     },
