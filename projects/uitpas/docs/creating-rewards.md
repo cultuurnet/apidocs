@@ -13,7 +13,7 @@ This guide explains **how to create UiTPAS rewards programmatically**.
 
 To learn how to let passholders pay with UiTPAS points in your application, [check out this guide](pay-with-UiTPAS-points.md).
 
-## Before your start
+## Before you start
 
 Before starting this guide, make sure you clearly understand which type of reward you want to create: [a **welcome reward** or a **points reward**](terminology.md#rewards).
 
