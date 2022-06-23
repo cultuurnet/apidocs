@@ -41,6 +41,6 @@ If the passholder doesn't end up buying the ticket, you should [cancel the ticke
 
 The calculation of the correct UiTPAS tariffs is dependent on many factors such as the availability of a social tariff for the passholder and settings within the UiTPAS region. These are checked in realtime by UiTPAS. That's why it's a bad idea to only use UiTPAS numbers without accessing the UiTPAS API.
 
-### My application is used by multiple UiTPAS organizers.  Can I use the same set of credentials?
+### Can I use the same client access tokens for multiple UiTPAS organizers?
 
-No, you will receive one set of credentials per organizer. We encourage organizers to request their own credentials and provide them to your application.
+Organizers can be grouped into your customer units. Different organizations tied to the same municipality or overarching organization will be tied to the same credentials. For every customer, we will expect you to request a new set of credentials. Keep in mind that user permissions now need to be managed by your application as client access tokens are agnostic of the person performing the actions.
