@@ -9,6 +9,11 @@
       "type": "item",
       "title": "Example page with videos",
       "uri": "docs/video.md"
+    },
+    {
+      "type": "item",
+      "title": "demo",
+      "uri": "docs/demo.md"
     }
   ]
 }
