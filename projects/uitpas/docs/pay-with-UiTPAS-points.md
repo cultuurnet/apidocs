@@ -2,11 +2,15 @@
 stoplight-id: fbz0p8ipnt9zd
 ---
 
-# Letting passholders pay with UiTPAS-points in your application
+# Letting passholders pay with UiTPAS points in your application
 
 This guide illustrates how to let passholders pay with their UiTPAS points, for example in a ticketing application.
 
-You'll learn how to get or create a reward, check if the passholder can redeem the reward and how to redeem the reward. 
+You'll learn how to get or create a reward, check if the passholder can redeem the reward and how to redeem the reward.
+
+## Before your start
+
+Before starting this guide, make sure you understand which type of reward you want to redeem: [a **welcome reward** or a **points reward**](https://docs.publiq.be/docs/uitpas/76b7bd22f7f51-terminology#rewards).
 
 ## Authentication
 

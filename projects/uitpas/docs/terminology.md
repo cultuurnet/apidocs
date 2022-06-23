@@ -56,3 +56,17 @@ An UiTPAS point is earned for participating in a specific event, mostly by holdi
 After saving UiTPAS points, a passholder can trade them for [rewards](https://www.uitpas.be/voordelen-zoeken#/voordelen) provided by local UiTPAS organizers.
 
 Some rewards can only be traded at the event of the organizer (material rewards like a goodie bag). Other rewards can also be traded online via [UiTPAS.be](http://uitpas.be) (digital rewards such as an e-ticket).
+
+There are two types of rewards: "welcome rewards" and "points rewards".
+
+### Welcome rewards
+
+Welcome rewards are rewards **a passholder receives automatically when buying an UiTPAS,** they are rewards for 0 points.
+
+To actually receive these free welcome rewards, **the passholders still needs to redeem them.**
+
+### Points rewards
+
+Points rewards are rewards that a passholder can redeem for points. 
+
+Unlike welcome rewards, the passholder doesn't receive these rewards when buying an UiTPAS, but choses to redeem this reward for points.
