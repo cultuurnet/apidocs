@@ -55,7 +55,7 @@ Optionally the UiTPAS number can already be verified at this stage by [retrievin
 
 ### 4. Check if the passholder can redeem the reward
 
-Now we need to [check if the passholder can redeem this reward](uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
+Now we need to [check if the passholder can redeem this reward](/uitpas/reference/uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
 It's possible that the passholder doesn't have enough points, or that there's a limit on the number of times the reward can be redeemed.
 
 Example request:
