@@ -2,7 +2,7 @@
 stoplight-id: fbz0p8ipnt9zd
 ---
 
-# Letting passholders pay with UiTPAS points in your application
+# Letting passholders pay with UiTPAS points
 
 This guide illustrates how to let passholders pay with their UiTPAS points, for example in a ticketing application.
 
@@ -10,7 +10,7 @@ You'll learn how to get or create a reward, check if the passholder can redeem t
 
 ## Before your start
 
-Before starting this guide, make sure you understand which type of reward you want to redeem: [a **welcome reward** or a **points reward**](https://docs.publiq.be/docs/uitpas/76b7bd22f7f51-terminology#rewards).
+Before starting this guide, make sure you understand which type of reward you want to redeem: [a **welcome reward** or a **points reward**](terminology.md#rewards).
 
 ## Authentication
 
@@ -55,7 +55,7 @@ Optionally the UiTPAS number can already be verified at this stage by [retrievin
 
 ### 4. Check if the passholder can redeem the reward
 
-Now we need to [check if the passholder can redeem this reward](projects/uitpas/reference/uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
+Now we need to [check if the passholder can redeem this reward](uitpas.json/paths/~1rewards~1{rewardId}~1redeem-status) using the rewardId and the uitpasNumber of the passholder.
 It's possible that the passholder doesn't have enough points, or that there's a limit on the number of times the reward can be redeemed.
 
 Example request:
