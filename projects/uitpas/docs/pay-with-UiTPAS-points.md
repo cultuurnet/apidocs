@@ -8,7 +8,7 @@ This guide illustrates how to let passholders pay with their UiTPAS points, for 
 
 You'll learn how to get or create a reward, check if the passholder can redeem the reward and how to redeem the reward.
 
-## Before your start
+## Before you start
 
 Before starting this guide, make sure you understand which type of reward you want to redeem: [a **welcome reward** or a **points reward**](terminology.md#rewards).
 
