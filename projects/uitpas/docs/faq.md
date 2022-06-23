@@ -43,4 +43,4 @@ The calculation of the correct UiTPAS tariffs is dependent on many factors such 
 
 ### My application is used by multiple UiTPAS organizers.  Can I use the same set of client access tokens?
 
-Organizers can be grouped into your customer units. Different organizations tied to the same municipality or overarching organization, will be tied to the same credentials. For every customer, we will expect you to request a new set of credentials. Keep in mind that user permissions now need to be managed by your application as client access tokens are agnostic of the person performing the actions.
+Organizers can be grouped into your customer units. Different organizations tied to the same municipality or overarching organization will be tied to the same credentials. For every customer, we will expect you to request a new set of credentials. Keep in mind that user permissions now need to be managed by your application as client access tokens are agnostic of the person performing the actions.
