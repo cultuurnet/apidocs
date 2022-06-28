@@ -1,6 +1,6 @@
----
-stoplight-id: fbz0p8ipnt9zd
----
+***
+
+## stoplight-id: fbz0p8ipnt9zd
 
 # Letting passholders pay with UiTPAS points
 
@@ -25,6 +25,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 ## Workflow overview
 
 <!-- focus: false -->
+
 ![](../assets/images/steps-pay-with-points.png)
 
 ### 1. Get or create the reward
@@ -71,6 +72,7 @@ Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 
 ```
+
 Example response for a passholder that **can** redeem the reward:
 
 ```json
@@ -78,7 +80,6 @@ Example response for a passholder that **can** redeem the reward:
   "redeemable": true
 }
 ```
-
 
 Example response for a passholder that **can not** redeem the reward:
 
@@ -90,10 +91,9 @@ Example response for a passholder that **can not** redeem the reward:
 }
 ```
 
-
 ### 5. Let the passholder confirm the redemption
 
-After you've checked that the passholder can redeem the reward, it's best practice to let the passholder confirm the redemption of the reward. 
+After you've checked that the passholder can redeem the reward, it's best practice to let the passholder confirm the redemption of the reward.
 
 In your application you should **clearly show the current point balance** of the passholder **and how many points will be deducted by redeeming the reward**.
 
@@ -120,10 +120,3 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
 }
 
 ```
-
-
-
-
-
-
-

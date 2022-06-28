@@ -1,6 +1,6 @@
 # Terminology
 
-On this page you can quickly get a grasp of common UiTPAS terminology and concepts, referenced throughout the API documentation.  
+On this page you can quickly get a grasp of common UiTPAS terminology and concepts, referenced throughout the API documentation.
 
 ## Passholder
 
@@ -67,6 +67,6 @@ To actually receive these free welcome rewards, **the passholder still needs to 
 
 ### Points rewards
 
-Points rewards are rewards that a passholder can redeem for points. 
+Points rewards are rewards that a passholder can redeem for points.
 
 Unlike welcome rewards, the passholder doesn't receive these rewards when buying an UiTPAS, but chooses to redeem this reward for points.

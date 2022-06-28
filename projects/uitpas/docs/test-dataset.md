@@ -60,7 +60,6 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 |----------|:-------------:|:-------------:|:-------------:|
 | `0900000045410` | yes | no | active |
 
-
 ## Rewards
 
 If you want to test rewards without creating your own rewards, you can use these existing rewards:

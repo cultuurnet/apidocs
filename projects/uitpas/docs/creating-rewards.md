@@ -1,15 +1,15 @@
----
-stoplight-id: iiahezjmrhms7
----
+***
+
+## stoplight-id: iiahezjmrhms7
 
 # Creating rewards
 
 There are two ways to create new rewards:
 
-- The UiTPAS regional coordinator can create new rewards via the UiTPAS admin tools.
-- New rewards can be created programmatically via the API.
+*   The UiTPAS regional coordinator can create new rewards via the UiTPAS admin tools.
+*   New rewards can be created programmatically via the API.
 
-This guide explains **how to create UiTPAS rewards programmatically**. 
+This guide explains **how to create UiTPAS rewards programmatically**.
 
 To learn how to let passholders pay with UiTPAS points in your application, [check out this guide](pay-with-UiTPAS-points.md).
 
@@ -32,19 +32,19 @@ To decide what kind of token to use, see the [overview of token types](https://p
 Rewards are published to public channels, such as [uitpas.be](uitpas.be). That's why it's important to clearly describe your reward and add as much detail as possible.
 
 To create a reward, **the following parameters are required:**
-- **Title**: choose a clear title for the reward.
-- **Type**: choose which type of reward you are creating, possible values are [ **"POINTS" or "WELCOME"**](terminology.md#rewards)
-- **Points**: how many points will this reward cost the passholder. For rewards of type "WELCOME", the only possible value is 0.
-- **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
-- **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
-- **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
-- **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
+
+*   **Title**: choose a clear title for the reward.
+*   **Type**: choose which type of reward you are creating, possible values are [ **"POINTS" or "WELCOME"**](terminology.md#rewards)
+*   **Points**: how many points will this reward cost the passholder. For rewards of type "WELCOME", the only possible value is 0.
+*   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
+*   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
+*   **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
+*   **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
 
 The following parameters are not required, **but we strongly advice to add them:**
-- **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to will be used to create the reward.
-- **pictures**: add one or more images related to your reward.
 
-
+*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to will be used to create the reward.
+*   **pictures**: add one or more images related to your reward.
 
 Example request:
 
@@ -76,8 +76,3 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
   }
 }
 ```
-
-
-
-
-
