@@ -36,6 +36,8 @@ To start the flow, you first need to know which reward you'll be redeeming.
 You can find a list in the [**rewards section of uitpas.be**](https://www.uitpas.be/voordelen-zoeken#/voordelen). When you open the detail page of a reward, **you'll find the reward-id at the end of the URL**:
 ![](../assets/images/finding-rewards-id.png)
 
+On the [**test dataset page**](test-dataset.md#rewards) you can find some rewards for the testing environment, also used in the code examples in this guide.
+
 #### Create a new reward
 
 Alternatively, if the reward doesn't exist or your application needs a more dynamic setup you can **[create the reward by following this guide](creating-rewards.md)**.
@@ -63,7 +65,7 @@ Example request:
 ```json
 
 
-GET /rewards/5372/redeem-status?uitpasNumber=0900000672312 HTTP/1.1
+GET /rewards/5687/redeem-status?uitpasNumber=0900000095902 HTTP/1.1
 Content-Type: application/json
 Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
@@ -113,8 +115,8 @@ Content-Type: application/json
 Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 {
-  "uitpasNumber": "0930012345615",
-  "rewardId": "fce4bd2f-4dca-4a44-9912-6168f0ac7e5e"
+  "uitpasNumber": "0900000095902",
+  "rewardId": "5687"
 }
 
 ```
