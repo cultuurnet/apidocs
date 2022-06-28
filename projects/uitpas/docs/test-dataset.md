@@ -10,7 +10,7 @@ Your test client should have permission to this organizer. You can double-check 
 
 ```http
 GET /permissions HTTP/1.1
-Host: https://api.uitpas.be
+Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 ```
 
@@ -59,3 +59,13 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 | UitpasNumber      | Social tariff | Coupons | Card status |
 |----------|:-------------:|:-------------:|:-------------:|
 | `0900000045410` | yes | no | active |
+
+
+## Rewards
+
+If you want to test rewards without creating your own rewards, you can use these existing rewards:
+
+| Name   |      ID      | Type | Details |
+|----------|:-------------:|:-------------:||:-------------:|
+| Test Voordeel Regio Gent | `5687` | `POINTS` | Without restrictions |
+| Test Welkomstvoordeel Regio Gent | `5688` | `WELCOME` | Without restrictions |

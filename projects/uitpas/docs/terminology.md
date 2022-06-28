@@ -63,7 +63,7 @@ There are two types of rewards: "welcome rewards" and "points rewards".
 
 Welcome rewards are rewards **a passholder receives automatically when buying an UiTPAS,** they are rewards for 0 points.
 
-To actually receive these free welcome rewards, **the passholders still needs to redeem them.**
+To actually receive these free welcome rewards, **the passholder still needs to redeem them.**
 
 ### Points rewards
 
