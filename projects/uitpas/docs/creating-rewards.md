@@ -73,8 +73,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
   "moreInfoURL": "https://example.org/more-info-about-this-reward",
   "pictures": 
     ["https://uitid-media-test.imgix.net/f4e03b5d-540c-4ab4-8eed-93501994a9fc/design-voordeeljpg?w=500&h=500"]
-  },
-  "redeemType": "ONLINE"
+  }
 }
 ```
 
