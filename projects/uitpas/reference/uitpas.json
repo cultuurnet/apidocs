@@ -3136,8 +3136,7 @@
                           "points": 10,
                           "forKids": false,
                           "sport": false,
-                          "labels": "",
-                          "redeemType": "ONLINE"
+                          "labels": ""                          
                         }
                       ],
                       "facet": {
@@ -3445,8 +3444,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "PHYSICAL"
+                      "labels": ""                      
                     }
                   },
                   "Welcome reward": {
@@ -3486,8 +3484,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "PHYSICAL"
+                      "labels": ""                      
                     }
                   }
                 }
@@ -3547,8 +3544,7 @@
                       "begin": "2021-08-24T14:15:22Z",
                       "end": "2022-08-24T14:15:22Z"
                     },
-                    "moreInfoURL": "https://example.org/more-info-about-this-reward",
-                    "redeemType": "ONLINE",
+                    "moreInfoURL": "https://example.org/more-info-about-this-reward",                    
                     "points": 10
                   }
                 }
@@ -3612,8 +3608,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "ONLINE"
+                      "labels": ""                      
                     }
                   }
                 }
@@ -3710,8 +3705,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "ONLINE"
+                      "labels": ""                      
                     }
                   }
                 }
@@ -3783,8 +3777,7 @@
                       "begin": "2021-08-24T14:15:22Z",
                       "end": "2022-08-24T14:15:22Z"
                     },
-                    "moreInfoURL": "https://example.org/more-info-about-this-reward",
-                    "redeemType": "ONLINE",
+                    "moreInfoURL": "https://example.org/more-info-about-this-reward",                    
                     "points": 10
                   }
                 }
@@ -3952,8 +3945,7 @@
                           "end": "2019-08-24T14:15:22Z"
                         },
                         "points": 0,
-                        "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
-                        "redeemType": "PHYSICAL",
+                        "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",                        
                         "owningCardSystem": {
                           "id": 1,
                           "name": "UiTPAS Dender"
@@ -4101,8 +4093,7 @@
                               "end": "2019-08-24T14:15:22Z"
                             },
                             "points": 0,
-                            "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
-                            "redeemType": "PHYSICAL",
+                            "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",                            
                             "owningCardSystem": {
                               "id": 1,
                               "name": "UiTPAS Dender"
@@ -5418,14 +5409,6 @@
             "description": "URL where a user can find more info about this reward.",
             "format": "uri"
           },
-          "redeemType": {
-            "type": "string",
-            "enum": [
-              "PHYSICAL",
-              "ONLINE"
-            ],
-            "description": "Whether the reward can be redeemed online, or has to be redeemed in a physical location."
-          },
           "owningCardSystem": {
             "$ref": "#/components/schemas/CardSystem"
           },
@@ -5529,8 +5512,7 @@
           "grantingPeriod",
           "points",
           "categories",
-          "moreInfoURL",
-          "redeemType"
+          "moreInfoURL"
         ]
       },
       "RedeemedReward": {
