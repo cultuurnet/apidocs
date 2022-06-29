@@ -29,7 +29,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 ## How to create rewards programmatically
 
-Rewards are published to public channels, such as [uitpas.be](uitpas.be). That's why it's important to clearly describe your reward and add as much detail as possible.
+Rewards are published to public channels, such as [uitpas.be](https://www.uitpas.be). That's why it's important to clearly describe your reward and add as much detail as possible.
 
 To create a reward, **the following parameters are required:**
 
