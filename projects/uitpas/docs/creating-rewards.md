@@ -34,7 +34,7 @@ Rewards are published to public channels, such as [uitpas.be](https://www.uitpas
 To create a reward, **the following parameters are required:**
 
 *   **Title**: choose a clear title for the reward.
-*   **Type**: choose which type of reward you are creating, possible values are [ **"POINTS" or "WELCOME"**](terminology.md#rewards)
+*   **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
 *   **Points**: how many points will this reward cost the passholder. For rewards of type "WELCOME", the only possible value is 0.
 *   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
 *   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
