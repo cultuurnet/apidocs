@@ -478,7 +478,40 @@
                   "$ref": "#/components/schemas/TicketSalesPaginatedResponse"
                 },
                 "examples": {
-                  "Example": {
+                  "Example without passholder (default)": {
+                    "value": {
+                      "totalItems": 2,
+                      "member": [
+                        {
+                          "id": "21345",
+                          "tariff": {
+                            "id": "COUPON1234",
+                            "name": "Cultuurbon 6 euro",
+                            "price": 4,
+                            "type": "COUPON"
+                          },
+                          "uitpasNumber": "0560002524314",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "regularPrice": 10,
+                          "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
+                        },
+                        {
+                          "id": "21346",
+                          "tariff": {
+                            "id": "COUPON1234",
+                            "name": "Cultuurbon 6 euro",
+                            "price": 1.5,
+                            "type": "COUPON"
+                          },
+                          "uitpasNumber": "0560002524314",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "regularPrice": 10,
+                          "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
+                        }
+                      ]
+                    }
+                  },
+                  "Example with passholder (PASSHOLDER_SEARCH permission required)": {
                     "value": {
                       "totalItems": 2,
                       "member": [
