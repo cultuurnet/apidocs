@@ -5482,7 +5482,7 @@
             "description": "Defines how many times this reward can be redeemed by the same passholder in a specific period.",
             "properties": {
               "volume": {
-                "type": "string",
+                "type": "integer",
                 "description": "The maximum number of times this reward can be redeemed by the same passholder."
               },
               "period": {
