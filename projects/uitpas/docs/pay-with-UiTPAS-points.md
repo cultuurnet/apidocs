@@ -1,7 +1,3 @@
----
-stoplight-id: iiahezjmrhms7
----
-
 # Letting passholders pay with UiTPAS points
 
 This guide illustrates how to let passholders pay with their UiTPAS points, for example in a ticketing application.
