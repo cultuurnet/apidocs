@@ -44,11 +44,12 @@ The following parameters are not required, **but we strongly advice to add them:
 
 Example request:
 
-```json
+```http
 POST /rewards HTTP/1.1
 Content-Type: application/json
 Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
+
 {
  "organizers": {
     {
