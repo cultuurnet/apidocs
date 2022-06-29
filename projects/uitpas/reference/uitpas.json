@@ -3505,12 +3505,7 @@
                         "begin": "2021-08-24T14:15:22Z",
                         "end": "2022-08-24T14:15:22Z"
                       },
-                      "moreInfoURL": "https://example.org/more-info-about-this-reward",
                       "inSpotlight": false,
-                      "points": 0,
-                      "categories": [
-                        "Doen"
-                      ],
                       "forKids": false,
                       "sport": false,
                       "labels": ""
@@ -3557,7 +3552,7 @@
                 "$ref": "#/components/schemas/Reward"
               },
               "examples": {
-                "Example": {
+                "Points Reward Example": {
                   "value": {
                     "title": "Free entrance for 10 points on 1 specific event",
                     "type": "POINTS",
@@ -3566,15 +3561,20 @@
                     ],
                     "promotionalDescription": "this is the mandatory description",
                     "publicationPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
-                    },
-                    "grantingPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22Z"
                     },
                     "moreInfoURL": "https://example.org/more-info-about-this-reward",
                     "points": 10
+                  }
+                },
+                "Welcome Reward Example": {
+                  "value": {
+                    "title": "Gratis tas koffie",
+                    "type": "WELCOME",
+                    "promotionalDescription": "this is the mandatory description",
+                    "publicationPeriod": {
+                      "begin": "2021-08-24T14:15:22Z"
+                    }
                   }
                 }
               }
@@ -5415,11 +5415,11 @@
           },
           "points": {
             "type": "number",
-            "description": "Number of points needed to redeem the reward"
+            "description": "Number of points needed to redeem the reward. Required for reward of type POINTS."
           },
           "categories": {
             "type": "array",
-            "description": "List of categories of this reward.",
+            "description": "List of categories of this reward. Required for reward of type POINTS.",
             "items": {
               "type": "string",
               "enum": [
@@ -5432,7 +5432,7 @@
           },
           "moreInfoURL": {
             "type": "string",
-            "description": "URL where a user can find more info about this reward.",
+            "description": "URL where a user can find more info about this reward. Required for reward of type POINTS.",
             "format": "uri"
           },
           "grantingPeriod": {
@@ -5537,10 +5537,7 @@
           "title",
           "type",
           "promotionalDescription",
-          "publicationPeriod",
-          "points",
-          "categories",
-          "moreInfoURL"
+          "publicationPeriod"
         ]
       },
       "RedeemedReward": {
