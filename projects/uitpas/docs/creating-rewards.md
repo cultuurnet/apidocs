@@ -1,7 +1,3 @@
-***
-
-## stoplight-id: iiahezjmrhms7
-
 # Creating rewards
 
 There are two ways to create new rewards:
