@@ -4,19 +4,19 @@
       "type": "item",
       "title": "Introduction",
       "uri": "docs/introduction.md",
-      "slug": "docs/introduction"
+      "slug": "introduction"
     },
     {
       "type": "item",
       "title": "Example page with videos",
       "uri": "docs/video.md",
-      "slug": "docs/video"
+      "slug": "video"
     },
     {
       "type": "item",
       "title": "demo",
       "uri": "docs/demo.md",
-      "slug": "docs/demo"
+      "slug": "demo"
     }
   ]
 }
