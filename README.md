@@ -152,9 +152,9 @@ For example:
 
 This will result in the following URLs for the sidebar links:
 
-*   https://docs.publiq.be/docs/<project>/introduction
-*   https://docs.publiq.be/docs/<project>/example
-*   https://docs.publiq.be/docs/<project>/subdirectory/example
+*   `https://docs.publiq.be/docs/<project>/introduction`
+*   `https://docs.publiq.be/docs/<project>/example`
+*   `https://docs.publiq.be/docs/<project>/subdirectory/example`
 
 If you have sidebar links that did not have a custom `slug` initially, you can always add one at any point. The old URLs with the "stable id" will then redirect to the new URL when visited. (For example if you shared links to the URL with the "stable id" before, or other projects link to it.)
 
