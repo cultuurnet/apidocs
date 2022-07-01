@@ -21,7 +21,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 > ##### Permissions to create and redeem rewards
 >
-> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REDEEM_REWARDS` permissions for the organizer you are creating and redeeming these rewards for.
+> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REWARDS_REDEEM` permissions for the organizer you are creating and redeeming these rewards for. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
 
 ## How to create rewards programmatically
 
@@ -39,7 +39,7 @@ To create a reward, **the following fields are required:**
 
 The following parameters are not required, **but we strongly advice to add them:**
 
-*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward.
+*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
 *   **pictures**: add one or more images related to your reward.
 
 Example request:

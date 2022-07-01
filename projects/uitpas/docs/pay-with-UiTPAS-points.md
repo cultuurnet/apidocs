@@ -1,4 +1,4 @@
-# Letting passholders pay with UiTPAS points
+# UiTPAS points as payment
 
 This guide illustrates how to let passholders pay with their UiTPAS points, for example in a ticketing application.
 
@@ -16,7 +16,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 > ##### Permissions to create and redeem rewards
 >
-> To be able to create and redeem rewards for an organizer, your client needs to receive the related rewards permissions for the organizer you are creating and redeeming these rewards for.
+> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REWARDS_REDEEM` permissions for the organizer you are creating and redeeming these rewards for. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
 
 ## Workflow overview
 
@@ -60,8 +60,6 @@ It's possible that the passholder doesn't have enough points, or that there's a 
 Example request:
 
 ```http
-
-
 GET /rewards/5687/redeem-status?uitpasNumber=0900000095902 HTTP/1.1
 Content-Type: application/json
 Host: https://api-test.uitpas.be
@@ -104,8 +102,6 @@ When you receive a confirming 201 response, you can now give the passholder what
 Example request:
 
 ```http
-
-
 POST /rewards/redeemed HTTP/1.1
 Content-Type: application/json
 Host: https://api-test.uitpas.be
