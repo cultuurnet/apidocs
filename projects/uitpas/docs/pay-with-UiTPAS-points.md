@@ -64,7 +64,6 @@ GET /rewards/5687/redeem-status?uitpasNumber=0900000095902 HTTP/1.1
 Content-Type: application/json
 Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
-
 ```
 
 Example response for a passholder that **can** redeem the reward:
@@ -91,7 +90,9 @@ After you've checked that the passholder can redeem the reward, it's best practi
 
 In your application you should **clearly show the current point balance** of the passholder **and how many points will be deducted by redeeming the reward**.
 
-You can get the current point balance of the passholder using the [retrieving pass endpoint](/reference/uitpas.json/paths/~1passes~1{uitpasNumber}/get).
+You can get the current point balance of the passholder by using the [retrieve pass endpoint](/reference/uitpas.json/paths/~1passes~1{uitpasNumber}/get).
+
+To know how many points will be deducted by redeeming the reward, you can use the [retrieve reward endpoint](/reference/uitpas.json/paths/~1rewards~1{rewardId}).
 
 ### 6. Redeem the reward
 
@@ -110,5 +111,4 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
   "uitpasNumber": "0900000095902",
   "rewardId": "5687"
 }
-
 ```
