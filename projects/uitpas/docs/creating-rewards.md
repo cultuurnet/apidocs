@@ -31,13 +31,13 @@ To create a [**points reward**](terminology.md#points-rewards), **the following 
 
 *   **Title**: choose a clear title for the reward.
 *   **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
-*   **Points**: how many points will this reward cost the passholder. 
+*   **Points**: how many points will this reward cost the passholder.
 *   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
 *   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
 *   **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
 *   **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
 
-To create a reward of type [welcome](terminology.md#welcome-rewards) the properties "points", "category" and "more info URL" **are not required**. 
+To create a reward of type [welcome](terminology.md#welcome-rewards) the properties "points", "category" and "more info URL" **are not required**.
 
 The following properties are not required for points and welcome rewards, **but we strongly advice to add them:**
 
