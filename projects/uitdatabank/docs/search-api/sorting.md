@@ -28,7 +28,7 @@ GET /offers/?sort[availableTo]=asc
 Events & places that end soon will appear first, permanent events and places last.
 
 ### created
-Sorts the data by the date it is created in the API
+Sorts the data by the date it is created in the API.
 
 **Example**
 ```
