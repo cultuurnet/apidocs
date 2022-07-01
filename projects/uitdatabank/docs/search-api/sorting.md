@@ -47,7 +47,7 @@ When searching by `geo distance`, it is possible to sort the results by the dist
 ```
 GET /places/?coordinates=50.8511740,4.3386740&distance=10km&sort[distance]=asc
 ```
-Places that are the closest to the given coordinates will appear on top.
+Places that are the closest to the given coordinates will appear first.
 
 
 ### modified
@@ -66,12 +66,12 @@ Sorts the data by its relevance. This is the default sort that is used. For an i
 ```
 GET https://search.uitdatabank.be/events/
 ```
-The events with the heighest score will appear on top
+The events with the heighest score will appear first.
 
 ```
 GET /events/?sort[score]=desc
 ```
-The events with the heighest score will appear on top.
+The events with the heighest score will appear first.
 
 ## Using multiple sort options
 It is possible to use multiple sort options. When doing so, the order of the `sort` options influences the order in which they are sorted. 
