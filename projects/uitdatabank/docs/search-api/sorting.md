@@ -39,7 +39,7 @@ Newly created organizers will appear first.
 ### distance
 <!-- theme: info -->
 
-> Only applicable on events and places, and when the the `coordinates` and `distance` parameter are also present
+> Only applicable on `/events`, `/places` and `/offers`, and only when the the `coordinates` and `distance` parameters are also present
 
 When searching by `geo distance`, it is possible to sort the results by the distance from the given coordinates.
 
