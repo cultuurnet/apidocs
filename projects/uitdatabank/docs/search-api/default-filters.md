@@ -21,7 +21,7 @@ GET /offers/?workflowStatus=*
 Disabling the default `availableFrom` filter will also show results with an `availableFrom`-date in the future. 
 <!-- theme: info -->
 
-> When disabling this filter you will get results that may not be published yet in event calendars.
+> When disabling this filter, you may get results that are not yet allowed to be published in event calendars.
 
 ```
 GET /offers/?availableFrom=*
@@ -31,7 +31,7 @@ GET /offers/?availableFrom=*
 Disabling the default `availableTo` filter will also show results with an `availableTo`-date in the past. 
 <!-- theme: info -->
 
-> When disabling this filter you might get results that are not relevant anymore for event calendars.
+> When disabling this filter, may get results that are not relevant anymore for event calendars.
 ```
 GET /offers/?availableTo=*
 ```
