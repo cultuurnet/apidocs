@@ -27,17 +27,19 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 Rewards are published to public channels where passholders can view and redeem them, such as [uitpas.be](https://www.uitpas.be). That's why it's important to clearly describe your reward and add as much detail as possible.
 
-To create a reward, **the following fields are required:**
+To create a [**points reward**](terminology.md#points-rewards), **the following properties are required:**
 
 *   **Title**: choose a clear title for the reward.
 *   **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
-*   **Points**: how many points will this reward cost the passholder. For rewards of type "WELCOME", the only possible value is 0.
+*   **Points**: how many points will this reward cost the passholder. 
 *   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
 *   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
 *   **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
 *   **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
 
-The following parameters are not required, **but we strongly advice to add them:**
+To create a reward of type [welcome](terminology.md#welcome-rewards) the properties "points", "category" and "more info URL" **are not required**. 
+
+The following properties are not required for points and welcome rewards, **but we strongly advice to add them:**
 
 *   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
 *   **pictures**: add one or more images related to your reward.
