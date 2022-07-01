@@ -39,7 +39,7 @@ To create a reward, **the following parameters are required:**
 
 The following parameters are not required, **but we strongly advice to add them:**
 
-*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to will be used to create the reward.
+*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward.
 *   **pictures**: add one or more images related to your reward.
 
 Example request:
