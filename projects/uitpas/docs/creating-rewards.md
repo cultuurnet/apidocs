@@ -21,7 +21,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 > ##### Permissions to create and redeem rewards
 >
-> To be able to create and redeem rewards for an organizer, your client needs to receive the related rewards permissions for the organizer you are creating and redeeming these rewards for.
+> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REDEEM_REWARDS` permissions for the organizer you are creating and redeeming these rewards for.
 
 ## How to create rewards programmatically
 
