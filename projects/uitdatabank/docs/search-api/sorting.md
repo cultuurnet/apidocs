@@ -23,7 +23,7 @@ Sorts the results on the date-time that they are last visible on most publicatio
 
 **Example**
 ```
-GET https://search.uitdatabank.be/offers/?sort[availableTo]=asc
+GET /offers/?sort[availableTo]=asc
 ```
 Events & places that end soon will appear first, permanent events and places last.
 
