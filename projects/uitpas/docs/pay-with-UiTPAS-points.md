@@ -59,7 +59,7 @@ It's possible that the passholder doesn't have enough points, or that there's a 
 
 Example request:
 
-```json
+```http
 
 
 GET /rewards/5687/redeem-status?uitpasNumber=0900000095902 HTTP/1.1
