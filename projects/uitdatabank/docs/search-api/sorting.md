@@ -57,7 +57,7 @@ Sorts the data by the date it is modified in the API.
 ```
 GET /events/?sort[modified]=desc
 ```
-The events that were modified recently  will appear first.
+The events that were modified recently will appear first.
 
 ### score
 Sorts the data by its relevance. This is the default sort that is used. For an in-depth look how relevance (`score`) is calculated, see the [elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html).
