@@ -72,7 +72,7 @@
       "items": [
         {
           "type": "item",
-          "title": "Letting passholders pay with UiTPAS points in your application",
+          "title": "UiTPAS points as payment",
           "uri": "docs/pay-with-UiTPAS-points.md"
         },
         {
