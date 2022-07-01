@@ -41,7 +41,7 @@ Newly created organizers will appear first.
 
 > Only applicable on events and places, and when the the `coordinates` and `distance` parameter are also present
 
-When searching by `geo distance`, it is possible to sort the results by the distance from the given coördinates.
+When searching by `geo distance`, it is possible to sort the results by the distance from the given coordinates.
 
 **Example**
 ```
