@@ -32,7 +32,7 @@ Sorts the data by the date it is created in the API
 
 **Example**
 ```
-GET https://search.uitdatabank.be/organizers/?sort[created]=desc
+GET /organizers/?sort[created]=desc
 ```
 Newly created organizers will appear first.
 
@@ -45,7 +45,7 @@ When searching by `geo distance`, it is possible to sort the results by the dist
 
 **Example**
 ```
-GET https://search.uitdatabank.be/places/?coordinates=50.8511740,4.3386740&distance=10km&sort[distance]=asc
+GET /places/?coordinates=50.8511740,4.3386740&distance=10km&sort[distance]=asc
 ```
 Places that are the closest to the given coordinates will appear on top.
 
@@ -55,7 +55,7 @@ Sorts the data by the date it is modified in the API.
 
 **Example**
 ```
-GET https://search.uitdatabank.be/events/?sort[modified]=desc
+GET /events/?sort[modified]=desc
 ```
 The events that were modified recently  will appear first.
 
@@ -69,7 +69,7 @@ GET https://search.uitdatabank.be/events/
 The events with the heighest score will appear on top
 
 ```
-GET https://search.uitdatabank.be/events/?sort[score]=desc
+GET /events/?sort[score]=desc
 ```
 The events with the heighest score will appear on top
 
@@ -78,7 +78,7 @@ It is possible to use multiple sort options. When doing so, the order of the `so
 
 **Example**
 ```
-GET https://search.uitdatabank.be/offers/?sort[availableTo]=asc&sort[score]=desc
+GET /offers/?sort[availableTo]=asc&sort[score]=desc
 ```
 In the example above, all events and places will be sorted by `availableTo` first, and afterwards any events or places with the same `availableTo` are sorted by `score`.
 
