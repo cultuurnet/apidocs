@@ -49,7 +49,6 @@ GET /places/?coordinates=50.8511740,4.3386740&distance=10km&sort[distance]=asc
 ```
 Places that are the closest to the given coordinates will appear first.
 
-
 ### modified
 Sorts the data by the date it is modified in the API.
 
@@ -81,6 +80,3 @@ It is possible to use multiple sort options. When doing so, the order of the `so
 GET /offers/?sort[availableTo]=asc&sort[score]=desc
 ```
 In the example above, all events and places will be sorted by `availableTo` first, and afterwards any events or places with the same `availableTo` are sorted by `score`.
-
-
-
