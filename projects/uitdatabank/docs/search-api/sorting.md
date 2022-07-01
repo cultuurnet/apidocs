@@ -10,8 +10,8 @@ The UiTdatabank Search API provides several options to sort events, places and o
 
 For every sort parameter it is possible to change the sort `order`:
 
-- Ascending order \(from smallest to biggest value\) by using `asc`
-- Descending order \(from biggest to smallest value\) by using `desc`
+- Ascending order (from smallest to biggest value) by using `asc`
+- Descending order (from biggest to smallest value) by using `desc`
 
 ## Sort parameters
 ### availableTo
