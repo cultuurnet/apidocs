@@ -3,17 +3,20 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
     },
     {
       "type": "item",
       "title": "Example page with videos",
-      "uri": "docs/video.md"
+      "uri": "docs/video.md",
+      "slug": "video"
     },
     {
       "type": "item",
       "title": "demo",
-      "uri": "docs/demo.md"
+      "uri": "docs/demo.md",
+      "slug": "demo"
     }
   ]
 }
