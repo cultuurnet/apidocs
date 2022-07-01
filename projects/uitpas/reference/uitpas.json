@@ -3428,7 +3428,7 @@
         ]
       },
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Create new reward",
         "operationId": "post-rewards",
         "responses": {
@@ -3585,7 +3585,7 @@
     },
     "/rewards/{rewardId}": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve reward",
         "tags": [
           "Rewards"
@@ -3684,7 +3684,7 @@
         }
       ],
       "put": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Update reward",
         "operationId": "put-rewards-id",
         "responses": {
@@ -3833,7 +3833,7 @@
         }
       ],
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Check redeem status of a reward for a passholder",
         "operationId": "get-rewards-id-redeem-status",
         "responses": {
@@ -4090,7 +4090,7 @@
         ]
       },
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve redeemed rewards",
         "operationId": "get-rewards-redeemed",
         "responses": {
@@ -4229,7 +4229,7 @@
     },
     "/card-systems": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Search card systems",
         "responses": {
           "200": {
