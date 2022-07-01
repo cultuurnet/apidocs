@@ -19,7 +19,7 @@ For every sort parameter it is possible to change the sort `order`:
 
 > Only applicable on events and places.
 
-Sorts the data by the date until it is available in the API. This is most commonly used to show events & places that will be ending soon first. Sorting on availableTo (ascending) is what we advice for event calendars.
+Sorts the results on the date-time that they are last visible on most publication channels. This is most commonly used to show events & places that will be ending soon first. Sorting on availableTo (ascending) is what we advice for event calendars.
 
 **Example**
 ```
