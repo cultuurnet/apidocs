@@ -27,7 +27,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 Rewards are published to public channels where passholders can view and redeem them, such as [uitpas.be](https://www.uitpas.be). That's why it's important to clearly describe your reward and add as much detail as possible.
 
-To create a reward, **the following parameters are required:**
+To create a reward, **the following fields are required:**
 
 *   **Title**: choose a clear title for the reward.
 *   **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
