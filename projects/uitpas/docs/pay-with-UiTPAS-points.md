@@ -103,7 +103,7 @@ When you receive a confirming 201 response, you can now give the passholder what
 
 Example request:
 
-```json
+```http
 
 
 POST /rewards/redeemed HTTP/1.1
