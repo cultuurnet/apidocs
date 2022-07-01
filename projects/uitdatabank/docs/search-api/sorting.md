@@ -71,7 +71,7 @@ The events with the heighest score will appear on top
 ```
 GET /events/?sort[score]=desc
 ```
-The events with the heighest score will appear on top
+The events with the heighest score will appear on top.
 
 ## Using multiple sort options
 It is possible to use multiple sort options. When doing so, the order of the `sort` options influences the order in which they are sorted. 
