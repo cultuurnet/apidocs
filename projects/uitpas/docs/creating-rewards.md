@@ -42,7 +42,7 @@ To create a reward of type [welcome](terminology.md#welcome-rewards) the propert
 The following properties are not required for points and welcome rewards, **but we strongly advice to add them:**
 
 *   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
-*   **pictures**: add one or more images related to your reward.
+*   **pictures**: add one or more URLs to images related to your reward.
 
 Example request:
 
