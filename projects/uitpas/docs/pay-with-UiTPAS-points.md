@@ -16,7 +16,7 @@ To decide what kind of token to use, see the [overview of token types](https://p
 
 > ##### Permissions to create and redeem rewards
 >
-> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REWARDS_REDEEM` permissions for the organizer you are creating and redeeming these rewards for. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions).
+> To be able to create and redeem rewards for an organizer, your client needs to have the `REWARDS_WRITE` and `REWARDS_REDEEM` permissions for the organizer you are creating and redeeming these rewards for. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions/get).
 
 ## Workflow overview
 
