@@ -34,7 +34,7 @@ To create any type of [**reward**](terminology.md#rewards), **the following prop
 *   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
 *   **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
 
-To create a reward of type [POINTS](terminology.md#points-rewards) **the following properties are also required**.
+To create a reward of type [POINTS](terminology.md#points-rewards) **the following properties are also required**:
 *   **Points**: how many points will this reward cost the passholder.
 *   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
 *   **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
