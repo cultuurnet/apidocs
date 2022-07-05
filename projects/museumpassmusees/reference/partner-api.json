@@ -378,7 +378,7 @@
             "description": "Visit registered."
           },
           "400": {
-            "description": "Visit registered.",
+            "description": "Bad Request. Possible error types:\n\n- https://api.publiq.be/probs/body/missing\n- https://api.publiq.be/probs/body/invalid-syntax\n- https://api.publiq.be/probs/body/invalid-data\n- https://api.publiq.be/probs/museumpass/passholder-not-found\n- https://api.publiq.be/probs/museumpass/visit-maximum-reached\n- https://api.publiq.be/probs/museumpass/museum-not-active\n- https://api.publiq.be/probs/museumpass/card-not-active\n- https://api.publiq.be/probs/museumpass/subscription-not-active\n- https://api.publiq.be/probs/museumpass/passholder-not-active",
             "content": {
               "application/problem+json": {
                 "schema": {
