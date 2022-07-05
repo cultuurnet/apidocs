@@ -3945,7 +3945,7 @@
     "/rewards/redeemed": {
       "parameters": [],
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Redeem reward",
         "operationId": "post-rewards-redeemed",
         "responses": {
