@@ -505,10 +505,10 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
+        "parameters": [],
         "tags": [
-          "Passholders"
-        ],
-        "parameters": []
+          "External cards"
+        ]
       },
       "parameters": [
         {
@@ -578,7 +578,7 @@
           }
         ],
         "tags": [
-          "Visits"
+          "External cards"
         ]
       },
       "parameters": [
@@ -609,6 +609,9 @@
     }
   },
   "tags": [
+    {
+      "name": "External cards"
+    },
     {
       "name": "Passholders"
     },
