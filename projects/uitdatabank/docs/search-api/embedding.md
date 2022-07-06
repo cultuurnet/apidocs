@@ -8,8 +8,8 @@ By default the API endpoints only return a list of links to the individual searc
 By default the API endpoints only return a list of links to the individual search results.
 
 To get the actual bodies of the results, there are two options:
--   Loop over the results yourself and perform GET requests using the given URLs.
--   Use the `embed`  URL parameter (`bool,` defaults to `false`).
+-   Loop over the results yourself and perform GET requests using the given URLs
+-   Use the `embed`  URL parameter (`bool,` defaults to `false`)
 
 ### Base URL
 
@@ -129,10 +129,10 @@ GET /{events|places|offers}
 ```
 
 ### Recommended use
--   We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically.
--   We recommend to use `lg` for the detailpage.
--   In some cases (e.g. mobile apps) calendar summary `xs` can be useful.
--   You can use the `embedCalendarSummaries` parameter with or without `embed=true`.
+-   We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
+-   We recommend to use `lg` for the detailpage
+-   In some cases (e.g. mobile apps) calendar summary `xs` can be useful
+-   You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ### Parameters
 | Parameter                     | Required? | Type   | Possible values                         | Example                            |
@@ -288,5 +288,5 @@ response
 }
 ```
 
-## Embeding UiTPAS prices
+## Embedding UiTPAS prices
 _work in progress_
