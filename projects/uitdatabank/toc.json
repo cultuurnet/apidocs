@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Case sensitivity",
+          "uri": "/docs/search-api/case-sensitivity.md",
+          "slug": "search-api/case-sensitivity"
+        },
+        {
+          "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
