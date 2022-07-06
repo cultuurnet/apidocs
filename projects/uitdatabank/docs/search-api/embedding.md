@@ -145,12 +145,12 @@ GET /{events|places|offers}
 ### Examples
 #### Calendar summary `xs-text`
 
-request
+**request**
 ```
 GET /events/?embedCalendarSummaries[]=xs-text
 ```
 
-response
+**response**
 ```js
 "calendarSummary":{
    "nl":{
@@ -179,12 +179,12 @@ response
 
 #### Calendar summary `sm-text` for a cancelled event
 
-request
+**request**
 ```
 GET /events/?embedCalendarSummaries[]=sm-text
 ```
 
-response
+**response**
 ```js
 "calendarSummary":{
    "nl":{
@@ -212,12 +212,12 @@ response
 
 #### Calendar summary `sm-html` for an event that is sold out or fully booked
 
-request
+**request**
 ```
 GET /events/?embedCalendarSummaries[]=sm-html
 ```
 
-response
+**response**
 ```js
 "calendarSummary":{
    "nl":{
@@ -245,12 +245,12 @@ response
 
 #### Requesting multiple calendar summaries at once
 
-request
+**request**
 ```
 GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
 ```
 
-response
+**response**
 ```js
 "calendarSummary":{
    "nl":{
