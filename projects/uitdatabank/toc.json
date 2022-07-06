@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Pagination",
+          "uri": "/docs/search-api/pagination.md",
+          "slug": "search-api/pagination"
+        },
+        {
+          "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
