@@ -28,6 +28,12 @@
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
+        },
+        {
+          "type": "item",
+          "title": "Embedding",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
         }
       ]
     },
