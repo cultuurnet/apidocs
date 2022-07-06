@@ -101,7 +101,7 @@ The response contains actual JSON-LD documents.
 ```
 
 ## Embedding calendar summaries
-Formatting dates can be complex. Therefore we provide a parameter to expand the results from the API with a calendar summary for each result. 
+Formatting dates can be complex. Therefore we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places).
 
 For every event or place a calendar summary is available in different sizes:
 -   `xs`: extra small
@@ -118,7 +118,7 @@ We currently support 4 languages for the calendar summary:
 The calendar summary can be retrieved in `text` and in `html`.
 
 <!-- theme: info -->
-> The response will always be multilingual. It is possible to request multiple sizes and formats at once.
+> The response is always multilingual. It is possible to request multiple sizes and formats at once.
 >
 > If applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
 
