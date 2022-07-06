@@ -45,7 +45,7 @@
           }
         },
         "operationId": "get-events",
-        "description": "TODO\n\n##### Repeating query parameters\n\nQuery parameters of the type `array[string]` can be repeated if a `[]` is added at the end of their paramater name. For example:\n\n*  `?labels=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nRepeating parameters like this (if they support it) always uses the `AND` operator for filtering.\n",
+        "description": "TODO\n\n##### Repeating query parameters\n\nQuery parameters of the type `array[string]` can be repeated if a `[]` is added at the end of their paramater name. For example:\n\n*  `?labels=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nRepeating parameters like this (if they support it) always uses the `AND` operator for filtering.\n\nSome `string` parameters support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
         "parameters": [
           {
             "schema": {
@@ -169,11 +169,12 @@
                 "online",
                 "offline",
                 "mixed"
-              ]
+              ],
+              "example": "online,mixed"
             },
             "in": "query",
             "name": "attendanceMode",
-            "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included."
+            "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included. Accepts multiple comma-separated values to return results that have one of the given attendance modes."
           },
           {
             "schema": {
@@ -195,11 +196,12 @@
                 "multiple",
                 "periodic",
                 "permanent"
-              ]
+              ],
+              "example": "single,multiple"
             },
             "in": "query",
             "name": "calendarType",
-            "description": "Returns only results with the given enum value as their calendarType. See TODO (link to guide) for more info."
+            "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. See TODO (link to guide) for more info."
           },
           {
             "schema": {
@@ -570,7 +572,7 @@
             },
             "in": "query",
             "name": "status",
-            "description": "Returns only results with exactly the same status type as the given enum value. `Available` means an event is happening as planned, and a place can be visited during its normal opening hours. `TemporarilyUnavailable` means an event has been postponed to a later date (yet to be determined), and a place is temporarily closed (for example due to renovations). `Unavailable` means an event is cancelled, or a place is permanently closed. If combined with `dateFrom` and/or `dateTo`, only results that have the given status in that time period will be returned."
+            "description": "Returns only results with exactly the same status type as the given enum value. `Available` means an event is happening as planned, and a place can be visited during its normal opening hours. `TemporarilyUnavailable` means an event has been postponed to a later date (yet to be determined), and a place is temporarily closed (for example due to renovations). `Unavailable` means an event is cancelled, or a place is permanently closed. If combined with `dateFrom` and/or `dateTo`, only results that have the given status in that time period will be returned. Accepts multiple comma-separated values to return results that have one of the given status types."
           },
           {
             "schema": {
