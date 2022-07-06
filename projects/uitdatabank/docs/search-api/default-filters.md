@@ -10,18 +10,20 @@ The search API applies a couple of filters by default to provide you with the mo
 
 You can either disable these filters individually, or disable them all at once.
 
+<!-- theme: info -->
+
+> If you disable (one of) these filters, you may get results that should not be published in event calendars or are no longer relevant to them.
+
 ## Disable individual filters
 ### workflowStatus
 Disabling the default workflowStatus filter will also show results with status `DRAFT`, `DELETED` and `REJECTED`.
+
 ```
 GET /offers/?workflowStatus=*
 ```
 
 ### availableFrom
 Disabling the default `availableFrom` filter will also show results with an `availableFrom`-date in the future. 
-<!-- theme: info -->
-
-> When disabling this filter, you may get results that are not yet allowed to be published in event calendars.
 
 ```
 GET /offers/?availableFrom=*
@@ -29,9 +31,7 @@ GET /offers/?availableFrom=*
 
 ### availableTo
 Disabling the default `availableTo` filter will also show results with an `availableTo`-date in the past. 
-<!-- theme: info -->
 
-> When disabling this filter, may get results that are not relevant anymore for event calendars.
 ```
 GET /offers/?availableTo=*
 ```
