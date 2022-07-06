@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Facets",
+          "uri": "/docs/search-api/facets.md",
+          "slug": "search-api/facets"
+        },       
+        {
+          "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
