@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Default filters",
+          "uri": "/docs/search-api/default-filters.md",
+          "slug": "search-api/default-filters"
+        },
+        {
+          "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
