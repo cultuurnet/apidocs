@@ -488,7 +488,7 @@
             }
           },
           "503": {
-            "description": "Service Unavailable. Possible error types:\n\n* https://api.publiq.be/probs/museumpass/external-service-unavailable\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.\n\n",
+            "description": "Service Unavailable.\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.\n\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -561,7 +561,7 @@
             }
           },
           "503": {
-            "description": "Service Unavailable. Possible error types:\n\n* https://api.publiq.be/probs/museumpass/external-service-unavailable\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.",
+            "description": "Service Unavailable.\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.",
             "content": {
               "application/problem+json": {
                 "schema": {
