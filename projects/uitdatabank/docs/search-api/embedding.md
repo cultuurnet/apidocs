@@ -10,9 +10,9 @@ To get the actual bodies of the results, there are two options:
 
 ### Base URL
 
-```
-GET /{events|places|offers|organizers}
-```
+-   `GET /events`
+-  ` GET /places`
+-   `GET /offers`
 
 ### Recommended use
 We recommend using the `embed=true` parameter in order to limit the amount of requests that need to be made.
@@ -120,10 +120,9 @@ The calendar summary can be retrieved in `text` and in `html`.
 > If applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
 
 ### Base URL
-
-```
-GET /{events|places|offers}
-```
+-   `GET /events`
+-  ` GET /places`
+-   `GET /offers`
 
 ### Recommended use
 -   We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
