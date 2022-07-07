@@ -34,7 +34,7 @@ GET /offers/?embed=false
 **response**
 
 The response contains a list of links to the individual search results.
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -63,7 +63,7 @@ GET /offers/?embed=true
 **response**
 
 The response contains actual JSON-LD documents.
-```js
+```json
 {
   "@context": "http://www.w3.org/ns/hydra/context.jsonld",
   "@type": "PagedCollection",
@@ -147,7 +147,7 @@ GET /events/?embedCalendarSummaries[]=xs-text
 ```
 
 **response**
-```js
+```json
 "calendarSummary":{
    "nl":{
       "text":{
@@ -181,7 +181,7 @@ GET /events/?embedCalendarSummaries[]=sm-text
 ```
 
 **response**
-```js
+```json
 "calendarSummary":{
    "nl":{
       "text":{
@@ -214,7 +214,7 @@ GET /events/?embedCalendarSummaries[]=sm-html
 ```
 
 **response**
-```js
+```json
 "calendarSummary":{
    "nl":{
       "html":{
