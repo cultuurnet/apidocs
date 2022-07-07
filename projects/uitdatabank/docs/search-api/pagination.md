@@ -6,7 +6,7 @@ Every search endpoint supports pagination using two url parameters:
 
 Pagination will only work for a limited result set:
 -   The maximum value for for `start` is set to `10000`
--   The maximum value for `limit` is set to 2.000
+-   The maximum value for `limit` is set to `2000`
 
 <!-- theme: info -->
 
