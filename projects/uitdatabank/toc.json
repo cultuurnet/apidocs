@@ -23,6 +23,12 @@
       "type": "group",
       "title": "Search API",
       "items": [
+         {
+          "type": "item",
+          "title": "Escaping",
+          "uri": "/docs/search-api/escaping.md",
+          "slug": "search-api/escaping"
+        },
         {
           "type": "item",
           "title": "Sorting",
