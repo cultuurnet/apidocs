@@ -444,21 +444,14 @@
                   "properties": {
                     "visit": {
                       "type": "object",
+                      "description": "Visit information for the external card.",
                       "required": [
                         "allowed"
                       ],
-                      "description": "Visit information for the external card.",
                       "properties": {
                         "allowed": {
                           "type": "boolean",
                           "description": "Indicates whether a visit with the external card is allowed or not."
-                        },
-                        "reason": {
-                          "type": "string",
-                          "enum": [
-                            "NO_SOCIAL_STATUS"
-                          ],
-                          "description": "Reason why a visit is not allowed."
                         }
                       }
                     }
