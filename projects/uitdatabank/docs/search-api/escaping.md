@@ -11,8 +11,8 @@ GET /events/q=address.\*.postalCode:9000
 ```
 
 
-### Using date time filters in advanced queries
-A colon (`:`) should always be escaped using a backlash (`\`) for a date time in advanced queries. 
+### Using date time filters 
+A colon (`:`) should always be escaped using a backlash (`\`), e.g. in a date time filter.
 
 ```
 GET /offers/?q=dateRange:2023-01-01T00\:00\:00%2B01\:00
