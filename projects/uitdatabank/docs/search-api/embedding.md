@@ -5,7 +5,7 @@ By default the API endpoints only return a list of links to the individual searc
 -   Embedding UiTPAS prices
 
 ## Embedding result bodies
-By default the API endpoints only return a list of links to the individual search results.
+By default the search API endpoints only return a list of links to the individual search results.
 
 To get the actual bodies of the results, there are two options:
 -   Loop over the results yourself and perform GET requests using the given URLs
