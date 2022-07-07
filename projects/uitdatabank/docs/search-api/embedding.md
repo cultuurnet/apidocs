@@ -147,8 +147,10 @@ GET /events/?embedCalendarSummaries[]=xs-text
 ```
 
 **response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
 ```json
-"calendarSummary":{
+{
    "nl":{
       "text":{
          "xs":"21 okt"
@@ -181,8 +183,10 @@ GET /events/?embedCalendarSummaries[]=sm-text
 ```
 
 **response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
 ```json
-"calendarSummary":{
+{
    "nl":{
       "text":{
          "sm":"3 jun (geannuleerd)"
@@ -214,8 +218,10 @@ GET /events/?embedCalendarSummaries[]=sm-html
 ```
 
 **response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
 ```json
-"calendarSummary":{
+{
    "nl":{
       "html":{
          "sm":"<span class=""cf-from cf-meta"">Van</span> <span class=""cf-date"">28 september 2022</span> <span class=""cf-to cf-meta"">tot</span> <span class=""cf-date"">21 december 2022</span> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
@@ -247,8 +253,10 @@ GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
 ```
 
 **response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
 ```json
-"calendarSummary":{
+{
    "nl":{
       "text":{
          "sm":"Tot 30 jun 2021"
