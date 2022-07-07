@@ -1,8 +1,5 @@
 # Embedding
-By default the API endpoints only return a list of links to the individual search results.
--   Embedding result bodies 
--   Embedding calendar summaries
--   Embedding UiTPAS prices
+With embed parameters you can expand the JSON the Search API returns with extra information.
 
 ## Embedding result bodies
 By default the search API endpoints only return a list of links to the individual search results.
