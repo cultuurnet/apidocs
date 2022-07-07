@@ -1,6 +1,6 @@
 # Default filters
 
-The search API applies a couple of filters by default to provide you with the most relevant results for most use cases:
+When searching for events, places, or offers the search API applies a couple of filters by default to provide you with the most relevant results for most use cases:
 
 -   `workflowStatus`: only results with the status `APPROVED` or `READY_FOR_VALIDATION` are returned by default.
 -   `availableFrom`: only results with an availableFrom-date equal or less than the now-date are returned by default.
