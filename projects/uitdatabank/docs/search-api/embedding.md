@@ -247,7 +247,7 @@ GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
 ```
 
 **response**
-```js
+```json
 "calendarSummary":{
    "nl":{
       "text":{
