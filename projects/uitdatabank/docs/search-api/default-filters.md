@@ -37,7 +37,7 @@ GET /offers/?availableTo=*
 ```
 
 ### addressCountry
-Disabling the default `addressCountry` filter will also show results outside Belgium.
+Disabling the default `addressCountry` filter will also show results outside of Belgium.
 ```
 GET /offers/?addressCountry=*
 ```
