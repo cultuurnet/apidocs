@@ -283,6 +283,3 @@ GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
    }
 }
 ```
-
-## Embedding UiTPAS prices
-_work in progress_
