@@ -98,7 +98,7 @@ The response contains actual JSON-LD documents.
 ```
 
 ## Embedding calendar summaries
-Formatting dates can be complex. Therefore we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places).
+Formatting a large amount of dates and/or opening hours into a human-readable overview can be complex. Therefore we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places). The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 
 For every event or place a calendar summary is available in different sizes:
 -   `xs`: extra small
