@@ -20,7 +20,7 @@ GET /offers/?facets[]=facilities
 ```
 
 **Example response**
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -61,7 +61,7 @@ GET /offers/?facets[]=labels
 ```
 
 **Example response**
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -103,7 +103,7 @@ GET /events/?facets[]=themes
 ```
 
 **Example response**
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -144,7 +144,7 @@ GET /places/?facets[]=types
 ```
 
 **Example response**
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -189,7 +189,7 @@ GET /organizers/?facets[]=regions
 ```
 
 **Example response**
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
