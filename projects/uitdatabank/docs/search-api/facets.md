@@ -1,5 +1,12 @@
 # Facets
 
+Facets allow you to summarize your search results in relation to one or more filters (e.g. regions). Each facet has a
+-   name (e.g. `Gent`)
+-   a count (e.g. `826`)
+-   an identifier, if applicable (e.g. `nis-44021`)
+
+Typically, facets are used in event calendars to allow the visitor of the agenda to browse and filter the event content efficiently and in a targeted manner.
+
 It is possible to get facet counts for specific filters using the `facets` URL parameter.
 
 Supported values are:
@@ -12,7 +19,6 @@ Supported values are:
 <!-- theme: info -->
 
 > The key of each facet node is the value you should use to filter that specific field. 
-
 
 <!-- theme: warning -->
 
@@ -254,6 +260,4 @@ It is possible to request multiple facets at once.
 ```
 GET /events/?facets[]=types&facets[]=labels
 ```
-
-
 
