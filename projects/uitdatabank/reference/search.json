@@ -24,6 +24,7 @@
     "/events": {
       "get": {
         "summary": "Search events",
+        "tags": ["Events"],
         "responses": {
           "200": {
             "description": "TODO",
@@ -691,6 +692,11 @@
       "parameters": []
     }
   },
+  "tags": [
+    {
+      "name": "Events"
+    }
+  ],
   "components": {
     "securitySchemes": {}
   }
