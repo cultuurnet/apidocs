@@ -1,6 +1,6 @@
 # Facets
 
-It is possible to get facet counts for specific fields using the `facets` URL parameter.
+It is possible to get facet counts for specific filters using the `facets` URL parameter.
 
 Supported values are:
 -   `regions`
