@@ -130,13 +130,20 @@ The calendar summary can be retrieved in `text` and in `html`.
 -   In some cases (e.g. mobile apps) calendar summary `xs` can be useful
 -   You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
-### Parameters
-| Parameter                     | Required? | Type   | Possible values                         | Example                            |
-|:-------------------------------|:-----------|:--------|:-----------------------------------------|:------------------------------------|
-| embedCalendarSummaries (text) | optional  | string | `xs-text` `sm-text` `md-text` `lg-text` | `embedCalendarSummaries[]=sm-text` |
-| embedCalendarSummaries (html) | optional  | string | `xs-html` `sm-html` `md-html` `lg-html` | `embedCalendarSummaries[]=lg-html` |
+### Parameter and possible values
 
+Parameter name: `embedCalendarSummaries`
 
+Possible values:
+
+-  `xs-text`: extra small summary in plain text
+-  `sm-text`: small summary in plain text
+-  `md-text`: medium summary in plain text
+-  `lg-text`: large summary in plain text
+-  `xs-html`: extra small summary in HTML
+-  `sm-html`: small summary in HTML
+-  `md-html`: medium summary in HTML
+-  `lg-html`: large summary in HTML
 
 ### Examples
 #### Calendar summary `xs-text`
