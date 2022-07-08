@@ -9,6 +9,15 @@ Supported values are:
 -   `facilities`
 -   `labels`
 
+<!-- theme: info -->
+
+> The key of each facet node is the value you should use to filter that specific field. 
+
+
+<!-- theme: warning -->
+
+> You should never assume a specific amount of levels for the region facet in your code. Instead, you should parse the given facets recursively by looking for the children property.
+
 ## Request individual facets
 
 ### Facilities
@@ -179,10 +188,6 @@ GET /places/?facets[]=types
 ### Regions
 Applicable on: `/offers`, `/events`, `/places`, `/organizers`
 
-<!-- theme: warning -->
-
-> You should never assume a specific amount of levels for the region facet in your code. Instead, you should parse the given facets recursively by looking for the children property.
-
 **Example request**
 ```
 GET /organizers/?facets[]=regions
@@ -241,12 +246,6 @@ GET /organizers/?facets[]=regions
                            
 ...
 ```
-
-<!-- theme: info -->
-
-> The key of each facet node is the value you should use to filter that specific field. 
->
-> In the example above, you can filter by using the `regionId` URL parameter or the `regions` field in advanced queries in combination with any key from the returned facets, to narrow down your search.
 
 ## Request multiple facets at once
 It is possible to request multiple facets at once.
