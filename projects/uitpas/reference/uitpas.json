@@ -4300,7 +4300,8 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "default": 100
+              "default": 100,
+              "minimum": 0
             },
             "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination.",
             "name": "limit"
