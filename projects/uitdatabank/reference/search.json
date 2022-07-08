@@ -24,7 +24,9 @@
     "/events": {
       "get": {
         "summary": "Search events",
-        "tags": ["Events"],
+        "tags": [
+          "Events"
+        ],
         "responses": {
           "200": {
             "description": "TODO",
