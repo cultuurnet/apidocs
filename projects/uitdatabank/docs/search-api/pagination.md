@@ -8,10 +8,6 @@ Pagination will only work for a limited result set:
 -   The maximum value for for `start` is set to `10000`
 -   The maximum value for `limit` is set to `2000`
 
-<!-- theme: info -->
-
-> The response also includes the limit included in the request, as `itemsPerPage`. This is because the API might decide to return fewer results if the specified limit is too high. Because of this, you should never assume that the specified limit will also be respected and you should always check `itemsPerPage`.
-
 ## Examples
 ### Valid value for `start` and `limit` parameter
 **request**
