@@ -119,7 +119,7 @@ The calendar summary can be retrieved in `text` and in `html`.
 >
 > If applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
 
-### Base URL
+### Applicable URLs
 -   `GET /events`
 -  ` GET /places`
 -   `GET /offers`
