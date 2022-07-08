@@ -33,7 +33,52 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/event.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "types": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "themes": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "facilities": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "labels": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
                 },
                 "examples": {
                   "Example": {
