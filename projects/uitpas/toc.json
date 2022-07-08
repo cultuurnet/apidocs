@@ -67,6 +67,22 @@
       ]
     },
     {
+      "type": "group",
+      "title": "Rewards",
+      "items": [
+        {
+          "type": "item",
+          "title": "UiTPAS points as payment",
+          "uri": "docs/pay-with-UiTPAS-points.md"
+        },
+        {
+          "type": "item",
+          "title": "Creating rewards",
+          "uri": "docs/creating-rewards.md"
+        }
+      ]
+    },
+    {
       "type": "divider",
       "title": "API references"
     },

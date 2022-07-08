@@ -478,7 +478,40 @@
                   "$ref": "#/components/schemas/TicketSalesPaginatedResponse"
                 },
                 "examples": {
-                  "Example": {
+                  "Example without passholder (default)": {
+                    "value": {
+                      "totalItems": 2,
+                      "member": [
+                        {
+                          "id": "21345",
+                          "tariff": {
+                            "id": "COUPON1234",
+                            "name": "Cultuurbon 6 euro",
+                            "price": 4,
+                            "type": "COUPON"
+                          },
+                          "uitpasNumber": "0560002524314",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "regularPrice": 10,
+                          "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
+                        },
+                        {
+                          "id": "21346",
+                          "tariff": {
+                            "id": "COUPON1234",
+                            "name": "Cultuurbon 6 euro",
+                            "price": 1.5,
+                            "type": "COUPON"
+                          },
+                          "uitpasNumber": "0560002524314",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "regularPrice": 10,
+                          "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
+                        }
+                      ]
+                    }
+                  },
+                  "Example with passholder (PASSHOLDER_SEARCH permission required)": {
                     "value": {
                       "totalItems": 2,
                       "member": [
@@ -3136,8 +3169,7 @@
                           "points": 10,
                           "forKids": false,
                           "sport": false,
-                          "labels": "",
-                          "redeemType": "ONLINE"
+                          "labels": ""
                         }
                       ],
                       "facet": {
@@ -3396,7 +3428,7 @@
         ]
       },
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Create new reward",
         "operationId": "post-rewards",
         "responses": {
@@ -3433,10 +3465,6 @@
                         "begin": "2021-08-24T14:15:22Z",
                         "end": "2022-08-24T14:15:22Z"
                       },
-                      "grantingPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
-                      },
                       "moreInfoURL": "https://example.org/more-info-about-this-reward",
                       "inSpotlight": false,
                       "points": 3,
@@ -3445,8 +3473,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "PHYSICAL"
+                      "labels": ""
                     }
                   },
                   "Welcome reward": {
@@ -3478,16 +3505,10 @@
                         "begin": "2021-08-24T14:15:22Z",
                         "end": "2022-08-24T14:15:22Z"
                       },
-                      "moreInfoURL": "https://example.org/more-info-about-this-reward",
                       "inSpotlight": false,
-                      "points": 0,
-                      "categories": [
-                        "Doen"
-                      ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "PHYSICAL"
+                      "labels": ""
                     }
                   }
                 }
@@ -3531,7 +3552,7 @@
                 "$ref": "#/components/schemas/Reward"
               },
               "examples": {
-                "Example": {
+                "Points Reward Example": {
                   "value": {
                     "title": "Free entrance for 10 points on 1 specific event",
                     "type": "POINTS",
@@ -3540,16 +3561,20 @@
                     ],
                     "promotionalDescription": "this is the mandatory description",
                     "publicationPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
-                    },
-                    "grantingPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22Z"
                     },
                     "moreInfoURL": "https://example.org/more-info-about-this-reward",
-                    "redeemType": "ONLINE",
                     "points": 10
+                  }
+                },
+                "Welcome Reward Example": {
+                  "value": {
+                    "title": "Gratis tas koffie",
+                    "type": "WELCOME",
+                    "promotionalDescription": "this is the mandatory description",
+                    "publicationPeriod": {
+                      "begin": "2021-08-24T14:15:22Z"
+                    }
                   }
                 }
               }
@@ -3560,7 +3585,7 @@
     },
     "/rewards/{rewardId}": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve reward",
         "tags": [
           "Rewards"
@@ -3612,8 +3637,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "ONLINE"
+                      "labels": ""
                     }
                   }
                 }
@@ -3660,7 +3684,7 @@
         }
       ],
       "put": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Update reward",
         "operationId": "put-rewards-id",
         "responses": {
@@ -3710,8 +3734,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": "",
-                      "redeemType": "ONLINE"
+                      "labels": ""
                     }
                   }
                 }
@@ -3784,7 +3807,6 @@
                       "end": "2022-08-24T14:15:22Z"
                     },
                     "moreInfoURL": "https://example.org/more-info-about-this-reward",
-                    "redeemType": "ONLINE",
                     "points": 10
                   }
                 }
@@ -3811,7 +3833,7 @@
         }
       ],
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Check redeem status of a reward for a passholder",
         "operationId": "get-rewards-id-redeem-status",
         "responses": {
@@ -3923,7 +3945,7 @@
     "/rewards/redeemed": {
       "parameters": [],
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Redeem reward",
         "operationId": "post-rewards-redeemed",
         "responses": {
@@ -3953,7 +3975,6 @@
                         },
                         "points": 0,
                         "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
-                        "redeemType": "PHYSICAL",
                         "owningCardSystem": {
                           "id": 1,
                           "name": "UiTPAS Dender"
@@ -4069,7 +4090,7 @@
         ]
       },
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve redeemed rewards",
         "operationId": "get-rewards-redeemed",
         "responses": {
@@ -4102,7 +4123,6 @@
                             },
                             "points": 0,
                             "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
-                            "redeemType": "PHYSICAL",
                             "owningCardSystem": {
                               "id": 1,
                               "name": "UiTPAS Dender"
@@ -4209,7 +4229,7 @@
     },
     "/card-systems": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Search card systems",
         "responses": {
           "200": {
@@ -5393,16 +5413,13 @@
           "publicationPeriod": {
             "$ref": "#/components/schemas/Period"
           },
-          "grantingPeriod": {
-            "$ref": "#/components/schemas/Period"
-          },
           "points": {
             "type": "number",
-            "description": "Number of points needed to redeem the reward"
+            "description": "Number of points needed to redeem the reward. Required for reward of type POINTS."
           },
           "categories": {
             "type": "array",
-            "description": "List of categories of this reward.",
+            "description": "List of categories of this reward. Required for reward of type POINTS.",
             "items": {
               "type": "string",
               "enum": [
@@ -5415,16 +5432,11 @@
           },
           "moreInfoURL": {
             "type": "string",
-            "description": "URL where a user can find more info about this reward.",
+            "description": "URL where a user can find more info about this reward. Required for reward of type POINTS.",
             "format": "uri"
           },
-          "redeemType": {
-            "type": "string",
-            "enum": [
-              "PHYSICAL",
-              "ONLINE"
-            ],
-            "description": "Whether the reward can be redeemed online, or has to be redeemed in a physical location."
+          "grantingPeriod": {
+            "$ref": "#/components/schemas/Period"
           },
           "owningCardSystem": {
             "$ref": "#/components/schemas/CardSystem"
@@ -5499,7 +5511,7 @@
             "description": "Defines how many times this reward can be redeemed by the same passholder in a specific period.",
             "properties": {
               "volume": {
-                "type": "string",
+                "type": "integer",
                 "description": "The maximum number of times this reward can be redeemed by the same passholder."
               },
               "period": {
@@ -5525,12 +5537,7 @@
           "title",
           "type",
           "promotionalDescription",
-          "publicationPeriod",
-          "grantingPeriod",
-          "points",
-          "categories",
-          "moreInfoURL",
-          "redeemType"
+          "publicationPeriod"
         ]
       },
       "RedeemedReward": {
