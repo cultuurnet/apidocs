@@ -326,7 +326,14 @@
                   "facilities",
                   "labels"
                 ]
-              }
+              },
+              "enum": [
+                "regions",
+                "types",
+                "themes",
+                "facilities",
+                "labels"
+              ]
             },
             "in": "query",
             "name": "facets",
