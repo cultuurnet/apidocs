@@ -90,7 +90,7 @@
           }
         },
         "operationId": "get-events",
-        "description": "TODO\n\n##### Repeating query parameters\n\nQuery parameters of the type `array[string]` can be repeated if a `[]` is added at the end of their paramater name. For example:\n\n*  `?labels=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nRepeating parameters like this (if they support it) always uses the `AND` operator for filtering.\n\nSome `string` parameters support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "description": "TODO\n\n##### Repeating query parameters\n\nQuery parameters that have the type `array[string]` and `[]` as a suffix in their parameter name in the list below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
         "parameters": [
           {
             "schema": {
@@ -209,17 +209,21 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "online",
-                "offline",
-                "mixed"
-              ],
-              "example": "online,mixed"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "online",
+                  "offline",
+                  "mixed"
+                ]
+              }
             },
             "in": "query",
             "name": "attendanceMode",
-            "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included. Accepts multiple comma-separated values to return results that have one of the given attendance modes."
+            "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included. Accepts multiple comma-separated values to return results that have one of the given attendance modes.",
+            "style": "form",
+            "explode": false
           },
           {
             "schema": {
@@ -235,15 +239,19 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "single",
-                "multiple",
-                "periodic",
-                "permanent"
-              ],
-              "example": "single,multiple"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "single",
+                  "multiple",
+                  "periodic",
+                  "permanent"
+                ]
+              }
             },
+            "style": "form",
+            "explode": false,
             "in": "query",
             "name": "calendarType",
             "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. See TODO (link to guide) for more info."
@@ -355,9 +363,10 @@
               }
             },
             "in": "query",
-            "name": "embedCalendarSummaries",
+            "name": "embedCalendarSummaries[]",
             "description": "Adds an extra `calendarSummary` property to the results that contains one or more formatted human-readable summaries of the date/time info of the result. May be repeated to include multiple summaries per result. See the operation's description above for more info on how to repeat parameters.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -371,19 +380,13 @@
                   "facilities",
                   "labels"
                 ]
-              },
-              "enum": [
-                "regions",
-                "types",
-                "themes",
-                "facilities",
-                "labels"
-              ]
+              }
             },
             "in": "query",
-            "name": "facets",
+            "name": "facets[]",
             "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -393,9 +396,10 @@
               }
             },
             "in": "query",
-            "name": "regions",
+            "name": "regions[]",
             "description": "Returns only results that are geographically located in the given region. Regions may be fetched programmatically from [https://search.uitdatabank.be/autocomplete.json](https://search.uitdatabank.be/autocomplete.json) (TODO Replace with taxonomy API endpoint). See TODO (link to guide) for more info.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -462,9 +466,10 @@
               }
             },
             "in": "query",
-            "name": "labels",
+            "name": "labels[]",
             "style": "form",
-            "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters."
+            "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
+            "explode": true
           },
           {
             "schema": {
@@ -496,9 +501,10 @@
               }
             },
             "in": "query",
-            "name": "languages",
+            "name": "languages[]",
             "style": "form",
-            "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info."
+            "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+            "explode": true
           },
           {
             "schema": {
@@ -515,9 +521,10 @@
               }
             },
             "in": "query",
-            "name": "completedLanguages",
+            "name": "completedLanguages[]",
             "style": "form",
-            "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info."
+            "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+            "explode": true
           },
           {
             "schema": {
@@ -615,14 +622,19 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "Available",
-                "TemporarilyUnavailable",
-                "Unavailable"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Available",
+                  "TemporarilyUnavailable",
+                  "Unavailable"
+                ]
+              }
             },
             "in": "query",
+            "style": "form",
+            "explode": false,
             "name": "status",
             "description": "Returns only results with exactly the same status type as the given enum value. `Available` means an event is happening as planned, and a place can be visited during its normal opening hours. `TemporarilyUnavailable` means an event has been postponed to a later date (yet to be determined), and a place is temporarily closed (for example due to renovations). `Unavailable` means an event is cancelled, or a place is permanently closed. If combined with `dateFrom` and/or `dateTo`, only results that have the given status in that time period will be returned. Accepts multiple comma-separated values to return results that have one of the given status types."
           },
@@ -634,9 +646,10 @@
               }
             },
             "in": "query",
-            "name": "termIds",
+            "name": "termIds[]",
             "style": "form",
-            "description": "Returns only results that have the given term id(s) in either their `terms` property items. May be repeated to only return results that have all the given term ids. See the operation's description above for more info on how to repeat parameters."
+            "description": "Returns only results that have the given term id(s) in either their `terms` property items. May be repeated to only return results that have all the given term ids. See the operation's description above for more info on how to repeat parameters.",
+            "explode": true
           },
           {
             "schema": {
@@ -656,18 +669,22 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "DRAFT",
-                "READY_FOR_VALIDATION",
-                "APPROVED",
-                "REJECTED",
-                "DELETED",
-                "*"
-              ],
-              "default": "READY_FOR_VALIDATION,APPROVED",
-              "example": "DRAFT"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "DRAFT",
+                  "READY_FOR_VALIDATION",
+                  "APPROVED",
+                  "REJECTED",
+                  "DELETED",
+                  "*"
+                ],
+                "example": "DRAFT"
+              }
             },
+            "style": "form",
+            "explode": false,
             "in": "query",
             "name": "workflowStatus",
             "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
