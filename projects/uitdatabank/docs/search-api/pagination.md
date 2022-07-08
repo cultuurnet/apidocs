@@ -16,7 +16,7 @@ GET /offers/?start=10&limit=5
 ```
 
 **response**
-```js
+```json
 {
   "@context": "http://www.w3.org/ns/hydra/context.jsonld",
   "@type": "PagedCollection",
@@ -43,12 +43,12 @@ GET /offers/?start=15000&limit=100
 ```
 
 **response**
-```js
+```json
 {
-title: "Not Found",
-type: "https://api.publiq.be/probs/url/not-found",
-status: 404,
-detail: "The "start" parameter should be between 0 and 10000"
+   "title":"Not Found",
+   "type":"https://api.publiq.be/probs/url/not-found",
+   "status":404,
+   "detail":"The ""start"" parameter should be between 0 and 10000"
 }
 ```
 
@@ -59,11 +59,11 @@ GET /offers/?start=0&limit=2001
 ```
 
 **response**
-```js
+```json
 {
-"title": "Not Found",
-"type": "https://api.publiq.be/probs/url/not-found",
-"status": 404,
-"detail": "The \"limit\" parameter should be between 0 and 2000"
+   "title":"Not Found",
+   "type":"https://api.publiq.be/probs/url/not-found",
+   "status":404,
+   "detail":"The \"limit\" parameter should be between 0 and 2000"
 }
 ```
