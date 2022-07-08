@@ -49,7 +49,7 @@ The response contains a list of links to the individual search results.
          "@id":"https://io.uitdatabank.be/place/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
          "@type":"Place"
       },
-      "..."
+      ...
    ]
 }
 ```
