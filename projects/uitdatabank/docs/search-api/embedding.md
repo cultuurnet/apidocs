@@ -8,7 +8,7 @@ To get the actual bodies of the results, there are two options:
 -   Loop over the results yourself and perform GET requests using the given URLs
 -   Use the `embed`  URL parameter (`bool`, defaults to `false`)
 
-### Base URL
+### Applicable URLs
 
 -   `GET /events`
 -  ` GET /places`
