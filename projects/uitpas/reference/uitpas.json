@@ -3223,6 +3223,16 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Error type:\n\nhttps://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -3289,18 +3299,22 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "type",
-                "owningCardSystemId",
-                "extras",
-                "categories"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "categories",
+                  "extras",
+                  "owningCardSystemId",
+                  "type"
+                ]
+              }
             },
             "in": "query",
             "name": "facets",
             "description": "Request facets of the given field in the response. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -3356,18 +3370,22 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "Goede doel",
-                "Eten en drinken",
-                "Doen",
-                "Gadget of item"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Goede doel",
+                  "Eten en drinken",
+                  "Doen",
+                  "Gadget of item"
+                ]
+              }
             },
             "in": "query",
             "name": "categories",
             "description": "Include only rewards of this category. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -3403,18 +3421,22 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "forKids",
-                "sport",
-                "online",
-                "lastChance"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "forKids",
+                  "sport",
+                  "online",
+                  "lastChance"
+                ]
+              }
             },
             "in": "query",
             "name": "extras",
             "description": "Filter on a number of predefined fields, which are also available as a facet. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
