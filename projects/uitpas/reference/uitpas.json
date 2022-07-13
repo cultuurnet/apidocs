@@ -1177,7 +1177,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1251,7 +1251,7 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sorts the passholders by their last name in ascending or descending order."
+            "description": "Sorts the passholders by their last name in ascending or descending order. By default passholders are sorted by name, ascending order."
           },
           {
             "schema": {
