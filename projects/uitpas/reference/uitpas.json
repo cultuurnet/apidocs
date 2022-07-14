@@ -3178,13 +3178,13 @@
                             "name": {
                               "nl": "Doen"
                             },
-                            "count": 12
+                            "count": 402
                           },
                           "Gadget": {
                             "name": {
                               "nl": "Gadget"
                             },
-                            "count": 2
+                            "count": 101
                           }
                         },
                         "owningCardSystemId": {
@@ -3192,13 +3192,41 @@
                             "name": {
                               "nl": "UiTPAS Dender"
                             },
-                            "count": 8
+                            "count": 124
                           },
                           "8": {
                             "name": {
                               "nl": "UiTPAS Gent"
                             },
-                            "count": 4
+                            "count": 503
+                          }
+                        },
+                        "sport": {
+                          "true": {
+                            "name": {
+                              "nl": "true"
+                            },
+                            "count": 45
+                          },
+                          "false": {
+                            "name": {
+                              "nl": "false"
+                            },
+                            "count": 458
+                          }
+                        },
+                        "forKids": {
+                          "true": {
+                            "name": {
+                              "nl": "true"
+                            },
+                            "count": 24
+                          },
+                          "false": {
+                            "name": {
+                              "nl": "false"
+                            },
+                            "count": 479
                           }
                         }
                       }
@@ -3304,7 +3332,10 @@
                 "type": "string",
                 "enum": [
                   "categories",
-                  "extras",
+                  "forKids",
+                  "sport",
+                  "online",
+                  "lastChance",
                   "owningCardSystemId",
                   "type"
                 ]
@@ -3421,31 +3452,48 @@
           },
           {
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "forKids",
-                  "sport",
-                  "online",
-                  "lastChance"
-                ]
-              }
+              "type": "boolean"
             },
             "in": "query",
-            "name": "extras",
-            "description": "Filter on a number of predefined fields, which are also available as a facet. Can be included more than once to allow multiple values.",
-            "style": "form",
-            "explode": true
+            "name": "sport",
+            "description": "Include only rewards with the sport property true or false. If omitted, rewards with any sport value are included."
           },
           {
             "schema": {
-              "type": "string"
+              "type": "boolean"
             },
             "in": "query",
-            "name": "isRedeemableBy",
-            "description": "Include only rewards that are currently redeemable by the given UiTPAS number. The use of this fields requires `REWARDS_PASSHOLDER_READ` permission or a user access token of the given passholder, identified by its UiTPAS number.",
-            "style": "form"
+            "name": "forKids",
+            "description": "Include only rewards with the forKids property true or false. If omitted, rewards with any forKids value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "online",
+            "description": "Include only rewards with the online property true or false. If omitted, rewards with any online value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "lastChance",
+            "description": "Include only rewards with the lastChance property true or false. If omitted, rewards with any lastChance value are included."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "INACTIVE",
+                "DELETED"
+              ]
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Include only rewards with this status. Also set `subset=ALL` to include non-ACTIVE rewards."
           }
         ]
       },
@@ -4601,13 +4649,22 @@
               "categories": {
                 "$ref": "#/components/schemas/Facet"
               },
-              "extras": {
-                "$ref": "#/components/schemas/Facet"
-              },
               "owningCardSystemId": {
                 "$ref": "#/components/schemas/Facet"
               },
               "type": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "sport": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "forKids": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "online": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "lastChance": {
                 "$ref": "#/components/schemas/Facet"
               }
             }
