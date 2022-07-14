@@ -492,7 +492,7 @@
           }
         },
         "operationId": "get-external-cards-type-identification",
-        "description": "Retrieve visit allowed information related to an external card. \n\n\n## Permissions\n\nThe caller of this request must have the `external card visit registrar` role.\n",
+        "description": "Retrieve visit allowed information related to an external card. \n\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.\n",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -574,7 +574,7 @@
             }
           }
         },
-        "description": "Registers a visit of an axternal card at your museum (determined by the client access token used).\n\nTo check if this card is allowed to visit, look up their information using [`GET /external-cards/{type}/{identification}`](./partner-api.json/paths/~1external-cards~1{type}~1{identification}/get). The response to that request will indicate if the passholder may visit your museum.\n\nIf the external card may not visit your museum and you still try to register a visit for them, the server will return a `403 Forbidden` error response.\n\n**Note**: A POST body is not required for this endpoint. All information is derived from the path.\n\n## Permissions\n\nThe caller of this request must have the `external card visit registrar` role.",
+        "description": "Registers a visit of an axternal card at your museum (determined by the client access token used).\n\nTo check if this card is allowed to visit, look up their information using [`GET /external-cards/{type}/{identification}`](./partner-api.json/paths/~1external-cards~1{type}~1{identification}/get). The response to that request will indicate if the passholder may visit your museum.\n\nIf the external card may not visit your museum and you still try to register a visit for them, the server will return a `403 Forbidden` error response.\n\n**Note**: A POST body is not required for this endpoint. All information is derived from the path.\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
