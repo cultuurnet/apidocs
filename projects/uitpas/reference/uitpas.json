@@ -5531,10 +5531,6 @@
             "type": "boolean",
             "description": "true if this is a sport reward"
           },
-          "labels": {
-            "type": "string",
-            "description": "Comma separated list of labels."
-          },
           "redeemConstraint": {
             "type": "object",
             "description": "Defines how many times this reward can be redeemed by the same passholder in a specific period.",
