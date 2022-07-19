@@ -3204,13 +3204,13 @@
                         "sport": {
                           "true": {
                             "name": {
-                              "nl": "true"
+                              "nl": "Sportactiviteiten"
                             },
                             "count": 45
                           },
                           "false": {
                             "name": {
-                              "nl": "false"
+                              "nl": "Geen sportactiviteiten"
                             },
                             "count": 458
                           }
@@ -3218,13 +3218,13 @@
                         "forKids": {
                           "true": {
                             "name": {
-                              "nl": "true"
+                              "nl": "Speciaal voor kinderen"
                             },
                             "count": 24
                           },
                           "false": {
                             "name": {
-                              "nl": "false"
+                              "nl": "Niet speciaal voor kinderen"
                             },
                             "count": 479
                           }
@@ -5713,6 +5713,22 @@
               "nl": "Option 2"
             },
             "count": 4
+          }
+        },
+        "x-examples": {
+          "Example": {
+            "option1": {
+              "name": {
+                "nl": "Human-readable name for option1"
+              },
+              "count": 3
+            },
+            "option2": {
+              "name": {
+                "nl": "Human-readable name for option2"
+              },
+              "count": 4
+            }
           }
         }
       },
