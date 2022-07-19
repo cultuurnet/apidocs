@@ -3168,7 +3168,8 @@
                           "inSpotlight": false,
                           "points": 10,
                           "forKids": false,
-                          "sport": false
+                          "sport": false,
+                          "online": false
                         }
                       ],
                       "facet": {
@@ -3541,7 +3542,8 @@
                         "Eten en drinken"
                       ],
                       "forKids": false,
-                      "sport": false
+                      "sport": false,
+                      "online": true
                     }
                   },
                   "Welcome reward": {
@@ -3575,7 +3577,8 @@
                       },
                       "inSpotlight": false,
                       "forKids": false,
-                      "sport": false
+                      "sport": false,
+                      "online": false
                     }
                   }
                 }
@@ -3703,7 +3706,8 @@
                         "Eten en drinken"
                       ],
                       "forKids": false,
-                      "sport": false
+                      "sport": false,
+                      "online": false
                     }
                   }
                 }
@@ -3799,7 +3803,8 @@
                         "Doen"
                       ],
                       "forKids": false,
-                      "sport": false
+                      "sport": false,
+                      "online": false
                     }
                   }
                 }
@@ -4066,7 +4071,8 @@
                           "Eten en drinken"
                         ],
                         "forKids": true,
-                        "sport": true
+                        "sport": true,
+                        "online": false
                       },
                       "redeemDate": "2019-08-24T14:15:22Z",
                       "redeemInfo": {
@@ -4213,7 +4219,9 @@
                               "Eten en drinken"
                             ],
                             "forKids": true,
-                            "sport": true
+                            "sport": true,
+                            "online": true,
+                            "lastChance": true
                           },
                           "redeemDate": "2019-08-24T14:15:22Z",
                           "redeemInfo": {
@@ -5580,6 +5588,15 @@
           "sport": {
             "type": "boolean",
             "description": "true if this is a sport reward"
+          },
+          "online": {
+            "type": "boolean",
+            "description": "true if this reward can be redeemed online"
+          },
+          "lastChance": {
+            "type": "boolean",
+            "description": "true if this rewards will not be redeemable anymore in the near future",
+            "readOnly": true
           },
           "redeemConstraint": {
             "type": "object",
