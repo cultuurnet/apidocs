@@ -3168,8 +3168,7 @@
                           "inSpotlight": false,
                           "points": 10,
                           "forKids": false,
-                          "sport": false,
-                          "labels": ""
+                          "sport": false
                         }
                       ],
                       "facet": {
@@ -3542,8 +3541,7 @@
                         "Eten en drinken"
                       ],
                       "forKids": false,
-                      "sport": false,
-                      "labels": ""
+                      "sport": false
                     }
                   },
                   "Welcome reward": {
@@ -3577,8 +3575,7 @@
                       },
                       "inSpotlight": false,
                       "forKids": false,
-                      "sport": false,
-                      "labels": ""
+                      "sport": false
                     }
                   }
                 }
@@ -3706,8 +3703,7 @@
                         "Eten en drinken"
                       ],
                       "forKids": false,
-                      "sport": false,
-                      "labels": ""
+                      "sport": false
                     }
                   }
                 }
@@ -3803,8 +3799,7 @@
                         "Doen"
                       ],
                       "forKids": false,
-                      "sport": false,
-                      "labels": ""
+                      "sport": false
                     }
                   }
                 }
@@ -4071,8 +4066,7 @@
                           "Eten en drinken"
                         ],
                         "forKids": true,
-                        "sport": true,
-                        "labels": "freetext1,freetext2"
+                        "sport": true
                       },
                       "redeemDate": "2019-08-24T14:15:22Z",
                       "redeemInfo": {
@@ -4219,8 +4213,7 @@
                               "Eten en drinken"
                             ],
                             "forKids": true,
-                            "sport": true,
-                            "labels": "freetext1,freetext2"
+                            "sport": true
                           },
                           "redeemDate": "2019-08-24T14:15:22Z",
                           "redeemInfo": {
