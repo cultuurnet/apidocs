@@ -116,601 +116,157 @@
         "description": "Returns a paginated list of events that match the given filters.\n\nTODO: Add link to guides like default filters etc when merged into guides branch.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
         "parameters": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "x-client-id",
-            "description": "The client id of your project (if not using an API key). May also be replaced with a `clientId` query parameter."
+            "$ref": "#/components/parameters/x-client-id"
           },
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "x-api-key",
-            "description": "The API key of your project on https://projectaanvraag.uitdatabank.be (if not using a client id). May also be replaced with an `apiKey` query parameter. Will be deprecated in favour of `x-client-id` in the future, but will still be supported.",
-            "deprecated": true
+            "$ref": "#/components/parameters/x-api-key"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": " dijle (wandelen OR fietsen)"
-            },
-            "in": "query",
-            "name": "text",
-            "description": "Free text search terms. Returns results that match all or some of the given terms. May contain `AND` and `OR` operators, and brackets for grouping. Can not filter on specific fields (contrary to the `q` parameter). Typically used to search on user-provided keywords. For more info and examples see TODO (link to guide)."
+            "$ref": "#/components/parameters/text"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "labels:\"ook voor kinderen\" OR labels:\"ook voor jongeren\""
-            },
-            "in": "query",
-            "name": "q",
-            "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields. For more info and examples see TODO (link to guide)."
+            "$ref": "#/components/parameters/q"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "1000"
-            },
-            "in": "query",
-            "name": "postalCode",
-            "description": "Returns only results that have the exact same postal code in their address. Typically 4 digits for Belgian addresses but can also be a different format for international addresses."
+            "$ref": "#/components/parameters/postalCode"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "BE",
-              "pattern": "^[A-Z][A-Z]$",
-              "default": "BE"
-            },
-            "in": "query",
-            "name": "addressCountry",
-            "description": "Returns only results that have the exact same country code in their address. Formatted as an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter."
+            "$ref": "#/components/parameters/addressCountry"
           },
           {
-            "schema": {
-              "type": "integer",
-              "example": 18
-            },
-            "in": "query",
-            "name": "maxAge",
-            "description": "Returns only results that are targeted to participants/visitors of at most the given age (in years). The given age will be included in results."
+            "$ref": "#/components/parameters/maxAge"
           },
           {
-            "schema": {
-              "type": "integer",
-              "example": 12
-            },
-            "in": "query",
-            "name": "minAge",
-            "description": "Returns only results that are targeted to participants/visitors of at least the given age (in years). The given age will be included in results."
+            "$ref": "#/components/parameters/minAge"
           },
           {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "allAges",
-            "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
+            "$ref": "#/components/parameters/allAges"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "everyone",
-                "members",
-                "education"
-              ],
-              "default": "everyone"
-            },
-            "in": "query",
-            "name": "audienceType",
-            "description": "Returns only results with the given enum value as their targeted audience. Results with audienceType `everyone` are targeted to any participant/visitor. Results with audienceType `members` are only targeted towards members of the organizer of the event. Results with audienceType `education` are targeted towards [CultuurKuur](https://www.cultuurkuur.be/)."
+            "$ref": "#/components/parameters/audienceType"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-04T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "availableFrom",
-            "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+            "$ref": "#/components/parameters/availableFrom"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-05T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "availableTo",
-            "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+            "$ref": "#/components/parameters/availableTo"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "online",
-                  "offline",
-                  "mixed"
-                ]
-              }
-            },
-            "in": "query",
-            "name": "attendanceMode",
-            "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included. Accepts multiple comma-separated values to return results that have one of the given attendance modes.",
-            "style": "form",
-            "explode": false
+            "$ref": "#/components/parameters/attendanceMode"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "Available",
-                "Unavailable"
-              ]
-            },
-            "in": "query",
-            "name": "bookingAvailability",
-            "description": "Returns only results with the given enum value as their bookingAvailability type. Results with bookingAvailability `Available` still have tickets/reservations available. Results with bookingAvailability `Unavailable` are sold out / fully booked."
+            "$ref": "#/components/parameters/bookingAvailability"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "single",
-                  "multiple",
-                  "periodic",
-                  "permanent"
-                ]
-              }
-            },
-            "style": "form",
-            "explode": false,
-            "in": "query",
-            "name": "calendarType",
-            "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/calendarType"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-04T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "createdFrom",
-            "description": "Returns only results that were created at or after the given date-time."
+            "$ref": "#/components/parameters/createdFrom"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-05T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "createdTo",
-            "description": "Returns only results that were created at or before the given date-time."
+            "$ref": "#/components/parameters/createdTo"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-04T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "modifiedFrom",
-            "description": "Returns only results that were last modified at or after the given date-time. If the result has never been modified, the `created` date-time will be used as `modified` instead."
+            "$ref": "#/components/parameters/modifiedFrom"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-05T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "modifiedTo",
-            "description": "Returns only results that were last modified at or before the given date-time. If the result has never been modified, the `created` date-time will be used as `modified` instead."
+            "$ref": "#/components/parameters/modifiedTo"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "lxBfdgJwUaJUgm7CBCeKF2eE2fnsyLCB@clients"
-            },
-            "in": "query",
-            "name": "creator",
-            "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTID v1), an Auth0 user id (for new UiTID v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
+            "$ref": "#/components/parameters/creator"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-04T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "dateFrom",
-            "description": "Returns only events that are happening at some point after the given date-time, and places that are open at some point after the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/dateFrom"
           },
           {
-            "schema": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2022-03-05T10:30:00+01:00"
-            },
-            "in": "query",
-            "name": "dateTo",
-            "description": "Returns only events that are happening at some point before the given date-time, and places that are open at some point before the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/dateTo"
           },
           {
-            "schema": {
-              "type": "string",
-              "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
-              "example": "08:30"
-            },
-            "in": "query",
-            "name": "localTimeFrom",
-            "description": "Returns only events that are happening at some point after the given time, and places that are open at some point after the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/localTimeFrom"
           },
           {
-            "schema": {
-              "type": "string",
-              "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
-              "example": "23:59"
-            },
-            "in": "query",
-            "name": "localTimeTo",
-            "description": "Returns only events that are happening at some point before the given time, and places that are open at some point before the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/localTimeTo"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "xs-text",
-                  "sm-text",
-                  "md-text",
-                  "lg-text",
-                  "xs-html",
-                  "sm-html",
-                  "md-html",
-                  "lg-html"
-                ]
-              }
-            },
-            "in": "query",
-            "name": "embedCalendarSummaries[]",
-            "description": "Adds an extra `calendarSummary` property to the results that contains one or more formatted human-readable summaries of the date/time info of the result. May be repeated to include multiple summaries per result. See the operation's description above for more info on how to repeat parameters.",
-            "style": "form",
-            "explode": true
+            "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "regions",
-                  "types",
-                  "themes",
-                  "facilities",
-                  "labels"
-                ]
-              }
-            },
-            "in": "query",
-            "name": "facets[]",
-            "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
-            "style": "form",
-            "explode": true
+            "$ref": "#/components/parameters/facets"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "in": "query",
-            "name": "regions[]",
-            "description": "Returns only results that are geographically located in the given region. Regions may be fetched programmatically from [https://search.uitdatabank.be/autocomplete.json](https://search.uitdatabank.be/autocomplete.json) (TODO Replace with taxonomy API endpoint). See TODO (link to guide) for more info.",
-            "style": "form",
-            "explode": true
+            "$ref": "#/components/parameters/regions"
           },
           {
-            "schema": {
-              "type": "string",
-              "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$",
-              "example": "50.8511740,4.338674"
-            },
-            "in": "query",
-            "name": "coordinates",
-            "description": "A pair of latitude and longitude coordinates to find results that are located within a distance of the given geographical point. Must be used in combination with the `distance` parameter.See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/coordinates"
           },
           {
-            "schema": {
-              "type": "string",
-              "pattern": "^\\s*(\\d+\\.?\\d*)\\s*(mi|miles|yd|yards|ft|feet|in|inch|km|kilometers|m|meters|cm|centimeters|mm|millimeters|NM|nmi|nauticalmiles)\\s*$",
-              "example": "10km"
-            },
-            "in": "query",
-            "name": "distance",
-            "description": "Returns only results that are geographically located within the given distance from the `coordinates` parameter. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/distance"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "34.172684,-118.604794|34.236144,-118.500938",
-              "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\\|[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
-            },
-            "in": "query",
-            "name": "bounds",
-            "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`). See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/bounds"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "f29d2182-2db0-4f99-831a-8e6a64c1c9c1"
-            },
-            "in": "query",
-            "name": "id",
-            "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+            "$ref": "#/components/parameters/id"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "a0368d10-ded0-4925-b94a-2835f73e255e"
-            },
-            "in": "query",
-            "name": "locationId",
-            "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/place/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+            "$ref": "#/components/parameters/locationId"
           },
           {
-            "schema": {
-              "type": "string",
-              "example": "4fa5dddf-73d5-47f8-b54f-45d88cc1661a"
-            },
-            "in": "query",
-            "name": "organizerId",
-            "description": "Returns only results that are related to the given organizer id. An organizer's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/organizer/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+            "$ref": "#/components/parameters/organizerId"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "in": "query",
-            "name": "labels[]",
-            "style": "form",
-            "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
-            "explode": true
+            "$ref": "#/components/parameters/labels"
           },
           {
-            "schema": {
-              "type": "string",
-              "pattern": "^[a-z][a-z]$",
-              "enum": [
-                "nl",
-                "fr",
-                "de",
-                "en"
-              ]
-            },
-            "in": "query",
-            "name": "mainLanguage",
-            "description": "Returns only results that have the given language code as their main (= original) language."
+            "$ref": "#/components/parameters/mainLanguage"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "pattern": "^[a-z][a-z]$",
-                "enum": [
-                  "nl",
-                  "fr",
-                  "de",
-                  "en"
-                ]
-              }
-            },
-            "in": "query",
-            "name": "languages[]",
-            "style": "form",
-            "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
-            "explode": true
+            "$ref": "#/components/parameters/languages"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "pattern": "^[a-z][a-z]$",
-                "enum": [
-                  "nl",
-                  "fr",
-                  "de",
-                  "en"
-                ]
-              }
-            },
-            "in": "query",
-            "name": "completedLanguages[]",
-            "style": "form",
-            "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
-            "explode": true
+            "$ref": "#/components/parameters/completedLanguages"
           },
           {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "hasMediaObjects",
-            "description": "Returns only results that have one or more items inside their `mediaObject` property if set to `true`. Returns only results without `mediaObject` property if set to `false`."
+            "$ref": "#/components/parameters/hasMediaObjects"
           },
           {
-            "schema": {
-              "type": "number",
-              "example": 5.75
-            },
-            "in": "query",
-            "name": "price",
-            "description": "Returns only results with exactly the same price for the base tariff (in EUR)."
+            "$ref": "#/components/parameters/price"
           },
           {
-            "schema": {
-              "type": "number",
-              "example": 5.75
-            },
-            "in": "query",
-            "name": "minPrice",
-            "description": "Returns only results with a price for the base tariff that is equal to or higher than the given price (in EUR)."
+            "$ref": "#/components/parameters/minPrice"
           },
           {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "maxPrice",
-            "description": "Returns only results with a price for the base tariff that is equal to or lower than the given price (in EUR)."
+            "$ref": "#/components/parameters/maxPrice"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "in": "query",
-            "name": "sort[score]",
-            "description": "Sorts the results by their score (relevance), either with the lowest score first (`asc`) or the highest score first (`desc`). See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/sortScore"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "in": "query",
-            "name": "sort[availableTo]",
-            "description": "Sorts the results by their `availableTo` date-time, either with the oldest date-time first (`asc`) or the highest date-time first (`desc`). Most commonly used to show events and/or places that will end or become unavailable soon. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/sortAvailableTo"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "in": "query",
-            "name": "sort[created]",
-            "description": "Sorts the results by their `created` date-time, either with the oldest results first (`asc`) or the newest results first (`desc`). See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/sortCreated"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "in": "query",
-            "name": "sort[modified]",
-            "description": "Sorts the results by their `modified` date-time, either with the least recently modified results first (`asc`) or the most recently modified results first (`desc`). See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/sortModified"
           },
           {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
-            },
-            "in": "query",
-            "name": "sort[distance]",
-            "description": "Sorts the results by their distance from the `coordinates` parameter. Can only be used if `coordinates` and `distance` are also set. You may use multiple sort parameters. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/sortDistance"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Available",
-                  "TemporarilyUnavailable",
-                  "Unavailable"
-                ]
-              }
-            },
-            "in": "query",
-            "style": "form",
-            "explode": false,
-            "name": "status",
-            "description": "Returns only results with exactly the same status type as the given enum value. `Available` means an event is happening as planned, and a place can be visited during its normal opening hours. `TemporarilyUnavailable` means an event has been postponed to a later date (yet to be determined), and a place is temporarily closed (for example due to renovations). `Unavailable` means an event is cancelled, or a place is permanently closed. If combined with `dateFrom` and/or `dateTo`, only results that have the given status in that time period will be returned. Accepts multiple comma-separated values to return results that have one of the given status types."
+            "$ref": "#/components/parameters/status"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "in": "query",
-            "name": "termIds[]",
-            "style": "form",
-            "description": "Returns only results that have the given term id(s) in either their `terms` property items. May be repeated to only return results that have all the given term ids. See the operation's description above for more info on how to repeat parameters.",
-            "explode": true
+            "$ref": "#/components/parameters/termIds"
           },
           {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "uitpas",
-            "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
+            "$ref": "#/components/parameters/uitpas"
           },
           {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "hasVideos",
-            "description": "Returns only results that have one or more items in their `videos` property if set to `true`. Returns only results that have no `videos` property if set to `false`."
+            "$ref": "#/components/parameters/hasVideos"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "DRAFT",
-                  "READY_FOR_VALIDATION",
-                  "APPROVED",
-                  "REJECTED",
-                  "DELETED",
-                  "*"
-                ],
-                "example": "DRAFT"
-              }
-            },
-            "style": "form",
-            "explode": false,
-            "in": "query",
-            "name": "workflowStatus",
-            "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
+            "$ref": "#/components/parameters/workflowStatus"
           }
         ]
       },
@@ -728,6 +284,605 @@
       "Error": {
         "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
         "x-internal": true
+      }
+    },
+    "parameters": {
+      "x-client-id": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "header",
+        "name": "x-client-id",
+        "description": "The client id of your project (if not using an API key). May also be replaced with a `clientId` query parameter."
+      },
+      "x-api-key": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "header",
+        "name": "x-api-key",
+        "description": "The API key of your project on https://projectaanvraag.uitdatabank.be (if not using a client id). May also be replaced with an `apiKey` query parameter. Will be deprecated in favour of `x-client-id` in the future, but will still be supported.",
+        "deprecated": true
+      },
+      "text": {
+        "schema": {
+          "type": "string",
+          "example": " dijle (wandelen OR fietsen)"
+        },
+        "in": "query",
+        "name": "text",
+        "description": "Free text search terms. Returns results that match all or some of the given terms. May contain `AND` and `OR` operators, and brackets for grouping. Can not filter on specific fields (contrary to the `q` parameter). Typically used to search on user-provided keywords. For more info and examples see TODO (link to guide)."
+      },
+      "q": {
+        "schema": {
+          "type": "string",
+          "example": "labels:\"ook voor kinderen\" OR labels:\"ook voor jongeren\""
+        },
+        "in": "query",
+        "name": "q",
+        "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields. For more info and examples see TODO (link to guide)."
+      },
+      "postalCode": {
+        "schema": {
+          "type": "string",
+          "example": "1000"
+        },
+        "in": "query",
+        "name": "postalCode",
+        "description": "Returns only results that have the exact same postal code in their address. Typically 4 digits for Belgian addresses but can also be a different format for international addresses."
+      },
+      "addressCountry": {
+        "schema": {
+          "type": "string",
+          "example": "BE",
+          "pattern": "^[A-Z][A-Z]$",
+          "default": "BE"
+        },
+        "in": "query",
+        "name": "addressCountry",
+        "description": "Returns only results that have the exact same country code in their address. Formatted as an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter."
+      },
+      "maxAge": {
+        "schema": {
+          "type": "integer",
+          "example": 18
+        },
+        "in": "query",
+        "name": "maxAge",
+        "description": "Returns only results that are targeted to participants/visitors of at most the given age (in years). The given age will be included in results."
+      },
+      "minAge": {
+        "schema": {
+          "type": "integer",
+          "example": 12
+        },
+        "in": "query",
+        "name": "minAge",
+        "description": "Returns only results that are targeted to participants/visitors of at least the given age (in years). The given age will be included in results."
+      },
+      "allAges": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "allAges",
+        "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
+      },
+      "audienceType": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "everyone",
+            "members",
+            "education"
+          ],
+          "default": "everyone"
+        },
+        "in": "query",
+        "name": "audienceType",
+        "description": "Returns only results with the given enum value as their targeted audience. Results with audienceType `everyone` are targeted to any participant/visitor. Results with audienceType `members` are only targeted towards members of the organizer of the event. Results with audienceType `education` are targeted towards [CultuurKuur](https://www.cultuurkuur.be/)."
+      },
+      "availableFrom": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-04T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "availableFrom",
+        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+      },
+      "availableTo": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-05T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "availableTo",
+        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+      },
+      "attendanceMode": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "online",
+              "offline",
+              "mixed"
+            ]
+          }
+        },
+        "in": "query",
+        "name": "attendanceMode",
+        "description": "Returns only results with the given enum value as their attendance mode. Results with attendanceMode `online` are only happening online (e.g. via a video stream). Results with attendanceMode `offline` are only happening on a physical location. Results with attendanceMode `mixed` can be attended both online or offline. Note that when filtering on `mixed`, _only_ results that are both happening online and offline will be included. Accepts multiple comma-separated values to return results that have one of the given attendance modes.",
+        "style": "form",
+        "explode": false
+      },
+      "bookingAvailability": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "Available",
+            "Unavailable"
+          ]
+        },
+        "in": "query",
+        "name": "bookingAvailability",
+        "description": "Returns only results with the given enum value as their bookingAvailability type. Results with bookingAvailability `Available` still have tickets/reservations available. Results with bookingAvailability `Unavailable` are sold out / fully booked."
+      },
+      "calendarType": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "single",
+              "multiple",
+              "periodic",
+              "permanent"
+            ]
+          }
+        },
+        "style": "form",
+        "explode": false,
+        "in": "query",
+        "name": "calendarType",
+        "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. See TODO (link to guide) for more info."
+      },
+      "createdFrom": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-04T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "createdFrom",
+        "description": "Returns only results that were created at or after the given date-time."
+      },
+      "createdTo": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-05T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "createdTo",
+        "description": "Returns only results that were created at or before the given date-time."
+      },
+      "modifiedFrom": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-04T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "modifiedFrom",
+        "description": "Returns only results that were last modified at or after the given date-time. If the result has never been modified, the `created` date-time will be used as `modified` instead."
+      },
+      "modifiedTo": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-05T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "modifiedTo",
+        "description": "Returns only results that were last modified at or before the given date-time. If the result has never been modified, the `created` date-time will be used as `modified` instead."
+      },
+      "creator": {
+        "schema": {
+          "type": "string",
+          "example": "lxBfdgJwUaJUgm7CBCeKF2eE2fnsyLCB@clients"
+        },
+        "in": "query",
+        "name": "creator",
+        "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTID v1), an Auth0 user id (for new UiTID v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
+      },
+      "dateFrom": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-04T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "dateFrom",
+        "description": "Returns only events that are happening at some point after the given date-time, and places that are open at some point after the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+      },
+      "dateTo": {
+        "schema": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-03-05T10:30:00+01:00"
+        },
+        "in": "query",
+        "name": "dateTo",
+        "description": "Returns only events that are happening at some point before the given date-time, and places that are open at some point before the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+      },
+      "localTimeFrom": {
+        "schema": {
+          "type": "string",
+          "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
+          "example": "08:30"
+        },
+        "in": "query",
+        "name": "localTimeFrom",
+        "description": "Returns only events that are happening at some point after the given time, and places that are open at some point after the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+      },
+      "localTimeTo": {
+        "schema": {
+          "type": "string",
+          "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
+          "example": "23:59"
+        },
+        "in": "query",
+        "name": "localTimeTo",
+        "description": "Returns only events that are happening at some point before the given time, and places that are open at some point before the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+      },
+      "embedCalendarSummaries": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "xs-text",
+              "sm-text",
+              "md-text",
+              "lg-text",
+              "xs-html",
+              "sm-html",
+              "md-html",
+              "lg-html"
+            ]
+          }
+        },
+        "in": "query",
+        "name": "embedCalendarSummaries[]",
+        "description": "Adds an extra `calendarSummary` property to the results that contains one or more formatted human-readable summaries of the date/time info of the result. May be repeated to include multiple summaries per result. See the operation's description above for more info on how to repeat parameters.",
+        "style": "form",
+        "explode": true
+      },
+      "facets": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "regions",
+              "types",
+              "themes",
+              "facilities",
+              "labels"
+            ]
+          }
+        },
+        "in": "query",
+        "name": "facets[]",
+        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "style": "form",
+        "explode": true
+      },
+      "regions": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "regions[]",
+        "description": "Returns only results that are geographically located in the given region. Regions may be fetched programmatically from [https://search.uitdatabank.be/autocomplete.json](https://search.uitdatabank.be/autocomplete.json) (TODO Replace with taxonomy API endpoint). See TODO (link to guide) for more info.",
+        "style": "form",
+        "explode": true
+      },
+      "coordinates": {
+        "schema": {
+          "type": "string",
+          "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$",
+          "example": "50.8511740,4.338674"
+        },
+        "in": "query",
+        "name": "coordinates",
+        "description": "A pair of latitude and longitude coordinates to find results that are located within a distance of the given geographical point. Must be used in combination with the `distance` parameter.See TODO (link to guide) for more info."
+      },
+      "distance": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\s*(\\d+\\.?\\d*)\\s*(mi|miles|yd|yards|ft|feet|in|inch|km|kilometers|m|meters|cm|centimeters|mm|millimeters|NM|nmi|nauticalmiles)\\s*$",
+          "example": "10km"
+        },
+        "in": "query",
+        "name": "distance",
+        "description": "Returns only results that are geographically located within the given distance from the `coordinates` parameter. See TODO (link to guide) for more info."
+      },
+      "bounds": {
+        "schema": {
+          "type": "string",
+          "example": "34.172684,-118.604794|34.236144,-118.500938",
+          "pattern": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)\\|[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+        },
+        "in": "query",
+        "name": "bounds",
+        "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`). See TODO (link to guide) for more info."
+      },
+      "id": {
+        "schema": {
+          "type": "string",
+          "example": "f29d2182-2db0-4f99-831a-8e6a64c1c9c1"
+        },
+        "in": "query",
+        "name": "id",
+        "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+      },
+      "locationId": {
+        "schema": {
+          "type": "string",
+          "example": "a0368d10-ded0-4925-b94a-2835f73e255e"
+        },
+        "in": "query",
+        "name": "locationId",
+        "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/place/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+      },
+      "organizerId": {
+        "schema": {
+          "type": "string",
+          "example": "4fa5dddf-73d5-47f8-b54f-45d88cc1661a"
+        },
+        "in": "query",
+        "name": "organizerId",
+        "description": "Returns only results that are related to the given organizer id. An organizer's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/organizer/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+      },
+      "labels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "labels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "mainLanguage": {
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-z][a-z]$",
+          "enum": [
+            "nl",
+            "fr",
+            "de",
+            "en"
+          ]
+        },
+        "in": "query",
+        "name": "mainLanguage",
+        "description": "Returns only results that have the given language code as their main (= original) language."
+      },
+      "languages": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z]$",
+            "enum": [
+              "nl",
+              "fr",
+              "de",
+              "en"
+            ]
+          }
+        },
+        "in": "query",
+        "name": "languages[]",
+        "style": "form",
+        "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "explode": true
+      },
+      "completedLanguages": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z]$",
+            "enum": [
+              "nl",
+              "fr",
+              "de",
+              "en"
+            ]
+          }
+        },
+        "in": "query",
+        "name": "completedLanguages[]",
+        "style": "form",
+        "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "explode": true
+      },
+      "hasMediaObjects": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasMediaObjects",
+        "description": "Returns only results that have one or more items inside their `mediaObject` property if set to `true`. Returns only results without `mediaObject` property if set to `false`."
+      },
+      "price": {
+        "schema": {
+          "type": "number",
+          "example": 5.75
+        },
+        "in": "query",
+        "name": "price",
+        "description": "Returns only results with exactly the same price for the base tariff (in EUR)."
+      },
+      "minPrice": {
+        "schema": {
+          "type": "number",
+          "example": 5.75
+        },
+        "in": "query",
+        "name": "minPrice",
+        "description": "Returns only results with a price for the base tariff that is equal to or higher than the given price (in EUR)."
+      },
+      "maxPrice": {
+        "schema": {
+          "type": "number"
+        },
+        "in": "query",
+        "name": "maxPrice",
+        "description": "Returns only results with a price for the base tariff that is equal to or lower than the given price (in EUR)."
+      },
+      "sortScore": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "in": "query",
+        "name": "sort[score]",
+        "description": "Sorts the results by their score (relevance), either with the lowest score first (`asc`) or the highest score first (`desc`). See TODO (link to guide) for more info."
+      },
+      "sortAvailableTo": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "in": "query",
+        "name": "sort[availableTo]",
+        "description": "Sorts the results by their `availableTo` date-time, either with the oldest date-time first (`asc`) or the highest date-time first (`desc`). Most commonly used to show events and/or places that will end or become unavailable soon. See TODO (link to guide) for more info."
+      },
+      "sortCreated": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "in": "query",
+        "name": "sort[created]",
+        "description": "Sorts the results by their `created` date-time, either with the oldest results first (`asc`) or the newest results first (`desc`). See TODO (link to guide) for more info."
+      },
+      "sortModified": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "in": "query",
+        "name": "sort[modified]",
+        "description": "Sorts the results by their `modified` date-time, either with the least recently modified results first (`asc`) or the most recently modified results first (`desc`). See TODO (link to guide) for more info."
+      },
+      "sortDistance": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "asc",
+            "desc"
+          ]
+        },
+        "in": "query",
+        "name": "sort[distance]",
+        "description": "Sorts the results by their distance from the `coordinates` parameter. Can only be used if `coordinates` and `distance` are also set. You may use multiple sort parameters. See TODO (link to guide) for more info."
+      },
+      "status": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Available",
+              "TemporarilyUnavailable",
+              "Unavailable"
+            ]
+          }
+        },
+        "in": "query",
+        "style": "form",
+        "explode": false,
+        "name": "status",
+        "description": "Returns only results with exactly the same status type as the given enum value. `Available` means an event is happening as planned, and a place can be visited during its normal opening hours. `TemporarilyUnavailable` means an event has been postponed to a later date (yet to be determined), and a place is temporarily closed (for example due to renovations). `Unavailable` means an event is cancelled, or a place is permanently closed. If combined with `dateFrom` and/or `dateTo`, only results that have the given status in that time period will be returned. Accepts multiple comma-separated values to return results that have one of the given status types."
+      },
+      "termIds": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "termIds[]",
+        "style": "form",
+        "description": "Returns only results that have the given term id(s) in either their `terms` property items. May be repeated to only return results that have all the given term ids. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "uitpas": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "uitpas",
+        "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
+      },
+      "hasVideos": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasVideos",
+        "description": "Returns only results that have one or more items in their `videos` property if set to `true`. Returns only results that have no `videos` property if set to `false`."
+      },
+      "workflowStatus": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "DRAFT",
+              "READY_FOR_VALIDATION",
+              "APPROVED",
+              "REJECTED",
+              "DELETED",
+              "*"
+            ],
+            "example": "DRAFT"
+          }
+        },
+        "style": "form",
+        "explode": false,
+        "in": "query",
+        "name": "workflowStatus",
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
       }
     },
     "responses": {
