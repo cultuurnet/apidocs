@@ -87,13 +87,16 @@
                       "totalItems": 3,
                       "member": [
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7"
+                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479"
+                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef"
+                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Event"
                         }
                       ]
                     }
@@ -338,13 +341,16 @@
                       "totalItems": 3,
                       "member": [
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7"
+                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479"
+                          "@id": "https://io-test.uitdatabank.be/place/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Place"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef"
+                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Event"
                         }
                       ]
                     }
@@ -589,13 +595,16 @@
                       "totalItems": 3,
                       "member": [
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7"
+                          "@id": "https://io-test.uitdatabank.be/place/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Place"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479"
+                          "@id": "https://io-test.uitdatabank.be/place/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Place"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef"
+                          "@id": "https://io-test.uitdatabank.be/place/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Place"
                         }
                       ]
                     }
