@@ -271,11 +271,265 @@
         ]
       },
       "parameters": []
+    },
+    "/places": {
+      "get": {
+        "summary": "Search places",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/event.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "types": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "themes": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "facilities": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "labels": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-places",
+        "description": "Returns a paginated list of places that match the given filters.\n\nTODO: Add link to guides like default filters etc when merged into guides branch.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          },
+          {
+            "$ref": "#/components/parameters/text"
+          },
+          {
+            "$ref": "#/components/parameters/q"
+          },
+          {
+            "$ref": "#/components/parameters/postalCode"
+          },
+          {
+            "$ref": "#/components/parameters/addressCountry"
+          },
+          {
+            "$ref": "#/components/parameters/maxAge"
+          },
+          {
+            "$ref": "#/components/parameters/minAge"
+          },
+          {
+            "$ref": "#/components/parameters/allAges"
+          },
+          {
+            "$ref": "#/components/parameters/audienceType"
+          },
+          {
+            "$ref": "#/components/parameters/availableFrom"
+          },
+          {
+            "$ref": "#/components/parameters/availableTo"
+          },
+          {
+            "$ref": "#/components/parameters/attendanceMode"
+          },
+          {
+            "$ref": "#/components/parameters/bookingAvailability"
+          },
+          {
+            "$ref": "#/components/parameters/calendarType"
+          },
+          {
+            "$ref": "#/components/parameters/createdFrom"
+          },
+          {
+            "$ref": "#/components/parameters/createdTo"
+          },
+          {
+            "$ref": "#/components/parameters/modifiedFrom"
+          },
+          {
+            "$ref": "#/components/parameters/modifiedTo"
+          },
+          {
+            "$ref": "#/components/parameters/creator"
+          },
+          {
+            "$ref": "#/components/parameters/dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/dateTo"
+          },
+          {
+            "$ref": "#/components/parameters/localTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/localTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/embedCalendarSummaries"
+          },
+          {
+            "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/regions"
+          },
+          {
+            "$ref": "#/components/parameters/coordinates"
+          },
+          {
+            "$ref": "#/components/parameters/distance"
+          },
+          {
+            "$ref": "#/components/parameters/bounds"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/locationId"
+          },
+          {
+            "$ref": "#/components/parameters/organizerId"
+          },
+          {
+            "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/mainLanguage"
+          },
+          {
+            "$ref": "#/components/parameters/languages"
+          },
+          {
+            "$ref": "#/components/parameters/completedLanguages"
+          },
+          {
+            "$ref": "#/components/parameters/hasMediaObjects"
+          },
+          {
+            "$ref": "#/components/parameters/price"
+          },
+          {
+            "$ref": "#/components/parameters/minPrice"
+          },
+          {
+            "$ref": "#/components/parameters/maxPrice"
+          },
+          {
+            "$ref": "#/components/parameters/sortScore"
+          },
+          {
+            "$ref": "#/components/parameters/sortAvailableTo"
+          },
+          {
+            "$ref": "#/components/parameters/sortCreated"
+          },
+          {
+            "$ref": "#/components/parameters/sortModified"
+          },
+          {
+            "$ref": "#/components/parameters/sortDistance"
+          },
+          {
+            "$ref": "#/components/parameters/status"
+          },
+          {
+            "$ref": "#/components/parameters/termIds"
+          },
+          {
+            "$ref": "#/components/parameters/uitpas"
+          },
+          {
+            "$ref": "#/components/parameters/hasVideos"
+          },
+          {
+            "$ref": "#/components/parameters/workflowStatus"
+          }
+        ]
+      },
+      "parameters": []
     }
   },
   "tags": [
     {
       "name": "Events"
+    },
+    {
+      "name": "Places"
     }
   ],
   "components": {
