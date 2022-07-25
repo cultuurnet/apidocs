@@ -269,7 +269,7 @@
             "$ref": "#/components/parameters/hasVideos"
           },
           {
-            "$ref": "#/components/parameters/workflowStatus"
+            "$ref": "#/components/parameters/workflowStatusOffer"
           }
         ]
       },
@@ -530,7 +530,156 @@
             "$ref": "#/components/parameters/hasVideos"
           },
           {
-            "$ref": "#/components/parameters/workflowStatus"
+            "$ref": "#/components/parameters/workflowStatusOffer"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/organizers": {
+      "get": {
+        "summary": "Search organizers",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/organizer.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizer/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Organizer"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizer/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Organizer"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizer/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Organizer"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-organizers",
+        "description": "Returns a paginated list of organizers that match the given filters.\n\nTODO: Add link to guides like default filters etc when merged into guides branch.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          },
+          {
+            "$ref": "#/components/parameters/q"
+          },
+          {
+            "$ref": "#/components/parameters/name"
+          },
+          {
+            "$ref": "#/components/parameters/website"
+          },
+          {
+            "$ref": "#/components/parameters/domain"
+          },
+          {
+            "$ref": "#/components/parameters/postalCode"
+          },
+          {
+            "$ref": "#/components/parameters/addressCountry"
+          },
+          {
+            "$ref": "#/components/parameters/creator"
+          },
+          {
+            "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/regions"
+          },
+          {
+            "$ref": "#/components/parameters/coordinates"
+          },
+          {
+            "$ref": "#/components/parameters/distance"
+          },
+          {
+            "$ref": "#/components/parameters/bounds"
+          },
+          {
+            "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/hasImages"
+          },
+          {
+            "$ref": "#/components/parameters/workflowStatusOrganizer"
+          },
+          {
+            "$ref": "#/components/parameters/sortScore"
+          },
+          {
+            "$ref": "#/components/parameters/sortCreated"
+          },
+          {
+            "$ref": "#/components/parameters/sortModified"
           }
         ]
       },
@@ -784,7 +933,7 @@
             "$ref": "#/components/parameters/hasVideos"
           },
           {
-            "$ref": "#/components/parameters/workflowStatus"
+            "$ref": "#/components/parameters/workflowStatusOffer"
           }
         ]
       },
@@ -794,6 +943,9 @@
   "tags": [
     {
       "name": "Events & places"
+    },
+    {
+      "name": "Organizers"
     }
   ],
   "components": {
@@ -839,6 +991,33 @@
         "in": "query",
         "name": "q",
         "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields. For more info and examples see TODO (link to guide)."
+      },
+      "name": {
+        "schema": {
+          "type": "string",
+          "example": "publiq"
+        },
+        "in": "query",
+        "name": "name",
+        "description": "Returns only results whose name autocompletes on the given name."
+      },
+      "website": {
+        "schema": {
+          "type": "string",
+          "example": "https://www.publiq.be/example"
+        },
+        "in": "query",
+        "name": "website",
+        "description": "Returns only results that have the given URL as their website. URLs in the query parameter and on the search results are normalized to reduce false negatives."
+      },
+      "domain": {
+        "schema": {
+          "type": "string",
+          "example": "www.publiq.be"
+        },
+        "in": "query",
+        "name": "domain",
+        "description": "Returns only results that have a website on the given domain. Domains in the query parameter and on the search results are normalized to reduce false negatives."
       },
       "postalCode": {
         "schema": {
@@ -1247,6 +1426,14 @@
         "name": "hasMediaObjects",
         "description": "Returns only results that have one or more items inside their `mediaObject` property if set to `true`. Returns only results without `mediaObject` property if set to `false`."
       },
+      "hasImages": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasImages",
+        "description": "Returns only results that have one or more items inside their `images` property if set to `true`. Returns only results without `images` property if set to `false`."
+      },
       "price": {
         "schema": {
           "type": "number",
@@ -1380,7 +1567,7 @@
         "name": "hasVideos",
         "description": "Returns only results that have one or more items in their `videos` property if set to `true`. Returns only results that have no `videos` property if set to `false`."
       },
-      "workflowStatus": {
+      "workflowStatusOffer": {
         "schema": {
           "type": "array",
           "items": {
@@ -1401,6 +1588,25 @@
         "in": "query",
         "name": "workflowStatus",
         "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
+      },
+      "workflowStatusOrganizer": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "DELETED",
+              "*"
+            ],
+            "example": "ACTIVE"
+          }
+        },
+        "style": "form",
+        "explode": false,
+        "in": "query",
+        "name": "workflowStatus",
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
       }
     },
     "responses": {
