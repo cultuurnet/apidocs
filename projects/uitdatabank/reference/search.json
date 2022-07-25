@@ -301,9 +301,16 @@
                     },
                     "member": {
                       "type": "array",
-                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` and `@type` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "anyOf": [
+                          {
+                            "$ref": "../models/event.json"
+                          },
+                          {
+                            "$ref": "../models/place.json"
+                          }
+                        ]
                       }
                     },
                     "facet": {
@@ -557,7 +564,7 @@
                       "type": "array",
                       "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "$ref": "../models/place.json"
                       }
                     },
                     "facet": {
