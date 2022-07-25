@@ -25,7 +25,7 @@
       "get": {
         "summary": "Search events",
         "tags": [
-          "Events"
+          "Events & places"
         ],
         "responses": {
           "200": {
@@ -274,9 +274,9 @@
     },
     "/offers": {
       "get": {
-        "summary": "Search events + places (offers)",
+        "summary": "Search events & places (offers)",
         "tags": [
-          "Offers"
+          "Events & places"
         ],
         "responses": {
           "200": {
@@ -527,7 +527,7 @@
       "get": {
         "summary": "Search places",
         "tags": [
-          "Places"
+          "Events & places"
         ],
         "responses": {
           "200": {
@@ -777,13 +777,7 @@
   },
   "tags": [
     {
-      "name": "Events"
-    },
-    {
-      "name": "Offers"
-    },
-    {
-      "name": "Places"
+      "name": "Events & places"
     }
   ],
   "components": {
