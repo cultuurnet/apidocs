@@ -72,6 +72,11 @@
     },
     {
       "type": "item",
+      "title": "Search API",
+      "uri": "reference/search.json"
+    },
+    {
+      "type": "item",
       "title": "Taxonomy API",
       "uri": "reference/taxonomy.json"
     }
