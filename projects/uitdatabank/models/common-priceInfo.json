@@ -12,60 +12,6 @@
   },
   "minContains": 1,
   "maxContains": 1,
-  "items": {
-    "allOf": [
-      {
-        "type": "object",
-        "properties": {
-          "category": {
-            "type": "string",
-            "enum": [
-              "base",
-              "tariff"
-            ],
-            "example": "base",
-            "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs."
-          },
-          "price": {
-            "type": "number",
-            "format": "float",
-            "minimum": 0,
-            "example": 10.5,
-            "description": "The price of a ticket in this category."
-          },
-          "priceCurrency": {
-            "type": "string",
-            "enum": [
-              "EUR"
-            ],
-            "default": "EUR",
-            "description": "The currency of the price. Currently only `EUR` is supported."
-          },
-          "name": {
-            "$ref": "./common-name.json",
-            "description": "Name of a tariff inside priceInfo. Required if category is set to `tariff`. For the `base` category UiTdatabank will set a default. Requires at least one value, for the language specified in the `mainLanguage` property. Names must be unique (per language) when using multiple tarrifs."
-          }
-        },
-        "required": [
-          "category",
-          "price"
-        ]
-      },
-      {
-        "if": {
-          "required": ["category"],
-          "properties": {
-            "category": {
-              "const": "tariff"
-            }
-          }
-        },
-        "then": {
-          "required": ["name"]
-        }
-      }
-    ]
-  },
   "examples": [
     [
       {
@@ -102,5 +48,63 @@
         }
       }
     ]
-  ]
+  ],
+  "items": {
+    "allOf": [
+      {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "base",
+              "tariff",
+              "uitpas"
+            ],
+            "example": "base",
+            "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs. For compability `uitpas` is allowed but ignored."
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0,
+            "example": 10.5,
+            "description": "The price of a ticket in this category."
+          },
+          "priceCurrency": {
+            "type": "string",
+            "enum": [
+              "EUR"
+            ],
+            "default": "EUR",
+            "description": "The currency of the price. Currently only `EUR` is supported."
+          },
+          "name": {
+            "$ref": "./common-name.json"
+          }
+        },
+        "required": [
+          "category",
+          "price"
+        ]
+      },
+      {
+        "if": {
+          "required": [
+            "category"
+          ],
+          "properties": {
+            "category": {
+              "const": "tariff"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "name"
+          ]
+        }
+      }
+    ]
+  }
 }
