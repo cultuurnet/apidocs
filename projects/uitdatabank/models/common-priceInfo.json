@@ -21,7 +21,8 @@
             "type": "string",
             "enum": [
               "base",
-              "tariff"
+              "tariff",
+              "uitpas"
             ],
             "example": "base",
             "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs."
