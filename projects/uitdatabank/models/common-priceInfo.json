@@ -61,9 +61,7 @@
           }
         },
         "then": {
-          "required": [
-            "name"
-          ]
+          "required": ["name"]
         }
       }
     ]
