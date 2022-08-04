@@ -53,9 +53,7 @@
       },
       {
         "if": {
-          "required": [
-            "category"
-          ],
+          "required": ["category"],
           "properties": {
             "category": {
               "const": "tariff"
