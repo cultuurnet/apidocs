@@ -2,6 +2,11 @@
   "items": [
     {
       "type": "item",
+      "title": "Introduction",
+      "uri": "docs/introduction.md"
+    },
+    {
+      "type": "item",
       "title": "Requesting client credentials",
       "uri": "docs/requesting-credentials.md"
     },
