@@ -14,10 +14,11 @@ UiTdatabank APIs currently uses a custom authentication method based on API keys
 
 While support for the standardized authentication methods documented in this space has been implemented, new client ids and secrets are only provided to a select few partners that are trying out these new authentication methods in UiTdatabank. In the future this will be opened up to all integrators.
 
-Want to start integrating with UiTdatabank right now? There are two options:
+Want to start integrating with UiTdatabank right now? There are three options:
 
-1.  Contact us at vragen@uitdatabank.be to get a client id and client secret to start using the new authentication mechanism already. Once you have your client id and secret you can use the standard authentication methods described here.
-2.  **Or**, register your project at [Projectaanvraag](https://projectaanvraag.uitdatabank.be) to automatically get a test **API key** that you can use as described on the [EntryAPI authentication documentation](https://documentatie.uitdatabank.be/content/entry_api\_3/latest/authentication.html) in our older documentation portal. While this way of authentication will be phased out in the future for new integrators, it will still be supported for existing integrations for the foreseeable future.
+1.  If you need to integrate with both the **UiTPAS API and UiTdatabank API(s)**, you can follow the procedure of requesting credentials for the UiTPAS API and mention that you also require access to the UiTdatabank APIs. We will then provide you with a set of credentials that can access both.
+2.  **Or**, contact us at vragen@uitdatabank.be to get a client id and client secret for UiTdatabank to start using the new authentication mechanism already. Once you have your client id and secret you can use the standard authentication methods described here.
+3.  **Or**, register your project at [Projectaanvraag](https://projectaanvraag.uitdatabank.be) to automatically get a test **API key** that you can use as described on the [EntryAPI authentication documentation](https://documentatie.uitdatabank.be/content/entry_api\_3/latest/authentication.html) in our older documentation portal. While this way of authentication will be phased out in the future for new integrators, it will still be supported for existing integrations for the foreseeable future.
 
 Aside from the authentication method all API operations work exactly the same whether you have a client id and secret, or an API key.
 
