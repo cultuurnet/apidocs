@@ -24,4 +24,4 @@ Aside from the authentication method all API operations work exactly the same wh
 
 ## museumPASSmusées
 
-Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees) is only provided to very specific partners at the moment as the functionality is very specific to museum visits. To request your credentials, please contact support@museumpassmusees.be.
+Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees) is only provided to very specific partners for now as the primary use case at the moment is registering museum visits via a card reader. To request your credentials, please contact support@museumpassmusees.be.
