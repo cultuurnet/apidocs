@@ -10,9 +10,9 @@ To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas), see its [quickstart 
 
 ## UiTdatabank
 
-UiTdatabank APIs currently uses a custom authentication method based on API keys instead of client ids and secrets.
+UiTdatabank APIs historically use a custom authentication method based on API keys instead of client ids and secrets.
 
-While support for the standardized authentication methods documented in this space has been implemented, new client ids and secrets are only provided to a select few partners that are trying out these new authentication methods in UiTdatabank. In the future this will be opened up to all integrators.
+Support for the standardized authentication methods documented in this space has been implemented, but new client ids and secrets are only provided to a select few partners that are trying out these new authentication methods in UiTdatabank. In the future this will be opened up to all integrators.
 
 Want to start integrating with UiTdatabank right now? There are three options:
 
@@ -20,7 +20,7 @@ Want to start integrating with UiTdatabank right now? There are three options:
 2.  **Or**, contact us at vragen@uitdatabank.be to get a client id and client secret for UiTdatabank to start using the new authentication mechanism already. Once you have your client id and secret you can use the standard authentication methods described here.
 3.  **Or**, register your project at [Projectaanvraag](https://projectaanvraag.uitdatabank.be) to automatically get a test **API key** that you can use as described on the [EntryAPI authentication documentation](https://documentatie.uitdatabank.be/content/entry_api\_3/latest/authentication.html) in our older documentation portal. While this way of authentication will be phased out in the future for new integrators, it will still be supported for existing integrations for the foreseeable future.
 
-Aside from the authentication method all API operations work exactly the same whether you have a client id and secret, or an API key.
+Aside from the authentication method all API operations on the UiTdatabank APIs work exactly the same whether you have a client id and secret, or an API key.
 
 ## museumPASSmusées
 
