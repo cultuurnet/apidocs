@@ -1,6 +1,11 @@
 {
   "items": [
     {
+      "type": "item",
+      "title": "Requesting client credentials",
+      "uri": "docs/requesting-credentials.md"
+    },
+    {
       "type": "divider",
       "title": "Authentication methods"
     },
