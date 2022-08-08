@@ -4,6 +4,8 @@ Before you can start making authenticated API requests, you need to register you
 
 While we are working on a new self-service platform where you will be able to register your project for any API integration and automatically recieve client credentials in the future, the method to request your credentials currently varies per API as it is handled by multiple teams.
 
+> You may access multiple APIs with the same client credentials, but your project needs to be configured correctly on our side to have permission to access all the APIs you need. So if you require access to multiple APIs, make sure to mention this when requesting the credentials so we can give your client sufficient access permissions.
+
 ## UiTPAS
 
 To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas), see its [quickstart guide](https://docs.publiq.be/docs/uitpas/d0748f47a3dba-quick-start) to request a client id and client secret via the linked Google Form.
