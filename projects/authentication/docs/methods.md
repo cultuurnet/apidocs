@@ -13,10 +13,17 @@ There are 3 possible scenarios for an endpoint:
 3.  The endpoint requires a **[token](#tokens)**. You can pick whatever token type is best suited to your situation (almost every endpoint will support both types). See their respective documentation for more info.
 
 > An endpoint that requires authentication will require either client identification (#2) **or** a token (#3), never both.
+The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/9b63d9296d981-taxonomy-api), are not included in this table.
 
-You can find the authentication method(s) that an endpoint supports in its own documentation.
 
-Below you can find a short overview of how each authentication method works.
+API | Client identification | Client access tokens | User access tokens
+---------|----------|---------|---------
+ UiTdatabank Search API v3 | ✅ | Under development | Under development
+ [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/5c4fcee8036e0-entry-api) | No | ✅ | ✅ 
+ [UiTPAS API v4](https://docs.publiq.be/docs/uitpas) | Only `GET /rewards` | ✅ | ✅
+ [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees) | No | ✅ | No
+
+Below you can find a short summary of how each authentication method works, with links to more detailed documentation.
 
 ## Client identification
 
