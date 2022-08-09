@@ -4,7 +4,7 @@ Each publiq API supports one of three authentication methods, depending on the s
 
 ## When to use which method
 
-Which authentication method you need to use will in the first place be **determined by which API endpoint(s) you want to access**.
+Which authentication method you need to use will in the first place be **determined by which API(s) or which specific endpoint(s) you want to access**.
 
 There are 3 possible scenarios for an endpoint:
 
