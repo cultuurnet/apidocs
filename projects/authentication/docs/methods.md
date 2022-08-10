@@ -32,7 +32,9 @@ Below you can find a short summary of how each authentication method works, with
 
 API endpoints that require no real authentication but need to know what client is accessing it for customization and technical support reasons use [client identification](./client-identification.md).
 
-Usually used by APIs that need to provide info to anonymous users in web browsers, for example UiTdatabank's Search API.
+This is the simplest method, it works by including your client id as a header or URL query parameter in your API request.
+
+It is usually used by APIs that need to provide info to anonymous users in web browsers, where both client access tokens and user access tokens cannot be used. For example UiTdatabank's Search API.
 
 *   ✅ Suitable for frontend applications
 *   ✅ Suitable for backend applications
