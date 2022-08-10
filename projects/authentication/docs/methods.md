@@ -22,6 +22,8 @@ API | Client identification | Client access tokens | User access tokens
  [UiTPAS API v4](https://docs.publiq.be/docs/uitpas) | No | ✅ | ✅
  [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees) | No | ✅ | No
 
+You can always mix requests with different authentication methods if needed. For example you can use your client id to make a request to UiTdatabank's Search API using client identification, and you can use the same client id in combination with your client secret to request a token to make requests to UiTdatabank's Entry API.
+
 Below you can find a short summary of how each authentication method works, with links to more detailed documentation.
 
 ## Client identification
