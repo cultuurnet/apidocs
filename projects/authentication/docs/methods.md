@@ -12,7 +12,9 @@ There are 3 possible scenarios for an endpoint:
 2.  The endpoint requires **[client identification](#client-identification)**. You will only need to include your client id in the request either as a header or a URL parameter, and you won't need a token.
 3.  The endpoint requires a **[token](#tokens)**. If the endpoint supports both client access tokens and user access tokens you can pick whichever you prefer. See their respective documentation for more info.
 
-The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/9b63d9296d981-taxonomy-api), are not included in this table.
+The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. For example an API may support both client access tokens and user access tokens in general, but only user access tokens on an endpoint to get the current user information (as that would be impossible without a user access token).
+
+APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/9b63d9296d981-taxonomy-api), are not included in this table.
 
 
 API | Client identification | Client access tokens | User access tokens
