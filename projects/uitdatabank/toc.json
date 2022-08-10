@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Advanced queries",
+          "uri": "/docs/search-api/advanced-queries.md",
+          "slug": "search-api/advanced-queries"
+        },
+        {
+          "type": "item",
           "title": "Default filters",
           "uri": "/docs/search-api/default-filters.md",
           "slug": "search-api/default-filters"
