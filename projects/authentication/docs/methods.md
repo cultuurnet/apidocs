@@ -30,7 +30,7 @@ Below you can find a short summary of how each authentication method works, with
 
 ## Client identification
 
-API endpoints that require no real authentication but need to know what client is accessing it for customization and technical support reasons use [Client identification](./client-identification.md).
+API endpoints that require no real authentication but need to know what client is accessing it for customization and technical support reasons use [client identification](./client-identification.md).
 
 Usually used by APIs that need to provide info to anonymous users in web browsers, for example UiTdatabank's Search API.
 
@@ -49,7 +49,7 @@ Most API endpoints that require a token accept both **client** access tokens and
 
 ### Client access tokens
 
-API endpoints that support the authentication of an API client with a client id and client secret use [Client access tokens](./client-access-token.md).
+API endpoints that support the authentication of an API client with a client id and client secret use [client access tokens](./client-access-token.md).
 
 *   ❌ Not suitable for frontend applications
 *   ✅ Suitable for backend applications
@@ -58,7 +58,7 @@ API endpoints that support the authentication of an API client with a client id 
 
 ### User access tokens
 
-API endpoints that support authentication as a user use [User access tokens](./user-access-token.md).
+API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
 
 Usually used in situations where a user will log in through publiq's **UiTID** service and your application will then make requests in that user's name.
 
