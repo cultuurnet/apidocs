@@ -39,6 +39,8 @@ Usually used by APIs that need to provide info to anonymous users in web browser
 *   ⏱ Does not expire
 *   🔓 Offers no real security, so only used in APIs that expose public information
 
+👉 [Learn more about client identification](./client-identification.md)
+
 ## Tokens
 
 API endpoints that expose private information and/or allow write access require a token to authenticate.
@@ -56,6 +58,8 @@ API endpoints that support the authentication of an API client with a client id 
 *   ⏱ Expires, but can be renewed automatically
 *   🔐 Secure, used by APIs that work with private information and/or write access
 
+👉 [Learn more about client access tokens](./client-access-token.md)
+
 ### User access tokens
 
 API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
@@ -66,6 +70,8 @@ Usually used in situations where a user will log in through publiq's **UiTID** s
 *   ✅ Suitable for backend applications
 *   ⏱ Expires and requires your user to log in again through UiTID
 *   🔐 Secure, used by APIs that work with private information and/or write access
+
+👉 [Learn more about user access tokens](./user-access-token.md)
 
 ### Token expiration
 
