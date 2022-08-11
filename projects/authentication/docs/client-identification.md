@@ -22,6 +22,8 @@ Host: https://search-test.uitdatabank.be
 X-Client-Id: YrgBoha6aRSrfIcsFt8PISe4u0EoM45k
 ```
 
+Note that the name of the `x-client-id` header is case insensitive, like every header name.
+
 > The `x-client-id` header is useful in code because a lot of HTTP libraries allow you to specify default headers to include in every request, so you do not need to repeat it in multiple places in your code.
 
 #### Try it!
