@@ -4,13 +4,13 @@ Some APIs only expose public information and need to be accessible directly from
 
 These APIs only require you to specify the client id of your integration for customization and technical support purposes. For example your client id can have a custom default query in Search API 3 to always filter out search results that are irrelevant to your integration.
 
-You can specify your client id in requests to these APIs in two ways.
-
 ## Requirements
 
 -  A client id. See [requesting client credentials](./requesting-credentials.md) how to obtain one.
 
 ## Usage
+
+You can include your client id in your requests to our APIs in two ways.
 
 ### Via header
 
