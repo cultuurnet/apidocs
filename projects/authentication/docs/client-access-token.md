@@ -16,30 +16,28 @@ If your browser or native application cannot work with user logins via publiq's 
 
 See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials.
 
-## Flow
+## How it works
 
-1.  The client makes a request to the authorization server with its id and secret.
+```mermaid
+sequenceDiagram
+    autonumber
+    Client->>Auth server: POST /oauth/token with client id and secret
+    Auth server-->>Auth server: Validate client id + secret
+    Auth server-->>Client: 200 OK with access token
+    Client->>Client: Cache token internally
+    loop
+        Client->>API: Send API request with token in authorization header
+        API-->>Client: 2XX response
+        note over API,Client: If the API returns 401 Unauthorized instead, the token has expired.<br />Go back to step 1 and re-try the request with a new token.
+    end
+```
 
-2.  The authorization server validates the request and, if successful, sends a response with an access token.
-
-3.  The client can now use the access token to call the API by using the obtained access token as a `Bearer` token in the `Authorization` header.
-
-<!-- theme: warning -->
-
-> ##### Security warnings
->
-> *   ✅ **Always** request a client access token from a **backend** application
-> *   ❌ **Never** use or expose your client access token from a **frontend** application
->
-> If you use or store your client secret or client access token in a frontend application they can be **stolen** and **abused** and your client will get blocked!
->
-> If you need to do API calls from a frontend application, use [client identification](./client-identification.md) or a [user access token](./user-access-token.md) depending on which methods the API endpoint accepts.
-
-> ##### OAuth2
->
-> Client access tokens are requested using the standardized [OAuth 2.0 Client Credentials Grant](https://oauth.net/2/grant-types/client-credentials/). If you are familiar with this flow, you can skip most of the example flow below. Do check the info about the required `audience` property though.
-
-## Example
+1.  Your application requests a token on the authorization server with its client id and secret
+2.  The authorization server validates the client id and secret
+3.  The authorization server returns a response with an access token
+4.  Your application caches the token internally
+5.  Your application uses the access token to make authenticated requests to the API
+6.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 
