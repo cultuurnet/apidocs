@@ -101,7 +101,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 >
 > publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about client access tokens, please refer to the [Auth0 documentation](https://auth0.com/docs/flows#client-credentials-flow).
 
-## Domains
+## Authorization server URLs
 
 The authorization server is available on two domains, one for production and one for testing.
 
