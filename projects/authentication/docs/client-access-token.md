@@ -6,6 +6,16 @@ Client access tokens are used to secure API endpoints that require more robust a
 
 Before accessing an API endpoint like this, a client needs to obtain a client access token using its credentials (the client id and secret) from publiq's authorization server.
 
+## Requirements
+
+-   A client id
+-   A client secret
+-   Your API requests are always made from a **backend** system
+
+See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials.
+
+## Flow
+
 1.  The client makes a request to the authorization server with its id and secret.
 
 2.  The authorization server validates the request and, if successful, sends a response with an access token.
@@ -27,7 +37,7 @@ Before accessing an API endpoint like this, a client needs to obtain a client ac
 >
 > Client access tokens are requested using the standardized [OAuth 2.0 Client Credentials Grant](https://oauth.net/2/grant-types/client-credentials/). If you are familiar with this flow, you can skip most of the example flow below. Do check the info about the required `audience` property though.
 
-## Example flow
+## Example
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 
