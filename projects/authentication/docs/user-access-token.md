@@ -6,6 +6,27 @@ Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely th
 
 > publiq uses [Auth0](https://auth0.com/) as its authentication and authorization server. As they also provide extensive documentation, we link to their documentation in some places on this page.
 
+## Requirements
+
+-   A client id
+-   A client secret
+
+See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials. 
+
+Additionally, we will need to configure the following settings for your client on our end:
+
+*   Login URL: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
+*   Callback URL(s): The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
+
+If you wish to use user access tokens, make sure to specify your login URL and callback URLs when requesting your client credentials.
+
+<!-- theme: warning -->
+
+> Without these login URL and callback URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
+
+> For more info about the login and callback URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris). Note that other URIs mentioned in that documentation page are not required for most applications.
+
+## Flow
 
 ### Regular web applications
 
@@ -36,25 +57,6 @@ To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 do
 > ##### SDK
 >
 > If you want, you can use the [Single-Page Application (SPA) SDK Libraries](https://auth0.com/docs/libraries#spa) provided by Auth0 to implement this flow in frontend Javascript applications. Native applications can use the [Native and Mobile Application SDK Libraries](https://auth0.com/docs/libraries#native).
-
-## Client configuration
-
-Before you can use one of the Authorization Code flows above, your client needs the following configuration **on the authorization server**:
-
-*   **Login URI**: The absolute URI of the page where your users will login. For example `https://example.com/login`.
-*   **Callback URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify this callback URL whenever you redirect a user to the authorization server to log in, but it needs to be **whitelisted** first to prevent phishing attacks. For example `https://example.com/authorize`.
-
-Additionally, if you want to use the PKCE flow you will also need to specify:
-
-*   **Allowed Origins (CORS)**: The domain name(s) of the application(s) that you will be using the PKCE flow on. For example `example.com`.
-
-> For more info, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris).
-
-<!-- theme: success -->
-
-> A way to configure your client's settings on the authorization server will be provided in the future.
->
-> In the meantime you can contact vragen@uitdatabank.be to make sure your client has the correct URI configuration on the authorization server or make changes.
 
 ## Domains
 
