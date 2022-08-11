@@ -54,11 +54,9 @@ Content-Type: application/json
 }
 ```
 
-The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They basically act as a username and password to authenticate your client.
-
-The `audience` property must always be set to `https://api.publiq.be`.
-
-Lastly the `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
+-   The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
+-   The `audience` property **must** always be set to `https://api.publiq.be`.
+-   The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
 
 After sending your request you will get a response with a JSON body like this:
 
