@@ -50,7 +50,6 @@ Before you can use one of the Authorization Code flows above, your client needs 
 
 *   **Login URI**: The absolute URI of the page where your users will login. For example `https://example.com/login`.
 *   **Callback URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify this callback URL whenever you redirect a user to the authorization server to log in, but it needs to be **whitelisted** first to prevent phishing attacks. For example `https://example.com/authorize`.
-*   **Logout URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to *after* they log out. This page should also clear any tokens or other session data that you store for the user in your app. You can specify this URL whenever you redirect a user to the authorization server to log out, but it needs to be **whitelisted** first to prevent phishing attacks. For example `https://example.com/logout`.
 
 Additionally, if you want to use the PKCE flow you will also need to specify:
 
