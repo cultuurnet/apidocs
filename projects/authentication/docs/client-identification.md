@@ -10,7 +10,9 @@ You can specify your client id in requests to these APIs in two ways.
 
 -  A client id. See [requesting client credentials](./requesting-credentials.md) how to obtain one.
 
-## Via header
+## Usage
+
+### Via header
 
 You can specify your client id as an `x-client-id` HTTP header. For example on Search API 3:
 
@@ -36,7 +38,7 @@ Fill in your client id in the form below and send your request to try it out!
 }
 ```
 
-## Via query parameter
+### Via query parameter
 
 Alternatively you can specify a `clientId` URL query parameter instead of an HTTP header. For example on Search API 3:
 
