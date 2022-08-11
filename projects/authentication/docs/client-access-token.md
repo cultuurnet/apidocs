@@ -112,7 +112,7 @@ You will need to use the domain of the same environment as the environment of th
 
 For example: To communicate with the test environment of UiTdatabank of UiTPAS, you will need a token from the test environment of the authorization server.
 
-Your client id and secret will also vary per environment.
+Your client id and secret will also vary per environment, and you will need to use the id and secret that correspond with the environment you're integrating with.
 
 ## Try it out!
 
