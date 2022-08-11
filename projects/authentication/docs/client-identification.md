@@ -22,7 +22,7 @@ Host: https://search-test.uitdatabank.be
 X-Client-Id: YrgBoha6aRSrfIcsFt8PISe4u0EoM45k
 ```
 
-Using a header can be helpful to only have to set it once depending on the programming language and/or HTTP library you are using. It also reduces the URL size.
+> The `x-client-id` header is useful in code because a lot of HTTP libraries allow you to specify default headers to include in every request, so you do not need to repeat it in multiple places in your code.
 
 #### Try it!
 
@@ -47,7 +47,7 @@ GET /events/?clientId=YrgBoha6aRSrfIcsFt8PISe4u0EoM45k HTTP/1.1
 Host: https://search-test.uitdatabank.be
 ```
 
-Using a query parameter can be helpful for link sharing or when doing quick manual tests.
+> The `?clientId=...` query parameter is mostly useful when doing manual requests, for example in a browser, because you just need to include the client id in the URL that you are requesting.
 
 #### Try it!
 
@@ -62,9 +62,3 @@ Fill in your client id in the form below and send your request to try it out!
   }
 }
 ```
-
-## When to use which method
-
-When using client identification from a **frontend application** it is advisable to use the `clientId` query parameter because using the `x-client-id` header requires [CORS](./cors.md), while using an extra query parameter doesn't.
-
-If you are using client identification on requests from a **backend application**, you can choose whatever method you like best. Using the `x-client-id` header might be easier in some HTTP libraries because you can usually define some global headers that you want to send for every request, but this depends on the programming language and HTTP library.
