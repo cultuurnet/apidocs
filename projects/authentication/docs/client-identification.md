@@ -2,7 +2,7 @@
 
 Some APIs only expose public information and need to be accessible directly from a browser, like UiTdatabank's Search API or the UiTPAS advantages search.
 
-These APIs only require you to specify the client id of your integration for customization and technical support purposes. For example your client id can have a custom default query in Search API 3 to always filter out search results that are irrelevant to your integration.
+These APIs only require you to specify the client id of your integration for customization and technical support purposes.
 
 ## Requirements
 
