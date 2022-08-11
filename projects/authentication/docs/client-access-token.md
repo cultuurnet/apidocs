@@ -82,11 +82,11 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 > ##### Caching tokens
 >
-> Make sure to **cache and reuse** the obtained client access token for as long as possible. Do not request a new access token for each API request you make.
+> Make sure to **cache and reuse** the obtained client access token for as long as possible. Do not request a new access token for each API request you make to avoid rate limiting on the token endpoint.
 >
 > There are two ways to check if your cached token is still valid:
 >
-> 1.  Cache the `expires_in` property included in the token response, and the time that you requested the token. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
+> 1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
 > 2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
 
 <!-- theme: warning -->
