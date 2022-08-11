@@ -6,6 +6,10 @@ These APIs only require you to specify the client id of your integration for cus
 
 You can specify your client id in requests to these APIs in two ways.
 
+## Requirements
+
+-  A client id. See [requesting client credentials](./requesting-credentials.md) how to obtain one.
+
 ## Via header
 
 You can specify your client id as an `x-client-id` HTTP header. For example on Search API 3:
