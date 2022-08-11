@@ -1,10 +1,12 @@
 # Client access token
 
-## Overview
+Client access tokens are used to authenticate API requests from a **backend** system.
 
-Client access tokens are used to secure API endpoints that require more robust authentication than [client identification](./client-identification.md) between two *backend* systems.
+The client can request a token on publiq's authorization server with its client id and client secret, and include this token in API requests until it expires. After the token has expired, the client can simply request a new token in the same way as before. The flow to request a token is a standard [OAuth2 `client_credentials` flow](https://oauth.net/2/grant-types/client-credentials/).
 
-Before accessing an API endpoint like this, a client needs to obtain a client access token using its credentials (the client id and secret) from publiq's authorization server.
+The token serves as proof of identity of the client, in other words your backend system. Because browsers and native applications cannot securely store the necessary client secret, they must not use client access tokens. A possible alternative in this case would be using [user access tokens](./user-access-token.md) with the PKCE flow.
+
+If your browser or native application cannot work with user logins via publiq's UiTID, you may also send requests from your frontend application to your own backend, and make API requests from there with a client access token. Note that you will be responsible to determine who may or may not access your backend to prevent abuse.
 
 ## Requirements
 
