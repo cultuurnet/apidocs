@@ -378,7 +378,7 @@
             "description": "Visit registered."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/museumpass/passholder-not-found\n* https://api.publiq.be/probs/museumpass/visit-maximum-reached\n* https://api.publiq.be/probs/museumpass/museum-not-active\n* https://api.publiq.be/probs/museumpass/card-not-active\n* https://api.publiq.be/probs/museumpass/subscription-not-active\n* https://api.publiq.be/probs/museumpass/passholder-not-active",
+            "description": "Bad Request. Possible error types:\n\n- https://api.publiq.be/probs/body/missing\n- https://api.publiq.be/probs/body/invalid-syntax\n- https://api.publiq.be/probs/body/invalid-data\n- https://api.publiq.be/probs/museumpass/passholder-not-found\n- https://api.publiq.be/probs/museumpass/visit-maximum-reached\n- https://api.publiq.be/probs/museumpass/museum-not-active\n- https://api.publiq.be/probs/museumpass/card-not-active\n- https://api.publiq.be/probs/museumpass/subscription-not-active\n- https://api.publiq.be/probs/museumpass/passholder-not-active",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -430,9 +430,191 @@
           "Visits"
         ]
       }
+    },
+    "/external-cards/{type}/{identification}": {
+      "get": {
+        "summary": "Look up external card",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "visit": {
+                      "type": "object",
+                      "description": "Visit information for the external card.",
+                      "required": [
+                        "allowed"
+                      ],
+                      "properties": {
+                        "allowed": {
+                          "type": "boolean",
+                          "description": "Indicates whether a visit with the external card is allowed or not."
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "visit"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable.\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.\n\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-external-cards-type-identification",
+        "description": "Retrieve visit allowed information related to an external card. \n\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.\n",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "External cards"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "enum": [
+              "uitpas",
+              "akaart",
+              "article27"
+            ]
+          },
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The type of external card"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "identification",
+          "in": "path",
+          "required": true,
+          "description": "The identification (e.g. card number) of the external card"
+        }
+      ]
+    },
+    "/external-cards/{type}/{identification}/visits": {
+      "post": {
+        "summary": "Register a museum visit for an external card",
+        "operationId": "post-external-cards-type-identification-visits",
+        "responses": {
+          "201": {
+            "description": "External card visit registered."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/museumpass/museum-not-active",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable.\n\nThe `Retry-After` HTTP Header might include a hint when a retry of this request can be attempted.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Registers a visit of an axternal card at your museum (determined by the client access token used).\n\nTo check if this card is allowed to visit, look up their information using [`GET /external-cards/{type}/{identification}`](./partner-api.json/paths/~1external-cards~1{type}~1{identification}/get). The response to that request will indicate if the passholder may visit your museum.\n\nIf the external card may not visit your museum and you still try to register a visit for them, the server will return a `403 Forbidden` error response.\n\n**Note**: A POST body is not required for this endpoint. All information is derived from the path.\n\n## Permissions\n\nThe caller of this request must have the `visit registrar` role.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "External cards"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "enum": [
+              "uitpas",
+              "akaart",
+              "article27"
+            ]
+          },
+          "name": "type",
+          "in": "path",
+          "required": true,
+          "description": "The type of external card"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "identification",
+          "in": "path",
+          "required": true,
+          "description": "The identification (e.g. card number) of the external card"
+        }
+      ]
     }
   },
   "tags": [
+    {
+      "name": "External cards"
+    },
     {
       "name": "Passholders"
     },
