@@ -25,6 +25,12 @@
       "items": [
         {
           "type": "item",
+          "title": "Default filters",
+          "uri": "/docs/search-api/default-filters.md",
+          "slug": "search-api/default-filters"
+        },
+        {
+          "type": "item",
           "title": "Pagination",
           "uri": "/docs/search-api/pagination.md",
           "slug": "search-api/pagination"
@@ -69,6 +75,11 @@
       "type": "item",
       "title": "Entry API",
       "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Search API",
+      "uri": "reference/search.json"
     },
     {
       "type": "item",

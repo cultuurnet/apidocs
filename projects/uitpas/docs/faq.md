@@ -7,7 +7,7 @@ Only a small percentage of your requests should be accessing the UiTPAS API, as 
 ### Can the regularPrice sent in /ticket-sales differ from the prices listed in the UiTdatabank event?
 
 Yes, you can send any price, not only the prices listed in the UiTdatabank event.
-We strongly advice to always update the price of the UiTdatabank event when the price changes, as this price will be listed publicly on websites such as [UiTinVlaanderen.be](http://UiTinVlaanderen.be).
+We strongly advice to always update the price of the UiTdatabank event when the price changes, as this price will be listed publicly on websites such as [UiTinVlaanderen](http://www.uitinvlaanderen.be).
 Keeping this price up-to-date also helps us fight fraud and makes it easier to audit price changes.
 
 ### Why can't I calculate the UiTPAS tariffs in my application?
@@ -21,7 +21,7 @@ You shouldn't calculcate these discounts yourself because they can vary from a r
 
 ### My events are private and I don't want them to be public. How can I do this?
 
-One of the biggest advantages of creating UiTdatabank events, is that your events will be available throughout thousand of local events calendars and websites such as [UiTinVlaanderen.be](http://UiTinVlaanderen.be).
+One of the biggest advantages of creating UiTdatabank events, is that your events will be available throughout thousand of local events calendars and websites such as [UiTinVlaanderen](http://www.uitinvlaanderen.be).
 
 If you don't want your events to be published in this way you [should set the audienceType](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events/event-audience.html) to "members" on your events.
 
