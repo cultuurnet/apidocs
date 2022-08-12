@@ -25,15 +25,21 @@
       "items": [
         {
           "type": "item",
-          "title": "Facets",
-          "uri": "/docs/search-api/facets.md",
-          "slug": "search-api/facets"
-        },       
+          "title": "Default filters",
+          "uri": "/docs/search-api/default-filters.md",
+          "slug": "search-api/default-filters"
+        },
         {
           "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
+        },
+        {
+          "type": "item",
+          "title": "Facets",
+          "uri": "/docs/search-api/facets.md",
+          "slug": "search-api/facets"
         }
       ]
     },
@@ -69,6 +75,11 @@
       "type": "item",
       "title": "Entry API",
       "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Search API",
+      "uri": "reference/search.json"
     },
     {
       "type": "item",

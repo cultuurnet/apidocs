@@ -1,0 +1,36 @@
+{
+  "title": "facets",
+  "description": "Possible values for a filter, with an estimated total count if the filter is applied with one of the given values.\n\nFor example a list of facets for the `regions` filter can be:\n\n```json\n{\n  \"regions\": {\n    \"prv-vlaams-brabant\": {\n      \"name\": {\n        \"nl\": \"Vlaams-Brabant\",\n        \"fr\": \"Brabant Flamand\",\n        \"en\": \"Flemish Brabant\"\n      },\n      \"count\": 22,\n      \"children\": {\n        ... // a nested list of facets\n      }\n    },\n    \"prv-antwerpen\": {\n      \"name\": {\n        \"nl\": \"Antwerpen\",\n        \"fr\": \"Anvers\",\n        \"en\": \"Antwerp\"\n      },\n      \"count\": 18,\n      \"children\": {\n        ... // a nested list of facets\n      }\n    },\n    \"prv-limburg\": {\n      \"name\": {\n        \"nl\": \"Limburg\",\n        \"fr\": \"Limbourg\",\n        \"en\": \"Limburg\"\n      },\n      \"count\": 11,\n      \"children\": {\n        ... // a nested list of facets\n      }\n    }\n  }\n}\n```\n\nIf the user then selects \"Vlaams-Brabant (22)\" to see the 22 results in Vlaams-Brabant, the `regions` filter should be applied with the value `prv-vlaams-brabant`.",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "./common-facet.json"
+  },
+  "examples": [
+    {
+      "prv-vlaams-brabant": {
+        "name": {
+          "nl": "Vlaams-Brabant",
+          "fr": "Brabant Flamand",
+          "en": "Flemish Brabant"
+        },
+        "count": 22
+      },
+      "prv-antwerpen": {
+        "name": {
+          "nl": "Antwerpen",
+          "fr": "Anvers",
+          "en": "Antwerp"
+        },
+        "count": 18
+      },
+      "prv-limburg": {
+        "name": {
+          "nl": "Limburg",
+          "fr": "Limbourg",
+          "en": "Limburg"
+        },
+        "count": 18
+      }
+    }
+  ]
+}

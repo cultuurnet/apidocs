@@ -1177,7 +1177,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1251,7 +1251,7 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sorts the passholders by their last name in ascending or descending order."
+            "description": "Sorts the passholders by their last name in ascending or descending order. By default passholders are sorted by name, ascending order."
           },
           {
             "schema": {
@@ -3169,7 +3169,7 @@
                           "points": 10,
                           "forKids": false,
                           "sport": false,
-                          "labels": ""
+                          "online": false
                         }
                       ],
                       "facet": {
@@ -3178,13 +3178,13 @@
                             "name": {
                               "nl": "Doen"
                             },
-                            "count": 12
+                            "count": 402
                           },
                           "Gadget": {
                             "name": {
                               "nl": "Gadget"
                             },
-                            "count": 2
+                            "count": 101
                           }
                         },
                         "owningCardSystemId": {
@@ -3192,13 +3192,41 @@
                             "name": {
                               "nl": "UiTPAS Dender"
                             },
-                            "count": 8
+                            "count": 124
                           },
                           "8": {
                             "name": {
                               "nl": "UiTPAS Gent"
                             },
-                            "count": 4
+                            "count": 503
+                          }
+                        },
+                        "sport": {
+                          "true": {
+                            "name": {
+                              "nl": "Sportactiviteiten"
+                            },
+                            "count": 45
+                          },
+                          "false": {
+                            "name": {
+                              "nl": "Geen sportactiviteiten"
+                            },
+                            "count": 458
+                          }
+                        },
+                        "forKids": {
+                          "true": {
+                            "name": {
+                              "nl": "Speciaal voor kinderen"
+                            },
+                            "count": 24
+                          },
+                          "false": {
+                            "name": {
+                              "nl": "Niet speciaal voor kinderen"
+                            },
+                            "count": 479
                           }
                         }
                       }
@@ -3223,6 +3251,16 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Error type:\n\nhttps://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -3289,18 +3327,25 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "type",
-                "owningCardSystemId",
-                "extras",
-                "categories"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "categories",
+                  "forKids",
+                  "sport",
+                  "online",
+                  "lastChance",
+                  "owningCardSystemId",
+                  "type"
+                ]
+              }
             },
             "in": "query",
             "name": "facets",
             "description": "Request facets of the given field in the response. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -3356,18 +3401,22 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "Goede doel",
-                "Eten en drinken",
-                "Doen",
-                "Gadget of item"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Goede doel",
+                  "Eten en drinken",
+                  "Doen",
+                  "Gadget of item"
+                ]
+              }
             },
             "in": "query",
             "name": "categories",
             "description": "Include only rewards of this category. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -3403,32 +3452,53 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "forKids",
-                "sport",
-                "online",
-                "lastChance"
-              ]
+              "type": "boolean"
             },
             "in": "query",
-            "name": "extras",
-            "description": "Filter on a number of predefined fields, which are also available as a facet. Can be included more than once to allow multiple values.",
-            "style": "form"
+            "name": "sport",
+            "description": "Include only rewards with the sport property true or false. If omitted, rewards with any sport value are included."
           },
           {
             "schema": {
-              "type": "string"
+              "type": "boolean"
             },
             "in": "query",
-            "name": "isRedeemableBy",
-            "description": "Include only rewards that are currently redeemable by the given UiTPAS number. The use of this fields requires `REWARDS_PASSHOLDER_READ` permission or a user access token of the given passholder, identified by its UiTPAS number.",
-            "style": "form"
+            "name": "forKids",
+            "description": "Include only rewards with the forKids property true or false. If omitted, rewards with any forKids value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "online",
+            "description": "Include only rewards with the online property true or false. If omitted, rewards with any online value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "lastChance",
+            "description": "Include only rewards with the lastChance property true or false. If omitted, rewards with any lastChance value are included."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "INACTIVE",
+                "DELETED"
+              ]
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Include only rewards with this status. Also set `subset=ALL` to include non-ACTIVE rewards."
           }
         ]
       },
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Create new reward",
         "operationId": "post-rewards",
         "responses": {
@@ -3473,7 +3543,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": ""
+                      "online": true
                     }
                   },
                   "Welcome reward": {
@@ -3508,7 +3578,7 @@
                       "inSpotlight": false,
                       "forKids": false,
                       "sport": false,
-                      "labels": ""
+                      "online": false
                     }
                   }
                 }
@@ -3585,7 +3655,7 @@
     },
     "/rewards/{rewardId}": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve reward",
         "tags": [
           "Rewards"
@@ -3637,7 +3707,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": ""
+                      "online": false
                     }
                   }
                 }
@@ -3684,7 +3754,7 @@
         }
       ],
       "put": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Update reward",
         "operationId": "put-rewards-id",
         "responses": {
@@ -3734,7 +3804,7 @@
                       ],
                       "forKids": false,
                       "sport": false,
-                      "labels": ""
+                      "online": false
                     }
                   }
                 }
@@ -3833,7 +3903,7 @@
         }
       ],
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Check redeem status of a reward for a passholder",
         "operationId": "get-rewards-id-redeem-status",
         "responses": {
@@ -3945,7 +4015,7 @@
     "/rewards/redeemed": {
       "parameters": [],
       "post": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Redeem reward",
         "operationId": "post-rewards-redeemed",
         "responses": {
@@ -4002,7 +4072,7 @@
                         ],
                         "forKids": true,
                         "sport": true,
-                        "labels": "freetext1,freetext2"
+                        "online": false
                       },
                       "redeemDate": "2019-08-24T14:15:22Z",
                       "redeemInfo": {
@@ -4090,7 +4160,7 @@
         ]
       },
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Retrieve redeemed rewards",
         "operationId": "get-rewards-redeemed",
         "responses": {
@@ -4150,7 +4220,8 @@
                             ],
                             "forKids": true,
                             "sport": true,
-                            "labels": "freetext1,freetext2"
+                            "online": true,
+                            "lastChance": true
                           },
                           "redeemDate": "2019-08-24T14:15:22Z",
                           "redeemInfo": {
@@ -4229,7 +4300,7 @@
     },
     "/card-systems": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Search card systems",
         "responses": {
           "200": {
@@ -4297,7 +4368,14 @@
             "$ref": "#/components/parameters/start"
           },
           {
-            "$ref": "#/components/parameters/limit"
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100,
+              "minimum": 0
+            },
+            "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination.",
+            "name": "limit"
           },
           {
             "schema": {
@@ -4572,13 +4650,22 @@
               "categories": {
                 "$ref": "#/components/schemas/Facet"
               },
-              "extras": {
-                "$ref": "#/components/schemas/Facet"
-              },
               "owningCardSystemId": {
                 "$ref": "#/components/schemas/Facet"
               },
               "type": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "sport": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "forKids": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "online": {
+                "$ref": "#/components/schemas/Facet"
+              },
+              "lastChance": {
                 "$ref": "#/components/schemas/Facet"
               }
             }
@@ -5502,9 +5589,14 @@
             "type": "boolean",
             "description": "true if this is a sport reward"
           },
-          "labels": {
-            "type": "string",
-            "description": "Comma separated list of labels."
+          "online": {
+            "type": "boolean",
+            "description": "true if this reward can be redeemed online"
+          },
+          "lastChance": {
+            "type": "boolean",
+            "description": "true if this rewards will not be redeemable anymore in the near future",
+            "readOnly": true
           },
           "redeemConstraint": {
             "type": "object",
@@ -5631,6 +5723,22 @@
               "nl": "Option 2"
             },
             "count": 4
+          }
+        },
+        "x-examples": {
+          "Example": {
+            "option1": {
+              "name": {
+                "nl": "Human-readable name for option1"
+              },
+              "count": 3
+            },
+            "option2": {
+              "name": {
+                "nl": "Human-readable name for option2"
+              },
+              "count": 4
+            }
           }
         }
       },
