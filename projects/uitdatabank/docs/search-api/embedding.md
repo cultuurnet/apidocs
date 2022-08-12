@@ -14,7 +14,7 @@ To get the actual bodies of the results, there are two options:
 ### Applicable URLs
 
 *   `GET /events`
-*   `  GET /places `
+*   `GET /places`
 *   `GET /offers`
 
 ### Recommended use
