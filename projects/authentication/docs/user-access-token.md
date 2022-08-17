@@ -33,7 +33,7 @@ If you wish to use user access tokens, make sure to specify your login URL and c
 Regular web applications **(with a backend)** should use the **Authorization Code Flow** with their client id and secret. The secret must be stored and used on the backend in all circumstances, never on the frontend.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': ['Helvetica', 'Arial'], 'fontSize': '16px' }}}%%
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica', 'fontSize': '16px', 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}}%%
 sequenceDiagram
     autonumber
     actor User
