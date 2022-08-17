@@ -44,11 +44,9 @@ To learn more about the Authorization Code Flow, see the [the Auth0 documentatio
 
 Native (mobile & desktop) and frontend applications **without a backend** (single-page applications) do not have a way to securely store their client secret.
 
-Native binaries can be decompiled to reveal their secret, and Javascript applications running in the browser are running in an inherently unsafe environment to store secrets.
+Native binaries can be decompiled to reveal their secret, and Javascript applications running in the browser cannot store their client secret in a way that prevents an attacker from finding it in the Javascript code, a cookie, local storage, etc when they visit your application.
 
-These applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*).
-
-The main difference with the regular Authorization Code Flow is that with PKCE, your app can utilize a dynamically-generated secret to initiate and validate the flow instead of a fixed client secret which must never be made public.
+Therefor these applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*), which makes it possible to request a user access token without a client secret.
 
 To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce).
 
