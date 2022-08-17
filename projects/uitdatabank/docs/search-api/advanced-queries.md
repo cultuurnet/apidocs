@@ -93,6 +93,30 @@ Applicable on endpoints: `/events` `/places` `/offers`
 ### q (free text search)
 Applicable on endpoints: `/events` `/places` `/offers` `/organizers`
 
+Using the `q` parameter, you can search for text across multiple pre-defined fields. The following fields will be searched when the q parameter with free text: `id`, `name`, `description`, `labels`, `terms.id`, `terms.label`, `addressLocality`, `postalCode`, `streetAddress`, `location.id`, `location.name`, `organizer.id`, `organizer.name`.
+
+<!-- theme: info -->
+> Important notes:
+> -   IDs only return results if the complete ID is given in the free text input.
+> -   Wildcards are supported. For example, searching for `Fiets*` will return results with Fietsen or Fietseling or Fietstocht, etc.
+> -   By default, the `AND` operator is used between multiple given words. So the query `wandelen dijle fietsen` actually becomes `wandelen AND dijle AND fietsen`
+
+By default the free text search looks for one or more matches with any of the given terms, regardless of their order and/or position in the document’s text:
+```
+GET /events/?q=lekker vegetarisch
+```
+both an event with the title `Lekker vegetarisch` and a different event with the title `Vegetarisch eten is niet lekker` would be returned with the query above.
+
+To limit the results to exact matches only, encapsulate the given search term with double quotes:
+```
+GET /events/?q="lekker vegetarisch"
+```
+This will only return results that have `lekker vegetarisch` in exactly that order in their event body.
+
+TO DO: link to docs about exact matches
+
+TO DO: link to corresponding url parameter docs
+
 ### regions
 Applicable on endpoints: `/events` `/places` `/offers` `/organizers`
 
@@ -187,4 +211,6 @@ Consequently we need to link both OR-relations with an AND operator:
 /events/?q=address.\*.postalCode:(9000 OR 3000) AND terms.id:(0.0.0.0.0 OR 0.50.4.0.0)
 ```
 Now your query will return concerts and expositions that either happen in Ghent or Leuven. Without the usage of round brackets you would get incomplete or incorrect results.
+
+## Exact matches and partial matches
 
