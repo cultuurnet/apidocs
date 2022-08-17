@@ -16,6 +16,7 @@ To get the actual bodies of the results, there are two options:
 *   `GET /events`
 *   `GET /places`
 *   `GET /offers`
+*   `GET /organizers`
 
 ### Recommended use
 
@@ -130,7 +131,7 @@ The calendar summary can be retrieved in `text` and in `html`.
 ### Applicable URLs
 
 *   `GET /events`
-*   `  GET /places `
+*   `GET /places`
 *   `GET /offers`
 
 ### Recommended use
@@ -321,6 +322,12 @@ By default UiTPAS prices are hidden from the response from Search API. You can e
 > At the time of writing the `embedUitpasPrices` parameter defaults to `false`, but in the foreseeable future the default value for the parameter will become `true`. 
 > 
 > If you do not want to retrieve the UiTPAS prices from Search API in the future for some reason, you'll have to set the `embedUitpasPrices` explicitely to `false`.
+
+### Applicable URLs
+
+*   `GET /events`
+*   `GET /places`
+*   `GET /offers`
 
 ### Examples
 
