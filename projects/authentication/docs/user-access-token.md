@@ -32,9 +32,34 @@ If you wish to use user access tokens, make sure to specify your login URL and c
 
 Regular web applications **(with a backend)** should use the **Authorization Code Flow** with their client id and secret. The secret must be stored and used on the backend in all circumstances, never on the frontend.
 
-To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
+```mermaid
+sequenceDiagram
+    autonumber
+    User-->>Client: Click login link
+    Client->>Auth server: Redirect to GET /authorize
+    Auth server-->>User: Show login page
+    User-->>Auth server: Login and give consent
+    Auth server-->>Client: Redirect back to callback URL with authorization code
+    Client->>Auth server: POST /oauth/token with authorization code<br /> and client credentials
+    Auth server-->>Client: 200 OK with access token and optionally refresh token
+    loop
+        Client->>API: Send API request with access token in authorization header
+        API-->>Client: 2XX response
+        note over API,Client: If the API returns 401 Unauthorized instead, the token has expired.<br />Use the refresh token to get a new access token, or go back to step 1.<br /> Afterwards re-try the request with a new token.
+    end
+```
 
-Note that at some point in the flow you will request a token via `POST /oauth/token`. You will need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
+1. A user clicks the login link in your application
+2. Your application redirects the user to the `/authorize` URL on publiq's authorization server.
+3. The authorization server shows the login form.
+4. The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
+5. The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
+6. Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret. You will also need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
+7. The authorization server responds with an access token and optionally a refresh token.
+8.  Your application uses the access token to make authenticated requests to the API.
+9.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again, or use the refresh token to automatically request a new token without letting the user login again.
+
+To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
 
 <!-- theme: success -->
 
