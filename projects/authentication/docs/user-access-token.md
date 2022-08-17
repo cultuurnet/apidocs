@@ -35,6 +35,7 @@ Regular web applications **(with a backend)** should use the **Authorization Cod
 ```mermaid
 sequenceDiagram
     autonumber
+    actor User
     User-->>Client: Click login link
     Client->>Auth server: Redirect to GET /authorize
     Auth server-->>User: Show login page
@@ -78,6 +79,7 @@ Therefor these applications must use the **Authorization Code Flow with PKCE** (
 ```mermaid
 sequenceDiagram
     autonumber
+    actor User
     User-->>Client: Click login link
     Client->>Client: Generate code_verifier and code_challenge
     Client->>Auth server: Redirect to GET /authorize with code_challenge
