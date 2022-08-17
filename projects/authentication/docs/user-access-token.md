@@ -56,7 +56,7 @@ To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 do
 >
 > If you want, you can use the [Single-Page Application (SPA) SDK Libraries](https://auth0.com/docs/libraries#spa) provided by Auth0 to implement this flow in frontend Javascript applications. Native applications can use the [Native and Mobile Application SDK Libraries](https://auth0.com/docs/libraries#native).
 
-## Domains
+## Authorization server URLs
 
 The authorization server is available on two domains, one for production and one for testing.
 
