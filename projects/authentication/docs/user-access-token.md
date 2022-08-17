@@ -34,6 +34,8 @@ Regular web applications **(with a backend)** should use the **Authorization Cod
 
 To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
 
+Note that at some point in the flow you will request a token via `POST /oauth/token`. You will need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
+
 <!-- theme: success -->
 
 > ##### SDK
@@ -49,6 +51,8 @@ Native binaries can be decompiled to reveal their secret, and Javascript applica
 Therefor these applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*), which makes it possible to request a user access token without a client secret.
 
 To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce).
+
+Note that at some point in the flow you will request a token via `POST /oauth/token`. You will need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
 
 <!-- theme: success -->
 
@@ -77,10 +81,6 @@ You will need to use the domain of the same environment as the environment of th
 For example: To communicate with the test environment of UiTdatabank of UiTPAS, you will need a token from the test environment of the authorization server.
 
 Your client id and secret will also vary per environment, and you will need to use the id and secret that correspond with the environment you're integrating with.
-
-## Audience
-
-Both authorization flows require an `audience` parameter when redirecting the user to the authorization server to log in. In both scenarios the audience must be set to  `https://api.publiq.be`.
 
 ## Decoding tokens
 
