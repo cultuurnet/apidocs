@@ -174,6 +174,93 @@ sequenceDiagram
 10. Your application uses the access token to make one or more authenticated requests to the API.
 11. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again.
 
+#### Example
+
+When a user clicks the login link in your application (step 1), your application generates a cryptographically-random `code_verifier`, and from this it generates a `code_challenge` (step 2).
+
+In Javascript, this can be done like this:
+
+```js
+// Dependency: Node.js crypto module
+// https://nodejs.org/api/crypto.html#crypto_crypto
+function base64URLEncode(str) {
+    return str.toString('base64')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=/g, '');
+}
+var code_verifier = base64URLEncode(crypto.randomBytes(32));
+
+function sha256(buffer) {
+    return crypto.createHash('sha256').update(buffer).digest();
+}
+var code_challenge = base64URLEncode(sha256(verifier));
+```
+
+You can find more examples how to do this in various programming languages like **Java, Swift, and Objective-C** in the [Auth0 documentation](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#create-code-verifier).
+
+Next, your application redirects the user to the `/authorize` URL on the authorization server (step 3):
+
+    https://account-test.uitid.be/authorize?
+      audience=https://api.publiq.be&
+      scope=openid profile email&
+      response_type=code&
+      client_id=YOUR_CLIENT_ID&
+      code_challenge=YOUR_CODE_CHALLENGE&
+      code_challenge_method=S256&
+      redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
+
+
+Note that:
+-  The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+-  The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
+-  The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
+-  The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5). 
+
+After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 6). So the redirect URL will look like:
+
+    https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+
+To finish, your application makes a request to the `/oauth/token` endpoint on the authorization server to exchange the `code` for an access token (step 7):
+
+```http
+POST /oauth/token HTTP/1.1
+Host: https://account-test.uitid.be
+Content-Type: application/json
+
+{
+  "client_id": "YOUR_CLIENT_ID",
+  "grant_type": "authorization_code",
+  "code": "YOUR_AUTHORIZATION_CODE",
+  "code_verifier": "YOUR_CODE_VERIFIER"
+}
+```
+
+The authorization server will send a response with an `access_token` (step 8):
+
+```http
+HTTP/1.1 200 OK
+
+{
+  "access_token": "eyJz93a...k4laUWw",
+  "id_token": "eyJ0XAi...4faeEoQ",
+  "token_type": "Bearer",
+  "expires_in": 86400
+}
+```
+
+When the user than performs an action that requires you to make an API call (step 9), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 10):
+
+```http
+GET /example HTTP/1.1
+Host: https://api-test.uitpas.be
+Authorization: Bearer eyJz93a...k4laUWw
+```
+
+#### More info
+
 To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce).
 
 <!-- theme: success -->
