@@ -19,6 +19,7 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 ## How it works
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica', 'fontSize': '16px' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
 sequenceDiagram
     autonumber
     Client->>Auth server: POST /oauth/token with client id and secret

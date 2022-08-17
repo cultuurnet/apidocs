@@ -80,6 +80,7 @@ Native binaries can be decompiled to reveal their secret, and Javascript applica
 Therefor these applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*), which makes it possible to request a user access token without a client secret.
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica', 'fontSize': '16px' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
 sequenceDiagram
     autonumber
     actor User
