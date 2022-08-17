@@ -128,11 +128,16 @@ The status indicates whether an offer is still available for visits or not. The 
 -   `TemporarilyUnavailable`
 -   `Unavailable`
 
-**Example**
 ```
 GET /events/?q=status:Available
 ```
 All events that take place as planned will be returned.
+
+```
+GET /places/?q=status:Unavailable
+```
+All places that are permanently closed will be returned.
+
 
 TO DO: link to status guide when that guide is finished
 
