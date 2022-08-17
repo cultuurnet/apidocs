@@ -63,6 +63,66 @@ sequenceDiagram
 9.  Your application uses the access token to make one or more authenticated requests to the API.
 10. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again.
 
+#### Example
+
+When a user clicks the login link in your application (step 1), your application redirects them to the following URL (step 2):
+
+    https://account-test.uitid.be/authorize?
+      audience=https://api.publiq.be&
+      scope=openid profile email&
+      response_type=code&
+      client_id=YOUR_CLIENT_ID&
+      redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
+
+Note that:
+-  The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+-  The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
+-  The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4). 
+
+After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 5). So the redirect URL will look like:
+
+    https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+
+To finish, your application makes a request to the `/oauth/token` endpoint on the authorization server to exchange the `code` for an access token (step 6):
+
+```http
+POST /oauth/token HTTP/1.1
+Host: https://account-test.uitid.be
+Content-Type: application/json
+
+{
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET",
+  "grant_type": "authorization_code",
+  "code": "YOUR_AUTHORIZATION_CODE"
+}
+```
+
+The authorization server will send a response with an `access_token` (step 7):
+
+```http
+HTTP/1.1 200 OK
+
+{
+  "access_token": "eyJz93a...k4laUWw",
+  "id_token": "eyJ0XAi...4faeEoQ",
+  "token_type": "Bearer",
+  "expires_in": 86400
+}
+```
+
+When the user than performs an action that requires you to make an API call (step 8), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 9):
+
+```http
+GET /example HTTP/1.1
+Host: https://api-test.uitpas.be
+Authorization: Bearer eyJz93a...k4laUWw
+```
+
+#### More info
+
 To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
 
 <!-- theme: success -->
