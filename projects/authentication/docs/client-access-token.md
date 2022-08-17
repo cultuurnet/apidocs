@@ -31,11 +31,11 @@ sequenceDiagram
     end
 ```
 
-1.  Your application requests a token on the authorization server with its client id and secret
-2.  If the client id and secret are valid, the authorization server returns a response with an access token
-3.  Your application caches the token internally
-4.  Your application uses the access token to make authenticated requests to the API
-5.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request
+1.  Your application requests a token on the authorization server with its client id and secret.
+2.  If the client id and secret are valid, the authorization server returns a response with an access token.
+3.  Your application caches the token internally.
+4.  Your application uses the access token to make authenticated requests to the API.
+5.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 

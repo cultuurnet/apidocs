@@ -49,7 +49,7 @@ sequenceDiagram
     end
 ```
 
-1. A user clicks the login link in your application
+1. A user clicks the login link in your application.
 2. Your application redirects the user to the `/authorize` URL on publiq's authorization server.
 3. The authorization server shows the login form.
 4. The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
