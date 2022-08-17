@@ -57,7 +57,7 @@ sequenceDiagram
 3.  The authorization server shows the login form.
 4.  The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
 5.  The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
-6.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret. You will also need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
+6.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret.
 7.  The authorization server responds with an access token.
 8.  The user performs an action in your application which requires an API call.
 9.  Your application uses the access token to make one or more authenticated requests to the API.
@@ -108,7 +108,7 @@ sequenceDiagram
 4.  The authorization server shows the login form.
 5.  The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
 6.  The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
-7.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and your previously generated `code_verifier`. You will also need to include an **audience** property in this request. The value of this `audience` property must always be `https://api.publiq.be`.
+7.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and your previously generated `code_verifier`.
 8.  The authorization server responds with an access token.
 9.  The user performs an action in your application which requires an API call.
 10. Your application uses the access token to make one or more authenticated requests to the API.
