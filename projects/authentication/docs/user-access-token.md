@@ -82,8 +82,8 @@ Your client id and secret will also vary per environment, and you will need to u
 
 Both authorization flows require an `audience` parameter when redirecting the user to the authorization server to log in. In both scenarios the audience must be set to  `https://api.publiq.be`.
 
-## Token parsing
+## Decoding tokens
 
 <!-- theme: warning -->
 
-> **Never** parse a user access token as a JWT, for example to check its expiration time. It is not guaranteed that a user access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
+> **Never** parse a client access token as a JWT, for example to check its expiration time. It is not guaranteed that a client access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
