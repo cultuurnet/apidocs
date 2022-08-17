@@ -22,7 +22,6 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 sequenceDiagram
     autonumber
     Client->>Auth server: POST /oauth/token with client id and secret
-    Auth server-->>Auth server: Validate client id + secret
     Auth server-->>Client: 200 OK with access token
     Client->>Client: Cache token internally
     loop
@@ -33,11 +32,10 @@ sequenceDiagram
 ```
 
 1.  Your application requests a token on the authorization server with its client id and secret
-2.  The authorization server validates the client id and secret
-3.  The authorization server returns a response with an access token
-4.  Your application caches the token internally
-5.  Your application uses the access token to make authenticated requests to the API
-6.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request
+2.  If the client id and secret are valid, the authorization server returns a response with an access token
+3.  Your application caches the token internally
+4.  Your application uses the access token to make authenticated requests to the API
+5.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 
