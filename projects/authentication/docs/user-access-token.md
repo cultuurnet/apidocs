@@ -26,7 +26,7 @@ If you wish to use user access tokens, make sure to specify your login URL and c
 
 > For more info about the login and callback URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris). Note that other URIs mentioned in that documentation page are not required for most applications.
 
-## Flow
+## How it works
 
 ### Regular web applications
 
