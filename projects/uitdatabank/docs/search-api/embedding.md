@@ -308,3 +308,89 @@ Every result in the response will have a `calendarSummary` property with a value
    }
 }
 ```
+
+## Embedding UiTPAS prices
+
+By default UiTPAS prices are hidden from the response from Search API. You can easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
+
+> The UiTPAS prices in Search API are only an indicative price per card system.
+> 
+> If you want to retrieve the UiTPAS price that is applicable for a specific card holder, you need to integrate with the [UiTPAS API](https://docs.publiq.be/docs/uitpas/10fe6e0c22c8b-retrieve-new-membership-prices).
+
+<!-- theme: warning -->
+> At the time of writing the `embedUitpasPrices` parameter defaults to `false`, but in the foreseeable future the default value for the parameter will become `true`. 
+> 
+> If you do not want to retrieve the UiTPAS prices from Search API in the future for some reason, you'll have to set the `embedUitpasPrices` explicitely to `false`.
+
+### Examples
+
+#### Without UiTPAS prices embedded
+
+**request**
+```
+GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8
+```
+parameter `embedUitpasPrices` is not set.
+
+or
+```
+GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
+
+```
+The `embedUitpasPrices` is explicitely set to `false`.
+
+**response**
+```js
+{
+"priceInfo": [
+    {
+      "category": "base",
+      "name": {
+        "nl": "Basistarief",
+        "fr": "Tarif de base",
+        "en": "Base tariff",
+        "de": "Basisrate"
+      },
+      "price": 10,
+      "priceCurrency": "EUR"
+    }
+  ]
+}
+```
+UiTPAS prices are not included in the JSON response.
+
+
+#### With UiTPAS prices embedded
+**request**
+```
+GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
+```
+
+**response**
+```js
+{
+"priceInfo": [
+    {
+      "category": "base",
+      "name": {
+        "nl": "Basistarief",
+        "fr": "Tarif de base",
+        "en": "Base tariff",
+        "de": "Basisrate"
+      },
+      "price": 10,
+      "priceCurrency": "EUR"
+    },
+    {
+      "category": "uitpas",
+      "name": {
+        "nl": "Kansentarief met UiTPAS Leuven"
+      },
+      "price": 2,
+      "priceCurrency": "EUR"
+    }
+  ]
+}
+```
+The indicative UiTPAS price for the applicable card system UiTPAS Leuven is included in the JSON response.
+
