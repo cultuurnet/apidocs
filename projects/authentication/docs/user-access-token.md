@@ -113,7 +113,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-When the user than performs an action that requires you to make an API call (step 8), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 9):
+When the user then performs an action that requires you to make an API call (step 8), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 9):
 
 ```http
 GET /example HTTP/1.1
@@ -251,7 +251,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-When the user than performs an action that requires you to make an API call (step 9), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 10):
+When the user then performs an action that requires you to make an API call (step 9), you can use the `access_token` to send authenticated requests to publiq's APIs by including it in the `Authorization` header (step 10):
 
 ```http
 GET /example HTTP/1.1
