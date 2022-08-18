@@ -271,7 +271,7 @@ To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 do
 >
 > If you want, you can use the [Single-Page Application (SPA) SDK Libraries](https://auth0.com/docs/libraries#spa) provided by Auth0 to implement this flow in frontend Javascript applications. Native applications can use the [Native and Mobile Application SDK Libraries](https://auth0.com/docs/libraries#native).
 
-## Caching & expiration
+## Caching, expiration, and refreshing
 
 Make sure to **cache and reuse** the obtained user access token for as long as possible.
 
@@ -279,6 +279,41 @@ There are two ways to check if your cached token is still valid:
 
 1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
 2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+
+When your user access token has expired, you can either let the user login again or use the `refresh_token` if you requested one when initiating the user access token flow. (See the [regular web applications example](#example) and/or the [single-page and native applications example](#example-1) for info how to request a refresh token together with the access token).
+
+To exchange the refresh token for a new user access token, your application needs to make the following request to the authorization server:
+
+```http
+POST /oauth/token HTTP/1.1
+Host: https://account-test.uitid.be
+Content-Type: application/json
+
+{
+  "grant_type": "refresh_token",
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET", // Do not include when using PKCE
+  "refresh_token": "YOUR_REFRESH_TOKEN"
+}
+```
+
+An example response for this request looks like:
+
+```http
+HTTP/1.1 200 OK
+
+{
+  "access_token": "eyJz93a...k4laUWw",
+  "id_token": "eyJ0XAi...4faeEoQ",
+  "refresh_token": "GEbRxBN...edjnXbL", // Not always present
+  "token_type": "Bearer",
+  "expires_in": 86400
+}
+```
+
+The `access_token` property will contain a new access token that you can use to make authenticated requests to our APIs.
+
+Depending on whether refresh token rotation is enabled or disabled for your application on the authorization server, you may or may not recieve a new `refresh_token` in the response. If you **did not** recieve a new refresh token, you can re-use the one you already have to renew the access token when it expires. If you **did** recieve a new refresh token, the old one will become invalid and you must use the new one to renew the access token when it expires.
 
 ## Authorization server URLs
 
