@@ -170,7 +170,7 @@ sequenceDiagram
 5.  The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
 6.  The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
 7.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and your previously generated `code_verifier`.
-8.  The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #2 (see [example](#example-1) below).
+8.  The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #3 (see [example](#example-1) below).
 9.  The user performs an action in your application which requires an API call.
 10. Your application uses the access token to make one or more authenticated requests to the API.
 11. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again or use the refresh token to request a new access token without letting the user login again.
