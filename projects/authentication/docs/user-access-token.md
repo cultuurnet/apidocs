@@ -43,7 +43,7 @@ sequenceDiagram
     User-->>Auth server: Login and give consent
     Auth server-->>Client: Redirect back to callback URL with authorization code
     Client->>Auth server: POST /oauth/token with authorization code<br /> and client credentials
-    Auth server-->>Client: 200 OK with access token and optionally refresh token
+    Auth server-->>Client: 200 OK with access token<br /> and optionally refresh token
     loop
         User-->>Client: Performs an action
         Client->>API: Send API request with access token in authorization header
@@ -154,7 +154,7 @@ sequenceDiagram
     User-->>Auth server: Login and give consent
     Auth server-->>Client: Redirect back to callback URL with authorization code
     Client->>Auth server: POST /oauth/token with authorization code,<br /> client id and code_verifier
-    Auth server-->>Client: 200 OK with access token and optionally refresh token
+    Auth server-->>Client: 200 OK with access token<br /> and optionally refresh token
     loop
         User-->>Client: Performs an action
         Client->>API: Send API request with access token in authorization header
