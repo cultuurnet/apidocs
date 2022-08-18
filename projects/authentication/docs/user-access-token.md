@@ -194,7 +194,7 @@ var code_verifier = base64URLEncode(crypto.randomBytes(32));
 function sha256(buffer) {
     return crypto.createHash('sha256').update(buffer).digest();
 }
-var code_challenge = base64URLEncode(sha256(verifier));
+var code_challenge = base64URLEncode(sha256(code_verifier));
 ```
 
 You can find more examples how to do this in various programming languages like **Java, Swift, and Objective-C** in the [Auth0 documentation](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#create-code-verifier).
