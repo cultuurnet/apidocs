@@ -75,9 +75,9 @@ When a user clicks the login link in your application (step 1), your application
       redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
 
 Note that:
--  The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--  The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
--  The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+-   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+-   The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
+-   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
 The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4). 
 
@@ -212,10 +212,10 @@ Next, your application redirects the user to the `/authorize` URL on the authori
 
 
 Note that:
--  The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--  The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
--  The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
--  The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+-   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+-   The `scope` parameter is suggested to always be set to `openid profile email` to get an access token that can be used to fetch the basic information of the logged in user afterwards.
+-   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
+-   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
 The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5). 
 
