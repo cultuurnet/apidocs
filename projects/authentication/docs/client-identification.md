@@ -4,6 +4,8 @@ Some APIs only expose public information and need to be accessible directly from
 
 These APIs only require you to specify the client id of your integration for customization and technical support purposes.
 
+> Not sure if client identification is the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
+
 ## Requirements
 
 -   A client id. See [requesting client credentials](./requesting-credentials.md) how to obtain one.
