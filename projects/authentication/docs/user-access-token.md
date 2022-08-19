@@ -321,7 +321,7 @@ The `refresh_token` property will contain a new refresh token to use when the ne
 
 #### Refresh token expiration
 
-Just like an access token, a refresh token has a limited lifetime. It is usually a relatively long time, for example 30 days, but the lifetime can vary per application and we may always adjust it for new refresh tokens!
+Just like an access token, a refresh token has a limited lifetime. It is usually a relatively long time, for example 30 days. The exact lifetime can vary per application and we may adjust it sometimes for new refresh tokens, so it's best not to hardcode a specific lifetime in your application.
 
 The best way to check if a refresh token is expired is to exchange it for an access token. If the exchange request returns an error response the refresh token is expired and cannot be used anymore. At that point you must let the user login again.
 
