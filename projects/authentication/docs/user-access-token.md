@@ -138,7 +138,7 @@ Native (mobile & desktop) and frontend applications **without a backend** (singl
 
 Native binaries can be decompiled to reveal their secret, and Javascript applications running in the browser cannot store their client secret in a way that prevents an attacker from finding it in the Javascript code, a cookie, local storage, etc when they visit your application.
 
-Therefor these applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*), which makes it possible to request a user access token without a client secret.
+Therefore these applications must use the **Authorization Code Flow with PKCE** (*Proof Key for Code Exchange*), which makes it possible to request a user access token without a client secret.
 
 This flow is largely the same as for [regular web application](#regular-web-applications), the only extra step is the generation of a `code_verifier` and `code_challenge` in step #2, and that you need to include those in some specific other steps that the regular web applications must also do.
 
