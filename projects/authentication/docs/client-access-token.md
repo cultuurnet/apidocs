@@ -16,30 +16,27 @@ If your browser or native application cannot work with user logins via publiq's 
 
 See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials.
 
-## Flow
+## How it works
 
-1.  The client makes a request to the authorization server with its id and secret.
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
+sequenceDiagram
+    autonumber
+    Client->>Auth server: POST /oauth/token with client id and secret
+    Auth server-->>Client: 200 OK with access token
+    Client->>Client: Cache token internally
+    loop
+        Client->>API: Send API request with token in authorization header
+        API-->>Client: 2XX response
+        note over API,Client: If the API returns 401 Unauthorized instead, the token has expired.<br />Go back to step 1 and re-try the request with a new token.
+    end
+```
 
-2.  The authorization server validates the request and, if successful, sends a response with an access token.
-
-3.  The client can now use the access token to call the API by using the obtained access token as a `Bearer` token in the `Authorization` header.
-
-<!-- theme: warning -->
-
-> ##### Security warnings
->
-> *   ✅ **Always** request a client access token from a **backend** application
-> *   ❌ **Never** use or expose your client access token from a **frontend** application
->
-> If you use or store your client secret or client access token in a frontend application they can be **stolen** and **abused** and your client will get blocked!
->
-> If you need to do API calls from a frontend application, use [client identification](./client-identification.md) or a [user access token](./user-access-token.md) depending on which methods the API endpoint accepts.
-
-> ##### OAuth2
->
-> Client access tokens are requested using the standardized [OAuth 2.0 Client Credentials Grant](https://oauth.net/2/grant-types/client-credentials/). If you are familiar with this flow, you can skip most of the example flow below. Do check the info about the required `audience` property though.
-
-## Example
+1.  Your application requests a token on the authorization server with its client id and secret.
+2.  If the client id and secret are valid, the authorization server returns a response with an access token.
+3.  Your application caches the token internally.
+4.  Your application uses the access token to make authenticated requests to the API.
+5.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 
@@ -56,11 +53,9 @@ Content-Type: application/json
 }
 ```
 
-The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They basically act as a username and password to authenticate your client.
-
-The `audience` property must always be set to `https://api.publiq.be`.
-
-Lastly the `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
+-   The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
+-   The `audience` property **must** always be set to `https://api.publiq.be`.
+-   The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
 
 After sending your request you will get a response with a JSON body like this:
 
@@ -82,21 +77,19 @@ Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-<!-- theme: success -->
+## Caching & expiration
 
-> ##### Caching tokens
->
-> Make sure to **cache and reuse** the obtained client access token for as long as possible. Do not request a new access token for each API request you make.
->
-> There are two ways to check if your cached token is still valid:
->
-> 1.  Cache the `expires_in` property included in the token response, and the time that you requested the token. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
-> 2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+Make sure to **cache and reuse** the obtained client access token for as long as possible. Do not request a new access token for each API request you make to avoid rate limiting on the token endpoint.
+
+There are two ways to check if your cached token is still valid:
+
+1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
+2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+
+## Decoding tokens
 
 <!-- theme: warning -->
 
-> ##### Parsing tokens
->
 > **Never** parse a client access token as a JWT, for example to check its expiration time. It is not guaranteed that a client access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
 
 <!-- theme: info -->
@@ -105,7 +98,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 >
 > publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about client access tokens, please refer to the [Auth0 documentation](https://auth0.com/docs/flows#client-credentials-flow).
 
-## Domains
+## Authorization server URLs
 
 The authorization server is available on two domains, one for production and one for testing.
 
@@ -116,7 +109,7 @@ You will need to use the domain of the same environment as the environment of th
 
 For example: To communicate with the test environment of UiTdatabank of UiTPAS, you will need a token from the test environment of the authorization server.
 
-Your client id and secret will also vary per environment.
+Your client id and secret will also vary per environment, and you will need to use the id and secret that correspond with the environment you're integrating with.
 
 ## Try it out!
 
