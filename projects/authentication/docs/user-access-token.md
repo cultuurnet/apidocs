@@ -282,7 +282,9 @@ There are two ways to check if your cached token is still valid:
 
 ## Refresh tokens
 
-When your user access token has expired, you can either let the user login again or use the `refresh_token` if you requested one when initiating the user access token flow. (See the [regular web applications example](#example) and/or the [single-page and native applications example](#example-1) for info how to request a refresh token together with the access token).
+When your user access token has expired, you can either let the user login again or automatically exchange a `refresh_token` for a new user access token. 
+
+A refresh token must be requested when initiating the user access token flow. See the [regular web applications example](#example) and/or the [single-page and native applications example](#example-1) for info how to request a refresh token together with the access token.
 
 To exchange the refresh token for a new user access token, your application needs to make the following request to the authorization server:
 
