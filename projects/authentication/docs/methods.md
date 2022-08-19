@@ -56,7 +56,7 @@ API endpoints that support the authentication of an API client with a client id 
 
 *   ❌ Not suitable for frontend applications
 *   ✅ Suitable for backend applications
-*   ⏱ Expires, but can be renewed automatically
+*   ⏱ Expires, but can be renewed automatically by requesting a new one
 *   🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about client access tokens](./client-access-token.md)
