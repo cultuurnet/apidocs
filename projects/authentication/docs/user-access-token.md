@@ -81,6 +81,8 @@ Note that:
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
+The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
+
 The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4). 
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 5). So the redirect URL will look like:
@@ -221,6 +223,8 @@ Note that:
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
 The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5). 
 
