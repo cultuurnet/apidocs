@@ -305,7 +305,7 @@ HTTP/1.1 200 OK
 {
   "access_token": "eyJz93a...k4laUWw",
   "id_token": "eyJ0XAi...4faeEoQ",
-  "refresh_token": "GEbRxBN...edjnXbL", // Not always present
+  "refresh_token": "GEbRxBN...edjnXbL",
   "token_type": "Bearer",
   "expires_in": 86400
 }
@@ -313,7 +313,7 @@ HTTP/1.1 200 OK
 
 The `access_token` property will contain a new access token that you can use to make authenticated requests to our APIs.
 
-Depending on whether refresh token rotation is enabled or disabled for your application on the authorization server, you may or may not recieve a new `refresh_token` in the response. If you **did not** recieve a new refresh token, you can re-use the one you already have to renew the access token when it expires. If you **did** recieve a new refresh token, the old one will become invalid and you must use the new one to renew the access token when it expires.
+The `refresh_token` property will contain a new refresh token to use when the new access token has expired. The old refresh token that you used to make this request will be invalidated and cannot be used again.
 
 ## Authorization server URLs
 
