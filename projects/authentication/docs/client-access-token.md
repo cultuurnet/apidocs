@@ -79,6 +79,10 @@ Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
+#### More info
+
+publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
+
 ## Caching & expiration
 
 Make sure to **cache and reuse** the obtained client access token for as long as possible. Do not request a new access token for each API request you make to avoid rate limiting on the token endpoint.
@@ -93,12 +97,6 @@ There are two ways to check if your cached token is still valid:
 <!-- theme: warning -->
 
 > **Never** parse a client access token as a JWT, for example to check its expiration time. It is not guaranteed that a client access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
-
-<!-- theme: info -->
-
-> ##### Auth0
->
-> publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about client access tokens, please refer to the [Auth0 documentation](https://auth0.com/docs/flows#client-credentials-flow).
 
 ## Authorization server URLs
 
