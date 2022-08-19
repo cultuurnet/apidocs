@@ -68,6 +68,7 @@ sequenceDiagram
 When a user clicks the login link in your application (step 1), your application redirects them to the following URL (step 2):
 
     https://account-test.uitid.be/authorize?
+      prompt=login&
       audience=https://api.publiq.be&
       scope=openid profile email offline_access&
       response_type=code&
@@ -75,6 +76,7 @@ When a user clicks the login link in your application (step 1), your application
       redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
 
 Note that:
+-   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
@@ -203,6 +205,7 @@ You can find more examples how to do this in various programming languages like 
 Next, your application redirects the user to the `/authorize` URL on the authorization server (step 3):
 
     https://account-test.uitid.be/authorize?
+      prompt=login&
       audience=https://api.publiq.be&
       scope=openid profile email offline_access&
       response_type=code&
@@ -213,6 +216,7 @@ Next, your application redirects the user to the `/authorize` URL on the authori
 
 
 Note that:
+-   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
