@@ -793,31 +793,113 @@ GET /places/?q=status:Unavailable
 **Example**
 
 ### typicalAgeRange
+
+For an in-depth understanding of the different parameters to filter on age information we recommend to read our guide (TO DO: link to guide)
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers`
 
 **Possible values**
 
+A range, consisting of two integers (lower and upper bound), e.g. `[3 TO 5]`
+
 **Example**
 
+Retrieve all events for childeren under 12 years old.
+```
+GET /events/?q=typicalAgeRange:[0 TO 12]
+```
+Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given agerange (e.g. an event for childeren of 10-15 years old)
+
+Retrieve all events exclusively for childeren under 12 years old:
+```
+GET /events/?q=typicalAgeRange:[0 TO 12] NOT typicalAgeRange:[12 TO *]
+```
+
 ### videosCount
+
+With the `videosCount` parameter you can filter events an places by their number of videos.
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` 
 
 **Possible values**
+-   an integer, e.g. `2`
+-   a range, consisting of two integers (lower and upper bound), e.g. `[1 TO *]`
 
-**Example**
+**Examples**
+
+Retrieve all events and places that have at least one video:
+```
+GET /offers/?q=videosCount:>=1
+```
+
+Retrieve all events and places that have exactly one video:
+```
+GET /offers/?q=videosCount:1
+```
+
+Retrieve all events and places that have less than 10 videos:
+```
+GET /offers/?q=videosCount:<10
+```
+
+Retrieve all events and places that have 5 to 10 videos
+```
+GET /offers/?q=videosCount:[5 TO 10]
+```
 
 ### workflowStatus
+
+Use the `workflowStatus` parameter to retrieve documents with a specific `worfklowStatus`.
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` `/organizers`
 
 **Possible values**
 
-**Example**
+For events & places: 
+-   `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
+-   `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place. 
+-   `APPROVED`: the event or place is explicitely approved by a validator. 
+-   `REJECTED`: the event or place is explicitely approved by a validator, e.g. because it is a duplicate or it is not conform the rules of UiTdatabank (TO DO: link to rules). 
+-   `DELETED`: the event or place is deleted.
+
+<!-- Theme:info -->
+> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the default filter for `worfklowStatus` (TO DO: link to guide)
+
+For organizers: 
+-   `ACTIVE`: the organizer is created with all mandatory fields present.
+-   `DELETED`: the organizer is deleted.
+
+<!-- Theme:info -->
+> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the default filter for `worfklowStatus` (TO DO: link to guide)
+
+**Examples**
+
+Retrieve only events that are explicitely approved:
+```
+GET /events/?q=workflowStatus:APPROVED
+```
+
+Retrieve places that are still in `DRAFT`:
+
+```
+GET /places/?q=workflowStatus:DRAFT&workflowStatus=*
+```
+
+Retrieve events and places that are ready for publication in an (online) event agenda:
+```
+GET /offers/?q=workflowStatus:READY_FOR_VALIDATION,APPROVED
+```
+or you can just simply omit the search from the example above, since Search API will return all always results that are ready for publication:
+
+```
+GET /offers
+```
 
 ## Using boolean operators
 With advanced queries it is possible to combine multiple parameters to define a very specific set of events, places or organizers. In order to combine multiple parameters boolean operators should be used:
