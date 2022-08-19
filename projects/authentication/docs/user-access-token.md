@@ -271,7 +271,7 @@ To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 do
 >
 > If you want, you can use the [Single-Page Application (SPA) SDK Libraries](https://auth0.com/docs/libraries#spa) provided by Auth0 to implement this flow in frontend Javascript applications. Native applications can use the [Native and Mobile Application SDK Libraries](https://auth0.com/docs/libraries#native).
 
-## Caching, expiration, and refreshing
+## Caching & expiration
 
 Make sure to **cache and reuse** the obtained user access token for as long as possible.
 
@@ -279,6 +279,8 @@ There are two ways to check if your cached token is still valid:
 
 1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
 2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+
+## Refresh tokens
 
 When your user access token has expired, you can either let the user login again or use the `refresh_token` if you requested one when initiating the user access token flow. (See the [regular web applications example](#example) and/or the [single-page and native applications example](#example-1) for info how to request a refresh token together with the access token).
 
@@ -315,7 +317,7 @@ The `access_token` property will contain a new access token that you can use to 
 
 The `refresh_token` property will contain a new refresh token to use when the new access token has expired. The old refresh token that you used to make this request will be invalidated and cannot be used again.
 
-### Refresh token expiration
+#### Refresh token expiration
 
 Just like an access token, a refresh token has a limited lifetime. It is usually a relatively long time, for example 30 days, but the lifetime can vary per application and we may always adjust it for new refresh tokens!
 
