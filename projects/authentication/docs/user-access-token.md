@@ -315,6 +315,12 @@ The `access_token` property will contain a new access token that you can use to 
 
 The `refresh_token` property will contain a new refresh token to use when the new access token has expired. The old refresh token that you used to make this request will be invalidated and cannot be used again.
 
+### Refresh token expiration
+
+Just like an access token, a refresh token has a limited lifetime. It is usually a relatively long time, for example 30 days, but the lifetime can vary per application and we may always adjust it for new refresh tokens!
+
+The best way to check if a refresh token is expired is to exchange it for an access token. If the exchange request returns an error response the refresh token is expired and cannot be used anymore. At that point you must let the user login again.
+
 ## Authorization server URLs
 
 The authorization server is available on two domains, one for production and one for testing.
