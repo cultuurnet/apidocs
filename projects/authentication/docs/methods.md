@@ -69,7 +69,7 @@ Usually used in situations where a user will log in through publiq's **UiTID** s
 
 *   ✅ Suitable for frontend applications
 *   ✅ Suitable for backend applications
-*   ⏱ Expires and requires your user to log in again through UiTID
+*   ⏱ Expires, but can be renewed automatically with a refresh token
 *   🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about user access tokens](./user-access-token.md)
