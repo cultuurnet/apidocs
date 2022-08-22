@@ -327,16 +327,7 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 
 ## Authorization server URLs
 
-The authorization server is available on two domains, one for production and one for testing.
-
-*   Production: https://account.uitid.be
-*   Testing: https://account-test.uitid.be
-
-You will need to use the domain of the same environment as the environment of the API you're integrating with.
-
-For example: To communicate with the test environment of UiTdatabank of UiTPAS, you will need a token from the test environment of the authorization server.
-
-Your client id and secret will also vary per environment, and you will need to use the id and secret that correspond with the environment you're integrating with.
+See [authorization server URLs](./environments.md).
 
 ## Decoding tokens
 
