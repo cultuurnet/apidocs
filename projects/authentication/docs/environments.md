@@ -1,6 +1,6 @@
 # Authorization server URLs
 
-The authorization server to request [tokens](./methods.md) on is available on two domains, one for the test environment and one for the production environment of our APIs.
+The authorization servers that can be used to request [tokens](./methods.md) are available on two domains, one for the test environment and one for the production environment of our APIs.
 
 *   Test: `https://account-test.uitid.be`
 *   Production: `https://account.uitid.be`
