@@ -56,7 +56,7 @@ API endpoints that support the authentication of an API client with a client id 
 
 *   ❌ Not suitable for frontend applications
 *   ✅ Suitable for backend applications
-*   ⏱ Expires, but can be renewed automatically
+*   ⏱ Expires, but can be renewed automatically by requesting a new one
 *   🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about client access tokens](./client-access-token.md)
@@ -69,17 +69,7 @@ Usually used in situations where a user will log in through publiq's **UiTID** s
 
 *   ✅ Suitable for frontend applications
 *   ✅ Suitable for backend applications
-*   ⏱ Expires and requires your user to log in again through UiTID
+*   ⏱ Expires, but can be renewed automatically with a refresh token
 *   🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about user access tokens](./user-access-token.md)
-
-### Token expiration
-
-Both *client access tokens* and *user access tokens* expire after a period of time. We reserve the ability to change this period of time whenever we see fit, so you should never hardcode this in your app somewhere.
-
-Instead keep using your token until you get a `401` response from an API endpoint, which indicates that the token has expired. Or use the `expires_in` property that is included in the response with your token when you request one to determine the lifetime of the token.
-
-To get a new client access token, you can simply request a new one using your client id and secret as described in [Client access tokens](./client-access-token.md).
-
-To get a new user access token, you will need to let your user login again as described in [User access tokens](./user-access-token.md).
