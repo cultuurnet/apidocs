@@ -1,8 +1,8 @@
 # Advanced queries
 
-With advanced queries you can make more complex queries, using boolean operators and a specific set of parameters. The syntax is based on the Lucene query syntax. More info can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+With advanced queries you can make more complex queries, using boolean operators and a specific set of parameters. 
 
-The usage of advanced query parameters is mandatory when using the widgets.
+The syntax is based on the Lucene query syntax. More info about the syntax can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
 
 ## Parameters
 
@@ -39,7 +39,7 @@ With the `addressLocality` parameter you can limit your results to one or more m
 
 **Applicable on endpoints**
 
-`/events` `/places` `/offers` 
+`/events` `/places` `/offers` `/organizers`
 
 **Possible values**
 
@@ -68,16 +68,16 @@ The `allAges` parameter can be used to filter out events and places that are (no
 
 **Possible values**
 
-`true` `false` `*` (default)
+`true` `false` 
 
 **Examples**
 
-Setting allAges to true only returns events and places that are suitable for all ages:
+Setting allAges to `true` only returns events and places that are suitable for all ages:
 ```
 GET /offers/?q=allAges:true
 ```
 
-Setting allAges to false only returns events and places that are not suitable for all ages:
+Setting allAges to `false` only returns events and places that are not suitable for all ages:
 ```
 GET /offers/?q=allAges:false
 ```
@@ -113,9 +113,9 @@ Using the `availableRange` parameter, you can get all events and places that wer
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the Default Filters (TO DO: link to guide).
 
-Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event.
+Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series).
 
-Places are considered to be permanently available, starting when they are published (or, again, their scheduled publication date has been reached). A small portion of the events is permanent as well, depending on their calendar information.
+Places are considered to be permanently available, starting when they are published (or, again, when their scheduled publication date has been reached). A small portion of the events is permanent as well, depending on their calendar information.
 
 **Applicable on endpoints** 
 
@@ -132,7 +132,8 @@ GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:
 ```
 
 ### attendanceMode
-The attendanceMode indicates whether an event takes places at a physical location, online or both.
+
+The `attendanceMode` indicates whether an event takes places at a physical location, online or both.
 
 **Applicable on endpoints**
 
@@ -140,7 +141,7 @@ The attendanceMode indicates whether an event takes places at a physical locatio
 
 **Possible values** 
 
-`offline` `online` `mixed`
+`offline` `online` `mixed` 
 
 Only events can have an attendance mode different than `offline`.
 
@@ -154,7 +155,7 @@ GET /events/?q=attendanceMode:(online OR mixed)
 
 ### bookingAvailability
 
-The bookingAvailability indicates whether there are still tickets or seats left for an event or not. 
+The `bookingAvailability` indicates whether there are still tickets or seats left for an event or not. 
 
 **Applicable on endpoints**
 
@@ -186,6 +187,8 @@ Every event and place in UiTdatabank has one of the following four calendarTypes
 -   `Multiple`: the event occurs on multiple dates, and has multiple subEvent entries with each a different startDate and endDate.
 -   `Periodic`: the event or place runs for a specific period as indicated by its startDate and endDate, and can optionally have openingHours.
 -   `Permanent`: the event or place is permanent and has no startDate or endDate, but it can optionally have openingHours.
+
+With the `calendarType` parameter you can look for results that match a certain calendarType.
 
 **Applicable on endpoints**
 
@@ -261,7 +264,7 @@ Use the `creator` parameter to search for documents created by a specific creato
 
 **Possible values**
 
-Any valid uuid of a creator.
+Any uuid of a creator.
 
 **Example**
 
@@ -305,7 +308,7 @@ With the `_exists_` parameter you can search for the documents that have a speci
 
 **Possible values**
 
-TO DO: list all possible values
+Any property name from the UiTdatabank JSON scheme.
 
 **Example**
 
@@ -317,9 +320,9 @@ GET /events/?q=_exists_:description.nl
 
 ### id
 
-It is possible to search by an event id, place id or organizer id.
+Retrieve events that match a specific uuid with the `id` parameter. It is possible to search by an event id, place id or organizer id.
 
-A specific Id can be found by
+A specific id can be found by
 -   looking for the value for the `id` property
 ```js
 {
@@ -340,7 +343,7 @@ A specific Id can be found by
 
 **Possible values**
 
-Any valid uuid of an event, place or organizer.
+Any uuid of an event, place or organizer.
 
 **Example**
 
@@ -377,7 +380,7 @@ GET /organizers/?q=imagesCount:[5 TO 10]
 
 ### labels
 
-Search for documents that have a specific label.
+Search for documents that have a specific label with the `labels` parameter.
 
 **Applicable on endpoints**
 
@@ -488,7 +491,7 @@ Using the parameter `location.id` parameter, you can find events that take place
 
 **Possible values**
 
-Any valid uuid of a location.
+Any uuid of a location.
 
 **Example**
 
@@ -626,7 +629,7 @@ GET /events/?q=organizer.name.\*:"ancienne belgique"
 
 ### postalCode
 
-Filter on the postal code of an event, place or organizer.
+Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` parameter.
 
 **Applicable on endpoints**
 
@@ -679,7 +682,7 @@ or
 GET /events/?q=price:[O TO 10]
 ```
 
-Retrieve all events with a price higher than 50 EUR:
+Retrieve all events with a price equal to or higher than 50 EUR:
 ```
 GET /events/?q=priceRange:[50 TO *]
 ```
@@ -692,13 +695,13 @@ Using the `q` parameter, you can search for text across multiple pre-defined fie
 > Important notes:
 > -   IDs only return results if the complete ID is given in the free text input.
 > -   Wildcards are supported. For example, searching for `Fiets*` will return results with Fietsen or Fietseling or Fietstocht, etc.
-> -   By default, the `AND` operator is used between multiple given words. So the query `wandelen dijle fietsen` actually becomes `wandelen AND dijle AND fietsen`
+> -   By default, the `AND` operator is used between multiple given words. So the query `wandelen dijle fietsen` actually becomes `wandelen AND dijle AND fietsen`.
 
 By default the free text search looks for one or more matches with any of the given terms, regardless of their order and/or position in the document’s text:
 ```
 GET /events/?q=lekker vegetarisch
 ```
-both an event with the title `Lekker vegetarisch` and a different event with the title `Vegetarisch eten is niet lekker` would be returned with the query above.
+Both an event with the title `Lekker vegetarisch` and a different event with the title `Vegetarisch eten is niet lekker` would be returned with the query above.
 
 To limit the results to exact matches only, encapsulate the given search term with double quotes:
 ```
@@ -715,6 +718,7 @@ This will only return results that have `lekker vegetarisch` in exactly that ord
 String
 
 **Example**
+
 Search for events that have `The Human League` in exactly that order in their event body:
 ```
 GET /events/?q="The Human League"
@@ -775,26 +779,57 @@ GET /places/?q=status:Unavailable
 ```
 
 ### streetAddress
+
+With the `streetAddress` parameter you can limit your results to a certain street or a specific address.
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` `/organizers`
 
 **Possible values**
 
+A street name and (!) a street number
+
 **Example**
 
+Retrieve all organizers that have are located on Henegouwenkaai 41-43:
+```
+GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
+```
+
 ### terms.id
+
+Each event and place in UiTdatabank is categorized with a type (e.g. `concert` for events or `theater` for places). Events can also have a event theme (e.g. `dance music`). Each of these categories (terms) have a unique identifier.
+
+With the `terms.id` parameter you can filter results based on their categorisation.
+
+A complete overview of our terms can be found on https://taxonomy.uitdatabank.be/terms.
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` 
 
 **Possible values**
 
+See https://taxonomy.uitdatabank.be/terms
+
 **Example**
+
+Retrieve all events with the eventtype `concert`:
+```
+GET /events/?q=terms.id:0.50.4.0.0
+```
+
+Retrieve all events with the eventtype `concert` and that also have the event theme `dance music`:
+```
+GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
+```
 
 ### typicalAgeRange
 
-For an in-depth understanding of the different parameters to filter on age information we recommend to read our guide (TO DO: link to guide)
+Filter out results based on the targetted age group of the event/place with the `typicalAgeRange` parameter.
+
+For an in-depth understanding of the different parameters to filter on age information we recommend to read our guide (TO DO: link to guide).
 
 **Applicable on endpoints**
 
@@ -806,11 +841,11 @@ A range, consisting of two integers (lower and upper bound), e.g. `[3 TO 5]`
 
 **Example**
 
-Retrieve all events for childeren under 12 years old.
+Retrieve all events for childeren under 12 years old:
 ```
 GET /events/?q=typicalAgeRange:[0 TO 12]
 ```
-Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given agerange (e.g. an event for childeren of 10-15 years old)
+Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for childeren of 10-15 years old).
 
 Retrieve all events exclusively for childeren under 12 years old:
 ```
@@ -846,7 +881,7 @@ Retrieve all events and places that have less than 10 videos:
 GET /offers/?q=videosCount:<10
 ```
 
-Retrieve all events and places that have 5 to 10 videos
+Retrieve all events and places that have 5 to 10 videos:
 ```
 GET /offers/?q=videosCount:[5 TO 10]
 ```
@@ -885,7 +920,7 @@ Retrieve only events that are explicitely approved:
 GET /events/?q=workflowStatus:APPROVED
 ```
 
-Retrieve places that are still in `DRAFT`:
+Retrieve places that are still in a draft version:
 
 ```
 GET /places/?q=workflowStatus:DRAFT&workflowStatus=*
@@ -895,39 +930,36 @@ Retrieve events and places that are ready for publication in an (online) event a
 ```
 GET /offers/?q=workflowStatus:READY_FOR_VALIDATION,APPROVED
 ```
-or you can just simply omit the search from the example above, since Search API will return all always results that are ready for publication:
+Or you can just simply omit the search from the example above, since Search API will return all always results that are ready for publication:
 
 ```
 GET /offers
 ```
 
-## Using boolean operators
+## Boolean operators
 With advanced queries it is possible to combine multiple parameters to define a very specific set of events, places or organizers. In order to combine multiple parameters boolean operators should be used:
 - `AND`: is used to narrow the search. Only results that meet all parameters in the AND-combination will be returned.
 - `OR` is used to broaden the search. Results that meet either one (or both parameters) will be returned.
 - `NOT` is used to exclude a set of data. 
 
+**Examples**
 
-### Examples
-#### AND
+Only events that take place in postal code 9000 `AND` that are free too will be returned:
 ```
-/events/?q=address.\*.postalCode:9000 AND price:0
+GET /events/?q=address.\*.postalCode:9000 AND price:0
 ```
-Only events that take place in postal code 9000 and that are free will be returned.
 
-#### OR
+All events that take place in postal code 9000 `OR` the free events that are outside postal code 9000 will be returned:
 ```
-/events/?q=address.\*.postalCode:9000 OR price:0
+GET /events/?q=address.\*.postalCode:9000 OR price:0
 ```
-All events that take place in postal code 9000 and all free events will be returned.
 
-#### NOT
+All events that take place in postal code 9000 will be returned, except (`NOT`) if they are for free:
 ```
-/events/?q=address.\*.postalCode:9000 NOT price:0
+GET /events/?q=address.\*.postalCode:9000 NOT price:0
 ```
-All events that take place in postal code 9000 will be returned, except if they are for free.
 
-### Usage of round brackets
+## Usage of round brackets
 
 Use round brackets in your advanced queries to:
 -   group values that belong to the same parameter 
@@ -935,33 +967,47 @@ Use round brackets in your advanced queries to:
 -   avoid the need to repeat parameters
 -   keep your query simple, clean and more human readable
 
-#### Use round brackets to group values in the query
+### Use round brackets to group values in the query
 
-In the example below, no round brackets are used. Because of this, the parameter `address.\*.postalCode` is repeated 3 times. This is unneccesary and makes the query more dificult to read.
+In the example below, no round brackets are used. Because of this, the parameter `address.\*.postalCode` is repeated 3 times. This is unneccesary and makes the query dificult to read.
 ```
-/events/?q=address.\*.postalCode:9000 OR address.\*.postalCode:1000 OR address.\*.postalCode:2000 OR address.\*.postalCode:3000
+GET /events/?q=address.\*.postalCode:9000 OR address.\*.postalCode:1000 OR address.\*.postalCode:2000 OR address.\*.postalCode:3000
 ```
 
 Round brackets make it possible to group values and avoid the need to repeat parameters. As a result, the query is shorter, more simple and easier to maintain:
 ```
-/events/?q=address.\*.postalCode:(9000 OR 1000 OR 2000 OR 3000)
+GET /events/?q=address.\*.postalCode:(9000 OR 1000 OR 2000 OR 3000)
 ```
 
-#### Use round brackets to specify the order between different parameters
+### Use round brackets to specify the order between different parameters
 
 In the case of more complex queries the correct usage of round brackets is mandatory. 
 
 Imagine you want to retrieve all concerts (term id `0.50.4.0.0`) and expositions (term id `0.0.0.0.0`) that happen in Ghent (postal code `9000`) or Leuven (postal code `3000`).
 
 Therefore, first we need to make 2 OR relations:
--   between the 2 postal code values (because we want to retrieve events from Ghent _or_ Leuven): `address.\*.postalCode:(9000 OR 3000)`
--   between the 2 term id value (because we want to retrieve concerts _or_ expositions): `terms.id:(0.0.0.0.0 OR 0.50.4.0.0)`
+1.   between the 2 postal code values (because we want to retrieve events from Ghent _or_ Leuven): `address.\*.postalCode:(9000 OR 3000)`
+2.   between the 2 term id values (because we want to retrieve concerts _or_ expositions): `terms.id:(0.0.0.0.0 OR 0.50.4.0.0)`
 
 Consequently we need to link both OR-relations with an AND operator:
 ```
 /events/?q=address.\*.postalCode:(9000 OR 3000) AND terms.id:(0.0.0.0.0 OR 0.50.4.0.0)
 ```
-Now your query will return concerts and expositions that either happen in Ghent or Leuven. Without the usage of round brackets you would get incomplete or incorrect results.
+Now the query will return concerts and expositions that either happen in Ghent or Leuven. Without the usage of round brackets you would get incomplete or incorrect results.
+
 
 ## Exact matches and partial matches
 
+You can use double quotes (`"`) to look for exact matches and the asterisk symbol (`*`) for partial matches.
+
+**Examples**
+
+Retrieve all events with the exact string `Alex Agnew - Wake me up when it's over` in its name:
+```
+GET /events/?q=name.\*:"Alex Agnew - Wake me up when it's over"
+```
+
+Retrieve all events containing `Alex Agnew` in its name:
+```
+GET /events/?q=name.\*:*Alex Agnew*
+```
