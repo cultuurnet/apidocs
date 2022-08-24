@@ -788,11 +788,11 @@ With the `streetAddress` parameter you can limit your results to a certain stree
 
 **Possible values**
 
-A street name and (!) a street number
+A street name and (!) a street number.
 
 **Example**
 
-Retrieve all organizers that have are located on Henegouwenkaai 41-43:
+Retrieve all organizers that are located on Henegouwenkaai 41-43:
 ```
 GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 ```
