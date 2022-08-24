@@ -296,7 +296,7 @@ The following table gives an overview of all the required/optional parameters:
 | `code_challenge` | String generated from a cryptographically-random code verifier. | Required if using **PKCE** | See the [PKCE example](#example-1) for more info.
 | `code_challenge_method` | `S256` | Required if using **PKCE** | **Must** be set to `S256`. See the [PKCE example](#example-1) for more info.
 | `prompt` | `none` (default) or `login` | Optional | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server. Useful to force the user to login again, which also makes it possible to switch to another account as before.
-| `referrer` | `museumpas`, `uitdatabank` or `uit` | Optional | A publiq brand, which is used to set the background image of the login page accordingly.
+| `referrer` | `museumpas`, `udb` (for UiTdatabank), `uit` (for UiTinVlaanderen), `uitpas`, or `cultuurkuur` | Optional | A publiq brand, which is used to set the background image of the login page accordingly.
 | `screen` | `login` (default) or `register` | Optional | Determines whether the login or register form is shown. The user may always switch to the other screen themselves.
 | `locale` | `nl` (default), `fr`, or `de` | Optional | Determines the language used in the login/register screens.
 | `email` | A valid email address | Optional | Used to prefill the email field on the login screen.
