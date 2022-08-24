@@ -995,19 +995,3 @@ Consequently we need to link both OR-relations with an AND operator:
 ```
 Now the query will return concerts and expositions that either happen in Ghent or Leuven. Without the usage of round brackets you would get incomplete or incorrect results.
 
-
-## Exact matches and partial matches
-
-You can use double quotes (`"`) to look for exact matches and the asterisk symbol (`*`) for partial matches.
-
-**Examples**
-
-Retrieve all events with the exact string `Alex Agnew - Wake me up when it's over` in its name:
-```
-GET /events/?q=name.\*:"Alex Agnew - Wake me up when it's over"
-```
-
-Retrieve all events containing `Alex Agnew` in its name:
-```
-GET /events/?q=name.\*:*Alex Agnew*
-```
