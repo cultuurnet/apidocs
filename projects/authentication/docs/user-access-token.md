@@ -4,7 +4,7 @@ User access tokens are used to communicate with a publiq API in the name of a us
 
 Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely the same. In both cases you will redirect the user to the authorization server where they can login. Afterward, the user will be redirected back to your application and you will receive an authorization code. With this code you can request a user access token on the authorization server.
 
-> publiq uses [Auth0](https://auth0.com/) as its authentication and authorization server. As they also provide extensive documentation, we link to their documentation in some places on this page.
+> Not sure if user access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
 ## Requirements
 
@@ -68,6 +68,7 @@ sequenceDiagram
 When a user clicks the login link in your application (step 1), your application redirects them to the following URL (step 2):
 
     https://account-test.uitid.be/authorize?
+      prompt=login&
       audience=https://api.publiq.be&
       scope=openid profile email offline_access&
       response_type=code&
@@ -75,9 +76,12 @@ When a user clicks the login link in your application (step 1), your application
       redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
 
 Note that:
+-   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
 The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4). 
 
@@ -124,7 +128,7 @@ Authorization: Bearer eyJz93a...k4laUWw
 
 #### More info
 
-To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
+publiq uses [Auth0](https://auth0.com/) as its authentication and authorization server. To learn more about the Authorization Code Flow, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow).
 
 <!-- theme: success -->
 
@@ -203,6 +207,7 @@ You can find more examples how to do this in various programming languages like 
 Next, your application redirects the user to the `/authorize` URL on the authorization server (step 3):
 
     https://account-test.uitid.be/authorize?
+      prompt=login&
       audience=https://api.publiq.be&
       scope=openid profile email offline_access&
       response_type=code&
@@ -213,10 +218,13 @@ Next, your application redirects the user to the `/authorize` URL on the authori
 
 
 Note that:
+-   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
 -   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
 -   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
 The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5). 
 
@@ -263,13 +271,46 @@ Authorization: Bearer eyJz93a...k4laUWw
 
 #### More info
 
-To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce).
+publiq uses [Auth0](https://auth0.com/) as its authentication and authorization server. To learn more about the Authorization Code Flow with PKCE, see the [the Auth0 documentation](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce).
 
 <!-- theme: success -->
 
 > ##### SDK
 >
 > If you want, you can use the [Single-Page Application (SPA) SDK Libraries](https://auth0.com/docs/libraries#spa) provided by Auth0 to implement this flow in frontend Javascript applications. Native applications can use the [Native and Mobile Application SDK Libraries](https://auth0.com/docs/libraries#native).
+
+## Login parameters
+
+When you redirect your user to the `/authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
+
+The following table gives an overview of all the required/optional parameters:
+
+
+| Parameter name | Possible values | Required? | Description
+|---------|----------|---------|---------
+| `audience` | `https://api.publiq.be` | **Required** | Determines which APIs your token will be usable on. Because Auth0 only supports one audience per token, we use a generic URL single for all our different APIs. Note that in reality your token will only be usable on the APIs that your client has access to.
+| `response_type` | `code` | **Required** | Indicates which OAuth2 grant type will be used. **Must** be set to `code` for the "Authorization Code" flows documented on this page.
+| `client_id` | Your application's client id | **Required** | Used to validate the authorization code when exchanging it for a user access token.
+| `scope` | A space-delimited string with one or more of the following values: `openid`, `profile`, `email`, `offline_access` | **Required** | Determines which user info will be shared with your application, and if you want a refresh token or not. Suggested to always be set to `openid profile email offline_access` for best results.
+| `redirect_uri` | For example `https://your-application.com/authorize` | **Required** | A URL of your application starting with `https://` to redirect the user back to after logging in. A `code` query parameter with the authorization code that can be exchanged for a user access token by your application will be appended at the end.
+| `code_challenge` | String generated from a cryptographically-random code verifier. | Required if using **PKCE** | See the [PKCE example](#example-1) for more info.
+| `code_challenge_method` | `S256` | Required if using **PKCE** | **Must** be set to `S256`. See the [PKCE example](#example-1) for more info.
+| `prompt` | `none` (default) or `login` | Optional | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server. Useful to force the user to login again, which also makes it possible to switch to another account as before.
+| `referrer` | `museumpas`, `udb` (for UiTdatabank), `uit` (for UiTinVlaanderen), `uitpas`, or `cultuurkuur` | Optional | A publiq brand, which is used to set the background image of the login page accordingly.
+| `screen` | `login` (default) or `register` | Optional | Determines whether the login or register form is shown. The user may always switch to the other screen themselves.
+| `locale` | `nl` (default), `fr`, or `de` | Optional | Determines the language used in the login/register screens.
+| `email` | A valid email address | Optional | Used to prefill the email field on the login screen.
+| `fixed_email` | A valid email address | Optional | Used to prefill the email field on the login and register screens, and disables the email field so the user cannot edit it. The user **must** login or register with this email address.
+| `first_name` |  | Optional | Used to prefill the first name field on the register screen.
+| `birthdate` | Date in `YYYY-MM-DD` format, for example `1990-02-28` | Optional | Used to prefill the date of birth field on the register screen.
+| `country` | Two-letter country code. Supported: `be`, `nl`, `at`, `bg`, `hr`, `cy`, `cz`, `dk`, `ee`, `fi`, `fr`, `de`, `gr`, `hu`, `ie`, `it`, `lv`, `lu`, `mt`, `pl`, `pt`, `ro`, `sk`, `si`, `es`, `se`, `gb` | Optional | Used to prefill the country field on the register screen.
+| `postal_code` | String. If a Belgian postal code, 4 digits | Optional | Used to prefill the postal code field on the register screen.
+| `gender` | `MALE`, `FEMALE`, or `X` | Optional | Used to prefill the gender field on the register screen.
+| `ui_type` | `minimal` | Optional | Switches the login screen to a minimal form with only email and password fields. Only useful in very specific cases like a POS device for museumPASSmusées.
+| `show_steps` | `true` (default) or `false` | Optional | Shows the steps header if set to `true` (Stap 1/2, Stap 2/2)
+| `return_if_cancelled` | For example `https://your-application.com` | Optional | A URL of your application starting with `https://` to redirect the user back to if the cancel the login. If not provided, we will attempt to redirect the user to a suitable URL of your application.
+| `product_display_name` | Human-readable name of your application | Optional | Used in some copy, for example "Je wordt teruggebracht naar \<your application name\>"
+| `skip_verify_legacy` | `true` or `false` (default) | Optional | By default, users that created an account before personal details like date of birth could be added during registration are prompted to add this info after logging in. However when this parameter is set to `true`, this step will be skipped for those users.
 
 ## Caching & expiration
 
