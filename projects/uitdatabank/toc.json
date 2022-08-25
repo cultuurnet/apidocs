@@ -31,6 +31,12 @@
         },
         {
           "type": "item",
+          "title": "Embedding",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
+        },
+        {
+          "type": "item",
           "title": "Pagination",
           "uri": "/docs/search-api/pagination.md",
           "slug": "search-api/pagination"
