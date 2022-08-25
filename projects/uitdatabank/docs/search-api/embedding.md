@@ -36,7 +36,7 @@ or
 
 **response**
 
-The response contains a list of links to the individual search results.
+The response contains a list of links to the individual search results:
 
 ```json
 {
@@ -66,7 +66,7 @@ The response contains a list of links to the individual search results.
 
 **response**
 
-The response contains actual JSON-LD documents.
+The response contains actual JSON-LD documents:
 
 ```json
 {
@@ -312,16 +312,11 @@ Every result in the response will have a `calendarSummary` property with a value
 
 ## Embedding UiTPAS prices
 
-By default UiTPAS prices are hidden from the response from Search API. You can easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
-
-> The UiTPAS prices in Search API are only an indicative price per card system.
-> 
-> If you want to retrieve the UiTPAS price that is applicable for a specific card holder, you need to integrate with the [UiTPAS API](https://docs.publiq.be/docs/uitpas/10fe6e0c22c8b-retrieve-new-membership-prices).
+Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
 
 <!-- theme: warning -->
-> At the time of writing the `embedUitpasPrices` parameter defaults to `false`, but in the foreseeable future the default value for the parameter will become `true`. 
-> 
-> If you do not want to retrieve the UiTPAS prices from Search API in the future for some reason, you'll have to set the `embedUitpasPrices` explicitely to `false`.
+> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
+
 
 ### Applicable URLs
 
@@ -334,19 +329,16 @@ By default UiTPAS prices are hidden from the response from Search API. You can e
 #### Without UiTPAS prices embedded
 
 **request**
-```
-GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8
-```
-parameter `embedUitpasPrices` is not set.
 
-or
+Set the `embedUitpasPrices` parameter to `false`:
+
 ```
 GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
-
 ```
-The `embedUitpasPrices` is explicitely set to `false`.
 
 **response**
+
+UiTPAS prices are not included in the JSON response:
 ```js
 {
 "priceInfo": [
@@ -364,16 +356,19 @@ The `embedUitpasPrices` is explicitely set to `false`.
   ]
 }
 ```
-UiTPAS prices are not included in the JSON response.
-
 
 #### With UiTPAS prices embedded
 **request**
+
+Set the `embedUitpasPrices` parameter to `true`:
 ```
 GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
 ```
 
 **response**
+
+The indicative UiTPAS price for the applicable card system UiTPAS Leuven is included in the JSON response:
+
 ```js
 {
 "priceInfo": [
@@ -399,5 +394,5 @@ GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
   ]
 }
 ```
-The indicative UiTPAS price for the applicable card system UiTPAS Leuven is included in the JSON response.
+
 
