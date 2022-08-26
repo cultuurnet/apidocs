@@ -87,6 +87,28 @@ Setting allAges to `*` returns both events and places that are suitable for all 
 GET /offers/?q=allAges:*
 ```
 
+### attendanceMode
+
+The `attendanceMode` indicates whether an event takes places at a physical location, online or both.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` 
+
+**Possible values** 
+
+`offline` `online` `mixed` 
+
+Only events can have an attendance mode different than `offline`.
+
+**Example**
+
+In the example below, all events that take place completely or partially online will be returned:
+
+```
+GET /events/?q=attendanceMode:(online OR mixed)
+```
+
 ### audienceType
 
 With the `audienceType` parameter you can limit your results that are targetted to a specific audience.
@@ -129,28 +151,6 @@ Any dateFrom and dateTo date in ISO-8601.
 
 ```
 GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:59\:59%2B01\:00]&availableFrom=*&availableTo=*
-```
-
-### attendanceMode
-
-The `attendanceMode` indicates whether an event takes places at a physical location, online or both.
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` 
-
-**Possible values** 
-
-`offline` `online` `mixed` 
-
-Only events can have an attendance mode different than `offline`.
-
-**Example**
-
-In the example below, all events that take place completely or partially online will be returned:
-
-```
-GET /events/?q=attendanceMode:(online OR mixed)
 ```
 
 ### bookingAvailability
