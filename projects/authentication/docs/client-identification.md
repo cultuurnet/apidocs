@@ -2,11 +2,19 @@
 
 Some APIs only expose public information and need to be accessible directly from a browser, like UiTdatabank's Search API or the UiTPAS advantages search.
 
-These APIs only require you to specify the client id of your integration for customization and technical support purposes. For example your client id can have a custom default query in Search API 3 to always filter out search results that are irrelevant to your integration.
+These APIs only require you to specify the client id of your integration for customization and technical support purposes.
 
-You can specify your client id in requests to these APIs in two ways.
+> Not sure if client identification is the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
-## Via header
+## Requirements
+
+-   A client id. See [requesting client credentials](./requesting-credentials.md) how to obtain one.
+
+## Usage
+
+You can include your client id in your requests to our APIs in two ways.
+
+### Via header
 
 You can specify your client id as an `x-client-id` HTTP header. For example on Search API 3:
 
@@ -16,7 +24,9 @@ Host: https://search-test.uitdatabank.be
 X-Client-Id: YrgBoha6aRSrfIcsFt8PISe4u0EoM45k
 ```
 
-Using a header can be helpful to only have to set it once depending on the programming language and/or HTTP library you are using. It also reduces the URL size.
+Note that the name of the `x-client-id` header is case insensitive, like every header name.
+
+> The `x-client-id` header is useful in code because a lot of HTTP libraries allow you to specify default headers to include in every request, so you do not need to repeat it in multiple places in your code.
 
 #### Try it!
 
@@ -32,7 +42,7 @@ Fill in your client id in the form below and send your request to try it out!
 }
 ```
 
-## Via query parameter
+### Via query parameter
 
 Alternatively you can specify a `clientId` URL query parameter instead of an HTTP header. For example on Search API 3:
 
@@ -41,7 +51,7 @@ GET /events/?clientId=YrgBoha6aRSrfIcsFt8PISe4u0EoM45k HTTP/1.1
 Host: https://search-test.uitdatabank.be
 ```
 
-Using a query parameter can be helpful for link sharing or when doing quick manual tests.
+> The `?clientId=...` query parameter is mostly useful when doing manual requests, for example in a browser, because you just need to include the client id in the URL that you are requesting.
 
 #### Try it!
 
@@ -56,9 +66,3 @@ Fill in your client id in the form below and send your request to try it out!
   }
 }
 ```
-
-## When to use which method
-
-When using client identification from a **frontend application** it is advisable to use the `clientId` query parameter because using the `x-client-id` header requires [CORS](./cors.md), while using an extra query parameter doesn't.
-
-If you are using client identification on requests from a **backend application**, you can choose whatever method you like best. Using the `x-client-id` header might be easier in some HTTP libraries because you can usually define some global headers that you want to send for every request, but this depends on the programming language and HTTP library.

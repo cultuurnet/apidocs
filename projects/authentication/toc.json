@@ -11,6 +11,11 @@
       "uri": "docs/requesting-credentials.md"
     },
     {
+      "type": "item",
+      "title": "Authorization server URLs",
+      "uri": "docs/environments.md"
+    },
+    {
       "type": "divider",
       "title": "Authentication methods"
     },
