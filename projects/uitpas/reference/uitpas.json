@@ -3116,7 +3116,7 @@
     },
     "/rewards": {
       "get": {
-        "x-internal": true,
+        "x-internal": false,
         "summary": "Search rewards",
         "operationId": "get-rewards",
         "responses": {

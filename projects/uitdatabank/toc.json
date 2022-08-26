@@ -37,9 +37,27 @@
         },
         {
           "type": "item",
+          "title": "Embedding",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
+        },
+        {
+          "type": "item",
+          "title": "Pagination",
+          "uri": "/docs/search-api/pagination.md",
+          "slug": "search-api/pagination"
+        },
+        {
+          "type": "item",
           "title": "Sorting",
           "uri": "/docs/search-api/sorting.md",
           "slug": "search-api/sorting"
+        },
+        {
+          "type": "item",
+          "title": "Facets",
+          "uri": "/docs/search-api/facets.md",
+          "slug": "search-api/facets"
         }
       ]
     },

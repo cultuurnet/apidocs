@@ -83,7 +83,7 @@ A `POST` request can be repeated, but this can have side-effects like creating t
 
 A relatively common scenario that this can happen in is if an API call is disrupted in transit and the API client did not recieve a response. The client might in that case retry the same request, but if the initial request was processed than the same resource can be created twice.
 
-If this causes a lot of issues, APIs may implement [idempotency](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent) on `POST` requests using [the `Idempotency-Key` header](https://tools.ietf.org/id/draft-idempotency-header-01.html#name-the-idempotency-http-reques).
+If this causes a lot of issues, APIs may implement [idempotency](https://developer.mozilla.org/en-US/docs/Glossary/Idempotent) on `POST` requests using [the `Idempotency-Key` header](https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/).
 
 **GET**
 
@@ -117,7 +117,7 @@ The `PATCH` method is used to do partial updates of existing resources on an API
 
 This contrasts with `PUT` which does updates using a complete representation of the resource, and must always be idempotent.
 
-The `PATCH` method must not be used yet on APIs built by/for publiq, until we have agreed on a standardized approach like using [JSON PATCH](http://jsonpatch.com/) or [Merge PATCH](https://tools.ietf.org/id/draft-snell-merge-patch-02.html).
+The `PATCH` method should be avoided on APIs built by/for publiq, until we have agreed on a standardized approach like using [JSON PATCH](http://jsonpatch.com/) or [Merge PATCH](https://datatracker.ietf.org/doc/rfc7396/).
 
 **DELETE**
 
