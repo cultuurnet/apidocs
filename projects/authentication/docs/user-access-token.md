@@ -374,4 +374,4 @@ See [authorization server URLs](./environments.md).
 
 <!-- theme: warning -->
 
-> **Never** parse a client access token as a JWT, for example to check its expiration time. It is not guaranteed that a client access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
+> **Never** parse a user **access** token as a JWT, for example to check its expiration time. It is not guaranteed that a user access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
