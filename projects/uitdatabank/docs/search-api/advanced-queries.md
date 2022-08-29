@@ -1,6 +1,6 @@
 # Advanced queries
 
-With advanced queries you can make more complex queries, using boolean operators and a specific set of parameters. 
+With advanced queries you can make more complex queries, using boolean operators, search keywords and/or specific field values, and grouping.
 
 The syntax is based on the Lucene query syntax. More info about the syntax can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
 
