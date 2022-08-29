@@ -281,7 +281,7 @@ publiq uses [Auth0](https://auth0.com/) as its authentication and authorization 
 
 ## Login parameters
 
-When you redirect your user to the `/authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
+When you redirect your user to the `GET /authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
 
 The following table gives an overview of all the required/optional parameters:
 
