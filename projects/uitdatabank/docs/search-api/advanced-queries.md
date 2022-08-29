@@ -10,7 +10,7 @@ The syntax is based on the Lucene query syntax. More info about the syntax can b
 
 With the `addressCountry` parameter you can limit your results to one or more countries. 
 
-> By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the defaultfilter for addressCountry. You can reset this default as described in the Default Filters (TO DO: link to guide).
+> By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](./default-filters.md).
 
 **Applicable on endpoints** 
 
