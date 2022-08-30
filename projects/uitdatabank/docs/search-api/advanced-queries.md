@@ -4,11 +4,11 @@ With advanced queries you can make more complex queries, using boolean operators
 
 The syntax is based on the Lucene query syntax. More info about the syntax can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
 
-## Parameters
+## Supported fields
 
 ### addressCountry
 
-With the `addressCountry` parameter you can limit your results to one or more countries. 
+With the `addressCountry` field you can limit your results to one or more countries. 
 
 > By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](./default-filters.md).
 
@@ -18,7 +18,7 @@ With the `addressCountry` parameter you can limit your results to one or more co
 
 **Possible values**
 
-The value for this parameter should always be an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
+The value for this field should always be an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
 
 **Examples**
 
@@ -35,7 +35,7 @@ GET /places/?q=address.\*.addressCountry:BE
 
 ### addressLocality
 
-With the `addressLocality` parameter you can limit your results to one or more municipalities.
+With the `addressLocality` field you can limit your results to one or more municipalities.
 
 **Applicable on endpoints**
 
@@ -60,7 +60,7 @@ GET /places/?q=address.\*.addressLocality:Bruxelles
 
 ### allAges
 
-The `allAges` parameter can be used to filter out events and places that are (not) suitable for all ages.
+The `allAges` field can be used to filter out events and places that are (not) suitable for all ages.
 
 **Applicable on endpoints**
 
@@ -111,7 +111,7 @@ GET /events/?q=attendanceMode:(online OR mixed)
 
 ### audienceType
 
-With the `audienceType` parameter you can limit your results that are targetted to a specific audience.
+With the `audienceType` field you can limit your results that are targetted to a specific audience.
 
 > By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the defaultfilter for audienceType. You can reset this default as described in the Default Filters (TO DO: link to guide).
 
@@ -131,7 +131,7 @@ GET /events/q=audienceType:members&audienceType=*
 
 ### availableRange
 
-Using the `availableRange` parameter, you can get all events and places that were available in a given range in the past, or will be available in a given range in the future.
+Using the `availableRange` field, you can get all events and places that were available in a given range in the past, or will be available in a given range in the future.
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the Default Filters (TO DO: link to guide).
 
@@ -188,7 +188,7 @@ Every event and place in UiTdatabank has one of the following four calendarTypes
 -   `Periodic`: the event or place runs for a specific period as indicated by its startDate and endDate, and can optionally have openingHours.
 -   `Permanent`: the event or place is permanent and has no startDate or endDate, but it can optionally have openingHours.
 
-With the `calendarType` parameter you can look for results that match a certain calendarType.
+With the `calendarType` field you can look for results that match a certain calendarType.
 
 **Applicable on endpoints**
 
@@ -210,7 +210,7 @@ GET /offers/?q=calendarType:permanent
 
 All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch, content editors can use UiTdatabank to translate the name and description of their documents in French (FR), German (DE) and English (EN). The API supports translations in every [two-letter language ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
-You can use the `completedLanguages` parameter to only look for documents that are fully translated to a specific language.
+You can use the `completedLanguages` field to only look for documents that are fully translated to a specific language.
 
 > Note that if an optional field is left empty in all languages, a translation can still be considered to be complete if all other fields that have a value are translated.
 
@@ -231,7 +231,7 @@ GET /oragnizers/?q=completedLanguages:en
 
 ### created
 
-UiTdatabank keeps track of the creation dates of each document. This metadata for the creation date can be queried with the `created` parameter.
+UiTdatabank keeps track of the creation dates of each document. This metadata for the creation date can be queried with the `created` field.
 
 **Applicable on endpoints**
 
@@ -253,7 +253,7 @@ GET /offers/?q=created:[2022-01-01T00\:00\:00%2B01\:00 TO *]
 
 ### creator
 
-Use the `creator` parameter to search for documents created by a specific creator.
+Use the `creator` field to search for documents created by a specific creator.
 
 <!-- theme: warning --> 
 > At the time of writing, creator can contain a nickname or emailaddress. In the near future creator will only contain the uuid.
@@ -276,7 +276,7 @@ GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
 
 ### dateRange
 
-Using the `dateRange` parameter, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
+Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the Default Filters (TO DO: link to guide).
 
@@ -300,7 +300,7 @@ GET /events/?q=dateRange:[2020-01-01T00\:00\:00%2B01\:00 TO 2021-12-31T23\:59\:5
 
 ### \_exists_
 
-With the `_exists_` parameter you can search for the documents that have a specific property in their JSON body.
+With the `_exists_` field you can search for the documents that have a specific property in their JSON body.
 
 **Applicable on endpoints**
 
@@ -320,7 +320,7 @@ GET /events/?q=_exists_:description.nl
 
 ### id
 
-Retrieve events that match a specific uuid with the `id` parameter. It is possible to search by an event id, place id or organizer id.
+Retrieve events that match a specific uuid with the `id` field. It is possible to search by an event id, place id or organizer id.
 
 A specific id can be found by
 -   looking for the value for the `id` property
@@ -328,6 +328,7 @@ A specific id can be found by
 {
    "id": "75573a64-ddc8-4fd0-8b07-d258939dd74f"
 }
+
 ```
 -   extracting the UUID from the @id property in the JSON-LD projection
 
@@ -354,9 +355,9 @@ GET /offers/?q=id:75573a64-ddc8-4fd0-8b07-d258939dd74f
 
 ### imagesCount
 
-With the `imagesCount` parameter you can filter organizers by their number of images.
+With the `imagesCount` field you can filter organizers by their number of images.
 
-> This parameter can only be used to filter on organizers. To filter events and places by their number of images (mediaObjects), the parameter `mediaObjectsCount` should be used.
+> This field can only be used to filter on organizers. To filter events and places by their number of images (mediaObjects), the field `mediaObjectsCount` should be used.
 
 **Applicable on endpoints**
 
@@ -380,7 +381,11 @@ GET /organizers/?q=imagesCount:[5 TO 10]
 
 ### labels
 
+<<<<<<< HEAD
+Search for documents that have a specific label with the `labels` field.
+=======
 Search for documents that have a specific label (or hidden label) with the `labels` parameter.
+>>>>>>> b52c705c8e68707cb8a713bc93287b86f9a2e92a
 
 **Applicable on endpoints**
 
@@ -401,9 +406,9 @@ GET /events/?q=labels:UiTPAS*
 
 All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch, content editors can use UiTdatabank to translate the name and description of their documents in French (FR), German (DE) and English (EN). The API supports translations in every [two-letter language ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
-To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` parameter.
+To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` field.
 
-For an in-depth understanding of the languages parameters and translations we advice you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advice you to read our Language guide. (TO DO: link naar guide)
 
 **Applicable on endpoints**
 
@@ -422,9 +427,9 @@ GET /offers/?q=languages:("fr" OR "de")
 
 ### localTimeRange
 
-With the `localtimeRange` parameter it is possible to filter out events that are happening on a specific part of the day, regardless of the day or date of the event. 
+With the `localtimeRange` field it is possible to filter out events that are happening on a specific part of the day, regardless of the day or date of the event. 
 
-Typically this parameter is used to filter out events that are happening:
+Typically this field is used to filter out events that are happening:
 -   in the morning
 -   in the afternoon
 -   in the evening
@@ -464,7 +469,7 @@ GET /events/?q=localTimeRange:[0000 TO 0559]
 
 ### location.name
 
-Using the parameter `location.name`, you can find events that take place on a certain location.
+Using the field `location.name`, you can find events that take place on a certain location.
 
 **Applicable on endpoints**
 
@@ -483,7 +488,7 @@ GET /events/?q=location.name.\*:"ancienne belgique"
 
 ### location.id
 
-Using the parameter `location.id` parameter, you can find events that take place on a certain location.
+Using the field `location.id` field, you can find events that take place on a certain location.
 
 **Applicable on endpoints**
 
@@ -502,7 +507,7 @@ GET /events/?q=location.id:a0368d10-ded0-4925-b94a-2835f73e255e
 
 ### location.terms.id
 
-Using the `location.terms.id` parameter you can filter out events that take place on a specific type of location.
+Using the `location.terms.id` field you can filter out events that take place on a specific type of location.
 
 **Applicable on endpoints**
 
@@ -524,7 +529,7 @@ GET /events/?q=location.terms.id:8.70.0.0.0
 
 Traditionally, each document created in UiTdatabank starts as Dutch and can then be translated to other languages. However, it is possible to create an event, place or organizer in a different language. The `mainLanguage` property indicates in which language the main content of the document is.
 
-For an in-depth understanding of the languages parameters and translations we advice you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advice you to read our Language guide. (TO DO: link naar guide)
 
 **Applicable on endpoints**
 
@@ -543,9 +548,9 @@ GET /events/?q=mainLanguage:fr
 ```
 
 ### mediaObjectsCount 
-With the `mediaObjectsCount` parameter you can filter events and places by their number of images.
+With the `mediaObjectsCount` field you can filter events and places by their number of images.
 
-> This parameter can only be used to filter on events and places. To filter organizers by their number of images, the parameter `imagesCount` should be used.
+> This field can only be used to filter on events and places. To filter organizers by their number of images, the field `imagesCount` should be used.
 
 **Applicable on endpoints**
 
@@ -569,7 +574,7 @@ GET /events/?q=mediaObjectsCount:[5 TO 10]
 
 ### modified
 
-UiTdatabank keeps track of the modification date of each document. This metadata for the modification date can be queried with the `modified` parameter.
+UiTdatabank keeps track of the modification date of each document. This metadata for the modification date can be queried with the `modified` field.
 
 **Applicable on endpoints**
 
@@ -591,7 +596,7 @@ GET /offers/?q=modified:[2022-01-01T00\:00\:00%2B01\:00 TO *]
 
 ### name
 
-Using the parameter `name`, you can find events by their name (title).
+Using the field `name`, you can find events by their name (title).
 
 **Applicable on endpoints**
 
@@ -610,7 +615,7 @@ GET /events/?q=name.\*:*Soulwax*
 
 ### organizer.name
 
-Using the parameter `organizer.name`, you can find events and places that take are organized by a certain organizer.
+Using the field `organizer.name`, you can find events and places that take are organized by a certain organizer.
 
 **Applicable on endpoints**
 
@@ -629,7 +634,7 @@ GET /events/?q=organizer.name.\*:"ancienne belgique"
 
 ### postalCode
 
-Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` parameter.
+Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` field.
 
 **Applicable on endpoints**
 
@@ -652,9 +657,9 @@ GET /events/?q=address.\*.postalCode:90*
 
 ### price
 
-Search for an exact price or a price range with the `price` parameter.
+Search for an exact price or a price range with the `price` field.
 
-Currently a price parameter is always treated as EUR.
+Currently a price field is always treated as EUR.
 
 **Applicable on endpoints**
 
@@ -687,43 +692,6 @@ Retrieve all events with a price equal to or higher than 50 EUR:
 GET /events/?q=priceRange:[50 TO *]
 ```
 
-### q (free text search)
-
-Using the `q` parameter, you can search for text across multiple pre-defined fields. The following fields will be searched when the q parameter with free text: `id`, `name`, `description`, `labels`, `terms.id`, `terms.label`, `addressLocality`, `postalCode`, `streetAddress`, `location.id`, `location.name`, `organizer.id`, `organizer.name`.
-
-<!-- theme: info -->
-> Important notes:
-> -   IDs only return results if the complete ID is given in the free text input.
-> -   Wildcards are supported. For example, searching for `Fiets*` will return results with Fietsen or Fietseling or Fietstocht, etc.
-> -   By default, the `AND` operator is used between multiple given words. So the query `wandelen dijle fietsen` actually becomes `wandelen AND dijle AND fietsen`.
-
-By default the free text search looks for one or more matches with any of the given terms, regardless of their order and/or position in the document’s text:
-```
-GET /events/?q=lekker vegetarisch
-```
-Both an event with the title `Lekker vegetarisch` and a different event with the title `Vegetarisch eten is niet lekker` would be returned with the query above.
-
-To limit the results to exact matches only, encapsulate the given search term with double quotes:
-```
-GET /events/?q="lekker vegetarisch"
-```
-This will only return results that have `lekker vegetarisch` in exactly that order in their event body.
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-**Possible values**
-
-String
-
-**Example**
-
-Search for events that have `The Human League` in exactly that order in their event body:
-```
-GET /events/?q="The Human League"
-```
-
 ### regions
 
 publiq has a list of pre-indexed geographical shapes that represent the administrative state of Belgium. The geographical coördinates of events and places are then matched with pre-indexed geographical shapes for:
@@ -732,7 +700,7 @@ publiq has a list of pre-indexed geographical shapes that represent the administ
 -   Municipalities
 -   Submunicipalities
 
-With the `regions` parameter you can filter on either one region or a combination of regions.
+With the `regions` field you can filter on either one region or a combination of regions.
 
 <!-- theme:info -->
 > Filtering by region uses a cache in advanced queries, which is faster but may be slightly out of date. The URL parameter on the other hand does the filtering on-demand, which is slower but always up to date.
@@ -756,7 +724,7 @@ GET /places/?q=regions:nis-01000
 
 The `status` indicates whether an event or place is still available for visits or not. 
 
-For an in-depth understanding of the `status` parameter we advice to read our guide (TO DO: link to guide).
+For an in-depth understanding of the `status` field we advice to read our guide (TO DO: link to guide).
 
 **Applicable on endpoints**
 
@@ -780,7 +748,7 @@ GET /places/?q=status:Unavailable
 
 ### streetAddress
 
-With the `streetAddress` parameter you can limit your results to a certain street or a specific address.
+With the `streetAddress` field you can limit your results to a certain street or a specific address.
 
 **Applicable on endpoints**
 
@@ -801,7 +769,7 @@ GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 
 Each event and place in UiTdatabank is categorized with a type (e.g. `concert` for events or `theater` for places). Events can also have a event theme (e.g. `dance music`). Each of these categories (terms) have a unique identifier.
 
-With the `terms.id` parameter you can filter results based on their categorisation.
+With the `terms.id` field you can filter results based on their categorisation.
 
 A complete overview of our terms can be found on https://taxonomy.uitdatabank.be/terms.
 
@@ -827,9 +795,9 @@ GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
 
 ### typicalAgeRange
 
-Filter out results based on the targetted age group of the event/place with the `typicalAgeRange` parameter.
+Filter out results based on the targetted age group of the event/place with the `typicalAgeRange` field.
 
-For an in-depth understanding of the different parameters to filter on age information we recommend to read our guide (TO DO: link to guide).
+For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (TO DO: link to guide).
 
 **Applicable on endpoints**
 
@@ -854,7 +822,7 @@ GET /events/?q=typicalAgeRange:[0 TO 12] NOT typicalAgeRange:[12 TO *]
 
 ### videosCount
 
-With the `videosCount` parameter you can filter events an places by their number of videos.
+With the `videosCount` field you can filter events an places by their number of videos.
 
 **Applicable on endpoints**
 
@@ -888,7 +856,7 @@ GET /offers/?q=videosCount:[5 TO 10]
 
 ### workflowStatus
 
-Use the `workflowStatus` parameter to retrieve documents with a specific `worfklowStatus`.
+Use the `workflowStatus` field to retrieve documents with a specific `worfklowStatus`.
 
 **Applicable on endpoints**
 
@@ -937,9 +905,9 @@ GET /offers
 ```
 
 ## Boolean operators
-With advanced queries it is possible to combine multiple parameters to define a very specific set of events, places or organizers. In order to combine multiple parameters boolean operators should be used:
-- `AND`: is used to narrow the search. Only results that meet all parameters in the AND-combination will be returned.
-- `OR` is used to broaden the search. Results that meet either one (or both parameters) will be returned.
+With advanced queries it is possible to combine multiple fields to define a very specific set of events, places or organizers. In order to combine multiple fields boolean operators should be used:
+- `AND`: is used to narrow the search. Only results that meet all fields in the AND-combination will be returned.
+- `OR` is used to broaden the search. Results that meet either one (or both fields) will be returned.
 - `NOT` is used to exclude a set of data. 
 
 **Examples**
@@ -962,24 +930,24 @@ GET /events/?q=address.\*.postalCode:9000 NOT price:0
 ## Usage of round brackets
 
 Use round brackets in your advanced queries to:
--   group values that belong to the same parameter 
--   specify the order (hierarchy) between different parameters
--   avoid the need to repeat parameters
+-   group values that belong to the same field 
+-   specify the order (hierarchy) between different fields
+-   avoid the need to repeat fields
 -   keep your query simple, clean and more human readable
 
 ### Use round brackets to group values in the query
 
-In the example below, no round brackets are used. Because of this, the parameter `address.\*.postalCode` is repeated 3 times. This is unneccesary and makes the query dificult to read.
+In the example below, no round brackets are used. Because of this, the field `address.\*.postalCode` is repeated 3 times. This is unneccesary and makes the query dificult to read.
 ```
 GET /events/?q=address.\*.postalCode:9000 OR address.\*.postalCode:1000 OR address.\*.postalCode:2000 OR address.\*.postalCode:3000
 ```
 
-Round brackets make it possible to group values and avoid the need to repeat parameters. As a result, the query is shorter, more simple and easier to maintain:
+Round brackets make it possible to group values and avoid the need to repeat fields. As a result, the query is shorter, more simple and easier to maintain:
 ```
 GET /events/?q=address.\*.postalCode:(9000 OR 1000 OR 2000 OR 3000)
 ```
 
-### Use round brackets to specify the order between different parameters
+### Use round brackets to specify the order between different fields
 
 In the case of more complex queries the correct usage of round brackets is mandatory. 
 
