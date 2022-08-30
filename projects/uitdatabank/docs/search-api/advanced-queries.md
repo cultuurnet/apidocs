@@ -323,20 +323,23 @@ GET /events/?q=_exists_:description.nl
 Retrieve events that match a specific uuid with the `id` field. It is possible to search by an event id, place id or organizer id.
 
 A specific id can be found by
--   looking for the value for the `id` property
+-   extracting the UUID from the `@id` property in the JSON-LD projection
+
+```js
+{
+   "@id": "https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f"
+}
+```
+or
+
+-   looking for the value for the `id` property in the JSON response of the UiTdatabank entry API
 ```js
 {
    "id": "75573a64-ddc8-4fd0-8b07-d258939dd74f"
 }
-
 ```
--   extracting the UUID from the @id property in the JSON-LD projection
+> Extracting the UUID from the `id` property is only possible from the JSON response of the UiTdatabank Entry API. If you use Search API to build an agenda, you'll have to extract the UUID from the `@id` property in the JSON-LD projection.
 
-```js
-{
-"@id": "https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f"
-}
-```
 
 **Applicable on endpoints**
 
