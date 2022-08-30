@@ -308,7 +308,7 @@ With the `_exists_` field you can search for the documents that have a specific 
 
 **Possible values**
 
-Any property name from the UiTdatabank JSON scheme.
+Any field name, as documented on this page.
 
 **Example**
 
