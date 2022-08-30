@@ -384,11 +384,7 @@ GET /organizers/?q=imagesCount:[5 TO 10]
 
 ### labels
 
-<<<<<<< HEAD
 Search for documents that have a specific label with the `labels` field.
-=======
-Search for documents that have a specific label (or hidden label) with the `labels` parameter.
->>>>>>> b52c705c8e68707cb8a713bc93287b86f9a2e92a
 
 **Applicable on endpoints**
 
@@ -400,9 +396,9 @@ A label name (string).
 
 **Example**
 
-Retrieve all events with an UiTPAS label:
+Retrieve all events with the label `ook voor kinderen`
 ```
-GET /events/?q=labels:UiTPAS*
+GET /events/?q=labels:"ook voor kinderen"
 ```
 
 ### languages
