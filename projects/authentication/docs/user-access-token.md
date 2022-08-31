@@ -70,7 +70,7 @@ When a user clicks the login link in your application (step 1), your application
     https://account-test.uitid.be/authorize?
       prompt=login&
       audience=https://api.publiq.be&
-      scope=openid profile email offline_access&
+      scope=openid email offline_access&
       response_type=code&
       client_id=YOUR_CLIENT_ID&
       redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
@@ -78,7 +78,7 @@ When a user clicks the login link in your application (step 1), your application
 Note that:
 -   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
+-   The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
@@ -209,7 +209,7 @@ Next, your application redirects the user to the `/authorize` URL on the authori
     https://account-test.uitid.be/authorize?
       prompt=login&
       audience=https://api.publiq.be&
-      scope=openid profile email offline_access&
+      scope=openid email offline_access&
       response_type=code&
       client_id=YOUR_CLIENT_ID&
       code_challenge=YOUR_CODE_CHALLENGE&
@@ -220,7 +220,7 @@ Next, your application redirects the user to the `/authorize` URL on the authori
 Note that:
 -   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
 -   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--   The `scope` parameter is suggested to always be set to `openid profile email offline_access` to get an access token that can be used to fetch the basic information of the logged in user afterwards (`openid profile email`), as well as a refresh token (`offline_access`).
+-   The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
 -   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
 -   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
@@ -281,7 +281,7 @@ publiq uses [Auth0](https://auth0.com/) as its authentication and authorization 
 
 ## Login parameters
 
-When you redirect your user to the `/authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
+When you redirect your user to the `GET /authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
 
 The following table gives an overview of all the required/optional parameters:
 
@@ -291,8 +291,8 @@ The following table gives an overview of all the required/optional parameters:
 | `audience` | `https://api.publiq.be` | **Required** | Determines which APIs your token will be usable on. Because Auth0 only supports one audience per token, we use a generic URL single for all our different APIs. Note that in reality your token will only be usable on the APIs that your client has access to.
 | `response_type` | `code` | **Required** | Indicates which OAuth2 grant type will be used. **Must** be set to `code` for the "Authorization Code" flows documented on this page.
 | `client_id` | Your application's client id | **Required** | Used to validate the authorization code when exchanging it for a user access token.
-| `scope` | A space-delimited string with one or more of the following values: `openid`, `profile`, `email`, `offline_access` | **Required** | Determines which user info will be shared with your application, and if you want a refresh token or not. Suggested to always be set to `openid profile email offline_access` for best results.
 | `redirect_uri` | For example `https://your-application.com/authorize` | **Required** | A URL of your application starting with `https://` to redirect the user back to after logging in. A `code` query parameter with the authorization code that can be exchanged for a user access token by your application will be appended at the end.
+| `scope` | A space-delimited string with one or more of the following values: `openid`, `email`, `offline_access` | Required if you want to fetch **user info** or use **refresh tokens** | Determines which user info will be shared with your application, and if you want a refresh token or not. Suggested to always be set to `openid email offline_access` for best results. See [scopes](#scopes) for more info.
 | `code_challenge` | String generated from a cryptographically-random code verifier. | Required if using **PKCE** | See the [PKCE example](#example-1) for more info.
 | `code_challenge_method` | `S256` | Required if using **PKCE** | **Must** be set to `S256`. See the [PKCE example](#example-1) for more info.
 | `prompt` | `none` (default) or `login` | Optional | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server. Useful to force the user to login again, which also makes it possible to switch to another account as before.
@@ -311,6 +311,57 @@ The following table gives an overview of all the required/optional parameters:
 | `return_if_cancelled` | For example `https://your-application.com` | Optional | A URL of your application starting with `https://` to redirect the user back to if the cancel the login. If not provided, we will attempt to redirect the user to a suitable URL of your application.
 | `product_display_name` | Human-readable name of your application | Optional | Used in some copy, for example "Je wordt teruggebracht naar \<your application name\>"
 | `skip_verify_legacy` | `true` or `false` (default) | Optional | By default, users that created an account before personal details like date of birth could be added during registration are prompted to add this info after logging in. However when this parameter is set to `true`, this step will be skipped for those users.
+
+## Scopes
+
+When redirecting the user to the `GET /authorize` endpoint, the value of the `scope` URL parameter can be used to specify which [user info](#user-info) you want access to, and whether or not you want to use [refresh tokens](#refresh-tokens).
+
+The following values can be used:
+
+-   **offline_access**: If used, the `POST /oauth/token` response will include an additional `refresh_token` property that can be used to renew the access token when it is expired.
+-   **openid**: If used, an additional [ID token](https://auth0.com/docs/secure/tokens/id-tokens) will be included in the `POST /oauth/token` response as an `id_token` property. This token contains the user's first name, and optionally their email address if the `email` scope is also requested. It can be decoded to read this information without making an HTTP request. Alternatively, if the `openid` scope is requested the **access** token that you get back can be used to make a request to the `GET /userinfo` endpoint on the authorization server to [fetch the user info](#user-info).
+-   **email**: If used, `email` and `email_verified` claims will be included in the ID token and `/userinfo` endpoint. (Requires `openid` scope)
+
+If you want to specify **multiple** values, combine them as a single space-delimited string. For example:
+
+```
+/authorize?scope=openid email offline_access&...
+```
+
+## User info
+
+If you have requested the `openid` scope and optionally the `email` scope, you will recieve an additional [ID token](https://auth0.com/docs/secure/tokens/id-tokens) when requesting your access token. This ID token is a [JWT](https://jwt.io/) that contains the first name and optionally the email address of the logged in user as standardized OpenID claims, which you may cache for the duration of the user's session. You can learn more about parsing ID tokens in the [Auth0 documentation for ID token structure](https://auth0.com/docs/secure/tokens/id-tokens/id-token-structure).
+
+Alternatively, you may fetch the info of the logged in user using your user access token on the `GET /userinfo` endpoint of the authorization server.
+
+Request example:
+
+```http
+GET /userinfo
+Host: https://account-test.uitid.be
+Authorization: 'Bearer eyJz93a...k4laUWw' # access token
+```
+
+Response JSON example:
+
+```json
+{
+    "sub": "google-oauth2|108326107941343586958", # User's UiTID v2 id, always present
+    "https://publiq.be/first_name": "John", # User's first name, Always present
+    "email": "john.doe@example.com", # Included if email scope was requested
+    "email_verified": true # Included if email scope was requested
+}
+```
+
+The `https://publiq.be/first_name` property is a URL because it is a custom property that has to be namespaced in Auth0. You do not need to access this URL, you can just parse it like any other JSON property.
+
+Read more about this endpoint in the [Auth0 API reference](https://auth0.com/docs/api/authentication#get-user-info).
+
+## Decoding tokens
+
+<!-- theme: warning -->
+
+> **Never** parse a user **access** token as a JWT, for example to check its expiration time. It is not guaranteed that a user access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
 
 ## Caching & expiration
 
@@ -369,9 +420,3 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 ## Authorization server URLs
 
 See [authorization server URLs](./environments.md).
-
-## Decoding tokens
-
-<!-- theme: warning -->
-
-> **Never** parse a client access token as a JWT, for example to check its expiration time. It is not guaranteed that a client access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
