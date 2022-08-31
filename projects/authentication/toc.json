@@ -45,7 +45,7 @@
     },
     {
       "type": "item",
-      "title": "Errors",
+      "title": "How to handle 401 and 403 API errors",
       "uri": "docs/errors.md"
     },
     {
