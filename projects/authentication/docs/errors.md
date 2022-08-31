@@ -1,6 +1,8 @@
-# Errors
+# How to handle 401 and 403 API errors
 
-This page contains an overview of all possible error types inside the `https://api.publiq.be/probs/auth/` namespace that can be returned by publiq's APIs. (Not errors that can occur on Auth0 while trying to request a token!)
+This page contains an overview of all possible error types related to authentication and authorization that can be returned by publiq's APIs.
+
+This does not include errors that may occur on the authorization server when letting a user login and/or when requesting tokens (which are both handled by Auth0).
 
 > For more info about error handling on our APIs in general, see the dedicated [Errors](https://publiq.stoplight.io/docs/errors) space.
 
@@ -10,7 +12,7 @@ This page contains an overview of all possible error types inside the `https://a
 *   **Title**: `Unauthorized`
 *   **Status**: `401`
 
-Your request is missing the required credentials to authenticate.
+Your API request is missing the required credentials to authenticate.
 
 Possible causes:
 
@@ -18,7 +20,7 @@ Possible causes:
 *   You forgot to include a token (for endpoints that require tokens)
 *   Your token has expired
 *   Your token is malformed and cannot be parsed
-*   You are using the wrong authentication method (client id while it should be a token or the other way around)
+*   You are using the wrong authentication method (client identification while it should be a token or the other way around)
 
 ## forbidden
 
@@ -26,7 +28,7 @@ Possible causes:
 *   **Title**: `Forbidden`
 *   **Status**: `403`
 
-Your request was successfully authenticated but you do not have permission to perform this particular request.
+Your API request was successfully authenticated but you do not have permission to perform this particular request.
 
 Possible causes:
 
