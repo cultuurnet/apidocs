@@ -1,6 +1,8 @@
 # How to handle 401 and 403 API errors
 
-This page contains an overview of all possible error types inside the `https://api.publiq.be/probs/auth/` namespace that can be returned by publiq's APIs. (Not errors that can occur on Auth0 while trying to request a token!)
+This page contains an overview of all possible error types related to authentication and authorization that can be returned by publiq's APIs.
+
+This does not include errors that may occur on the authorization server when letting a user login and/or when requesting tokens (which are both handled by Auth0).
 
 > For more info about error handling on our APIs in general, see the dedicated [Errors](https://publiq.stoplight.io/docs/errors) space.
 
