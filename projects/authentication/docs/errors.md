@@ -12,7 +12,7 @@ This does not include errors that may occur on the authorization server when let
 *   **Title**: `Unauthorized`
 *   **Status**: `401`
 
-Your request is missing the required credentials to authenticate.
+Your API request is missing the required credentials to authenticate.
 
 Possible causes:
 
@@ -28,7 +28,7 @@ Possible causes:
 *   **Title**: `Forbidden`
 *   **Status**: `403`
 
-Your request was successfully authenticated but you do not have permission to perform this particular request.
+Your API request was successfully authenticated but you do not have permission to perform this particular request.
 
 Possible causes:
 
