@@ -417,6 +417,12 @@ Just like an access token, a refresh token has a limited lifetime. It is usually
 
 The best way to check if a refresh token is expired is to exchange it for an access token. If the exchange request returns an error response the refresh token is expired and cannot be used anymore. At that point you must let the user login again.
 
+## Logout
+
+When the user of your application wants to log out, clear any session data in your application including the user's access token and refresh token. If you have cached the [user's info](#user-info), make sure to also clear that.
+
+If a user on the same machine follows the login flow in your application again shortly after the previous user has logged out, the previous user may still be logged in on the authorization server. To avoid the previous user automatically being logged in again when the new user logs in, add the `prompt=login` URL parameter when redirecting the user to the `GET /authorize` endpoint. This will force the authorization server to always show a login screen, even if the previous user still has an active session there. See [login parameters](#login-parameters) for more info.
+
 ## Authorization server URLs
 
 See [authorization server URLs](./environments.md).
