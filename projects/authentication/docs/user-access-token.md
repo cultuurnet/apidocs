@@ -357,6 +357,12 @@ The `https://publiq.be/first_name` property is a URL because it is a custom prop
 
 Read more about this endpoint in the [Auth0 API reference](https://auth0.com/docs/api/authentication#get-user-info).
 
+## Decoding tokens
+
+<!-- theme: warning -->
+
+> **Never** parse a user **access** token as a JWT, for example to check its expiration time. It is not guaranteed that a user access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
+
 ## Caching & expiration
 
 Make sure to **cache and reuse** the obtained user access token for as long as possible.
@@ -414,9 +420,3 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 ## Authorization server URLs
 
 See [authorization server URLs](./environments.md).
-
-## Decoding tokens
-
-<!-- theme: warning -->
-
-> **Never** parse a user **access** token as a JWT, for example to check its expiration time. It is not guaranteed that a user access token will always be a JWT. The claims inside the token can also change, so you should not rely on them.
