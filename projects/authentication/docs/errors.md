@@ -20,7 +20,7 @@ Possible causes:
 *   You forgot to include a token (for endpoints that require tokens)
 *   Your token has expired
 *   Your token is malformed and cannot be parsed
-*   You are using the wrong authentication method (client id while it should be a token or the other way around)
+*   You are using the wrong authentication method (client identification while it should be a token or the other way around)
 
 ## forbidden
 
