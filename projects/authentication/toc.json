@@ -52,6 +52,11 @@
       "type": "item",
       "title": "CORS",
       "uri": "docs/cors.md"
+    },
+    {
+      "type": "item",
+      "title": "HTTPS",
+      "uri": "docs/https.md"
     }
   ]
 }
