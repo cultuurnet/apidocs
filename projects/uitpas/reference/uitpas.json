@@ -1757,14 +1757,16 @@
         "tags": [
           "UiTID"
         ],
-        "parameters": [
+        "parameters": [],
+        "security": [
           {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "x-client-id",
-            "description": "API key identifying the calling client"
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
           }
         ]
       }
