@@ -4338,7 +4338,8 @@
                               "name": "Ninove"
                             }
                           ],
-                          "permanent": true
+                          "permanent": true,
+                          "allowsCardlessRegistration": false
                         }
                       ]
                     }
@@ -5268,6 +5269,10 @@
           "permanent": {
             "type": "boolean",
             "description": "Indicates whether this is a permanent card system"
+          },
+          "allowsCardlessRegistration": {
+            "type": "boolean",
+            "description": "Indicates whether this cardsystem allows online cardless registrations."
           }
         },
         "required": [
