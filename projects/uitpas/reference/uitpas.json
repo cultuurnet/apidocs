@@ -4399,7 +4399,7 @@
             },
             "in": "query",
             "name": "city",
-            "description": "Search card systems by city name. Can be included more than once to allow multiple values.",
+            "description": "Search card systems by city name. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
             "style": "form",
             "explode": true
           },
@@ -4412,7 +4412,7 @@
             },
             "in": "query",
             "name": "postalCode",
-            "description": "Search card systems by postal code. Can be included more than once to allow multiple values.",
+            "description": "Search card systems by postal code. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
             "style": "form",
             "explode": true
           }
