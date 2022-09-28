@@ -4352,6 +4352,9 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Error type:\n\nhttps://api.publiq.be/probs/url/not-found"
           }
         },
         "operationId": "get-card-systems",
@@ -4378,7 +4381,7 @@
             },
             "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination.",
             "name": "limit"
-          },          
+          },
           {
             "schema": {
               "type": "array",
@@ -4390,8 +4393,8 @@
             "name": "city",
             "description": "Search card systems by city name. Can be included more than once to allow multiple values.",
             "style": "form",
-            "explode": true            
-          },          
+            "explode": true
+          },
           {
             "schema": {
               "type": "array",
