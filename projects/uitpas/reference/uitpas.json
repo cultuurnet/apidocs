@@ -4354,7 +4354,14 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found. Error type:\n\nhttps://api.publiq.be/probs/url/not-found"
+            "description": "Not Found. Error type:\n\nhttps://api.publiq.be/probs/url/not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "operationId": "get-card-systems",
