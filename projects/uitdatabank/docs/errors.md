@@ -87,3 +87,11 @@ The `workflowStatus` of an event can only transition from `DRAFT` to `READY_FOR_
 The action you are trying to perform on an event cannot be done because its `attendanceMode` does not support this action.
 
 For example, you cannot update the location of an event with attendanceMode `online` to a physical location. Or you cannot set the location of an event with attendanceMode `mixed` or `offline` to the nil location (`https://io.uitdatabank.be/places/00000000-0000-0000-0000-000000000000`).
+
+## event-has-uitpas-ticket-sales
+
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/event-has-uitpas-ticket-sales`
+*   **Title**: `Event has UiTPAS ticket sales`
+*   **Status**: `400`
+
+The action you are trying to perform on an event cannot be done because the event has UiTPAS ticket sales. When an event has UiTPAS ticket sales its organizer, UiTPAS card system(s) and UiTPAS distribution key(s) cannot be updated because it would invalidate the existing ticket sales in UiTPAS.
