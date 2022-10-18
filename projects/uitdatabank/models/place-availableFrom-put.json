@@ -1,5 +1,5 @@
 {
-  "title": "event.availableFrom.put",
+  "title": "place.availableFrom.put",
   "type": "object",
   "properties": {
     "availableFrom": {
