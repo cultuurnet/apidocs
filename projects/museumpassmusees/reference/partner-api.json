@@ -188,13 +188,7 @@
     "securitySchemes": {
       "CLIENT_ACCESS_TOKEN": {
         "type": "oauth2",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "",
-            "refreshUrl": "",
-            "scopes": {}
-          }
-        },
+        "flows": {},
         "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://publiq.stoplight.io/docs/authentication/docs/client-access-token.md) for more info."
       }
     },
