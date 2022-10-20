@@ -909,9 +909,9 @@ GET /offers
 
 ## Boolean operators
 With advanced queries it is possible to combine multiple fields to define a very specific set of events, places or organizers. In order to combine multiple fields boolean operators should be used:
-- `AND`: is used to narrow the search. Only results that meet all fields in the AND-combination will be returned.
-- `OR` is used to broaden the search. Results that meet either one (or both fields) will be returned.
-- `NOT` is used to exclude a set of data. 
+-   `AND`: is used to narrow the search. Only results that meet all fields in the AND-combination will be returned.
+-   `OR` is used to broaden the search. Results that meet either one (or both fields) will be returned.
+-   `NOT` is used to exclude a set of data. 
 
 **Examples**
 
@@ -957,8 +957,8 @@ In the case of more complex queries the correct usage of round brackets is manda
 Imagine you want to retrieve all concerts (term id `0.50.4.0.0`) and expositions (term id `0.0.0.0.0`) that happen in Ghent (postal code `9000`) or Leuven (postal code `3000`).
 
 Therefore, first we need to make 2 OR relations:
-1.   between the 2 postal code values (because we want to retrieve events from Ghent _or_ Leuven): `address.\*.postalCode:(9000 OR 3000)`
-2.   between the 2 term id values (because we want to retrieve concerts _or_ expositions): `terms.id:(0.0.0.0.0 OR 0.50.4.0.0)`
+1.  between the 2 postal code values (because we want to retrieve events from Ghent _or_ Leuven): `address.\*.postalCode:(9000 OR 3000)`
+2.  between the 2 term id values (because we want to retrieve concerts _or_ expositions): `terms.id:(0.0.0.0.0 OR 0.50.4.0.0)`
 
 Consequently we need to link both OR-relations with an AND operator:
 ```
