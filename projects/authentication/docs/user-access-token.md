@@ -1,4 +1,4 @@
-# User access token
+# User access token (login via UiTID)
 
 User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTID**, and can be requested through one of two ways depending on the type of application that you're building.
 
