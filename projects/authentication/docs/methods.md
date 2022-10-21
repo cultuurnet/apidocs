@@ -61,7 +61,7 @@ API endpoints that support the authentication of an API client with a client id 
 
 👉 [Learn more about client access tokens](./client-access-token.md)
 
-### User access tokens
+### User access tokens (login via UiTID)
 
 API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
 
