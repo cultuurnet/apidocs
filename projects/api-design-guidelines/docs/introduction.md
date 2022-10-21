@@ -1,3 +1,7 @@
+---
+stoplight-id: d6a8ba3f3c186
+---
+
 # Introduction
 
 Welcome to publiq's API design and documentation guidelines! 👋
