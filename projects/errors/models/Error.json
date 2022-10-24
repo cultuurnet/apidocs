@@ -21,7 +21,7 @@
     },
     "schemaErrors": {
       "type": "array",
-      "description": "A list of one or more schema validation errors (usually related to problems in the request body).",
+      "description": "A list of one or more schema validation errors (usually used for error type https://api.publiq.be/probs/body/invalid-data).",
       "items": {
         "type": "object",
         "properties": {
