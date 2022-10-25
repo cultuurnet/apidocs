@@ -2332,33 +2332,38 @@
                   "type": "object",
                   "properties": {
                     "addedPoints": {
-                      "type": "string",
+                      "type": "number",
                       "description": "Newly added points as a result of this check-in"
                     },
                     "totalPoints": {
-                      "type": "string",
-                      "description": "Total points of the passholder after this check-in"
-                    },
-                    "event": {
-                      "$ref": "#/components/schemas/Event"
+                      "description": "Total points of the passholder after this check-in",
+                      "type": "number"
                     }
                   },
                   "required": [
                     "addedPoints",
-                    "totalPoints",
-                    "event"
+                    "totalPoints"
                   ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "addedPoints": 1,
+                      "totalPoints": 26
+                    }
+                  }
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/checkin-code-expired\n* https://api.publiq.be/probs/uitpas/checkin-code-invalid\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed-XXX (too early) --> checkin FROM date?\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed-YYY (too late)\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed-ZZZ (too much) --> constraint?\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/checkin-code-expired\n* https://api.publiq.be/probs/uitpas/checkin-code-invalid\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                }
+                },
+                "examples": {}
               }
             }
           },
@@ -2379,7 +2384,7 @@
             }
           }
         },
-        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
+        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
