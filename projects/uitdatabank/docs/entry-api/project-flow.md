@@ -29,24 +29,24 @@ It is important that you go through the checklist below in advance and validate 
 
 ### Checklist for a succesfull integration
 #### Mandatory fields
-- [ ] **name**: only use plain text 
-- [ ] **eventtype**: use a valid ID from the [UiTdatabank taxonomy](taxonomy.uitdatabank.be/terms)
-- [ ] **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank (see [docs](https://docs.publiq.be/docs/uitdatabank/55c6a99f43e7e-place-get)) should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
-- [ ] **calendar**: use the provided calendarTypes in a correct way, and use the ISO-8601 standard
+- **name**: only use plain text 
+- **eventtype**: use a valid ID from the [UiTdatabank taxonomy](taxonomy.uitdatabank.be/terms)
+- **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank (see [docs](https://docs.publiq.be/docs/uitdatabank/55c6a99f43e7e-place-get)) should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
+- **calendar**: use the provided calendarTypes in a correct way, and use the ISO-8601 standard
 
 > In order to create an UiTPAS event, the fields `organizer` and `priceInfo` are also mandatory!
 
 #### Optional fields
-- [ ] **description**: only use plain text (and line breaks)
-- [ ] **age range**
-- [ ] **mediaObject (image)**: add an inspiring photo for your event, with respect to copyright
-- [ ] **organizer**: UiTdatabank already contains a lot of organizers. Use existing organizers as much as possible. Therefore, a search on existing organizers in UiTdatabank (see [docs](https://docs.publiq.be/docs/uitdatabank/c66fa72affb6e-organizer-get)) should be built in in your application. Or alternatively (if all your events have the same organizer for example), the identifier of that organizer in UiTdatabank should be kept in your application so that each new event is created with the same organizer ID. Only when an organizer does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created organizer in the application, so that later on you can update or delete the organizer if necessary.
-- [ ] **price information**: if applicable, add price information
-- [ ] **booking information**: if applicable, add booking (ticketing) information and a reservation period
-- [ ] **booking availability**: if applicable, inform about the event being sold out or fully booked
-- [ ] **status**: if applicable, inform about the event being cancelled or postponed
-- [ ] **contact information**: if applicable, add contact information
-- [ ] **labels**: if applicable, use labels to add extra information about the event. A label is at least 3 characters and maximum 50 characters long. Only text, digits and `-` are allowed
+- **description**: only use plain text (and line breaks)
+- **age range**
+- **mediaObject (image)**: add an inspiring photo for your event, with respect to copyright
+- **organizer**: UiTdatabank already contains a lot of organizers. Use existing organizers as much as possible. Therefore, a search on existing organizers in UiTdatabank (see [docs](https://docs.publiq.be/docs/uitdatabank/c66fa72affb6e-organizer-get)) should be built in in your application. Or alternatively (if all your events have the same organizer for example), the identifier of that organizer in UiTdatabank should be kept in your application so that each new event is created with the same organizer ID. Only when an organizer does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created organizer in the application, so that later on you can update or delete the organizer if necessary.
+- **price information**: if applicable, add price information
+- **booking information**: if applicable, add booking (ticketing) information and a reservation period
+- **booking availability**: if applicable, inform about the event being sold out or fully booked
+- **status**: if applicable, inform about the event being cancelled or postponed
+- **contact information**: if applicable, add contact information
+- **labels**: if applicable, use labels to add extra information about the event. A label is at least 3 characters and maximum 50 characters long. Only text, digits and `-` are allowed
 
 
 <!-- theme: warning -->
