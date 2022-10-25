@@ -5917,32 +5917,6 @@
           "postalCode",
           "name"
         ]
-      },
-      "Event": {
-        "title": "Event",
-        "x-stoplight": {
-          "id": "uro1onp89x9ri"
-        },
-        "type": "object",
-        "description": "UiTPAS event",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "ID of the event"
-          },
-          "title": {
-            "type": "string",
-            "description": "Title of the event"
-          },
-          "organizer": {
-            "$ref": "#/components/schemas/Organizer"
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "organizer"
-        ]
       }
     },
     "securitySchemes": {
