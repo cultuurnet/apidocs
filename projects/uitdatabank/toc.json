@@ -50,7 +50,15 @@
     {
       "type": "item",
       "title": "Entry API",
-      "uri": "reference/entry.json"
+      "uri": "reference/entry.json",
+      "item": [
+        {
+          "type": "item",
+          "title": "Content checklist",
+          "uri": "/docs/entry-api/content-checklist.md",
+          "slug": "entry-api/content-checklist"
+        }
+      ]
     },
     {
       "type": "item",
