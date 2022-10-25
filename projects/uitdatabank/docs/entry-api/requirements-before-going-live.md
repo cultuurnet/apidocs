@@ -39,7 +39,7 @@ It is important that you go through the checklist below in advance and validate 
 #### Optional properties
 - **description**: only use plain text (and line breaks)
 - **age range**
-- **mediaObject (image)**: add an inspiring photo for your event, with respect to copyright
+- **mediaObject (image)**: add an inspiring photo or image for your event, with respect to copyright. Avoid logos and posters.
 - **organizer**: UiTdatabank already contains a lot of organizers. Use existing organizers as much as possible. Therefore, a search on existing organizers in UiTdatabank should be built in in your application. Or alternatively (if all your events have the same organizer for example), the identifier of that organizer in UiTdatabank should be kept in your application so that each new event is created with the same organizer ID. Only when an organizer does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created organizer in the application, so that later on you can update or delete the organizer if necessary.
 - **price information**: if applicable, add price information
 - **booking information**: if applicable, add booking (ticketing) information and a reservation period
