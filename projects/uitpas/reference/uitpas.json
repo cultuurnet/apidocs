@@ -2319,6 +2319,108 @@
       },
       "parameters": []
     },
+    "/passholders/me/transactions": {
+      "parameters": [],
+      "get": {
+        "summary": "Retrieve transaction history of the current passholder",
+        "operationId": "get-passholders-me-transactions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionsPaginatedCollection"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "title": "Gratis koffie",
+                          "location": "Bibliotheek Oostende",
+                          "creationDate": "2019-08-24T15:11:00Z",
+                          "points": -4
+                        },
+                        {
+                          "title": "Bezoek aan de bib",
+                          "location": "Bibliotheek Oostende",
+                          "creationDate": "2019-08-24T14:17:00Z",
+                          "points": 1
+                        },
+                        {
+                          "title": "Welkom bij UiTPAS",
+                          "location": "Bibliotheek Oostende",
+                          "creationDate": "2019-08-24T14:15:00Z",
+                          "points": 3
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_TRANSACTION_HISTORY` permission is mandatory.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "start",
+            "description": "Position to start returning results from. When set to `0` the results starting from the very first position will be returned. When set to for example `10` the results 0-9 will be skipped and the ones starting from position 10 will be returned. Can be used in combination with `limit` for pagination."
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            },
+            "in": "query",
+            "name": "sort[creationDate]",
+            "description": "Sorts the transactions by creationDate in ascending or descending order."
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
     "/passholders/{passholderId}/school": {
       "parameters": [
         {
@@ -5789,6 +5891,65 @@
             }
           }
         }
+      },
+      "TransactionsPaginatedCollection": {
+        "title": "TransactionsPaginatedCollection",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for transactions",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of card system results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of card system results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            }
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "title": "Transaction",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Transaction",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the transaction",
+            "readOnly": true
+          },
+          "location": {
+            "type": "string",
+            "description": "Location of the transaction",
+            "readOnly": true
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creationdate of the transaction",
+            "readOnly": true
+          },
+          "points": {
+            "type": "number",
+            "description": "Points of the transaction. Extra points (e.g. at check-in) are positive numbers. Used points (e.g. redeeming a reward) are negative numbers.",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "title",
+          "location",
+          "creationDate",
+          "points"
+        ],
+        "readOnly": true
       },
       "City": {
         "title": "City",
