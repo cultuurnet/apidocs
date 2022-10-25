@@ -22,7 +22,7 @@ Once you've obtained your personal test credentials you can start with the devel
 As soon as you have finished developing your integration with the Entry API, you send a minimum of 5 of events to our test environment. You contact us via `vragen@publiq.be` and provide us the identifiers of the created test events. We will then validate your integration as soon as possible. 
 
 In this validation process we assess the integration in two manners:
-1. Is the **created data** qualitative, relevant and valuable for public agendas such as www.uitinvlaanderen.be?
+1. Is the **created data** qualitative, relevant and valuable for public agendas such as (UiTinVlaanderen)[https://www.uitinvlaanderen.be]?
 2. Is the **integration made robust**, e.g. is it possible to update and delete content through the integration?
 
 It is important that you go through the checklist below in advance and validate your integration against it. By doing this in advance, you ensure a smooth transition to the production environment!
