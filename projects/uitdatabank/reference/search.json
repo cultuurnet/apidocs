@@ -981,7 +981,7 @@
         },
         "in": "query",
         "name": "text",
-        "description": "Free text search terms. Returns results that match all or some of the given terms. May contain `AND` and `OR` operators, and brackets for grouping. Can not filter on specific fields (contrary to the `q` parameter). Typically used to search on user-provided keywords. For more info and examples see TODO (link to guide)."
+        "description": "Free text search terms. Returns results that match all or some of the given terms. May contain `AND` and `OR` operators, and brackets for grouping. Can not filter on specific fields (contrary to the `q` parameter). Typically used to search on user-provided keywords."
       },
       "q": {
         "schema": {
@@ -990,7 +990,7 @@
         },
         "in": "query",
         "name": "q",
-        "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields. For more info and examples see TODO (link to guide)."
+        "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields."
       },
       "name": {
         "schema": {
@@ -1087,7 +1087,7 @@
         },
         "in": "query",
         "name": "availableFrom",
-        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
       },
       "availableTo": {
         "schema": {
@@ -1097,7 +1097,7 @@
         },
         "in": "query",
         "name": "availableTo",
-        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See TODO (link to guide)."
+        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
       },
       "attendanceMode": {
         "schema": {
@@ -1146,7 +1146,7 @@
         "explode": false,
         "in": "query",
         "name": "calendarType",
-        "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. See TODO (link to guide) for more info."
+        "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types."
       },
       "createdFrom": {
         "schema": {
@@ -1205,7 +1205,7 @@
         },
         "in": "query",
         "name": "dateFrom",
-        "description": "Returns only events that are happening at some point after the given date-time, and places that are open at some point after the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+        "description": "Returns only events that are happening at some point after the given date-time, and places that are open at some point after the given date-time. Permanent events or places are always returned by this parameter."
       },
       "dateTo": {
         "schema": {
@@ -1215,7 +1215,7 @@
         },
         "in": "query",
         "name": "dateTo",
-        "description": "Returns only events that are happening at some point before the given date-time, and places that are open at some point before the given date-time. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+        "description": "Returns only events that are happening at some point before the given date-time, and places that are open at some point before the given date-time. Permanent events or places are always returned by this parameter."
       },
       "localTimeFrom": {
         "schema": {
@@ -1225,7 +1225,7 @@
         },
         "in": "query",
         "name": "localTimeFrom",
-        "description": "Returns only events that are happening at some point after the given time, and places that are open at some point after the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+        "description": "Returns only events that are happening at some point after the given time, and places that are open at some point after the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter."
       },
       "localTimeTo": {
         "schema": {
@@ -1235,7 +1235,7 @@
         },
         "in": "query",
         "name": "localTimeTo",
-        "description": "Returns only events that are happening at some point before the given time, and places that are open at some point before the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter. See TODO (link to guide) for more info."
+        "description": "Returns only events that are happening at some point before the given time, and places that are open at some point before the given time. Dates and timezones are not taken into account by this parameter. Permanent events or places are always returned by this parameter."
       },
       "embedCalendarSummaries": {
         "schema": {
@@ -1276,7 +1276,7 @@
         },
         "in": "query",
         "name": "facets[]",
-        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See (the guide about facets)[../docs/search-api/facets.md] for more information.",
         "style": "form",
         "explode": true
       },
@@ -1289,7 +1289,7 @@
         },
         "in": "query",
         "name": "regions[]",
-        "description": "Returns only results that are geographically located in the given region. Regions may be fetched programmatically from [https://search.uitdatabank.be/autocomplete.json](https://search.uitdatabank.be/autocomplete.json) (TODO Replace with taxonomy API endpoint). See TODO (link to guide) for more info.",
+        "description": "Returns only results that are geographically located in the given region. Regions may be fetched programmatically from [https://search.uitdatabank.be/autocomplete.json](https://search.uitdatabank.be/autocomplete.json).",
         "style": "form",
         "explode": true
       },
@@ -1301,7 +1301,7 @@
         },
         "in": "query",
         "name": "coordinates",
-        "description": "A pair of latitude and longitude coordinates to find results that are located within a distance of the given geographical point. Must be used in combination with the `distance` parameter.See TODO (link to guide) for more info."
+        "description": "A pair of latitude and longitude coordinates to find results that are located within a distance of the given geographical point. Must be used in combination with the `distance` parameter."
       },
       "distance": {
         "schema": {
@@ -1311,7 +1311,7 @@
         },
         "in": "query",
         "name": "distance",
-        "description": "Returns only results that are geographically located within the given distance from the `coordinates` parameter. See TODO (link to guide) for more info."
+        "description": "Returns only results that are geographically located within the given distance from the `coordinates` parameter."
       },
       "bounds": {
         "schema": {
@@ -1321,7 +1321,7 @@
         },
         "in": "query",
         "name": "bounds",
-        "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`). See TODO (link to guide) for more info."
+        "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`)."
       },
       "id": {
         "schema": {
@@ -1395,7 +1395,7 @@
         "in": "query",
         "name": "languages[]",
         "style": "form",
-        "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "description": "Returns only results that have a localised value in the given language for one or more translatable fields like `name`. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "completedLanguages": {
@@ -1415,7 +1415,7 @@
         "in": "query",
         "name": "completedLanguages[]",
         "style": "form",
-        "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters. See TODO (link to guide) for more info.",
+        "description": "Returns only results that have a localised value in the given language for every translatable field. May be repeated to only return results that have localised values for all the given languages. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "hasMediaObjects": {
@@ -1470,7 +1470,7 @@
         },
         "in": "query",
         "name": "sort[score]",
-        "description": "Sorts the results by their score (relevance), either with the lowest score first (`asc`) or the highest score first (`desc`). See TODO (link to guide) for more info."
+        "description": "Sorts the results by their score (relevance), either with the lowest score first (`asc`) or the highest score first (`desc`). See (the guide about sorting)[../docs/search-api/sorting.md] for more information."
       },
       "sortAvailableTo": {
         "schema": {
@@ -1482,7 +1482,7 @@
         },
         "in": "query",
         "name": "sort[availableTo]",
-        "description": "Sorts the results by their `availableTo` date-time, either with the oldest date-time first (`asc`) or the highest date-time first (`desc`). Most commonly used to show events and/or places that will end or become unavailable soon. See TODO (link to guide) for more info."
+        "description": "Sorts the results by their `availableTo` date-time, either with the oldest date-time first (`asc`) or the highest date-time first (`desc`). Most commonly used to show events and/or places that will end or become unavailable soon. See (the guide about sorting)[../docs/search-api/sorting.md] for more information."
       },
       "sortCreated": {
         "schema": {
@@ -1494,7 +1494,7 @@
         },
         "in": "query",
         "name": "sort[created]",
-        "description": "Sorts the results by their `created` date-time, either with the oldest results first (`asc`) or the newest results first (`desc`). See TODO (link to guide) for more info."
+        "description": "Sorts the results by their `created` date-time, either with the oldest results first (`asc`) or the newest results first (`desc`). See (the guide about sorting)[../docs/search-api/sorting.md] for more information."
       },
       "sortModified": {
         "schema": {
@@ -1506,7 +1506,7 @@
         },
         "in": "query",
         "name": "sort[modified]",
-        "description": "Sorts the results by their `modified` date-time, either with the least recently modified results first (`asc`) or the most recently modified results first (`desc`). See TODO (link to guide) for more info."
+        "description": "Sorts the results by their `modified` date-time, either with the least recently modified results first (`asc`) or the most recently modified results first (`desc`). See (the guide about sorting)[../docs/search-api/sorting.md] for more information."
       },
       "sortDistance": {
         "schema": {
@@ -1518,7 +1518,7 @@
         },
         "in": "query",
         "name": "sort[distance]",
-        "description": "Sorts the results by their distance from the `coordinates` parameter. Can only be used if `coordinates` and `distance` are also set. You may use multiple sort parameters. See TODO (link to guide) for more info."
+        "description": "Sorts the results by their distance from the `coordinates` parameter. Can only be used if `coordinates` and `distance` are also set. You may use multiple sort parameters. See (the guide about sorting)[../docs/search-api/sorting.md] for more information."
       },
       "status": {
         "schema": {
@@ -1587,7 +1587,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
       },
       "workflowStatusOrganizer": {
         "schema": {
@@ -1606,7 +1606,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See TODO (link to guide) for more info."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
       }
     },
     "responses": {
