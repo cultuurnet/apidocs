@@ -25,9 +25,9 @@
       "items": [
         {
           "type": "item",
-          "title": "Project flow from test to production",
-          "uri": "/docs/entry-api/project-flow.md",
-          "slug": "entry-api/project-flow"
+          "title": "Requirements before going live",
+          "uri": "/docs/entry-api/requirements-before-going-live.md",
+          "slug": "entry-api/requirements-before-going-live"
         }
       ]
     },
