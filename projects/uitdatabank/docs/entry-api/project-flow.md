@@ -25,7 +25,7 @@ In this validation process we assess the integration in two manners:
 1. Is the **created data** qualitative, relevant and valuable for public agendas such as (UiTinVlaanderen)[https://www.uitinvlaanderen.be]?
 2. Is the **integration made robust**, e.g. is it possible to update and delete content through the integration?
 
-It is important that you go through the checklist below in advance and validate your integration against it. By doing this in advance, you ensure a smooth transition to the production environment!
+It is important that you go through the checklist below in advance and validate your integration against it. By doing this in advance, you ensure a smooth transition to the production environment.
 
 ### Checklist for a succesfull integration
 #### Mandatory fields
