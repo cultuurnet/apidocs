@@ -4,7 +4,7 @@ stoplight-id: 73ef6e15ee3ec
 
 # Project flow from test to production
 
-For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our test environment. 
+When integrating with the UiTdatabank Entry API, you first obtain access to our test environment. 
 Access to production environment is given after your integration on test environment has been successful validated by publiq vzw.
 
 On this page we describe how this flow works and how you can ensure that you gain access to the production environment as quickly as possible!
