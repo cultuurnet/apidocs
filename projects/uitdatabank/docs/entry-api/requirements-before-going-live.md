@@ -28,15 +28,15 @@ In this validation process we assess the integration in two manners:
 It is important that you go through the checklist below in advance and validate your integration against it. By doing this in advance, you ensure a smooth transition to the production environment!
 
 ### Checklist for a succesfull integration
-#### Mandatory fields
+#### Mandatory properties
 - **name**: only use plain text 
 - **eventtype**: use a valid ID from the [UiTdatabank taxonomy](taxonomy.uitdatabank.be/terms)
 - **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
 - **calendar**: use the provided calendarTypes in a correct way, and use the ISO-8601 standard
 
-> In order to create an UiTPAS event, the fields `organizer` and `priceInfo` are also mandatory!
+> In order to create an UiTPAS event, the properties `organizer` and `priceInfo` are also mandatory!
 
-#### Optional fields
+#### Optional properties
 - **description**: only use plain text (and line breaks)
 - **age range**
 - **mediaObject (image)**: add an inspiring photo for your event, with respect to copyright
@@ -51,7 +51,7 @@ It is important that you go through the checklist below in advance and validate 
 
 <!-- theme: warning -->
 > 
-> Albeit optional, note that these fields are often necessary in order for it to be published in an online calendar. This is especially the case for the **description**, **age** **range** and the **image**.
+> Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the **description**, **age** **range** and the **image**.
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
