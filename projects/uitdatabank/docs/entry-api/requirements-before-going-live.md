@@ -34,7 +34,7 @@ It is important that you go through the checklist below in advance and validate 
 - **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
 - **calendar**: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
 
-> In order to create an UiTPAS event, the properties `organizer` and `priceInfo` are also mandatory!
+> In order to [create an UiTPAS event](https://docs.publiq.be/docs/uitpas/6e03991383b32-registering-events), the properties `organizer` and `priceInfo` are also mandatory!
 
 #### Optional properties
 - **description**: only use plain text (and line breaks)
