@@ -20,6 +20,18 @@
       "title": "Guides"
     },
     {
+      "type": "group",
+      "title": "Entry API",
+      "items": [
+        {
+          "type": "item",
+          "title": "Project flow from test to production",
+          "uri": "/docs/entry-api/project-flow.md",
+          "slug": "entry-api/project-flow"
+        }
+      ]
+    },
+    {
       "type": "item",
       "title": "Taxonomy terms",
       "uri": "docs/terms.md"
@@ -50,15 +62,7 @@
     {
       "type": "item",
       "title": "Entry API",
-      "uri": "reference/entry.json",
-      "item": [
-        {
-          "type": "item",
-          "title": "Project flow from test to production",
-          "uri": "/docs/entry-api/project-flow.md",
-          "slug": "entry-api/project-flow"
-        }
-      ]
+      "uri": "reference/entry.json"
     },
     {
       "type": "item",
