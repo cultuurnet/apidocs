@@ -2319,7 +2319,7 @@
       },
       "parameters": []
     },
-    "/passholders/me/checkin": {
+    "/passholders/me/checkins": {
       "post": {
         "summary": "Check-in current passholder",
         "operationId": "post-passholders-me-checkin",
