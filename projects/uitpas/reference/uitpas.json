@@ -2321,7 +2321,7 @@
     },
     "/passholders/me/checkins": {
       "post": {
-        "summary": "Check-in current passholder",
+        "summary": "Check in the current passholder",
         "operationId": "post-passholders-me-checkin",
         "responses": {
           "201": {
