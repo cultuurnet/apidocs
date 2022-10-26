@@ -29,25 +29,25 @@ It is important that you go through the checklist below in advance and validate 
 
 ### Checklist for a succesfull integration
 #### Mandatory properties
--   **name**: only use plain text 
--   **eventtype**: use a valid ID from the [UiTdatabank taxonomy](https://docs.publiq.be/docs/uitdatabank/4047c82490760-list-taxonomy-terms)
--   **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
--   **calendar**: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
+-   `name`: only use plain text 
+-   `terms`: exactly one term of the domain `eventtype` is required. We strongly encourage to also include one term of the domain `theme` for events (see our [guide on taxonomy terms](../docs/terms.md) for more info)
+-   `location`: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
+-   `calendar`: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
 
 > In order to [create an UiTPAS event](https://docs.publiq.be/docs/uitpas/6e03991383b32-registering-events), the properties `organizer` and `priceInfo` are also mandatory!
 
 #### Optional properties
--   **description**: only use plain text (and line breaks)
--   **mediaObject (image)**: add an inspiring photo or image for your event, with respect to copyright. Avoid logos and posters.
--   **organizer**: UiTdatabank already contains a lot of organizers. Use existing organizers as much as possible. Therefore, a search on existing organizers in UiTdatabank should be built in in your application. Or alternatively (if all your events have the same organizer for example), the identifier of that organizer in UiTdatabank should be kept in your application so that each new event is created with the same organizer ID. Only when an organizer does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created organizer in the application, so that later on you can update or delete the organizer if necessary.
--   **age range**: this is especially important if your event is targeted to a specific age (e.g. children or seniors). Events that have an age range with an upperbound of 12 or less are considered as events for children and automatically get a Vlieg logo in UiT agendas.
--   **booking info**: add a ticketing link or contact details for reservation if applicable
--   **labels**: if applicable, use labels to add extra information about the event. A label is at least 3 characters and maximum 50 characters long. Only text, digits and `-` are allowed
+-   `description`: only use plain text (and line breaks)
+-   `mediaObject`: add an inspiring photo or image for your event, with respect to copyright. Avoid logos and posters.
+-   `organizer`: UiTdatabank already contains a lot of organizers. Use existing organizers as much as possible. Therefore, a search on existing organizers in UiTdatabank should be built in in your application. Or alternatively (if all your events have the same organizer for example), the identifier of that organizer in UiTdatabank should be kept in your application so that each new event is created with the same organizer ID. Only when an organizer does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created organizer in the application, so that later on you can update or delete the organizer if necessary.
+-   `typicalAgeRange`: this is especially important if your event is targeted to a specific age (e.g. children or seniors). Events that have an age range with an upperbound of 12 or less are considered as events for children and automatically get a Vlieg logo in UiT agendas.
+-   `bookingInfo`: add a ticketing link or contact details for reservation if applicable
+-   `labels`: if applicable, use labels to add extra information about the event. A label is at least 3 characters and maximum 50 characters long. Only text, digits and `-` are allowed
 
 
 <!-- theme: warning -->
 > 
-> Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the **description**, **age** **range** and the **image**.
+> Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the `description`, `typicalAgrange` and the `mediaObject`.
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
