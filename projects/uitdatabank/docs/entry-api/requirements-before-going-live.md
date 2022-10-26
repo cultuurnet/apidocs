@@ -19,7 +19,7 @@ Once you've obtained your personal test credentials you can start with the devel
 
 ## Step 2: validation by publiq vzw
 
-As soon as you have finished developing your integration with the Entry API, you send a minimum of 5 of events to our test environment. You contact us via `vragen@publiq.be` the email subject "content check". In the email you give us the identifiers of the created test events. We will then validate your integration as soon as possible. 
+As soon as you have finished developing your integration with the Entry API, you send a minimum of 5 of events to our test environment. You contact us via `vragen@publiq.be` with the email subject "content check". In the email you give us the identifiers of the created test events. We will then validate your integration as soon as possible. 
 
 In this validation process we assess the integration in two manners:
 1.  Is the **created data** qualitative, relevant and valuable for public agendas such as www.uitinvlaanderen.be?
