@@ -30,7 +30,7 @@ It is important that you go through the checklist below in advance and validate 
 ### Checklist for a succesfull integration
 #### Mandatory properties
 -   **name**: only use plain text 
--   **eventtype**: use a valid ID from the [UiTdatabank taxonomy](taxonomy.uitdatabank.be/terms)
+-   **eventtype**: use a valid ID from the [UiTdatabank taxonomy](https://docs.publiq.be/docs/uitdatabank/4047c82490760-list-taxonomy-terms)
 -   **location**: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
 -   **calendar**: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
 
