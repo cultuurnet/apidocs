@@ -4,14 +4,14 @@ stoplight-id: 73ef6e15ee3ec
 
 # Requirements before going live
 
-For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our test environment. 
-Access to production environment is given after your integration on test environment has been successful validated by publiq vzw.
+For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our the test environment. 
+Access to the production environment is given after your integration on test environment has been successful validated by publiq vzw.
 
 On this page we describe how this flow works and how you can ensure that you gain access to the production environment as quickly as possible!
 
 > Make sure you read this guide before you start developing on our test environment!
 
-## Step 1: start on test environment
+## Step 1: start on the test environment
 
 You can apply for free test credentials at [Projectaanvraag](https://projectaanvraag.uitdatabank.be). 
 
@@ -51,6 +51,6 @@ It is important that you go through the checklist below in advance and validate 
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
-## Step 3: switch to production
+## Step 3: switch to the production environment
 After a successful validation you will receive the credentials to connect with production environment. You will receive your credentials via [Projectaanvraag](https://projectaanvraag.uitdatabank.be) where they can also be consulted later.
 
