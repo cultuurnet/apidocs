@@ -56,6 +56,29 @@ For example:
 
 Aside from the standardized properties above, the RFC7807 spec also allows for custom properties. The following extra properties are sometimes used on publiq APIs to provide more information in specific situations.
 
+##### endUserMessage
+
+Error responses may include an `endUserMessage` property with a message that explains the problem to an end-user, localized in one or more languages (depending on the target audience of the API). These are usually included in domain errors, for example when an UiTPAS passholder has an expired social tariff.
+
+When an `endUserMessage` is included in the error response, it is strongly encouraged to always show these to end-users.
+
+An example response with an `endUserMessage` looks like:
+
+```json
+{
+  "type": "https://api.publiq.be/probs/uitpas/invalid-uitpasnumber",
+  "title": "UiTPAS number invalid",
+  "status": "400",
+  "detail": "UiTPAS numbers must be exactly 13 digits.",
+  "endUserMessage": {
+    "nl": "Het UiTPAS nummer dat je opgaf is niet geldig. (Een UiTPAS nummer bestaat uit exact 13 cijfers.)",
+    "en": "The UiTPAS number you entered is not valid. (An UiTPAS number is exactly 13 digits.)"
+  }
+}
+```
+
+The `nl` localization is always provided. Possible extra language codes are `en`, `fr`, and `de`. The supported languages may vary per API.
+
 ##### schemaErrors
 
 In the case of validation of JSON bodies in requests, error responses can include multiple validation errors at the same time in a `schemaErrors` property.
