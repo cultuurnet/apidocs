@@ -48,9 +48,9 @@ Aside from the standardized properties above, the RFC7807 spec also allows for c
 
 #### endUserMessage
 
-Error responses may include an `endUserMessage` property with a message that explains the problem to an end-user, localized in one or more languages (depending on the target audience of the API). These are usually included in domain errors, for example when an UiTPAS passholder has an expired social tariff.
+Error responses may include an `endUserMessage` property with a message that explains the problem to an end-user, localized in one or more languages (depending on the target audience of the API). It is usually included in domain errors, for example when an UiTPAS passholder has an expired social tariff.
 
-When an `endUserMessage` is included in the error response, it is strongly encouraged to always show these to end-users.
+When an `endUserMessage` is included in the error response, it is strongly encouraged to show it to the end-user.
 
 An example response with an `endUserMessage` looks like:
 
