@@ -6,6 +6,11 @@
       "uri": "docs/introduction.md"
     },
     {
+      "type": "item",
+      "title": "Error response format & examples",
+      "uri": "docs/format.md"
+    },
+    {
       "type": "divider",
       "title": "Error types"
     },
