@@ -45,10 +45,10 @@ For example:
 
 ```json
 {
-  "type": "https://api.publiq.be/probs/uitpas/invalid-uitpasnumber",
-  "title": "UiTPAS number invalid",
-  "status": "400",
-  "detail": "UiTPAS numbers must be exactly 13 digits."
+  "type": "https://api.publiq.be/probs/url/not-found",
+  "title": "Not Found",
+  "status": "404",
+  "detail": "The event with id \"foobar\" was not found."
 }
 ```
 
