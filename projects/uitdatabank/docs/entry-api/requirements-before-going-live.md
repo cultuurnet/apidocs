@@ -13,7 +13,7 @@ On this page we describe how this flow works and how you can ensure that you gai
 
 ## Step 1: start on the test environment
 
-You can apply for free test credentials at [Projectaanvraag](https://projectaanvraag.uitdatabank.be). 
+You can easily apply for free test credentials. All information about how to request these can be found [here](https://docs.publiq.be/docs/authentication/requesting-credentials#uitdatabank).
 
 Once you've obtained your personal test credentials you can start with the development of your integration with the UiTdatabank Entry API on our test environment.
 
@@ -30,7 +30,7 @@ It is important that you go through the checklist below in advance and validate 
 ### Checklist for a succesfull integration
 #### Mandatory properties
 -   `name`: only use plain text 
--   `terms`: exactly one term of the domain `eventtype` is required. We strongly encourage to also include one term of the domain `theme` for events (see our [guide on taxonomy terms](../../docs/terms.md) for more info)
+-   `terms`: exactly one term of the domain `eventtype` is required. We strongly encourage to also include one term of the domain `theme` for events (see our [guide on taxonomy terms](../docs/terms.md) for more info)
 -   `location`: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
 -   `calendar`: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
 
@@ -46,7 +46,7 @@ It is important that you go through the checklist below in advance and validate 
 
 <!-- theme: warning -->
 > 
-> Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the `description`, `typicalAgeRange` and the `mediaObject`.
+> Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the `description`, `typicalAgerange` and the `mediaObject`.
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
