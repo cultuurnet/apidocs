@@ -16,8 +16,8 @@ As described in **more detail in the [errors documentation introduction](https:/
 
 Additionally, the following extensions are encouraged:
 
-- `endUserMessage` for [custom domain errors](#for-custom-domain-errors)
-- `schemaErrors` for [invalid request bodies](#for-invalid-request-bodies) (specifically for `https://api.publiq.be/probs/body/invalid-data`)
+-   `endUserMessage` for [custom domain errors](#for-custom-domain-errors)
+-   `schemaErrors` for [invalid request bodies](#for-invalid-request-bodies) (specifically for `https://api.publiq.be/probs/body/invalid-data`)
 
 ## When to use which error type
 
