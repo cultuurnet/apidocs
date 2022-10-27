@@ -12,30 +12,12 @@ Error responses must always include a `Content-Type` header with a `application/
 
 ## Error response schema
 
-As described in **more detail in the [errors documentation introduction](https://docs.publiq.be/docs/errors/ZG9jOjE-introduction#body)**, error responses must use a schema that conforms to the [RFC7807](https://datatracker.ietf.org/doc/html/rfc7807) standard.
+As described in **more detail in the [errors documentation introduction](https://docs.publiq.be/docs/errors/ZG9jOjE-introduction)**, error responses must use a schema that conforms to the [RFC7807](https://datatracker.ietf.org/doc/html/rfc7807) standard.
 
-Every API must use this error response schema so that integrators do not need to write error handling logic for every API separately, and so we can build generic tooling around our APIs to (for example) track errors.
+Additionally, the following extensions are encouraged:
 
-Example of an error response with all possible properties:
-
-```json
-{
-  "type": "https://api.publiq.be/probs/body/invalid-data",
-  "title": "Invalid body data",
-  "status": "400",
-  "details": "The given body data did not match the expected schema.",
-  "schemaErrors": [
-    {
-      "jsonPointer": "/",
-      "error": "Required property \"tariffId\" missing."
-    },
-    {
-      "jsonPointer": "/numberOfTickets",
-      "error": "The data (string) must match the type: integer"
-    },
-  ]
-}
-```
+- `endUserMessage` for [custom domain errors](#for-custom-domain-errors)
+- `schemaErrors` for [invalid request bodies](#for-invalid-request-bodies) (specifically for `https://api.publiq.be/probs/body/invalid-data`)
 
 ## When to use which error type
 
@@ -107,7 +89,7 @@ Always use `400` https://api.publiq.be/probs/body/invalid-syntax when a body is 
 
 Always use `400` https://api.publiq.be/probs/body/invalid-data when a body is present but does not match with your expected schema. **Ideally the schemas in your OpenAPI file are used to validate this.**
 
-When the given body does not match with your expected schema, you can optionally include a `schemaErrors` property in the error response to give more info about which errors occured when validating the body with the schema.
+When the given body does not match with your expected schema, it is encouraged to include a `schemaErrors` property in the error response to give more info about which errors occured when validating the body with the schema.
 
 For example given the JSON body:
 
@@ -151,6 +133,8 @@ When creating your own error types, the following rules apply:
 *   An `errors.md` page should be added to your project's documentation (on Stoplight) to provide extra documentation per error type. A redirect will be set up so that your domain error types link to this page.
 
 Domain errors should in most cases use the `400` response status, but other status codes may be more applicable in some scenarios like for example `403`. When picking a status code, make sure to read about its intended usage in the list of [client error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses). Sometimes the name of a certain code may look applicable, but it might not actually be intended for your specific use case and can be confusing for integrators or tools who follow the HTTP specifications.
+
+It is encouraged to include an `endUserMessage` in domain errors.
 
 Examples of domain errors:
 
