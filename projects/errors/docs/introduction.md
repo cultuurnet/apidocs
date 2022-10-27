@@ -81,11 +81,13 @@ The `nl` localization is always provided. Possible extra language codes are `en`
 
 ##### schemaErrors
 
-In the case of validation of JSON bodies in requests, error responses can include multiple validation errors at the same time in a `schemaErrors` property.
+Error responses with the type `https://api.publiq.be/probs/body/invalid-data` can include one or more validation errors in a `schemaErrors` property to indicate which exact properties are invalid and why.
 
-This property will contain a list with objects that have a `jsonPointer` that conforms to the [RFC6901](https://datatracker.ietf.org/doc/html/rfc6901) standard. This pointer indicates which specific JSON property inside the request body was invalid or caused a problem.
+The `schemaErrors` property will contain a list with objects that have a `jsonPointer` that conforms to the [RFC6901](https://datatracker.ietf.org/doc/html/rfc6901) standard. This pointer indicates which specific JSON property inside the request body was invalid or caused a problem.
 
 The objects also contain an `error` property with a human-readable (but often technical) explanation of why that specific part of the given JSON is invalid.
+
+These schema errors are meant to help integrators debug a problem, not for end-users, as they will usually require code changes in the integration.
 
 For example:
 
