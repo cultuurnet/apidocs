@@ -32,6 +32,43 @@
       ]
     },
     {
+      "type": "group",
+      "title": "Search API",
+      "items": [
+        {
+          "type": "item",
+          "title": "Default filters",
+          "uri": "/docs/search-api/default-filters.md",
+          "slug": "search-api/default-filters"
+        },
+        {
+          "type": "item",
+          "title": "Embedding",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
+        },
+        {
+          "type": "item",
+          "title": "Pagination",
+          "uri": "/docs/search-api/pagination.md",
+          "slug": "search-api/pagination"
+        },
+        {
+          "type": "item",
+          "title": "Sorting",
+          "uri": "/docs/search-api/sorting.md",
+          "slug": "search-api/sorting"
+        },
+        {
+          "type": "item",
+          "title": "Facets",
+          "uri": "/docs/search-api/facets.md",
+          "slug": "search-api/facets"
+>>>>>>> main
+        }
+      ]
+    },
+    {
       "type": "item",
       "title": "Taxonomy terms",
       "uri": "docs/terms.md"
@@ -63,6 +100,11 @@
       "type": "item",
       "title": "Entry API",
       "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Search API",
+      "uri": "reference/search.json"
     },
     {
       "type": "item",
