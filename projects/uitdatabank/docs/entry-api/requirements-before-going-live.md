@@ -51,5 +51,5 @@ It is important that you go through the checklist below in advance and validate 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
 ## Step 3: switch to the production environment
-After a successful validation you will receive the credentials to connect with production environment. You will receive your credentials via [Projectaanvraag](https://projectaanvraag.uitdatabank.be) where they can also be consulted later.
+After a successful validation you will receive the credentials to connect with production environment. 
 
