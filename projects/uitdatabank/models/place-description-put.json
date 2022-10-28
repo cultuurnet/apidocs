@@ -1,0 +1,13 @@
+{
+  "title": "place.description.put",
+  "type": "object",
+  "properties": {
+    "description": {
+      "$ref": "./common-description-localized.json",
+      "description": "A human-readable description of the [place](./place.json) localized in the language from the URL parameter."
+    }
+  },
+  "required": [
+    "description"
+  ]
+}

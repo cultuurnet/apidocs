@@ -30,7 +30,7 @@ It is important that you go through the checklist below in advance and validate 
 ### Checklist for a succesfull integration
 #### Mandatory properties
 -   `name`: only use plain text 
--   `terms`: exactly one term of the domain `eventtype` is required. We strongly encourage to also include one term of the domain `theme` for events (see our [guide on taxonomy terms](../docs/terms.md) for more info)
+-   `terms`: exactly one term of the domain `eventtype` is required. We strongly encourage to also include one term of the domain `theme` for events (see our [guide on taxonomy terms](../../docs/terms.md) for more info)
 -   `location`: UiTdatabank already contains a lot of locations. Use existing locations as much as possible. Therefore, a search on existing locations in UiTdatabank should be built in in your application. Or alternatively (if all your events take place on the same location for example), the identifier of that location in UiTdatabank should be kept in your application so that each new event is created with the same location ID. Only when a location does not exist yet in UiTdatabank, a new one can be created. Always save the identifiers of the created locations in the application, so that later on you can update or delete the location if necessary
 -   `calendar`: use the provided calendarTypes in a correct way. `single` should be used for single day events (e.g. a concert), `multiple` for events that span multiple days (e.g. a festival) and `periodic` for recurring events (e.g. a course that takes place each wednesday for a given period)
 

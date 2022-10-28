@@ -17,24 +17,83 @@
     },
     {
       "type": "divider",
-      "title": "Guides"
+      "title": "Entry API"
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Requirements before going live",
+      "uri": "/docs/entry-api/requirements-before-going-live.md",
+      "slug": "entry-api/requirements-before-going-live"
+    },
+    {
+      "type": "divider",
+      "title": "Search API"
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/search.json"
     },
     {
       "type": "group",
-      "title": "Entry API",
+      "title": "Guides",
       "items": [
         {
           "type": "item",
-          "title": "Requirements before going live",
-          "uri": "/docs/entry-api/requirements-before-going-live.md",
-          "slug": "entry-api/requirements-before-going-live"
+          "title": "Default filters",
+          "uri": "/docs/search-api/default-filters.md",
+          "slug": "search-api/default-filters"
+        },
+        {
+          "type": "item",
+          "title": "Embedding",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
+        },
+        {
+          "type": "item",
+          "title": "Pagination",
+          "uri": "/docs/search-api/pagination.md",
+          "slug": "search-api/pagination"
+        },
+        {
+          "type": "item",
+          "title": "Sorting",
+          "uri": "/docs/search-api/sorting.md",
+          "slug": "search-api/sorting"
+        },
+        {
+          "type": "item",
+          "title": "Facets",
+          "uri": "/docs/search-api/facets.md",
+          "slug": "search-api/facets"
         }
       ]
     },
     {
+      "type": "divider",
+      "title": "Taxonomy API"
+    },
+    {
       "type": "item",
-      "title": "Taxonomy terms",
-      "uri": "docs/terms.md"
+      "title": "API reference",
+      "uri": "reference/taxonomy.json"
+    },
+    {
+      "type": "group",
+      "title": "Guides",
+      "items": [
+        {
+          "type": "item",
+          "title": "Terms",
+          "uri": "docs/terms.md"
+        }
+      ]
     },
     {
       "type": "divider",
@@ -54,20 +113,6 @@
       "type": "item",
       "title": "Organizer",
       "uri": "models/organizer-with-read-example.json"
-    },
-    {
-      "type": "divider",
-      "title": "API References"
-    },
-    {
-      "type": "item",
-      "title": "Entry API",
-      "uri": "reference/entry.json"
-    },
-    {
-      "type": "item",
-      "title": "Taxonomy API",
-      "uri": "reference/taxonomy.json"
     }
   ]
 }
