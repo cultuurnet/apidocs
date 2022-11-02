@@ -2,15 +2,18 @@
   "title": "event.image.put",
   "type": "object",
   "description": "Describes the request body to update an image at an [event](./event.json).",
-  "examples": [],
+  "examples": [
+    {
+      "description": "Picture of the last publiq event",
+      "copyrightHolder": "publiq"
+    }
+  ],
   "properties": {
     "description": {
-      "example": "Picture of the last publiq event",
       "$ref": "./common-description-localized.json",
       "description": "Description of the image object."
     },
     "copyrightHolder": {
-      "example": "publiq",
       "$ref": "./common-copyrightHolder.json",
       "description": "The copyright holder of the image."
     }
