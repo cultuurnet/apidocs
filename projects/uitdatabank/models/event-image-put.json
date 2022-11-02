@@ -5,17 +5,13 @@
   "examples": [],
   "properties": {
     "description": {
-      "type": "string",
       "example": "Picture of the last publiq event",
-      "minLength": 1,
-      "pattern": "\\S",
+      "$ref": "./common-description-localized.json",
       "description": "Description of the image object."
     },
     "copyrightHolder": {
-      "type": "string",
       "example": "publiq",
-      "minLength": 3,
-      "pattern": "\\S",
+      "$ref": "./common-copyrightHolder.json",
       "description": "The copyright holder of the image."
     }
   },
