@@ -98,7 +98,7 @@ The action you are trying to perform on an event cannot be done because the even
 
 ## main-image-must-be-linked-to-resource
 
-*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/image-cannot-be-main-image`
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/main-image-must-be-linked-to-resource`
 *   **Title**: `Main image must be linked to resource`
 *   **Status**: `400`
 
