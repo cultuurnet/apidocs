@@ -48,7 +48,6 @@ It is important that you go through the checklist below in advance and validate 
 * `bookingInfo`: add a ticketing link or contact details for reservation if applicable
 
 <!-- theme: warning -->
-> 
 > Albeit optional, note that these properties are often necessary in order for it to be published in an online calendar. This is especially the case for the `description`, `typicalAgeRange` and the `mediaObject`.
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
