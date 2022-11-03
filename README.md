@@ -4,21 +4,21 @@ This repository contains all the API documentation available at https://docs.pub
 
 ## Table of contents
 
-*   [Requirements](#requirements-)
-*   [Getting started](#getting-started-)
-*   [Contribution guidelines](#contribution-guidelines-)
-*   [Adding a new project](#adding-a-new-project-)
-*   [Project structure](#project-structure-)
-*   [OpenAPI files](#openapi-files-)
-*   [Docs](#docs-)
-*   [Sidebar](#sidebar-)
-*   [Pretty page URLs](#pretty-page-urls-)
-*   [Images](#images-)
-*   [Links](#links-)
-*   [Automatic checks](#automatic-checks-)
-*   [Automatically fixing (some) errors](#automatically-fixing-some-errors-)
-*   [Publishing your changes](#publishing-your-changes-)
-*   [Useful tools and resource](#useful-tools-and-resources-)
+* [Requirements](#requirements-)
+* [Getting started](#getting-started-)
+* [Contribution guidelines](#contribution-guidelines-)
+* [Adding a new project](#adding-a-new-project-)
+* [Project structure](#project-structure-)
+* [OpenAPI files](#openapi-files-)
+* [Docs](#docs-)
+* [Sidebar](#sidebar-)
+* [Pretty page URLs](#pretty-page-urls-)
+* [Images](#images-)
+* [Links](#links-)
+* [Automatic checks](#automatic-checks-)
+* [Automatically fixing (some) errors](#automatically-fixing-some-errors-)
+* [Publishing your changes](#publishing-your-changes-)
+* [Useful tools and resource](#useful-tools-and-resources-)
 
 ## Requirements 🐙
 
@@ -26,26 +26,28 @@ To contribute to our API documentation, some basic knowledge of [git](https://gi
 
 The following tools can also be helpful but are not strictly required:
 
-*   [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by https://stoplight.io (where our documentation is hosted). However technically any file editor is fine.
-*   [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the [automatic checks](#automatic-checks-) on your own machine, and to run the [automatic fixer](#automatically-fixing-some-errors-) in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push, and you can also [run the automatic fixer online via GitHub Actions](https://github.com/cultuurnet/apidocs/actions/workflows/docs-linting-fix.yml).
+* [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by https://stoplight.io (where our documentation is hosted). However technically any file editor is fine.
+* [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the [automatic checks](#automatic-checks-) on your own machine, and to run the [automatic fixer](#automatically-fixing-some-errors-) in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push, and you can also [run the automatic fixer online via GitHub Actions](https://github.com/cultuurnet/apidocs/actions/workflows/docs-linting-fix.yml).
 
 ## Getting started 🚀
 
 Clone this repository to your local machine.
 
-    git clone git@github.com:cultuurnet/apidocs.git
+```
+git clone git@github.com:cultuurnet/apidocs.git
+```
 
 ## Contribution guidelines ✨
 
 Anyone can contribute to our API documentation. To make the process as smooth as possible, please take the following guidelines into consideration:
 
-*   Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`. Branches that change/fix the tooling across all projects should be prefixed with `platform/`.
-*   Do not edit multiple projects in the same branch unless the changes are related to each other.
-*   Avoid branches with a lot of changes that are not related, even within the same project. If you need to add a lot of documentation, aim for small incremental steps so the review process stays manageable and you get feedback early on.
-*   Use [atomic commits](https://curiousprogrammer.dev/blog/why-i-create-atomic-commits-in-git/).
-*   Use [good commit messages](https://cbea.ms/git-commit/). Avoid generic commit messages like `Updated example.md` or `PR remarks`.
-*   Create a [draft pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) if your changes are not ready for review yet but you want to open a pull request already.
-*   Fill in the description of your pull request with the template that is automatically provided.
+* Make your changes on a branch separate from `main` first. (Pushes to `main` will automatically be rejected!) Use a branch name that is prefixed with your project's name. For example `uitdatabank/your-branch-name` or `widgets/your-branch-name`. Branches that change/fix the tooling across all projects should be prefixed with `platform/`.
+* Do not edit multiple projects in the same branch unless the changes are related to each other.
+* Avoid branches with a lot of changes that are not related, even within the same project. If you need to add a lot of documentation, aim for small incremental steps so the review process stays manageable and you get feedback early on.
+* Use [atomic commits](https://curiousprogrammer.dev/blog/why-i-create-atomic-commits-in-git/).
+* Use [good commit messages](https://cbea.ms/git-commit/). Avoid generic commit messages like `Updated example.md` or `PR remarks`.
+* Create a [draft pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) if your changes are not ready for review yet but you want to open a pull request already.
+* Fill in the description of your pull request with the template that is automatically provided.
 
 When your changes are ready create a pull request if you haven't done so yet, or [mark your draft pull request as ready for review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review). One or more reviewers will automatically be assigned to go over your changes and give feedback or their approval.
 
@@ -65,25 +67,29 @@ An admin will then automatically be assigned to add the new project for you.
 
 Every project has its own space inside the `projects` directory with the same name as their URL slug on https://docs.publiq.be. For example:
 
-    projects/
-    ├─ authentication/  # https://docs.publiq.be/docs/authentication
-    ├─ errors/          # https://docs.publiq.be/docs/errors
-    ├─ guidelines/      # https://docs.publiq.be/docs/guidelines
-    ├─ uitdatabank/     # https://docs.publiq.be/docs/uitdatabank
-    ├─ uitpas/          # https://docs.publiq.be/docs/uitpas
-    ├─ widgets/         # https://docs.publiq.be/docs/widgets
-    ├─ ...
+```
+projects/
+├─ authentication/  # https://docs.publiq.be/docs/authentication
+├─ errors/          # https://docs.publiq.be/docs/errors
+├─ guidelines/      # https://docs.publiq.be/docs/guidelines
+├─ uitdatabank/     # https://docs.publiq.be/docs/uitdatabank
+├─ uitpas/          # https://docs.publiq.be/docs/uitpas
+├─ widgets/         # https://docs.publiq.be/docs/widgets
+├─ ...
+```
 
 Our documentation is hosted by [Stoplight](https://stoplight.io), which expects a specific directory structure:
 
-    projects/
-    ├─ authentication/
-    │  ├─ assets/         # Contains all your static files
-    │  │  ├─ images/      # Contains all your images
-    │  ├─ docs/           # Contains all your .md files for guides
-    │  ├─ reference/      # Contains all your OpenAPI files (preferably .json)
-    │  ├─ toc.json        # Contains the config of your project's sidebar
-    ├─ ...
+```
+projects/
+├─ authentication/
+│  ├─ assets/         # Contains all your static files
+│  │  ├─ images/      # Contains all your images
+│  ├─ docs/           # Contains all your .md files for guides
+│  ├─ reference/      # Contains all your OpenAPI files (preferably .json)
+│  ├─ toc.json        # Contains the config of your project's sidebar
+├─ ...
+```
 
 It is important to adhere to this structure to avoid problems on the hosted version of our docs at https://docs.publiq.be or inside the Stoplight Studio editor.
 
@@ -127,34 +133,36 @@ Instead, a better way to customize your page URLs is by setting a `slug` propert
 
 For example:
 
-    {
-        "items": [
-            {
-                "type": "item",
-                "title": "Introduction", // Visible name of the sidebar menu item
-                "uri": "docs/introduction.md", // Link to the Markdown file
-                "slug": "introduction" // Custom URL path you want to use
-            },
-            {
-                "type": "item",
-                "title": "Example page",
-                "uri": "docs/example.md",
-                "slug": "example"
-            },
-            {
-                "type": "item",
-                "title": "Example page in subdirectory",
-                "uri": "docs/subdirectory/example.md",
-                "slug": "subdirectory/example"
-            }
-        ]
-    }
+```
+{
+    "items": [
+        {
+            "type": "item",
+            "title": "Introduction", // Visible name of the sidebar menu item
+            "uri": "docs/introduction.md", // Link to the Markdown file
+            "slug": "introduction" // Custom URL path you want to use
+        },
+        {
+            "type": "item",
+            "title": "Example page",
+            "uri": "docs/example.md",
+            "slug": "example"
+        },
+        {
+            "type": "item",
+            "title": "Example page in subdirectory",
+            "uri": "docs/subdirectory/example.md",
+            "slug": "subdirectory/example"
+        }
+    ]
+}
+```
 
 This will result in the following URLs for the sidebar links:
 
-*   `https://docs.publiq.be/docs/<project>/introduction`
-*   `https://docs.publiq.be/docs/<project>/example`
-*   `https://docs.publiq.be/docs/<project>/subdirectory/example`
+* `https://docs.publiq.be/docs/<project>/introduction`
+* `https://docs.publiq.be/docs/<project>/example`
+* `https://docs.publiq.be/docs/<project>/subdirectory/example`
 
 If you have sidebar links that did not have a custom `slug` initially, you can always add one at any point. The old URLs with the "stable id" will then redirect to the new URL when visited. (For example if you shared links to the URL with the "stable id" before, or other projects link to it.)
 
@@ -170,7 +178,9 @@ You may use subdirectories if you want.
 When referencing images inside your Markdown files, you should always use relative URLs.
 For example, if your file is `docs/introduction.md`:
 
-    ![Your example alt text](../assets/images/example.png)
+```
+![Your example alt text](../assets/images/example.png)
+```
 
 If you do not follow these guidelines images may not appear on https://docs.publiq.be even if they display in Stoplight Studio's preview.
 
@@ -205,16 +215,20 @@ Second, run `yarn install` in the root of your local clone of this repository to
 
 Then, run any of the following commands in the root of the cloned repository:
 
-*   `yarn api:lint` to check for syntax errors or design guidelines violations inside the OpenAPI files
-*   `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors
+* `yarn api:lint` to check for syntax errors or design guidelines violations inside the OpenAPI files
+* `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors
 
 If you want to automatically run these checks on your local machine for every new commit, you can execute the following command in the root of your cloned repository (once) to install a [`pre-commit` hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks):
 
-    cp pre-commit .git/hooks/pre-commit
+```
+cp pre-commit .git/hooks/pre-commit
+```
 
 You can uninstall the pre-commit hook by running:
 
-    rm .git/hooks/pre-commit
+```
+rm .git/hooks/pre-commit
+```
 
 In any case the checks will also run on GitHub and you should receive an email if they fail.
 If you open a pull request it will also include the status of the checks.
@@ -254,4 +268,4 @@ The workflow will detect that you have run it manually, and push the changes to 
 
 While not required, you can use the following links to help you write excellent documentation:
 
-*   https://hemingwayapp.com/ for writing clearly by avoiding passive voice, long sentences, and so on.
+* https://hemingwayapp.com/ for writing clearly by avoiding passive voice, long sentences, and so on.

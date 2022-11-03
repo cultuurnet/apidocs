@@ -16,8 +16,8 @@ As described in **more detail in the [errors documentation introduction](https:/
 
 Additionally, the following extensions are encouraged:
 
--   `endUserMessage` for [custom domain errors](#for-custom-domain-errors)
--   `schemaErrors` for [invalid request bodies](#for-invalid-request-bodies) (specifically for `https://api.publiq.be/probs/body/invalid-data`)
+* `endUserMessage` for [custom domain errors](#for-custom-domain-errors)
+* `schemaErrors` for [invalid request bodies](#for-invalid-request-bodies) (specifically for `https://api.publiq.be/probs/body/invalid-data`)
 
 ## When to use which error type
 
@@ -33,8 +33,8 @@ Always use `403` https://api.publiq.be/probs/auth/forbidden when the client send
 
 Read more:
 
-*   About [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification)
-*   About [available authentication error types](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors)
+* About [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification)
+* About [available authentication error types](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors)
 
 #### When using tokens
 
@@ -46,9 +46,9 @@ Always use `403` https://api.publiq.be/probs/auth/forbidden when the client send
 
 Read more:
 
-*   About [client access tokens](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY4-client-access-token)
-*   About [user access tokens](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token)
-*   About [available authentication error types](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors)
+* About [client access tokens](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY4-client-access-token)
+* About [user access tokens](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token)
+* About [available authentication error types](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors)
 
 ### For other incorrect headers
 
@@ -60,7 +60,7 @@ Only use generic errors like `400` https://api.publiq.be/probs/header/missing an
 
 Read more:
 
-*   About [available header error types](https://docs.publiq.be/docs/errors/ZG9jOjEyNzc5NzA0-in-request-headers)
+* About [available header error types](https://docs.publiq.be/docs/errors/ZG9jOjEyNzc5NzA0-in-request-headers)
 
 ### For unsupported HTTP methods
 
@@ -68,7 +68,7 @@ Always use `405` https://api.publiq.be/probs/method/not-allowed when a request u
 
 Read more:
 
-*   About [available method error types](https://docs.publiq.be/docs/errors/ZG9jOjQ1Nzc3MzE3-in-request-method)
+* About [available method error types](https://docs.publiq.be/docs/errors/ZG9jOjQ1Nzc3MzE3-in-request-method)
 
 ### For invalid URLs
 
@@ -79,7 +79,7 @@ For every `404` the type https://api.publiq.be/probs/url/not-found must be used.
 
 Read more:
 
-*   About [available URL error types](https://docs.publiq.be/docs/errors/ZG9jOjEyNzc5NzA1-in-request-url)
+* About [available URL error types](https://docs.publiq.be/docs/errors/ZG9jOjEyNzc5NzA1-in-request-url)
 
 ### For invalid request bodies
 
@@ -127,10 +127,10 @@ Any error that is related to your application's domain logic should use an error
 
 When creating your own error types, the following rules apply:
 
-*   The `type` should be a URI that starts with `https://api.publiq.be/probs` and is suffixed with the name of your API or product. For example `https://api.publiq.be/probs/uitdatabank` for UiTdatabank and `https://api.publiq.be/probs/uitpas` for UiTPAS.
-*   Everything after the name of your API/product can be structured however you like. You can group errors together using "subdirectories", or use a flat list.
-*   The slugs of your errors must always be in `kebab-case` (lowercase, and hyphens for spaces).
-*   An `errors.md` page should be added to your project's documentation (on Stoplight) to provide extra documentation per error type. A redirect will be set up so that your domain error types link to this page.
+* The `type` should be a URI that starts with `https://api.publiq.be/probs` and is suffixed with the name of your API or product. For example `https://api.publiq.be/probs/uitdatabank` for UiTdatabank and `https://api.publiq.be/probs/uitpas` for UiTPAS.
+* Everything after the name of your API/product can be structured however you like. You can group errors together using "subdirectories", or use a flat list.
+* The slugs of your errors must always be in `kebab-case` (lowercase, and hyphens for spaces).
+* An `errors.md` page should be added to your project's documentation (on Stoplight) to provide extra documentation per error type. A redirect will be set up so that your domain error types link to this page.
 
 Domain errors should in most cases use the `400` response status, but other status codes may be more applicable in some scenarios like for example `403`. When picking a status code, make sure to read about its intended usage in the list of [client error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses). Sometimes the name of a certain code may look applicable, but it might not actually be intended for your specific use case and can be confusing for integrators or tools who follow the HTTP specifications.
 
@@ -138,8 +138,8 @@ It is encouraged to include an `endUserMessage` in domain errors.
 
 Examples of domain errors:
 
-*   https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported
-*   https://api.publiq.be/probs/uitpas/invalid-uitpas-number
+* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported
+* https://api.publiq.be/probs/uitpas/invalid-uitpas-number
 
 Read more examples of [domain errors in UiTdatabank](https://docs.publiq.be/docs/uitdatabank/ZG9jOjMyMzA0Mw-errors).
 

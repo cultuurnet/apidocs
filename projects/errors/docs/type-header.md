@@ -6,9 +6,9 @@ This page contains an overview of all possible error types inside the `https://a
 
 ## missing
 
-*   **Type:** `https://api.publiq.be/probs/header/missing`
-*   **Title**: `Header missing`
-*   **Status**: `400`
+* **Type:** `https://api.publiq.be/probs/header/missing`
+* **Title**: `Header missing`
+* **Status**: `400`
 
 A required header is missing. More info on what header specifically can be found in the `detail` property of the response.
 
@@ -20,9 +20,9 @@ A required header is missing. More info on what header specifically can be found
 
 ## invalid
 
-*   **Type:** `https://api.publiq.be/probs/header/invalid`
-*   **Title**: `Header invalid`
-*   **Status**: `400`
+* **Type:** `https://api.publiq.be/probs/header/invalid`
+* **Title**: `Header invalid`
+* **Status**: `400`
 
 The value of a given header is invalid. More info on what header specifically can be found in the `detail` property of the response.
 
@@ -34,9 +34,9 @@ The value of a given header is invalid. More info on what header specifically ca
 
 ## not-acceptable
 
-*   **Type:** `https://api.publiq.be/probs/header/not-acceptable`
-*   **Title**: `Not Acceptable`
-*   **Status**: `406`
+* **Type:** `https://api.publiq.be/probs/header/not-acceptable`
+* **Title**: `Not Acceptable`
+* **Status**: `406`
 
 This error is returned if the request to the API included an `Accept` header with a content-type that the API does not support, and the API is unwilling or unable to return a default content-type instead.
 
@@ -48,9 +48,9 @@ For more info, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
 
 ## unsupported-media-type
 
-*   **Type:** `https://api.publiq.be/probs/header/unsupported-media-type`
-*   **Title**: `Unsupported Media Type`
-*   **Status**: `415`
+* **Type:** `https://api.publiq.be/probs/header/unsupported-media-type`
+* **Title**: `Unsupported Media Type`
+* **Status**: `415`
 
 This error is returned if the request to the API included a `Content-Type` header with a value that the API does not support.
 

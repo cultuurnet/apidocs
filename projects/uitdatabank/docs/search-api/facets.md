@@ -1,24 +1,26 @@
 # Facets
 
 Facets allow you to summarize your search results in relation to one or more filters (e.g. regions). Each facet has a
--   name (e.g. `Gent`)
--   a count (e.g. `826`)
--   an identifier, if applicable (e.g. `nis-44021`)
+
+* name (e.g. `Gent`)
+* a count (e.g. `826`)
+* an identifier, if applicable (e.g. `nis-44021`)
 
 Typically, facets are used in event calendars to allow the visitor of the agenda to browse and filter the event content efficiently and in a targeted manner.
 
 It is possible to get facet counts for specific filters using the `facets` URL parameter.
 
 Supported values are:
--   `regions`
--   `types`
--   `themes`
--   `facilities`
--   `labels`
+
+* `regions`
+* `types`
+* `themes`
+* `facilities`
+* `labels`
 
 <!-- theme: info -->
 
-> The key of each facet node is the value you should use to filter that specific field. 
+> The key of each facet node is the value you should use to filter that specific field.
 
 <!-- theme: warning -->
 
@@ -27,14 +29,17 @@ Supported values are:
 ## Request individual facets
 
 ### Facilities
+
 Applicable on: `/offers`, `/events`, `/places`
 
 **Example request**
+
 ```
 GET /offers/?facets[]=facilities
 ```
 
 **Example response**
+
 ```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
@@ -68,14 +73,17 @@ GET /offers/?facets[]=facilities
 ```
 
 ### Labels
+
 Applicable on: `/offers`, `/events`, `/places`
 
 **Example request**
+
 ```
 GET /offers/?facets[]=labels
 ```
 
 **Example response**
+
 ```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
@@ -110,14 +118,17 @@ GET /offers/?facets[]=labels
 ```
 
 ### Themes
+
 Applicable on: `/offers`, `/events`
 
 **Example request**
+
 ```
 GET /events/?facets[]=themes
 ```
 
 **Example response**
+
 ```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
@@ -151,14 +162,17 @@ GET /events/?facets[]=themes
 ```
 
 ### Types
+
 Applicable on: `/offers`, `/events`, `/places`
 
 **Example request**
+
 ```
 GET /places/?facets[]=types
 ```
 
 **Example response**
+
 ```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
@@ -192,14 +206,17 @@ GET /places/?facets[]=types
 ```
 
 ### Regions
+
 Applicable on: `/offers`, `/events`, `/places`, `/organizers`
 
 **Example request**
+
 ```
 GET /organizers/?facets[]=regions
 ```
 
 **Example response**
+
 ```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
@@ -254,10 +271,11 @@ GET /organizers/?facets[]=regions
 ```
 
 ## Request multiple facets at once
+
 It is possible to request multiple facets at once.
 
 **Example request**
+
 ```
 GET /events/?facets[]=types&facets[]=labels
 ```
-

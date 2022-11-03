@@ -10,9 +10,9 @@ The UiTPAS API is organized around [REST](https://en.wikipedia.org/wiki/Represen
 
 In this documentation you'll find:
 
-*   Code examples so you can see see how it works in practice.
-*   Step-by-step guides to common UiTPAS integration scenarios.
-*   Explanations of relevant UiTPAS concepts.
+* Code examples so you can see see how it works in practice.
+* Step-by-step guides to common UiTPAS integration scenarios.
+* Explanations of relevant UiTPAS concepts.
 
 ## What is UiTPAS?
 

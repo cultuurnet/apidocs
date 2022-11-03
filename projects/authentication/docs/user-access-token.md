@@ -8,15 +8,15 @@ Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely th
 
 ## Requirements
 
--   A client id
--   A client secret
+* A client id
+* A client secret
 
-See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials. 
+See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials.
 
 Additionally, we will need to configure the following settings for your client on our end:
 
-*   Login URL: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
-*   Callback URL(s): The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
+* Login URL: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
+* Callback URL(s): The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
 
 If you wish to use user access tokens, make sure to specify your login URL and callback URLs when requesting your client credentials.
 
@@ -52,42 +52,47 @@ sequenceDiagram
     end
 ```
 
-1.  A user clicks the login link in your application.
-2.  Your application redirects the user to the `/authorize` URL on publiq's authorization server. See the [example](#example) below for more details about the parameters that must be included in the URL.
-3.  The authorization server shows the login form.
-4.  The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
-5.  The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
-6.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret.
-7.  The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #2 (see [example](#example) below).
-8.  The user performs an action in your application which requires an API call.
-9.  Your application uses the access token to make one or more authenticated requests to the API.
+1. A user clicks the login link in your application.
+2. Your application redirects the user to the `/authorize` URL on publiq's authorization server. See the [example](#example) below for more details about the parameters that must be included in the URL.
+3. The authorization server shows the login form.
+4. The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
+5. The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
+6. Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret.
+7. The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #2 (see [example](#example) below).
+8. The user performs an action in your application which requires an API call.
+9. Your application uses the access token to make one or more authenticated requests to the API.
 10. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again or use the refresh token to request a new access token without letting the user login again.
 
 #### Example
 
 When a user clicks the login link in your application (step 1), your application redirects them to the following URL (step 2):
 
-    https://account-test.uitid.be/authorize?
-      prompt=login&
-      audience=https://api.publiq.be&
-      scope=openid email offline_access&
-      response_type=code&
-      client_id=YOUR_CLIENT_ID&
-      redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
+```
+https://account-test.uitid.be/authorize?
+  prompt=login&
+  audience=https://api.publiq.be&
+  scope=openid email offline_access&
+  response_type=code&
+  client_id=YOUR_CLIENT_ID&
+  redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
+```
 
 Note that:
--   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
--   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--   The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
--   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+* The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
+* The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+* The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
+* The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4). 
+The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 5). So the redirect URL will look like:
 
-    https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+```
+https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+```
 
 To finish, your application makes a request to the `/oauth/token` endpoint on the authorization server to exchange the `code` for an access token (step 6):
 
@@ -167,15 +172,15 @@ sequenceDiagram
     end
 ```
 
-1.  A user clicks the login link in your application.
-2.  Your application generates a cryptographically-random `code_verifier`, and from this it generates a `code_challenge`.
-3.  Your application redirects the user to the `/authorize` URL on publiq's authorization server and includes the `code_challenge` in the URL. See the [example](#example-1) below for more details about the parameters that must be included in the URL.
-4.  The authorization server shows the login form.
-5.  The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
-6.  The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
-7.  Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and your previously generated `code_verifier`.
-8.  The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #3 (see [example](#example-1) below).
-9.  The user performs an action in your application which requires an API call.
+1. A user clicks the login link in your application.
+2. Your application generates a cryptographically-random `code_verifier`, and from this it generates a `code_challenge`.
+3. Your application redirects the user to the `/authorize` URL on publiq's authorization server and includes the `code_challenge` in the URL. See the [example](#example-1) below for more details about the parameters that must be included in the URL.
+4. The authorization server shows the login form.
+5. The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
+6. The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
+7. Your application makes a request to `POST /oauth/token` on the authorization server to exchange the authorization code for an access token, together with your client id and your previously generated `code_verifier`.
+8. The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #3 (see [example](#example-1) below).
+9. The user performs an action in your application which requires an API call.
 10. Your application uses the access token to make one or more authenticated requests to the API.
 11. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request. You may let the user login again or use the refresh token to request a new access token without letting the user login again.
 
@@ -206,31 +211,35 @@ You can find more examples how to do this in various programming languages like 
 
 Next, your application redirects the user to the `/authorize` URL on the authorization server (step 3):
 
-    https://account-test.uitid.be/authorize?
-      prompt=login&
-      audience=https://api.publiq.be&
-      scope=openid email offline_access&
-      response_type=code&
-      client_id=YOUR_CLIENT_ID&
-      code_challenge=YOUR_CODE_CHALLENGE&
-      code_challenge_method=S256&
-      redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
-
+```
+https://account-test.uitid.be/authorize?
+  prompt=login&
+  audience=https://api.publiq.be&
+  scope=openid email offline_access&
+  response_type=code&
+  client_id=YOUR_CLIENT_ID&
+  code_challenge=YOUR_CODE_CHALLENGE&
+  code_challenge_method=S256&
+  redirect_uri=https://YOUR_CLIENT_CALLBACK_URL
+```
 
 Note that:
--   The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
--   The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
--   The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
--   The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
--   The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
+
+* The `prompt` parameter is suggested to always be set to `login`, so the user always sees a login screen even if they have already logged in on Auth0 previously. This is required to implement the logout flow correctly.
+* The `audience` parameter is required and must always be `https://api.publiq.be` due to how Auth0 works.
+* The `scope` parameter is suggested to always be set to `openid email offline_access` to get an access token that can be used to fetch the first name and email address of the logged in user afterwards (`openid email`), as well as a refresh token (`offline_access`). See [scopes](#scopes) for more info.
+* The `code_challenge_method` is required and must always be set to `S256` as it is the only one supported by Auth0.
+* The `redirect_uri` must already be registered on our end as a valid redirect URI (see [requirements](#requirements)).
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5). 
+The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 6). So the redirect URL will look like:
 
-    https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+```
+https://YOUR_CLIENT_CALLBACK_URL?code=YOUR_AUTHORIZATION_CODE
+```
 
 To finish, your application makes a request to the `/oauth/token` endpoint on the authorization server to exchange the `code` for an access token (step 7):
 
@@ -281,10 +290,9 @@ publiq uses [Auth0](https://auth0.com/) as its authentication and authorization 
 
 ## Login parameters
 
-When you redirect your user to the `GET /authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization. 
+When you redirect your user to the `GET /authorize` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization.
 
 The following table gives an overview of all the required/optional parameters:
-
 
 | Parameter name | Possible values | Required? | Description
 |---------|----------|---------|---------
@@ -309,7 +317,7 @@ The following table gives an overview of all the required/optional parameters:
 | `ui_type` | `minimal` | Optional | Switches the login screen to a minimal form with only email and password fields. Only useful in very specific cases like a POS device for museumPASSmusées.
 | `show_steps` | `true` (default) or `false` | Optional | Shows the steps header if set to `true` (Stap 1/2, Stap 2/2)
 | `return_if_cancelled` | For example `https://your-application.com` | Optional | A URL of your application starting with `https://` to redirect the user back to if the cancel the login. If not provided, we will attempt to redirect the user to a suitable URL of your application.
-| `product_display_name` | Human-readable name of your application | Optional | Used in some copy, for example "Je wordt teruggebracht naar \<your application name\>"
+| `product_display_name` | Human-readable name of your application | Optional | Used in some copy, for example "Je wordt teruggebracht naar \<your application name>"
 | `skip_verify_legacy` | `true` or `false` (default) | Optional | By default, users that created an account before personal details like date of birth could be added during registration are prompted to add this info after logging in. However when this parameter is set to `true`, this step will be skipped for those users.
 
 ## Scopes
@@ -318,9 +326,9 @@ When redirecting the user to the `GET /authorize` endpoint, the value of the `sc
 
 The following values can be used:
 
--   **offline_access**: If used, the `POST /oauth/token` response will include an additional `refresh_token` property that can be used to renew the access token when it is expired.
--   **openid**: If used, an additional [ID token](https://auth0.com/docs/secure/tokens/id-tokens) will be included in the `POST /oauth/token` response as an `id_token` property. This token contains the user's first name, and optionally their email address if the `email` scope is also requested. It can be decoded to read this information without making an HTTP request. Alternatively, if the `openid` scope is requested the **access** token that you get back can be used to make a request to the `GET /userinfo` endpoint on the authorization server to [fetch the user info](#user-info).
--   **email**: If used, `email` and `email_verified` claims will be included in the ID token and `/userinfo` endpoint. (Requires `openid` scope)
+* **offline_access**: If used, the `POST /oauth/token` response will include an additional `refresh_token` property that can be used to renew the access token when it is expired.
+* **openid**: If used, an additional [ID token](https://auth0.com/docs/secure/tokens/id-tokens) will be included in the `POST /oauth/token` response as an `id_token` property. This token contains the user's first name, and optionally their email address if the `email` scope is also requested. It can be decoded to read this information without making an HTTP request. Alternatively, if the `openid` scope is requested the **access** token that you get back can be used to make a request to the `GET /userinfo` endpoint on the authorization server to [fetch the user info](#user-info).
+* **email**: If used, `email` and `email_verified` claims will be included in the ID token and `/userinfo` endpoint. (Requires `openid` scope)
 
 If you want to specify **multiple** values, combine them as a single space-delimited string. For example:
 
@@ -369,12 +377,12 @@ Make sure to **cache and reuse** the obtained user access token for as long as p
 
 There are two ways to check if your cached token is still valid:
 
-1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
-2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+1. Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
+2. Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
 
 ## Refresh tokens
 
-When your user access token has expired, you can either let the user login again or automatically exchange a `refresh_token` for a new user access token. 
+When your user access token has expired, you can either let the user login again or automatically exchange a `refresh_token` for a new user access token.
 
 A refresh token must be requested when initiating the user access token flow. See the [regular web applications example](#example) and/or the [single-page and native applications example](#example-1) for info how to request a refresh token together with the access token.
 
