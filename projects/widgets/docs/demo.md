@@ -1,7 +1,3 @@
-***
-
-## stoplight-id: demo
-
 # demo
 
 The beginning of an awesome article...
