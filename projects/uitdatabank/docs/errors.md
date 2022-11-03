@@ -95,3 +95,11 @@ For example, you cannot update the location of an event with attendanceMode `onl
 *   **Status**: `400`
 
 The action you are trying to perform on an event cannot be done because the event has UiTPAS ticket sales. When an event has UiTPAS ticket sales its organizer, UiTPAS card system(s) and UiTPAS distribution key(s) cannot be updated because it would invalidate the existing ticket sales in UiTPAS.
+
+## image-cannot-be-main-image
+
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/image-cannot-be-main-image`
+*   **Title**: `Image cannot be main image`
+*   **Status**: `400`
+
+The action you are trying to perform on an event or place cannot be done because the image has not been added to it. Add the image first to the event or place, so you can set it as the main image.
