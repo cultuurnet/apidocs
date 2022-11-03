@@ -102,4 +102,4 @@ The action you are trying to perform on an event cannot be done because the even
 *   **Title**: `Image cannot be main image`
 *   **Status**: `400`
 
-The action you are trying to perform on an event or place cannot be done because the image has not been added to it. Add the image first to the event or place, so you can set it as the main image.
+When setting a main image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then set it as the main image.
