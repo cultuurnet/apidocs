@@ -99,7 +99,7 @@ The action you are trying to perform on an event cannot be done because the even
 ## main-image-must-be-linked-to-resource
 
 *   **Complete type:** `https://api.publiq.be/probs/uitdatabank/image-cannot-be-main-image`
-*   **Title**: `Image cannot be main image`
+*   **Title**: `Main image must be linked to resource`
 *   **Status**: `400`
 
 When setting a main image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then set it as the main image.
