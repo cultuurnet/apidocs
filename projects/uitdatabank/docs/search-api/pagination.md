@@ -1,21 +1,27 @@
 # Pagination
 
 Every search endpoint supports pagination using two url parameters:
--   `start`: the number of results to skip (`int`, defaults to 0)
--   `limit`: the number of results to return in a single page (`int`, defaults to 30)
+
+* `start`: the number of results to skip (`int`, defaults to 0)
+* `limit`: the number of results to return in a single page (`int`, defaults to 30)
 
 Pagination will only work for a limited result set:
--   The maximum value for for `start` is set to `10000`
--   The maximum value for `limit` is set to `2000`
+
+* The maximum value for for `start` is set to `10000`
+* The maximum value for `limit` is set to `2000`
 
 ## Examples
+
 ### Valid value for `start` and `limit` parameter
+
 **request**
+
 ```
 GET /offers/?start=10&limit=5
 ```
 
 **response**
+
 ```json
 {
   "@context": "http://www.w3.org/ns/hydra/context.jsonld",
@@ -34,15 +40,19 @@ GET /offers/?start=10&limit=5
   ]
 }
 ```
+
 Because we skipped the first 10 results, and we only have a total of 12 results, we only get the last 2 results for this particular request.
 
 ### Exceed maximum value for `start`
+
 **request**
+
 ```
 GET /offers/?start=15000&limit=100
 ```
 
 **response**
+
 ```json
 {
    "title":"Not Found",
@@ -53,12 +63,15 @@ GET /offers/?start=15000&limit=100
 ```
 
 ### Exceed maximum value for `limit`
+
 **request**
+
 ```
 GET /offers/?start=0&limit=2001
 ```
 
 **response**
+
 ```json
 {
    "title":"Not Found",

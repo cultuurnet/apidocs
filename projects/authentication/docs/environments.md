@@ -2,8 +2,8 @@
 
 The authorization servers that can be used to request [tokens](./methods.md) are available on two domains, one for the test environment and one for the production environment of our APIs.
 
-*   Test: `https://account-test.uitid.be`
-*   Production: `https://account.uitid.be`
+* Test: `https://account-test.uitid.be`
+* Production: `https://account.uitid.be`
 
 When you [request your client credentials](./requesting-credentials.md), you will initially recieve credentials that only work with the test environment. Using those credentials you can build and test your integration. When your integration is ready, we will activate your client on the production environment and you will recieve a second set of credentials for the production environment.
 

@@ -6,10 +6,10 @@ A common trend when building APIs is to start coding the functionality first, an
 
 Event with design guidelines that can help by providing a high-level set of rules, a code-first approach can still cause several problems:
 
-*   Documentation and tests are an afterthought and often forgotten, incomplete, or incorrect.
-*   The functionality is often influenced by how the underlying system already works and may be too limited to achieve the intended goals. This also makes the API less flexible to work with for unforeseen use-cases in the long run.
-*   Without clearly communicated expectations, the implementation may work very different than the intended behaviour.
-*   Naming and resource representations are often decided by one or two developers as an afterthought. But because a lot of publiq APIs have some overlapping concepts, this quickly causes inconsistency and confusion about what the right name for a concept is and how they relate to eachother across APIs. (For example in UiTdatabank and UiTPAS we used to speak about `organizers` & `balies`, `labels` & `markers`, ...)
+* Documentation and tests are an afterthought and often forgotten, incomplete, or incorrect.
+* The functionality is often influenced by how the underlying system already works and may be too limited to achieve the intended goals. This also makes the API less flexible to work with for unforeseen use-cases in the long run.
+* Without clearly communicated expectations, the implementation may work very different than the intended behaviour.
+* Naming and resource representations are often decided by one or two developers as an afterthought. But because a lot of publiq APIs have some overlapping concepts, this quickly causes inconsistency and confusion about what the right name for a concept is and how they relate to eachother across APIs. (For example in UiTdatabank and UiTPAS we used to speak about `organizers` & `balies`, `labels` & `markers`, ...)
 
 To make matters worse, once an API is released it is hard to make changes to its existing functionality. Once integrations have been built onto it, we must ensure that the API keeps working the same way to avoid breaking those integrations.
 
@@ -39,10 +39,10 @@ This way the expected functionality can be agreed upon before the API gets built
 
 Stakeholders that are often involved in writing or reviewing the OpenAPI contract:
 
-*   The API's product owner, to ensure all required functionality is covered and provide domain expertise
-*   The API's users, to give input about the expected functionality and behaviour (if possible)
-*   The API's developer(s), to give technical input
-*   An API architect, to ensure conformity with the design guidelines and give input on overlapping functionality/naming with existing APIs
+* The API's product owner, to ensure all required functionality is covered and provide domain expertise
+* The API's users, to give input about the expected functionality and behaviour (if possible)
+* The API's developer(s), to give technical input
+* An API architect, to ensure conformity with the design guidelines and give input on overlapping functionality/naming with existing APIs
 
 Often this is implemented by discussing the required functionality first in a group setting like a meeting or video call, after which either the API developer(s) provide an initial draft of the OpenAPI contract that can then be reviewed by the API architect or vice-versa. In case many questions or problems arise this can be an iterative process with multiple meetings/videocalls with all stakeholders and changes to the draft before it is finalized.
 

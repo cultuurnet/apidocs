@@ -6,28 +6,36 @@ Dates and times must always be formatted as specified in the [ISO 8601](https://
 
 ### Datetime
 
-    2020-08-07T14:30:00+02:00
+```
+2020-08-07T14:30:00+02:00
+```
 
 ➡️ August 7, 2020, at 2:30pm in the `UTC+2` timezone (for example Brussels in the summer).
 
-    2020-08-07T12:30:00Z
+```
+2020-08-07T12:30:00Z
+```
 
 ➡️ Same as above but in the `UTC+0` timezone, commonly denoted as `Z`. Note that the hour has shifted from `14` to `12` because the timezone has shifted.
 
 If the hour remained the same but the timezone shifted, the datetimes would not be the same.
 
-*   `2020-08-07T14:30:00+02:00` = `2020-08-07T12:30:00+00:00`
-*   `2020-08-07T14:30:00+02:00` ≠ `2020-08-07T14:30:00+00:00`
+* `2020-08-07T14:30:00+02:00` = `2020-08-07T12:30:00+00:00`
+* `2020-08-07T14:30:00+02:00` ≠ `2020-08-07T14:30:00+00:00`
 
 ### Date
 
-    2020-08-07
+```
+2020-08-07
+```
 
 ➡️ August 7, 2020
 
 ### Local time info
 
-    14:30
+```
+14:30
+```
 
 ➡️ 2:30pm in an unspecified timezone.
 

@@ -6,8 +6,8 @@ This page contains an overview of all possible error types inside the `https://a
 
 ## not-allowed
 
-*   **Type:** `https://api.publiq.be/probs/method/not-allowed`
-*   **Title**: `Method not allowed`
-*   **Status**: `405`
+* **Type:** `https://api.publiq.be/probs/method/not-allowed`
+* **Title**: `Method not allowed`
+* **Status**: `405`
 
 The resource you requested exists, but the HTTP method you are trying to use is not supported. For example the resource may support `GET` but not `PUT`. The `detail` should contain the supported methods on the requested URL.

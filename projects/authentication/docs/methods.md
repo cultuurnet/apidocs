@@ -8,9 +8,9 @@ Which authentication method you need to use will in the first place be **determi
 
 There are 3 possible scenarios for an endpoint:
 
-1.  The endpoint requires **no authentication** at all.
-2.  The endpoint requires **[client identification](#client-identification)**. You will only need to include your client id in the request either as a header or a URL parameter, and you won't need a token.
-3.  The endpoint requires a **[token](#tokens)**. If the endpoint supports both client access tokens and user access tokens you can pick whichever you prefer. See their respective documentation for more info.
+1. The endpoint requires **no authentication** at all.
+2. The endpoint requires **[client identification](#client-identification)**. You will only need to include your client id in the request either as a header or a URL parameter, and you won't need a token.
+3. The endpoint requires a **[token](#tokens)**. If the endpoint supports both client access tokens and user access tokens you can pick whichever you prefer. See their respective documentation for more info.
 
 The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. For example an API may support both client access tokens and user access tokens in general, but only user access tokens on an endpoint to get the current user information (as that would be impossible without a user access token).
 
@@ -35,10 +35,10 @@ This is the simplest method, it works by including your client id as a header or
 
 It is usually used by APIs that need to provide info to anonymous users in web browsers, where both client access tokens and user access tokens cannot be used. For example UiTdatabank's Search API.
 
-*   ✅ Suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Does not expire
-*   🔓 Offers no real security, so only used in APIs that expose public information
+* ✅ Suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Does not expire
+* 🔓 Offers no real security, so only used in APIs that expose public information
 
 👉 [Learn more about client identification](./client-identification.md)
 
@@ -54,10 +54,10 @@ Most API endpoints that require a token accept both **client** access tokens and
 
 API endpoints that support the authentication of an API client with a client id and client secret use [client access tokens](./client-access-token.md).
 
-*   ❌ Not suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Expires, but can be renewed automatically by requesting a new one
-*   🔐 Secure, used by APIs that work with private information and/or write access
+* ❌ Not suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Expires, but can be renewed automatically by requesting a new one
+* 🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about client access tokens](./client-access-token.md)
 
@@ -67,9 +67,9 @@ API endpoints that support authentication as a user use [user access tokens](./u
 
 Usually used in situations where a user will log in through publiq's **UiTID** service and your application will then make requests in that user's name.
 
-*   ✅ Suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Expires, but can be renewed automatically with a refresh token
-*   🔐 Secure, used by APIs that work with private information and/or write access
+* ✅ Suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Expires, but can be renewed automatically with a refresh token
+* 🔐 Secure, used by APIs that work with private information and/or write access
 
 👉 [Learn more about user access tokens](./user-access-token.md)

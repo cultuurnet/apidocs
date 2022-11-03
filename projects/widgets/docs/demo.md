@@ -1,7 +1,3 @@
-***
-
-## stoplight-id: demo
-
 # demo
 
 The beginning of an awesome article...
@@ -12,6 +8,6 @@ The beginning of an awesome article...
 
 [introduction](introduction.md)
 
-*   foo
-*   bar
-*   lorem
+* foo
+* bar
+* lorem
