@@ -19,13 +19,26 @@
   },
   "plugins": {
     "remark-frontmatter": null,
-    "remark-preset-lint-recommended": null,
     "remark-lint-no-dead-urls": {
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
             "https://www.uitinhasselt.be"
         ]
     },
-    "remark-validate-links": null
+    "remark-validate-links": null,
+    "remark-preset-lint-consistent": null,
+    "remark-preset-lint-recommended": null,
+    "remark-lint-blockquote-indentation": 2,
+    "remark-lint-code-block-style": "fenced",
+    "remark-lint-emphasis-marker": "*",
+    "remark-lint-fenced-code-marker": "`",
+    "remark-lint-heading-style": "atx",
+    "remark-lint-link-title-style": "\"",
+    "remark-lint-list-item-indent": "space",
+    "remark-lint-ordered-list-marker-style": ".",
+    "remark-lint-ordered-list-marker-value": "ordered",
+    "remark-lint-rule-style": "---",
+    "remark-lint-strong-marker": "*",
+    "remark-lint-unordered-list-marker-style": "*"
   }
 }
