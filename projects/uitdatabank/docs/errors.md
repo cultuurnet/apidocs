@@ -102,4 +102,4 @@ The action you are trying to perform on an event cannot be done because the even
 *   **Title**: `Image must be linked to resource`
 *   **Status**: `400`
 
-When handling a image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then set it as the main image.
+When handling a image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can perform an action on it.
