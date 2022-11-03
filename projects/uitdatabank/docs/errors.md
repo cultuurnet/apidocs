@@ -96,10 +96,10 @@ For example, you cannot update the location of an event with attendanceMode `onl
 
 The action you are trying to perform on an event cannot be done because the event has UiTPAS ticket sales. When an event has UiTPAS ticket sales its organizer, UiTPAS card system(s) and UiTPAS distribution key(s) cannot be updated because it would invalidate the existing ticket sales in UiTPAS.
 
-## main-image-must-be-linked-to-resource
+## image-must-be-linked-to-resource
 
-*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/main-image-must-be-linked-to-resource`
-*   **Title**: `Main image must be linked to resource`
+*   **Complete type:** `https://api.publiq.be/probs/uitdatabank/image-must-be-linked-to-resource`
+*   **Title**: `Image must be linked to resource`
 *   **Status**: `400`
 
-When setting a main image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then set it as the main image.
+When handling a image on an event / place / organizer, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then set it as the main image.
