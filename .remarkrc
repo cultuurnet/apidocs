@@ -19,6 +19,7 @@
   },
   "plugins": {
     "remark-frontmatter": null,
+    "remark-gfm": null,
     "remark-lint-no-dead-urls": {
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
