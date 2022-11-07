@@ -19,10 +19,12 @@
   },
   "plugins": {
     "remark-frontmatter": null,
+    "remark-gfm": null,
     "remark-lint-no-dead-urls": {
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
-            "https://www.uitinhasselt.be"
+            "https://www.uitinhasselt.be",
+            "https://github.com/cultuurnet/udb3-acceptance-tests"
         ]
     },
     "remark-validate-links": null,

@@ -25,11 +25,11 @@ Additionally, the following extensions are encouraged:
 
 #### When using client identification
 
-Always use `401` https://api.publiq.be/probs/auth/unauthorized when the client id is missing or the client id does not exist in Auth0.
+Always use `401` <https://api.publiq.be/probs/auth/unauthorized> when the client id is missing or the client id does not exist in Auth0.
 
-Always use `403` https://api.publiq.be/probs/auth/forbidden when the client is not allowed to access your API ([Read how to determine this](./authentication.md)).
+Always use `403` <https://api.publiq.be/probs/auth/forbidden> when the client is not allowed to access your API ([Read how to determine this](./authentication.md)).
 
-Always use `403` https://api.publiq.be/probs/auth/forbidden when the client sends a request that is not allowed by your API's [own internal permission system](./permissions.md).
+Always use `403` <https://api.publiq.be/probs/auth/forbidden> when the client sends a request that is not allowed by your API's [own internal permission system](./permissions.md).
 
 Read more:
 
@@ -38,11 +38,11 @@ Read more:
 
 #### When using tokens
 
-Always use `401` https://api.publiq.be/probs/auth/unauthorized when the token is missing, expired, has an invalid signature, ...
+Always use `401` <https://api.publiq.be/probs/auth/unauthorized> when the token is missing, expired, has an invalid signature, ...
 
-Always use `403` https://api.publiq.be/probs/auth/forbidden when the client that requested the token is not allowed to access your API ([Read how to determine this](./authentication.md)).
+Always use `403` <https://api.publiq.be/probs/auth/forbidden> when the client that requested the token is not allowed to access your API ([Read how to determine this](./authentication.md)).
 
-Always use `403` https://api.publiq.be/probs/auth/forbidden when the client sends a request that is not allowed by your API's [own internal permission system](./permissions.md) for the given token.
+Always use `403` <https://api.publiq.be/probs/auth/forbidden> when the client sends a request that is not allowed by your API's [own internal permission system](./permissions.md) for the given token.
 
 Read more:
 
@@ -52,11 +52,11 @@ Read more:
 
 ### For other incorrect headers
 
-Always use specific errors like `406` https://api.publiq.be/probs/header/not-acceptable or `415` https://api.publiq.be/probs/header/unsupported-media-type for standardized headers like `Accept` and `Content-Type`.
+Always use specific errors like `406` <https://api.publiq.be/probs/header/not-acceptable> or `415` <https://api.publiq.be/probs/header/unsupported-media-type> for standardized headers like `Accept` and `Content-Type`.
 
 If a standardized error code exists but is not documented as an error type yet, open an issue or create a pull request in [our apidocs github repository](https://github.com/cultuurnet/apidocs/blob/main/projects/errors/docs/type-header.md) to get it added.
 
-Only use generic errors like `400` https://api.publiq.be/probs/header/missing and `400` https://api.publiq.be/probs/header/invalid if there are no more specific types available and an existing standardized error code cannot be added.
+Only use generic errors like `400` <https://api.publiq.be/probs/header/missing> and `400` <https://api.publiq.be/probs/header/invalid> if there are no more specific types available and an existing standardized error code cannot be added.
 
 Read more:
 
@@ -64,7 +64,7 @@ Read more:
 
 ### For unsupported HTTP methods
 
-Always use `405` https://api.publiq.be/probs/method/not-allowed when a request uses a HTTP method that is not supported for the requested URL. (For example when a `PUT` is requested, but only `GET` is supported.)
+Always use `405` <https://api.publiq.be/probs/method/not-allowed> when a request uses a HTTP method that is not supported for the requested URL. (For example when a `PUT` is requested, but only `GET` is supported.)
 
 Read more:
 
@@ -75,7 +75,7 @@ Read more:
 Every invalid URL should return a `404`, even if the error is in a query parameter or a specific path parameter.
 The URL is the locator of a resource, so if a resource cannot be returned due to an error in the URL it means the resource is `Not Found` regardless of which part of the URL is incorrect.
 
-For every `404` the type https://api.publiq.be/probs/url/not-found must be used. You can specify more info in the `detail` property, for example that a given query parameter is invalid, that a given id does not exist, and so on.
+For every `404` the type <https://api.publiq.be/probs/url/not-found> must be used. You can specify more info in the `detail` property, for example that a given query parameter is invalid, that a given id does not exist, and so on.
 
 Read more:
 
@@ -83,11 +83,11 @@ Read more:
 
 ### For invalid request bodies
 
-Always use `400` https://api.publiq.be/probs/body/missing when a body is required but missing in the request.
+Always use `400` <https://api.publiq.be/probs/body/missing> when a body is required but missing in the request.
 
-Always use `400` https://api.publiq.be/probs/body/invalid-syntax when a body is present but in an invalid syntax (for the given `content-type` in the request, or a default).
+Always use `400` <https://api.publiq.be/probs/body/invalid-syntax> when a body is present but in an invalid syntax (for the given `content-type` in the request, or a default).
 
-Always use `400` https://api.publiq.be/probs/body/invalid-data when a body is present but does not match with your expected schema. **Ideally the schemas in your OpenAPI file are used to validate this.**
+Always use `400` <https://api.publiq.be/probs/body/invalid-data> when a body is present but does not match with your expected schema. **Ideally the schemas in your OpenAPI file are used to validate this.**
 
 When the given body does not match with your expected schema, it is encouraged to include a `schemaErrors` property in the error response to give more info about which errors occured when validating the body with the schema.
 
@@ -138,8 +138,8 @@ It is encouraged to include an `endUserMessage` in domain errors.
 
 Examples of domain errors:
 
-* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported
-* https://api.publiq.be/probs/uitpas/invalid-uitpas-number
+* <https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported>
+* <https://api.publiq.be/probs/uitpas/invalid-uitpas-number>
 
 Read more examples of [domain errors in UiTdatabank](https://docs.publiq.be/docs/uitdatabank/ZG9jOjMyMzA0Mw-errors).
 
