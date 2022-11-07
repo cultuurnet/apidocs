@@ -81,7 +81,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 #### More info
 
-publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
+publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client\_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
 
 ## Decoding tokens
 

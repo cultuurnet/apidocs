@@ -66,7 +66,7 @@ While most APIs these days have some automatic tests in the form of unit tests, 
 
 While the exact implementation can vary per API, it is advised to use the [Cucumber](https://cucumber.io/) format to keep the tests readable for less technical stakeholders or those not familiar with the specific programming language that will be used to build the API.
 
-Examples of such tests for UiTdatabank's Entry API can be found here: https://github.com/cultuurnet/udb3-acceptance-tests
+Examples of such tests for UiTdatabank's Entry API can be found here: <https://github.com/cultuurnet/udb3-acceptance-tests>
 
 Ideally the tests should be written before the actual implementation is done, so stakeholders can go over them to give feedback on the expected behaviour.
 

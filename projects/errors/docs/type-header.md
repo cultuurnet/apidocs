@@ -44,7 +44,7 @@ For example, you might be sending a request with `Accept: application/xml` while
 
 To fix this error, do not use an `Accept` header in your requests or set it to a content-type that the API supports (most often `application/json` and/or `application/json+ld`).
 
-For more info, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406
+For more info, see <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/406>
 
 ## unsupported-media-type
 
@@ -58,4 +58,4 @@ For example, you might be sending a request with `Content-Type: application/xml`
 
 To fix this error, use a `Content-Type` (and a request body in that format) that is supported by the API.
 
-For more info, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/415
+For more info, see <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/415>

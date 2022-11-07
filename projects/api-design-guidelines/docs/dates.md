@@ -1,6 +1,6 @@
 # Dates
 
-Dates and times must always be formatted as specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO\_8601) specification.
+Dates and times must always be formatted as specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) specification.
 
 ## Examples
 

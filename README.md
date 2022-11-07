@@ -1,6 +1,6 @@
 # cultuurnet/apidocs
 
-This repository contains all the API documentation available at https://docs.publiq.be, hosted by [Stoplight.io](https://stoplight.io) who provide a beautiful interface to browse them.
+This repository contains all the API documentation available at <https://docs.publiq.be>, hosted by [Stoplight.io](https://stoplight.io) who provide a beautiful interface to browse them.
 
 ## Table of contents
 
@@ -26,7 +26,7 @@ To contribute to our API documentation, some basic knowledge of [git](https://gi
 
 The following tools can also be helpful but are not strictly required:
 
-* [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by https://stoplight.io (where our documentation is hosted). However technically any file editor is fine.
+* [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by <https://stoplight.io> (where our documentation is hosted). However technically any file editor is fine.
 * [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the [automatic checks](#automatic-checks-) on your own machine, and to run the [automatic fixer](#automatically-fixing-some-errors-) in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push, and you can also [run the automatic fixer online via GitHub Actions](https://github.com/cultuurnet/apidocs/actions/workflows/docs-linting-fix.yml).
 
 ## Getting started 🚀
@@ -57,7 +57,7 @@ If a reviewer has approved but there are still open comments (from the same revi
 
 ## Adding a new project 🐣
 
-Adding a new project involves multiple steps both in this git repository and on https://docs.publiq.be.
+Adding a new project involves multiple steps both in this git repository and on <https://docs.publiq.be>.
 
 Because some of these steps require special permissions, it is not possible to do this yourself. Instead, [create an issue with the "New project" template](https://github.com/cultuurnet/apidocs/issues/new?assignees=bertramakers\&labels=project\&template=new-project.md\&title=New+project%3A+YOUR+PROJECT+NAME+HERE) and fill out all required info.
 
@@ -65,7 +65,7 @@ An admin will then automatically be assigned to add the new project for you.
 
 ## Project structure 🌿
 
-Every project has its own space inside the `projects` directory with the same name as their URL slug on https://docs.publiq.be. For example:
+Every project has its own space inside the `projects` directory with the same name as their URL slug on <https://docs.publiq.be>. For example:
 
 ```
 projects/
@@ -91,7 +91,7 @@ projects/
 ├─ ...
 ```
 
-It is important to adhere to this structure to avoid problems on the hosted version of our docs at https://docs.publiq.be or inside the Stoplight Studio editor.
+It is important to adhere to this structure to avoid problems on the hosted version of our docs at <https://docs.publiq.be> or inside the Stoplight Studio editor.
 
 ## OpenAPI file(s) 🔌
 
@@ -99,7 +99,7 @@ It is important to adhere to this structure to avoid problems on the hosted vers
 
 The complete technical overview of your API's endpoints must be documented in an [OpenAPI](https://www.openapis.org/) file (previously called "Swagger"). If you have multiple APIs inside your project, your project may have multiple OpenAPI files.
 
-An OpenAPI file allows you to describe your entire API (endpoints, operations, authentication, contact information, ...) in a structured format. This results in a consistent overview of all your endpoints on https://docs.publiq.be, and can also be used in other automated tools like https://postman.publiq.be to  discover your API's features. Additionally your OpenAPI file can be used *inside your API itself*, for example for automatic request validation (depending on the technologies used to build your API).
+An OpenAPI file allows you to describe your entire API (endpoints, operations, authentication, contact information, ...) in a structured format. This results in a consistent overview of all your endpoints on <https://docs.publiq.be>, and can also be used in other automated tools like <https://postman.publiq.be> to  discover your API's features. Additionally your OpenAPI file can be used *inside your API itself*, for example for automatic request validation (depending on the technologies used to build your API).
 
 Every OpenAPI file must follow version 3.x of the OpenAPI spec, preferably [3.1.0](https://spec.openapis.org/oas/latest.html) or later when possible.
 
@@ -115,7 +115,7 @@ How-to guides and other pages outside of the OpenAPI files all live inside the `
 
 Every page is a Markdown (`.md`) file, which you can edit with a Markdown editor. However, Stoplight supports some [special syntax](https://meta.stoplight.io/docs/platform/b591e6d161539-stoplight-flavored-markdown-smd) that allows you to for example embed YouTube and Vimeo videos or to add info/warning/danger/success messages.
 This "Stoplight Flavored Markdown" syntax is usually not supported in every Markdown editor.
-Therefore it is advised to use [Stoplight Studio](https://stoplight.io/studio/) to edit the Markdown files, especially if you want to see a nice preview of how your pages will look on https://docs.publiq.be.
+Therefore it is advised to use [Stoplight Studio](https://stoplight.io/studio/) to edit the Markdown files, especially if you want to see a nice preview of how your pages will look on <https://docs.publiq.be>.
 
 ## Sidebar 🔎
 
@@ -172,7 +172,7 @@ Avoid changing an existing slug later if possible, because the old slug will sto
 
 **Directory: `assets/images`**
 
-To ensure that all of your images display correctly on https://docs.publiq.be they must be stored inside the `assets/images` directory of your project.
+To ensure that all of your images display correctly on <https://docs.publiq.be> they must be stored inside the `assets/images` directory of your project.
 You may use subdirectories if you want.
 
 When referencing images inside your Markdown files, you should always use relative URLs.
@@ -182,7 +182,7 @@ For example, if your file is `docs/introduction.md`:
 ![Your example alt text](../assets/images/example.png)
 ```
 
-If you do not follow these guidelines images may not appear on https://docs.publiq.be even if they display in Stoplight Studio's preview.
+If you do not follow these guidelines images may not appear on <https://docs.publiq.be> even if they display in Stoplight Studio's preview.
 
 ## Links 🌐
 
@@ -254,9 +254,9 @@ Make sure to pull these changes in your local copy of the docs before making mor
 
 ## Publishing your changes 🚢
 
-Any branches you create will automatically be published as extra versions on https://docs.publiq.be in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
+Any branches you create will automatically be published as extra versions on <https://docs.publiq.be> in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
 
-When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on https://docs.publiq.be (visible to any visitor).
+When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on <https://docs.publiq.be> (visible to any visitor).
 
 ![](readme-images/unreleased-branch.png)
 
@@ -268,4 +268,4 @@ The workflow will detect that you have run it manually, and push the changes to 
 
 While not required, you can use the following links to help you write excellent documentation:
 
-* https://hemingwayapp.com/ for writing clearly by avoiding passive voice, long sentences, and so on.
+* <https://hemingwayapp.com/> for writing clearly by avoiding passive voice, long sentences, and so on.
