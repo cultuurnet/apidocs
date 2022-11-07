@@ -1,0 +1,19 @@
+{
+  "title": "event.main.image.put",
+  "type": "object",
+  "description": "Describes the request body to set an image as the main image of an [event](./event.json).",
+  "examples": [
+    {
+      "mediaObjectId": "4b349765-9499-4d35-b295-c82ede576cf0"
+    }
+  ],
+  "properties": {
+    "mediaObjectId": {
+      "$ref": "./common-string-uuid.json",
+      "description": "The id of the image to set as main image on the event."
+    }
+  },
+  "required": [
+    "mediaObjectId"
+  ]
+}
