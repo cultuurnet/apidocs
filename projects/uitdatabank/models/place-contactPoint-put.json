@@ -1,4 +1,53 @@
 {
-  "$ref": "./common-contactPoint.json",
-  "title": "place.contactPoint.put"
+  "title": "place.contactPoint.put",
+  "type": "object",
+  "properties": {
+    "phone": {
+      "type": "array",
+      "description": "List of phone numbers for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "description": "Phone number for contact purposes.",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "email": {
+      "type": "array",
+      "description": "List of email addresses for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "description": "Email address for contact purposes."
+      }
+    },
+    "url": {
+      "type": "array",
+      "description": "List of URLs for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "$ref": "./common-string-uri.json",
+        "description": "URL to a website for contact purposes."
+      }
+    }
+  },
+  "required": [
+    "phone",
+    "email",
+    "url"
+  ],
+  "examples": [
+    {
+      "phone": [
+        "+32/1234567890"
+      ],
+      "email": [
+        "info@example.com"
+      ],
+      "url": [
+        "https://www.example.com"
+      ]
+    }
+  ]
 }
