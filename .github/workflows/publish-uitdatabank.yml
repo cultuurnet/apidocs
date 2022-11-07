@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Git diff
+        run: git diff origin/main HEAD
       - name: Publish
         uses: ./.github/actions/stoplight-push
         with:
