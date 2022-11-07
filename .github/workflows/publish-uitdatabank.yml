@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Git diff
-        run: git diff origin/main HEAD
+        run: git diff --name-only origin/main HEAD
       - name: Publish
         uses: ./.github/actions/stoplight-push
         with:
