@@ -2319,6 +2319,109 @@
       },
       "parameters": []
     },
+    "/passholders/me/checkins": {
+      "post": {
+        "summary": "Check in the current passholder",
+        "operationId": "post-passholders-me-checkin",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "addedPoints": {
+                      "type": "number",
+                      "description": "Newly added points as a result of this check-in"
+                    },
+                    "totalPoints": {
+                      "description": "Total points of the passholder after this check-in",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "addedPoints",
+                    "totalPoints"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "addedPoints": 1,
+                      "totalPoints": 26
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/checkin-code-expired\n* https://api.publiq.be/probs/uitpas/checkin-code-invalid\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
+        "requestBody": {
+          "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "checkinCode": {
+                    "type": "string",
+                    "description": "Check-in code of the event."
+                  }
+                },
+                "required": [
+                  "checkinCode"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "checkinCode": "abcde123546"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      },
+      "parameters": []
+    },
     "/passholders/{passholderId}/school": {
       "parameters": [
         {
