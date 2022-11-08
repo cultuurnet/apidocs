@@ -12,12 +12,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Git diff
-        run: git diff --name-only origin/main HEAD | grep 'projects/uitdatabank/' | wc -l
-      - name: Store git diff result
-        run: echo "project_files_changed_count=$(git diff --name-only origin/main HEAD | grep 'projects/uitdatabank/' | wc -l)" >> $GITHUB_ENV
-      - name: Echo git diff result
-        run: echo "${{ env.project_files_changed_count }}"
       - name: Publish
         uses: ./.github/actions/stoplight-push
         with:

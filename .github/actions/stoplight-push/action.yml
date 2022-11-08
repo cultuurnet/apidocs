@@ -33,6 +33,11 @@ runs:
       shell: bash
       run: echo "branch_name=unreleased" >> $GITHUB_ENV
 
+    - name: Count the changed files (in the project) compared to the main branch
+      shell: bash
+      run: echo "project_files_changed_count=$(git diff --name-only origin/main HEAD | grep 'projects/${{ inputs.name }}/' | wc -l)" >> $GITHUB_ENV
+
     - name: Publish
+      if: ${{ env.project_files_changed_count > 0 }}
       shell: bash
       run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ env.branch_name }} --ci-token ${{ inputs.token }} --verbose
