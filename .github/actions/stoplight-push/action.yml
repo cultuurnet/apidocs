@@ -39,6 +39,10 @@ runs:
       shell: bash
       run: echo "project_files_changed_count=$(git diff --name-only origin/main HEAD | grep 'projects/${{ inputs.name }}/' | wc -l)" >> $GITHUB_ENV
 
+    - name: Show count of changed files (in the project) compared to the main branch for debugging
+      shell: bash
+      run: echo "${{ env.project_files_changed_count }}"
+
     - name: Publish
       if: ${{ env.project_files_changed_count > 0 }}
       shell: bash
