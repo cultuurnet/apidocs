@@ -1,8 +1,6 @@
 name: Publish uitpas documentation
 on:
   push:
-    paths:
-      - 'projects/uitpas/**'
   workflow_dispatch:
 jobs:
   publish:

@@ -1,8 +1,6 @@
 name: Publish authentication documentation
 on:
   push:
-    paths:
-      - 'projects/authentication/**'
   workflow_dispatch:
 jobs:
   publish:

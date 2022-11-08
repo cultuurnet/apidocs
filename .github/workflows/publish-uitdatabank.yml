@@ -1,8 +1,6 @@
 name: Publish uitdatabank documentation
 on:
   push:
-    paths:
-      - 'projects/uitdatabank/**'
   workflow_dispatch:
 jobs:
   publish:

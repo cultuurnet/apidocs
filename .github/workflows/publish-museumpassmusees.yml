@@ -1,8 +1,6 @@
 name: Publish museumpassmusees documentation
 on:
   push:
-    paths:
-      - 'projects/museumpassmusees/**'
   workflow_dispatch:
 jobs:
   publish:

@@ -1,8 +1,6 @@
 name: Publish widgets documentation
 on:
   push:
-    paths:
-      - 'projects/widgets/**'
   workflow_dispatch:
 jobs:
   publish:
