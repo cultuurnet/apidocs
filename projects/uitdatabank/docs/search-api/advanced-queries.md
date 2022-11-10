@@ -964,7 +964,7 @@ Now the query will return concerts and expositions that either happen in Ghent o
 
 ## Escaping
 
-Special characters like `:`, `"` or `*` should always be escaped.
+Special characters like `:`, `"` or `*` should always be escaped if used as part of a field name or field value.
 
 ### Examples
 **Using wildcards in field names**
@@ -984,4 +984,8 @@ GET /offers/?q=dateRange:2023-01-01T00\:00\:00%2B01\:00
 ```
 
 If colons are not escaped correctly, ElasticSearch will consider it as key-value separators. An error will be thrown.
+
+## Resources
+* [Elastic Search Lucene Query Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
+* [List of special characters that require escaping](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Escaping%20Special%20Characters)
 
