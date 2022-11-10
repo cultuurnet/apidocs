@@ -2332,12 +2332,12 @@
                   "type": "object",
                   "properties": {
                     "addedPoints": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Newly added points as a result of this check-in"
                     },
                     "totalPoints": {
                       "description": "Total points of the passholder after this check-in",
-                      "type": "number"
+                      "type": "integer"
                     }
                   },
                   "required": [
