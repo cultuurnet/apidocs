@@ -44,6 +44,6 @@ runs:
       run: echo "${{ env.project_files_changed_count }}"
 
     - name: Publish
-      if: ${{ env.project_files_changed_count > 0 || inputs.event == 'workflow_dispatch' }}
+      if: ${{ env.project_files_changed_count > 0 || inputs.event == 'workflow_dispatch' || env.branch_name == 'main' || env.branch_name == 'unreleased' }}
       shell: bash
       run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ env.branch_name }} --ci-token ${{ inputs.token }} --verbose
