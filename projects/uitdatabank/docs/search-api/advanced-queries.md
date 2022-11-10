@@ -305,7 +305,7 @@ With the `_exists_` field you can search for the documents that have a specific 
 
 **Possible values**
 
-Any field name as documented on this page.
+Any field name documented on this page.
 
 **Example**
 
@@ -514,7 +514,7 @@ Using the `location.terms.id` field you can filter out events that take place on
 
 **Possible values**
 
-Any valid term id applicable on locations (places). For a list of available terms, see [UiTdatabank taxonomy](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms).
+Any valid term id applicable on locations (places). For a list of available terms, see [UiTdatabank taxonomy](../terms.md).
 
 **Example**
 
@@ -770,7 +770,7 @@ Each event and place in UiTdatabank is categorized with a type (e.g. `concert` f
 
 With the `terms.id` field you can filter results based on their categorisation.
 
-A complete overview of our terms can be found on <https://taxonomy.uitdatabank.be/terms>.
+A complete overview of our terms can be found on in our [Taxonomy guide](../terms.md).
 
 **Applicable on endpoints**
 
@@ -778,7 +778,7 @@ A complete overview of our terms can be found on <https://taxonomy.uitdatabank.b
 
 **Possible values**
 
-See <https://taxonomy.uitdatabank.be/terms>
+See our [Taxonomy guide](../terms.md).
 
 **Example**
 
