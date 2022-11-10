@@ -18,7 +18,7 @@ With the `addressCountry` field you can limit your results to one or more countr
 
 **Possible values**
 
-The value for this field should always be an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
+The value for this field must always be an [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
 
 **Examples**
 
@@ -242,7 +242,7 @@ UiTdatabank keeps track of the creation dates of each document. This metadata fo
 Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
-> Note that the `+` sign should be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
@@ -289,7 +289,7 @@ Using the `dateRange` field, you can get all events and places that took place i
 Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
-> Note that the `+` sign should be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
@@ -360,7 +360,7 @@ GET /offers/?q=id:75573a64-ddc8-4fd0-8b07-d258939dd74f
 
 With the `imagesCount` field you can filter organizers by their number of images.
 
-> This field can only be used to filter on organizers. To filter events and places by their number of images (mediaObjects), the field `mediaObjectsCount` should be used.
+> This field can only be used to filter on organizers. To filter events and places by their number of images (mediaObjects), the field `mediaObjectsCount` must be used.
 
 **Applicable on endpoints**
 
@@ -549,7 +549,7 @@ GET /events/?q=mainLanguage:fr
 ### mediaObjectsCount 
 With the `mediaObjectsCount` field you can filter events and places by their number of images.
 
-> This field can only be used to filter on events and places. To filter organizers by their number of images, the field `imagesCount` should be used.
+> This field can only be used to filter on events and places. To filter organizers by their number of images, the field `imagesCount` must be used.
 
 **Applicable on endpoints**
 
@@ -584,7 +584,7 @@ UiTdatabank keeps track of the modification date of each document. This metadata
 Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
-> Note that the `+` sign should be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
@@ -904,7 +904,7 @@ GET /offers
 ```
 
 ## Boolean operators
-With advanced queries it is possible to combine multiple fields to define a very specific set of events, places or organizers. In order to combine multiple fields boolean operators should be used:
+With advanced queries it is possible to combine multiple fields to define a very specific set of events, places or organizers. In order to combine multiple fields boolean operators must be used:
 -   `AND`: is used to narrow the search. Only results that meet all fields in the AND-combination will be returned.
 -   `OR` is used to broaden the search. Results that meet either one (or both fields) will be returned.
 -   `NOT` is used to exclude a set of data. 
@@ -964,12 +964,12 @@ Now the query will return concerts and expositions that either happen in Ghent o
 
 ## Escaping
 
-Special characters like `:`, `"` or `*` should always be escaped if used as part of a field name or field value.
+Special characters like `:`, `"` or `*` must always be escaped if used as part of a field name or field value.
 
 ### Examples
 **Using wildcards in field names**
 
-You can use wildcards in field names to search across multiple translated versions. When doing so, the wildcard should be escaped using a backslash, like in the example below:
+You can use wildcards in field names to search across multiple translated versions. When doing so, the wildcard must be escaped using a backslash, like in the example below:
 
 ```
 GET /events/q=address.\*.postalCode:9000
@@ -977,7 +977,7 @@ GET /events/q=address.\*.postalCode:9000
 
 **Using date time filters**
 
-A colon (`:`) should always be escaped using a backlash (`\`), e.g. in a date time filter:
+A colon (`:`) must always be escaped using a backlash (`\`), e.g. in a date time filter:
 
 ```
 GET /offers/?q=dateRange:2023-01-01T00\:00\:00%2B01\:00
