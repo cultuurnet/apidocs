@@ -332,10 +332,13 @@ A specific id can be found by
 ```
 or
 
--   looking for the value for the `id` property in the JSON response of the UiTdatabank entry API
+-   looking for the value for the `id` property in the JSON response of the UiTdatabank entry API to a `POST /events` request (to create a new event)
 ```js
 {
-   "id": "75573a64-ddc8-4fd0-8b07-d258939dd74f"
+    "id": "75573a64-ddc8-4fd0-8b07-d258939dd74f",
+    "eventId": "75573a64-ddc8-4fd0-8b07-d258939dd74f",
+    "url": "https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f",
+    "commandId": "00000000-0000-0000-0000-000000000000"
 }
 ```
 > Extracting the UUID from the `id` property is only possible from the JSON response of the UiTdatabank Entry API. If you use Search API to build an agenda, you'll have to extract the UUID from the `@id` property in the JSON-LD projection.
