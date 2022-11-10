@@ -255,9 +255,6 @@ GET /offers/?q=created:[2022-01-01T00\:00\:00%2B01\:00 TO *]
 
 Use the `creator` field to search for documents created by a specific creator.
 
-<!-- theme: warning --> 
-> At the time of writing, creator can contain a nickname or emailaddress. In the near future creator will only contain the uuid.
-
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` `/organizers`
