@@ -871,7 +871,7 @@ For events & places:
 -   `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
-> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the default filter for `worfklowStatus` (TO DO: link to guide)
+> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for worfklowStatus](default-filters.md).
 
 For organizers: 
 -   `ACTIVE`: the organizer is created with all mandatory fields present.
