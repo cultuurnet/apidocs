@@ -9,7 +9,7 @@ The main purpose of the categorisation model is to categorise cultural and leisu
 
 There is no strong hierarchy between the different dimensions: there is only a hierarchical relationship between the first and second dimension.
 
-The complete categorisation model is available in a JSON format on https://taxonomy.uitdatabank.be/terms.
+The complete categorisation model is available in our [Taxonomy API](https://taxonomy.uitdatabank.be/terms).
 
 > The categorisation model only applies on events & places. There is currently no categorisation model for organizers.
 
