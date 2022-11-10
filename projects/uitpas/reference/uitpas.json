@@ -2332,12 +2332,12 @@
                   "type": "object",
                   "properties": {
                     "addedPoints": {
-                      "type": "number",
+                      "type": "integer",
                       "description": "Newly added points as a result of this check-in"
                     },
                     "totalPoints": {
                       "description": "Total points of the passholder after this check-in",
-                      "type": "number"
+                      "type": "integer"
                     }
                   },
                   "required": [
@@ -2376,7 +2376,7 @@
           "429": {
             "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
