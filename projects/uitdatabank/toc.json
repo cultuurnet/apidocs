@@ -17,11 +17,31 @@
     },
     {
       "type": "divider",
-      "title": "Guides"
+      "title": "Entry API"
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/entry.json"
+    },
+    {
+      "type": "item",
+      "title": "Requirements before going live",
+      "uri": "/docs/entry-api/requirements-before-going-live.md",
+      "slug": "entry-api/requirements-before-going-live"
+    },
+    {
+      "type": "divider",
+      "title": "Search API"
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/search.json"
     },
     {
       "type": "group",
-      "title": "Search API",
+      "title": "Guides",
       "items": [
         {
           "type": "item",
@@ -62,9 +82,24 @@
       ]
     },
     {
+      "type": "divider",
+      "title": "Taxonomy API"
+    },
+    {
       "type": "item",
-      "title": "Taxonomy terms",
-      "uri": "docs/terms.md"
+      "title": "API reference",
+      "uri": "reference/taxonomy.json"
+    },
+    {
+      "type": "group",
+      "title": "Guides",
+      "items": [
+        {
+          "type": "item",
+          "title": "Terms",
+          "uri": "docs/terms.md"
+        }
+      ]
     },
     {
       "type": "divider",
@@ -84,25 +119,6 @@
       "type": "item",
       "title": "Organizer",
       "uri": "models/organizer-with-read-example.json"
-    },
-    {
-      "type": "divider",
-      "title": "API References"
-    },
-    {
-      "type": "item",
-      "title": "Entry API",
-      "uri": "reference/entry.json"
-    },
-    {
-      "type": "item",
-      "title": "Search API",
-      "uri": "reference/search.json"
-    },
-    {
-      "type": "item",
-      "title": "Taxonomy API",
-      "uri": "reference/taxonomy.json"
     }
   ]
 }

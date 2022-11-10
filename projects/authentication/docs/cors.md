@@ -14,7 +14,9 @@ If this doesn't solve the issue contact our support for more help. The API you a
 
 For example when you make a request from a **frontend** application to an external API endpoint, you might see the following error in your browser's console:
 
-    Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at ...
+```
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at ...
+```
 
 This policy is built into modern browsers to for example prevent [CSRF](https://owasp.org/www-community/attacks/csrf) attacks due to the browser making an authenticated request to another domain using cookies, without the consent or the knowledge of the user.
 

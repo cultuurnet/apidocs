@@ -8,15 +8,15 @@ By default the search API endpoints only return a list of links to the individua
 
 To get the actual bodies of the results, there are two options:
 
-*   Loop over the results yourself and perform GET requests using the given URLs
-*   Use the `embed`  URL parameter (`bool`, defaults to `false`)
+* Loop over the results yourself and perform GET requests using the given URLs
+* Use the `embed`  URL parameter (`bool`, defaults to `false`)
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
-*   `GET /organizers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
+* `GET /organizers`
 
 ### Recommended use
 
@@ -28,11 +28,15 @@ We recommend using the `embed=true` parameter in order to limit the amount of re
 
 **request**
 
-    GET /offers
+```
+GET /offers
+```
 
 or
 
-    GET /offers/?embed=false
+```
+GET /offers/?embed=false
+```
 
 **response**
 
@@ -62,7 +66,9 @@ The response contains a list of links to the individual search results:
 
 **request**
 
-    GET /offers/?embed=true
+```
+GET /offers/?embed=true
+```
 
 **response**
 
@@ -108,17 +114,17 @@ Formatting a large amount of dates and/or opening hours into a human-readable ov
 
 For every event or place a calendar summary is available in different sizes:
 
-*   `xs`: extra small
-*   `sm`: small
-*   `md`: medium
-*   `lg`: large
+* `xs`: extra small
+* `sm`: small
+* `md`: medium
+* `lg`: large
 
 We currently support 4 languages for the calendar summary:
 
-*   `nl`
-*   `fr`
-*   `en`
-*   `de`
+* `nl`
+* `fr`
+* `en`
+* `de`
 
 The calendar summary can be retrieved in `text` and in `html`.
 
@@ -130,16 +136,16 @@ The calendar summary can be retrieved in `text` and in `html`.
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
 
 ### Recommended use
 
-*   We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
-*   We recommend to use `lg` for the detailpage
-*   In some cases (e.g. mobile apps) calendar summary `xs` can be useful
-*   You can use the `embedCalendarSummaries` parameter with or without `embed=true`
+* We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
+* We recommend to use `lg` for the detailpage
+* In some cases (e.g. mobile apps) calendar summary `xs` can be useful
+* You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ### Parameter and possible values
 
@@ -147,14 +153,14 @@ Parameter name: `embedCalendarSummaries`
 
 Possible values:
 
-*   `xs-text`: extra small summary in plain text
-*   `sm-text`: small summary in plain text
-*   `md-text`: medium summary in plain text
-*   `lg-text`: large summary in plain text
-*   `xs-html`: extra small summary in HTML
-*   `sm-html`: small summary in HTML
-*   `md-html`: medium summary in HTML
-*   `lg-html`: large summary in HTML
+* `xs-text`: extra small summary in plain text
+* `sm-text`: small summary in plain text
+* `md-text`: medium summary in plain text
+* `lg-text`: large summary in plain text
+* `xs-html`: extra small summary in HTML
+* `sm-html`: small summary in HTML
+* `md-html`: medium summary in HTML
+* `lg-html`: large summary in HTML
 
 ### Examples
 
@@ -162,7 +168,9 @@ Possible values:
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=xs-text
+```
+GET /events/?embedCalendarSummaries[]=xs-text
+```
 
 **response**
 
@@ -197,7 +205,9 @@ Every result in the response will have a `calendarSummary` property with a value
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=sm-text
+```
+GET /events/?embedCalendarSummaries[]=sm-text
+```
 
 **response**
 
@@ -232,7 +242,9 @@ Every result in the response will have a `calendarSummary` property with a value
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=sm-html
+```
+GET /events/?embedCalendarSummaries[]=sm-html
+```
 
 **response**
 
@@ -267,7 +279,9 @@ Every result in the response will have a `calendarSummary` property with a value
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
+```
+GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
+```
 
 **response**
 
@@ -315,14 +329,14 @@ Every result in the response will have a `calendarSummary` property with a value
 Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
 
 <!-- theme: warning -->
-> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
+> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
 
 ### Examples
 
@@ -339,6 +353,7 @@ GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
 **response**
 
 UiTPAS prices are not included in the JSON response:
+
 ```js
 {
 "priceInfo": [
@@ -358,9 +373,11 @@ UiTPAS prices are not included in the JSON response:
 ```
 
 #### With UiTPAS prices embedded
+
 **request**
 
 Set the `embedUitpasPrices` parameter to `true`:
+
 ```
 GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
 ```
@@ -394,5 +411,3 @@ The indicative UiTPAS price for the applicable card system UiTPAS Leuven is incl
   ]
 }
 ```
-
-

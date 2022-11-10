@@ -6,5 +6,5 @@ Since we cannot capture these contextual parameters in Auth0 scopes, permissions
 
 This has the added benefit that administrators of a specific product can more easily manage these permissions inside the admin UI of that product, instead of having all permissions inside Auth0.
 
-*   ❌ Don't use scopes in Auth0 for permissions
-*   ✅ Link permissions and/or roles to user ids inside your own API
+* ❌ Don't use scopes in Auth0 for permissions
+* ✅ Link permissions and/or roles to user ids inside your own API

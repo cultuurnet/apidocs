@@ -18,10 +18,10 @@ To call an endpoint, your client also needs specific permissions linked to a rol
 
 We distinguish 2 roles:
 
-*   **Visit registrar**: a museum partner that is allowed to scan cards, verify passholder identity and register visits for these passholders
-*   **Voucher generator**: a partner that is allowed to resell museumPASSmusées voucher codes
+* **Visit registrar**: a museum partner that is allowed to scan cards, verify passholder identity and register visits for these passholders
+* **Voucher generator**: a partner that is allowed to resell museumPASSmusées voucher codes
 
-Client ids and secrets are only provided to specific partners. To request your credentials, please contact support@museumpassmusees.be.
+Client ids and secrets are only provided to specific partners. To request your credentials, please contact <support@museumpassmusees.be>.
 
 ## Postman
 
