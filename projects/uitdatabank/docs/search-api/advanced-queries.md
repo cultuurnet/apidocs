@@ -113,7 +113,7 @@ GET /events/?q=attendanceMode:(online OR mixed)
 
 With the `audienceType` field you can limit your results that are targetted to a specific audience.
 
-> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the defaultfilter for audienceType. You can reset this default as described in the Default Filters (TO DO: link to guide).
+> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the defaultfilter for audienceType. In the [default filters guide](default-filters.md) you can find how you can reset this filter. 
 
 **Applicable on endpoints** 
 
@@ -133,7 +133,7 @@ GET /events/q=audienceType:members&audienceType=*
 
 Using the `availableRange` field, you can get all events and places that were available in a given range in the past, or will be available in a given range in the future.
 
-> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the Default Filters (TO DO: link to guide).
+> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](default-filters.md).
 
 Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series).
 
@@ -278,7 +278,7 @@ GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
 
 Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
 
-> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the Default Filters (TO DO: link to guide).
+> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](default-filters.md).
 
 **Applicable on endpoints** 
 
@@ -514,7 +514,7 @@ Using the `location.terms.id` field you can filter out events that take place on
 
 **Possible values**
 
-Any valid term id applicable on locations (places). For a list of available terms, see UiTdatabank taxonomy (TO DO: link to guide).
+Any valid term id applicable on locations (places). For a list of available terms, see [UiTdatabank taxonomy](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms).
 
 **Example**
 
@@ -770,7 +770,7 @@ Each event and place in UiTdatabank is categorized with a type (e.g. `concert` f
 
 With the `terms.id` field you can filter results based on their categorisation.
 
-A complete overview of our terms can be found on https://taxonomy.uitdatabank.be/terms.
+A complete overview of our terms can be found on <https://taxonomy.uitdatabank.be/terms>.
 
 **Applicable on endpoints**
 
@@ -778,7 +778,7 @@ A complete overview of our terms can be found on https://taxonomy.uitdatabank.be
 
 **Possible values**
 
-See https://taxonomy.uitdatabank.be/terms
+See <https://taxonomy.uitdatabank.be/terms>
 
 **Example**
 
@@ -878,7 +878,7 @@ For organizers:
 -   `DELETED`: the organizer is deleted.
 
 <!-- Theme:info -->
-> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the default filter for `worfklowStatus` (TO DO: link to guide)
+> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for worfklowStatus](default-filters.md).
 
 **Examples**
 
