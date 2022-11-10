@@ -384,7 +384,7 @@ GET /organizers/?q=imagesCount:[5 TO 10]
 
 ### labels
 
-Search for documents that have a specific label with the `labels` field.
+Search for documents that have a specific label (or hidden label) with the `labels` field.
 
 **Applicable on endpoints**
 
