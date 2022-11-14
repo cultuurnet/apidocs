@@ -49,7 +49,7 @@ Newly created organizers will appear first.
 
 > Only applicable on `/events`, `/places` and `/offers`, and only when the the `coordinates` and `distance` parameters are also present
 
-When searching by `geo distance`, it is possible to sort the results by the distance from the given coordinates.
+When searching by `coordinates` and `distance`, it is possible to sort the results by the distance from the given coordinates.
 
 **Example**
 
