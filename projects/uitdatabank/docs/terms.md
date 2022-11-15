@@ -19,7 +19,7 @@ Scope: `events`, `places`
 
 The eventtype describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place).
 
-When creating an event or place in UiTdatabank, a term with domain `eventtype` is mandatory.
+When creating an event or place in UiTdatabank, a term with domain `eventtype` and the correct `scope` (`events` for events, `places` for places) is mandatory.
 
 ## Theme
 Scope: `events`
