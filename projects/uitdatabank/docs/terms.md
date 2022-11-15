@@ -1,5 +1,9 @@
 # Terms
 
+<!-- theme: warning -->
+> 
+> When creating an event or place in UiTdatabank it is mandatory to use the existing term identifiers from the Taxonomy Terms API. It is not possible to use your own terms.
+
 The categorisation model of UiTdatabank is a standard aimed at simplifying data exchange and avoiding complex mapping procedures.
 
 The main purpose of the categorisation model is to categorise cultural and leisure activities. The categorisation model consists of 3 domains:
