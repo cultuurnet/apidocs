@@ -1041,29 +1041,28 @@ Consequently we need to link both OR-relations with an AND operator:
 
 Now the query will return concerts and expositions that either happen in Ghent or Leuven. Without the usage of round brackets you would get incomplete or incorrect results.
 
-## Escaping
+## Escaping & encoding
 
-Special characters like `:`, `"` or `*` must always be escaped if used as part of a field name or field value.
+Everything inside the `q` must be URL-encoded. Also, special characters like `"` or `*` must always be escaped if used as part of a field name or field value.
 
 ### Examples
 
-**Using wildcards in field names**
+**Escaping wildcards in field names**
 
 You can use wildcards in field names to search across multiple translated versions. When doing so, the wildcard must be escaped using a backslash, like in the example below:
 
 ```
-GET /events/q=address.\*.postalCode:9000
+GET /events/?q=address.\*.postalCode:9000
 ```
 
-**Using date time filters**
+**Encoding the `+` sign in field values**
 
-A colon (`:`) must always be escaped using a backlash (`\`), e.g. in a date time filter:
+The `+` sign should be encoded for as `%2B`. Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
 
 ```
-GET /offers/?q=dateRange:2023-01-01T00\:00\:00%2B01\:00
+GET /events/q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
 ```
 
-If colons are not escaped correctly, ElasticSearch will consider it as key-value separators. An error will be thrown.
 
 ## Resources
 
