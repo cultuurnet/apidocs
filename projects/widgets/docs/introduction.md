@@ -40,7 +40,7 @@ In some use cases it might be appropriate to integrate with Search API instead o
 
 **UiTinGent**
 
-[UiTinGent](https://stad.gent/nl/uit-in-gent) uses widgets for displaying upcoming events and their full event calendar. The developers of UiTinGent even customized the look and feel so that it is familiar to UiTinVlaanderen.
+[UiTinGent](https://stad.gent/nl/uit-in-gent) uses widgets for displaying upcoming events and their full event calendar. The developers of UiTinGent even customized the look and feel so that it is similar to UiTinVlaanderen.
 
 **Indiestyle**
 
