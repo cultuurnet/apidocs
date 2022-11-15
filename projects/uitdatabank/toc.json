@@ -37,8 +37,8 @@
         {
           "type": "item",
           "title": "Reuse places & organizers",
-          "uri": "/docs/search-api/reuse-places-organizers.md",
-          "slug": "search-api/reuse-places-organizers"
+          "uri": "/docs/entry-api/reuse-places-organizers.md",
+          "slug": "entry-api/reuse-places-organizers"
         }
       ] 
     },
