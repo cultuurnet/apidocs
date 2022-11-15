@@ -8,9 +8,7 @@
       "minItems": 0,
       "items": {
         "type": "string",
-        "description": "Phone number for contact purposes.",
-        "minLength": 1,
-        "pattern": "\\S"
+        "description": "Phone number for contact purposes."
       }
     },
     "email": {
@@ -27,7 +25,7 @@
       "description": "List of URLs for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "$ref": "./common-string-uri.json",
+        "type":  "string",
         "description": "URL to a website for contact purposes."
       }
     }
