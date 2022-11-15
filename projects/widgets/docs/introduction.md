@@ -17,7 +17,7 @@ Widgets can be highly customized and finetuned to your own needs:
 
 ### Who are widgets for
 
-Widgets are a very accessible and versatile tool that can appeal to a wide range of partners. Widgets are of particular interest to partners that
+Widgets are a very accessible and versatile tool that can appeal to a wide range of partners. Widgets are of particular interest to partners that:
 
 * [x] are looking for an easy but robust solution
 * [x] don't have much time or budget for the configuration or development of an agenda
