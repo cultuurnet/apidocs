@@ -30,7 +30,7 @@ Widgets are a very accessible and versatile tool that can appeal to a wide range
 
 ### Who are widgets not for
 
-In some use cases it might be appropriate to integrate with Search API instead of Widgets. We advice to integrate with our Search API instead of widgets if:
+In some use cases it might be appropriate to integrate with UiTdatabank's [Search API](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) instead of Widgets. We advice to integrate with our Search API instead of widgets if:
 
 * [x] you want full control over every aspect of the integration
 * [x] special interactions with end users are needed (e.g. authentication)
