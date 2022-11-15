@@ -6,7 +6,7 @@ The syntax is based on the Lucene query syntax. More info about the syntax can b
 
 ## Supported fields
 
-### addressCountry
+### address.{language}.addressCountry
 
 With the `addressCountry` field you can limit your results to one or more countries.
 
