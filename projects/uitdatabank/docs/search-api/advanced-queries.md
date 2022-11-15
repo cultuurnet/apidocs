@@ -38,6 +38,10 @@ GET /places/?q=address.\*.addressCountry:BE
 
 With the `addressLocality` field you can limit your results to one or more municipalities.
 
+<!-- theme: warning --> 
+> The name of municipalities can change over time (e.g. in the context of municipality mergers). The postal code of municipalities is far less subject to change. Therefore it is better to use the `postalCode` field instead of the `addressLocality` field (when possible).
+
+
 **Applicable on endpoints**
 
 `/events` `/places` `/offers` `/organizers`
