@@ -238,10 +238,10 @@ TO DO: link to booking availability guide when that guide is finished.
 
 Every event and place in UiTdatabank has one of the following four calendarTypes:
 
-* `Single`: the event occurs on a single date, indicated by a single startDate and endDate.
-* `Multiple`: the event occurs on multiple dates, and has multiple subEvent entries with each a different startDate and endDate.
-* `Periodic`: the event or place runs for a specific period as indicated by its startDate and endDate, and can optionally have openingHours.
-* `Permanent`: the event or place is permanent and has no startDate or endDate, but it can optionally have openingHours.
+* `single`: the event occurs on a single date, indicated by a single startDate and endDate.
+* `multiple`: the event occurs on multiple dates, and has multiple subEvent entries with each a different startDate and endDate.
+* `periodic`: the event or place runs for a specific period as indicated by its startDate and endDate, and can optionally have openingHours.
+* `permanent`: the event or place is permanent and has no startDate or endDate, but it can optionally have openingHours.
 
 With the `calendarType` field you can look for results that match a certain calendarType.
 
