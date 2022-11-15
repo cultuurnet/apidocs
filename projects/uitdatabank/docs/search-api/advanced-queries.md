@@ -105,7 +105,7 @@ A street name and (!) a street number.
 Retrieve all organizers that are located on Henegouwenkaai 41-43:
 
 ```
-GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
+GET /organizers/?q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 ```
 
 ### allAges
@@ -179,7 +179,7 @@ With the `audienceType` field you can limit your results that are targetted to a
 **Example**
 
 ```
-GET /events/q=audienceType:members&audienceType=*
+GET /events/?q=audienceType:members&audienceType=*
 ```
 
 ### availableRange
@@ -1060,7 +1060,7 @@ GET /events/?q=address.\*.postalCode:9000
 The `+` sign should be encoded for as `%2B`. Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
 
 ```
-GET /events/q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
+GET /events/?q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
 ```
 
 
