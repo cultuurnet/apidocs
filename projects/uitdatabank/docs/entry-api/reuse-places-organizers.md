@@ -13,13 +13,12 @@ Only in the case a certain place or organizer does not exist yet, a new one can 
 On this page, we outline some options to reuse existing places & organizers from UiTdatabank in your integration.
 
 ## Reuse existing places
-### Solution 1: store the place ID(s) inside your application
+### Storing the place ID(s) inside your application
 This is the simplest method. You store the identifier(s) of the place(s) inside your application. 
 
 *   ✅ Suitable when all the events created through your application all have the same location
 *   ✅ Suitable when the events created through your application can have a different location, but (1) the amount of possible locations is limited & (2) the list of possible locations is static and won't change a lot over time
 *   ❌ Not suitable when the locations of the events created through your application are unpredictable in advance
-
 
 #### Example
 
@@ -53,7 +52,7 @@ The response now contains the identifier of "Het Depot":
 
 You can now store the identifier of the place "Het Depot" (`8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as location ID in the `POST` request of the event(s) that you want to create.
 
-### Solution 2: search existing locations within the entry form
+### Searching existing locations within the entry form
 
 In this solution you directly integrate with the UiTdatabank Search API in your own entry form.
 
@@ -94,7 +93,7 @@ If the place already exists (like in the example above), it is suggested in the 
 Only when no results are found, or the results found do not match the place that the user wants to use, a new place can be created by the user.
 
 ## Reuse existing organizers
-### Solution 1: store the organizer ID(s) inside your application
+### Storing the organizer ID(s) inside your application
 This is the simplest method. You store the identifer(s) of the organizer(s) inside your application. 
 
 *   ✅ Suitable when all the events created through your application all have the same organizer
@@ -137,7 +136,7 @@ The response now contains the identifier of "Natuurpunt Holsbeek":
 
 You can now store the identifier of the organizer "Natuurpunt Holsbeek" (`e83edb7f-6f23-47cd-a730-66fd7687f116`) in your application to reuse it as organizer ID in the `POST` request of the event(s) that you want to create.
 
-### Solution 2: search existing organizers within the entry form
+### Searching existing organizers within the entry form
 
 In this solution you directly integrate with the UiTdatabank Search API in your own entry form.
 
@@ -177,7 +176,7 @@ If the organizer already exists (like in the example above), it is suggested in 
 
 Only when no results are found, or the results found do not match the organizer that the user wants to use, a new organizer can be created by the user.
 
-### Solution 3: provide a mapping when exporting your data to UiTdatabank
+### Provide a mapping when exporting your data to UiTdatabank
 
 In this solution you add a check when exporting the event data to UiTdatabank. The export can take place at a different (later) time than when the event was created by the user in the own application.
 
