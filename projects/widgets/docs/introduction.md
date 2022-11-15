@@ -4,7 +4,7 @@ A warm welcome to our Widgets documentation! 👋
 
 Widgets are ready-made HTML/JS snippets that you can include in your own website to quickly provide a search page for cultural and leisure activities.
 
-publiq provides a widget builder / wizard where you can easily configure your widget. without the need for advanced technical knowledge. During the configuration process all settings are saved on a scripttag. When embedded in a website or app, the scripttag will render the configured agenda with cultural activities.
+publiq provides a widget builder / wizard where you can easily configure your widget, without the need for advanced technical knowledge. During the configuration process all settings are saved on a `<script>` tag. When embedded in a website or app, the `<script>` tag will render the configured agenda with cultural activities.
 
 Widgets can be highly customized and finetuned to your own needs:
 
