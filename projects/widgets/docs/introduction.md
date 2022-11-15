@@ -35,6 +35,7 @@ In some use cases it might be appropriate to integrate with UiTdatabank's [Searc
 * [x] you want full control over every aspect of the integration
 * [x] special interactions with end users are needed (e.g. authentication)
 * [x] you have specific requirements related to SEO or analytics
+* [x] you also want to publish places in your agenda
 
 ## Inspiring examples
 
