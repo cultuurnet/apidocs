@@ -24,9 +24,9 @@ Widgets are a very accessible and versatile tool that can appeal to a wide range
 * [x] don't have the technical knowledge to develop an agenda themselves
 * [x] want a solution that is constantly kept up to date with new developments within the publiq ecosystem. New fields or features are automatically activated within a widget agenda
 
-> publiq can assist with the configuration of widgets or guide you through certain aspects (scope, styling, etc.) so that you can quickly set up an agenda tailored to the target group of your organization.
+> publiq can assist with the configuration of widgets or guide you through certain aspects (scope, styling, etc.) so that you can quickly set up an agenda tailored to the target group of your organization. 
 >
-> [Contact us](mailto:jeroen@publiq.be)
+> You can reach us on <vragen@uitnetwerk.be> for any questions related to assistance in setting up a widget.
 
 ### Who are widgets not for
 
