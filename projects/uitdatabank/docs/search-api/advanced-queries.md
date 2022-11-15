@@ -88,6 +88,26 @@ Retrieve all events that take place in the postal codes starting with `90`:
 GET /events/?q=address.\*.postalCode:90*
 ```
 
+### address.{language}.streetAddress
+
+With the `streetAddress` field you can limit your results to a certain street or a specific address.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+A street name and (!) a street number.
+
+**Example**
+
+Retrieve all organizers that are located on Henegouwenkaai 41-43:
+
+```
+GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
+```
+
 ### allAges
 
 The `allAges` field can be used to filter out events and places that are (not) suitable for all ages.
@@ -793,26 +813,6 @@ Search for all places that are permanently closed:
 
 ```
 GET /places/?q=status:Unavailable
-```
-
-### streetAddress
-
-With the `streetAddress` field you can limit your results to a certain street or a specific address.
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-**Possible values**
-
-A street name and (!) a street number.
-
-**Example**
-
-Retrieve all organizers that are located on Henegouwenkaai 41-43:
-
-```
-GET /organizers/q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 ```
 
 ### terms.id
