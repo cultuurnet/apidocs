@@ -953,7 +953,7 @@ GET /offers
 
 ### \_exists\_
 
-With the `_exists_` field you can search for the documents that have a specific property in their JSON body.
+With the `_exists_` field you can search for the documents that have a given field name in their index.
 
 **Applicable on endpoints**
 
