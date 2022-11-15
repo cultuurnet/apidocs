@@ -31,6 +31,18 @@
       "slug": "entry-api/requirements-before-going-live"
     },
     {
+    "type": "group",
+    "title": "Guides",
+    "items": [
+        {
+          "type": "item",
+          "title": "Reuse places & organizers",
+          "uri": "/docs/search-api/reuse-places-organizers.md",
+          "slug": "search-api/reuse-places-organizers"
+        }
+      ] 
+    },
+    {
       "type": "divider",
       "title": "Search API"
     },
