@@ -355,26 +355,6 @@ Retrieve all events that took place in the year 2020:
 GET /events/?q=dateRange:[2020-01-01T00\:00\:00%2B01\:00 TO 2021-12-31T23\:59\:59%2B01\:00]&availableTo=*&availableFrom=*
 ```
 
-### \_exists\_
-
-With the `_exists_` field you can search for the documents that have a specific property in their JSON body.
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-**Possible values**
-
-Any field name documented on this page.
-
-**Example**
-
-Retrieve all events with a description in dutch:
-
-```
-GET /events/?q=_exists_:description.nl
-```
-
 ### id
 
 Retrieve events that match a specific id with the `id` field. It is possible to search by an event id, place id or organizer id.
@@ -969,6 +949,26 @@ Or you can just simply omit the search from the example above, since Search API 
 
 ```
 GET /offers
+```
+
+### \_exists\_
+
+With the `_exists_` field you can search for the documents that have a specific property in their JSON body.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+Any field name documented on this page.
+
+**Example**
+
+Retrieve all events with a description in dutch:
+
+```
+GET /events/?q=_exists_:description.nl
 ```
 
 ## Boolean operators
