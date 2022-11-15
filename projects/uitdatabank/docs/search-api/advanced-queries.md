@@ -64,6 +64,30 @@ The following example looks for matches in any language:
 GET /places/?q=address.\*.addressLocality:Bruxelles
 ```
 
+### address.{language}.postalCode
+
+Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` field.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+<!-- theme: info -->
+
+> Organizers do not always have address information. Thus, filtering on `postalCode` on the `/organizers` endpoint may result in incomplete results.
+
+**Possible values**
+
+Any valid postal code (integer).
+
+**Example**
+
+Retrieve all events that take place in the postal codes starting with `90`:
+
+```
+GET /events/?q=address.\*.postalCode:90*
+```
+
 ### allAges
 
 The `allAges` field can be used to filter out events and places that are (not) suitable for all ages.
@@ -669,30 +693,6 @@ Search for all events that have "Ancienne Belgique" as its organizer:
 
 ```
 GET /events/?q=organizer.name.\*:"ancienne belgique"
-```
-
-### postalCode
-
-Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` field.
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-<!-- theme: info -->
-
-> Organizers do not always have address information. Thus, filtering on `postalCode` on the `/organizers` endpoint may result in incomplete results.
-
-**Possible values**
-
-Any valid postal code (integer).
-
-**Example**
-
-Retrieve all events that take place in the postal codes starting with `90`:
-
-```
-GET /events/?q=address.\*.postalCode:90*
 ```
 
 ### price
