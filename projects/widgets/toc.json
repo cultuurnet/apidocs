@@ -8,15 +8,51 @@
     },
     {
       "type": "item",
-      "title": "Example page with videos",
-      "uri": "docs/video.md",
-      "slug": "video"
+      "title": "Getting started",
+      "uri": "docs/getting-started.md",
+      "slug": "getting-started"
     },
     {
       "type": "item",
-      "title": "demo",
-      "uri": "docs/demo.md",
-      "slug": "demo"
+      "title": "Configuration",
+      "uri": "docs/configuration.md",
+      "slug": "configuration"
+    },
+    {
+      "type": "item",
+      "title": "Styling",
+      "uri": "docs/styling.md",
+      "slug": "styling"
+    },
+    {
+      "type": "item",
+      "title": "Publish and embed on your website",
+      "uri": "docs/publish-and-embed-on-your-website.md",
+      "slug": "publish-and-embed-on-your-website"
+    },
+    {
+      "type": "item",
+      "title": "After publication",
+      "uri": "docs/after-publication.md",
+      "slug": "after-publication"
+    },
+    {
+      "type": "item",
+      "title": "Advanced settings",
+      "uri": "docs/advanced-settings.md",
+      "slug": "advanced-settings"
+    },
+    {
+      "type": "item",
+      "title": "Language settings",
+      "uri": "docs/language-settings.md",
+      "slug": "language-settings"
+    },
+    {
+      "type": "item",
+      "title": "Browser compatibility",
+      "uri": "docs/browser-compatibility.md",
+      "slug": "browser-compatibility"
     }
   ]
 }

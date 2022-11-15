@@ -1,4 +1,4 @@
-# Video example
+# styling
 
 Small demo of a YouTube video embed.
 
