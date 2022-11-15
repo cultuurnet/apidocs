@@ -52,4 +52,4 @@ Looking for an event that is accessible for people with disabilities? There is n
 
 **UiTPAS Mechelen**
 
-The agenda of [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) lists all events accessible with UiTPAS. On The detail page of each event you will not only find the UiTPAS price but also the various UiTPAS rewards that the organizer of the event offers.
+The agenda of [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) lists all events accessible with UiTPAS. On the detail page of each event you will not only find the UiTPAS price but also the various UiTPAS rewards that the organizer of the event offers.
