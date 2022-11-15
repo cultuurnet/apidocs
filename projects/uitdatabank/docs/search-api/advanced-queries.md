@@ -319,11 +319,11 @@ Use the `creator` field to search for documents created by a specific creator.
 
 **Possible values**
 
-Any uuid of a creator.
+Any identifier of a creator.
 
 **Example**
 
-Retrieve all events and places created by user with uuid `86a02c65-696d-5b12-a9b1-9e3bc8e6303c`:
+Retrieve all events and places created by user with id `86a02c65-696d-5b12-a9b1-9e3bc8e6303c`:
 
 ```
 GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
@@ -377,11 +377,11 @@ GET /events/?q=_exists_:description.nl
 
 ### id
 
-Retrieve events that match a specific uuid with the `id` field. It is possible to search by an event id, place id or organizer id.
+Retrieve events that match a specific id with the `id` field. It is possible to search by an event id, place id or organizer id.
 
 A specific id can be found by
 
-* extracting the UUID from the `@id` property in the JSON-LD projection
+* extracting the id from the `@id` property in the JSON-LD projection
 
 ```js
 {
@@ -402,7 +402,7 @@ or
 }
 ```
 
-> Extracting the UUID from the `id` property is only possible from the JSON response of the UiTdatabank Entry API. If you use Search API to build an agenda, you'll have to extract the UUID from the `@id` property in the JSON-LD projection.
+> Extracting the id from the `id` property is only possible from the JSON response of the UiTdatabank Entry API. If you use Search API to build an agenda, you'll have to extract the id from the `@id` property in the JSON-LD projection.
 
 **Applicable on endpoints**
 
@@ -410,7 +410,7 @@ or
 
 **Possible values**
 
-Any uuid of an event, place or organizer.
+Any identifier of an event, place or organizer.
 
 **Example**
 
@@ -570,7 +570,7 @@ Using the field `location.id` field, you can find events that take place on a ce
 
 **Possible values**
 
-Any uuid of a location.
+Any identifier of a location.
 
 **Example**
 
