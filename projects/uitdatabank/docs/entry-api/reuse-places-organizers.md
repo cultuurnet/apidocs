@@ -67,6 +67,8 @@ In this solution you directly integrate with the UiTdatabank Search API in your 
 
 In the example below, a user in your entry form types the name "Het Depot" in the input field for the location. Under the hood an API call to the UiTdatabank Search API is made to check if that place already exists:
 
+![](.../assets/images/search-places.png)
+
 **request**
 
 ```
@@ -155,6 +157,8 @@ In this solution you directly integrate with the UiTdatabank Search API in your 
 
 In the example below, a user in your entry form types the name "Natuurpunt Holsbeek" in the input field for the organizer. Under the hood an API call to the UiTdatabank Search API is made to check if that organizer already exists:
 
+![](.../assets/images/search-organizers.png)
+
 **request**
 
 ```
@@ -181,6 +185,8 @@ The response now contains the URL of "Natuurpunt Holsbeek" as an `@id` property:
 ```
 
 If one or more organizers already exist with this name (like in the example above), they are displayed as human-readable suggestions in the user interface so that the user can choose to reuse one of these organizers for the creation of his or her event.
+
+![](.../assets/images/search-organizers-organizer-found.png)
 
 Only when no results are found, or the results found do not match the organizer that the user wants to use, a new organizer can be created by the user.
 
