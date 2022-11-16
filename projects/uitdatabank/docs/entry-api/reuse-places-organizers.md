@@ -120,7 +120,7 @@ GET /organizers/?q=name.\*:"Natuurpunt Holsbeek"
 
 <!-- theme: warning -->
 
-> Contrary to places, for organizers we advice to only search for the `name` and to not include a search on `postalCode` (since this is an optional field for organizers).
+> For organizers we advice to only search for the `name` and to not include a search on `postalCode` (since this is an optional field for organizers).
 
 **response**
 
