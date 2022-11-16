@@ -98,7 +98,7 @@ Only when no results are found, or the results found do not match the place that
 
 ## Reuse existing organizers
 
-### Storing the organizer ID(s) inside your application
+### Storing the organizer URL(s) inside your application
 
 This is the simplest method. You store the identifer(s) of the organizer(s) inside your application.
 
