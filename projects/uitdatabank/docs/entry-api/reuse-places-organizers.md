@@ -53,7 +53,7 @@ The response now contains the URL of "Het Depot" as an `@id` property:
 }
 ```
 
-You can now store the identifier of the place "Het Depot" (`8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as location ID in the `POST` request of the event(s) that you want to create.
+You can now store the URL of the place "Het Depot" (`https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as `location.@id` in the `POST /events` request of the event(s) that you want to create.
 
 ### Searching existing locations within the entry form
 
