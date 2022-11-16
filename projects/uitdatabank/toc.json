@@ -36,7 +36,7 @@
     "items": [
         {
           "type": "item",
-          "title": "Reuse places & organizers",
+          "title": "Reusing places & organizers",
           "uri": "/docs/entry-api/reuse-places-organizers.md",
           "slug": "entry-api/reuse-places-organizers"
         }
