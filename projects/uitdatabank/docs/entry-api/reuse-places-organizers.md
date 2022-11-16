@@ -92,7 +92,7 @@ The response now contains the URL of "Het Depot" as an `@id` property:
 }
 ```
 
-If the place already exists (like in the example above), it is suggested in the user interface in a human-readable way so that the user can select the place and thus choose to reuse the place for the creation of his or her event.
+If one or more places already exist with this name in the given postal code (like in the example above), they are displayed as human-readable suggestions in the user interface so that the user can choose to reuse one of these place for the creation of his or her event.
 
 Only when no results are found, or the results found do not match the place that the user wants to use, a new place can be created by the user.
 
