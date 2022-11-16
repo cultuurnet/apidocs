@@ -180,7 +180,7 @@ The response now contains the identifier of "Natuurpunt Holsbeek":
 }
 ```
 
-If the organizer already exists (like in the example above), it is suggested in the user interface in a human-readable way so that the user can select the organizer and thus choose to reuse the organizer for the creation of his or her event.
+If one or more organizers already exist with this name (like in the example above), they are displayed as human-readable suggestions in the user interface so that the user can choose to reuse one of these organizers for the creation of his or her event.
 
 Only when no results are found, or the results found do not match the organizer that the user wants to use, a new organizer can be created by the user.
 
