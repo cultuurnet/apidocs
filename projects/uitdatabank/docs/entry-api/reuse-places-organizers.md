@@ -124,7 +124,7 @@ GET /organizers/?q=name.\*:"Natuurpunt Holsbeek"
 
 **response**
 
-The response now contains the identifier of "Natuurpunt Holsbeek":
+The response now contains the URL of "Natuurpunt Holsbeek" as an `@id` property:
 
 ```js
 {
