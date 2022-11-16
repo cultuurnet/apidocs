@@ -12,7 +12,7 @@ Only in the case a certain place or organizer does not exist yet, a new one can 
 
 On this page, we outline some options to find existing places & organizers from UiTdatabank to reuse in your integration.
 
-## Reuse existing places
+## Reusing existing places
 
 ### Storing the place ID(s) inside your application
 
