@@ -1,4 +1,4 @@
-# Reuse places & organizers
+# Reusing places & organizers
 
 When creating an event via the UiTdatabank Entry API, you can and must use existing places (locations) and organizers in UiTdatabank.
 
