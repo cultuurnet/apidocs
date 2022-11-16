@@ -16,7 +16,7 @@ On this page, we outline some options to find existing places & organizers from 
 
 ### Storing the place ID(s) inside your application
 
-This is the simplest method. You store the identifier(s) of the place(s) inside your application.
+This is the simplest method. You store the URL(s) of the place(s) inside your application.
 
 * ✅ Suitable when all the events created through your application all have the same location
 * ✅ Suitable when the events created through your application can have a different location, but (1) the amount of possible locations is limited & (2) the list of possible locations is static and won't change a lot over time
