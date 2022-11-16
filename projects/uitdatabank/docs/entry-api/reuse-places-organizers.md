@@ -108,7 +108,7 @@ This is the simplest method. You store the URL(s) of the organizer(s) inside you
 
 #### Example
 
-In the example below, all the events created through the integration have the same organizer, "Natuurpunt Holsbeek". First you'll need to find the identifier of the organizer `Natuurpunt Holsbeek` in UiTdatabank.
+In the example below, all the events created through the integration have the same organizer, "Natuurpunt Holsbeek". First you'll need to find the URL of the organizer `Natuurpunt Holsbeek` in UiTdatabank.
 
 **request**
 
