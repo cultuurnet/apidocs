@@ -24,7 +24,7 @@ This is the simplest method. You store the URL(s) of the place(s) inside your ap
 
 #### Example
 
-In the example below, all the events created through the integration take place in "Het Depot", a concert hall in Leuven. First you'll need to find the identifier of the place `Het Depot` in UiTdatabank.
+In the example below, all the events created through the integration take place in "Het Depot", a concert hall in Leuven. First you'll need to find the URL of the place `Het Depot` in UiTdatabank.
 
 **request**
 
