@@ -143,7 +143,7 @@ The response now contains the URL of "Natuurpunt Holsbeek" as an `@id` property:
 
 You can now store the URL of the organizer "Natuurpunt Holsbeek" (`https://io.uitdatabank.be/organizers/e83edb7f-6f23-47cd-a730-66fd7687f116`) in your application to reuse it as `organizer.@id` property in the `POST /events` request of the event(s) that you want to create.
 
-### Searching existing organizers within the entry form
+### Searching existing organizers within your entry form
 
 In this solution you directly integrate with the UiTdatabank Search API in your own entry form.
 
