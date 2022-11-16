@@ -19,10 +19,10 @@ Widgets can be highly customized and finetuned to your own needs:
 
 Widgets are a very accessible and versatile tool that can appeal to a wide range of partners. Widgets are of particular interest to partners that:
 
-* [x] are looking for an easy but robust solution
-* [x] don't have much time or budget for the configuration or development of an agenda
-* [x] don't have the technical knowledge to develop an agenda themselves
-* [x] want a solution that is constantly kept up to date with new developments within the publiq ecosystem. New fields or features are automatically activated within a widget agenda
+* ✅ are looking for an easy but robust solution
+* ✅ don't have much time or budget for the configuration or development of an agenda
+* ✅ don't have the technical knowledge to develop an agenda themselves
+* ✅ want a solution that is constantly kept up to date with new developments within the publiq ecosystem. New fields or features are automatically activated within a widget agenda
 
 > publiq can assist with the configuration of widgets or guide you through certain aspects (scope, styling, etc.) so that you can quickly set up an agenda tailored to the target group of your organization.
 >
@@ -32,9 +32,10 @@ Widgets are a very accessible and versatile tool that can appeal to a wide range
 
 In some use cases it might be appropriate to integrate with UiTdatabank's [Search API](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) instead of Widgets. We advice to integrate with our Search API instead of widgets if:
 
-* [x] you want full control over every aspect of the integration
-* [x] special interactions with end users are needed (e.g. authentication)
-* [x] you have specific requirements related to SEO or analytics
+* ✅ you want full control over every aspect of the integration
+* ✅ special interactions with end users are needed (e.g. authentication)
+* ✅ you have specific requirements related to SEO or analytics
+* ✅ you also want to publish places in your agenda
 
 ## Inspiring examples
 
