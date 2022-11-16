@@ -228,4 +228,4 @@ GET /organizers/?website=https://www.natuurpunt.be/afdelingen/natuurpunt-holsbee
 
 If the organizer already exists (like in the example above), the URL of that organizer (`https://io.uitdatabank.be/organizers/e83edb7f-6f23-47cd-a730-66fd7687f116` in this case) must be used as `organizer.@id` in the `POST /events` request of the event.
 
-Only when no results are found a new organizer can be created in UiTdatabank. When doing so, the UiTdatabank API will return a response containing the identifier of the organizer. This organizer ID must be used then in the POST request of the event.
+Only when no results are found a new organizer can be created in UiTdatabank. When doing so, the UiTdatabank API will return a response containing the URL of the organizer. This organizer URL must be used then in the `POST /events` request of the event.
