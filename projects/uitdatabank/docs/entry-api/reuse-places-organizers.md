@@ -100,7 +100,7 @@ Only when no results are found, or the results found do not match the place that
 
 ### Storing the organizer URL(s) inside your application
 
-This is the simplest method. You store the identifer(s) of the organizer(s) inside your application.
+This is the simplest method. You store the URL(s) of the organizer(s) inside your application.
 
 * ✅ Suitable when all the events created through your application all have the same organizer
 * ✅ Suitable when the events created through your application can have a different organizer, but (1) the amount of organizers is limited & (2) the list of organizers is static and won't change a lot over time
