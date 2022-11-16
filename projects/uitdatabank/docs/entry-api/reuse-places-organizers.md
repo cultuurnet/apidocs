@@ -55,7 +55,7 @@ The response now contains the URL of "Het Depot" as an `@id` property:
 
 You can now store the URL of the place "Het Depot" (`https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as `location.@id` in the `POST /events` request of the event(s) that you want to create.
 
-### Searching existing locations within the entry form
+### Searching existing locations within your entry form
 
 In this solution you directly integrate with the UiTdatabank Search API in your own entry form.
 
