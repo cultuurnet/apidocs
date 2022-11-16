@@ -36,7 +36,7 @@ GET /places/?q=name.\*:"Het Depot" AND address.\*.postalCode:3000
 
 **response**
 
-The response now contains the identifier of "Het Depot":
+The response now contains the URL of "Het Depot" as an `@id` property:
 
 ```js
 {
