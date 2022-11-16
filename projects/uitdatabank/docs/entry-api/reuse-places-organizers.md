@@ -112,7 +112,7 @@ In the example below, all the events created through the integration have the sa
 
 **request**
 
-Perform a `GET` request to the UiTdatabank API including the name of the organizer:
+Perform a `GET` request to the UiTdatabank Search API including the name of the organizer:
 
 ```
 GET /organizers/?q=name.\*:"Natuurpunt Holsbeek"
