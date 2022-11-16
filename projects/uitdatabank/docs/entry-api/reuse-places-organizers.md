@@ -8,7 +8,7 @@ Only in the case a certain place or organizer does not exist yet, a new one can 
 
 <!-- theme: warning -->
 
-> When sending event content to UiTdatabank trough the Entry API it is essential to reuse existing organizer IDs and place IDs. Otherwise your integration can be blocked because of the creation of duplicates.
+> When sending event content to UiTdatabank trough the Entry API you **must** reuse existing organizer IDs and place IDs when available. Otherwise your integration can be blocked because of the creation of duplicates.
 
 On this page, we outline some options to reuse existing places & organizers from UiTdatabank in your integration.
 
