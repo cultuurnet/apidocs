@@ -655,7 +655,7 @@ Get all events and places that are modified since the start of 2022:
 GET /offers/?q=modified:[2022-01-01T00\:00\:00%2B01\:00 TO *]
 ```
 
-### name
+### name.{language}
 
 Using the field `name`, you can find events by their name (title).
 
@@ -675,7 +675,7 @@ Search for all events that have `Soulwax` in their name:
 GET /events/?q=name.\*:*Soulwax*
 ```
 
-### organizer.name
+### organizer.name.{language}
 
 Using the field `organizer.name`, you can find events and places that take are organized by a certain organizer.
 
