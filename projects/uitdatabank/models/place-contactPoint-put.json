@@ -8,8 +8,7 @@
       "minItems": 0,
       "items": {
         "type": "string",
-        "description": "Phone number for contact purposes.",
-        "minLength": 1
+        "description": "Phone number for contact purposes."
       }
     },
     "email": {

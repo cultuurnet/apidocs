@@ -25,7 +25,7 @@
       "description": "List of URLs for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "type":  "string",
+        "type": "string",
         "description": "URL to a website for contact purposes."
       }
     }
