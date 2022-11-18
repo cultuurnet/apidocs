@@ -1,5 +1,9 @@
 # Getting started
 
+Once you have created your widget project on [Projectaanvraag](https://www.projectaanvraag.uitdatabank.be), you're all set to start building your widget. 
+
+Below we explain the different steps of the configuration process in a nutshell. It is not mandatory the follow the steps as we list them below. In any case, you must start with step 1.
+
 ## 1. Choose a template 🗂️
 
 To help you get started quickly, publiq offers a 4 different templates. 
@@ -14,6 +18,8 @@ Regardless the template you pick, you can later on extensively customize your wi
 * by changing the layout: adding and removing rows and blocks
 * by configuring the different blocks: determine which events and information you want to show in your agenda
 
+👉 [Learn more about widget templates](./templates.md)
+
 ## 2. Configure your widget 🏗️ 
 
 Now that you've chosen a template it's time to define
@@ -22,16 +28,20 @@ Now that you've chosen a template it's time to define
 
 The configuration is kept very simple and mainly happens trough checking and unchecking checkboxes.
 
-## 3. Publish your widget 💾 
+👉 [Learn more about the different configuration settings](./configuration.md)
 
-Once you're happy with the configuration you've done in step 2 you can publish your configured settings. The publish action will save all changes you've made will on the `<script>` tag of your widget. When published, you'll receive your unique `<script>` tag that you can embed in your website to render the widget agenda.
+## 3. Publish and embed your widget 💾 
 
-## 4. Embed the widget in your website 🖥️ 
+Once you're happy with the configuration you've done in step 2 you can publish your configured settings. The publish action will save all changes you've made will on the `<script>` tag of your widget.
 
-Copy the `<script>` tag you received in step 4 and embed this on the page of your website where you want to show the agenda.
+Copy the unique `<script>` tag you receivedembed this on the page of your website where you want to show the agenda.
 
-## 5. Style your widget 🎨 
+👉 [Learn more about publishing and embedding your widget](./publish-and-embed-on-your-website.md)
+
+## 4. Style your widget 🎨 
 
 Once embedded in a website, the widget will automaticaly inherit the CSS styles of the guest website. 
 
 In addition, you can also define your own CSS rules in the widget builder to finetune the widget to the design of your website. If CSS is not your cup of coffee, you can also use one of the predefined themes we provide in the widget builder.
+
+👉 [Learn more about styling your widget](./styling.md)
