@@ -6,9 +6,7 @@ Below we explain the different steps of the configuration process in a nutshell.
 
 ## 1. Choose a template 🗂️
 
-To help you get started quickly, we offer a 4 different templates. 
-
-You can choose from the following templates:
+To help you get started quickly, we offer a 4 different templates:
 
 1. **Leeg**: You start from a blanc layout that you then expand yourself by adding rows and assigning blocks to these rows.
 2. **Agenda**: This is the most used template. This templates contains two rows. The top row contains a a search box (full length), and the second row contains facets on the left side and search results at the center / right.
