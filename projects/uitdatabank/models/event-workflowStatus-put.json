@@ -1,0 +1,12 @@
+{
+  "title": "event.workflowStatus.put",
+  "type": "object",
+  "properties": {
+    "workflowStatus": {
+      "$ref": "./event-workflowStatus.json"
+    }
+  },
+  "required": [
+    "workflowStatus"
+  ]
+}
