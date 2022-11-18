@@ -520,7 +520,7 @@ Get all events that take place at night:
 GET /events/?q=localTimeRange:[0000 TO 0559]
 ```
 
-### location.name
+### location.name.{language}
 
 Using the field `location.name`, you can find events that take place on a certain location.
 
