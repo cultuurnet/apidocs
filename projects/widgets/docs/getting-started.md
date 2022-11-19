@@ -1,6 +1,6 @@
 # Getting started
 
-Once you have created your widget project on [Projectaanvraag](https://www.projectaanvraag.uitdatabank.be), you're all set to start building your widget. 
+Once you have created your widget project on [Projectaanvraag](https://projectaanvraag.uitdatabank.be), you're all set to start building your widget. 
 
 Below we explain the different steps of the configuration process in a nutshell. 
 
