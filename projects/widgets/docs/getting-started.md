@@ -6,34 +6,34 @@ Below we explain the different steps of the configuration process in a nutshell.
 
 ## 1. Choose a template 🗂️
 
-To help you get started quickly, we offer a 4 different templates:
+To help you get started quickly, we offer 4 different templates:
 
-1. **Leeg**: You start from a blanc layout that you then expand yourself by adding rows and assigning blocks to these rows.
-2. **Agenda**: This is the most used template. This templates contains two rows. The top row contains a a search box (full length), and the second row contains facets on the left side and search results at the center / right.
-3. **Tips**: This template can be used to make a short list of events that you want to highlight. The tips widget serves as a 'teaser' for the full event calendar and enables the generation of traffic to the full calendar. Therefore it is usually embed on a home page or other frequently visited page.
+1. **Leeg**: You start from a blanc layout that you then expand yourself by adding rows and assigning blocks (e.g. search box or search results) to these rows.
+2. **Agenda**: This is the most used template. This templates contains two rows. The top row contains a a search box (full length), and the second row contains facets on the left side and search results at the center.
+3. **Tips**: This template can be used to make a short list of events that you want to highlight. The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
 4. **UiTPAS**: This is the same template as the `agenda` template, but with all the UiTPAS setting already enabled for you.
 
-Regardless the template you pick, you can later on extensively customize your widget to your own preferences and taste:
-* by changing the layout: adding and removing rows and blocks
+Regardless of the template you pick, you can later on extensively customize your widget to your own preferences and taste:
+* by changing the layout: adding, moving or deleting rows and blocks
 * by configuring the different blocks: determine which events and information you want to show in your agenda
 
 👉 [Learn more about widget templates](./templates.md)
 
 ## 2. Configure your widget 🏗️ 
 
-Now that you've chosen a template it's time to define
+Now that you've chosen a template it's time to define:
 * which events you want to display in your agenda
 * which info you want to show about the events
 
-The configuration is kept very simple and mainly happens trough checking and unchecking checkboxes.
+The way of configuring is very simple and is mainly done by ticking and unchecking checkboxes.
 
 👉 [Learn more about the  configuration settings](./configuration.md)
 
 ## 3. Publish and embed your widget 💾 
 
-Once you're happy with the configuration you've done in step 2 you can publish your widget. The publish action will save all configuration changes you've made on the `<script>` tag of your widget.
+Once you're satisfied with the configuration you've done in step 2 you can publish your widget. The publish action will save all configuration changes you've made on the `<script>` tag of your widget.
 
-Copy the unique `<script>` tag you received and embed this on the page of your website where you want to show the agenda.
+Now you can copy the unique `<script>` tag to embed it on the page of your website where you want to show the agenda.
 
 👉 [Learn more about publishing & embedding](./publish-and-embed-on-your-website.md)
 
