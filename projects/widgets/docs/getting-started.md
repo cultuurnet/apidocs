@@ -19,7 +19,7 @@ Regardless of the template you pick, you can later on extensively customize your
 
 👉 [Learn more about widget templates](./templates.md)
 
-## 2. Configure your widget 🏗️ 
+## 2. Configure your widget 🏗️
 
 Now that you've chosen a template it's time to define:
 * which events you want to display in your agenda
@@ -29,7 +29,7 @@ The way of configuring is very simple and is mainly done by ticking and unchecki
 
 👉 [Learn more about the  configuration settings](./configuration.md)
 
-## 3. Publish and embed your widget 💾 
+## 3. Publish and embed your widget 💾
 
 Once you're satisfied with the configuration you've done in step 2 you can publish your widget. The publish action will save all configuration changes you've made on the `<script>` tag of your widget.
 
@@ -37,7 +37,7 @@ Now you can copy the unique `<script>` tag to embed it on the page of your websi
 
 👉 [Learn more about publishing & embedding](./publish-and-embed-on-your-website.md)
 
-## 4. Style your widget 🎨 
+## 4. Style your widget 🎨
 
 Once embedded in a website, the widget will automatically inherit the CSS styles of the guest website. 
 
