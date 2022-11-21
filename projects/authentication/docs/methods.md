@@ -16,12 +16,12 @@ The following table provides a summary of the supported authentication methods o
 
 APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/9b63d9296d981-taxonomy-api), are not included in this table.
 
-| API                                                                                         | Client identification | Client access tokens | User access tokens |
-| ------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
+| API                                                                                           | Client identification | Client access tokens | User access tokens |
+| --------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
 | [UiTdatabank Search API v3](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) | ✅                     | No                   | No                 |
-| [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/5c4fcee8036e0-entry-api) | No                    | ✅                    | ✅                  |
-| [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                         | No                    | ✅                    | ✅                  |
-| [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)             | No                    | ✅                    | No                 |
+| [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/5c4fcee8036e0-entry-api)   | No                    | ✅                    | ✅                  |
+| [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                           | No                    | ✅                    | ✅                  |
+| [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)               | No                    | ✅                    | No                 |
 
 You can always mix requests with different authentication methods if needed. For example you can use your client id to make a request to UiTdatabank's Search API using client identification, and you can use the same client id in combination with your client secret to request a token to make requests to UiTdatabank's Entry API.
 
