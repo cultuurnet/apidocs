@@ -45,7 +45,7 @@ Once you're satisfied with the configuration you've done in step 2 you can publi
 
 Now you can copy the unique `<script>` tag to embed it on the page of your website where you want to show the agenda.
 
-> As long as your widget uses event data from our test environment, we recommend to integrate the `<script>` tag on the staging environment of your webiste, or alternatively on a hidden page of your production website.
+
 
 👉 [Learn more about publishing & embedding](./publish-and-embed-on-your-website.md)
 
