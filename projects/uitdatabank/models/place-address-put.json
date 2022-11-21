@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-address-localized.json",
+  "title": "place.address.put",
+  "description": "New address of the [place](./place.json), localized in a single language."
+}
