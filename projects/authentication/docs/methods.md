@@ -18,7 +18,7 @@ APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](h
 
 | API                                                                                         | Client identification | Client access tokens | User access tokens |
 | ------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
-| UiTdatabank Search API v3                                                                   | ✅                     | No                   | No                 |
+| [UiTdatabank Search API v3](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) | ✅                     | No                   | No                 |
 | [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/5c4fcee8036e0-entry-api) | No                    | ✅                    | ✅                  |
 | [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                         | No                    | ✅                    | ✅                  |
 | [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)             | No                    | ✅                    | No                 |
