@@ -2,7 +2,7 @@
 
 Once you have created your widget project on [Projectaanvraag](https://projectaanvraag.uitdatabank.be), you're all set to start building your widget.
 
-Below we explain the different steps of the configuration process in a nutshell.
+Below we explain the process of building a widget in a nutshell.
 
 ## 1. Choose a template 🗂️
 
