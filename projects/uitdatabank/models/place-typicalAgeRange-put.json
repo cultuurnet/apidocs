@@ -1,0 +1,19 @@
+{
+  "title": "place.typicalAgeRange.put",
+  "type": "object",
+  "description": "Describes the request body to set the typical age range of a [place](./place.json).",
+  "examples": [
+    {
+      "typicalAgeRange": "6-12"
+    }
+  ],
+  "properties": {
+    "typicalAgeRange": {
+      "$ref": "./event-typicalAgeRange.json",
+      "description": "The typical age range to set on the place."
+    }
+  },
+  "required": [
+    "typicalAgeRange"
+  ]
+}
