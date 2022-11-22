@@ -164,7 +164,7 @@ There is a hierarchical relationship between the different education level label
 
 **Basisonderwijs**
 
-The following labels must be combined with level 1 label `cultuurkuur_basisonderwijs` 👇 : 
+The following labels must be combined with level 1 label `cultuurkuur_basisonderwijs`: 
 
 | Education level | Label | 
 | :-- | :-- | 
@@ -173,7 +173,7 @@ The following labels must be combined with level 1 label `cultuurkuur_basisonder
 
 **Secundair onderwijs**
 
-The following labels must be combined with level 1 label `cultuurkuur_Secundair-onderwijs` 👇 : 
+The following labels must be combined with level 1 label `cultuurkuur_Secundair-onderwijs`: 
 
 | Education level | Label | 
 | :-- | :-- | 
@@ -183,7 +183,7 @@ The following labels must be combined with level 1 label `cultuurkuur_Secundair-
 
 **Deeltijds kunstonderwijs**
 
-The following labels must be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO` 👇 : 
+The following labels must be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO`: 
 
 | Education level | Label | 
 | :-- | :-- |
@@ -199,7 +199,7 @@ The following labels must be combined with level 1 label `cultuurkuur_Deeltijds-
 
 **Buitengewoon basisonderwijs** 
 
-The following labels must be combined with level 2 label `cultuurkuur_Buitengewoon-basisonderwijs` and level 1 label `cultuurkuur_basisonderwijs` 👇 : 
+The following labels must be combined with level 2 label `cultuurkuur_Buitengewoon-basisonderwijs` and level 1 label `cultuurkuur_basisonderwijs`: 
 
 | Education level | Label | 
 | :-- | :-- |
@@ -208,7 +208,7 @@ The following labels must be combined with level 2 label `cultuurkuur_Buitengewo
 
 **Voltijds gewoon secundair onderwijs**
 
-The following labels must be combined with label 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` and level 1 label `cultuurkuur_Secundair-onderwijs` 👇 : 
+The following labels must be combined with label 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` and level 1 label `cultuurkuur_Secundair-onderwijs`: 
 
 | Education level | Label | 
 | :-- | :-- |
