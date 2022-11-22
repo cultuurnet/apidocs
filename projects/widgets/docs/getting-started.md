@@ -1,17 +1,23 @@
 # Getting started
 
-## 1. Registering a widget project 
+## 1. Registering a widget project
 
-Before you can start building your widget you must make a widget project on our [self-service platform Projectaanvraag](https://projectaanvraag.uitdatabank.be). The registration process is very simple and only takes a few minutes. 
+Before you can start building your widget you must make a widget project on our [self-service platform Projectaanvraag](https://projectaanvraag.uitdatabank.be). The registration process is very simple and only takes a few minutes.
 
 The created widget project will use event data from our test environment. No payment is required until you decide you want to use real event data.
 
+<<<<<<< HEAD
 https://youtu.be/P5RHLT7Q37E
+=======
+<https://www.youtube.com/watch?v=X0uplBw98gg>
+>>>>>>> 322dd52b3c6e67d6a29ca4781fc57453888ffbc9
 
 <!-- theme: success -->
-> Once you have created your widget project, you're all set to start building your widget! 
+
+> Once you have created your widget project, you're all set to start building your widget!
 
 ## 2. Building your widget
+
 ### Choosing a template 🗂️
 
 To help you get started quickly, we offer 4 different templates:
@@ -60,4 +66,5 @@ In addition, you can also define your own CSS rules in the widget builder to fin
 In order to use real event data in your widget you must activate your widget project on [Projectaanvraag](https://projectaanvraag.uitdatabank.be). When activating you agree with the payment of a yearly fee.
 
 <!-- theme: success -->
+
 > Once activated, your widget will automatically start using event data from the production environment of UiTdatabank!
