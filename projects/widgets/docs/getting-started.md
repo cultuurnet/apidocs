@@ -47,6 +47,8 @@ Once you're satisfied with the configuration you've done in step 2 you can publi
 
 Now you can copy the unique `<script>` tag to embed it on the page of your website where you want to show the agenda.
 
+> You only need to embed the `<script>` tag once. Any changes you make to your widget in the future will be saved to the existing `<script>` tag.
+
 👉 [Learn more about publishing & embedding](./publish-and-embed-on-your-website.md)
 
 ### Styling your widget 🎨
