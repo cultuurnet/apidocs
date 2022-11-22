@@ -98,7 +98,7 @@ If one or more places already exist with this name in the given postal code (lik
 
 Only when no results are found, or the results found do not match the place that the user wants to use, a new place can be created by the user.
 
-## Reuse existing organizers
+## Reusing existing organizers
 
 ### Storing the organizer URL(s) inside your application
 
@@ -190,7 +190,7 @@ If one or more organizers already exist with this name (like in the example abov
 
 Only when no results are found, or the results found do not match the organizer that the user wants to use, a new organizer can be created by the user.
 
-### Provide a mapping when exporting your data to UiTdatabank
+### Providing a mapping when exporting your data to UiTdatabank
 
 In this solution you add a check when exporting the event data to UiTdatabank. The export can take place at a different (later) time than when the event was created by the user in the own application.
 
