@@ -57,7 +57,7 @@ Now you can copy the unique `<script>` tag to embed it on the page of your websi
 
 Once embedded in a website, the widget will automatically inherit the CSS styles of the guest website.
 
-In addition, you can also define your own CSS rules in the widget builder to finetune the widget to the design of your website. If CSS is not your cup of coffee, you can also use one of the predefined themes we provide in the widget builder.
+In addition, you can also define your own CSS rules in the widget builder to finetune the widget to the design of your website. If CSS is not your cup of tea, you can also use one of the predefined themes we provide in the widget builder.
 
 👉 [Learn more about widget styling](./styling.md)
 
