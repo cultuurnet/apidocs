@@ -6,7 +6,7 @@ Before you can start building your widget you must make a widget project on our 
 
 The created widget project will use event data from our test environment. No payment is required until you decide you want to use real event data.
 
-https://youtu.be/P5RHLT7Q37E
+<https://youtu.be/P5RHLT7Q37E>
 
 <!-- theme: success -->
 
