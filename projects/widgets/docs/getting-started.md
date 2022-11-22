@@ -63,7 +63,7 @@ In addition, you can also define your own CSS rules in the widget builder to fin
 
 ## 3. Activating your widget project to use real event data
 
-In order to use real event data in your widget you must activate your widget project on [Projectaanvraag](https://projectaanvraag.uitdatabank.be). When activating you agree with the payment of a yearly fee.
+In order to use real event data in your widget you must activate your widget project on [Projectaanvraag](https://projectaanvraag.uitdatabank.be). When activating you agree with the payment of a yearly fee, unless you have a coupon code that gives you free access to real event data (only applicable under specific conditions).
 
 <!-- theme: success -->
 
