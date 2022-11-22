@@ -19,18 +19,20 @@ You start from a blank layout that you then expand yourself by adding rows and a
 ## Agenda
 
 This is the most used template. This templates contains two rows:
-* The top row contains a a search box (full length)
-* The second row contains facets on the left side and search results at the center.
+* The top row contains a search box (full length)
+* The second row contains facet filters (e.g. filters on the region or date) on the left side and search results at the center
 
 [insert video]
 
 * ✅ Suitable when you want to configure a searchable agenda
 * ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
-* ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
+* ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommend using the [tips template](##Tips) instead.
 
 ## Tips
 
-This template can be used to make a short list of events that you want to highlight. The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
+This template can be used to make a short list of events that you want to highlight. The highlighted events can be displayed below or next to each other. 
+
+The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
 
 [insert video]
 
@@ -41,7 +43,7 @@ This template can be used to make a short list of events that you want to highli
 
 ## UiTPAS en Paspartoe
 
-This is the same template as the `agenda` template, but with all the UiTPAS setting already enabled for you.
+This is the same template as the [agenda template](##Agenda), but with all the UiTPAS setting already enabled for you.
 
 * ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
