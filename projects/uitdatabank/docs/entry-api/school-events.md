@@ -322,7 +322,7 @@ The following level 4 labels must always be combined with
 
 ### 4. calendarType
 
-In case of a [guided tour](#guided-tour) or [bookable event](#Bookable-events) you must set the value for the `calendarType` property to `permanent`.
+In case of a [guided tours](#guided-tours) or [bookable event](#Bookable-events) you must set the value for the `calendarType` property to `permanent`.
 
 ```js
 {
