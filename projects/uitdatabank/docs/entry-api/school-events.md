@@ -150,7 +150,7 @@ There is a hierarchical relationship between the different education level label
 
 **Examples**:
 * If a level 4 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 3, level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 3), `cultuurkuur_Gewoon-basisonderwijs` (level 2) and `cultuurkuur_basisonderwijs` (level 1)
-- If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
+* If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
 
 ##### Level 1 labels
 
@@ -173,8 +173,8 @@ The following labels must always be combined with level 1 label `cultuurkuur_bas
 
 | Education level              | Label (level 2)                           |
 | :--------------------------- | :---------------------------------------- |
-| Gewoon basisonderwijs       | `cultuurkuur_Gewoon-basisonderwijs`       |
-| Buitengewoon basisonderwijs | `cultuurkuur_Buitengewoon-basisonderwijs` |
+| Gewoon basisonderwijs        | `cultuurkuur_Gewoon-basisonderwijs`        |
+| Buitengewoon basisonderwijs  | `cultuurkuur_Buitengewoon-basisonderwijs`  |
 
 **Secundair onderwijs**
 
@@ -190,12 +190,12 @@ The following labels must always be combined with level 1 label `cultuurkuur_Sec
 
 The following labels must always be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO`:
 
-| Education level | Label (level 2)| 
-| :-- | :-- |
-| Beeldende en audiovisuele kunst | `cultuurkuur_Beeldende-en-audiovisuele-kunst` |
-| Dans | `cultuurkuur_dans ` |   
-| Muziek | `cultuurkuur_muziek` | 
-| Woordkunst & drama | `cultuurkuur_Woordkunst-drama` | 
+| Education level                     | Label (level 2)                                   | 
+| :---------------------------------- | :------------------------------------------------ |
+| Beeldende en audiovisuele kunst     | `cultuurkuur_Beeldende-en-audiovisuele-kunst`     |
+| Dans                                | `cultuurkuur_dans `                               |   
+| Muziek                              | `cultuurkuur_muziek`                              | 
+| Woordkunst & drama                  | `cultuurkuur_Woordkunst-drama`                    | 
 
 ##### Level 3 labels
 
@@ -208,11 +208,11 @@ The following level 3 labels must always be combined with:
 * level 1 label `cultuurkuur_basisonderwijs`
 * level 2 label `cultuurkuur_Gewoon-basisonderwijs`
 
-| Education level | Label (level 3) |
-| :-- | :-- |
-| Gewoon kleuteronderwijs | `	cultuurkuur_Gewoon-kleuteronderwijs` |
-| Gewoon lager onderwijs| `cultuurkuur_Gewoon-lager-onderwijs` |
-| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) |`cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)` |
+| Education level                                       | Label (level 3)                                              |
+| :---------------------------------------------------- | :----------------------------------------------------------- |
+| Gewoon kleuteronderwijs                               | `cultuurkuur_Gewoon-kleuteronderwijs`                        |
+| Gewoon lager onderwijs                                | `cultuurkuur_Gewoon-lager-onderwijs`                         |
+| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) |`cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)`|
 
 **Buitengewoon basisonderwijs** 
 
@@ -221,10 +221,10 @@ The following level 3 labels must always be combined with:
 * level 1 label `cultuurkuur_basisonderwijs`
 * level 2 label `cultuurkuur_Buitengewoon-basisonderwijs`
 
-| Education level | Label (level 3) | 
-| :-- | :-- |
-| Buitengewoon kleuteronderwijs | `cultuurkuur_Buitengewoon-kleuteronderwijs	` |
-| Buitengewoon lager onderwijs | `cultuurkuur_Buitengewoon-lager-onderwijs` |  
+| Education level               | Label (level 3)                              | 
+| :---------------------------- | :------------------------------------------- |
+| Buitengewoon kleuteronderwijs | `cultuurkuur_Buitengewoon-kleuteronderwijs`  |
+| Buitengewoon lager onderwijs  | `cultuurkuur_Buitengewoon-lager-onderwijs`   |  
 
 **Voltijds gewoon secundair onderwijs**
 
@@ -233,13 +233,13 @@ The following level 3 labels must always be combined with:
 * level 1 label `cultuurkuur_Secundair-onderwijs`
 * level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
 
-| Education level | Label (level 3) | 
-| :-- | :-- |
-| Eerste graad | `cultuurkuur_eerste-graad` |
-| Tweede graad | `cultuurkuur_tweede-graad` |  
-| Derde graad | `cultuurkuur_derde-graad` |
-| Secundair na Secundair (Se-n-Se)| `cultuurkuur_Secundair-na-secundair-(Se-n-Se)` |  
-| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `	cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers-OKAN` |
+| Education level                                       | Label (level 3)                                              |
+| :---------------------------------------------------- | :------------------------------------------------------------|
+| Eerste graad                                          | `cultuurkuur_eerste-graad`                                   |
+| Tweede graad                                          | `cultuurkuur_tweede-graad`                                   |
+| Derde graad                                           | `cultuurkuur_derde-graad`                                    |
+| Secundair na Secundair (Se-n-Se)                      | `cultuurkuur_Secundair-na-secundair-(Se-n-Se)`               |
+| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers-OKAN` |
 
 ##### Level 4 labels
 
