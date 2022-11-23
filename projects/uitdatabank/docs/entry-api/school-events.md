@@ -57,7 +57,7 @@ In order to create a bookable school event you must use
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
-## Creating school events via the Entry API
+## Creating school events
 
 For the creation of school events several extra requirements apply:
 1. The `audienceType` must be set to `education`
@@ -111,16 +111,18 @@ For school events, specific Cultuurkuur-related labels are mandatory. There are 
 
 Target group labels are used to specify if the if event is for students or for teachers.
 
+> A school event must have **exactly 1** target group label.
+
 | Target group | Label | 
 | :-- | :-- | 
 | Students | `cultuurkuur_Leerlingen` | 
 | Teachers | `cultuurkuur_leerkrachten` | 
 
-> Your school event must have **exactly 1** target group label.
-
 #### Subject labels
 
 Subject labels are used to specify the learning objective of the school event.
+
+> A school event must have **at least 1** subject label.
 
 | Subject | Label | 
 | :-- | :-- | 
@@ -140,17 +142,19 @@ Subject labels are used to specify the learning objective of the school event.
 | Wiskunde | `cultuurkuur_Wiskunde` | 
 | Woordkunst en drama | `cultuurkuur_Woordkunst-drama` | 
 
-> Your school event must have **at least 1** subject label.
-
 #### Education level labels
 
 Education level labels indicate to which education levels (grades) the school event is aimed at.
+
+> A school event must have **at least 1** education level label.
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed. 
 
 **Examples**:
 * If a level 4 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 3, level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 3), `cultuurkuur_Gewoon-basisonderwijs` (level 2) and `cultuurkuur_basisonderwijs` (level 1)
 * If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
+
+
 
 ##### Level 1 labels
 
