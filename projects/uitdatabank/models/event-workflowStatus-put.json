@@ -1,0 +1,30 @@
+{
+  "title": "event.workflowStatus.put",
+  "type": "object",
+  "properties": {
+    "workflowStatus": {
+      "$ref": "./event-workflowStatus.json"
+    },
+    "availableFrom": {
+      "$ref": "./event-availableFrom.json",
+      "description": "The first date & time that the [event](./event.json) is allowed to be visible on publication channels. Can be set when changing the workflowStatus to READY_FOR_VALIDATION. If omitted when changing the workflowStatus to READY_FOR_VALIDATION, the current datetime will be used. Must be formatted as an ISO-8601 datetime, for example `2021-05-17T22:00:00+00:00`."
+    },
+    "reason": {
+      "type": "string",
+      "description": "Required when setting the workflowStatus to `REJECTED` (only possible with permission to moderate events). The reason why the event was rejected."
+    }
+  },
+  "required": [
+    "workflowStatus"
+  ],
+  "if": {
+    "properties": {
+      "workflowStatus": {
+        "const": "REJECTED"
+      }
+    }
+  },
+  "then": {
+    "required": ["reason"]
+  }
+}

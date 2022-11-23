@@ -1,0 +1,19 @@
+{
+  "title": "event.typicalAgeRange.put",
+  "type": "object",
+  "description": "Describes the request body to set the typical age range of an [event](./event.json).",
+  "examples": [
+    {
+      "typicalAgeRange": "6-12"
+    }
+  ],
+  "properties": {
+    "typicalAgeRange": {
+      "$ref": "./event-typicalAgeRange.json",
+      "description": "The typical age range to set on the event."
+    }
+  },
+  "required": [
+    "typicalAgeRange"
+  ]
+}
