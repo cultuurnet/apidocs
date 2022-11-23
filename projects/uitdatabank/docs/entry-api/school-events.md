@@ -24,6 +24,7 @@ School performances are events of which both the date and the location is known 
 * ✅ location is known in advance
 
 Since school performances both have a date and a location, you can create them in a very similar way to regular events:
+
 * you can use a calendarType of your preference (`single`, `multiple` or `periodic`)
 * for the location you must use the URL of an existing place as `location.@id` in the `POST /events` request of the event
 
@@ -35,7 +36,7 @@ Guided tours are events that have no specific date (or the date is not known in 
 * ✅ location is known in advance
 
 In order to create a guided school tour you must use:
-* calendarType `permanent` 
+* calendarType `permanent`
 * the URL of an existing place as `location.@id` in the `POST /events` request of the event
 
 ### Bookable events
@@ -48,13 +49,13 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 * ❌ location is not known in advance
 
 In order to create a bookable school event you must use
-* calendarType `permanent` 
-* the URL of the dummy place as `location.@id` in the `POST /events` request of the bookable events 
+* calendarType `permanent`
+* the URL of the dummy place as `location.@id` in the `POST /events` request of the bookable events
 
 **URL of the dummy place for bookable events**:
+
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
-
 
 ## Creating school events via the Entry API
 
@@ -161,32 +162,33 @@ There is a hierarchical relationship between the different education level label
 | Volwassenenonderwijs | `cultuurkuur_Volwassenenonderwijs` | 
 | Deeltijds kunstonderwijs | `cultuurkuur_Deeltijds-kunstonderwijs-DKO` |
 
+
 ##### Level 2 labels
 
 > A level 2 label must always be combined with a level 1 label. 
 
 **Basisonderwijs**
 
-The following labels must always be combined with level 1 label `cultuurkuur_basisonderwijs`: 
+The following labels must always be combined with level 1 label `cultuurkuur_basisonderwijs`:
 
-| Education level | Label (level 2) | 
-| :-- | :-- | 
-| Gewoon basis onderwijs | `cultuurkuur_Gewoon-basisonderwijs` | 
-| Buitengewoon basis onderwijs | `cultuurkuur_Buitengewoon-basisonderwijs` | 
+| Education level              | Label (level 2)                           |
+| :--------------------------- | :---------------------------------------- |
+| Gewoon basisonderwijs       | `cultuurkuur_Gewoon-basisonderwijs`       |
+| Buitengewoon basisonderwijs | `cultuurkuur_Buitengewoon-basisonderwijs` |
 
 **Secundair onderwijs**
 
-he following labels must always be combined with level 1 label `cultuurkuur_Secundair-onderwijs`: 
+The following labels must always be combined with level 1 label `cultuurkuur_Secundair-onderwijs`:
 
-| Education level | Label (level 2) | 
-| :-- | :-- | 
-| Voltijds gewoon secundair onderwijs | `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` | 
-| Buitengewoon secundair onderwijs | `cultuurkuur_Buitengewoon-secundair-onderwijs` | 
-| Deeltijds leren en werken | `cultuurkuur_Deeltijds-leren-en-werken ` | 
+| Education level                     | Label (level 2)                                   |
+| :---------------------------------- | :------------------------------------------------ |
+| Voltijds gewoon secundair onderwijs | `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` |
+| Buitengewoon secundair onderwijs    | `cultuurkuur_Buitengewoon-secundair-onderwijs`    |
+| Deeltijds leren en werken           | `cultuurkuur_Deeltijds-leren-en-werken `          |
 
 **Deeltijds kunstonderwijs**
 
-he following labels must always be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO`: 
+The following labels must always be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO`:
 
 | Education level | Label (level 2)| 
 | :-- | :-- |
@@ -195,28 +197,29 @@ he following labels must always be combined with level 1 label `cultuurkuur_Deel
 | Muziek | `cultuurkuur_muziek` | 
 | Woordkunst & drama | `cultuurkuur_Woordkunst-drama` | 
 
-
 ##### Level 3 labels
 
 > A level 3 label must always be combined with both a level 1 label and a level 2 label.
 
-**Gewoon basisonderwijs** 
+**Gewoon basisonderwijs**
 
-The following level 3 labels must always be combined with: 
+The following level 3 labels must always be combined with:
+
 * level 1 label `cultuurkuur_basisonderwijs`
-* level 2 label `cultuurkuur_Gewoon-basisonderwijs` 
+* level 2 label `cultuurkuur_Gewoon-basisonderwijs`
 
-| Education level | Label (level 3) | 
+| Education level | Label (level 3) |
 | :-- | :-- |
 | Gewoon kleuteronderwijs | `	cultuurkuur_Gewoon-kleuteronderwijs` |
-| Gewoon lager onderwijs | `cultuurkuur_Gewoon-lager-onderwijs` |  
-| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)` |  
+| Gewoon lager onderwijs| `cultuurkuur_Gewoon-lager-onderwijs` |
+| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) |`cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)` |
 
 **Buitengewoon basisonderwijs** 
 
-The following level 3 labels must always be combined with: 
+The following level 3 labels must always be combined with:
+
 * level 1 label `cultuurkuur_basisonderwijs`
-* level 2 label `cultuurkuur_Buitengewoon-basisonderwijs` 
+* level 2 label `cultuurkuur_Buitengewoon-basisonderwijs`
 
 | Education level | Label (level 3) | 
 | :-- | :-- |
@@ -226,6 +229,7 @@ The following level 3 labels must always be combined with:
 **Voltijds gewoon secundair onderwijs**
 
 The following level 3 labels must always be combined with:
+
 * level 1 label `cultuurkuur_Secundair-onderwijs`
 * level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
 
@@ -243,73 +247,78 @@ The following level 3 labels must always be combined with:
 
 **Gewoon kleuteronderwijs**
 
-The following level 4 labels must always be combined with 
+The following level 4 labels must always be combined with
+
 * level 1 label `cultuurkuur_basisonderwijs`
-* level 2 label `cultuurkuur_Gewoon-basisonderwijs` 
+* level 2 label `cultuurkuur_Gewoon-basisonderwijs`
 * level 3 label `cultuurkuur_Gewoon-kleuteronderwijs`
 
-| Education level | Label (level 4) | 
-| :-- | :-- |
+| Education level    | Label (level 4)                |
+| :----------------- | :----------------------------- |
 | Kleuter (2-3 jaar) | `cultuurkuur_Kleuter-2-3-jaar` |
-| Kleuter (3-4 jaar) | `cultuurkuur_Kleuter-3-4-jaar` |  
+| Kleuter (3-4 jaar) | `cultuurkuur_Kleuter-3-4-jaar` |
 | Kleuter (4-5 jaar) | `cultuurkuur_Kleuter-4-5-jaar` |
 
 **Gewoon lager onderwijs**
 
-The following level 4 labels must always be combined with 
+The following level 4 labels must always be combined with
+
 * level 1 label `cultuurkuur_basisonderwijs`
-* level 2 label `cultuurkuur_Gewoon-basisonderwijs` 
+* level 2 label `cultuurkuur_Gewoon-basisonderwijs`
 * level 3 label `cultuurkuur_Gewoon-lager-onderwijs`
 
-| Education level | Label (level 4) | 
-| :-- | :-- |
-| Eerste graad | `cultuurkuur_1ste-graad` |
-| Tweede graad | `cultuurkuur_2de-graad` |  
-| Derde graad | `cultuurkuur_3de-graad` |
+| Education level | Label (level 4)          |
+| :-------------- | :----------------------- |
+| Eerste graad    | `cultuurkuur_1ste-graad` |
+| Tweede graad    | `cultuurkuur_2de-graad`  |
+| Derde graad     | `cultuurkuur_3de-graad`  |
 
 **Eerste graad secundair**
 
-The following level 4 labels must always be combined with 
+The following level 4 labels must always be combined with
+
 * level 1 label `cultuurkuur_Secundair-onderwijs`
-* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
+* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs`
 * level 3 label `cultuurkuur_eerste-graad`
 
-| Education level | Label (level 4) | 
-| :-- | :-- |
-| Eerste leerjaar A | `cultuurkuur_1ste-leerjaar-A` |
-| Eerste leerjaar B | `cultuurkuur_1ste-leerjaar-B` |  
-| Tweede leerjaar | `cultuurkuur_2de leerjaar` |
+| Education level               | Label (level 4)                              |
+| :---------------------------- | :------------------------------------------- |
+| Eerste leerjaar A             | `cultuurkuur_1ste-leerjaar-A`                |
+| Eerste leerjaar B             | `cultuurkuur_1ste-leerjaar-B`                |
+| Tweede leerjaar               | `cultuurkuur_2de leerjaar`                   |
 | Beroepsvoorbereidend leerjaar | `	cultuurkuur_beroepsvoorbereidend-leerjaar` |
 
 **Tweede graad secundair**
 
-The following level 4 labels must always be combined with 
+The following level 4 labels must always be combined with
+
 * level 1 label `cultuurkuur_Secundair-onderwijs`
-* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
+* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs`
 * level 3 label `cultuurkuur_tweede-graad`
 
-| Education level | Label (level 4) | 
-| :-- | :-- |
+| Education level  | Label (level 4)                |
+| :--------------- | :----------------------------- |
 | Tweede graad ASO | `cultuurkuur_tweede-graad-ASO` |
-| Tweede graad BSO | `cultuurkuur_tweede-graad-BSO` |  
+| Tweede graad BSO | `cultuurkuur_tweede-graad-BSO` |
 | Tweede graad KSO | `cultuurkuur_tweede-graad-KSO` |
 | Tweede graad TSO | `cultuurkuur_tweede-graad-TSO` |
 
 **Derde graad secundair**
 
-The following level 4 labels must always be combined with 
+The following level 4 labels must always be combined with
+
 * level 1 label `cultuurkuur_Secundair-onderwijs`
-* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
+* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs`
 * level 3 label `cultuurkuur_derde-graad`
 
-| Education level | Label (level 4) | 
-| :-- | :-- |
-| Derde graad ASO | `cultuurkuur_derde-graad-ASO` |
-| Derde graad BSO | `cultuurkuur_derde-graad-BSO` | 
-| Derde graad BSO (specialisatiejaar) | `cultuurkuur_3de-graad-BSO-specialisatiejaar` | 
-| Derde graad KSO | `cultuurkuur_derde-graad-KSO` |
-| Derde graad TSO | `cultuurkuur_derde-graad-TSO` |
-| Derde graad Voorbereidend jaar HO | `cultuurkuur_derde-graad-Voorbereidend-jaar-HO` |
+| Education level                     | Label (level 4)                                 |
+| :---------------------------------- | :---------------------------------------------- |
+| Derde graad ASO                     | `cultuurkuur_derde-graad-ASO`                   |
+| Derde graad BSO                     | `cultuurkuur_derde-graad-BSO`                   |
+| Derde graad BSO (specialisatiejaar) | `cultuurkuur_3de-graad-BSO-specialisatiejaar`   |
+| Derde graad KSO                     | `cultuurkuur_derde-graad-KSO`                   |
+| Derde graad TSO                     | `cultuurkuur_derde-graad-TSO`                   |
+| Derde graad Voorbereidend jaar HO   | `cultuurkuur_derde-graad-Voorbereidend-jaar-HO` |
 
 ### 4. calendarType
 
