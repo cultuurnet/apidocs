@@ -1,10 +1,11 @@
 # School events
 
 School events are events that are specifically organized and intented for:
-* students (e.g. a school performance) 
+
+* students (e.g. a school performance)
 * teachers (e.g. an after-school training)
 
-School events are published on [Cultuurkuur](<https://www.cultuurkuur.be>), but not on UiTinVlaanderen.
+School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but not on UiTinVlaanderen.
 
 > If you’re planning to create school events in UiTdatabank with the Entry API, please contact <content.cultuurkuur@publiq.be> in advance so that we can guide you through this process.
 
@@ -18,7 +19,7 @@ We distinguish 3 different types of school events:
 
 ### School performances
 
-School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in hetpaleis on 14/05/2023, 14:30 - 16:00 PM. 
+School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in hetpaleis on 14/05/2023, 14:30 - 16:00 PM.
 
 * ✅ date is known in advance
 * ✅ location is known in advance
@@ -36,12 +37,13 @@ Guided tours are events that have no specific date (or the date is not known in 
 * ✅ location is known in advance
 
 In order to create a guided school tour you must use:
+
 * calendarType `permanent`
 * the URL of an existing place as `location.@id` in the `POST /events` request of the event
 
 ### Bookable events
 
-Bookable events are events that have no specific date and location (or the date and location is not known in advance). Both the date and the location are determined in mutual agreement between the organizer or artist and the consumer (school). 
+Bookable events are events that have no specific date and location (or the date and location is not known in advance). Both the date and the location are determined in mutual agreement between the organizer or artist and the consumer (school).
 
 For example, as a school you can book Stijn Meuris for a school performance at your school or local cultural centre, on a date that suits both the artist and the school.
 
@@ -49,6 +51,7 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 * ❌ location is not known in advance
 
 In order to create a bookable school event you must use
+
 * calendarType `permanent`
 * the URL of the dummy place as `location.@id` in the `POST /events` request of the bookable events
 
@@ -60,6 +63,7 @@ In order to create a bookable school event you must use
 ## Creating school events via the Entry API
 
 For the creation of school events several extra requirements apply:
+
 1. The `audienceType` must be set to `education`
 2. The event must have an `organizer` that has the `Cultuurkuur` label
 3. Specific education related `labels` are mandatory
@@ -68,7 +72,7 @@ For the creation of school events several extra requirements apply:
 
 ### 1. audienceType
 
-For school events you must include an extra property `audienceType` and set the value for the property to `education`. 
+For school events you must include an extra property `audienceType` and set the value for the property to `education`.
 
 ```js
 {
@@ -78,9 +82,10 @@ For school events you must include an extra property `audienceType` and set the 
 
 ### 2. organizer
 
-Every school event must be linked to an [existing organizer page on Cultuurkuur](<https://www.cultuurkuur.be/organisaties>). 
+Every school event must be linked to an [existing organizer page on Cultuurkuur](https://www.cultuurkuur.be/organisaties).
 
 **How to check if your organization already has an organizer page on Cultuurkuur:**
+
 1. Go to <https://www.cultuurkuur.be/organisaties>
 2. Type in the name of your organization in the search box, e.g. `hetpaleis`
 3. If a match is found, open the detail page of the organization
@@ -98,11 +103,12 @@ Prefix this value with the host url of the according environment and use this as
 }
 ```
 
-> Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on Cultuurkuur](<https://www.cultuurkuur.be/faq/hoe-voeg-ik-mijn-organisatie-toe-op-cultuurkuur>).
+> Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on Cultuurkuur](https://www.cultuurkuur.be/faq/hoe-voeg-ik-mijn-organisatie-toe-op-cultuurkuur).
 
 ### 3. labels
 
 For school events, specific Cultuurkuur-related labels are mandatory. There are 3 different types of Cultuurkuur-related labels:
+
 1. **Target group labels** are used to specify if the if event is for students or for teachers.
 2. **Subject labels** are used to define the learning objective of the school event.
 3. **Education level labels**
@@ -111,10 +117,10 @@ For school events, specific Cultuurkuur-related labels are mandatory. There are 
 
 Target group labels are used to specify if the if event is for students or for teachers.
 
-| Target group | Label | 
-| :-- | :-- | 
-| Students | `cultuurkuur_Leerlingen` | 
-| Teachers | `cultuurkuur_leerkrachten` | 
+| Target group | Label                      |
+| :----------- | :------------------------- |
+| Students     | `cultuurkuur_Leerlingen`   |
+| Teachers     | `cultuurkuur_leerkrachten` |
 
 > Your school event must have **exactly 1** target group label.
 
@@ -122,23 +128,23 @@ Target group labels are used to specify if the if event is for students or for t
 
 Subject labels are used to specify the learning objective of the school event.
 
-| Subject | Label | 
-| :-- | :-- | 
-| Actief Burgerschap | `cultuurkuur_Actief Burgerschap` | 
-| Duurzaamheid, natuur en milieu | `cultuurkuur_Duurzaamheid, natuur en milieu` | 
-| Filosofie religie | `cultuurkuur_Filosofie-religie` | 
-| Beeldende en audiovisuele kunst | `cultuurkuur_Beeldende-en-audiovisuele-kunst` | 
-| kunst en cultuur | `cultuurkuur_kunst-en-cultuur` | 
-| Leren leren | `cultuurkuur_Leren leren` | 
-| Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` | 
-| Media | `cultuurkuur_Media` | 
-| Mobiliteit | `cultuurkuur_Mobiliteit` | 
-| Muziek | `cultuurkuur_muziek` | 
-| Ondernemingszin | `cultuurkuur_Ondernemingszin` | 
-| Taal | `cultuurkuur_taal` | 
-| Dans | `cultuurkuur_dans` | 
-| Wiskunde | `cultuurkuur_Wiskunde` | 
-| Woordkunst en drama | `cultuurkuur_Woordkunst-drama` | 
+| Subject                                     | Label                                                     |
+| :------------------------------------------ | :-------------------------------------------------------- |
+| Actief Burgerschap                          | `cultuurkuur_Actief Burgerschap`                          |
+| Duurzaamheid, natuur en milieu              | `cultuurkuur_Duurzaamheid, natuur en milieu`              |
+| Filosofie religie                           | `cultuurkuur_Filosofie-religie`                           |
+| Beeldende en audiovisuele kunst             | `cultuurkuur_Beeldende-en-audiovisuele-kunst`             |
+| kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
+| Leren leren                                 | `cultuurkuur_Leren leren`                                 |
+| Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` |
+| Media                                       | `cultuurkuur_Media`                                       |
+| Mobiliteit                                  | `cultuurkuur_Mobiliteit`                                  |
+| Muziek                                      | `cultuurkuur_muziek`                                      |
+| Ondernemingszin                             | `cultuurkuur_Ondernemingszin`                             |
+| Taal                                        | `cultuurkuur_taal`                                        |
+| Dans                                        | `cultuurkuur_dans`                                        |
+| Wiskunde                                    | `cultuurkuur_Wiskunde`                                    |
+| Woordkunst en drama                         | `cultuurkuur_Woordkunst-drama`                            |
 
 > Your school event must have **at least 1** subject label.
 
@@ -146,33 +152,36 @@ Subject labels are used to specify the learning objective of the school event.
 
 Education level labels indicate to which education levels (grades) the school event is aimed at.
 
-There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed. 
+There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
 **Examples**:
+
 * If a level 4 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 3, level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 3), `cultuurkuur_Gewoon-basisonderwijs` (level 2) and `cultuurkuur_basisonderwijs` (level 1)
-- If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
+
+<!---->
+
+* If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
 
 ##### Level 1 labels
 
-| Education level | Label (level 1) | 
-| :-- | :-- | 
-| Basis onderwijs | `cultuurkuur_basisonderwijs` | 
-| Secundair onderwijs | `cultuurkuur_Secundair-onderwijs` | 
-| Hoger onderwijs | `cultuurkuur_Hoger-onderwijs` | 
-| Volwassenenonderwijs | `cultuurkuur_Volwassenenonderwijs` | 
+| Education level          | Label (level 1)                            |
+| :----------------------- | :----------------------------------------- |
+| Basis onderwijs          | `cultuurkuur_basisonderwijs`               |
+| Secundair onderwijs      | `cultuurkuur_Secundair-onderwijs`          |
+| Hoger onderwijs          | `cultuurkuur_Hoger-onderwijs`              |
+| Volwassenenonderwijs     | `cultuurkuur_Volwassenenonderwijs`         |
 | Deeltijds kunstonderwijs | `cultuurkuur_Deeltijds-kunstonderwijs-DKO` |
-
 
 ##### Level 2 labels
 
-> A level 2 label must always be combined with a level 1 label. 
+> A level 2 label must always be combined with a level 1 label.
 
 **Basisonderwijs**
 
 The following labels must always be combined with level 1 label `cultuurkuur_basisonderwijs`:
 
-| Education level              | Label (level 2)                           |
-| :--------------------------- | :---------------------------------------- |
+| Education level             | Label (level 2)                           |
+| :-------------------------- | :---------------------------------------- |
 | Gewoon basisonderwijs       | `cultuurkuur_Gewoon-basisonderwijs`       |
 | Buitengewoon basisonderwijs | `cultuurkuur_Buitengewoon-basisonderwijs` |
 
@@ -190,12 +199,12 @@ The following labels must always be combined with level 1 label `cultuurkuur_Sec
 
 The following labels must always be combined with level 1 label `cultuurkuur_Deeltijds-kunstonderwijs-DKO`:
 
-| Education level | Label (level 2)| 
-| :-- | :-- |
+| Education level                 | Label (level 2)                               |
+| :------------------------------ | :-------------------------------------------- |
 | Beeldende en audiovisuele kunst | `cultuurkuur_Beeldende-en-audiovisuele-kunst` |
-| Dans | `cultuurkuur_dans ` |   
-| Muziek | `cultuurkuur_muziek` | 
-| Woordkunst & drama | `cultuurkuur_Woordkunst-drama` | 
+| Dans                            | `cultuurkuur_dans `                           |
+| Muziek                          | `cultuurkuur_muziek`                          |
+| Woordkunst & drama              | `cultuurkuur_Woordkunst-drama`                |
 
 ##### Level 3 labels
 
@@ -208,37 +217,37 @@ The following level 3 labels must always be combined with:
 * level 1 label `cultuurkuur_basisonderwijs`
 * level 2 label `cultuurkuur_Gewoon-basisonderwijs`
 
-| Education level | Label (level 3) |
-| :-- | :-- |
-| Gewoon kleuteronderwijs | `	cultuurkuur_Gewoon-kleuteronderwijs` |
-| Gewoon lager onderwijs| `cultuurkuur_Gewoon-lager-onderwijs` |
-| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) |`cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)` |
+| Education level                                       | Label (level 3)                                                     |
+| :---------------------------------------------------- | :------------------------------------------------------------------ |
+| Gewoon kleuteronderwijs                               | `	cultuurkuur_Gewoon-kleuteronderwijs`                              |
+| Gewoon lager onderwijs                                | `cultuurkuur_Gewoon-lager-onderwijs`                                |
+| Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers (OKAN)` |
 
-**Buitengewoon basisonderwijs** 
+**Buitengewoon basisonderwijs**
 
 The following level 3 labels must always be combined with:
 
 * level 1 label `cultuurkuur_basisonderwijs`
 * level 2 label `cultuurkuur_Buitengewoon-basisonderwijs`
 
-| Education level | Label (level 3) | 
-| :-- | :-- |
+| Education level               | Label (level 3)                              |
+| :---------------------------- | :------------------------------------------- |
 | Buitengewoon kleuteronderwijs | `cultuurkuur_Buitengewoon-kleuteronderwijs	` |
-| Buitengewoon lager onderwijs | `cultuurkuur_Buitengewoon-lager-onderwijs` |  
+| Buitengewoon lager onderwijs  | `cultuurkuur_Buitengewoon-lager-onderwijs`   |
 
 **Voltijds gewoon secundair onderwijs**
 
 The following level 3 labels must always be combined with:
 
 * level 1 label `cultuurkuur_Secundair-onderwijs`
-* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs` 
+* level 2 label `cultuurkuur_Voltijds-gewoon-secundair-onderwijs`
 
-| Education level | Label (level 3) | 
-| :-- | :-- |
-| Eerste graad | `cultuurkuur_eerste-graad` |
-| Tweede graad | `cultuurkuur_tweede-graad` |  
-| Derde graad | `cultuurkuur_derde-graad` |
-| Secundair na Secundair (Se-n-Se)| `cultuurkuur_Secundair-na-secundair-(Se-n-Se)` |  
+| Education level                                       | Label (level 3)                                                    |
+| :---------------------------------------------------- | :----------------------------------------------------------------- |
+| Eerste graad                                          | `cultuurkuur_eerste-graad`                                         |
+| Tweede graad                                          | `cultuurkuur_tweede-graad`                                         |
+| Derde graad                                           | `cultuurkuur_derde-graad`                                          |
+| Secundair na Secundair (Se-n-Se)                      | `cultuurkuur_Secundair-na-secundair-(Se-n-Se)`                     |
 | Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `	cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers-OKAN` |
 
 ##### Level 4 labels
@@ -335,6 +344,7 @@ In case of a [guided tour](#guided-tour) or [bookable event](#Bookable-events) y
 In case of a [bookable event](#Bookable-events) you must use the url of the the dummy place for bookable events in UiTdatabank as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
 
 **URL of the dummy place for bookable events**:
+
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
