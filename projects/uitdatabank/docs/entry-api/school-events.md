@@ -1,6 +1,6 @@
 # School events
 
-School events are events that are specifically organized and intented for:
+School events are events that are specifically organized and intended for:
 
 * students (e.g. a school performance)
 * teachers (e.g. an after-school training)
