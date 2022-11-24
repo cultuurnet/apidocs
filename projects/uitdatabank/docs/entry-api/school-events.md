@@ -117,7 +117,7 @@ For school events, specific Cultuurkuur-related labels are mandatory. There are 
 
 Target group labels are used to specify if the if event is for students or for teachers.
 
-> A school event must have **exactly 1** target group label.
+> A school event must have **exactly one** target group label.
 
 | Target group | Label                      |
 | :----------- | :------------------------- |
@@ -128,7 +128,7 @@ Target group labels are used to specify if the if event is for students or for t
 
 Subject labels are used to specify the learning objective of the school event.
 
-> A school event must have **at least 1** subject label.
+> A school event must have **at least one** subject label.
 
 | Subject                                     | Label                                                     |
 | :------------------------------------------ | :-------------------------------------------------------- |
@@ -152,7 +152,7 @@ Subject labels are used to specify the learning objective of the school event.
 
 Education level labels indicate to which education levels (grades) the school event is aimed at.
 
-> A school event must have **at least 1** education level label.
+> A school event must have **at least one** education level label.
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
