@@ -19,7 +19,7 @@ We distinguish 3 different types of school events:
 
 ### School performances
 
-School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in hetpaleis on 14/05/2023, 14:30 - 16:00 PM.
+School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
 
 * ✅ date is known in advance
 * ✅ location is known in advance
