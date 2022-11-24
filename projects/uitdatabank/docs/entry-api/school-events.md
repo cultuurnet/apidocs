@@ -74,7 +74,7 @@ For the creation of school events several extra requirements apply:
 
 For school events you must include an extra property `audienceType` and set the value for the property to `education`.
 
-```js
+```json
 {
   "audienceType": "education"
 }
@@ -95,7 +95,7 @@ Every school event must be linked to an [existing organizer page on Cultuurkuur]
 
 Prefix this value with the host url of the according environment and use this as the value for the `organizer.@id` property in the `POST /events` request:
 
-```js
+```json
 {
   "organizer": {
     "@id": "https://io.uitdatabank.be/organizers/d319d57f-7400-4c16-aa19-8f04992da3fa"
@@ -332,7 +332,7 @@ The following level 4 labels must always be combined with
 
 In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events) you must set the value for the `calendarType` property to `permanent`.
 
-```js
+```json
 {
   "calendarType": "permanent"
 }
@@ -347,7 +347,7 @@ In case of a [bookable event](#bookable-events) you must use the url of the the 
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
-```js
+```json
 {
 "location": {
     "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
