@@ -115,7 +115,7 @@ For school events, specific Cultuurkuur-related labels are mandatory. There are 
 
 #### Target group labels
 
-Target group labels are used to specify if the if event is for students or for teachers.
+Target group labels are used to specify whether the event is for students or for teachers.
 
 > A school event must have **exactly one** target group label.
 
