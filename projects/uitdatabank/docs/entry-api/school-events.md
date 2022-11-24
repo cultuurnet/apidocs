@@ -97,7 +97,7 @@ Every school event must be linked to an [existing organizer page on Cultuurkuur]
 
 ![](../../assets/images/cultuurkuur-search-organizer.png)
 
-Prefix this value with the host url of the according environment and use this as the value for the `organizer.@id` property in the `POST /events` request:
+Prefix this value with the host url of the according environment and use this as the value for the `organizer.@id` property in the `POST /events` request. For example on production:
 
 ```json
 {
