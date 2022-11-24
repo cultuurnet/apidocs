@@ -109,7 +109,7 @@ Prefix this value with the host url of the according environment and use this as
 
 For school events, specific Cultuurkuur-related labels are mandatory. There are 3 different types of Cultuurkuur-related labels:
 
-1. **Target group labels** are used to specify if the if event is for students or for teachers.
+1. **Target group labels** are used to specify whether the event is for students or for teachers.
 2. **Subject labels** are used to define the learning objective of the school event.
 3. **Education level labels**
 
