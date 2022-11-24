@@ -8,9 +8,9 @@ When creating a widget you must always start from one of four different the temp
 
 ## Leeg
 
-You start from a blank layout that you then expand yourself by adding rows and assigning blocks (e.g. search box or search results) to these rows.
+You start from an empty layout that you then expand yourself by adding rows and assigning blocks (e.g. search box or search results) to these rows.
 
-\[insert video]
+https://youtu.be/4TxmTGcOUAY
 
 * ✅ Suitable when you already have a very good idea of which kind of widget you want to configure
 * ✅ Suitable when the other predefined templates do not meed your requirements
