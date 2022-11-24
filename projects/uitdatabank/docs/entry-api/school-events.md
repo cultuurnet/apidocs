@@ -7,7 +7,7 @@ School events are events that are specifically organized and intended for:
 
 School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but not on UiTinVlaanderen.
 
-> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface if you only organizer a limited number of school events per year.
+> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface if you only organize a limited number of school events per year.
 >
 > For questions about school events, please contact <content.cultuurkuur@publiq.be>.
 
