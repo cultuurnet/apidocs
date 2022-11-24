@@ -76,7 +76,9 @@ For school events you must include an extra property `audienceType` and set the 
 
 ```json
 {
-  "audienceType": "education"
+"audience": {
+    "audienceType": "education"
+  }
 }
 ```
 
@@ -352,5 +354,112 @@ In case of a [bookable event](#bookable-events) you must use the url of the the 
 "location": {
     "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
   }
+}
+```
+
+## Request body examples
+
+**school performance**
+
+Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
+
+```json
+{
+   "mainLanguage":"nl",
+   "name":{
+      "nl":"Example of a school performance"
+   },
+   "location":{
+      "@id":"https://io-test.uitdatabank.be/place/be6673e8-8149-4470-bb79-14293f412a39"
+   },
+   "terms":[
+      {
+         "id":".0.55.0.0.0"
+      }
+   ],
+   "calendarType":"single",
+   "startDate":"2023-05-23T13:00:00+00:00",
+   "endDate":"2023-05-23T14:30:00+00:00",
+   "subEvent":[
+      {
+         "@type":"Event",
+         "startDate":"2023-05-14T14:30:00+02:00",
+         "endDate":"2023-05-14T16:00:00+02:00"
+      }
+   ],
+   "audience":{
+      "audienceType":"education"
+   },
+   "labels":[
+      "cultuurkuur_Leerlingen",
+      "cultuurkuur_dans",
+      "cultuurkuur_basisonderwijs",
+      "cultuurkuur_Gewoon-basisonderwijs",
+      "cultuurkuur_Gewoon-kleuteronderwijs",
+      "cultuurkuur_Kleuter-3-4-jaar"
+   ]
+}
+```
+
+**guided tour**
+
+Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at university and college students.
+
+```json
+{
+   "mainLanguage":"nl",
+   "name":{
+      "nl":"Example of a guided tour"
+   },
+   "location":{
+      "@id":"https://io-test.uitdatabank.be/place/f4f69e51-ac3f-4790-9861-5c881df7aad8"
+   },
+   "terms":[
+      {
+         "id":"0.7.0.0.0"
+      }
+   ],
+   "calendarType": "permanent",
+   "audience":{
+      "audienceType":"education"
+   },
+   "labels":[
+      "cultuurkuur_Leerlingen",
+      "cultuurkuur_kunst-en-cultuur",
+      "cultuurkuur_Hoger-onderwijs"
+   ]
+}
+```
+
+**bookable event**
+
+Example of a bookable school event aimed at students of "derde graad BSO":
+
+```json
+{
+   "mainLanguage":"nl",
+   "name":{
+      "nl":"Example of a bookable school event"
+   },
+   "location":{
+      "@id":"https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2"
+   },
+   "terms":[
+      {
+         "id":"0.55.0.0.0"
+      }
+   ],
+   "calendarType":"permanent",
+   "audience":{
+      "audienceType":"education"
+   },
+   "labels":[
+      "cultuurkuur_Leerlingen",
+      "cultuurkuur_kunst-en-cultuur",
+      "cultuurkuur_Secundair-onderwijs",
+      "cultuurkuur_Voltijds-gewoon-secundair-onderwijs",
+      "cultuurkuur_derde-graad",
+      "cultuurkuur_derde-graad-BSO"
+   ]
 }
 ```
