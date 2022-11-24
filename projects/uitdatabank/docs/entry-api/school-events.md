@@ -7,7 +7,9 @@ School events are events that are specifically organized and intended for:
 
 School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but not on UiTinVlaanderen.
 
-> If you’re planning to create school events in UiTdatabank with the Entry API, please contact <content.cultuurkuur@publiq.be> in advance so that we can guide you through this process.
+> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface if you only organizer a limited number of school events per year.
+>
+> For questions about school events, please contact <content.cultuurkuur@publiq.be>.
 
 ## Types
 
