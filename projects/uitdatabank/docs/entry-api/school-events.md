@@ -53,9 +53,9 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 In order to create a bookable school event you must use
 
 * calendarType `permanent`
-* the URL of the dummy place as `location.@id` in the `POST /events` request of the bookable events
+* use the URL of the "location in consultation with the school" as `location.@id` in the `POST /events` request of the bookable events
 
-**URL of the dummy place for bookable events**:
+**URL of the location in consultation with the school**:
 
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
@@ -68,7 +68,7 @@ For the creation of school events several extra requirements apply:
 2. The event must have an `organizer` that has the `Cultuurkuur` label
 3. Specific education related `labels` are mandatory
 4. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events): the `calendarType` must be set to `permanent`
-5. In case of a [bookable event](#bookable-events): the `dummy place for bookable events` must be used for the location
+5. In case of a [bookable event](#bookable-events): the `location in consultation with the school` must be used for the location
 
 ### audienceType
 
@@ -340,11 +340,11 @@ In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events)
 }
 ```
 
-### dummy place for bookable events
+### location in consultation with the school
 
-In case of a [bookable event](#bookable-events) you must use the url of the the dummy place for bookable events in UiTdatabank as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+In case of a [bookable event](#bookable-events) you must use the url of the "location in consultation with the school" as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
 
-**URL of the dummy place for bookable events**:
+**URLs**:
 
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
