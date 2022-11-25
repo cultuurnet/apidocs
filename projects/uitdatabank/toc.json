@@ -39,6 +39,12 @@
           "title": "Reusing places & organizers",
           "uri": "/docs/entry-api/reuse-places-organizers.md",
           "slug": "entry-api/reuse-places-organizers"
+        },
+        {
+          "type": "item",
+          "title": "School events",
+          "uri": "/docs/entry-api/school-events.md",
+          "slug": "entry-api/school-events"
         }
       ] 
     },
