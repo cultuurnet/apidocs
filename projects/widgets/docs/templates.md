@@ -19,6 +19,7 @@ You start from an empty layout that you then expand yourself by adding rows and 
 ## Agenda
 
 This is the most used template. This templates contains two rows:
+
 * The top row contains a search box (full length)
 * The second row contains facet filters (e.g. filters on the region, date, etc.) on the left side and search results in the center
 
@@ -30,7 +31,7 @@ This is the most used template. This templates contains two rows:
 
 ## Tips
 
-This template can be used to make a short list of events that you want to highlight. The highlighted events can be displayed below or next to each other. 
+This template can be used to make a short list of events that you want to highlight. The highlighted events can be displayed below or next to each other.
 
 The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
 
@@ -50,6 +51,3 @@ This is the same template as the [agenda template](##Agenda), but with all the U
 * ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
-
-
-
