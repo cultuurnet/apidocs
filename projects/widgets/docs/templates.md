@@ -10,7 +10,7 @@ When creating a widget you must always start from one of four different the temp
 
 You start from an empty layout that you then expand yourself by adding rows and assigning blocks (e.g. search box or search results) to these rows.
 
-https://youtu.be/4TxmTGcOUAY
+<https://youtu.be/4TxmTGcOUAY>
 
 * ✅ Suitable when you already have a very good idea of which kind of widget you want to configure
 * ✅ Suitable when the other predefined templates do not meed your requirements
@@ -22,7 +22,7 @@ This is the most used template. This templates contains two rows:
 * The top row contains a search box (full length)
 * The second row contains facet filters (e.g. filters on the region, date, etc.) on the left side and search results in the center
 
-https://youtu.be/RG1LBY3fuXw
+<https://youtu.be/RG1LBY3fuXw>
 
 * ✅ Suitable when you want to configure a searchable agenda
 * ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
@@ -34,7 +34,7 @@ This template can be used to make a short list of events that you want to highli
 
 The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
 
-https://youtu.be/xezCXkmRsks
+<https://youtu.be/xezCXkmRsks>
 
 * ✅ Suitable when you want to highlight certain events
 * ✅ Suitable when you want to generate traffic to your event calendar
@@ -45,7 +45,7 @@ https://youtu.be/xezCXkmRsks
 
 This is the same template as the [agenda template](##Agenda), but with all the UiTPAS setting already enabled for you.
 
-https://youtu.be/gyefNH6ksjg
+<https://youtu.be/gyefNH6ksjg>
 
 * ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
