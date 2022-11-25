@@ -22,7 +22,7 @@ This is the most used template. This templates contains two rows:
 * The top row contains a search box (full length)
 * The second row contains facet filters (e.g. filters on the region, date, etc.) on the left side and search results in the center
 
-\[insert video]
+https://youtu.be/RG1LBY3fuXw
 
 * ✅ Suitable when you want to configure a searchable agenda
 * ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
@@ -34,7 +34,7 @@ This template can be used to make a short list of events that you want to highli
 
 The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
 
-\[insert video]
+https://youtu.be/xezCXkmRsks
 
 * ✅ Suitable when you want to highlight certain events
 * ✅ Suitable when you want to generate traffic to your event calendar
@@ -45,6 +45,11 @@ The tips widget serves as a teaser for the full event calendar. The tips widget 
 
 This is the same template as the [agenda template](##Agenda), but with all the UiTPAS setting already enabled for you.
 
+https://youtu.be/gyefNH6ksjg
+
 * ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
+
+
+
