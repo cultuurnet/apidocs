@@ -43,7 +43,7 @@ The tips widget serves as a teaser for the full event calendar. The tips widget 
 
 ## UiTPAS en Paspartoe
 
-This is the same template as the [agenda template](##Agenda), but with all the UiTPAS setting already enabled for you.
+This is the same template as the [agenda template](#Agenda), but with all the UiTPAS setting already enabled for you.
 
 <https://youtu.be/gyefNH6ksjg>
 
