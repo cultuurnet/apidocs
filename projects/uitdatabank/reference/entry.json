@@ -3752,6 +3752,43 @@
         ]
       }
     },
+    "/places/{placeId}/images/{imageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/imageId"
+        }
+      ],
+      "delete": {
+        "summary": "images - delete",
+        "operationId": "place-image-delete",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image has successfully been removed from the place."
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Removes the image with the given `imageId` from the place's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/major-info": {
       "parameters": [
         {
