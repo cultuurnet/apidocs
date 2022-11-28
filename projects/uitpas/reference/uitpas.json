@@ -2493,20 +2493,10 @@
         ],
         "parameters": [
           {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "start",
-            "description": "Position to start returning results from. When set to `0` the results starting from the very first position will be returned. When set to for example `10` the results 0-9 will be skipped and the ones starting from position 10 will be returned. Can be used in combination with `limit` for pagination."
+            "$ref": "#/components/parameters/start"
           },
           {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "limit",
-            "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination."
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
