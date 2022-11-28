@@ -26,5 +26,11 @@
   },
   "then": {
     "required": ["reason"]
-  }
+  },
+  "examples": [
+    {
+      "workflowStatus": "READY_FOR_VALIDATION",
+      "availableFrom": "2023-05-17T12:30:00+02:00"
+    }
+  ]
 }
