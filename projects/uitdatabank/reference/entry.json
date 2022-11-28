@@ -1607,6 +1607,43 @@
         ]
       }
     },
+    "/events/{eventId}/images/{imageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/imageId"
+        }
+      ],
+      "delete": {
+        "summary": "images - delete",
+        "operationId": "event-image-delete",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image has successfully been removed from the event."
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Removes the image with the given `imageId` from the event's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/location/{placeId}": {
       "parameters": [
         {
