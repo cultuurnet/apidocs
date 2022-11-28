@@ -7,7 +7,7 @@
     },
     "availableFrom": {
       "$ref": "./event-availableFrom.json",
-      "description": "The first date & time that the [event](./event.json) is allowed to be visible on publication channels. Can be set when changing the workflowStatus to READY_FOR_VALIDATION. If omitted when changing the workflowStatus to READY_FOR_VALIDATION, the current datetime will be used. Must be formatted as an ISO-8601 datetime."
+      "description": "Can be set when changing the workflowStatus to `READY_FOR_VALIDATION`. The first date & time that the [event](./event.json) is allowed to be visible on publication channels. If omitted when changing the workflowStatus to `READY_FOR_VALIDATION`, the current datetime will be used. Must be formatted as an ISO-8601 datetime."
     },
     "reason": {
       "type": "string",
