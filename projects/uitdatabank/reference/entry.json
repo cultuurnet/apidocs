@@ -4357,6 +4357,79 @@
         ]
       }
     },
+    "/places/{placeId}/workflow-status": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "workflowStatus - update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The workflowStatus was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "error": "Missing required properties (workflowStatus)",
+                          "jsonPointer": "/"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "place-workflow-status-put",
+        "description": "Updates the workflow status of an place. Possible statuses are:\n\n- `DRAFT`: The default status of new places. Places with this status do not appear in online calendars like <https://www.uitinvlaanderen.be> or the search on <https://www.uitdatabank.be>\n- `READY_FOR_VALIDATION`: This status means the place has been published, but not approved yet. Most online calendars will already show it, and it will appear in the search on <https://www.uitdatabank.be>\n- `APPROVED`: The place has been approved by a moderator. It will appear on all online calendars. You cannot set this status unless you have moderation permissions.\n- `REJECTED`: The place has been rejected by a moderator. It will not appear on any online calendars. You cannot set this status unless you have moderation permissions.\n- `DELETED`: The place has been deleted. It will not appear on any online calendars.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-workflowStatus-put.json"
+              },
+              "examples": {}
+            }
+          },
+          "description": "New workflowStatus to set on the place. Depending on the new workflowStatus, other properties may/must be set as well."
+        }
+      }
+    },
     "/organizers": {
       "post": {
         "summary": "organizer - create",
