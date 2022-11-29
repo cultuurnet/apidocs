@@ -1644,6 +1644,46 @@
         ]
       }
     },
+    "/events/{eventId}/labels/{labelName}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/labelName"
+        }
+      ],
+      "delete": {
+        "summary": "labels - delete",
+        "operationId": "event-labels-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The label was deleted from the event."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an event based on the event id, the label name, and the label's visibility.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/location/{placeId}": {
       "parameters": [
         {
@@ -3779,6 +3819,46 @@
           }
         },
         "description": "Removes the image with the given `imageId` from the place's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/labels/{labelName}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/labelName"
+        }
+      ],
+      "delete": {
+        "summary": "labels - delete",
+        "operationId": "place-labels-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The label was deleted from the place."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an place based on the place id, the label name, and the label's visibility.",
+        "tags": [
+          "Places"
+        ],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
