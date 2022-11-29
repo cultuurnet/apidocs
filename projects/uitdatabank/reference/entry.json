@@ -1633,7 +1633,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "description": "Deletes a label or hiddenLabel from an event based on the event id and the label name.",
+        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an event based on the event id, the label name, and the label's visibility.",
         "tags": [
           "Events"
         ],
