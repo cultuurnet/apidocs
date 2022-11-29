@@ -3755,6 +3755,46 @@
         ]
       }
     },
+    "/places/{placeId}/labels/{labelName}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/labelName"
+        }
+      ],
+      "delete": {
+        "summary": "labels - delete",
+        "operationId": "place-labels-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The label was deleted from the place."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an place based on the place id, the label name, and the label's visibility.",
+        "tags": [
+          "Places"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/major-info": {
       "parameters": [
         {
