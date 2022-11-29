@@ -1624,7 +1624,7 @@
         ],
         "responses": {
           "204": {
-            "description": "The image has successfully been removed from the event."
+            "description": "The image has been successfully removed from the event."
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -3769,7 +3769,7 @@
         ],
         "responses": {
           "204": {
-            "description": "The image has successfully been removed from the place."
+            "description": "The image has been successfully removed from the place."
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
