@@ -1607,6 +1607,46 @@
         ]
       }
     },
+    "/events/{eventId}/labels/{labelName}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/labelName"
+        }
+      ],
+      "delete": {
+        "summary": "labels - delete",
+        "operationId": "event-labels-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The label was deleted from the event."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Delete a label or hiddenLabel from an event based on the event id and the label name.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/location/{placeId}": {
       "parameters": [
         {
