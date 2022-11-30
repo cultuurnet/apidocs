@@ -488,6 +488,12 @@
             "$ref": "#/components/parameters/labels"
           },
           {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
