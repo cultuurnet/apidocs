@@ -897,6 +897,9 @@
             "$ref": "#/components/parameters/labels"
           },
           {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
