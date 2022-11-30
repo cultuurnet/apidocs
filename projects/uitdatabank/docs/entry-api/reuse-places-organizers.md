@@ -266,6 +266,12 @@ This check can be done on the following fields:
 * `name`
 * `website` (this is used to keep organizers unique in UiTdatabank)
 
+<!-- theme: warning -->
+
+> While the `name` filter works for a lot of cases, it is fragile because it depends on the name being spelled exactly the same in your application as in UiTdatabank. For example, "Koninklijk Museum voor Schone Kunsten Antwerpen" is often abbreviated to "KSMKA" or "K.M.S.K.A" by users who enter event data.
+>
+> For this reason we advice to always filter on `website` when possible as this is less often spelled differently and we take variations like trailing `/` and no trailing `/` or `www.` or no `www.` into account. If you do not know the website of the organizer, filter on `name` but provide a way for your users to [select the right UiTdatabank organizer in your own entry form](#searching-existing-organizers-within-your-entry-form) when possible because this way the user can change the spelling of the name to other variations to find the right match.
+
 #### Example
 
 **request**
