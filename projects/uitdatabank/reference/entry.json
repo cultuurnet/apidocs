@@ -3942,36 +3942,6 @@
           "$ref": "#/components/parameters/labelName"
         }
       ],
-      "delete": {
-        "summary": "labels - delete",
-        "operationId": "place-labels-delete",
-        "responses": {
-          "204": {
-            "description": "No Content. The label was deleted from the place."
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          }
-        },
-        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an place based on the place id, the label name, and the label's visibility.",
-        "tags": [
-          "Places"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ]
-      },
       "put": {
         "summary": "labels - add",
         "description": "Adds the given label to the place with the given `placeId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the place.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
@@ -3993,6 +3963,36 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "labels - delete",
+        "operationId": "place-labels-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The label was deleted from the place."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes a label from the `labels` or `hiddenLabels` property on an place based on the place id, the label name, and the label's visibility.",
+        "tags": [
+          "Places"
+        ],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
