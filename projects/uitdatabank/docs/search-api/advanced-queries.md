@@ -560,6 +560,26 @@ Search for all events that have location id `a0368d10-ded0-4925-b94a-2835f73e255
 GET /events/?q=location.id:a0368d10-ded0-4925-b94a-2835f73e255e
 ```
 
+### location.labels
+
+Using the field `location.labels` field, you can find events that have a location with a certain label.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+A label name (string).
+
+**Example**
+
+Search for all events that have a location with the label `museumPASSmusees`:
+
+```
+GET /events/?q=location.labels:museumPASSmusees
+```
+
 ### location.terms.id
 
 Using the `location.terms.id` field you can filter out events that take place on a specific type of location.
@@ -693,6 +713,26 @@ Search for all events that have "Ancienne Belgique" as its organizer:
 
 ```
 GET /events/?q=organizer.name.\*:"ancienne belgique"
+```
+
+### organizer.labels
+
+Using the field `organizer.labels` field, you can find events or places that have an organizer with a certain label.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+A label name (string).
+
+**Example**
+
+Search for all events or places that have an organizer with the label `UiTPAS Oostende`:
+
+```
+GET /offers/?q=organizer.labels:"UiTPAS Oostende"
 ```
 
 ### price
