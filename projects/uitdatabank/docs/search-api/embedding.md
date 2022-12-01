@@ -201,7 +201,7 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
-#### Calendar summary `sm-text` for an event that is happening tonight 
+#### Calendar summary `sm-text` for an event that is happening tonight
 
 ```json
 {
@@ -227,7 +227,6 @@ Every result in the response will have a `calendarSummary` property with a value
    }
 }
 ```
-
 
 #### Calendar summary `md-text` for a cancelled event
 
@@ -265,7 +264,6 @@ Every result in the response will have a `calendarSummary` property with a value
    }
 }
 ```
-
 
 #### Calendar summary `lg-html` for an event that is sold out or fully booked
 
