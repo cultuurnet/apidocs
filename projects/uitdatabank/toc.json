@@ -45,6 +45,12 @@
           "title": "School events",
           "uri": "/docs/entry-api/school-events.md",
           "slug": "entry-api/school-events"
+        },
+        {
+          "type": "item",
+          "title": "Resizing images",
+          "uri": "/docs/entry-api/resizing-images.md",
+          "slug": "entry-api/resizing-images"
         }
       ] 
     },
