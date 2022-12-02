@@ -261,7 +261,7 @@
               }
             }
           },
-          "description": "The complete details of the event to update."
+          "description": "The complete details of the event to update. The schema of the event is the same as the response of the [`GET /events/{eventId}`](./entry.json/paths/~1events~1{eventId}/get) operation."
         },
         "tags": [
           "Events"
@@ -390,7 +390,7 @@
           }
         ],
         "requestBody": {
-          "description": "The complete details of the new event to create.",
+          "description": "The complete details of the new event to create. The schema of the event is the same as the response of the [`GET /events/{eventId}`](./entry.json/paths/~1events~1{eventId}/get) operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -517,7 +517,7 @@
               }
             }
           },
-          "description": "The complete details of the event to update."
+          "description": "The complete details of the event to update. The schema of the event is the same as the response of the [`GET /events/{eventId}`](./entry.json/paths/~1events~1{eventId}/get) operation."
         },
         "tags": [
           "Events"
@@ -3027,7 +3027,7 @@
               }
             }
           },
-          "description": "The complete details of the place to update."
+          "description": "The complete details of the place to update. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation."
         },
         "tags": [
           "Places"
@@ -3168,7 +3168,7 @@
           }
         ],
         "requestBody": {
-          "description": "The complete details of the new place to create.",
+          "description": "The complete details of the new place to create. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation.",
           "content": {
             "application/json": {
               "schema": {
@@ -3431,7 +3431,7 @@
               }
             }
           },
-          "description": "The complete details of the place to update."
+          "description": "The complete details of the place to update. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation."
         },
         "tags": [
           "Places"
