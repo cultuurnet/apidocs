@@ -757,15 +757,7 @@
               }
             }
           }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "cookie"
-          }
-        ]
+        }
       }
     },
     "/imports/events/{eventId}": {
