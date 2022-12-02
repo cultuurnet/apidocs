@@ -149,8 +149,6 @@ Subject labels are used to specify the learning objective of the school event.
 | Taal                                        | `cultuurkuur_taal`                                        |
 | Wiskunde                                    | `cultuurkuur_Wiskunde`                                    |
 
-cultuurkuur_Internationale - Europese thema's
-
 #### Education level labels
 
 Education level labels indicate to which education levels (grades) the school event is aimed at.
