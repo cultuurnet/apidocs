@@ -3358,7 +3358,7 @@
           }
         },
         "operationId": "place-post",
-        "description": "Creates a new place.\n\n<!-- theme: warning -->\n\n> This request is also supported with an older, deprecated schema that was used to create a place with just its required fields.",
+        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.\n\n<!-- theme: warning -->\n\n> This request also supports an older deprecated schema that was used to create an place with just its required fields.\n>\n> If you have an existing integration that still uses this schema, you can view it by changing the `place` schema to `place-post-deprecated` in the body documentation below.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
