@@ -102,7 +102,7 @@
           }
         },
         "operationId": "event-post",
-        "description": "Creates a new event with the required properties and any additional optional properties.\n\nBy default, the new event will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new event in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.\n\n<!-- theme: warning -->\n\n> This request also supports an older deprecated schema that was used to create an event with just its required fields.\n>\n> If you have an existing integration that still uses this schema, you can view it by changing the `event` schema to `event.post (deprecated)` in the body documentation below.",
+        "description": "Creates a new event with the required properties and any additional optional properties.\n\nBy default, the new event will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new event in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -112,7 +112,7 @@
           }
         ],
         "requestBody": {
-          "description": "The complete details of the new event to create.",
+          "description": "The complete details of the new event to create. The schema of the event is the same as the response of the [`GET /events/{eventId}`](./entry.json/paths/~1events~1{eventId}/get) operation.\n\nThis request also supports an older deprecated schema that was used to create an event with just its required fields. If you have an existing integration that still uses this schema, you can view it by switching from the `event` schema to `event.post (deprecated)` below.",
           "content": {
             "application/json": {
               "schema": {
@@ -3358,7 +3358,7 @@
           }
         },
         "operationId": "place-post",
-        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.\n\n<!-- theme: warning -->\n\n> This request also supports an older deprecated schema that was used to create an place with just its required fields.\n>\n> If you have an existing integration that still uses this schema, you can view it by changing the `place` schema to `place-post-deprecated` in the body documentation below.",
+        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3368,7 +3368,7 @@
           }
         ],
         "requestBody": {
-          "description": "The complete details of the new place to create.",
+          "description": "The complete details of the new place to create. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation.\n\nThis request also supports an older deprecated schema that was used to create an place with just its required fields. If you have an existing integration that still uses this schema, you can view it by switching from the `place` schema to `place-post-deprecated` below.",
           "content": {
             "application/json": {
               "schema": {
