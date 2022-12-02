@@ -139,18 +139,15 @@ Subject labels are used to specify the learning objective of the school event.
 | Actief Burgerschap                          | `cultuurkuur_Actief Burgerschap`                          |
 | Duurzaamheid, natuur en milieu              | `cultuurkuur_Duurzaamheid, natuur en milieu`              |
 | Filosofie religie                           | `cultuurkuur_Filosofie-religie`                           |
-| Beeldende en audiovisuele kunst             | `cultuurkuur_Beeldende-en-audiovisuele-kunst`             |
+| Internationale - Europese thema's           | `cultuurkuur_Internationale - Europese thema's`           |
 | kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
 | Leren leren                                 | `cultuurkuur_Leren leren`                                 |
 | Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` |
 | Media                                       | `cultuurkuur_Media`                                       |
 | Mobiliteit                                  | `cultuurkuur_Mobiliteit`                                  |
-| Muziek                                      | `cultuurkuur_muziek`                                      |
 | Ondernemingszin                             | `cultuurkuur_Ondernemingszin`                             |
 | Taal                                        | `cultuurkuur_taal`                                        |
-| Dans                                        | `cultuurkuur_dans`                                        |
 | Wiskunde                                    | `cultuurkuur_Wiskunde`                                    |
-| Woordkunst en drama                         | `cultuurkuur_Woordkunst-drama`                            |
 
 #### Education level labels
 
