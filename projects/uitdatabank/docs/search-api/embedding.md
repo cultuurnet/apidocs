@@ -180,33 +180,60 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "text":{
-         "xs":"21 okt"
+         "xs":"28 nov"
       }
    },
    "fr":{
       "text":{
-         "xs":"21 oct"
+         "xs":"28 nov"
       }
    },
    "de":{
       "text":{
-         "xs":"21 Okt"
+         "xs":"28 Nov"
       }
    },
    "en":{
       "text":{
-         "xs":"21 Oct"
+         "xs":"28 Nov"
       }
    }
 }
 ```
 
-#### Calendar summary `sm-text` for a cancelled event
+#### Calendar summary `sm-text` for an event that is happening tonight
+
+```json
+{
+   "nl":{
+      "text":{
+         "sm":"Vanavond"
+      }
+   },
+   "fr":{
+      "text":{
+         "sm":"Ce soir"
+      }
+   },
+   "de":{
+      "text":{
+         "sm":"Diesen Abend"
+      }
+   },
+   "en":{
+      "text":{
+         "sm":"Tonight"
+      }
+   }
+}
+```
+
+#### Calendar summary `md-text` for a cancelled event
 
 **request**
 
 ```
-GET /events/?embedCalendarSummaries[]=sm-text
+GET /events/?embedCalendarSummaries[]=md-text
 ```
 
 **response**
@@ -217,33 +244,33 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "text":{
-         "sm":"3 jun (geannuleerd)"
+         "md":"Ma 28 november 2022 (geannuleerd)"
       }
    },
    "fr":{
       "text":{
-         "sm":"3 juin (annulé)"
+         "md":"Lun. 28 novembre 2022 (annulé)"
       }
    },
    "de":{
       "text":{
-         "sm":"3 Juni (abgesagt)"
+         "md":"Mo. 28 November 2022 (abgesagt)"
       }
    },
    "en":{
       "text":{
-         "sm":"3 Jun (cancelled)"
+         "md":"Mon 28 November 2022 (cancelled)"
       }
    }
 }
 ```
 
-#### Calendar summary `sm-html` for an event that is sold out or fully booked
+#### Calendar summary `lg-html` for an event that is sold out or fully booked
 
 **request**
 
 ```
-GET /events/?embedCalendarSummaries[]=sm-html
+GET /events/?embedCalendarSummaries[]=lg-html
 ```
 
 **response**
@@ -254,22 +281,22 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Van</span> <span class=""cf-date"">28 september 2022</span> <span class=""cf-to cf-meta"">tot</span> <span class=""cf-date"">21 december 2022</span> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Maandag</span> <span class=""cf-date"">28 november 2022</span> <span class=""cf-from cf-meta"">van</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">tot</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
       }
    },
    "fr":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Du</span> <span class=""cf-date"">28 septembre 2022</span> <span class=""cf-to cf-meta"">au</span> <span class=""cf-date"">21 décembre 2022</span> <span class=""cf-status"">(Complet)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Lundi</span> <span class=""cf-date"">28 novembre 2022</span> <span class=""cf-from cf-meta"">du</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">au</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Complet)</span>"
       }
    },
    "de":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Von</span> <span class=""cf-date"">28 September 2022</span> <span class=""cf-to cf-meta"">bis</span> <span class=""cf-date"">21 Dezember 2022</span> <span class=""cf-status"">(Ausgebucht oder ausverkauft)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Montag</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">von</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">bis</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Ausgebucht oder ausverkauft)</span>"
       }
    },
    "en":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">From</span> <span class=""cf-date"">28 September 2022</span> <span class=""cf-to cf-meta"">till</span> <span class=""cf-date"">21 December 2022</span> <span class=""cf-status"">(Sold out or fully booked)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Monday</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">from</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">till</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Sold out or fully booked)</span>"
       }
    }
 }

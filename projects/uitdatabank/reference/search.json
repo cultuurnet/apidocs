@@ -221,6 +221,12 @@
             "$ref": "#/components/parameters/labels"
           },
           {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
@@ -480,6 +486,12 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -883,6 +895,9 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -1361,6 +1376,32 @@
         "name": "labels[]",
         "style": "form",
         "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "locationLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "locationLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their location's `labels` or `hiddenLabels` properties. May be repeated to only return results with a location that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "organizerLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "organizerLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their organizer's `labels` or `hiddenLabels` properties. May be repeated to only return results with an organizer that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "mainLanguage": {
