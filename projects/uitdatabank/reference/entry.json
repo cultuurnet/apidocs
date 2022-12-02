@@ -3140,7 +3140,7 @@
           }
         ],
         "requestBody": {
-          "description": "The complete details of the new place to create. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation.\n\nThis request also supports an older deprecated schema that was used to create an place with just its required fields. If you have an existing integration that still uses this schema, you can view it by switching from the `place` schema to `place-post-deprecated` below.",
+          "description": "The complete details of the new place to create. The schema of the place is the same as the response of the [`GET /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/get) operation.\n\nThis request also supports an older deprecated schema that was used to create an place with just its required fields. If you have an existing integration that still uses this schema, you can view it by switching from the `place` schema to `place.post (deprecated)` below.",
           "content": {
             "application/json": {
               "schema": {
