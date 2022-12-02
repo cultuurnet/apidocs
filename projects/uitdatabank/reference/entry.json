@@ -859,7 +859,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "description": "Updates the event via the historical `/imports/events/{eventId}` URL by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> This operation is deprecated and should not be used in new integrations. Use the [`PUT /events/{eventId}`](./entry.json/paths/~1events~1/{eventId}/put) operation instead to update existing events, which accepts exactly the same JSON body.",
+        "description": "Updates the event via the historical `/imports/events/{eventId}` URL by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> This operation is deprecated and should not be used in new integrations. Use the [`PUT /events/{eventId}`](./entry.json/paths/~1events~1{eventId}/put) operation instead to update existing events, which accepts exactly the same JSON body.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4181,7 +4181,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "description": "Updates the place via the historical `/imports/places/{placeId}` URL by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> This operation is deprecated and should not be used in new integrations. Use the [`PUT /places/{placeId}`](./entry.json/paths/~1places~1/{placeId}/put) operation instead to update existing places, which accepts exactly the same JSON body.",
+        "description": "Updates the place via the historical `/imports/places/{placeId}` URL by completely overwriting it with the properties in the given JSON. \n\n<!-- theme: danger -->\n\n> This operation is deprecated and should not be used in new integrations. Use the [`PUT /places/{placeId}`](./entry.json/paths/~1places~1{placeId}/put) operation instead to update existing places, which accepts exactly the same JSON body.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
