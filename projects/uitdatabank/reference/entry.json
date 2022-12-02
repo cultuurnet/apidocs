@@ -3840,6 +3840,256 @@
         "x-internal": false
       }
     },
+    "/imports/places": {
+      "post": {
+        "summary": "place - import (create)",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "201": {
+            "description": "The place was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The id of the created place.",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid"
+                    },
+                    "placeId": {
+                      "type": "string",
+                      "description": "The id of the created place (deprecated and replaced with `id`).",
+                      "deprecated": true,
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid"
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "The url of the JSON-LD representation of the created place.",
+                      "example": "https://io-test.uitdatabank.be/places/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uri"
+                    },
+                    "commandId": {
+                      "type": "string",
+                      "example": "92973349-967e-44d7-83a2-e1972d9e1622",
+                      "format": "uuid",
+                      "deprecated": true,
+                      "description": "ID of the last internal command that was dispatched for this operation. Will be removed in the future."
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "placeId",
+                    "url"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "placeId": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "url": "https://io-test.uitdatabank.be/places/c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "place-import-create",
+        "deprecated": true,
+        "description": "Creates a new place via the historical `/imports/places` URL.\n\n<!-- theme: danger -->\n\n> This operation is deprecated and should not be used in new integrations. Use the [`POST /places`](./entry.json/paths/~1places/post) operation instead to create new places.\n>\n> Both operations accept the same JSON bodies nowadays, and support creating places with only the required properties or with additional optional properties.\n>\n> The only difference is that the default `workflowStatus` for places created via [`POST /places`](./entry.json/paths/~1places/post) is `DRAFT`, while new places created via this `POST /imports/places` operation will have the default workflowStatus `READY_FOR_VALIDATION` for backward compatibility with historical integrations.\n>\n> If you want your new places to also have the workflowStatus `READY_FOR_VALIDATION`, you can use the [`POST /places`](./entry.json/paths/~1places/post) operation and explicitly set the `workflowStatus` property in your JSON body to `READY_FOR_VALIDATION`.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "description": "The complete details of the new place to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "../models/place.json"
+                  },
+                  {
+                    "$ref": "../models/place-post-deprecated.json"
+                  }
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mainLanguage": "nl",
+                    "name": {
+                      "nl": "Nederlandse naam",
+                      "fr": "Nom français",
+                      "de": "Deutscher Name",
+                      "en": "English name"
+                    },
+                    "address": {
+                      "nl": {
+                        "addressCountry": "BE",
+                        "addressLocality": "Brussel",
+                        "postalCode": "1000",
+                        "streetAddress": "Wetstraat 1"
+                      },
+                      "fr": {
+                        "addressCountry": "BE",
+                        "addressLocality": "Bruxelles",
+                        "postalCode": "1000",
+                        "streetAddress": "Rue de la Loi 1"
+                      },
+                      "de": {
+                        "addressCountry": "BE",
+                        "addressLocality": "Brüssel",
+                        "postalCode": "1000",
+                        "streetAddress": "Wetstraat 1"
+                      },
+                      "en": {
+                        "addressCountry": "BE",
+                        "addressLocality": "Brussels",
+                        "postalCode": "1000",
+                        "streetAddress": "Wetstraat 1"
+                      }
+                    },
+                    "calendarType": "periodic",
+                    "startDate": "2021-05-17T22:00:00+00:00",
+                    "endDate": "2021-05-17T22:00:00+00:00",
+                    "openingHours": [
+                      {
+                        "opens": "17:00",
+                        "closes": "17:00",
+                        "dayOfWeek": [
+                          "monday"
+                        ]
+                      }
+                    ],
+                    "availableFrom": "2021-05-17T22:00:00+00:00",
+                    "terms": [
+                      {
+                        "id": "0.14.0.0.0",
+                        "label": "Monument",
+                        "domain": "eventtype"
+                      }
+                    ],
+                    "typicalAgeRange": "6-12",
+                    "description": {
+                      "nl": "Nederlandse beschrijving",
+                      "fr": "Description français",
+                      "de": "Deutscher Beschreibung",
+                      "en": "English description"
+                    },
+                    "priceInfo": [
+                      {
+                        "category": "base",
+                        "price": 10.5,
+                        "priceCurrency": "EUR",
+                        "name": {
+                          "nl": "Basistarief",
+                          "fr": "Tarif de base",
+                          "de": "Base tariff",
+                          "en": "Basisrate"
+                        }
+                      }
+                    ],
+                    "contactPoint": {
+                      "phone": [
+                        "016/112233"
+                      ],
+                      "email": [
+                        "info@example.com"
+                      ],
+                      "url": [
+                        "https://www.example.com"
+                      ]
+                    },
+                    "bookingInfo": {
+                      "phone": "016/112233",
+                      "email": "info@example.com",
+                      "url": "https://www.example.com",
+                      "urlLabel": {
+                        "nl": "Nederlandse beschrijving",
+                        "fr": "Description français",
+                        "de": "Deutscher Beschreibung",
+                        "en": "English description"
+                      },
+                      "availabilityStarts": "2021-05-17T22:00:00+00:00",
+                      "availabilityEnds": "2021-05-17T22:00:00+00:00"
+                    },
+                    "mediaObject": [
+                      {
+                        "@id": "https://io-test.uitdatabank.be/images/74969172-E2A6-4626-BA63-4B6919242A24"
+                      },
+                      {
+                        "@id": "https://io-test.uitdatabank.be/images/85b04295-479c-40f5-b3dd-469dfb4387b3",
+                        "description": "optional overwritten description",
+                        "copyrightHolder": "optional overwritten copyright holder",
+                        "inLanguage": "nl"
+                      }
+                    ],
+                    "videos": [
+                      {
+                        "id": "b504cf44-9ab8-4641-9934-38d1cc67242c",
+                        "url": "https://www.youtube.com/watch?v=cEItmb_a20D",
+                        "embedUrl": "https://www.youtube.com/embed/cEItmb_a20D",
+                        "language": "nl",
+                        "copyrightHolder": "publiq"
+                      }
+                    ],
+                    "labels": [
+                      "label1"
+                    ],
+                    "hiddenLabels": [
+                      "label2"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/places/{placeId}/available-from": {
       "parameters": [
         {
