@@ -25,12 +25,6 @@
       "uri": "reference/entry.json"
     },
     {
-      "type": "item",
-      "title": "Requirements before going live",
-      "uri": "/docs/entry-api/requirements-before-going-live.md",
-      "slug": "entry-api/requirements-before-going-live"
-    },
-    {
       "type": "group",
       "title": "Guides",
       "items": [
@@ -71,6 +65,12 @@
           ]
         }
       ]
+    },
+    {
+      "type": "item",
+      "title": "Requirements before going live",
+      "uri": "/docs/entry-api/requirements-before-going-live.md",
+      "slug": "entry-api/requirements-before-going-live"
     },
     {
       "type": "divider",
