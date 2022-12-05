@@ -40,7 +40,7 @@ GET /organizers/?q=name.\*:"Natuurpunt Holsbeek"
 
 The response now contains the URL of "Natuurpunt Holsbeek" as an `@id` property:
 
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -81,7 +81,7 @@ GET /organizers/?q=name.\*:"Natuurpunt Holsbeek"
 
 The response now contains the URL of "Natuurpunt Holsbeek" as an `@id` property:
 
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -135,7 +135,7 @@ GET /organizers/?website=https://www.natuurpunt.be/afdelingen/natuurpunt-holsbee
 
 **response**
 
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",

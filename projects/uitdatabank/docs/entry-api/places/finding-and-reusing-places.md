@@ -36,7 +36,7 @@ GET /places/?q=name.\*:"Het Depot" AND address.\*.postalCode:3000
 
 The response now contains the URL of "Het Depot" as an `@id` property:
 
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
@@ -77,7 +77,7 @@ GET /places/?q=name.\*:"Het Depot" AND address.\*.postalCode:3000
 
 The response now contains the URL of "Het Depot" as an `@id` property:
 
-```js
+```json
 {
    "@context":"http://www.w3.org/ns/hydra/context.jsonld",
    "@type":"PagedCollection",
