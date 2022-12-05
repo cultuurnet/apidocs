@@ -35,8 +35,8 @@
             {
               "type": "item",
               "title": "School events",
-              "uri": "/docs/entry-api/school-events.md",
               "slug": "entry-api/school-events"
+              "uri": "/docs/entry-api/events/school-events.md",
             }
           ]
         },
