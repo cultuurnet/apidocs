@@ -65,7 +65,7 @@ In this solution you directly integrate with the UiTdatabank Search API in your 
 
 In the example below, a user in your entry form types the name "Het Depot" in the input field for the location. Under the hood an API call to the UiTdatabank Search API is made to check if that place already exists:
 
-![](../../assets/images/search-places.png)
+![](../../../assets/images/search-places.png)
 
 **request**
 
