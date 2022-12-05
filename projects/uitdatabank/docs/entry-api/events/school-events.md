@@ -29,7 +29,7 @@ School performances are events of which both the date and the location is known 
 Since school performances both have a date and a location, you can create them in a very similar way to regular events:
 
 * you can use a calendarType of your preference (`single`, `multiple` or `periodic`)
-* for the location you must use the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](./reuse-places-organizers.md).
+* for the location you must use the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
 
 ### Guided tours
 
@@ -41,7 +41,7 @@ Guided tours are events that have no specific date (or the date is not known in 
 In order to create a guided school tour you must use:
 
 * calendarType `permanent`
-* the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](./reuse-places-organizers.md).
+* the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
 
 ### Bookable events
 
@@ -95,7 +95,7 @@ Every school event must be linked to an [existing organizer page on Cultuurkuur]
 3. If a match is found, open the detail page of the organization
 4. In the url of the browser you'll find the identifier of the organizer in UiTdatabank:
 
-![](../../assets/images/cultuurkuur-search-organizer.png)
+![](../../../assets/images/cultuurkuur-search-organizer.png)
 
 Prefix this value with the host url of the according environment and use this as the value for the `organizer.@id` property in the `POST /events` request. For example on production:
 

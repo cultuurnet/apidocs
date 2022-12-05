@@ -25,28 +25,52 @@
       "uri": "reference/entry.json"
     },
     {
+      "type": "group",
+      "title": "Guides",
+      "items": [
+        {
+          "type": "group",
+          "title": "Events",
+          "items": [
+            {
+              "type": "item",
+              "title": "School events",
+              "uri": "/docs/entry-api/events/school-events.md",
+              "slug": "entry-api/events/school-events"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Places",
+          "items": [
+            {
+              "type": "item",
+              "title": "Finding and reusing places",
+              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
+              "slug": "entry-api/places/finding-and-reusing-places"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Organizers",
+          "items": [
+            {
+              "type": "item",
+              "title": "Finding and reusing organizers",
+              "uri": "/docs/entry-api/organizers/finding-and-reusing-organizers.md",
+              "slug": "entry-api/organizers/finding-and-reusing-organizers"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "item",
       "title": "Requirements before going live",
       "uri": "/docs/entry-api/requirements-before-going-live.md",
       "slug": "entry-api/requirements-before-going-live"
-    },
-    {
-    "type": "group",
-    "title": "Guides",
-    "items": [
-        {
-          "type": "item",
-          "title": "Reusing places & organizers",
-          "uri": "/docs/entry-api/reuse-places-organizers.md",
-          "slug": "entry-api/reuse-places-organizers"
-        },
-        {
-          "type": "item",
-          "title": "School events",
-          "uri": "/docs/entry-api/school-events.md",
-          "slug": "entry-api/school-events"
-        }
-      ] 
     },
     {
       "type": "divider",
