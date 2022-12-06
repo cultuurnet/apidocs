@@ -1103,7 +1103,7 @@ The `+` sign should be encoded for as `%2B`. Otherwise it will be interpreted as
 GET /events/?q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
 ```
 
-## Resources
+## Other resources
 
 * [Elasticsearch Lucene Query Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
 * [List of special characters that require escaping](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Escaping%20Special%20Characters)
