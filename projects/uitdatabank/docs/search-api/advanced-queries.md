@@ -1,8 +1,10 @@
 # Advanced queries
 
-With advanced queries you can make more complex queries, using boolean operators, search keywords and/or specific field values, and grouping.
+Every endpoint on Search API supports various URL parameters for the most common filters. However these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
 
-The syntax is based on the Lucene query syntax. More info about the syntax can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+With advanced queries you can make more complex queries using boolean operators, keywords and/or specific field values, and grouping.
+
+The syntax is the Lucene query syntax. More details about the syntax can be found in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax) and [Apache Lucene documentation](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Escaping%20Special%20Characters).
 
 ## Supported fields
 
