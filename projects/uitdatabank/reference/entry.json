@@ -1077,6 +1077,95 @@
         ]
       }
     },
+    "/events/{eventId}/booking-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "bookingInfo - update",
+        "description": "Updates the bookingInfo for an event.",
+        "operationId": "events-bookingInfo-update",
+        "tags": [
+          "Events"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-bookingInfo.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "phone": "+32/01234567890",
+                    "email": "info@example.com",
+                    "url": "https://www.example.com",
+                    "urlLabel": {
+                      "nl": "Nederlandse tekst",
+                      "fr": "Texte français",
+                      "de": "Deutscher Text",
+                      "en": "English text"
+                    },
+                    "availabilityStarts": "2021-05-17T22:00:00+00:00",
+                    "availabilityEnds": "2021-05-17T22:00:00+00:00"
+                  }
+                }
+              }
+            }
+          },
+          "description": "New bookingInfo to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingInfo has been updated successfully. "
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "'urlLabel' property is required by 'url' property"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/calendar": {
       "parameters": [
         {
@@ -3515,6 +3604,95 @@
           },
           "description": "New availableFrom to set on the place."
         }
+      }
+    },
+    "/places/{placeId}/booking-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "bookingInfo - update",
+        "description": "Updates the bookingInfo for a place.",
+        "operationId": "places-bookingInfo-update",
+        "tags": [
+          "Places"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-bookingInfo.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "phone": "+32/01234567890",
+                    "email": "info@example.com",
+                    "url": "https://www.example.com",
+                    "urlLabel": {
+                      "nl": "Nederlandse tekst",
+                      "fr": "Texte français",
+                      "de": "Deutscher Text",
+                      "en": "English text"
+                    },
+                    "availabilityStarts": "2021-05-17T22:00:00+00:00",
+                    "availabilityEnds": "2021-05-17T22:00:00+00:00"
+                  }
+                }
+              }
+            }
+          },
+          "description": "New bookingInfo to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingInfo has been updated successfully. "
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "'urlLabel' property is required by 'url' property"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places/{placeId}/calendar": {
