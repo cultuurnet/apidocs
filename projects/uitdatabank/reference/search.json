@@ -1014,7 +1014,7 @@
         },
         "in": "query",
         "name": "name",
-        "description": "Returns only results whose name autocompletes on the given name."
+        "description": "Returns only results whose name autocompletes on the given name. For example searching for `pub` will return matches with `publiq` in the name."
       },
       "website": {
         "schema": {
