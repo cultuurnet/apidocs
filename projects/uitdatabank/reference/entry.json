@@ -4369,6 +4369,76 @@
         }
       }
     },
+    "/places/{placeId}/organizer/{organizerId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "Deletes the organizer of the place with the given `placeId`.",
+        "operationId": "places-organizer-delete",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "organizer - update",
+        "description": "Updates the organizer of the place with the given `placeId`.",
+        "operationId": "places-organizer-update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been updated successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/price-info": {
       "parameters": [
         {
