@@ -2161,6 +2161,36 @@
           "$ref": "#/components/parameters/organizerId"
         }
       ],
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "Deletes the organizer of the event with the given `eventId`.",
+        "operationId": "events-organizer-delete",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "put": {
         "summary": "organizer - update",
         "description": "Updates the organizer of the event with the given `eventId`.",
