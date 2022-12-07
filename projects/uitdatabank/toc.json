@@ -86,40 +86,52 @@
       "title": "Guides",
       "items": [
         {
-          "type": "item",
-          "title": "Advanced queries",
-          "uri": "/docs/search-api/advanced-queries.md",
-          "slug": "search-api/advanced-queries"
+          "type": "group",
+          "title": "Getting started",
+          "items": [
+            {
+              "type": "item",
+              "title": "Default filters",
+              "uri": "/docs/search-api/default-filters.md",
+              "slug": "search-api/default-filters"
+            },
+            {
+              "type": "item",
+              "title": "Embedding",
+              "uri": "/docs/search-api/embedding.md",
+              "slug": "search-api/embedding"
+            },
+            {
+              "type": "item",
+              "title": "Pagination",
+              "uri": "/docs/search-api/pagination.md",
+              "slug": "search-api/pagination"
+            },
+            {
+              "type": "item",
+              "title": "Sorting",
+              "uri": "/docs/search-api/sorting.md",
+              "slug": "search-api/sorting"
+            }
+          ]
         },
         {
-          "type": "item",
-          "title": "Default filters",
-          "uri": "/docs/search-api/default-filters.md",
-          "slug": "search-api/default-filters"
-        },
-        {
-          "type": "item",
-          "title": "Embedding",
-          "uri": "/docs/search-api/embedding.md",
-          "slug": "search-api/embedding"
-        },
-        {
-          "type": "item",
-          "title": "Pagination",
-          "uri": "/docs/search-api/pagination.md",
-          "slug": "search-api/pagination"
-        },
-        {
-          "type": "item",
-          "title": "Sorting",
-          "uri": "/docs/search-api/sorting.md",
-          "slug": "search-api/sorting"
-        },
-        {
-          "type": "item",
-          "title": "Facets",
-          "uri": "/docs/search-api/facets.md",
-          "slug": "search-api/facets"
+          "type": "group",
+          "title": "Advanced features",
+          "items": [
+            {
+              "type": "item",
+              "title": "Advanced queries",
+              "uri": "/docs/search-api/advanced-queries.md",
+              "slug": "search-api/advanced-queries"
+            },
+            {
+              "type": "item",
+              "title": "Facets",
+              "uri": "/docs/search-api/facets.md",
+              "slug": "search-api/facets"
+            }
+          ]
         }
       ]
     },
