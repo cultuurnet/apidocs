@@ -2193,7 +2193,7 @@
       },
       "put": {
         "summary": "organizer - update",
-        "description": "Updates the organizer of the event with the given `eventId`. You can find how to get a list of organizers in this [guide](docs/uitdatabank/entry-api/organizers/finding-and-reusing-organizers).\n\n<!-- theme: info -->\n\n> An organizer is not required on an event, and it can only have one.",
+        "description": "Updates the organizer of the event with the given `eventId`. A list of organizers can be found using our [Organizers guide](/docs/uitdatabank/entry-api/organizers/finding-and-reusing-organizers).\n\n<!-- theme: info -->\n\n> An organizer is not required on an event, and it can only have one.",
         "operationId": "events-organizer-update",
         "tags": [
           "Events"
@@ -4410,7 +4410,7 @@
       },
       "put": {
         "summary": "organizer - update",
-        "description": "Updates the organizer of the place with the given `placeId`. You can find how to get a list of organizers in this [guide](docs/uitdatabank/entry-api/organizers/finding-and-reusing-organizers).\n\n<!-- theme: info -->\n\n> An organizer is not required on a place, and it can only have one.",
+        "description": "Updates the organizer of the place with the given `placeId`. A list of organizers can be found using our [Organizers guide](/docs/uitdatabank/entry-api/organizers/finding-and-reusing-organizers).\n\n<!-- theme: info -->\n\n> An organizer is not required on a place, and it can only have one.",
         "operationId": "places-organizer-update",
         "tags": [
           "Places"
