@@ -4037,6 +4037,70 @@
         ]
       }
     },
+    "/places/{placeId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "places-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the place."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to a place."
+        },
+        "description": "Adds an image to a place.",
+        "tags": [
+          "Places"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/images/{imageId}": {
       "parameters": [
         {
