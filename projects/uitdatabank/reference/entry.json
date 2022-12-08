@@ -1588,6 +1588,70 @@
         ]
       }
     },
+    "/events/{eventId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "events-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the event."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to an event."
+        },
+        "description": "Adds an image to an event.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/images/{imageId}": {
       "parameters": [
         {
