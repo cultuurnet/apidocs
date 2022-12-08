@@ -2502,6 +2502,73 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "event-typical-age-range-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the age range of the event with the given `eventId`.\n\nEvents with upper boundary smaller or equal to 12 are enriched with the ‘Vlieg’-icon and published on [UiTmetvlieg](https://www.uitinvlaanderen.be/vlieg).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "the age range to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/events/{eventId}/videos": {
