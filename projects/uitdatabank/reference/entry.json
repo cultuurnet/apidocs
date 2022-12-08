@@ -1414,7 +1414,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the contact point on an event.",
+        "description": "Updates the contact point information of the event with the given `eventId`.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove contact information perform a PUT request with empty properties.\n\n<!-- theme: warning -->\n\n> Unlike [`PUT /organizers/{organizerId}/contact-point`](./entry.json/paths/~1organizers~1{organizerId}/contact-point/put), all properties are required. There is also no partial updating.",
         "requestBody": {
           "content": {
             "application/json": {
