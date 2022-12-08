@@ -2467,6 +2467,43 @@
         ]
       }
     },
+    "/events/{eventId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "event-typical-age-range-delete",
+        "tags": [
+          "Events"
+        ],
+        "description": "Deletes the age range from an event.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/videos": {
       "parameters": [
         {
