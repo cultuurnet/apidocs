@@ -2509,7 +2509,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the age range of the event with the given `eventId`.\n\nEvents with upper boundary smaller or equal to 12 are enriched with the ‘Vlieg’-icon and published on [UiTmetvlieg](https://www.uitinvlaanderen.be/vlieg).",
+        "description": "Updates the age range of the event with the given `eventId`.",
         "requestBody": {
           "content": {
             "application/json": {
