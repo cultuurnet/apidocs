@@ -1402,7 +1402,7 @@
         "x-internal": false
       }
     },
-    "/events/{eventId}/contactPoint": {
+    "/events/{eventId}/contact-point": {
       "parameters": [
         {
           "$ref": "#/components/parameters/eventId"
