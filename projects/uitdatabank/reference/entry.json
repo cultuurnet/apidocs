@@ -1402,6 +1402,63 @@
         "x-internal": false
       }
     },
+    "/events/{eventId}/contactPoint": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "contactPoint - update",
+        "operationId": "event-contactPoint-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the contact point on an event.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-contactPoint-put.json"
+              }
+            }
+          },
+          "description": "The contact point properties to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The contactPoint has been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/facilities": {
       "parameters": [
         {
