@@ -4516,6 +4516,110 @@
         ]
       }
     },
+    "/places/{placeId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "place-typical-age-range-delete",
+        "tags": [
+          "Places"
+        ],
+        "description": "Deletes the age range from a place.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "place-typical-age-range-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the age range of the place with the given `placeId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The age range to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/videos": {
       "parameters": [
         {
