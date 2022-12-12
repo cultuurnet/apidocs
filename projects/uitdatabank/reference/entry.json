@@ -1714,6 +1714,63 @@
         ]
       }
     },
+    "/events/{eventId}/images/main": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "images main - update",
+        "operationId": "event-main-image-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the main image of an event. The main image is the only image shown in search-result listviews and the image more prominently displayed on event-details, when the event has multiple images.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-main-image-put.json"
+              }
+            }
+          },
+          "description": "The id of the image to set as main image on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The main image was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/labels/{labelName}": {
       "parameters": [
         {
@@ -4178,6 +4235,63 @@
           }
         },
         "description": "Removes the image with the given `imageId` from the place's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/images/main": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "images main - update",
+        "operationId": "place-main-image-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the main image of a place. The main image is the only image shown in search-result listviews and the image more prominently displayed on place-details, when the place has multiple images.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-main-image-put.json"
+              }
+            }
+          },
+          "description": "The id of the image to set as main image on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The main image was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
