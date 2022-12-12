@@ -2194,7 +2194,7 @@
       "put": {
         "summary": "organizer - update",
         "description": "Updates the organizer of the event with the given `eventId`. A list of organizers can be found using our [guide about finding existing organizers](/docs/entry-api/organizers/finding-and-reusing-organizers.md).\n\n<!-- theme: info -->\n\n> An organizer is not required on an event, and it can only have one.",
-        "operationId": "events-organizer-update",
+        "operationId": "event-organizer-update",
         "tags": [
           "Events"
         ],
