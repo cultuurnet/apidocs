@@ -4381,7 +4381,7 @@
       "delete": {
         "summary": "organizer - delete",
         "description": "Deletes the organizer of the place with the given `placeId`.",
-        "operationId": "places-organizer-delete",
+        "operationId": "place-organizer-delete",
         "tags": [
           "Places"
         ],
