@@ -1712,6 +1712,64 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "put": {
+        "summary": "images - update",
+        "operationId": "event-image-put",
+        "description": "Updates the metadata of an image on an event.",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image metadata was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "description": "Picture of the last publiq event",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The metadata to update on the image."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/events/{eventId}/images/main": {
@@ -4235,6 +4293,64 @@
           }
         },
         "description": "Removes the image with the given `imageId` from the place's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "images - update",
+        "operationId": "place-image-put",
+        "description": "Updates the metadata of an image on a place.",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image metadata was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "description": "Picture of the publiq office",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The metadata to update on the image."
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
