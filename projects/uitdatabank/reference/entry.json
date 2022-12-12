@@ -2164,7 +2164,7 @@
       "delete": {
         "summary": "organizer - delete",
         "description": "Deletes the organizer of the event with the given `eventId`.",
-        "operationId": "events-organizer-delete",
+        "operationId": "event-organizer-delete",
         "tags": [
           "Events"
         ],
@@ -4411,7 +4411,7 @@
       "put": {
         "summary": "organizer - update",
         "description": "Updates the organizer of the place with the given `placeId`. A list of organizers can be found using our [guide about finding existing organizers](/docs/entry-api/organizers/finding-and-reusing-organizers.md).\n\n<!-- theme: info -->\n\n> An organizer is not required on a place, and it can only have one.",
-        "operationId": "places-organizer-update",
+        "operationId": "place-organizer-update",
         "tags": [
           "Places"
         ],
