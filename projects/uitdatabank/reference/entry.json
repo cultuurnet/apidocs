@@ -2728,6 +2728,110 @@
         ]
       }
     },
+    "/events/{eventId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "event-typical-age-range-delete",
+        "tags": [
+          "Events"
+        ],
+        "description": "Deletes the age range from an event.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "event-typical-age-range-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the age range of the event with the given `eventId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The age range to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/videos": {
       "parameters": [
         {
@@ -4984,6 +5088,110 @@
           "Places"
         ],
         "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "place-typical-age-range-delete",
+        "tags": [
+          "Places"
+        ],
+        "description": "Deletes the age range from a place.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "place-typical-age-range-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the age range of the place with the given `placeId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The age range to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
