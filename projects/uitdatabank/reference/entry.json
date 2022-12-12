@@ -1086,7 +1086,7 @@
       "put": {
         "summary": "bookingInfo - update",
         "description": "Updates the bookingInfo for an event.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove (specific) bookingInfo perform a PUT request with empty properties.",
-        "operationId": "events-bookingInfo-update",
+        "operationId": "event-bookingInfo-put",
         "tags": [
           "Events"
         ],
@@ -3615,7 +3615,7 @@
       "put": {
         "summary": "bookingInfo - update",
         "description": "Updates the bookingInfo for a place.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove (specific) bookingInfo perform a PUT request with empty properties.",
-        "operationId": "places-bookingInfo-update",
+        "operationId": "place-bookingInfo-put",
         "tags": [
           "Places"
         ],
