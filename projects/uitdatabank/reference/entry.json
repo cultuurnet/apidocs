@@ -1441,7 +1441,7 @@
           }
         },
         "operationId": "event-description-put",
-        "description": "Updates the localized description of an event based on the given `eventId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as \\n\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
+        "description": "Updates the localized description of an event based on the given `eventId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\n`\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3887,7 +3887,7 @@
           }
         },
         "operationId": "place-description-put",
-        "description": "Updates the localized description of a place based on the given `placeId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as \\n\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
+        "description": "Updates the localized description of a place based on the given `placeId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\n`\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
