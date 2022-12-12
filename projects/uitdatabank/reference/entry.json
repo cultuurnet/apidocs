@@ -2535,7 +2535,7 @@
               }
             }
           },
-          "description": "the age range to set on the event."
+          "description": "The age range to set on the event."
         },
         "responses": {
           "204": {
