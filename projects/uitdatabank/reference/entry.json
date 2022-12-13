@@ -3279,7 +3279,7 @@
         "tags": [
           "Images"
         ],
-        "description": "Add images, which you can later link to one or more offers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "description": "Creates an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
         "requestBody": {
           "description": "The image and the metadata to create.",
           "content": {
