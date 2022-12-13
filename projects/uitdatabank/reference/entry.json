@@ -3281,22 +3281,27 @@
         ],
         "description": "Add images, which you can later link to one or more offers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
         "requestBody": {
+          "description": "The image and the metadata to create.",
           "content": {
             "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "file": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The image to add."
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A description of the image."
                   },
                   "copyrightHolder": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The copyrightHolder of the image."
                   },
-                  "langauge": {
-                    "type": "string"
+                  "language": {
+                    "type": "string",
+                    "description": "The language of the description. It must be exactly 2 lowercase letters long (for example \"nl\")."
                   }
                 }
               },
@@ -3323,7 +3328,7 @@
                   "properties": {
                     "@id": {
                       "type": "string",
-                      "description": "The url of the created image",
+                      "description": "The url of the created image.",
                       "example": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d"
                     },
                     "imageId": {
@@ -3335,7 +3340,7 @@
                   },
                   "required": [
                     "@id",
-                    "@imageId"
+                    "imageId"
                   ]
                 },
                 "examples": {
@@ -3350,7 +3355,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/file-missing\n* https://api.publiq.be/probs/body/file-invalid-type\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/file-missing\n* https://api.publiq.be/probs/body/file-invalid-type\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -7733,6 +7738,9 @@
       "name": "Events"
     },
     {
+      "name": "Images"
+    },
+    {
       "name": "News articles"
     },
     {
@@ -7740,9 +7748,6 @@
     },
     {
       "name": "Places"
-    },
-    {
-      "name": "Images"
     }
   ]
 }
