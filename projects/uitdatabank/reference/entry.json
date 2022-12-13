@@ -3272,6 +3272,110 @@
         }
       }
     },
+    "/images": {
+      "post": {
+        "summary": "image - create",
+        "operationId": "image-post",
+        "tags": [
+          "Images"
+        ],
+        "description": "Add images, which you can later link to one or more offers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "copyrightHolder": {
+                    "type": "string"
+                  },
+                  "langauge": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "@\"Screenshot 2017-11-28 12.37.19.png\"",
+                    "description": "Example description",
+                    "copyrightHolder": "Example copyrightHolder",
+                    "language": "nl"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The image was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string",
+                      "description": "The url of the created image",
+                      "example": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    },
+                    "imageId": {
+                      "type": "string",
+                      "description": "The id of the created image.",
+                      "example": "c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "format": "uuid"
+                    }
+                  },
+                  "required": [
+                    "@id",
+                    "@imageId"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "@id": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "imageId": "c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/file-missing\n* https://api.publiq.be/probs/body/file-invalid-type\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places": {
       "post": {
         "summary": "place - create",
@@ -7636,6 +7740,9 @@
     },
     {
       "name": "Places"
+    },
+    {
+      "name": "Images"
     }
   ]
 }
