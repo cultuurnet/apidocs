@@ -3289,7 +3289,8 @@
                 "properties": {
                   "file": {
                     "type": "string",
-                    "description": "The image to add."
+                    "format": "binary",
+                    "description": "The image to upload."
                   },
                   "description": {
                     "type": "string",
