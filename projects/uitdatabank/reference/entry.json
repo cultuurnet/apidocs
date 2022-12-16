@@ -3274,14 +3274,14 @@
     },
     "/images": {
       "post": {
-        "summary": "image - create",
+        "summary": "image - upload",
         "operationId": "image-post",
         "tags": [
           "Images"
         ],
-        "description": "Creates an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "description": "Uploads an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
         "requestBody": {
-          "description": "The image and the metadata to create.",
+          "description": "The image to upload and its metadata to store with it.",
           "content": {
             "multipart/form-data": {
               "schema": {
