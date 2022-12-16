@@ -3304,7 +3304,13 @@
                     "type": "string",
                     "description": "The language of the description. It must be exactly 2 lowercase letters long (for example \"nl\")."
                   }
-                }
+                },
+                "required": [
+                  "file",
+                  "description",
+                  "copyrightHolder",
+                  "language"
+                ]
               },
               "examples": {
                 "Example": {
