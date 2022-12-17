@@ -16,6 +16,8 @@ You start from an empty layout that you then expand yourself by adding rows and 
 * ✅ Suitable when the other predefined templates do not meed your requirements
 * ❌ Not recommended if you're new to widgets and still have to explore the different options
 
+If you choose to start from a blank template, we recommend you read the documentation about [adding rows & blocks](./rows-and-blocks.md) thoroughly.
+
 ## Agenda
 
 This is the most used template. This templates contains two rows:
@@ -28,6 +30,8 @@ This is the most used template. This templates contains two rows:
 * ✅ Suitable when you want to configure a searchable agenda
 * ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommend using the [tips template](#Tips) instead.
+
+If you pick an agenda template, you can directly start configuring the different blocks inside your agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-box.md) or [facets](./configuration/search-box.md)).
 
 ## Tips
 
@@ -42,6 +46,8 @@ The tips widget serves as a teaser for the full event calendar. The tips widget 
 * ✅ Suitable when you don't want to publish a full event calendar yourself (in that case you can link from the tips widget to an external agenda, like UiTinVlaanderen
 * ❌ Not suitable when you want a full and searchable agenda. We recommend using the [agenda template](#Agenda) instead.
 
+If you pick the tips template, you can directly start configuring the [tips block](./configuration/tips.md).
+
 ## UiTPAS en Paspartoe
 
 This is the same template as the [agenda template](#Agenda), but with all the UiTPAS setting already enabled for you.
@@ -51,3 +57,5 @@ This is the same template as the [agenda template](#Agenda), but with all the Ui
 * ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
+
+If you pick an UiTPAS en Paspartoe template, you can directly start configuring the different blocks inside your UiTPAS agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-box.md) or [facets](./configuration/search-box.md)).
