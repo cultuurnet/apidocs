@@ -31,7 +31,7 @@ This is the most used template. This templates contains two rows:
 * ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommend using the [tips template](#Tips) instead.
 
-If you pick an agenda template, you can directly start configuring the different blocks inside your agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-box.md) or [facets](./configuration/search-box.md)).
+If you pick an agenda template, you can directly start configuring the different blocks inside your agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-results.md) or [facets](./configuration/search-box.md)).
 
 ## Tips
 
@@ -58,4 +58,4 @@ This is the same template as the [agenda template](#Agenda), but with all the Ui
 * ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
 * ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
 
-If you pick an UiTPAS en Paspartoe template, you can directly start configuring the different blocks inside your UiTPAS agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-box.md) or [facets](./configuration/search-box.md)).
+If you pick an UiTPAS en Paspartoe template, you can directly start configuring the different blocks inside your UiTPAS agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-results.md) or [facets](./configuration/search-box.md)).
