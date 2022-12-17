@@ -20,9 +20,45 @@
     },
     {
       "type": "item",
-      "title": "Configuration",
-      "uri": "docs/configuration.md",
-      "slug": "configuration"
+      "title": "Rows and blocks",
+      "uri": "docs/rows-and-blocks.md",
+      "slug": "rows-and-blocks"
+    },
+    {
+      "type": "group",
+      "title": "Configuring blocks",
+      "items": [
+        {
+          "type": "item",
+          "title": "Facets",
+          "uri": "/docs/configuration/facets.md",
+          "slug": "configuration/facets"
+        },
+        {
+          "type": "item",
+          "title": "HTML",
+          "uri": "/docs/configuration/HTML.md",
+          "slug": "configuration/HTML"
+        },
+        {
+          "type": "item",
+          "title": "Search results",
+          "uri": "/docs/configuration/search-results.md",
+          "slug": "configuration/search-results"
+        },
+        {
+          "type": "item",
+          "title": "Search box",
+          "uri": "/docs/configuration/search-box.md",
+          "slug": "configuration/search-box"
+        },
+        {
+          "type": "item",
+          "title": "Tips",
+          "uri": "/docs/configuration/tips.md",
+          "slug": "configuration/tips"
+        }
+      ]
     },
     {
       "type": "item",
