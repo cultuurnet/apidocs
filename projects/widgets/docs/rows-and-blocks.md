@@ -1,12 +1,13 @@
-# Configuration
+# Rows and blocks
 
-Now that you have picked a [template](./template.md) for your widget, you can start adding rows and configuring each block inside the template individually. 
+Once you have picked a [template](./template.md) for your widget, you can add or delete rows and blocks or move them around. 
+
+<!-- theme: success -->
+>  In the [agenda](./getting-started#agenda), [tips](./getting-started#tips) and [UiTPAS en Paspartoe ](./getting-started#uitpas) template, the rows and blocks have already been prepared for you. If you have picked one of these template you can skip this documentation page.
 
 ## Rows
 
 A row is a group of columns that are on the same horizontal line. A row can contain one, two or three columns. In each of those columns, you can add one or more blocks. 
-
-> In the [agenda](./getting-started#agenda), [tips](./getting-started#tips) and [UiTPAS en Paspartoe ](./getting-started#uitpas) template, the rows and blocks are already been prepared for you. 
 
 There are five types of rows:
 1. **Volledige paginabreedte**: the row contains one column
@@ -15,7 +16,7 @@ There are five types of rows:
 4. **Drie kolommen met een dubbele zijbalk**: the row contains three columns, of which the one in the center twice as wide as the right and left one
 5. **Drie gelijke kolommen**: the row contains three columns of equal width
 
-[insert video]
+[insert image]
 
 ### Moving rows
 
@@ -38,7 +39,9 @@ There are five different types of blocks:
 3. **Verfijningen**: with a facet block a surfer can filter the search result list.
 4. **HTML**: with a HTML block you can add HTML content yourself to the widget page. You can do this by the means of a HTML editor or by writing HTML yourself.
 
-Each block can be added multiple times. However, for the sake of a smooth user experience we recommend to use only one block 
+Each block can be added multiple times. 
+
+[insert image]
 
 ### Moving blocks
 
