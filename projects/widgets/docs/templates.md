@@ -1,53 +1,53 @@
 # Templates
 
-When creating a widget you must always start from one of four different the templates.
+Bij het maken van een widget moet je altijd vetrekken van een van de vier verschillende aangeboden templates.
 
 ![templates](.././assets/images/templates.png)
 
-> Regardless of the template you pick, you can later on extensively customize your widget to your own preferences and taste.
+> Je kan later je widget nog uitgebreid aanpassen, ongeacht het gekozen sjabloon.
 
 ## Leeg
 
-You start from an empty layout that you then expand yourself by adding rows and assigning blocks (e.g. search box or search results) to these rows.
+In dit template begin je met een lege layout die je vervolgens zelf uitbreidt door rijen toe te voegen en blokken (zoals zoekbox of zoekresultaten) aan deze rijen toe te wijzen.
 
 <https://youtu.be/4TxmTGcOUAY>
 
-* ✅ Suitable when you already have a very good idea of which kind of widget you want to configure
-* ✅ Suitable when the other predefined templates do not meed your requirements
-* ❌ Not recommended if you're new to widgets and still have to explore the different options
+* ✅ Geschikt wanneer je al een heel goed idee hebt over welk soort widget je wilt configureren
+* ✅ Geschikt als de andere sjablonen niet aan je eisen voldoen
+* ❌ Niet aanbevolen wanneer je voor de eerste keer een widget bouwt en de verschillende opties nog moet ontdekken
 
 ## Agenda
 
-This is the most used template. This templates contains two rows:
+Dit is het meest gebruikte template. Dit template bevat twee rijen:
 
-* The top row contains a search box (full length)
-* The second row contains facet filters (e.g. filters on the region, date, etc.) on the left side and search results in the center
+* De bovenste rij bevat een zoekbox (over de volledige lengte)
+* De tweede rij bevat verfijningen (met filters op de regio, datum, enz.) aan de linkerkant en zoekresultaten in het midden
 
 <https://youtu.be/RG1LBY3fuXw>
 
-* ✅ Suitable when you want to configure a searchable agenda
-* ✅ Suitable when you want to get acquainted with the different possibilities of the widgets
-* ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommend using the [tips template](#Tips) instead.
+* ✅ Geschikt wanneer je een doorzoekbare agenda wilt configureren
+* ✅ Geschikt wanneer je kennis wilt maken met de verschillende mogelijkheden van de widgets
+* ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
 
 ## Tips
 
-This template can be used to make a short list of events that you want to highlight. The highlighted events can be displayed below or next to each other.
+Dit sjabloon kan worden gebruikt om een korte lijst samen te stellen van activiteiten die je in de kijker wilt plaatsen. De evenementen kunnen onder of naast elkaar worden weergegeven.
 
-The tips widget serves as a teaser for the full event calendar. The tips widget is often used to generate traffic to the full calendar. Therefore it is usually embedded on the home page or another frequently visited page.
+De tipswidget dient als teaser voor de volledige evenementenkalender. Tipswidgets worden vaak gebruikt om bezoekers van je website naar de volledige kalender toe te leiden. Daarom wordt hij meestal opgenomen op de homepage of een andere vaak bezochte pagina.
 
 <https://youtu.be/xezCXkmRsks>
 
-* ✅ Suitable when you want to highlight certain events
-* ✅ Suitable when you want to generate traffic to your event calendar
-* ✅ Suitable when you don't want to publish a full event calendar yourself (in that case you can link from the tips widget to an external agenda, like UiTinVlaanderen
-* ❌ Not suitable when you want a full and searchable agenda. We recommend using the [agenda template](#Agenda) instead.
+* ✅ Geschikt wanneer je bepaalde evenementen in de kijker wilt plaatsen
+* ✅ Geschikt wanneer je bezoekers van je website naar je evenementenkalender wilt toeleiden
+* ✅ Geschikt wanneer je zelf geen volledige evenementenkalender wilt publiceren op je website. In dat geval kan je vanuit de tipswidget linken naar een externe agenda, zoals UiTinVlaanderen.
+* ❌ Niet geschikt wanneer je een volledige en doorzoekbare agenda wilt. Wij raden je aan in de plaats daarvan het [agenda-template](#Agenda) te gebruiken
 
 ## UiTPAS en Paspartoe
 
-This is the same template as the [agenda template](#Agenda), but with all the UiTPAS setting already enabled for you.
+Dit is hetzelfde template als het [agenda template](#Agenda), maar met alle UiTPAS-instellingen al voor jou aangevinkt.
 
 <https://youtu.be/gyefNH6ksjg>
 
-* ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
-* ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
-* ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
+* ✅ Geschikt wanneer je een doorzoekbare agenda met UiTPAS-evenementen wilt configureren
+* ❌ Niet geschikt wanneer het bereik van je agenda geen UiTPAS-evenementen bevat
+* ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
