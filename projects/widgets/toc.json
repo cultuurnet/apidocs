@@ -2,15 +2,15 @@
   "items": [
     {
       "type": "item",
-      "title": "Introduction",
-      "uri": "docs/introduction.md",
-      "slug": "introduction"
+      "title": "Inleiding",
+      "uri": "docs/inleiding.md",
+      "slug": "inleiding"
     },
     {
       "type": "item",
-      "title": "Getting started",
-      "uri": "docs/getting-started.md",
-      "slug": "getting-started"
+      "title": "Aan de slag",
+      "uri": "docs/aan-de-slag.md",
+      "slug": "aan-de-slag"
     },
     {
       "type": "item",
@@ -20,45 +20,45 @@
     },
     {
       "type": "item",
-      "title": "Configuration",
-      "uri": "docs/configuration.md",
-      "slug": "configuration"
+      "title": "Configuratie",
+      "uri": "docs/configuratie.md",
+      "slug": "configuratie"
     },
     {
       "type": "item",
-      "title": "Styling",
-      "uri": "docs/styling.md",
-      "slug": "styling"
+      "title": "Stijlen",
+      "uri": "docs/stijlen.md",
+      "slug": "stijlen"
     },
     {
       "type": "item",
-      "title": "Publish and embed on your website",
-      "uri": "docs/publish-and-embed-on-your-website.md",
-      "slug": "publish-and-embed-on-your-website"
+      "title": "Publiceren en embedden op je website",
+      "uri": "docs/publiceren-en-embedden-op-je-website.md",
+      "slug": "publiceren-en-embedden-op-je-website"
     },
     {
       "type": "item",
-      "title": "After publication",
-      "uri": "docs/after-publication.md",
-      "slug": "after-publication"
+      "title": "Na het publiceren",
+      "uri": "docs/na-het-publiceren.md",
+      "slug": "na-het-publiceren"
     },
     {
       "type": "item",
-      "title": "Advanced settings",
-      "uri": "docs/advanced-settings.md",
-      "slug": "advanced-settings"
+      "title": "Geavanceerde instellingen",
+      "uri": "docs/geavanceerde-instellingen.md",
+      "slug": "geavanceerde-instellingen"
     },
     {
       "type": "item",
-      "title": "Language settings",
-      "uri": "docs/language-settings.md",
-      "slug": "language-settings"
+      "title": "Taalinstellingen",
+      "uri": "docs/taalinstellingen.md",
+      "slug": "taalinstellingen"
     },
     {
       "type": "item",
-      "title": "Browser compatibility",
-      "uri": "docs/browser-compatibility.md",
-      "slug": "browser-compatibility"
+      "title": "Compatibiliteit",
+      "uri": "docs/compatibiliteit.md",
+      "slug": "compatibiliteit"
     }
   ]
 }
