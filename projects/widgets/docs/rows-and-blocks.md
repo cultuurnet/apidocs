@@ -1,58 +1,58 @@
-# Rows and blocks
+# Rijen en blokken
 
-Once you have picked a [template](./template.md) for your widget, you can add or delete rows and blocks or move them around. 
+Als je een [template](./template.md) hebt gekozen voor je widget, kan je rijen en blokken, toevoegen, verwijderen en/of verplaatsen. 
 
 <!-- theme: success -->
->  In the [agenda](./getting-started#agenda), [tips](./getting-started#tips) and [UiTPAS en Paspartoe ](./getting-started#uitpas) template, the rows and blocks have already been prepared for you. If you have picked one of these template you can skip this documentation page.
+> In de [agenda](./getting-started#agenda), [tips](./getting-started#tips) en [UiTPAS en Paspartoe ](./getting-started#uitpas) sjabloon zijn de rijen en blokken al voor jou klaargezet. Als je een van deze templates hebt gekozen, kan je deze documentatiepagina overslaan.
 
-## Rows
+## Rijen
 
-A row is a group of columns that are on the same horizontal line. A row can contain one, two or three columns. In each of those columns, you can add one or more blocks. 
+Een rij is een groep kolommen die op dezelfde horizontale lijn staan. Een rij kan één, twee of drie kolommen bevatten. In elk van die kolommen kan je vervolgens één of meerdere blokken toevoegen. 
 
-There are five types of rows:
-1. **Volledige paginabreedte**: the row contains one column
-2. **Twee kolommen met een zijbalk links**: the row contains two columns, of which the right one is twice as wide as the left one
-3. **Twee kolommen met een zijbalk rechts**: the row contains two columns, of which the left one is twice as wide as the right one
-4. **Drie kolommen met een dubbele zijbalk**: the row contains three columns, of which the one in the center twice as wide as the right and left one
-5. **Drie gelijke kolommen**: the row contains three columns of equal width
+Er zijn vijf verschillende soorten rijen:
+1. **Volledige paginabreedte**: de rij bevat één kolom
+2. **Twee kolommen met een zijbalk links**: de rij bevat twee kolommen, waarvan de rechterkolom twee keer zo breed is als de linkerkolom
+3. **Twee kolommen met een zijbalk rechts**: de rij bevat twee kolommen, waarvan de linkerkolom twee keer zo breed is als de rechterkolom
+4. **Drie kolommen met een dubbele zijbalk**: de rij bevat drie kolommen, waarvan de middelste twee keer zo breed is als de rechterkolom en de linkerkolom
+5. **Drie gelijke kolommen**: de rij bevat drie kolommen van gelijke breedte
 
-[insert image]
+[Afbeelding invoegen]
 
-### Moving rows
+### Rijen verplaatsen
 
-You can move rows up or down by using the arrow icons in the top left corner of each row.
+Je kan rijen omhoog of omlaag verplaatsen met behulp van de pijltjes in de linkerbovenhoek van elke rij.
 
-[insert video]
+[video invoegen]
 
-### Deleting rows
+### Rijen verwijderen
 
-You can delete a row by using the trash icon in the top right corner of the row. When you delete a row, the complete row and all the blocks inside the row will be removed from the widget. 
+Je kan een rij verwijderen door op het prullenbak-icoon in de rechterbovenhoek van de rij te klikken. Wanneer je een rij verwijdert, wordt de volledige rij en alle blokken in die rij uit de widget verwijderd. 
 
-[insert video]
+[Video invoegen]
 
-## Blocks
+## Blokken
 
-There are five different types of blocks:
-1. **Zoekbox**: with a search box you add a search form that surfers can use you search activitities. 
-2. **Zoekresultaten**: with a search result block you add a list of activities. In this block you determine which events are displayed in the widget agenda, and which information is shown about the events (location, date & time, price information, etc.). This block also contains the setting for the detail page of an event.
-3. **Tips**:: with a tips block you can highlight certain events. 
-3. **Verfijningen**: with a facet block a surfer can filter the search result list.
-4. **HTML**: with a HTML block you can add HTML content yourself to the widget page. You can do this by the means of a HTML editor or by writing HTML yourself.
+Er zijn vijf verschillende soorten blokken:
+1. **Zoekbox**: met een zoekbox voeg je een zoekformulier toe waarmee surfers de agenda kunnen doorzoeken. 
+2. **Zoekresultaten**: met een zoekresultatenblok voeg je een lijst met activiteiten toe. In dit blok bepaal je welke evenementen worden getoond in de widgetagenda, en welke informatie over de evenementen wordt getoond (locatie, datum & tijd, prijsinformatie, etc.). Dit blok bevat ook de instellingen voor de detailpagina van een evenement.
+3. **Tips**: met een tipsblok kan je bepaalde evenementen in de kijker zetten. 
+3. **Verfijningen**: met een verfijningenblok kan een surfer de lijst met zoekresultaten filteren.
+4. **HTML**: met een HTML blok kan je zelf HTML content toevoegen aan je widget. Dit kan met behulp van een tekst editor of door zelf HTML te schrijven.
 
-Each block can be added multiple times. 
+Elk blok kan meerdere keren worden toegevoegd aan een rij.
 
-[insert image]
+[Afbeelding invoegen]
 
-### Moving blocks
+### Blokken verplaatsen
 
-You can move blocks around with the drag and drop icon in the top left corner of each block. You can move a block 
-* to another place inside the same row
-* to another row
+Je kan blokken verplaatsen met het _drag and drop_ icoontje linksbovenaan in elk blok. Je kan een blok verplaatsen 
+* naar een andere plaats in dezelfde rij
+* naar een andere rij
 
-[insert video]
+[video invoegen]
 
-### Deleting blocks
+### Blokken verwijderen
 
-You can delete a block by using the trash icon in the top right corner of the block. 
+Je kan een blok verwijderen met het prullenbakicoontje in de rechterbovenhoek van het blok. 
 
-[insert video]
+[video invoegen]
