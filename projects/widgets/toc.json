@@ -26,37 +26,37 @@
     },
     {
       "type": "group",
-      "title": "Configuring blocks",
+      "title": "Configuratie",
       "items": [
         {
           "type": "item",
-          "title": "Facets",
-          "uri": "/docs/configuration/facets.md",
-          "slug": "configuration/facets"
-        },
-        {
-          "type": "item",
           "title": "HTML",
-          "uri": "/docs/configuration/HTML.md",
-          "slug": "configuration/HTML"
-        },
-        {
-          "type": "item",
-          "title": "Search results",
-          "uri": "/docs/configuration/search-results.md",
-          "slug": "configuration/search-results"
-        },
-        {
-          "type": "item",
-          "title": "Search box",
-          "uri": "/docs/configuration/search-box.md",
-          "slug": "configuration/search-box"
+          "uri": "/docs/configuration/html.md",
+          "slug": "configuration/html"
         },
         {
           "type": "item",
           "title": "Tips",
           "uri": "/docs/configuration/tips.md",
           "slug": "configuration/tips"
+        },
+        {
+          "type": "item",
+          "title": "Verfijningen",
+          "uri": "/docs/configuration/verfijningen.md",
+          "slug": "configuration/verfijningen"
+        },
+        {
+          "type": "item",
+          "title": "Zoekbox",
+          "uri": "/docs/configuration/zoekbox.md",
+          "slug": "configuration/zoekbox"
+        },
+        {
+          "type": "item",
+          "title": "Zoekresultaten",
+          "uri": "/docs/configuration/zoekresultaten.md",
+          "slug": "configuration/zoekresultaten"
         }
       ]
     },
