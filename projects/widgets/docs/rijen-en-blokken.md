@@ -3,7 +3,7 @@
 Als je een [template](./templates.md) hebt gekozen voor je widget, kan je rijen en blokken, toevoegen, verwijderen en/of verplaatsen. 
 
 <!-- theme: success -->
-> In de [agenda](./templates.md#Agenda), [tips](./templates.md#Tips) en [UiTPAS en Paspartoe ](./templates.md#UiTPAS-en-Paspartoe) sjabloon zijn de rijen en blokken al voor jou klaargezet. Als je een van deze templates hebt gekozen, kan je deze documentatiepagina overslaan.
+> In de [agenda](./templates.md#Agenda), [tips](./templates.md#Tips) en [UiTPAS en Paspartoe](./templates.md#UiTPAS-en-Paspartoe) sjabloon zijn de rijen en blokken al voor jou klaargezet. Als je een van deze templates hebt gekozen, kan je deze documentatiepagina overslaan.
 
 ## Rijen
 
