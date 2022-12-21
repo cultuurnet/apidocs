@@ -69,7 +69,7 @@ Tot slot bieden we extra groepfilters aan:
 
 Aan een verfijningenblok kan je zelf gemaakte filters toevoegen, onder de naam `groepfilters`. De groepfilters stellen je in staat filters te maken op maat je doelgroep.
 
-Een groepfilter is een verzameling van één of meerdere filters (SAPI 3 quries) die je een logische naam geeft. 
+Een groepfilter is een verzameling van één of meerdere filters (SAPI 3 queries) die je een logische naam geeft. 
 
 Een groepfilter binnen het verfijingenblok bestaat uit volgende elementen:
 
