@@ -187,7 +187,7 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/entry-api/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
 
 #### Leeslink
 
