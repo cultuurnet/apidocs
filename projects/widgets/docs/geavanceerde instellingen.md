@@ -7,7 +7,7 @@ De widgetbouwer laat toe om een aantal geavanceerde instellingen te definiëren 
 <!-- theme: warning -->
 > We raden het gebruik van deze instellingen enkel aan wanneer het inladen of weergeven van je widgetpagina niet goed verloopt.
 
-## 1. Forceer smalle weergave
+## Forceer smalle weergave
 
 Plak je je widget in in een smalle container (< `576 px`), dan is mobiele weergave in de meeste gevallen wenselijk. Je kan de smalle weergave forceren via geavanceerde instellingen door het selectievakje `Forceer smalle weergave` aan te vinken.
 
@@ -16,7 +16,7 @@ Houd er rekening mee dat binnen de mobiele weergave:
 * afbeeldingen boven of onder de event-informatie zal verschijnen in plaats van links of rechts van de event-informatie
 * verfijningen standaard ingeklapt zijn
 
-## 2. jQuery niet inladen
+## jQuery niet inladen
 
 Wanneer de website waarop je de widget integreert een afwijkende jQuery-versie gebruikt, kan het zijn dat sommige elementen op je website zich anders gedragen dan voorheen. De reden hiervoor kan liggen bij het inladen van een andere jQuery-versie door de widget. 
 
