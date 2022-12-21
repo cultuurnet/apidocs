@@ -1,3 +1,7 @@
+---
+stoplight-id: 087a78da0db51
+---
+
 # Rijen en blokken
 
 Als je een [template](./template.md) hebt gekozen voor je widget, kan je rijen en blokken, toevoegen, verwijderen en/of verplaatsen. 

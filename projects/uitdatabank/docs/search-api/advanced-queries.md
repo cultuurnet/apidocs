@@ -1,8 +1,10 @@
 # Advanced queries
 
-With advanced queries you can make more complex queries, using boolean operators, search keywords and/or specific field values, and grouping.
+Every endpoint on Search API supports various URL parameters for the most common filters. However these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
 
-The syntax is based on the Lucene query syntax. More info about the syntax can be found in the [ElasticSearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax).
+With advanced queries you can make more complex queries using boolean operators, keywords and/or specific field values, and grouping.
+
+Advanced queries are defined using the `q` parameter which uses the Lucene query syntax. More details about the syntax can be found in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax) and [Apache Lucene documentation](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Escaping%20Special%20Characters).
 
 ## Supported fields
 
@@ -1103,7 +1105,7 @@ The `+` sign should be encoded for as `%2B`. Otherwise it will be interpreted as
 GET /events/?q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
 ```
 
-## Resources
+## Other resources
 
-* [Elastic Search Lucene Query Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
+* [Elasticsearch Lucene Query Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax)
 * [List of special characters that require escaping](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html#Escaping%20Special%20Characters)

@@ -25,28 +25,52 @@
       "uri": "reference/entry.json"
     },
     {
+      "type": "group",
+      "title": "Guides",
+      "items": [
+        {
+          "type": "group",
+          "title": "Events",
+          "items": [
+            {
+              "type": "item",
+              "title": "Creating school events",
+              "uri": "/docs/entry-api/events/school-events.md",
+              "slug": "entry-api/events/school-events"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Places",
+          "items": [
+            {
+              "type": "item",
+              "title": "Finding and reusing places",
+              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
+              "slug": "entry-api/places/finding-and-reusing-places"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Organizers",
+          "items": [
+            {
+              "type": "item",
+              "title": "Finding and reusing organizers",
+              "uri": "/docs/entry-api/organizers/finding-and-reusing-organizers.md",
+              "slug": "entry-api/organizers/finding-and-reusing-organizers"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "item",
       "title": "Requirements before going live",
       "uri": "/docs/entry-api/requirements-before-going-live.md",
       "slug": "entry-api/requirements-before-going-live"
-    },
-    {
-    "type": "group",
-    "title": "Guides",
-    "items": [
-        {
-          "type": "item",
-          "title": "Reusing places & organizers",
-          "uri": "/docs/entry-api/reuse-places-organizers.md",
-          "slug": "entry-api/reuse-places-organizers"
-        },
-        {
-          "type": "item",
-          "title": "School events",
-          "uri": "/docs/entry-api/school-events.md",
-          "slug": "entry-api/school-events"
-        }
-      ] 
     },
     {
       "type": "divider",
@@ -62,40 +86,52 @@
       "title": "Guides",
       "items": [
         {
-          "type": "item",
-          "title": "Advanced queries",
-          "uri": "/docs/search-api/advanced-queries.md",
-          "slug": "search-api/advanced-queries"
+          "type": "group",
+          "title": "Getting started",
+          "items": [
+            {
+              "type": "item",
+              "title": "Default filters",
+              "uri": "/docs/search-api/default-filters.md",
+              "slug": "search-api/default-filters"
+            },
+            {
+              "type": "item",
+              "title": "Embedding",
+              "uri": "/docs/search-api/embedding.md",
+              "slug": "search-api/embedding"
+            },
+            {
+              "type": "item",
+              "title": "Pagination",
+              "uri": "/docs/search-api/pagination.md",
+              "slug": "search-api/pagination"
+            },
+            {
+              "type": "item",
+              "title": "Sorting",
+              "uri": "/docs/search-api/sorting.md",
+              "slug": "search-api/sorting"
+            }
+          ]
         },
         {
-          "type": "item",
-          "title": "Default filters",
-          "uri": "/docs/search-api/default-filters.md",
-          "slug": "search-api/default-filters"
-        },
-        {
-          "type": "item",
-          "title": "Embedding",
-          "uri": "/docs/search-api/embedding.md",
-          "slug": "search-api/embedding"
-        },
-        {
-          "type": "item",
-          "title": "Pagination",
-          "uri": "/docs/search-api/pagination.md",
-          "slug": "search-api/pagination"
-        },
-        {
-          "type": "item",
-          "title": "Sorting",
-          "uri": "/docs/search-api/sorting.md",
-          "slug": "search-api/sorting"
-        },
-        {
-          "type": "item",
-          "title": "Facets",
-          "uri": "/docs/search-api/facets.md",
-          "slug": "search-api/facets"
+          "type": "group",
+          "title": "Advanced features",
+          "items": [
+            {
+              "type": "item",
+              "title": "Advanced queries",
+              "uri": "/docs/search-api/advanced-queries.md",
+              "slug": "search-api/advanced-queries"
+            },
+            {
+              "type": "item",
+              "title": "Facets",
+              "uri": "/docs/search-api/facets.md",
+              "slug": "search-api/facets"
+            }
+          ]
         }
       ]
     },

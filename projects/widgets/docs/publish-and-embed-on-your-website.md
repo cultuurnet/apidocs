@@ -1,3 +1,0 @@
-# publish and embed on your website
-
-...
