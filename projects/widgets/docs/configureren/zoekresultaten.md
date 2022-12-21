@@ -1,17 +1,18 @@
 # Zoekresultaten
 
 Een zoekresultatenblok bevat altijd een verzameling activiteiten. Voor dit blok kan je bepalen
-* **welke evenementen** worden opgehaald 
+
+* **welke evenementen** worden opgehaald
 * **welke informatie** wordt getoond over de evenementen (locatie, datum & tijd, prijsinformatie, etc.)
 * **hoe** de informatie **visueel** wordt weergegeven.
 
 Hieronder overlopen we elke mogelijke instelling voor het zoekresultatenblok. De instellingen zijn gerangschikt volgens hun positie in de widget builder (van boven naar beneden).
 
-## Instellingen 
+## Instellingen
 
 #### Naam zoekresultaten
 
-Met dit veld kan je de naam van de zoekresultatenpagina wijzigen. 
+Met dit veld kan je de naam van de zoekresultatenpagina wijzigen.
 
 De naam van deze pagina is standaard `zoekresultaten-1` en wordt niet getoond in de agenda die je uiteindelijk publiceert op je website.
 
@@ -32,13 +33,15 @@ Wanneer deze instelling aanstaat, worden de verschillende velden waarop een bezo
 #### Verbergfilter
 
 Met deze instelling kan je filters tonen die een bezoeker van je agenda kan gebruiken om bepaalde evenementen te verbergen uit de zoekresultaten:
-* `langlopend aanbod`: een filter om langlopende evenementen te verbergen 
+
+* `langlopend aanbod`: een filter om langlopende evenementen te verbergen
 * `permanent aanbod`: een filter om permanente evenementen te verbergen
 
 #### Labels altijd weergeven als iconen
 
 Standaard worden labels altijd als volgt weergegeven:
-* als tekst op desktop 
+
+* als tekst op desktop
 * als iconen op mobiele toestellen (tablet / smartphone)
 
 Met deze instelling kan je bepalen dat labels altijd als pictogrammen worden weergegeven, ongeacht de viewport.
@@ -46,6 +49,7 @@ Met deze instelling kan je bepalen dat labels altijd als pictogrammen worden wee
 #### Weergave van evenementen
 
 Hiermee bepaal je hoe de evenementen visueel worden weergegeven:
+
 * `Lijstweergave`: toont de evenementen in een verticale lijst
 * `Tegelvorm`: geeft de evenementen weer in een raster
 
@@ -87,13 +91,13 @@ Bepaal of het Museumpas-logo mag worden weergegeven bij evenementen die toeganke
 
 #### Beschrijving
 
-Bepaal of je de beschrijving van evenementen wilt tonen of niet. 
+Bepaal of je de beschrijving van evenementen wilt tonen of niet.
 
 Wanneer deze instelling ingeschakeld is, kan je ook bepalen om het aantal tekens dat van de beschrijving moet worden getoond te beperken.
 
 #### Toon UiT-tip badge
 
-Bepaal of een badge mag worden getoond bij evenementen die in de media onder de aandacht zijn gebracht. 
+Bepaal of een badge mag worden getoond bij evenementen die in de media onder de aandacht zijn gebracht.
 
 Indien ingeschakeld, is het mogelijk om alleen een badge te tonen wanneer een evenement is uitgelicht door een bepaald mediakanaal, met de instelling `Toon enkel UiT-tip badge van een specifieke curator`.
 
@@ -137,7 +141,7 @@ Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
 #### Toegang
 
-Bepaal of je wilt tonen voor wie het evenement toegankelijk is. 
+Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
 > Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
 
@@ -164,16 +168,18 @@ Bepaal de hoogte van de afbeeldingen.
 * **Altijd een afbeelding tonen**
 
 Indien ingeschakeld, wordt een standaard afbeelding getoond wanneer een evenement geen afbeelding heeft:
+
 * `UiT-logo`: de standaardafbeelding is het UiT-logo
-* `Themafoto`: de standaardafbeelding is een thematische foto. Voor elk evenementtype is er een andere afbeelding. 
+* `Themafoto`: de standaardafbeelding is een thematische foto. Voor elk evenementtype is er een andere afbeelding.
 
 Indien uitgeschakeld, wordt er geen afbeelding getoond wanneer een evenement geen afbeelding heeft.
 
 * **Positie van de afbeelding**
 
 Bepaal de relatieve positie van de afbeeldingen:
-* `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud. 
-* `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud. 
+
+* `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud.
+* `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud.
 
 `[INSERT VIDEO]`
 
@@ -191,7 +197,7 @@ Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/terms.md
 
 #### Leeslink
 
-Bepaal per evenement of er een leeslink mag worden getoond. 
+Bepaal per evenement of er een leeslink mag worden getoond.
 
 Wanneer een bezoeker van je agenda op deze link klikt, wordt hij of zij naar de detailpagina van het evenement gestuurd.
 
@@ -233,9 +239,10 @@ Bepaal of de UiTPAS-voordelen die de organisator van het evenement aanbiedt moge
 
 #### Taalwisselaar
 
-Bepaal of een taalwisselaar getoond mag worden of niet. 
+Bepaal of een taalwisselaar getoond mag worden of niet.
 
 Met de taalwisselaar kan je op de detailpagina wisselen tussen de volgende talen:
+
 * Nederlands (`NL`)
 * Frans (`FR`)
 * Duits (`DE`)
@@ -243,13 +250,13 @@ Met de taalwisselaar kan je op de detailpagina wisselen tussen de volgende talen
 
 > Slechts een kleine minderheid van de evenementen in UiTdatabank is vertaald. Als je deze instelling inschakelt, zorg je er best voor dat de evenementen in je agenda vertaald zijn.
 
-#### Deelknoppen 
+#### Deelknoppen
 
 Bepaal of deelknoppen voor Facebook & Twitter mogen worden getoond of niet.
 
 #### Terugknop
 
-Bepaal of een "terugknop" op de detailpagina mag worden getoond of niet. 
+Bepaal of een "terugknop" op de detailpagina mag worden getoond of niet.
 
 Standaard stuurt de terugknop de bezoeker altijd terug naar de laatst bezochte pagina. Deze pagina kan een andere pagina zijn dan het agendaoverzicht (wat in de meeste gevallen de gewenste pagina is om naar terug te keren). Als je ervoor wilt zorgen dat de terugknop altijd naar een bepaalde pagina gaat (bijvoorbeeld het agendaoverzicht), kan je deze url instellen in het veld `URL terugknop`.
 
@@ -271,7 +278,7 @@ Bepaal of het Museumpas-logo mag worden getoond bij evenementen die toegankelijk
 
 #### Beschrijving
 
-Bepaal of je de beschrijving wilt tonen of niet. 
+Bepaal of je de beschrijving wilt tonen of niet.
 
 Indien ingeschakeld, kan je ook bepalen om het aantal tekens dat moet worden weergegeven van de beschrijving te beperken.
 
@@ -297,7 +304,7 @@ Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
 #### Toegang
 
-Bepaal of je wilt tonen voor wie het evenement toegankelijk is. 
+Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
 > Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
 
@@ -324,16 +331,18 @@ Bepaal de hoogte van de afbeeldingen.
 * **Altijd een afbeelding tonen**
 
 Indien ingeschakeld, wordt een standaard afbeelding getoond wanneer een evenement geen afbeelding heeft:
+
 * `UiT-logo`: de standaardafbeelding is het UiT-logo
-* `Themafoto`: de standaardafbeelding is een thematische foto. Voor elk evenementtype is er een andere afbeelding. 
+* `Themafoto`: de standaardafbeelding is een thematische foto. Voor elk evenementtype is er een andere afbeelding.
 
 Indien uitgeschakeld, wordt er geen afbeelding getoond wanneer een evenement geen afbeelding heeft.
 
 * **Positie van de afbeelding**
 
 Bepaal de relatieve positie van de afbeeldingen:
-* `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud. 
-* `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud. 
+
+* `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud.
+* `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud.
 
 #### Video
 
@@ -367,22 +376,24 @@ Als je meerdere waarden wilt toevoegen, moet je ze scheiden met een puntkomma (`
 
 ### Extra parameters
 
-In de sectie extra parameters bepaal je welke evenementen in je agenda worden weergegeven. 
+In de sectie extra parameters bepaal je welke evenementen in je agenda worden weergegeven.
 
 #### Query
 
-De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. 
+De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank.
 
 > In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
 
 **Voorbeelden**
 
 Alle evenementen in Gent ophalen:
+
 ```
 address.\*.postcode:90*
 ```
 
 Alle evenementen in Gent met het type `concert` of `expositie` ophalen:
+
 ```
 address.\*.postalCode:90* AND terms.id:(0.50.4.0.0 OR 0.0.0.0)
 ```
@@ -416,8 +427,10 @@ Standaard worden alleen evenementen in België opgehaald in de UiT-widgets. Je k
 * `Doorzoek aanbod in alle landen`: de zoekresultaten tonen evenementen ongeacht de locatie (land) waar ze plaatsvinden.
 
 De bovenstaande keuzemogelijkheden dekken de meest voorkomende gevallen. Het is echter ook mogelijk om de zoekresultaten binnen een widget te beperken tot evenementen die plaatsvinden in een land naar keuze. Je kunt dit doen door de volgende twee stappen te volgen:
-1. Duid het selectievakje `Doorzoek aanbod in alle landen` aan. 
+
+1. Duid het selectievakje `Doorzoek aanbod in alle landen` aan.
 2. Voeg de parameter `address.\*.addressCountry` toe aan je query en voeg als waarde de landen toe waarvoor je evenementen wilt ophalen.
+
 ```
 address.\*.addressCountry:(BE OR DE)
 ```
