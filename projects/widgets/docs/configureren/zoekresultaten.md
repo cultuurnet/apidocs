@@ -187,7 +187,7 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/taxonomy-api/guides/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/entry-api/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
 
 #### Leeslink
 
@@ -293,13 +293,13 @@ Bepaal of de organisator van de evenementen getoond mag worden of niet.
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is. 
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -373,7 +373,7 @@ In de sectie extra parameters bepaal je welke evenementen in je agenda worden we
 
 De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. 
 
-> In het queryveld kan je uitsluitend de [advanced query syntax](../uitdatabank/search-api/advanced-queries.md) gebruiken.
+> In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
 
 **Voorbeelden**
 

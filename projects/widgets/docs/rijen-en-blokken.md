@@ -3,7 +3,7 @@
 Als je een [template](./templates.md) hebt gekozen voor je widget, kan je rijen en blokken, toevoegen, verwijderen en/of verplaatsen. 
 
 <!-- theme: success -->
-> In de [agenda](./aan-de-slag#agenda), [tips](./aan-de-slag#tips) en [UiTPAS en Paspartoe ](./aan-de-slag#uitpas) sjabloon zijn de rijen en blokken al voor jou klaargezet. Als je een van deze templates hebt gekozen, kan je deze documentatiepagina overslaan.
+> In de [agenda](./aan-de-slag.md#agenda), [tips](./aan-de-slag.md#tips) en [UiTPAS en Paspartoe ](./aan-de-slag.md#uitpas) sjabloon zijn de rijen en blokken al voor jou klaargezet. Als je een van deze templates hebt gekozen, kan je deze documentatiepagina overslaan.
 
 ## Rijen
 
@@ -45,7 +45,7 @@ Elk blok kan meerdere keren worden toegevoegd aan een rij.
 
 ### Blokken verplaatsen
 
-Je kan blokken verplaatsen met het _drag and drop_ icoontje linksbovenaan in elk blok. Je kan een blok verplaatsen 
+Je kan blokken verplaatsen met het *drag and drop* icoontje linksbovenaan in elk blok. Je kan een blok verplaatsen 
 * naar een andere plaats in dezelfde rij
 * naar een andere rij
 

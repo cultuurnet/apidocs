@@ -92,10 +92,10 @@ Vervolgens voeg je één of meerdere filters toe aan de groep. Voor elke filter 
 Omdat de verfijningen een samenvatting zijn van de zoekresultaten, moet een verfijningenblok steeds gekoppeld zijn aan een zoekresultatenblok.
 
 <!-- theme: success -->
-> Binnen het [agendatemplate](./templates.md#Agenda) en het [UiTPAS en Paspartoe template](./templates.md#UiTPAS-en-Paspartoe) is het verfijningenblok steeds automatisch aan de zoekresultaten gekoppeld. Hierdoor hoef je dit niet meer manueel te doen.
+> Binnen het [agendatemplate](../templates.md#Agenda) en het [UiTPAS en Paspartoe template](../templates.md#UiTPAS-en-Paspartoe) is het verfijningenblok steeds automatisch aan de zoekresultaten gekoppeld. Hierdoor hoef je dit niet meer manueel te doen.
 
 In sommige gevallen moet je een verfijningenblok zelf manueel koppelen aan een zoekresultatenblok:
-* Wanneer je vertrekt van een [leeg template](./templates.md#Leeg)
+* Wanneer je vertrekt van een [leeg template](../templates.md#Leeg)
 * Wanneer je een widget hebt met meer dan één zoekresultatenblok
 
 `[INSERT VIDEO]`

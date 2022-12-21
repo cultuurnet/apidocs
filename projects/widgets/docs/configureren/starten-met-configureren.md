@@ -8,7 +8,7 @@ Eens je een template hebt gekozen is het tijd om te bepalen:
 
 Het configureren gebeurt per blok. Hiervoor klik je op het blok dat je wilt configureren en vervolgens op het tandwieletje dat links bovenaan het blok verschijnt. 
 
-[insert video]
+`[INSERT VIDEO]`
 
 Het configureren van de blokken is heel eenvoudig en gebeurt voornamelijk door het aan- en uitvinken van vakjes. Op sommige plaatsen kan je ook tekst ingeven om labels die binnen de widget gebruikt worden te wijzigen.
 
@@ -24,7 +24,7 @@ Welke blokken je binnen je widget kan configureren, hangt af van je gekozen temp
 
 Binnen dit template kies je zelf welke blokken je toevoegt en je dus kan configureren. 
 
-> Als je nog geen rijen en blokken aan je leeg template hebt toegevoegd, lees dan eerst de documentatie over [rijen en blokken](./rijen-en-blokken.md). 
+> Als je nog geen rijen en blokken aan je leeg template hebt toegevoegd, lees dan eerst de documentatie over [rijen en blokken](../rijen-en-blokken.md). 
 
 ## Agenda & UiTPAS en Paspartoe template
 
