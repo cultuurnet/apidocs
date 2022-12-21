@@ -17,7 +17,7 @@ De naam van deze pagina is standaard `zoekresultaten-1` en wordt niet getoond in
 
 > De naam dient enkel en alleen om het onderscheid tussen verschillende zoekresultatenblokken binnen dezelfde widget te kunnen maken. Het is daarom niet nodig deze naam te wijzigen, tenzij je een widget maakt met meer dan één zoekresultatenblok.
 
-[video invoegen: facetblok koppelen aan zoekresultatenblok].
+`[INSERT VIDEO]`
 
 ### Algemeen
 
@@ -55,7 +55,7 @@ Hiermee bepaal je hoe de evenementen visueel worden weergegeven:
 
 Hiermee bepaal je hoeveel evenemnenten per pagina worden weergegeven. Er is geen minimum- of maximumlimiet.
 
-[insert video where grid view + multiple of 3 is used for the number of results per page].
+`[INSERT VIDEO]`
 
 ### Header
 
@@ -107,7 +107,7 @@ Met deze instelling kan je ervoor kiezen om alleen een UiT-tip badge te tonen wa
 
 Als je meerdere waarden wilt toevoegen, moet je ze scheiden met een puntkomma (`;`).
 
-[video invoegen]
+`[INSERT VIDEO]`
 
 #### Prijs
 
@@ -133,13 +133,13 @@ Bepaal of de datum en het tijdstip van de evenementen mogen worden getoond of ni
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is. 
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -175,7 +175,7 @@ Bepaal de relatieve positie van de afbeeldingen:
 * `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud. 
 * `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud. 
 
-[video invoegen]
+`[INSERT VIDEO]`
 
 #### Labels
 
@@ -187,7 +187,7 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toeagnkelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/taxonomy-api/guides/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
 
 #### Leeslink
 

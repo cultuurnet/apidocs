@@ -16,7 +16,7 @@ In dit template begin je met een lege layout die je vervolgens zelf uitbreidt do
 * ✅ Geschikt als de andere sjablonen niet aan je eisen voldoen
 * ❌ Niet aanbevolen wanneer je voor de eerste keer een widget bouwt en de verschillende opties nog moet ontdekken
 
-If you choose to start from a blank template, we recommend you read the documentation about [adding rows & blocks](./rows-and-blocks.md) thoroughly.
+Als je ervoor kies om te vertrekken vanaf een leeg template, raden we aan om eerst de documentatie over [rijn en blokken](./rijen-en-blokken.md) door te nemen.
 
 ## Agenda
 
@@ -31,7 +31,7 @@ Dit is het meest gebruikte template. Dit template bevat twee rijen:
 * ✅ Geschikt wanneer je kennis wilt maken met de verschillende mogelijkheden van de widgets
 * ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
 
-If you pick an agenda template, you can directly start configuring the different blocks inside your agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-results.md) or [facets](./configuration/search-box.md)).
+Als je het agenda template kies, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).
 
 ## Tips
 
@@ -46,7 +46,7 @@ De tipswidget dient als teaser voor de volledige evenementenkalender. Tipswidget
 * ✅ Geschikt wanneer je zelf geen volledige evenementenkalender wilt publiceren op je website. In dat geval kan je vanuit de tipswidget linken naar een externe agenda, zoals UiTinVlaanderen.
 * ❌ Niet geschikt wanneer je een volledige en doorzoekbare agenda wilt. Wij raden je aan in de plaats daarvan het [agenda-template](#Agenda) te gebruiken
 
-If you pick the tips template, you can directly start configuring the [tips block](./configuration/tips.md).
+Als je voor het tips template kiest kan je meteen starten met het configureren van het [tipsblok](./configureren/tips.md).
 
 ## UiTPAS en Paspartoe
 
@@ -54,14 +54,8 @@ Dit is hetzelfde template als het [agenda template](#Agenda), maar met alle UiTP
 
 <https://youtu.be/gyefNH6ksjg>
 
-<<<<<<< HEAD
-* ✅ Suitable when you want to configure a searchable agenda with UiTPAS events
-* ❌ Not suitable when the scope of your agenda does not contain UiTPAS events
-* ❌ Not recommended if you have a very limited amount of (visual) space on your website page to integrate the widget. We recommnend using the [tips template](#tips) instead
-
-If you pick an UiTPAS en Paspartoe template, you can directly start configuring the different blocks inside your UiTPAS agenda ([search box](./configuration/search-box.md), [search results](./configuration/search-results.md) or [facets](./configuration/search-box.md)).
-=======
 * ✅ Geschikt wanneer je een doorzoekbare agenda met UiTPAS-evenementen wilt configureren
 * ❌ Niet geschikt wanneer het bereik van je agenda geen UiTPAS-evenementen bevat
 * ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
->>>>>>> 8c6b0ac46587c9c9b2eed33ecc1272ce70f3c4d4
+
+Als je het UiTPAS en Paspartoe template kies, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).

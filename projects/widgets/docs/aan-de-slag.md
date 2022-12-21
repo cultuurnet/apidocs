@@ -36,10 +36,11 @@ Eens je een template hebt gekozen is het tijd om te bepalen:
 
 * **welke evenementen** je wilt weergeven in je agenda
 * **welke informatie** je over de gebeurtenissen wilt tonen
+* **hoe** de informatie **visueel** wordt weergegeven.
 
 Het configureren van je widget is heel eenvoudig en gebeurt voornamelijk door het aan- en uitvinken van vakjes.
 
-👉 [Meer informatie over de configuratie-instellingen](./configuratie.md)
+👉 [Meer informatie over de configuratie-instellingen](./configureren/starten-met-configureren.md)
 
 ### Je widget publiceren op je website 💾
 

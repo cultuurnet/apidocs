@@ -26,37 +26,43 @@
     },
     {
       "type": "group",
-      "title": "Configuratie",
+      "title": "Configureren",
       "items": [
         {
           "type": "item",
+          "title": "Starten met configureren",
+          "uri": "/docs/configureren/starten-met-configureren.md",
+          "slug": "starten-met-configureren/html"
+        },
+        {
+          "type": "item",
           "title": "HTML",
-          "uri": "/docs/configuratie/html.md",
-          "slug": "configuratie/html"
+          "uri": "/docs/configureren/html.md",
+          "slug": "configureren/html"
         },
         {
           "type": "item",
           "title": "Tips",
-          "uri": "/docs/configuratie/tips.md",
-          "slug": "configuratie/tips"
+          "uri": "/docs/configureren/tips.md",
+          "slug": "configureren/tips"
         },
         {
           "type": "item",
           "title": "Verfijningen",
-          "uri": "/docs/configuratie/verfijningen.md",
-          "slug": "configuratie/verfijningen"
+          "uri": "/docs/configureren/verfijningen.md",
+          "slug": "configureren/verfijningen"
         },
         {
           "type": "item",
           "title": "Zoekbox",
-          "uri": "/docs/configuratie/zoekbox.md",
-          "slug": "configuratie/zoekbox"
+          "uri": "/docs/configureren/zoekbox.md",
+          "slug": "configureren/zoekbox"
         },
         {
           "type": "item",
           "title": "Zoekresultaten",
-          "uri": "/docs/configuratie/zoekresultaten.md",
-          "slug": "configuratie/zoekresultaten"
+          "uri": "/docs/configureren/zoekresultaten.md",
+          "slug": "configureren/zoekresultaten"
         }
       ]
     },

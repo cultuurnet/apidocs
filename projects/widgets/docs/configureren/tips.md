@@ -32,7 +32,7 @@ Wanneer je de een URL voor je detailpagina instelt, kan je vervolgens ook kiezen
 * `Cdbid toevoegen aan querystring`: hierbij wordt het event ID als URL-parameter aan de ingegeven URL toegevoegd. Dit werkt enkel in specifieke gevallen.
 * `Cdbid toevoegen aan Url`: hierbij wordt het `cdbid` gewoon achteraan de ingegeven URL toegevoegd. Dit werkt altijd wanneer je de detailpagina van een widgetagenda ingeeft, of linkt naar UiTinVlaanderen.
 
-[insert video]
+`[INSERT VIDEO]`
 
 #### Labels altijd weergeven als iconen
 
@@ -96,13 +96,13 @@ Bepaal of de organisator van de evenementen getoond mag worden of niet.
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is. 
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -138,7 +138,7 @@ Bepaal de relatieve positie van de afbeeldingen:
 * `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud. 
 * `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud. 
 
-[video invoegen]
+`[INSERT VIDEO]`
 
 #### Labels
 
@@ -167,7 +167,7 @@ In de sectie zoekparameters bepaal je welke evenementen in het tipsblok worden w
 
 De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. 
 
-> In het queryveld kan je uitsluitend de [advanced query syntax](../uitdatabank/search-api/advanced-queries.md) gebruiken.
+> In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
 
 **Voorbeelden**
 

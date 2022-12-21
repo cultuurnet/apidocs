@@ -13,7 +13,7 @@ We bieden volgende groepen van verfijningen aan die de bezoeker van je agenda ka
 
 Daarnaast kan je ook zelf verfijningen aanmaken.
 
-De taal waarin de verfijningen weergegeven worden is afhankelijk van de gekozen taal in de [taalinstellingen](./taalinstellingen.md).
+De taal waarin de verfijningen weergegeven worden is afhankelijk van de gekozen taal in de [taalinstellingen](../taalinstellingen.md).
 
 ### Wanneer
 
@@ -85,17 +85,17 @@ Vervolgens voeg je één of meerdere filters toe aan de groep. Voor elke filter 
 * De naam van de filter, bijvoorbeeld `kerstvakantie` of `paasvakantie`)
 * een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `dateRange:[2023-04-03T00:00:00+01:00 TO 2022-04-16T23:59:59+01:00]`
 
-[insert video]
+`[INSERT VIDEO]`
 
 ## Een verfijningenblok koppelen aan een zoekresultatenblok
 
 Omdat de verfijningen een samenvatting zijn van de zoekresultaten, moet een verfijningenblok steeds gekoppeld zijn aan een zoekresultatenblok.
 
 <!-- theme: success -->
-> Binnen het [agendatemplate](./templates#Agenda) en het [UiTPAS en Paspartoe template](./templates#UiTPAS-en-Paspartoe) is het verfijningenblok steeds automatisch aan de zoekresultaten gekoppeld. Hierdoor hoef je dit niet meer manueel te doen.
+> Binnen het [agendatemplate](./templates.md#Agenda) en het [UiTPAS en Paspartoe template](./templates.md#UiTPAS-en-Paspartoe) is het verfijningenblok steeds automatisch aan de zoekresultaten gekoppeld. Hierdoor hoef je dit niet meer manueel te doen.
 
 In sommige gevallen moet je een verfijningenblok zelf manueel koppelen aan een zoekresultatenblok:
-* Wanneer je vertrekt van een [leeg template](./templates#Leeg)
+* Wanneer je vertrekt van een [leeg template](./templates.md#Leeg)
 * Wanneer je een widget hebt met meer dan één zoekresultatenblok
 
-[insert video]
+`[INSERT VIDEO]`
