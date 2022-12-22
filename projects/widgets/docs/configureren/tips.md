@@ -164,7 +164,7 @@ Wanneer een bezoeker van je agenda op deze link klikt, wordt hij of zij naar de 
 
 > Als je deze instelling aanvinkt, zorg er dan zeker voor dat je een [detailpagina voor je evenementen](#Linken-naar-detailpagina) voorziet.
 
-Indien ingeschakeld kan je ook de het label van de leeslink veranderen in een label naar keuze.
+Indien ingeschakeld kan je ook het label van de leeslink veranderen in een label naar keuze.
 
 ### Zoekparameters
 
