@@ -20,9 +20,51 @@
     },
     {
       "type": "item",
-      "title": "Configuratie",
-      "uri": "docs/configuratie.md",
-      "slug": "configuratie"
+      "title": "Rijen en blokken",
+      "uri": "docs/rijen-en-blokken.md",
+      "slug": "rijen-en-blokken"
+    },
+    {
+      "type": "group",
+      "title": "Configureren",
+      "items": [
+        {
+          "type": "item",
+          "title": "Starten met configureren",
+          "uri": "/docs/configureren/starten-met-configureren.md",
+          "slug": "starten-met-configureren/html"
+        },
+        {
+          "type": "item",
+          "title": "HTML",
+          "uri": "/docs/configureren/html.md",
+          "slug": "configureren/html"
+        },
+        {
+          "type": "item",
+          "title": "Tips",
+          "uri": "/docs/configureren/tips.md",
+          "slug": "configureren/tips"
+        },
+        {
+          "type": "item",
+          "title": "Verfijningen",
+          "uri": "/docs/configureren/verfijningen.md",
+          "slug": "configureren/verfijningen"
+        },
+        {
+          "type": "item",
+          "title": "Zoekbox",
+          "uri": "/docs/configureren/zoekbox.md",
+          "slug": "configureren/zoekbox"
+        },
+        {
+          "type": "item",
+          "title": "Zoekresultaten",
+          "uri": "/docs/configureren/zoekresultaten.md",
+          "slug": "configureren/zoekresultaten"
+        }
+      ]
     },
     {
       "type": "item",
