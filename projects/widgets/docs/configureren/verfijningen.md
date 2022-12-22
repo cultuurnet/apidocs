@@ -72,7 +72,7 @@ Tot slot bieden we extra groepfilters aan:
 
 ## Zelf filters maken
 
-Aan een verfijningenblok kan je zelf gemaakte filters toevoegen, onder de naam `groepfilters`. De groepfilters stellen je in staat filters te maken op maat je doelgroep.
+Aan een verfijningenblok kan je zelf gemaakte filters toevoegen, onder de naam `groepfilters`. De groepfilters stellen je in staat filters te maken op maat van je doelgroep.
 
 Een groepfilter is een verzameling van één of meerdere filters (SAPI 3 queries) die je een logische naam geeft.
 
