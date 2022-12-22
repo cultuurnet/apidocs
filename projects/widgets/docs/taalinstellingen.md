@@ -22,7 +22,7 @@ Wanneer je de taalinstellingen op een andere taal dan het Nederlands zet dan:
 * worden **alle labels in de zoekresultaten als** (taalonafhankelijke) **iconen weergegeven**. Alle andere labels (zoals in de zoekbox) kan je zelf vertalen naar keuze.
 
 <!-- theme: warning -->
-> Het kan dat de evenementen in je agenda onvoldoende vertaald zijn. Wil je enkel evenementen tonen die volledig of gedeeltelijk beschikbaar zijn in een bepaalde taal, dan moet je de query van je agenda nog aanpassen. Hoe je dat doet lees je [hier](#De-content-van-je-agenda-beperken-tot-evenementen-in-een-specifieke-taal).
+> Het kan dat de evenementen in je agenda onvoldoende vertaald zijn. Wil je enkel evenementen tonen die volledig of gedeeltelijk beschikbaar zijn in een bepaalde taal, dan moet je de query van je agenda nog aanpassen. Hoe je dat doet lees je [hier](#de-content-van-je-agenda-beperken-tot-evenementen-in-een-specifieke-taal).
 
 `[INSERT VIDEO]`
 
@@ -40,7 +40,7 @@ De hoofdtaal bepaalt in welke taal de verplichte velden van het evenement (titel
 
 Wanneer de hoofdtaal op een bepaalde taal staat (bijvoorbeeld `fr`), dan is de andere eventinformatie (zoals de beschrijving) in de meeste gevallen ook in die taal beschikbaar.
 
-Je kan zoeken naar evenementen die een bepaalde hoofdtaal hebben aan de hand van de [mainLanguage parameter](../../../uitdatabank/docs/search-api/advanced-queries.md#mainLanguage).
+Je kan zoeken naar evenementen die een bepaalde hoofdtaal hebben aan de hand van de [mainLanguage parameter](../../uitdatabank/search-api/advanced-queries#mainLanguage).
 
 **Voorbeelden**
 
@@ -64,7 +64,7 @@ Via de zoekparameters van je widget kan je het aantal evenementen in je agenda b
 
 #### Evenementen waarvan de titel en beschrijving vertaald zijn
 
-Je kan zoeken naar evenementen waarvan zowel de titel als de beschrijving vertaald zijn met de [languages parameter](../../../uitdatabank/docs/search-api/advanced-queries.md#languages).
+Je kan zoeken naar evenementen waarvan zowel de titel als de beschrijving vertaald zijn met de [languages parameter](../../uitdatabank/search-api/advanced-queries#languages).
 
 **Voorbeelden**
 
@@ -80,7 +80,7 @@ languages:de
 
 #### Evenementen waarvan een specifiek veld vertaald is
 
-Je kan zoeken naar evenementen waarvan een specifiek vertaald is met de [\_exists\_ parameter](../../../uitdatabank/docs/search-api/advanced-queries.md#_exists_).
+Je kan zoeken naar evenementen waarvan een specifiek vertaald is met de [\_exists\_ parameter](../../uitdatabank/search-api/advanced-queries#_exists_).
 
 **Voorbeelden**
 
