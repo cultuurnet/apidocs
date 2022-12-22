@@ -16,7 +16,7 @@ In dit template begin je met een lege layout die je vervolgens zelf uitbreidt do
 * ✅ Geschikt als de andere sjablonen niet aan je eisen voldoen
 * ❌ Niet aanbevolen wanneer je voor de eerste keer een widget bouwt en de verschillende opties nog moet ontdekken
 
-Als je ervoor kies om te vertrekken vanaf een leeg template, raden we aan om eerst de documentatie over [rijn en blokken](./rijen-en-blokken.md) door te nemen.
+Als je ervoor kiest om te vertrekken vanaf een lege template, raden we aan om eerst de documentatie over [rijen en blokken](./rijen-en-blokken.md) door te nemen.
 
 ## Agenda
 
