@@ -100,7 +100,7 @@ Dit is de derde kolom (desktopweergave) of rij (mobiele weergave) van je zoekbox
 
 #### Zoeken op datum
 
-Bepaal of je de bezoeker van je agenda de mogelijkheid wilt geven om te zoeken één of meerdere data.
+Bepaal of je de bezoeker van je agenda de mogelijkheid wilt geven om te zoeken naar één of meerdere data.
 
 Wanneer je de instelling `Zoeken op datum` aanvinkt, kan je nog volgende instellingen bepalen:
 
