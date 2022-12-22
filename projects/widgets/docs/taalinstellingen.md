@@ -24,6 +24,7 @@ Wanneer je de taalinstellingen op een andere taal dan het Nederlands zet dan:
 * worden **alle labels in de zoekresultaten als** (taalonafhankelijke) **iconen weergegeven**. Alle andere labels (zoals in de zoekbox) kan je zelf vertalen naar keuze.
 
 <!-- theme: warning -->
+
 > Het kan dat de evenementen in je agenda onvoldoende vertaald zijn. Wil je enkel evenementen tonen die volledig of gedeeltelijk beschikbaar zijn in een bepaalde taal, dan moet je de query van je agenda nog aanpassen. Hoe je dat doet lees je [hier](#de-content-van-je-agenda-beperken-tot-evenementen-in-een-specifieke-taal).
 
 `[INSERT VIDEO]`
