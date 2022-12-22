@@ -204,7 +204,7 @@ Hiervoor schakel duid je het selectievakje `Doorzoek ook ledenaanbod` aan.
 
 * **Alleen ledenaanbod ophalen**
 
-Hiervoor schakel duid je het selectievakje `Doorzoek ook ledenaanbod` aan en voeg je het volgende toe aan je query:
+Hiervoor duid je het selectievakje `Doorzoek ook ledenaanbod` aan en voeg je het volgende toe aan je query:
 
 ```
 AND audienceType:members
