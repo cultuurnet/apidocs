@@ -191,7 +191,7 @@ Er is geen limiet op het aantal filters dat je kan toevoegen.
 Hiermee bepaal je hoe de filteropties moeten verschijnen in de agenda:
 
 * `Lijst (één keuze)`: de filters zullen verschijnen in een dropdown-menu. De bezoeker van je agenda zal per groep steeds maar één filter kunnen selecteren.
-* `Selectie (meerdere keuzes)`: de filters zullen verschijnen in een chechbkox group. De bezoeker van je agenda zal per groep steeds meerdere keuzes kunnen selecteren
+* `Selectie (meerdere keuzes)`: de filters zullen verschijnen in een checkbox group. De bezoeker van je agenda zal per groep steeds meerdere keuzes kunnen selecteren
 
 > De optie `Lijst (één keuze)` is aan te raden wanneer filters binnen een groep elkaar uitsluiten en dus niet gecombineerd kunnen worden (bijvoorbeeld vakantieperiodes). De optie `Selectie (meerdere keuzes)` is geschikt wanneer een combinatie van filters gemaakt moet kunnen worden (bijvoorbeeld leeftijdsgroepen).
 
