@@ -31,7 +31,7 @@ Dit is het meest gebruikte template. Dit template bevat twee rijen:
 * ✅ Geschikt wanneer je kennis wilt maken met de verschillende mogelijkheden van de widgets
 * ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
 
-Als je het agenda template kies, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).
+Als je het agenda template kiest, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).
 
 ## Tips
 
