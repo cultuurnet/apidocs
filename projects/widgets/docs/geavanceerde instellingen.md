@@ -9,7 +9,7 @@ De widgetbouwer laat toe om een aantal geavanceerde instellingen te definiëren 
 
 ## Forceer smalle weergave
 
-Plak je je widget in in een smalle container (< `576 px`), dan is mobiele weergave in de meeste gevallen wenselijk. Je kan de smalle weergave forceren via geavanceerde instellingen door het selectievakje `Forceer smalle weergave` aan te vinken.
+Plak je je widget in een smalle container (< `576 px`), dan is mobiele weergave in de meeste gevallen wenselijk. Je kan de smalle weergave forceren via geavanceerde instellingen door het selectievakje `Forceer smalle weergave` aan te vinken.
 
 Houd er rekening mee dat binnen de mobiele weergave:
 * labels altijd als iconen weergegeven zullen worden
