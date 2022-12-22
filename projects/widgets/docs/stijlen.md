@@ -138,6 +138,6 @@ De overige selectors voor het tipsblok zijn identiek aan die van de [zoekresulta
 | 1  | Laadelement (geheel) | `div`    | `widget-loader--block` |
 | 2  | Laadelement (tekst)  | `div`    | `widget-loader--text`  |
 
-## Bronnnen
+## Bronnen
 
 * [CSS documentatie van W3Schools](https://www.w3schools.com/css/default.asp)
