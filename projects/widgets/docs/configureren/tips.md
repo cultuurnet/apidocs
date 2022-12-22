@@ -112,7 +112,7 @@ Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
 Bepaal of je taaliconen (indien van toepassing) mogen worden weergegeven of niet.
 
-> Taaliconen geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
+> Taaliconen geven aan welk kennisniveau van het Nederlands je nodig hebt om deel te nemen aan een evenement of activiteit.
 
 #### Afbeelding
 
