@@ -7,6 +7,8 @@ De wijzigingen die je aan een widget maakt zijn pas zichtbaar op de website waar
 <!-- theme: success -->
 > Je hoeft de `<script>` tag maar één keer te integreren in je website. Alle wijzigingen die je in de toekomst in je widget aanbrengt en publiceert, worden opgeslagen op de bestaande `<script>` tag.
 
+> Als je de wijzigingen aan een widget liever niet wilt publiceren kan je altijd terugkeren naar de laatste gepubliceerde versie van je widget. Je kan hiervoor op de knop `Herstellen` klikken in de header van de widgetbouwer.
+
 ## Embedden op je website
 
 Na publicatie ontvang je een unieke embed code (`<script>` tag) die je dient in te plakken op je website. Je vindt de verschillende embed codes voor je verschillende widgets ook steeds in het widgetoverzicht van je project:
