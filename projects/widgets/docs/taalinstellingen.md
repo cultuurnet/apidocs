@@ -43,7 +43,7 @@ De hoofdtaal bepaalt in welke taal de verplichte velden van het evenement (titel
 
 Wanneer de hoofdtaal op een bepaalde taal staat (bijvoorbeeld `fr`), dan is de andere eventinformatie (zoals de beschrijving) in de meeste gevallen ook in die taal beschikbaar.
 
-Je kan zoeken naar evenementen die een bepaalde hoofdtaal hebben aan de hand van de [mainLanguage parameter](../../uitdatabank/search-api/advanced-queries#mainLanguage).
+Je kan zoeken naar evenementen die een bepaalde hoofdtaal hebben aan de hand van de [mainLanguage parameter](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries#mainLanguage).
 
 **Voorbeelden**
 
@@ -69,7 +69,7 @@ Via de zoekparameters van je widget kan je het aantal evenementen in je agenda b
 
 #### Evenementen waarvan de titel en beschrijving vertaald zijn
 
-Je kan zoeken naar evenementen waarvan zowel de titel als de beschrijving vertaald zijn met de [languages parameter](../../uitdatabank/search-api/advanced-queries#languages).
+Je kan zoeken naar evenementen waarvan zowel de titel als de beschrijving vertaald zijn met de [languages parameter](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries#languages).
 
 **Voorbeelden**
 
@@ -87,7 +87,7 @@ languages:de
 
 #### Evenementen waarvan een specifiek veld vertaald is
 
-Je kan zoeken naar evenementen waarvan een specifiek vertaald is met de [\_exists\_ parameter](../../uitdatabank/search-api/advanced-queries#_exists_).
+Je kan zoeken naar evenementen waarvan een specifiek vertaald is met de [\_exists\_ parameter](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries#_exists_).
 
 **Voorbeelden**
 
