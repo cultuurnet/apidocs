@@ -18,4 +18,4 @@ Widgets gebruiken een set van URL-parameters om te navigeren naar verschillende 
 
 Standaard laden de widgets `jQuery v3.1.0` in. Dit is nodig om de widgets goed te laten werken. 
 
-Gebruikt je website andere versie van jQuery en zorgt dit voor conflicten, dan kan je deze standaardinstelling uitschakelen in de  [geavanceerde instellingen](#geavanceerde-instellingen#jQuery-niet-inladen) van de widget.
+Gebruikt je website andere versie van jQuery en zorgt dit voor conflicten, dan kan je deze standaardinstelling uitschakelen in de  [geavanceerde instellingen](./geavanceerde-instellingen.md#jquery-niet-inladen) van de widget.
