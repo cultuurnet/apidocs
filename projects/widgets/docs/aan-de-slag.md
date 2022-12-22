@@ -36,10 +36,11 @@ Eens je een template hebt gekozen is het tijd om te bepalen:
 
 * **welke evenementen** je wilt weergeven in je agenda
 * **welke informatie** je over de gebeurtenissen wilt tonen
+* **hoe** de informatie **visueel** wordt weergegeven.
 
 Het configureren van je widget is heel eenvoudig en gebeurt voornamelijk door het aan- en uitvinken van vakjes.
 
-👉 [Meer informatie over de configuratie-instellingen](./configuratie.md)
+👉 [Meer informatie over de configuratie-instellingen](./configureren/starten-met-configureren.md)
 
 ### Je widget publiceren op je website 💾
 
@@ -64,4 +65,5 @@ Daarnaast kun je in de widgetbouwer je eigen CSS regels definiëren om de widget
 Om echte event data in je widget te kunnen gebruiken moet u je widgetproject activeren op [Projectaanvraag](https://projectaanvraag.uitdatabank.be). Bij activering ga je akkoord met de betaling van een jaarlijkse vergoeding, tenzij je een couponcode hebt die je gratis toegang geeft (alleen van toepassing onder specifieke voorwaarden).
 
 <!-- theme: success -->
+
 > Eenmaal geactiveerd zal je widget automatisch eventdata uit de productieomgeving van UiTdatabank gebruiken!
