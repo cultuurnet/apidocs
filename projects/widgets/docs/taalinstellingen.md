@@ -1,7 +1,8 @@
 # Taalinstellingen
 
-Standaard wordt de eventinformatie in widgets getoond in het Nederlands. Via de taalinstellingen kan je de taal waarin de eventinformatie getoond wordt aanpassen. 
+Standaard wordt de eventinformatie in widgets getoond in het Nederlands. Via de taalinstellingen kan je de taal waarin de eventinformatie getoond wordt aanpassen.
 Naast het Nederlands bieden we drie andere talen aan:
+
 * Frans
 * Engels
 * Duits
@@ -10,13 +11,14 @@ Naast het Nederlands bieden we drie andere talen aan:
 
 De taalinstellingen bevinden zich op pagina-niveau en vind je rechts in de dropdown naast elke widgetpagina:
 
-![widget-taalinstellingen.png](<../assets/images/widget-taalinstellingen.png>)
+![widget-taalinstellingen.png](../assets/images/widget-taalinstellingen.png)
 
 De taalinstellingen brengen je naar een modal waarin je de taal van je widget kan kiezen:
 
-![widget-taalinstellingen-modal.png](<../assets/images/widget-taalinstellingen-modal.png>)
+![widget-taalinstellingen-modal.png](../assets/images/widget-taalinstellingen-modal.png)
 
 Wanneer je de taalinstellingen op een andere taal dan het Nederlands zet dan:
+
 * wordt de **eventinformatie in de gekozen taal getoond**, voor zover het evenement vertaald is. Wanneer bepaalde informatie niet vertaald is, wordt teruggevallen op het Nederlands.
 * worden **alle facetten vertaald in de gekozen taal**: `tentoonstelling` wordt `exposition` in het Frans, `Brugge` wordt `Bruges`. Regio's, steden of gemeenten die geen vertaling hebben (zoals `Lanaken`) worden in hun oorspronkelijke taal getoond.
 * worden **alle labels in de zoekresultaten als** (taalonafhankelijke) **iconen weergegeven**. Alle andere labels (zoals in de zoekbox) kan je zelf vertalen naar keuze.
@@ -32,7 +34,8 @@ Je kan aan de hand van de query in het zoekresultatenblok en het tipsblok bepale
 
 ### Zoeken naar evenementen waarvan de hoofdtaal een andere taal is dan het Nederlands
 
-Evenementen ingevoerd via het [invoerformulier van UiTdatabank](<https://www.uitdatabank.be>) hebben standaard het Nederlands als hoofdtaal. Het is echter mogelijk dat een evenement een andere hoofdtaal heeft dan het Nederlands, wanneer het:
+Evenementen ingevoerd via het [invoerformulier van UiTdatabank](https://www.uitdatabank.be) hebben standaard het Nederlands als hoofdtaal. Het is echter mogelijk dat een evenement een andere hoofdtaal heeft dan het Nederlands, wanneer het:
+
 * via de Franstalige of Duitstalige invoerformulier van UiTdatabank is ingevoerd
 * via een partnerkanaal geïmporteerd is in de UiTdatabank met een andere hoofdtaal ("`mainLanguage`"). Dit kan bijvoorbeeld het geval zijn voor Brussels aanbod
 
@@ -45,11 +48,13 @@ Je kan zoeken naar evenementen die een bepaalde hoofdtaal hebben aan de hand van
 **Voorbeelden**
 
 Zoeken naar evenementen waarvan de hoofdtaal het Frans is:
+
 ```
 mainLanguage:fr
 ```
 
 Zoeken naar evenementen waarvan de hoofdtaal het Duits is:
+
 ```
 mainLanguage:de
 ```
@@ -69,11 +74,13 @@ Je kan zoeken naar evenementen waarvan zowel de titel als de beschrijving vertaa
 **Voorbeelden**
 
 Zoeken naar evenementen waarvan de titel en beschrijving beschikbaar is in het Frans:
+
 ```
 languages:fr
 ```
 
 Zoeken naar evenementen waarvan de titel en beschrijving beschikbaar zijn in het Duits:
+
 ```
 languages:de
 ```
@@ -85,11 +92,13 @@ Je kan zoeken naar evenementen waarvan een specifiek vertaald is met de [\_exist
 **Voorbeelden**
 
 Zoeken naar evenementen waarvan de titel beschikbaar is in het Engels:
+
 ```
 _exists_:name.en
 ```
 
 Zoeken naar evenementen waarvan de titel en het adres beschikbaar is in het Frans:
+
 ```
 _exists_:(name.fr AND address.fr)
 ```
