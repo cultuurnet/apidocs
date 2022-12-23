@@ -1,6 +1,7 @@
 <!-- focus: false -->
 
-![widgets logo.png](<../assets/images/widgets logo.png>)
+![widgets logo.png](<../assets/images/widgets-logo.png>)
+
 <br>
 
 # Widgets
