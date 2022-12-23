@@ -101,6 +101,12 @@
       "title": "Compatibiliteit",
       "uri": "docs/compatibiliteit.md",
       "slug": "compatibiliteit"
+    },
+    {
+      "type": "item",
+      "title": "Linken van artikels aan events via widgets",
+      "uri": "docs/linken-van-artikels-aan-events-via-widgets.md",
+      "slug": "linken-van-artikels-aan-events-via-widgets"
     }
   ]
 }
