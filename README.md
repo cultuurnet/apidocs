@@ -45,7 +45,7 @@ Anyone can contribute to our API documentation. To make the process as smooth as
 * Do not edit multiple projects in the same branch unless the changes are related to each other.
 * Avoid branches with a lot of changes that are not related, even within the same project. If you need to add a lot of documentation, aim for small incremental steps so the review process stays manageable and you get feedback early on.
 * Use [atomic commits](https://curiousprogrammer.dev/blog/why-i-create-atomic-commits-in-git/).
-* Use good commit messages. Avoid generic commit messages like `Updated example.md` or `PR remarks`.
+* Use [good commit messages](https://cbea.ms/git-commit/). Avoid generic commit messages like `Updated example.md` or `PR remarks`.
 * Create a [draft pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests) if your changes are not ready for review yet but you want to open a pull request already.
 * Fill in the description of your pull request with the template that is automatically provided.
 
