@@ -7470,6 +7470,18 @@
                       "type": "string",
                       "example": "username",
                       "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
                     }
                   },
                   "required": [
