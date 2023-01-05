@@ -6,5 +6,6 @@
 -->
 
 > This guide has been moved. See:
-> * [Finding and reusing places](places/finding-and-reusing-places.md)  
+>
+> * [Finding and reusing places](places/finding-and-reusing-places.md)
 > * [Finding and reusing organizers](organizers/finding-and-reusing-organizers.md)

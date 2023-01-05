@@ -1077,6 +1077,95 @@
         ]
       }
     },
+    "/events/{eventId}/booking-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "bookingInfo - update",
+        "description": "Updates the bookingInfo for an event.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove (specific) bookingInfo perform a PUT request with empty properties.",
+        "operationId": "event-bookingInfo-put",
+        "tags": [
+          "Events"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-bookingInfo.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "phone": "+32/01234567890",
+                    "email": "info@example.com",
+                    "url": "https://www.example.com",
+                    "urlLabel": {
+                      "nl": "Nederlandse tekst",
+                      "fr": "Texte français",
+                      "de": "Deutscher Text",
+                      "en": "English text"
+                    },
+                    "availabilityStarts": "2021-05-17T22:00:00+00:00",
+                    "availabilityEnds": "2021-05-17T22:00:00+00:00"
+                  }
+                }
+              }
+            }
+          },
+          "description": "New bookingInfo to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingInfo has been updated successfully. "
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "'urlLabel' property is required by 'url' property"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/calendar": {
       "parameters": [
         {
@@ -1402,6 +1491,124 @@
         "x-internal": false
       }
     },
+    "/events/{eventId}/contact-point": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "contactPoint - update",
+        "operationId": "event-contactPoint-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the contact point information of the event with the given `eventId`.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove contact information perform a PUT request with empty properties.\n\n<!-- theme: warning -->\n\n> Unlike [`PUT /organizers/{organizerId}/contact-point`](./entry.json/paths/~1organizers~1{organizerId}~1contact-point/put), all properties are required. There is also no partial updating.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-contactPoint-put.json"
+              }
+            }
+          },
+          "description": "The contact point properties to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The contactPoint has been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/description/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "description - update",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The description was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "event-description-put",
+        "description": "Updates the localized description of an event based on the given `eventId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\\n`\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-description-put.json"
+              },
+              "examples": {}
+            }
+          },
+          "description": "The new description of the event."
+        }
+      }
+    },
     "/events/{eventId}/facilities": {
       "parameters": [
         {
@@ -1679,6 +1886,121 @@
           }
         },
         "description": "Removes the image with the given `imageId` from the event's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "images - update",
+        "operationId": "event-image-put",
+        "description": "Updates the metadata of an image on an event.",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image metadata was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "description": "Picture of the last publiq event",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The metadata to update on the image."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/images/main": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "images main - update",
+        "operationId": "event-main-image-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the main image of an event. The main image is the only image shown in search-result listviews and the image more prominently displayed on event-details, when the event has multiple images.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-main-image-put.json"
+              }
+            }
+          },
+          "description": "The id of the image to set as main image on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The main image was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2216,6 +2538,76 @@
         ]
       }
     },
+    "/events/{eventId}/organizer/{organizerId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        },
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "Deletes the organizer of the event with the given `eventId`.",
+        "operationId": "event-organizer-delete",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "organizer - update",
+        "description": "Updates the organizer of the event with the given `eventId`. A list of organizers can be found using our [guide about finding existing organizers](/docs/entry-api/organizers/finding-and-reusing-organizers.md).\n\n<!-- theme: info -->\n\n> An organizer is not required on an event, and it can only have one.",
+        "operationId": "event-organizer-update",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been updated successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/price-info": {
       "parameters": [
         {
@@ -2521,6 +2913,110 @@
           "Events"
         ],
         "description": "Updates the event's theme (examples of themes are `Audiovisuele kunst`, `Moderne dans`, `Actie en avontuur`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `theme` domain can be used as theme.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `theme` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "event-typical-age-range-delete",
+        "tags": [
+          "Events"
+        ],
+        "description": "Deletes the age range from an event.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "event-typical-age-range-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the age range of the event with the given `eventId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The age range to set on the event."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2838,6 +3334,122 @@
           },
           "description": "New workflowStatus to set on the event. Depending on the new workflowStatus, other properties may/must be set as well."
         }
+      }
+    },
+    "/images": {
+      "post": {
+        "summary": "image - upload",
+        "operationId": "image-post",
+        "tags": [
+          "Images"
+        ],
+        "description": "Uploads an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "requestBody": {
+          "description": "The image to upload and its metadata to store with it.",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The image to upload."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the image."
+                  },
+                  "copyrightHolder": {
+                    "type": "string",
+                    "description": "The copyrightHolder of the image."
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "The language of the description. It must be exactly 2 lowercase letters long (for example \"nl\")."
+                  }
+                },
+                "required": [
+                  "file",
+                  "description",
+                  "copyrightHolder",
+                  "language"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "@\"Screenshot 2017-11-28 12.37.19.png\"",
+                    "description": "Example description",
+                    "copyrightHolder": "Example copyrightHolder",
+                    "language": "nl"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The image was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string",
+                      "description": "The url of the created image.",
+                      "example": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    },
+                    "imageId": {
+                      "type": "string",
+                      "description": "The id of the created image.",
+                      "example": "c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "format": "uuid"
+                    }
+                  },
+                  "required": [
+                    "@id",
+                    "imageId"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "@id": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "imageId": "c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/file-missing\n* https://api.publiq.be/probs/body/file-invalid-type\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places": {
@@ -3502,6 +4114,66 @@
         ]
       }
     },
+    "/places/{placeId}/address/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "address - update",
+        "operationId": "place-address-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the address of a place.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-address-put.json"
+              }
+            }
+          },
+          "description": "New address of the place, localized in a single language."
+        },
+        "responses": {
+          "204": {
+            "description": "The address was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/available-from": {
       "parameters": [
         {
@@ -3579,6 +4251,95 @@
           },
           "description": "New availableFrom to set on the place."
         }
+      }
+    },
+    "/places/{placeId}/booking-info": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "bookingInfo - update",
+        "description": "Updates the bookingInfo for a place.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove (specific) bookingInfo perform a PUT request with empty properties.",
+        "operationId": "place-bookingInfo-put",
+        "tags": [
+          "Places"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-bookingInfo.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "phone": "+32/01234567890",
+                    "email": "info@example.com",
+                    "url": "https://www.example.com",
+                    "urlLabel": {
+                      "nl": "Nederlandse tekst",
+                      "fr": "Texte français",
+                      "de": "Deutscher Text",
+                      "en": "English text"
+                    },
+                    "availabilityStarts": "2021-05-17T22:00:00+00:00",
+                    "availabilityEnds": "2021-05-17T22:00:00+00:00"
+                  }
+                }
+              }
+            }
+          },
+          "description": "New bookingInfo to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingInfo has been updated successfully. "
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "'urlLabel' property is required by 'url' property"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places/{placeId}/calendar": {
@@ -3849,6 +4610,124 @@
           }
         ],
         "x-internal": false
+      }
+    },
+    "/places/{placeId}/contact-point": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "contactPoint - update",
+        "operationId": "place-contactPoint-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the contact point information of the place with the given `placeId`.\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove contact information perform a PUT request with empty properties.\n\n<!-- theme: warning -->\n\n> Unlike [`PUT /organizers/{organizerId}/contact-point`](./entry.json/paths/~1organizers~1{organizerId}~1contact-point/put), all properties are required. There is also no partial updating.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-contactPoint-put.json"
+              }
+            }
+          },
+          "description": "The contact point properties to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The contactPoint has been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/description/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "description - update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The description was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "place-description-put",
+        "description": "Updates the localized description of a place based on the given `placeId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\\n`\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-description-put.json"
+              },
+              "examples": {}
+            }
+          },
+          "description": "The new description of the place."
+        }
       }
     },
     "/places/{placeId}/facilities": {
@@ -4128,6 +5007,121 @@
           }
         },
         "description": "Removes the image with the given `imageId` from the place's `mediaObject` property.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "images - update",
+        "operationId": "place-image-put",
+        "description": "Updates the metadata of an image on a place.",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "The image metadata was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-image-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "description": "Picture of the publiq office",
+                    "copyrightHolder": "publiq"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The metadata to update on the image."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/images/main": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "images main - update",
+        "operationId": "place-main-image-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the main image of a place. The main image is the only image shown in search-result listviews and the image more prominently displayed on place-details, when the place has multiple images.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-main-image-put.json"
+              }
+            }
+          },
+          "description": "The id of the image to set as main image on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The main image was updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4427,6 +5421,76 @@
         }
       }
     },
+    "/places/{placeId}/organizer/{organizerId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        },
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "delete": {
+        "summary": "organizer - delete",
+        "description": "Deletes the organizer of the place with the given `placeId`.",
+        "operationId": "place-organizer-delete",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been deleted successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "organizer - update",
+        "description": "Updates the organizer of the place with the given `placeId`. A list of organizers can be found using our [guide about finding existing organizers](/docs/entry-api/organizers/finding-and-reusing-organizers.md).\n\n<!-- theme: info -->\n\n> An organizer is not required on a place, and it can only have one.",
+        "operationId": "place-organizer-update",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer has been updated successfully."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/price-info": {
       "parameters": [
         {
@@ -4530,6 +5594,110 @@
           "Places"
         ],
         "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/typical-age-range": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "delete": {
+        "summary": "typicalAgeRange - delete",
+        "operationId": "place-typical-age-range-delete",
+        "tags": [
+          "Places"
+        ],
+        "description": "Deletes the age range from a place.",
+        "responses": {
+          "204": {
+            "description": "The age range was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "typicalAgeRange - update",
+        "operationId": "place-typical-age-range-put",
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the age range of the place with the given `placeId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-typicalAgeRange-put.json"
+              },
+              "examples": {
+                "All ages": {
+                  "value": {
+                    "typicalAgeRange": "-"
+                  }
+                },
+                "Minimum age": {
+                  "value": {
+                    "typicalAgeRange": "6-"
+                  }
+                },
+                "Maximum age": {
+                  "value": {
+                    "typicalAgeRange": "-12"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The age range to set on the place."
+        },
+        "responses": {
+          "204": {
+            "description": "The age range was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -6514,6 +7682,83 @@
           "News articles"
         ]
       }
+    },
+    "/user": {
+      "get": {
+        "summary": "current user - get",
+        "operationId": "user-get",
+        "description": "Returns the details of the current user.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid",
+                      "description": "UUID of the user."
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "info@publiq.be",
+                      "description": "The email address of the user."
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
+                    }
+                  },
+                  "required": [
+                    "uuid",
+                    "email",
+                    "username"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "email": "info@publiq.be",
+                      "username": "username"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -6705,6 +7950,9 @@
       "name": "Events"
     },
     {
+      "name": "Images"
+    },
+    {
       "name": "News articles"
     },
     {
@@ -6712,6 +7960,9 @@
     },
     {
       "name": "Places"
+    },
+    {
+      "name": "Users"
     }
   ]
 }
