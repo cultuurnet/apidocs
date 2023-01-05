@@ -1845,7 +1845,7 @@
           },
           "description": "The image to add to an event."
         },
-        "description": "Adds an image to an event.",
+        "description": "Adds an image to an event. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
         "tags": [
           "Events"
         ],
@@ -4966,7 +4966,7 @@
           },
           "description": "The image to add to a place."
         },
-        "description": "Adds an image to a place.",
+        "description": "Adds an image to a place. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
         "tags": [
           "Places"
         ],
