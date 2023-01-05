@@ -1803,7 +1803,7 @@
       ],
       "post": {
         "summary": "images - add",
-        "operationId": "events-images-post",
+        "operationId": "event-images-post",
         "responses": {
           "204": {
             "description": "The image was added to the event."
@@ -4924,7 +4924,7 @@
       ],
       "post": {
         "summary": "images - add",
-        "operationId": "places-images-post",
+        "operationId": "place-images-post",
         "responses": {
           "204": {
             "description": "The image was added to the place."
