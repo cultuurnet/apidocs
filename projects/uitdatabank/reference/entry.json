@@ -1795,6 +1795,70 @@
         ]
       }
     },
+    "/events/{eventId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "event-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the event."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to an event."
+        },
+        "description": "Adds an image to an event. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/images/{imageId}": {
       "parameters": [
         {
@@ -4842,6 +4906,70 @@
         "operationId": "place-history-get",
         "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
         "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "place-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the place."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to a place."
+        },
+        "description": "Adds an image to a place. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
+        "tags": [
+          "Places"
+        ],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
