@@ -6,7 +6,8 @@
       "$ref": "./event-attendanceMode.json"
     },
     "location": {
-      "$ref": "./place-@id.json"
+      "$ref": "./place-@id.json",
+      "readOnly": false
     }
   },
   "additionalProperties": false,
