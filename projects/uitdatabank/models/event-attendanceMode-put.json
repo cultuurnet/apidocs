@@ -13,20 +13,5 @@
   "additionalProperties": false,
   "required": [
     "attendanceMode"
-  ],
-  "if": {
-    "properties": {
-      "attendanceMode": {
-        "const": "online"
-      }
-    }
-  },
-  "then": {
-    "properties": {
-      "attendanceMode": {
-        "$ref": "./event-attendanceMode.json"
-      }
-    },
-    "additionalProperties": false
-  }
+  ]
 }
