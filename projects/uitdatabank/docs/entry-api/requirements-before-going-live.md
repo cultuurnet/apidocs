@@ -55,4 +55,4 @@ When the created content & integration meets the listed conditions, we will imme
 
 ## 3. Switch to the production environment
 
-After a successful validation you will receive the credentials to connect with the production environment.
+After a successful validation you will receive the credentials to connect to the production environment.
