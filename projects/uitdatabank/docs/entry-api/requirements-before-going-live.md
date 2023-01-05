@@ -11,13 +11,13 @@ On this page we describe how this flow works and how you can ensure that you gai
 
 > Make sure you read this guide before you start developing on our test environment!
 
-## Step 1: start on the test environment
+## 1. Start on the test environment
 
 You can easily apply for free test credentials. All information about how to request these can be found [here](https://docs.publiq.be/docs/authentication/requesting-credentials#uitdatabank).
 
 Once you've obtained your personal test credentials you can start with the development of your integration with the UiTdatabank Entry API on our test environment.
 
-## Step 2: validation by publiq vzw
+## 2. Validation by publiq vzw
 
 As soon as you have finished developing your integration with the Entry API, you send a minimum of 5 of events to our test environment. You contact us via `vragen@publiq.be` with the email subject "content check". In the email you give us the identifiers of the created test events. We will then validate your integration as soon as possible.
 
@@ -53,6 +53,6 @@ It is important that you go through the checklist below in advance and validate 
 
 When the created content & integration meets the listed conditions, we will immediately give you access to our production environment (see step 3). If necessary, we ask you to make some adjustments to the made integration.
 
-## Step 3: switch to the production environment
+## 3. Switch to the production environment
 
 After a successful validation you will receive the credentials to connect with production environment.
