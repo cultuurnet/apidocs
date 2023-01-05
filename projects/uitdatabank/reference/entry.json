@@ -812,12 +812,12 @@
                 "$ref": "../models/event-attendanceMode-put.json"
               },
               "examples": {
-                "Example Online": {
+                "Online": {
                   "value": {
                     "attendanceMode": "online"
                   }
                 },
-                "Example offline": {
+                "Offline": {
                   "value": {
                     "attendanceMode": "offline",
                     "location": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3"
