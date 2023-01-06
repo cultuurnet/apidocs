@@ -21,6 +21,12 @@
     },
     {
       "type": "item",
+      "title": "Introduction",
+      "uri": "docs/entry-api/introduction.md",
+      "slug": "entry-api/introduction"
+    },
+    {
+      "type": "item",
       "title": "API reference",
       "uri": "reference/entry.json"
     },
@@ -180,6 +186,12 @@
     },
     {
       "type": "item",
+      "title": "Introduction",
+      "uri": "docs/search-api/introduction.md",
+      "slug": "search-api/introduction"
+    },
+    {
+      "type": "item",
       "title": "API reference",
       "uri": "reference/search.json"
     },
@@ -240,6 +252,12 @@
     {
       "type": "divider",
       "title": "Taxonomy API"
+    },
+    {
+      "type": "item",
+      "title": "Introduction",
+      "uri": "docs/taxonomy-api/introduction.md",
+      "slug": "taxonomy-api/introduction"
     },
     {
       "type": "item",
