@@ -27,6 +27,12 @@
     },
     {
       "type": "item",
+      "title": "Authentication",
+      "uri": "docs/entry-api/authentication.md",
+      "slug": "entry-api/authentication"
+    },
+    {
+      "type": "item",
       "title": "API reference",
       "uri": "reference/entry.json"
     },
@@ -192,6 +198,12 @@
     },
     {
       "type": "item",
+      "title": "Authentication",
+      "uri": "docs/search-api/authentication.md",
+      "slug": "search-api/authentication"
+    },
+    {
+      "type": "item",
       "title": "API reference",
       "uri": "reference/search.json"
     },
@@ -258,6 +270,12 @@
       "title": "Introduction",
       "uri": "docs/taxonomy-api/introduction.md",
       "slug": "taxonomy-api/introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/taxonomy-api/authentication.md",
+      "slug": "taxonomy-api/authentication"
     },
     {
       "type": "item",
