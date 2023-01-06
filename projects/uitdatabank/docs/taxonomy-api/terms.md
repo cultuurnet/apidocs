@@ -1,3 +1,7 @@
+---
+stoplight-id: 7d8d9b4653fc1
+---
+
 # Terms
 
 <!-- theme: warning -->
