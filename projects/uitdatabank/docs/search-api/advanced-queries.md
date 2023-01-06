@@ -592,7 +592,7 @@ Using the `location.terms.id` field you can filter out events that take place on
 
 **Possible values**
 
-Any valid term id applicable on locations (places). For a list of available terms, see [UiTdatabank taxonomy](../terms.md).
+Any valid term id applicable on locations (places). For a list of available terms, see [our guide about taxonomy terms](../taxonomy-api/terms.md).
 
 **Example**
 
@@ -843,7 +843,7 @@ Each event and place in UiTdatabank is categorized with a type (e.g. `concert` f
 
 With the `terms.id` field you can filter results based on their categorisation.
 
-A complete overview of our terms can be found on in our [Taxonomy guide](../terms.md).
+A complete overview of our terms can be found on in our [guide about taxonomy terms](../taxonomy-api/terms.md).
 
 **Applicable on endpoints**
 
@@ -851,7 +851,7 @@ A complete overview of our terms can be found on in our [Taxonomy guide](../term
 
 **Possible values**
 
-See our [Taxonomy guide](../terms.md).
+See our [guide about taxonomy terms](../taxonomy-api/terms.md).
 
 **Example**
 
