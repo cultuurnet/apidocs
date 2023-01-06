@@ -11,6 +11,7 @@ A warm welcome to our UiTdatabank API documentation! 👋
 > We are hard at work to port our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.
 
 <!--
+  @todo
   Explain what UiTdatabank is.
   Some inspiration:
   - https://www.publiq.be/nl/projecten/uitdatabank

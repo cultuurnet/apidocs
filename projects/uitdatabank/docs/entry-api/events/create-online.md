@@ -1,6 +1,7 @@
 Coming soon.
 
 <!-- 
+  @todo
   Explain the difference between offline events (default) and online/mixed events.
   Important to mention:
   - location is not required for online events

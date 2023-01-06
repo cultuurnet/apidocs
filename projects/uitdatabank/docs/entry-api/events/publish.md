@@ -1,6 +1,7 @@
 Coming soon.
 
 <!--
+  @todo
   Explain:
   - The high-level moderation workflow (draft > ready_for_validation > accepted/rejected > deleted) => Maybe link to a separate guide for this?
   - How to publish when creating

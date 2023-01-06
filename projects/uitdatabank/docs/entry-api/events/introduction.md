@@ -1,6 +1,7 @@
 Coming soon.
 
 <!-- 
+  @todo
   Explain what events are, what we do with them, and what kind of events we accept in UiTdatabank.
   Inspiration:
   - https://documentatie.uitdatabank.be/content/uitdatabank/latest/uitdatabank.html

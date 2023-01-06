@@ -1,6 +1,7 @@
 Coming soon.
 
 <!--
+  @todo
   - Mention that you must always reuse an existing place when possible and link to that guide.
   - Focus on creating a simple place with just the required properties here.
   - Start from a super simple example with calendarType permanent and an example eventtype.

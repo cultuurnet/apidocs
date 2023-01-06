@@ -1,6 +1,7 @@
 Coming soon.
 
 <!--
+  @todo
   - Focus on creating a simple event with just the required properties here.
   - Start from a super simple example with calendarType single and an example location and eventtype.
   - Explain further down what the different calendarTypes are, and how to find other existing locations and eventtypes.
