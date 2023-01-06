@@ -442,6 +442,12 @@ You can find more documentation about the `/logout` endpoint in [Auth0's API doc
 
 > You cannot call the `/logout` endpoint as a regular API endpoint, but you must **redirect** your user's web browser to it. Otherwise the authorization server will not be able to clear the user's session.
 
+## Single sign-on
+
+Single sign-on is enabled by default on the UiTiD authorization server. So if a user logs in first on for example <https://www.uitinvlaanderen.be>, and then navigates to your application in the same web browser and clicks the "login" button, they will automatically be logged in as the same user.
+
+If you do not want to allow single sign-on behavior in your application, you can use the `?prompt=login` URL parameter as documented in [Login parameters](#login-parameters). This will force the authorization server to always display a login screen, even if there is an active session.
+
 ## Authorization server URLs
 
 See [authorization server URLs](./environments.md).
