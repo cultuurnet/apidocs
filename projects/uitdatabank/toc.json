@@ -33,6 +33,12 @@
     },
     {
       "type": "item",
+      "title": "Requirements before going live",
+      "uri": "/docs/entry-api/requirements-before-going-live.md",
+      "slug": "entry-api/requirements-before-going-live"
+    },
+    {
+      "type": "item",
       "title": "API reference",
       "uri": "reference/entry.json"
     },
@@ -179,12 +185,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "item",
-      "title": "Requirements before going live",
-      "uri": "/docs/entry-api/requirements-before-going-live.md",
-      "slug": "entry-api/requirements-before-going-live"
     },
     {
       "type": "divider",
