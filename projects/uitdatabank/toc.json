@@ -39,6 +39,12 @@
     },
     {
       "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/entry-api/openapi.md",
+      "slug": "entry-api/openapi-file"
+    },
+    {
+      "type": "item",
       "title": "Postman collection",
       "uri": "docs/entry-api/postman.md",
       "slug": "entry-api/postman-collection"
@@ -210,6 +216,12 @@
     },
     {
       "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/search-api/openapi.md",
+      "slug": "search-api/openapi-file"
+    },
+    {
+      "type": "item",
       "title": "Postman collection",
       "uri": "docs/search-api/postman.md",
       "slug": "search-api/postman-collection"
@@ -288,6 +300,12 @@
       "title": "Authentication",
       "uri": "docs/taxonomy-api/authentication.md",
       "slug": "taxonomy-api/authentication"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/taxonomy-api/openapi.md",
+      "slug": "taxonomy-api/openapi-file"
     },
     {
       "type": "item",
