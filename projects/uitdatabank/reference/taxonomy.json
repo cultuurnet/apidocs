@@ -3,7 +3,7 @@
   "info": {
     "title": "Taxonomy API",
     "version": "3.0",
-    "description": "UiTdatabank's taxonomy API is used to programmatically retrieve lists of taxonomy terms like event types, place types, themes and facilities.\n\n**Authentication**\n\nThe taxonomy API requires no authentication.\n\n**Environments**\n\nThe taxonomy API only has one environment, the production environment. Since the taxonomy terms are the same on all environments, you can also connect to this environment from your testing environment to retrieve taxonomy terms.",
+    "description": "With UiTdatabank's taxonomy API you can retrieve lists of taxonomy terms like event types, place types, themes and facilities.",
     "contact": {
       "name": "publiq helpdesk",
       "email": "vragen@publiq.be",
