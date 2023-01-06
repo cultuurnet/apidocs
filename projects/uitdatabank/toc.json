@@ -254,7 +254,7 @@
           "type": "item",
           "title": "What are terms?",
           "uri": "docs/taxonomy-api/terms.md",
-          "slug": "docs/taxonomy-api/what-are-terms"
+          "slug": "taxonomy-api/what-are-terms"
         }
       ]
     },
