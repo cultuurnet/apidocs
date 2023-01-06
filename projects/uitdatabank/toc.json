@@ -34,9 +34,51 @@
           "items": [
             {
               "type": "item",
+              "title": "What are events?",
+              "uri": "/docs/entry-api/events/introduction.md",
+              "slug": "entry-api/events/what-are-events"
+            },
+            {
+              "type": "item",
+              "title": "Creating a new event",
+              "uri": "/docs/entry-api/events/create.md",
+              "slug": "entry-api/events/creating-a-new-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating an online event",
+              "uri": "/docs/entry-api/events/create-online.md",
+              "slug": "entry-api/events/creating-an-online-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating an UiTPAS event",
+              "uri": "/docs/entry-api/events/create-uitpas.md",
+              "slug": "entry-api/events/creating-an-uitpas-event"
+            },
+            {
+              "type": "item",
               "title": "Creating a school event",
               "uri": "/docs/entry-api/events/create-school.md",
               "slug": "entry-api/events/creating-a-school-event"
+            },
+            {
+              "type": "item",
+              "title": "Updating an event",
+              "uri": "/docs/entry-api/events/update.md",
+              "slug": "entry-api/events/updating-an-event"
+            },
+            {
+              "type": "item",
+              "title": "Publishing an event",
+              "uri": "/docs/entry-api/events/publish.md",
+              "slug": "entry-api/events/publishing-an-event"
+            },
+            {
+              "type": "item",
+              "title": "Deleting an event",
+              "uri": "/docs/entry-api/events/delete.md",
+              "slug": "entry-api/events/deleting-an-event"
             }
           ]
         },
