@@ -15,16 +15,17 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 
 Additionally, we will need to configure the following settings for your client on our end:
 
-* Login URL: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
-* Callback URL(s): The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
-
-If you wish to use user access tokens, make sure to specify your login URL and callback URLs when requesting your client credentials.
+* **Login URL**: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
+* **Callback URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
+* **Logout URL(s)**: The absolute URL(s) of the page(s) where you users can be redirected back to after they log out. You can specify any logout URL whenever you redirect a user to the authorization server to log out, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com` if you want to redirect the user back to the homepage of your application after logging out, or `https://example.com/logged-out` if you want to redirect them to a page with a confirmation message like "You're logged out!" after logging out.
 
 <!-- theme: warning -->
 
-> Without these login URL and callback URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
+> If you wish to use user access tokens, make sure to specify your login URL, callback URL(s) and logout URL(s) when requesting your client credentials.
+>
+> Without these URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
 
-> For more info about the login and callback URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris). Note that other URIs mentioned in that documentation page are not required for most applications.
+> For more info about the login, callback and logout URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris).
 
 ## How it works
 
