@@ -130,9 +130,39 @@
           "items": [
             {
               "type": "item",
+              "title": "What are organizers?",
+              "uri": "/docs/entry-api/organizers/introduction.md",
+              "slug": "entry-api/organizers/what-are-organizers"
+            },
+            {
+              "type": "item",
               "title": "Finding and reusing organizers",
               "uri": "/docs/entry-api/organizers/finding-and-reusing-organizers.md",
               "slug": "entry-api/organizers/finding-and-reusing-organizers"
+            },
+            {
+              "type": "item",
+              "title": "Creating a new organizer",
+              "uri": "/docs/entry-api/organizers/create.md",
+              "slug": "entry-api/organizers/creating-a-new-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Updating an organizer",
+              "uri": "/docs/entry-api/organizers/update.md",
+              "slug": "entry-api/organizers/updating-an-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Publishing an organizer",
+              "uri": "/docs/entry-api/organizers/publish.md",
+              "slug": "entry-api/organizers/publishing-an-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Deleting an organizer",
+              "uri": "/docs/entry-api/organizers/delete.md",
+              "slug": "entry-api/organizers/deleting-an-organizer"
             }
           ]
         }
