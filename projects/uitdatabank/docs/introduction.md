@@ -22,12 +22,3 @@ Want to start building right now? There are two options:
 2. **Or**, register your project at [Projectaanvraag](https://projectaanvraag.uitdatabank.be) to automatically get a test **API key** that you can use as described on [EntryAPI's Authentication documentation](https://documentatie.uitdatabank.be/content/entry_api_3/latest/authentication.html). While this way of authentication will be fased out in the future for new integrators, it will still be supported for existing integrations for the foreseeable future.
 
 > Aside from the authentication method all API operations work exactly the same whether you have a client id and secret, or an API key.
-
-## Postman
-
-<!-- focus: false -->
-
-[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)
-
-Do you already have a **client id** and **client secret**?
-Download a personalized Postman collection to start making requests in seconds!

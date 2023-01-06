@@ -38,6 +38,12 @@
       "slug": "entry-api/requirements-before-going-live"
     },
     {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/entry-api/postman.md",
+      "slug": "entry-api/postman-collection"
+    },
+    {
       "type": "group",
       "title": "Guides",
       "items": [
@@ -203,6 +209,12 @@
       "slug": "search-api/authentication"
     },
     {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/search-api/postman.md",
+      "slug": "search-api/postman-collection"
+    },
+    {
       "type": "group",
       "title": "Guides",
       "items": [
@@ -276,6 +288,12 @@
       "title": "Authentication",
       "uri": "docs/taxonomy-api/authentication.md",
       "slug": "taxonomy-api/authentication"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/taxonomy-api/postman.md",
+      "slug": "taxonomy-api/postman-collection"
     },
     {
       "type": "group",
