@@ -430,7 +430,17 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 
 When the user of your application wants to log out, clear any session data in your application including the user's access token and refresh token. If you have cached the [user's info](#user-info), make sure to also clear that.
 
-If a user on the same machine follows the login flow in your application again shortly after the previous user has logged out, the previous user may still be logged in on the authorization server. To avoid the previous user automatically being logged in again when the new user logs in, add the `prompt=login` URL parameter when redirecting the user to the `GET /authorize` endpoint. This will force the authorization server to always show a login screen, even if the previous user still has an active session there. See [login parameters](#login-parameters) for more info.
+Afterward, you should **redirect** the user to the `/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on a `?returnTo=...` URL parameter that you can specify. Note that you can only use an allowed "logout URL" as value for the `returnTo` URL parameter. (See [Requirements](#requirements))
+
+You can find more documentation about the `/logout` endpoint in [Auth0's API documentation](https://auth0.com/docs/api/authentication#logout).
+
+<!-- theme: warning -->
+
+> If you do not implement this redirect to the `/logout` URL on the authorization server, the next time a user of your application logs in on the same machine they will be logged in as the user that was previously logged in on your application, as the previous user is still logged in on the authorization server.
+
+<!-- theme: warning -->
+
+> You cannot call the `/logout` endpoint as a regular API endpoint, but you must **redirect** your user's web browser to it. Otherwise the authorization server will not be able to clear the user's session.
 
 ## Authorization server URLs
 
