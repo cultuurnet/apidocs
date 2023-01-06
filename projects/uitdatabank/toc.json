@@ -38,11 +38,6 @@
       "slug": "entry-api/requirements-before-going-live"
     },
     {
-      "type": "item",
-      "title": "API reference",
-      "uri": "reference/entry.json"
-    },
-    {
       "type": "group",
       "title": "Guides",
       "items": [
@@ -187,6 +182,11 @@
       ]
     },
     {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/entry.json"
+    },
+    {
       "type": "divider",
       "title": "Search API"
     },
@@ -201,11 +201,6 @@
       "title": "Authentication",
       "uri": "docs/search-api/authentication.md",
       "slug": "search-api/authentication"
-    },
-    {
-      "type": "item",
-      "title": "API reference",
-      "uri": "reference/search.json"
     },
     {
       "type": "group",
@@ -262,6 +257,11 @@
       ]
     },
     {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/search.json"
+    },
+    {
       "type": "divider",
       "title": "Taxonomy API"
     },
@@ -278,11 +278,6 @@
       "slug": "taxonomy-api/authentication"
     },
     {
-      "type": "item",
-      "title": "API reference",
-      "uri": "reference/taxonomy.json"
-    },
-    {
       "type": "group",
       "title": "Guides",
       "items": [
@@ -293,6 +288,11 @@
           "slug": "taxonomy-api/what-are-terms"
         }
       ]
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/taxonomy.json"
     },
     {
       "type": "divider",
