@@ -88,9 +88,33 @@
           "items": [
             {
               "type": "item",
+              "title": "What are places?",
+              "uri": "/docs/entry-api/places/introduction.md",
+              "slug": "entry-api/places/what-are-places"
+            },
+            {
+              "type": "item",
               "title": "Finding and reusing places",
               "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
               "slug": "entry-api/places/finding-and-reusing-places"
+            },
+            {
+              "type": "item",
+              "title": "Creating a new place",
+              "uri": "/docs/entry-api/places/create.md",
+              "slug": "entry-api/places/creating-a-new-place"
+            },
+            {
+              "type": "item",
+              "title": "Updating a place",
+              "uri": "/docs/entry-api/places/update.md",
+              "slug": "entry-api/places/updating-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Publishing a place",
+              "uri": "/docs/entry-api/places/publish.md",
+              "slug": "entry-api/places/publishing-a-place"
             }
           ]
         },
@@ -192,8 +216,9 @@
       "items": [
         {
           "type": "item",
-          "title": "Terms",
-          "uri": "docs/terms.md"
+          "title": "What are terms?",
+          "uri": "docs/terms.md",
+          "slug": "docs/taxonomy-api/what-are-terms"
         }
       ]
     },
