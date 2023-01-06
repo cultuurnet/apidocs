@@ -34,9 +34,9 @@
           "items": [
             {
               "type": "item",
-              "title": "Creating school events",
-              "uri": "/docs/entry-api/events/school-events.md",
-              "slug": "entry-api/events/school-events"
+              "title": "Creating a school event",
+              "uri": "/docs/entry-api/events/create-school.md",
+              "slug": "entry-api/events/creating-a-school-event"
             }
           ]
         },

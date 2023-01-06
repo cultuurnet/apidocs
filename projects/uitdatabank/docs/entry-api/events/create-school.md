@@ -1,4 +1,8 @@
-# School events
+---
+stoplight-id: c7be5835e744b
+---
+
+# Creating a school event
 
 School events are events that are specifically organized and intended for:
 
@@ -62,7 +66,7 @@ In order to create a bookable school event you must use
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
-## Creating school events
+## How to create a school event
 
 For the creation of school events several extra requirements apply:
 
