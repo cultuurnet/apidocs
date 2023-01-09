@@ -109,43 +109,25 @@
         },
         {
           "type": "group",
-          "title": "Places",
+          "title": "Images",
           "items": [
             {
               "type": "item",
-              "title": "What are places?",
-              "uri": "/docs/entry-api/places/introduction.md",
-              "slug": "entry-api/places/what-are-places"
+              "title": "Uploading a new image",
+              "uri": "/docs/entry-api/images/upload.md",
+              "slug": "entry-api/images/uploading-a-new-image"
             },
             {
               "type": "item",
-              "title": "Finding and reusing places",
-              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
-              "slug": "entry-api/places/finding-and-reusing-places"
+              "title": "Add an uploaded image to an event/place/organizer",
+              "uri": "/docs/entry-api/images/add.md",
+              "slug": "entry-api/images/adding-an-image"
             },
             {
               "type": "item",
-              "title": "Creating a new place",
-              "uri": "/docs/entry-api/places/create.md",
-              "slug": "entry-api/places/creating-a-new-place"
-            },
-            {
-              "type": "item",
-              "title": "Updating a place",
-              "uri": "/docs/entry-api/places/update.md",
-              "slug": "entry-api/places/updating-a-place"
-            },
-            {
-              "type": "item",
-              "title": "Publishing a place",
-              "uri": "/docs/entry-api/places/publish.md",
-              "slug": "entry-api/places/publishing-a-place"
-            },
-            {
-              "type": "item",
-              "title": "Deleting a place",
-              "uri": "/docs/entry-api/places/delete.md",
-              "slug": "entry-api/places/deleting-a-place"
+              "title": "Deleting an uploaded image",
+              "uri": "/docs/entry-api/images/delete.md",
+              "slug": "entry-api/images/deleting-an-image"
             }
           ]
         },
@@ -193,25 +175,43 @@
         },
         {
           "type": "group",
-          "title": "Images",
+          "title": "Places",
           "items": [
             {
               "type": "item",
-              "title": "Uploading a new image",
-              "uri": "/docs/entry-api/images/upload.md",
-              "slug": "entry-api/images/uploading-a-new-image"
+              "title": "What are places?",
+              "uri": "/docs/entry-api/places/introduction.md",
+              "slug": "entry-api/places/what-are-places"
             },
             {
               "type": "item",
-              "title": "Add an uploaded image to an event/place/organizer",
-              "uri": "/docs/entry-api/images/add.md",
-              "slug": "entry-api/images/adding-an-image"
+              "title": "Finding and reusing places",
+              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
+              "slug": "entry-api/places/finding-and-reusing-places"
             },
             {
               "type": "item",
-              "title": "Deleting an uploaded image",
-              "uri": "/docs/entry-api/images/delete.md",
-              "slug": "entry-api/images/deleting-an-image"
+              "title": "Creating a new place",
+              "uri": "/docs/entry-api/places/create.md",
+              "slug": "entry-api/places/creating-a-new-place"
+            },
+            {
+              "type": "item",
+              "title": "Updating a place",
+              "uri": "/docs/entry-api/places/update.md",
+              "slug": "entry-api/places/updating-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Publishing a place",
+              "uri": "/docs/entry-api/places/publish.md",
+              "slug": "entry-api/places/publishing-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Deleting a place",
+              "uri": "/docs/entry-api/places/delete.md",
+              "slug": "entry-api/places/deleting-a-place"
             }
           ]
         }
