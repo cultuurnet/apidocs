@@ -101,6 +101,18 @@
             },
             {
               "type": "item",
+              "title": "Marking an event as sold out",
+              "uri": "/docs/entry-api/events/booking-availability.md",
+              "slug": "entry-api/events/marking-an-event-as-sold-out"
+            },
+            {
+              "type": "item",
+              "title": "Cancelling or postponing an event",
+              "uri": "/docs/entry-api/events/status.md",
+              "slug": "entry-api/events/cancelling-or-postponing-an-event"
+            },
+            {
+              "type": "item",
               "title": "Deleting an event",
               "uri": "/docs/entry-api/events/delete.md",
               "slug": "entry-api/events/deleting-an-event"
@@ -200,6 +212,18 @@
               "title": "Publishing a place",
               "uri": "/docs/entry-api/places/publish.md",
               "slug": "entry-api/places/publishing-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Marking a place as sold out",
+              "uri": "/docs/entry-api/events/booking-availability.md",
+              "slug": "entry-api/events/marking-a-place-as-sold-out"
+            },
+            {
+              "type": "item",
+              "title": "Marking a place as temporarily or permanently closed",
+              "uri": "/docs/entry-api/events/status.md",
+              "slug": "entry-api/events/marking-a-place-as-temporarily-or-permanently-closed"
             },
             {
               "type": "item",
