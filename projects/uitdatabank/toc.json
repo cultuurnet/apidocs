@@ -89,6 +89,12 @@
             },
             {
               "type": "item",
+              "title": "Copying an existing event",
+              "uri": "/docs/entry-api/events/copy.md",
+              "slug": "entry-api/events/copying-an-existing-event"
+            },
+            {
+              "type": "item",
               "title": "Updating an event",
               "uri": "/docs/entry-api/events/update.md",
               "slug": "entry-api/events/updating-an-event"
