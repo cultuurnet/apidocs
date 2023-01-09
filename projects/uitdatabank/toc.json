@@ -190,6 +190,30 @@
               "slug": "entry-api/organizers/deleting-an-organizer"
             }
           ]
+        },
+        {
+          "type": "group",
+          "title": "Images",
+          "items": [
+            {
+              "type": "item",
+              "title": "Uploading a new image",
+              "uri": "/docs/entry-api/images/upload.md",
+              "slug": "entry-api/images/uploading-a-new-image"
+            },
+            {
+              "type": "item",
+              "title": "Add an uploaded image to an event/place/organizer",
+              "uri": "/docs/entry-api/images/add.md",
+              "slug": "entry-api/images/adding-an-image"
+            },
+            {
+              "type": "item",
+              "title": "Deleting an uploaded image",
+              "uri": "/docs/entry-api/images/delete.md",
+              "slug": "entry-api/images/deleting-an-image"
+            }
+          ]
         }
       ]
     },
