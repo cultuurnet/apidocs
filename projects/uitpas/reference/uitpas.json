@@ -52,7 +52,7 @@
       "name": "Ticket sales"
     },
     {
-      "name": "UiTID"
+      "name": "UiTiD"
     }
   ],
   "paths": {
@@ -1484,7 +1484,7 @@
     "/passholders/me/uitid/registration-token": {
       "parameters": [],
       "get": {
-        "summary": "Retrieve UiTID registration token",
+        "summary": "Retrieve UiTiD registration token",
         "operationId": "get-uitid-passholder-registration-token",
         "responses": {
           "200": {
@@ -1512,7 +1512,7 @@
                 }
               }
             },
-            "description": "OK\n\nThe passholder can proceed UiTID registration."
+            "description": "OK\n\nThe passholder can proceed UiTiD registration."
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1541,7 +1541,7 @@
             }
           }
         },
-        "description": "This is step 1 of the process to register an UiTPAS passholder in UiTID using their UiTPAS number and date of birth. It is used to retrieve an UiTID registration token for the passholder. If the passholder already has a token via an email they received to register in UiTID, this step can be skipped.\n\nThis endpoint uses HTTP Basic Authentication using:\n* Username: uitpasNumber \n* Password: dateOfBirth in the form yyyy-mm-dd\n\nIn summary, this header should look like: \n\n```\nAuthorization: Basic base64(uitpasNumber+dateOfBirth)\n```\n\nThe response will contain a `token` property that can be used in step 2 of the process, [retrieving the UiTID registration status](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1status/get).\n\nThis caller of this method is identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) and does not require any permissions, but please note this endpoint is rate-limited on IP address to prevent abuse.",
+        "description": "This is step 1 of the process to register an UiTPAS passholder in UiTiD using their UiTPAS number and date of birth. It is used to retrieve an UiTiD registration token for the passholder. If the passholder already has a token via an email they received to register in UiTiD, this step can be skipped.\n\nThis endpoint uses HTTP Basic Authentication using:\n* Username: uitpasNumber \n* Password: dateOfBirth in the form yyyy-mm-dd\n\nIn summary, this header should look like: \n\n```\nAuthorization: Basic base64(uitpasNumber+dateOfBirth)\n```\n\nThe response will contain a `token` property that can be used in step 2 of the process, [retrieving the UiTiD registration status](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1status/get).\n\nThis caller of this method is identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) and does not require any permissions, but please note this endpoint is rate-limited on IP address to prevent abuse.",
         "parameters": [
           {
             "schema": {
@@ -1570,7 +1570,7 @@
     "/passholders/me/uitid/status": {
       "parameters": [],
       "get": {
-        "summary": "Retrieve UiTID registration status",
+        "summary": "Retrieve UiTiD registration status",
         "operationId": "get-uitid-passholder-status",
         "responses": {
           "200": {
@@ -1626,7 +1626,7 @@
                 }
               }
             },
-            "description": "OK\n\nThe passholder can proceed UiTID registration."
+            "description": "OK\n\nThe passholder can proceed UiTiD registration."
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1655,7 +1655,7 @@
             }
           }
         },
-        "description": "Retrieves the UiTID registration status of a passholder. This is step 2 in the process of registering an UiTPAS passholder in UiTID.\n\nThis endpoint requires a registation token in the `x-registration-token` header. A client can obtain such a token using [`GET /passholders/me/uitid/registration-token`](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get). Alternatively, a token may already be available to the client because the user may have received an email link including it.\n\nBased on the state value, the client can proceed in 2 ways:\n\n- If state is `UNREGISTERED`\n\nThe passholder can proceed to step 3, [retrieving the UiTID email address status](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get).\n\nThe response can include the linked `email` address of the passholder if one is known. This can be used in the next step of the registration process ([`GET /uitid/emails/{email}`](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get)). If no email address is included, the client should prompt the user to enter their email address first before proceeding to step 3.\n\n- If state is `REGISTERED` \n\nThe passholder is already `REGISTERED` so the user must continue by authenticating instead. The `email` address field contains the email address of the linked UiTID account that should be used to authenticate.\n\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) does not require any permissions.",
+        "description": "Retrieves the UiTiD registration status of a passholder. This is step 2 in the process of registering an UiTPAS passholder in UiTiD.\n\nThis endpoint requires a registation token in the `x-registration-token` header. A client can obtain such a token using [`GET /passholders/me/uitid/registration-token`](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get). Alternatively, a token may already be available to the client because the user may have received an email link including it.\n\nBased on the state value, the client can proceed in 2 ways:\n\n- If state is `UNREGISTERED`\n\nThe passholder can proceed to step 3, [retrieving the UiTiD email address status](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get).\n\nThe response can include the linked `email` address of the passholder if one is known. This can be used in the next step of the registration process ([`GET /uitid/emails/{email}`](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get)). If no email address is included, the client should prompt the user to enter their email address first before proceeding to step 3.\n\n- If state is `REGISTERED` \n\nThe passholder is already `REGISTERED` so the user must continue by authenticating instead. The `email` address field contains the email address of the linked UiTiD account that should be used to authenticate.\n\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) does not require any permissions.",
         "parameters": [
           {
             "schema": {
@@ -1694,7 +1694,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve UiTID email address status",
+        "summary": "Retrieve UiTiD email address status",
         "operationId": "get-uitid-email",
         "responses": {
           "200": {
@@ -1710,7 +1710,7 @@
                         "UITID_REGISTERED",
                         "UITPAS_ALREADY_LINKED"
                       ],
-                      "description": "* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first"
+                      "description": "* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTiD first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTiD first"
                     }
                   },
                   "required": [
@@ -1756,9 +1756,9 @@
             }
           }
         },
-        "description": "Retrieves the email address status in UiTPAS and UiTID for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTID.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first\n\nAfter [UiTID authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTID for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
+        "description": "Retrieves the email address status in UiTPAS and UiTiD for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTiD.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTiD first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTiD first\n\nAfter [UiTiD authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTiD for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
         "tags": [
-          "UiTID"
+          "UiTiD"
         ],
         "parameters": [],
         "security": [
@@ -2052,7 +2052,7 @@
     "/passholders/me/uitid": {
       "parameters": [],
       "put": {
-        "summary": "Register UiTID for passholder",
+        "summary": "Register UiTiD for passholder",
         "operationId": "register-uitid-passholder",
         "responses": {
           "201": {
@@ -2075,7 +2075,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers the UiTID for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTID.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTID *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDER_REGISTER_UITID` permission is mandatory.",
+        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDER_REGISTER_UITID` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2186,7 +2186,7 @@
           }
         },
         "operationId": "get-passholders-me",
-        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTID user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
+        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -5080,7 +5080,7 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "Whether or not the passholder has a an UiTID registered. This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
             "readOnly": true
           },
           "address": {

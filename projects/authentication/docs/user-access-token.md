@@ -1,6 +1,6 @@
-# User access token (login via UiTID)
+# User access token (login via UiTiD)
 
-User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTID**, and can be requested through one of two ways depending on the type of application that you're building.
+User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTiD**, and can be requested through one of two ways depending on the type of application that you're building.
 
 Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely the same. In both cases you will redirect the user to the authorization server where they can login. Afterward, the user will be redirected back to your application and you will receive an authorization code. With this code you can request a user access token on the authorization server.
 
@@ -15,16 +15,17 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 
 Additionally, we will need to configure the following settings for your client on our end:
 
-* Login URL: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
-* Callback URL(s): The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
-
-If you wish to use user access tokens, make sure to specify your login URL and callback URLs when requesting your client credentials.
+* **Login URL**: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/authorize` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
+* **Callback URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize`.
+* **Logout URL(s)**: The absolute URL(s) of the page(s) where you users can be redirected back to after they log out. You can specify any logout URL whenever you redirect a user to the authorization server to log out, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com` if you want to redirect the user back to the homepage of your application after logging out, or `https://example.com/logged-out` if you want to redirect them to a page with a confirmation message like "You're logged out!" after logging out.
 
 <!-- theme: warning -->
 
-> Without these login URL and callback URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
+> If you wish to use user access tokens, make sure to specify your login URL, callback URL(s) and logout URL(s) when requesting your client credentials.
+>
+> Without these URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
 
-> For more info about the login and callback URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris). Note that other URIs mentioned in that documentation page are not required for most applications.
+> For more info about the login, callback and logout URLs, see the Auth0 documentation about [application URIs](https://auth0.com/docs/get-started/dashboard/application-settings#application-uris).
 
 ## How it works
 
@@ -86,7 +87,7 @@ Note that:
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4).
+The authorization server will then show the UiTiD login form (step 3), and the user logs in (step 4).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 5). So the redirect URL will look like:
 
@@ -233,7 +234,7 @@ Note that:
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5).
+The authorization server will then show the UiTiD login form (step 4), and the user logs in (step 5).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 6). So the redirect URL will look like:
 
@@ -303,7 +304,7 @@ The following table gives an overview of all the required/optional parameters:
 | `scope`                 | A space-delimited string with one or more of the following values: `openid`, `email`, `offline_access`                                                                                               | Required if you want to fetch **user info** or use **refresh tokens** | Determines which user info will be shared with your application, and if you want a refresh token or not. Suggested to always be set to `openid email offline_access` for best results. See [scopes](#scopes) for more info.                                      |
 | `code_challenge`        | String generated from a cryptographically-random code verifier.                                                                                                                                      | Required if using **PKCE**                                            | See the [PKCE example](#example-1) for more info.                                                                                                                                                                                                                |
 | `code_challenge_method` | `S256`                                                                                                                                                                                               | Required if using **PKCE**                                            | **Must** be set to `S256`. See the [PKCE example](#example-1) for more info.                                                                                                                                                                                     |
-| `prompt`                | `none` (default) or `login`                                                                                                                                                                          | Optional                                                              | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server. Useful to force the user to login again, which also makes it possible to switch to another account as before.                   |
+| `prompt`                | `login` or omitted (default)                                                                                                                                                                          | Optional                                                              | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server.                   |
 | `referrer`              | `museumpas`, `udb` (for UiTdatabank), `uit` (for UiTinVlaanderen), `uitpas`, or `cultuurkuur`                                                                                                        | Optional                                                              | A publiq brand, which is used to set the background image of the login page accordingly.                                                                                                                                                                         |
 | `screen`                | `login` (default) or `register`                                                                                                                                                                      | Optional                                                              | Determines whether the login or register form is shown. The user may always switch to the other screen themselves.                                                                                                                                               |
 | `locale`                | `nl` (default), `fr`, or `de`                                                                                                                                                                        | Optional                                                              | Determines the language used in the login/register screens.                                                                                                                                                                                                      |
@@ -354,7 +355,7 @@ Response JSON example:
 
 ```json
 {
-    "sub": "google-oauth2|108326107941343586958", # User's UiTID v2 id, always present
+    "sub": "google-oauth2|108326107941343586958", # User's UiTiD v2 id, always present
     "https://publiq.be/first_name": "John", # User's first name, Always present
     "email": "john.doe@example.com", # Included if email scope was requested
     "email_verified": true # Included if email scope was requested
@@ -429,7 +430,23 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 
 When the user of your application wants to log out, clear any session data in your application including the user's access token and refresh token. If you have cached the [user's info](#user-info), make sure to also clear that.
 
-If a user on the same machine follows the login flow in your application again shortly after the previous user has logged out, the previous user may still be logged in on the authorization server. To avoid the previous user automatically being logged in again when the new user logs in, add the `prompt=login` URL parameter when redirecting the user to the `GET /authorize` endpoint. This will force the authorization server to always show a login screen, even if the previous user still has an active session there. See [login parameters](#login-parameters) for more info.
+Afterward, you should **redirect** the user to the `/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on a `?returnTo=...` URL parameter that you can specify. Note that you can only use an allowed "logout URL" as value for the `returnTo` URL parameter. (See [Requirements](#requirements))
+
+You can find more documentation about the `/logout` endpoint in [Auth0's API documentation](https://auth0.com/docs/api/authentication#logout).
+
+<!-- theme: warning -->
+
+> If you do not implement this redirect to the `/logout` URL on the authorization server, the next time a user of your application logs in on the same machine they will be logged in as the user that was previously logged in on your application, as the previous user is still logged in on the authorization server.
+
+<!-- theme: warning -->
+
+> You cannot call the `/logout` endpoint as a regular API endpoint, but you must **redirect** your user's web browser to it. Otherwise the authorization server will not be able to clear the user's session.
+
+## Single sign-on
+
+Single sign-on is enabled by default on the UiTiD authorization server. So if a user logs in first on for example <https://www.uitinvlaanderen.be>, and then navigates to your application in the same web browser and clicks the "login" button, they will automatically be logged in as the same user.
+
+If you do not want to allow single sign-on behavior in your application, you can use the `?prompt=login` URL parameter as documented in [Login parameters](#login-parameters). This will force the authorization server to always display a login screen, even if there is an active session.
 
 ## Authorization server URLs
 

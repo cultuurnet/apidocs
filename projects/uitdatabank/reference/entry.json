@@ -1734,11 +1734,11 @@
                       },
                       "apiKey": {
                         "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "API key of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       },
                       "consumerName": {
                         "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "Name of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       }
                     },
                     "required": [
@@ -1760,7 +1760,7 @@
                       }
                     ]
                   },
-                  "UiTID v1 consumer": {
+                  "UiTiD v1 consumer": {
                     "value": [
                       {
                         "date": "2021-10-04T09:40:59+00:00",
@@ -4854,11 +4854,11 @@
                       },
                       "apiKey": {
                         "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "API key of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       },
                       "consumerName": {
                         "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "Name of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       }
                     },
                     "required": [
@@ -4880,7 +4880,7 @@
                       }
                     ]
                   },
-                  "UiTID v1 consumer": {
+                  "UiTiD v1 consumer": {
                     "value": [
                       {
                         "date": "2021-10-04T09:40:59+00:00",
