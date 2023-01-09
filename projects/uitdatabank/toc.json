@@ -119,13 +119,7 @@
             },
             {
               "type": "item",
-              "title": "Add an uploaded image to an event/place/organizer",
-              "uri": "/docs/entry-api/images/add.md",
-              "slug": "entry-api/images/adding-an-image"
-            },
-            {
-              "type": "item",
-              "title": "Deleting an uploaded image",
+              "title": "Deleting an image",
               "uri": "/docs/entry-api/images/delete.md",
               "slug": "entry-api/images/deleting-an-image"
             }
