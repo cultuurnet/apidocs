@@ -1,70 +1,79 @@
 # Linken van artikels aan events via redactionele tools
 
-> Onderstaande functionaliteiten kan je enkel gebruiken met toestemming van publiq. Wil je hiermee aan de slag? Contacteer hiervoor dan <partnerships@publiq.be>.
+> Onderstaande functionaliteiten kan je enkel gebruiken met toestemming van publiq. Wil je hiermee aan de slag? Contacteer ons dan op <partnerships@publiq.be>.
 
 ## Wat zijn redactionele tools?
 
 Redactionele tools zijn een uitbreiding bovenop de widget modules. Ze zijn gericht naar partners die op hun eigen website artikels publiceren over evenementen. 
 
-Met behulp van de redactionele tools kunnen deze partners hun artikels eenvoudig automatisch laten linken aan de overeenkomstige evenementen in de UiTdatabank. Eens gelinkt, wordt een artikel op verschillende kanalen en websites van UiT gepubliceerd (zoals UiTinVlaanderen).
+Met behulp van deze redactionele tools kunnen partners hun artikels eenvoudig automatisch laten linken aan de overeenkomstige evenementen in de UiTdatabank. Eens gelinkt wordt een artikel op verschillende kanalen en websites van UiT gepubliceerd (zoals UiTinVlaanderen).
 
-Door redactionle content te linken aan evenementen zorgen we op verschillende vlakken voor meerwaarde:
+Door redactionele content te linken aan evenementen zorgen we op verschillende vlakken voor meerwaarde:
 * **Redacteurs** bereiken een **groter publiek** voor hun **artikels**, omdat het artikel op tal van websites gepubliceerd wordt. 
-* Daarnaast **besparen redacteurs tijd uit**, want aan de hand van de widgets kunnen ze de praktische informatie van een evenement in enkele klikken intgreren in artikels
-* **Organisatoren** doordat een link ontstaat tussen het artikel en het evenement krijgt hun **activiteit extra aandacht**
+* Daarnaast **besparen redacteurs tijd uit**, want aan de hand van de widgets kunnen ze de praktische informatie van een evenement in enkele klikken integreren in artikels, en de informatie is steeds up to date.
+* Dankzij de link tussen artikel en evenement krijgen **activiteiten van organisatoren extra publiciteit**
 * **Geïnteresseerde bezoekers** van activiteiten worden **beter en vollediger geïnformeerd** over een evenement
 
-## Hoe werkt het? 
+#### Een voorbeeld
 
-Om redactionele tools te integreren is er weinig werk vereist langs de partnerkant. Het enige wat je hoeft te doen om je artikel aan een evenement te linken, is het integreren van een specifieke widget `<script>` tag in je artikel, met daarin het `cdbid` van het evenement waarvoor het artikel gaat.
+BRUZZ schreef een artikel over de miljoenste bezoeker in Trainworld en de nieuwe tentoonstelling "Horta & Van de Velde - De trein der ontwerpers". De redacteur van dat artikel integreerde een widget om de praktische informatie over dat evenement te tonen: <https://www.bruzz.be/samenleving/train-world-schaarbeek-verwelkomt-miljoenste-bezoeker-2023-01-03>
 
-> Het cdbid is de unieke identifier van een evenement in de UiTdatabank. 
+![redactionele-tools-voorbeeld-embed.png](../assets/images/redactionele-tools-voorbeeld-embed.png)
 
-### Het `<script>` tag
+<!-- theme: success -->
+> Eens zo'n tipsblok geïntegreerd is in een artikel wordt dat artikel automatisch gelinkt aan het evenement in UiTdatabank. Het artikel verschijnt nu bij het evenement op [UiTinVlaanderen](https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe) en tal van andere UiT websites
 
-Het `<script>` tag dat je moet integreren in een artikel ziet er ongeveer als volgt uit: 
+![artikel-bruzz-op-uiv.png](../assets/images/artikel-bruzz-op-uiv.png)
+
+## Hoe gaat dat precies in z'n werk? 
+
+Om een artikel aan een evenement in UiTdatabank te linken dien je een specifieke widget `<script>` tag in je artikel op te nemen, met daarin de unieke identifier van het evenement waarvoor het artikel gaat (`cdbid`).
+
+> Je kan dit soort `<script>` tag enkel integreren mits toestemming van publiq. Wil je hiermee aan de slag? Contacteer ons dan op <partnerships@publiq.be>.
+
+### 1. Het `<script>` tag integreren in een artikel
+
+Het `<script>` tag dat je dient te integreren in een artikel ziet er ongeveer als volgt uit: 
 
 ```html
-<div id="embed" data-cdbid="2274db28-231f-48e8-9531-f290dbd12d66">
+<div id="embed" data-cdbid="ffe4f207-2f8d-4dce-87a6-08abf59aefbe">
   <script type="text/javascript" src="https://projectaanvraag-api.uitdatabank.be/widgets/layout/1234.js"></script>
 </div>
 ```
 
-Deze `<script>` tag bevat 2 variabelen:
+Dit `<script>` tag bevat 2 variabelen:
 1. `data-cdbid`: dit bepaalt welk evenement aan het artikel gelinkt wordt en moet door de redacteur (via het CMS van de website) toegevoegd worden 
-2. `src`: dit is de unieke javascript file van je widget, die we jou bezorgen
+2. `src`: dit is de referentie naar de unieke JavaScript file van je widget, die we jou bezorgen.
  
-Bovenstaande embed-code genereert een tipsblok met daarin de naam van het evenement, de locatie, het tijdstip en de prijs van het evenement:
+Bovenstaande embed-code genereert in het artikel een blok met daarin de praktische informatie van het evenement: de naam, locatie, het tijdstip en de prijs van het evenement.
 
-`[INSERT IMAGE]`
+### 2. Het unieke ID van een evenement vinden
 
-### Het unieke ID vinden van een evenement 
+De waarde van `data-cdbid` uit het `<script>`tag bepaalt welk evenement ingeladen wordt. In het voorbeeld van hierboven is dit het evenement met cdbid `ffe4f207-2f8d-4dce-87a6-08abf59aefbe`. 
 
-De waarde van `data-cdbid` uit het `<script>`tag bepaalt welk evenement ingeladen wordt. In bovenstaand voorbeeld is dit het evenement met id `2274db28-231f-48e8-9531-f290dbd12d66`. 
+Een redacteur hoeft dus enkel te kiezen welk evenement hij wilt integreren in zijn artikel, door de waarde voor `data-cdbid` aan te passen. De waarde voor `data-cdbid` kan je terugvinden op verschillende manieren.
 
-Een redacteur hoeft dus enkel te kiezen welk evenement hij wilt integreren in zijn artikel, door de waarde voor `data-cdbid` aan te passen. De waarde voor `data-cdbid` kan je terugvinden op verschillende manieren
-
-### in de eigen UiT-agenda 
-
-Je kan naar de detailpagina van het evenement in de eigen UiT-agenda surfen. In de url vind je het `cdbid` van het evenement:
-
-`[INSERT VIDEO]`
-
-Deze `cdbid` dien je vervolgens te plakken als waarde voor `data-cdbid` in het widget `<script>` tag.
-
-### in de agenda van UiTinVlaanderen
+* **in de agenda van UiTinVlaanderen**
 
 Je kan naar de detailpagina van het evenement op UiTinVlaanderen surfen. In de url vind je het `cdbid` van het evenement:
 
-`[INSERT IMAGE]`
+![redactionele-tools-detail-uiv.png](../assets/images/redactionele-tools-detail-uiv.png)
 
-Deze `cdbid` dien je vervolgens te plakken als waarde voor `data-cdbid` in het widget `<script>` tag.
+Dit `cdbid` dien je vervolgens te kopiëren en te gebruiken als waarde voor `data-cdbid` in het widget `<script>` tag.
 
-### door de UiTdatabank te doorzoeken vanuit je eigen CMS
+* **in de eigen UiT-agenda**
+
+Je kan naar de detailpagina van het evenement in de eigen UiT-agenda surfen. In de url vind je het `cdbid` van het evenement:
+
+![redactionele-tools-detail-bruzzwebsite.png](../assets/images/redactionele-tools-detail-bruzzwebsite.png)
+
+Dit `cdbid` dien je vervolgens te kopiëren en te gebruiken als waarde voor `data-cdbid` in het widget `<script>` tag.
+
+* **door de UiTdatabank te doorzoeken vanuit je eigen CMS**
 
 Je kan ook een zoek bouwen doorheen evenementen vanuit je eigen CMS. 
 
-`[DOCS VERDER AANVULLEN]`
+`[VIDEO]`
 
 ## Vereisten
 
