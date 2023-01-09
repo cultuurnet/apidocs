@@ -42,7 +42,7 @@
     },
     {
       "type": "item",
-      "title": "User access token (login via UiTID)",
+      "title": "User access token (login via UiTiD)",
       "uri": "docs/user-access-token.md",
       "slug": "methods/user-access-token"
     },

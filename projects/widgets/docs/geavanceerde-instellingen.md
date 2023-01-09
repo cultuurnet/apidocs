@@ -1,10 +1,11 @@
 # Geavanceerde instellingen
 
-De widgetbouwer laat toe om een aantal geavanceerde instellingen te definiëren op widgetniveau.  
+De widgetbouwer laat toe om een aantal geavanceerde instellingen te definiëren op widgetniveau.
 
-![geavanceerde-instellingen.png](<../assets/images/geavanceerde-instellingen.png>)
+![geavanceerde-instellingen.png](../assets/images/geavanceerde-instellingen.png)
 
 <!-- theme: warning -->
+
 > We raden het gebruik van deze instellingen enkel aan wanneer het inladen of weergeven van je widgetpagina niet goed verloopt.
 
 ## Forceer smalle weergave
@@ -12,6 +13,7 @@ De widgetbouwer laat toe om een aantal geavanceerde instellingen te definiëren 
 Plak je je widget in een smalle container (< `576 px`), dan is mobiele weergave in de meeste gevallen wenselijk. Je kan de smalle weergave forceren via geavanceerde instellingen door het selectievakje `Forceer smalle weergave` aan te vinken.
 
 Houd er rekening mee dat binnen de mobiele weergave:
+
 * labels altijd als iconen weergegeven zullen worden
 * afbeeldingen boven of onder de event-informatie zal verschijnen in plaats van links of rechts van de event-informatie
 * verfijningen standaard ingeklapt zijn

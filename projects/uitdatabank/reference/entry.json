@@ -812,12 +812,12 @@
                 "$ref": "../models/event-attendanceMode-put.json"
               },
               "examples": {
-                "Example Online": {
+                "Online": {
                   "value": {
                     "attendanceMode": "online"
                   }
                 },
-                "Example offline": {
+                "Offline": {
                   "value": {
                     "attendanceMode": "offline",
                     "location": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3"
@@ -1734,11 +1734,11 @@
                       },
                       "apiKey": {
                         "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "API key of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       },
                       "consumerName": {
                         "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "Name of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       }
                     },
                     "required": [
@@ -1760,7 +1760,7 @@
                       }
                     ]
                   },
-                  "UiTID v1 consumer": {
+                  "UiTiD v1 consumer": {
                     "value": [
                       {
                         "date": "2021-10-04T09:40:59+00:00",
@@ -1785,6 +1785,70 @@
         },
         "description": "Returns the history log of the event for the given `eventId`.\n\nThe history log is an array of objects that contain info about each individual update to the event, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
         "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/events/{eventId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "event-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the event."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to an event."
+        },
+        "description": "Adds an image to an event. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
+        "tags": [
+          "Events"
+        ],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3272,6 +3336,122 @@
         }
       }
     },
+    "/images": {
+      "post": {
+        "summary": "image - upload",
+        "operationId": "image-post",
+        "tags": [
+          "Images"
+        ],
+        "description": "Uploads an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "requestBody": {
+          "description": "The image to upload and its metadata to store with it.",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The image to upload."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "A description of the image."
+                  },
+                  "copyrightHolder": {
+                    "type": "string",
+                    "description": "The copyrightHolder of the image."
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "The language of the description. It must be exactly 2 lowercase letters long (for example \"nl\")."
+                  }
+                },
+                "required": [
+                  "file",
+                  "description",
+                  "copyrightHolder",
+                  "language"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "@\"Screenshot 2017-11-28 12.37.19.png\"",
+                    "description": "Example description",
+                    "copyrightHolder": "Example copyrightHolder",
+                    "language": "nl"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The image was created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "@id": {
+                      "type": "string",
+                      "description": "The url of the created image.",
+                      "example": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    },
+                    "imageId": {
+                      "type": "string",
+                      "description": "The id of the created image.",
+                      "example": "c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "format": "uuid"
+                    }
+                  },
+                  "required": [
+                    "@id",
+                    "imageId"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "@id": "https://io-test.uitdatabank.be/images/c71b9b61-73a9-435e-bb50-aadb05750d2d",
+                      "imageId": "c71b9b61-73a9-435e-bb50-aadb05750d2d"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/file-missing\n* https://api.publiq.be/probs/body/file-invalid-type\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places": {
       "post": {
         "summary": "place - create",
@@ -4674,11 +4854,11 @@
                       },
                       "apiKey": {
                         "type": "string",
-                        "description": "API key of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "API key of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       },
                       "consumerName": {
                         "type": "string",
-                        "description": "Name of the UiTID v1 consumer that made the change (if it was an UiTID v1 consumer)."
+                        "description": "Name of the UiTiD v1 consumer that made the change (if it was an UiTiD v1 consumer)."
                       }
                     },
                     "required": [
@@ -4700,7 +4880,7 @@
                       }
                     ]
                   },
-                  "UiTID v1 consumer": {
+                  "UiTiD v1 consumer": {
                     "value": [
                       {
                         "date": "2021-10-04T09:40:59+00:00",
@@ -4726,6 +4906,70 @@
         "operationId": "place-history-get",
         "description": "Returns the history log of the place for the given `placeId`.\n\nThe history log is an array of objects that contain info about each individual update to the place, who did the update, using what API, etc.\n\nBecause this history log can contain API keys which are secret (deprecated but still usable for backward compatibility), it can only be accessed by users that are a \"god user\".\n\nBecause of this limitation, the endpoint is also documented as internal and not visible in the public docs.",
         "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/places/{placeId}/images": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "post": {
+        "summary": "images - add",
+        "operationId": "place-images-post",
+        "responses": {
+          "204": {
+            "description": "The image was added to the place."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mediaObjectId": "546a90cd-a238-417b-aa98-1b6c50c1345c"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The image to add to a place."
+        },
+        "description": "Adds an image to a place. To upload an image, use the [`POST /images`](./entry.json/paths/~1images/post) endpoint.",
+        "tags": [
+          "Places"
+        ],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7438,6 +7682,83 @@
           "News articles"
         ]
       }
+    },
+    "/user": {
+      "get": {
+        "summary": "current user - get",
+        "operationId": "user-get",
+        "description": "Returns the details of the current user.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid",
+                      "description": "UUID of the user."
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "info@publiq.be",
+                      "description": "The email address of the user."
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
+                    }
+                  },
+                  "required": [
+                    "uuid",
+                    "email",
+                    "username"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "email": "info@publiq.be",
+                      "username": "username"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -7629,6 +7950,9 @@
       "name": "Events"
     },
     {
+      "name": "Images"
+    },
+    {
       "name": "News articles"
     },
     {
@@ -7636,6 +7960,9 @@
     },
     {
       "name": "Places"
+    },
+    {
+      "name": "Users"
     }
   ]
 }

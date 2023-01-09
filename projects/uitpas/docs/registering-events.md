@@ -112,7 +112,7 @@ Registering an UiTPAS event in UiTdatabank's user interface takes just 3 steps!
 
 ### 1. Creating a new event
 
-Start by logging in on UiTdatabank with an existing UiTID account, or create one for free if you don't have one yet. Afterward you can immediately start entering events.
+Start by logging in on UiTdatabank with an existing UiTiD account, or create one for free if you don't have one yet. Afterward you can immediately start entering events.
 
 You can find more info in [our helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/360016331140-Hulp-bij-het-invoeren-van-een-evenement) creating events in UiTdatabank.
 
