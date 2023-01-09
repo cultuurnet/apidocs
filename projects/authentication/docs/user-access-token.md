@@ -1,6 +1,6 @@
-# User access token (login via UiTID)
+# User access token (login via UiTiD)
 
-User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTID**, and can be requested through one of two ways depending on the type of application that you're building.
+User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTiD**, and can be requested through one of two ways depending on the type of application that you're building.
 
 Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely the same. In both cases you will redirect the user to the authorization server where they can login. Afterward, the user will be redirected back to your application and you will receive an authorization code. With this code you can request a user access token on the authorization server.
 
@@ -86,7 +86,7 @@ Note that:
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 3), and the user logs in (step 4).
+The authorization server will then show the UiTiD login form (step 3), and the user logs in (step 4).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 5). So the redirect URL will look like:
 
@@ -233,7 +233,7 @@ Note that:
 
 The `/authorize` URL supports more parameters than the ones used in this example. See [login parameters](#login-parameters) for more info.
 
-The authorization server will then show the UiTID login form (step 4), and the user logs in (step 5).
+The authorization server will then show the UiTiD login form (step 4), and the user logs in (step 5).
 
 After a successful login the authorization server will redirect the user back to the given `redirect_uri`, with an extra `code` URL parameter (step 6). So the redirect URL will look like:
 
@@ -354,7 +354,7 @@ Response JSON example:
 
 ```json
 {
-    "sub": "google-oauth2|108326107941343586958", # User's UiTID v2 id, always present
+    "sub": "google-oauth2|108326107941343586958", # User's UiTiD v2 id, always present
     "https://publiq.be/first_name": "John", # User's first name, Always present
     "email": "john.doe@example.com", # Included if email scope was requested
     "email_verified": true # Included if email scope was requested
