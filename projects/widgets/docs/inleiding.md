@@ -1,17 +1,26 @@
+<!-- focus: false -->
+
+![widgets logo.png](<../assets/images/widgets-logo.png>)
+
+<br>
+
 # Widgets
 
 Welkom op onze widget documentatie! 👋
 
+## Wat zijn widgets?
+
 Widgets zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
 
-publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt. Tijdens het configuratieproces worden al je instellingen opgeslagen op een `<script>` tag. Wanneer dit `<script>` tag geïntegreeerd wordt op je website, zal die de geconfigureerde agenda met vrijetijdsactiviteiten weergeven.
+publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt. 
+
+Tijdens het configuratieproces worden al je instellingen opgeslagen op een `<script>` tag. Wanneer dit `<script>` tag geïntegreeerd wordt op je website, zal die de geconfigureerde agenda met vrijetijdsactiviteiten weergeven.
 
 Widgets kunnen in hoge maat op maat ingesteld en verfijnd worden naar je eigen voorkeuren en noden:
 
-* aan de hand van een query kan je heel nauwkeurig definiëren welke activiteiten je in je agenda wilt publiceren
-* aan de hand van het aan -en uitvinken van instellingen kan je bepalen welke informatie je wilt tonen en welke niet
-* er is een breed gamma aan mogelijkheden om je agenda te stijlen, via CSS of vooraf gedefinieerde thema's
-* ...
+* je hebt de **volledige controle** over **welke activiteiten** je in je agenda publiceert en welke niet
+* aan de hand van het **aan -en uitvinken van instellingen** kan je bepalen welke informatie (tijdstip, locatie, prijs, etc.) je voor de evenementen in je agenda wilt tonen en welke niet
+* er is een **breed gamma aan mogelijkheden om je agenda vorm te geven**, via CSS of vooraf gedefinieerde thema's
 
 ## Voor wie zijn widgets (niet)?
 

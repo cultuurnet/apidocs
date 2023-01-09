@@ -48,7 +48,7 @@ Na het configureren van je widget kan je je widget publiceren. De publiceer acti
 
 Na het publiceren kan je je `<script>` tag kopiëren om die te integreren op de pagina van je website waar je de agenda wilt tonen.
 
-> Je hoeft de `<script>` tag maar één keer te ingreren in je website. Alle wijzigingen die je in de toekomst in je widget aanbrengt, worden opgeslagen in de bestaande `<script>` tag.
+> Je hoeft de `<script>` tag maar één keer te integreren in je website. Alle wijzigingen die je in de toekomst in je widget aanbrengt, worden opgeslagen op de bestaande `<script>` tag.
 
 👉 [Meer informatie over het publiceren van je widget](./publiceren-en-embedden-op-je-website.md)
 

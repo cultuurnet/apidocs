@@ -61,11 +61,11 @@ API endpoints that support the authentication of an API client with a client id 
 
 👉 [Learn more about client access tokens](./client-access-token.md)
 
-### User access tokens (login via UiTID)
+### User access tokens (login via UiTiD)
 
 API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
 
-Usually used in situations where a user will log in through publiq's **UiTID** service and your application will then make requests in that user's name.
+Usually used in situations where a user will log in through publiq's **UiTiD** service and your application will then make requests in that user's name.
 
 * ✅ Suitable for frontend applications
 * ✅ Suitable for backend applications
