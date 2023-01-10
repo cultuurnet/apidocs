@@ -127,24 +127,6 @@
         },
         {
           "type": "group",
-          "title": "Images",
-          "items": [
-            {
-              "type": "item",
-              "title": "Uploading a new image",
-              "uri": "/docs/entry-api/images/upload.md",
-              "slug": "entry-api/images/uploading-a-new-image"
-            },
-            {
-              "type": "item",
-              "title": "Deleting an image",
-              "uri": "/docs/entry-api/images/delete.md",
-              "slug": "entry-api/images/deleting-an-image"
-            }
-          ]
-        },
-        {
-          "type": "group",
           "title": "Organizers",
           "items": [
             {
@@ -248,6 +230,12 @@
               "title": "Booking and contact info",
               "uri": "/docs/entry-api/shared/booking-and-contact-info.md",
               "slug": "entry-api/shared/booking-and-contact-info"
+            },
+            {
+              "type": "item",
+              "title": "Images",
+              "uri": "/docs/entry-api/shared/images.md",
+              "slug": "entry-api/shared/images"
             },
             {
               "type": "item",
