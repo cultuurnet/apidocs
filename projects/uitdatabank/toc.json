@@ -238,6 +238,48 @@
               "slug": "entry-api/places/deleting-a-place"
             }
           ]
+        },
+        {
+          "type": "group",
+          "title": "Shared properties",
+          "items": [
+            {
+              "type": "item",
+              "title": "Booking and contact info",
+              "uri": "/docs/entry-api/shared/booking-and-contact-info.md",
+              "slug": "entry-api/shared/booking-and-contact-info"
+            },
+            {
+              "type": "item",
+              "title": "Labels",
+              "uri": "/docs/entry-api/shared/labels.md",
+              "slug": "entry-api/shared/labels"
+            },
+            {
+              "type": "item",
+              "title": "Price info",
+              "uri": "/docs/entry-api/shared/price-info.md",
+              "slug": "entry-api/shared/price-info"
+            },
+            {
+              "type": "item",
+              "title": "Terms",
+              "uri": "/docs/entry-api/shared/terms.md",
+              "slug": "entry-api/shared/terms"
+            },
+            {
+              "type": "item",
+              "title": "Videos",
+              "uri": "/docs/entry-api/shared/videos.md",
+              "slug": "entry-api/shared/videos"
+            },
+            {
+              "type": "item",
+              "title": "Workflow status",
+              "uri": "/docs/entry-api/shared/workflow-status.md",
+              "slug": "entry-api/shared/workflow-status"
+            }
+          ]
         }
       ]
     },
