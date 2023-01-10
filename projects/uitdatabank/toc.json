@@ -326,7 +326,7 @@
           "items": [
             {
               "type": "item",
-              "title": "Embedding",
+              "title": "Embedding result data",
               "uri": "/docs/search-api/embedding.md",
               "slug": "search-api/embedding"
             },
