@@ -57,7 +57,7 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 ## Group passes
 
 | UitpasNumber    | Social tariff | Coupons | Card status | Comment                     |
-|---------- ------|:-------------:| :-----: | :---------: | :-------------------------: |
+|-----------------|:-------------:| :-----: | :---------: | :-------------------------: |
 | `0900000045410` |         yes   |    no   |    active   | -                           |
 | `0900000191800` |         no    |   yes   |    active   | max. 50 ticketsales per day |
 
