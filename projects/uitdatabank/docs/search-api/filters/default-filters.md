@@ -1,3 +1,7 @@
+---
+stoplight-id: 63499a402dd04
+---
+
 # Default filters
 
 When searching for events, places, or offers the search API applies a couple of filters by default to provide you with the most relevant results for most use cases:

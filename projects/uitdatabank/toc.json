@@ -326,12 +326,6 @@
           "items": [
             {
               "type": "item",
-              "title": "Default filters",
-              "uri": "/docs/search-api/default-filters.md",
-              "slug": "search-api/default-filters"
-            },
-            {
-              "type": "item",
               "title": "Embedding",
               "uri": "/docs/search-api/embedding.md",
               "slug": "search-api/embedding"
@@ -354,6 +348,12 @@
           "type": "group",
           "title": "Common filters",
           "items": [
+            {
+              "type": "item",
+              "title": "Default filters",
+              "uri": "/docs/search-api/filters/default-filters.md",
+              "slug": "search-api/filters/default-filters"
+            },
             {
               "type": "item",
               "title": "Free text search",
