@@ -8,4 +8,5 @@ Coming soon.
   - How to publish when updating or via separate endpoint
   - How to publish on a defined datetime in the future (using availableFrom)
   - Explain that the place will be published forever (calendarType permanent) or until its endDate (calendarType periodic)
+  - Permissions: Who can publish a place? Who can approve/reject a place?
 -->
