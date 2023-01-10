@@ -352,6 +352,54 @@
         },
         {
           "type": "group",
+          "title": "Common filters",
+          "items": [
+            {
+              "type": "item",
+              "title": "Free text search",
+              "uri": "/docs/search-api/filters/freetext.md",
+              "slug": "search-api/filters/free-text-search"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by date & time",
+              "uri": "/docs/search-api/filters/datetime.md",
+              "slug": "search-api/filters/filtering-by-date-and-time"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by location",
+              "uri": "/docs/search-api/filters/location.md",
+              "slug": "search-api/filters/filtering-by-location"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by type or theme",
+              "uri": "/docs/search-api/filters/terms.md",
+              "slug": "search-api/filters/filtering-by-type-or-theme"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by labels",
+              "uri": "/docs/search-api/filters/labels.md",
+              "slug": "search-api/filters/filtering-by-labels"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by language",
+              "uri": "/docs/search-api/filters/language.md",
+              "slug": "search-api/filters/filtering-by-language"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by target audience age",
+              "uri": "/docs/search-api/filters/age.md",
+              "slug": "search-api/filters/filtering-by-target-audience-age"
+            }
+          ]
+        },
+        {
+          "type": "group",
           "title": "Advanced features",
           "items": [
             {
