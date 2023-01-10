@@ -1,6 +1,6 @@
 <!-- focus: false -->
 
-![widgets logo.png](<../assets/images/widgets-logo.png>)
+![widgets logo.png](../assets/images/widgets-logo.png)
 
 <br>
 
@@ -12,7 +12,7 @@ Welkom op onze widget documentatie! 👋
 
 Widgets zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
 
-publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt. 
+publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt.
 
 Tijdens het configuratieproces worden al je instellingen opgeslagen op een `<script>` tag. Wanneer dit `<script>` tag geïntegreeerd wordt op je website, zal die de geconfigureerde agenda met vrijetijdsactiviteiten weergeven.
 
