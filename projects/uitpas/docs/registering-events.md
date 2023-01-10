@@ -2,8 +2,8 @@
 
 This guide will explain how to register an event as an UiTPAS event. This is required to be able to:
 
-*   **Calculate UiTPAS prices (discounts)** for tickets to attend the event
-*   **Register ticket sales** so the organizer of the event can receive compensation for the discount
+* **Calculate UiTPAS prices (discounts)** for tickets to attend the event
+* **Register ticket sales** so the organizer of the event can receive compensation for the discount
 
 > ##### Why do I need to register my event with UiTPAS?
 >
@@ -13,9 +13,9 @@ This guide will explain how to register an event as an UiTPAS event. This is req
 
 To register an UiTPAS event, the following criteria have to be met:
 
-1.  **The event needs to exist in UiTdatabank.** UiTdatabank is a central database of cultural and leisure activities in Flanders and Brussels, including events of organizers that work with UiTPAS.
-2.  The event in UiTdatabank needs to have **a base price**.
-3.  The event in UiTdatabank has to be **linked to a known UiTPAS organizer**.
+1. **The event needs to exist in UiTdatabank.** UiTdatabank is a central database of cultural and leisure activities in Flanders and Brussels, including events of organizers that work with UiTPAS.
+2. The event in UiTdatabank needs to have **a base price**.
+3. The event in UiTdatabank has to be **linked to a known UiTPAS organizer**.
 
 When these criteria are met, the event automatically becomes known in UiTPAS by its UiTdatabank event id.
 
@@ -87,18 +87,18 @@ If successful, you should receive a `200` response with a JSON body including th
 
 Of the properties in the example above, the following are always mandatory in UiTdatabank in general:
 
-*   `mainLanguage`: The language that your event is described in.
-*   `name`: The name of your event.
-*   `calendarType`: Specifies how often your event takes place, and based on this other properties like `startDate` and `endDate` may be required.
-*   `location`: The location the event takes place at.
-*   `terms`: Describes what categories your event belongs to. At least one event type is required.
+* `mainLanguage`: The language that your event is described in.
+* `name`: The name of your event.
+* `calendarType`: Specifies how often your event takes place, and based on this other properties like `startDate` and `endDate` may be required.
+* `location`: The location the event takes place at.
+* `terms`: Describes what categories your event belongs to. At least one event type is required.
 
 For more info on mandatory properties, see [the Entry API documentation](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events.html).
 
 Additionally, your event requires two more properties to qualify as an UiTPAS event:
 
-*   `priceInfo` with a `base` price.
-*   `organizer` with the id of an UiTPAS organizer that organizes the event. Usually your client or user access token is coupled to one or more organizer ids inside UiTPAS and you should use one of those.
+* `priceInfo` with a `base` price.
+* `organizer` with the id of an UiTPAS organizer that organizes the event. Usually your client or user access token is coupled to one or more organizer ids inside UiTPAS and you should use one of those.
 
 ### Authentication
 
@@ -112,7 +112,7 @@ Registering an UiTPAS event in UiTdatabank's user interface takes just 3 steps!
 
 ### 1. Creating a new event
 
-Start by logging in on UiTdatabank with an existing UiTID account, or create one for free if you don't have one yet. Afterward you can immediately start entering events.
+Start by logging in on UiTdatabank with an existing UiTiD account, or create one for free if you don't have one yet. Afterward you can immediately start entering events.
 
 You can find more info in [our helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/360016331140-Hulp-bij-het-invoeren-van-een-evenement) creating events in UiTdatabank.
 

@@ -1,5 +1,5 @@
 {
-  "title": "place-post-deprecated",
+  "title": "place.post (deprecated)",
   "type": "object",
   "properties": {
     "mainLanguage": {

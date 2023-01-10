@@ -6,15 +6,15 @@ The client can request a token on publiq's authorization server with its client 
 
 The token serves as proof of identity of the client, in other words your backend system. Because browsers and native applications cannot securely store the necessary client secret, they must not use client access tokens. A possible alternative in this case would be using [user access tokens](./user-access-token.md) with the PKCE flow.
 
-If your browser or native application cannot work with user logins via publiq's UiTID, you may also send requests from your frontend application to your own backend, and make API requests from there with a client access token. Note that you will be responsible to determine who may or may not access your backend to prevent abuse.
+If your browser or native application cannot work with user logins via publiq's UiTiD, you may also send requests from your frontend application to your own backend, and make API requests from there with a client access token. Note that you will be responsible to determine who may or may not access your backend to prevent abuse.
 
 > Not sure if client access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
 ## Requirements
 
--   A client id
--   A client secret
--   Your API requests are always made from a **backend** system
+* A client id
+* A client secret
+* Your API requests are always made from a **backend** system
 
 See [requesting client credentials](./requesting-credentials.md) how to obtain a set of client credentials.
 
@@ -34,11 +34,11 @@ sequenceDiagram
     end
 ```
 
-1.  Your application requests a token on the authorization server with its client id and secret.
-2.  If the client id and secret are valid, the authorization server returns a response with an access token.
-3.  Your application caches the token internally.
-4.  Your application uses the access token to make authenticated requests to the API.
-5.  The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
+1. Your application requests a token on the authorization server with its client id and secret.
+2. If the client id and secret are valid, the authorization server returns a response with an access token.
+3. Your application caches the token internally.
+4. Your application uses the access token to make authenticated requests to the API.
+5. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
 
 To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
 
@@ -55,9 +55,9 @@ Content-Type: application/json
 }
 ```
 
--   The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
--   The `audience` property **must** always be set to `https://api.publiq.be`.
--   The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
+* The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
+* The `audience` property **must** always be set to `https://api.publiq.be`.
+* The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
 
 After sending your request you will get a response with a JSON body like this:
 
@@ -81,7 +81,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 #### More info
 
-publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
+publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client\_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
 
 ## Decoding tokens
 
@@ -95,8 +95,8 @@ Make sure to **cache and reuse** the obtained client access token for as long as
 
 There are two ways to check if your cached token is still valid:
 
-1.  Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
-2.  Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
+1. Store the `expires_in` property included in the token response and the time that you requested the token internally in your application. Using these two parameters, you can calculate the expiration time of the token and request a new one when it is expired. Note that if you follow this approach, you should account for clock skew between your server and the APIs' servers, so it's best to already request a new token a couple of minutes before the cached one will expire.
+2. Keep using the same cached token until you get a `401` response from an API endpoint, at which point you can request a new token and perform the failed request again with the new token. Note that you will need to set a maximum number of retries if you follow this approach, to prevent an infinite loop if there happens to be an issue that prevents you from getting a valid token.
 
 ## Authorization server URLs
 

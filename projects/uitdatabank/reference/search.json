@@ -221,6 +221,12 @@
             "$ref": "#/components/parameters/labels"
           },
           {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
@@ -480,6 +486,12 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -885,6 +897,9 @@
             "$ref": "#/components/parameters/labels"
           },
           {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
@@ -999,7 +1014,7 @@
         },
         "in": "query",
         "name": "name",
-        "description": "Returns only results whose name autocompletes on the given name."
+        "description": "Returns only results whose name autocompletes on the given name. For example searching for `pub` will return matches with `publiq` in the name."
       },
       "website": {
         "schema": {
@@ -1195,7 +1210,7 @@
         },
         "in": "query",
         "name": "creator",
-        "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTID v1), an Auth0 user id (for new UiTID v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
+        "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTiD v1), an Auth0 user id (for new UiTiD v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
       },
       "dateFrom": {
         "schema": {
@@ -1361,6 +1376,32 @@
         "name": "labels[]",
         "style": "form",
         "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "locationLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "locationLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their location's `labels` or `hiddenLabels` properties. May be repeated to only return results with a location that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "organizerLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "organizerLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their organizer's `labels` or `hiddenLabels` properties. May be repeated to only return results with an organizer that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "mainLanguage": {

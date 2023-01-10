@@ -25,9 +25,11 @@ One of the biggest advantages of creating UiTdatabank events, is that your event
 
 If you don't want your events to be published in this way you [should set the audienceType](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events/event-audience.html) to "members" on your events.
 
-    "audience": {
-      "audienceType": "members"
-    }
+```
+"audience": {
+  "audienceType": "members"
+}
+```
 
 ### When should I register the ticket sale?
 

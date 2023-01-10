@@ -6,9 +6,9 @@ This mini-guide illustrates how to register UiTPAS discounted ticket sales for m
 
 The register ticket sale request accepts an array of ticket sales. This array can contain multiple ticket sales for:
 
-*   one passholder for multiple events
-*   multiple passholders for one event
-*   or even multiple passholders for multiple events
+* one passholder for multiple events
+* multiple passholders for one event
+* or even multiple passholders for multiple events
 
 It is important to pass TicketSale objects with tariffs that are applicable to that passholder, for the given event. Do note that the register ticket sale request will fail for the complete set of ticket sales if one of those ticket sales would trigger an error.
 

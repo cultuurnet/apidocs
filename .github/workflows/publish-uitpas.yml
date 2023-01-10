@@ -1,15 +1,13 @@
 name: Publish uitpas documentation
 on:
   push:
-    paths:
-      - 'projects/uitpas/**'
   workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Publish
         uses: ./.github/actions/stoplight-push
         with:

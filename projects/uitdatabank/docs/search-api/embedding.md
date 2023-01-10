@@ -8,15 +8,15 @@ By default the search API endpoints only return a list of links to the individua
 
 To get the actual bodies of the results, there are two options:
 
-*   Loop over the results yourself and perform GET requests using the given URLs
-*   Use the `embed`  URL parameter (`bool`, defaults to `false`)
+* Loop over the results yourself and perform GET requests using the given URLs
+* Use the `embed`  URL parameter (`bool`, defaults to `false`)
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
-*   `GET /organizers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
+* `GET /organizers`
 
 ### Recommended use
 
@@ -28,11 +28,15 @@ We recommend using the `embed=true` parameter in order to limit the amount of re
 
 **request**
 
-    GET /offers
+```
+GET /offers
+```
 
 or
 
-    GET /offers/?embed=false
+```
+GET /offers/?embed=false
+```
 
 **response**
 
@@ -62,7 +66,9 @@ The response contains a list of links to the individual search results:
 
 **request**
 
-    GET /offers/?embed=true
+```
+GET /offers/?embed=true
+```
 
 **response**
 
@@ -108,17 +114,17 @@ Formatting a large amount of dates and/or opening hours into a human-readable ov
 
 For every event or place a calendar summary is available in different sizes:
 
-*   `xs`: extra small
-*   `sm`: small
-*   `md`: medium
-*   `lg`: large
+* `xs`: extra small
+* `sm`: small
+* `md`: medium
+* `lg`: large
 
 We currently support 4 languages for the calendar summary:
 
-*   `nl`
-*   `fr`
-*   `en`
-*   `de`
+* `nl`
+* `fr`
+* `en`
+* `de`
 
 The calendar summary can be retrieved in `text` and in `html`.
 
@@ -130,16 +136,16 @@ The calendar summary can be retrieved in `text` and in `html`.
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
 
 ### Recommended use
 
-*   We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
-*   We recommend to use `lg` for the detailpage
-*   In some cases (e.g. mobile apps) calendar summary `xs` can be useful
-*   You can use the `embedCalendarSummaries` parameter with or without `embed=true`
+* We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
+* We recommend to use `lg` for the detailpage
+* In some cases (e.g. mobile apps) calendar summary `xs` can be useful
+* You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ### Parameter and possible values
 
@@ -147,14 +153,14 @@ Parameter name: `embedCalendarSummaries`
 
 Possible values:
 
-*   `xs-text`: extra small summary in plain text
-*   `sm-text`: small summary in plain text
-*   `md-text`: medium summary in plain text
-*   `lg-text`: large summary in plain text
-*   `xs-html`: extra small summary in HTML
-*   `sm-html`: small summary in HTML
-*   `md-html`: medium summary in HTML
-*   `lg-html`: large summary in HTML
+* `xs-text`: extra small summary in plain text
+* `sm-text`: small summary in plain text
+* `md-text`: medium summary in plain text
+* `lg-text`: large summary in plain text
+* `xs-html`: extra small summary in HTML
+* `sm-html`: small summary in HTML
+* `md-html`: medium summary in HTML
+* `lg-html`: large summary in HTML
 
 ### Examples
 
@@ -162,7 +168,9 @@ Possible values:
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=xs-text
+```
+GET /events/?embedCalendarSummaries[]=xs-text
+```
 
 **response**
 
@@ -172,67 +180,98 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "text":{
-         "xs":"21 okt"
+         "xs":"28 nov"
       }
    },
    "fr":{
       "text":{
-         "xs":"21 oct"
+         "xs":"28 nov"
       }
    },
    "de":{
       "text":{
-         "xs":"21 Okt"
+         "xs":"28 Nov"
       }
    },
    "en":{
       "text":{
-         "xs":"21 Oct"
+         "xs":"28 Nov"
       }
    }
 }
 ```
 
-#### Calendar summary `sm-text` for a cancelled event
-
-**request**
-
-    GET /events/?embedCalendarSummaries[]=sm-text
-
-**response**
-
-Every result in the response will have a `calendarSummary` property with a value like:
+#### Calendar summary `sm-text` for an event that is happening tonight
 
 ```json
 {
    "nl":{
       "text":{
-         "sm":"3 jun (geannuleerd)"
+         "sm":"Vanavond"
       }
    },
    "fr":{
       "text":{
-         "sm":"3 juin (annulé)"
+         "sm":"Ce soir"
       }
    },
    "de":{
       "text":{
-         "sm":"3 Juni (abgesagt)"
+         "sm":"Diesen Abend"
       }
    },
    "en":{
       "text":{
-         "sm":"3 Jun (cancelled)"
+         "sm":"Tonight"
       }
    }
 }
 ```
 
-#### Calendar summary `sm-html` for an event that is sold out or fully booked
+#### Calendar summary `md-text` for a cancelled event
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=sm-html
+```
+GET /events/?embedCalendarSummaries[]=md-text
+```
+
+**response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
+
+```json
+{
+   "nl":{
+      "text":{
+         "md":"Ma 28 november 2022 (geannuleerd)"
+      }
+   },
+   "fr":{
+      "text":{
+         "md":"Lun. 28 novembre 2022 (annulé)"
+      }
+   },
+   "de":{
+      "text":{
+         "md":"Mo. 28 November 2022 (abgesagt)"
+      }
+   },
+   "en":{
+      "text":{
+         "md":"Mon 28 November 2022 (cancelled)"
+      }
+   }
+}
+```
+
+#### Calendar summary `lg-html` for an event that is sold out or fully booked
+
+**request**
+
+```
+GET /events/?embedCalendarSummaries[]=lg-html
+```
 
 **response**
 
@@ -242,22 +281,22 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Van</span> <span class=""cf-date"">28 september 2022</span> <span class=""cf-to cf-meta"">tot</span> <span class=""cf-date"">21 december 2022</span> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Maandag</span> <span class=""cf-date"">28 november 2022</span> <span class=""cf-from cf-meta"">van</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">tot</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
       }
    },
    "fr":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Du</span> <span class=""cf-date"">28 septembre 2022</span> <span class=""cf-to cf-meta"">au</span> <span class=""cf-date"">21 décembre 2022</span> <span class=""cf-status"">(Complet)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Lundi</span> <span class=""cf-date"">28 novembre 2022</span> <span class=""cf-from cf-meta"">du</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">au</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Complet)</span>"
       }
    },
    "de":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">Von</span> <span class=""cf-date"">28 September 2022</span> <span class=""cf-to cf-meta"">bis</span> <span class=""cf-date"">21 Dezember 2022</span> <span class=""cf-status"">(Ausgebucht oder ausverkauft)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Montag</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">von</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">bis</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Ausgebucht oder ausverkauft)</span>"
       }
    },
    "en":{
       "html":{
-         "sm":"<span class=""cf-from cf-meta"">From</span> <span class=""cf-date"">28 September 2022</span> <span class=""cf-to cf-meta"">till</span> <span class=""cf-date"">21 December 2022</span> <span class=""cf-status"">(Sold out or fully booked)</span>"
+         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Monday</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">from</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">till</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Sold out or fully booked)</span>"
       }
    }
 }
@@ -267,7 +306,9 @@ Every result in the response will have a `calendarSummary` property with a value
 
 **request**
 
-    GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
+```
+GET /events/?embedCalendarSummaries[]=sm-text&embedCalendarSummaries[]=lg-html
+```
 
 **response**
 
@@ -315,14 +356,14 @@ Every result in the response will have a `calendarSummary` property with a value
 Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
 
 <!-- theme: warning -->
-> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
+> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
 ### Applicable URLs
 
-*   `GET /events`
-*   `GET /places`
-*   `GET /offers`
+* `GET /events`
+* `GET /places`
+* `GET /offers`
 
 ### Examples
 
@@ -339,6 +380,7 @@ GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
 **response**
 
 UiTPAS prices are not included in the JSON response:
+
 ```js
 {
 "priceInfo": [
@@ -358,9 +400,11 @@ UiTPAS prices are not included in the JSON response:
 ```
 
 #### With UiTPAS prices embedded
+
 **request**
 
 Set the `embedUitpasPrices` parameter to `true`:
+
 ```
 GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
 ```
@@ -394,5 +438,3 @@ The indicative UiTPAS price for the applicable card system UiTPAS Leuven is incl
   ]
 }
 ```
-
-

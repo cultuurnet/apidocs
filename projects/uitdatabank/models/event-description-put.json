@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "description": {
-      "$ref": "./common-description-localized.json",
+      "type": "string",
       "description": "A human-readable description of the [event](./event.json) localized in the language from the URL parameter."
     }
   },
