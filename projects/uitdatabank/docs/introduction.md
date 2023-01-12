@@ -2,18 +2,28 @@
 
 ![](../assets/images/uitdatabank.png)
 
-A warm welcome to our UiTdatabank API documentation! 👋
+## What is UiTdatabank?
+
+UiTdatabank is the largest database of cultural and leisure activities happening in Flanders and Brussels (Belgium). Each year, over 28.000 organizers enter more than 215.000 activities into in the UiTdatabank free of charge.
+
+Enter your planned activity into the UiTdatabank using [Entry API](entry-api/introduction.md) and it is broadcast on a whole range of online and offline channels. Obviously on our very own [UiTinVlaanderen](https://www.uitinvlaanderen.be), but also in over 500 online and printed calendars run by local or national media, authorities and organisations.
+
+Interested in setting up your own calendar aimed at a specific target group? Around 500 partners from around the cultural and leisure sectors, the Flemish government and the media have already embraced UiT calendars, which they feature on their websites in their own visual identity. These automated connections with the UiTdatabank are built using [Search API](search-api/introduction.md) or through [Widgets](https://docs.publiq.be/docs/widgets).
+
+## About our APIs
+
+The UiTdatabank APIs follow the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](https://docs.publiq.be/docs/authentication).
+
+In 2019, the UiTdatabank APIs won the ["API of the year" award](https://overheid.vlaanderen.be/wedstrijd-api-van-het-jaar-2019). Since then, we have continuously been improving them while also maintaining compatibility with all existing integrations.
+
+In our documentation you will find:
+
+- Explanations of relevant UiTdatabank terminology and concepts
+- Step-by-step guides to common UiTdatabank integration scenarios
+- Code examples so you can see see how the APIs works in practice
+- Detailed technical specifications per HTTP endpoint
+- OpenAPI files and Postman collections to get started quickly
 
 <!-- theme: warning -->
 
-> ##### Construction ahead 🚧
->
-> We are hard at work to port our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.
-
-<!--
-  @todo
-  Explain what UiTdatabank is.
-  Some inspiration:
-  - https://www.publiq.be/nl/projecten/uitdatabank
-  - https://documentatie.uitdatabank.be/content/uitdatabank/latest/uitdatabank.html
--->
+> We are hard at work to move our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.
