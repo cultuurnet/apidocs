@@ -18,11 +18,11 @@ In 2019, the UiTdatabank APIs won the ["API of the year" award](https://overheid
 
 In our documentation you will find:
 
-- Explanations of relevant UiTdatabank terminology and concepts
-- Step-by-step guides to common UiTdatabank integration scenarios
-- Code examples so you can see see how the APIs works in practice
-- Detailed technical specifications per HTTP endpoint
-- OpenAPI files and Postman collections to get started quickly
+* Explanations of relevant UiTdatabank terminology and concepts
+* Step-by-step guides to common UiTdatabank integration scenarios
+* Code examples so you can see see how the APIs works in practice
+* Detailed technical specifications per HTTP endpoint
+* OpenAPI files and Postman collections to get started quickly
 
 <!-- theme: warning -->
 
