@@ -3,17 +3,20 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
     },
     {
       "type": "item",
       "title": "Terminology",
-      "uri": "docs/terminology.md"
+      "uri": "docs/terminology.md",
+      "slug": "terminology"
     },
     {
       "type": "item",
       "title": "Errors",
-      "uri": "docs/errors.md"
+      "uri": "docs/errors.md",
+      "slug": "errors"
     },
     {
       "type": "divider",
@@ -274,7 +277,8 @@
     {
       "type": "item",
       "title": "API reference",
-      "uri": "reference/entry.json"
+      "uri": "reference/entry.json",
+      "slug": "entry-api/reference"
     },
     {
       "type": "divider",
@@ -409,7 +413,8 @@
     {
       "type": "item",
       "title": "API reference",
-      "uri": "reference/search.json"
+      "uri": "reference/search.json",
+      "slug": "search-api/reference"
     },
     {
       "type": "divider",
@@ -454,7 +459,8 @@
     {
       "type": "item",
       "title": "API reference",
-      "uri": "reference/taxonomy.json"
+      "uri": "reference/taxonomy.json",
+      "slug": "taxonomy-api/reference"
     },
     {
       "type": "divider",
@@ -463,17 +469,20 @@
     {
       "type": "item",
       "title": "Event",
-      "uri": "models/event-with-read-example.json"
+      "uri": "models/event-with-read-example.json",
+      "slug": "models/event"
     },
     {
       "type": "item",
       "title": "Place",
-      "uri": "models/place-with-read-example.json"
+      "uri": "models/place-with-read-example.json",
+      "slug": "models/place"
     },
     {
       "type": "item",
       "title": "Organizer",
-      "uri": "models/organizer-with-read-example.json"
+      "uri": "models/organizer-with-read-example.json",
+      "slug": "models/organizer"
     }
   ]
 }
