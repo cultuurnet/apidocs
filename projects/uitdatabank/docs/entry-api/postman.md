@@ -6,4 +6,4 @@ Click the button below to go the download page, where you can optionally also en
 
 <!-- focus: false -->
 
-[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)
+[![Download postman collection](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/postman-button.svg)](https://postman.publiq.be/?api=udb-entry)
