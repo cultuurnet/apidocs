@@ -1,6 +1,3 @@
-Coming soon.
+# Taxonomy API
 
-<!--
-  @todo
-  Inspiration: https://documentatie.uitdatabank.be/content/uitdatabank/latest/categorisatie/categorisatie.html
--->
+The Taxonomy API makes it possible to browse and find [taxonomy terms](terms.md) required to register events and places using [Entry API](../entry-api/introduction.md), or filter on them using [Search API](../search-api/introdution.md).
