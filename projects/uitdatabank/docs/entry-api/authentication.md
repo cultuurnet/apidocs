@@ -2,7 +2,7 @@
 
 ## Requesting credentials
 
-See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) in the general authentication documentation.
+See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) page in the general authentication documentation.
 
 ## OAuth2 tokens (using a client id & secret)
 

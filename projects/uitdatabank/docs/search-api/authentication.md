@@ -2,14 +2,13 @@
 
 ## Requesting credentials
 
-See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) in the general authentication documentation.
+See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) page in the general authentication documentation.
 
 ## Client identification
 
-When you have received your client credentials, you can authenticate on the Search API using client identification in the form of a `x-client-id` header or `clientId` URL query parameter as authentication.
+When you have received your client credentials, you can authenticate on the Search API using client identification in the form of a `x-client-id` header or `clientId` URL query parameter as authentication. 
 
 For example as a header:
-
 ```http
 GET /events/ HTTP/1.1
 Host: https://search-test.uitdatabank.be
@@ -17,13 +16,12 @@ X-Client-Id: YrgBoha6aRSrfIcsFt8PISe4u0EoM45k
 ```
 
 Or as a query parameter:
-
 ```
 GET /events/?clientId=YrgBoha6aRSrfIcsFt8PISe4u0EoM45k HTTP/1.1
 Host: https://search-test.uitdatabank.be
 ```
 
-We recommend to use the `x-client-id` header in code because in most programming languages it is possible to define it once on the HTTP client library that you use and then re-use it for every request that you send to Search API.
+We recommend to use the `x-client-id` header in code because in most programming languages it is possible to define it once on the HTTP client library that you use and then re-use it for every request that you send to Search API. 
 
 The `clientId` query parameter is mostly useful for manual tests or sharing a link for debugging purposes, as a header cannot be included in the URL.
 
