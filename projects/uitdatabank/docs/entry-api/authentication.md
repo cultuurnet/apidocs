@@ -40,25 +40,27 @@ With an API key, you can only request a user access token, and this can only be 
 
 ### JWT provider URLs
 
-* Test environment: https://jwt-test.uitdatabank.be
-* Production environment: https://jwt.uitdatabank.be
+* Test environment: <https://jwt-test.uitdatabank.be>
+* Production environment: <https://jwt.uitdatabank.be>
 
 ### Requesting a token
 
 To get a user access token from the JWT provider, you need to **redirect** your end user to the `/connect` endpoint on the JWT provider with `destination` and `apiKey` query parameters. The end user is then prompted to log in using UiTiD v2.
 
 For example:
+
 ```
 https://jwt-test.uitdatabank.be/connect?apiKey=YOUR_API_KEY&destination=https://yourapplication.com
 ```
 
 Note that you will need to use the corresponding API key for the chosen enviroment URL. For example you need to use your API key for the test environment when using the test environment URL.
 
-Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirect to will also include a `jwt` query parameter, as well as a `refresh` query parameter. 
+Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirect to will also include a `jwt` query parameter, as well as a `refresh` query parameter.
 
 You can use the value of the `jwt` query parameter as a token to authenticate requests to Entry API, and the value of the `refresh` parameter to renew expired tokens.
 
 An example of the destination URL including the tokens:
+
 ```
 https://yourapplication.com/?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOi...&refresh=WHbB1RatZQqI8K3abzUu1_GM6e7umYt8qStutFRHdDGij
 ```
@@ -83,6 +85,7 @@ When you send requests to Entry API using a token previously obtained from the J
 You can renew your token using the previously obtained refresh token. To do so, send a HTTP request to the `/refresh` endpoint on the JWT provider including an `apiKey` query parameter and `refresh` query parameter.
 
 For example:
+
 ```
 GET /refresh?apiKey=YOUR_API_KEY&refresh=YOUR_REFRESH_TOKEN HTTP/1.1
 Host: https://jwt-test.uitdatabank.be
@@ -115,5 +118,3 @@ When you receive your new client credentials, you can update your application to
 <!-- theme: success -->
 
 > When you request client credentials to replace your API key, your API key will still keep working so you have all the time that you need to update your application.
-
-
