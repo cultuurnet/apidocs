@@ -3,7 +3,7 @@
   "info": {
     "title": "Entry API",
     "version": "3.0",
-    "description": "With UiTdatabank's Entry API you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!",
+    "description": "With UiTdatabank's Entry API you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.",
     "contact": {
       "name": "publiq helpdesk",
       "email": "vragen@publiq.be",
@@ -1654,7 +1654,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the list of available (accessibility) facilities on the event. These will show up in the [event's `terms`](/models/event-terms.json).\n\nA list of possible facilities can be found using our [Terms guide](/docs/terms.md).\n\n**Note**: A special permission is required to update an event's facilities in UiTdatabank, even if you are the event owner. Contact an administrator for further information.",
+        "description": "Updates the list of available (accessibility) facilities on the event. These will show up in the [event's `terms`](/models/event-terms.json).\n\nA list of possible facilities can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\n**Note**: A special permission is required to update an event's facilities in UiTdatabank, even if you are the event owner. Contact an administrator for further information.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2192,11 +2192,11 @@
                   },
                   "type": {
                     "type": "string",
-                    "description": "The `eventtype` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
+                    "description": "The `eventtype` term used to categorize the event. Terms are pre-defined and can be browsed in our [guide about taxonomy terms](../docs/taxonomy-api/terms.md)."
                   },
                   "theme": {
                     "type": "string",
-                    "description": "The `theme` term used to categorize the event. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
+                    "description": "The `theme` term used to categorize the event. Terms are pre-defined and can be browsed in our [guide about taxonomy terms](../docs/taxonomy-api/terms.md)."
                   },
                   "location": {
                     "type": "object",
@@ -2835,7 +2835,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the event's type (examples of types are `Concert`, `Opendeurdag`, `Lessenreeks`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as event types.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "description": "Updates the event's type (examples of types are `Concert`, `Opendeurdag`, `Lessenreeks`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md). Only terms from the `eventtype` domain can be used as event types.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2912,7 +2912,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the event's theme (examples of themes are `Audiovisuele kunst`, `Moderne dans`, `Actie en avontuur`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `theme` domain can be used as theme.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `theme` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "description": "Updates the event's theme (examples of themes are `Audiovisuele kunst`, `Moderne dans`, `Actie en avontuur`, and so on) based on the given `eventId` and `termId`.\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md). Only terms from the `theme` domain can be used as theme.\n\nIf the `eventId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `theme` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4775,7 +4775,7 @@
         "tags": [
           "Places"
         ],
-        "description": "Updates the list of available (accessibility) facilities on the place. These will show up in the [place's `terms`](/models/place-terms.json).\n\nA list of possible facilities can be found using our [Terms guide](/docs/terms.md).\n\n**Note**: A special permission is required to update an place's facilities in UiTdatabank, even if you are the place owner. Contact an administrator for further information.",
+        "description": "Updates the list of available (accessibility) facilities on the place. These will show up in the [place's `terms`](/models/place-terms.json).\n\nA list of possible facilities can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\n**Note**: A special permission is required to update an place's facilities in UiTdatabank, even if you are the place owner. Contact an administrator for further information.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -5249,11 +5249,11 @@
                   },
                   "type": {
                     "type": "string",
-                    "description": "The `eventtype` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
+                    "description": "The `eventtype` term used to categorize the place. Terms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md)."
                   },
                   "theme": {
                     "type": "string",
-                    "description": "The `theme` term used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide."
+                    "description": "The `theme` term used to categorize the place. Terms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md)."
                   },
                   "address": {
                     "$ref": "../models/common-address-localized.json",
@@ -5593,7 +5593,7 @@
         "tags": [
           "Places"
         ],
-        "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [Terms](/docs/terms.md) guide. Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
+        "description": "Updates the place's type (examples of types are `Bioscoop`, `Monument`, `Theater`, and so on) based on the given `placeId` and `termId`.\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md). Only terms from the `eventtype` domain can be used as place types.\n\nIf the `placeId` does not exist a `404 Not Found` will be returned. If the `termId` does not exist or is not a term in the `eventtype` domain, a `400 Bad Request` will be returned. If the request is successful a `204 No Content` will be returned.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7869,7 +7869,7 @@
         "schema": {
           "type": "string"
         },
-        "description": "Unique id of a taxonomy term. Taxonomy terms are pre-defined and can be found using our [Terms](./docs/terms.md) guide"
+        "description": "Unique id of a taxonomy term. Taxonomy terms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md)."
       },
       "imageId": {
         "name": "imageId",

@@ -3,7 +3,7 @@
   "info": {
     "title": "Search API",
     "version": "3.0",
-    "description": "UiTdatabank's Search API is used to programmatically search events, places and organizers.\n\n## Authentication\n\n### Client id\n\nSearch API v3 does not require a token, only [client identification](https://docs.publiq.be/docs/authentication/80fc7c74970af-client-identification).\n\nYou can authenticate your requests using client identification by either including a `?clientId=YOUR_CLIENT_ID` query parameter in the URL, or including a `x-client-id: YOUR_CLIENT_ID` header in your requests.\n\nThis is a new authentication mechanism that will replace the older API key authentication (see below).\n\nCurrently new client ids are only provided to a select few partners that are trying out this new authentication mechanism. In the future this authentication mechanism will be available to all integrators.\n\n### API key\n\nSearch API v3 also supports API keys, which anyone can request at https://projectaanvraag.uitdatabank.be.\n\nYou can authenticate your requests using an API key by either including a `?apiKey=YOUR_API_KEY` query parameter in the URL, or including a `x-api-key: YOUR_API_KEY` header in your requests.\n \nThis authentication mechanism will be phased out for **new** integrations once the client id authentication becomes available to all integrators. However, API key authentication will still be supported for existing integrations so it is safe to use for the foreseeable future.",
+    "description": "With UiTdatabank's Search API you can search events, places and organizers.",
     "contact": {
       "name": "publiq helpdesk",
       "email": "vragen@publiq.be",
@@ -1102,7 +1102,7 @@
         },
         "in": "query",
         "name": "availableFrom",
-        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "availableTo": {
         "schema": {
@@ -1112,7 +1112,7 @@
         },
         "in": "query",
         "name": "availableTo",
-        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "attendanceMode": {
         "schema": {
@@ -1628,7 +1628,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "workflowStatusOrganizer": {
         "schema": {
@@ -1647,7 +1647,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       }
     },
     "responses": {

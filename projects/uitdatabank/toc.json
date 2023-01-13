@@ -3,17 +3,20 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
     },
     {
       "type": "item",
       "title": "Terminology",
-      "uri": "docs/terminology.md"
+      "uri": "docs/terminology.md",
+      "slug": "terminology"
     },
     {
       "type": "item",
       "title": "Errors",
-      "uri": "docs/errors.md"
+      "uri": "docs/errors.md",
+      "slug": "errors"
     },
     {
       "type": "divider",
@@ -21,8 +24,33 @@
     },
     {
       "type": "item",
-      "title": "API reference",
-      "uri": "reference/entry.json"
+      "title": "Introduction",
+      "uri": "docs/entry-api/introduction.md",
+      "slug": "entry-api/introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/entry-api/authentication.md",
+      "slug": "entry-api/authentication"
+    },
+    {
+      "type": "item",
+      "title": "Requirements before going live",
+      "uri": "/docs/entry-api/requirements-before-going-live.md",
+      "slug": "entry-api/requirements-before-going-live"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/entry-api/openapi.md",
+      "slug": "entry-api/openapi-file"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/entry-api/postman.md",
+      "slug": "entry-api/postman-collection"
     },
     {
       "type": "group",
@@ -34,21 +62,69 @@
           "items": [
             {
               "type": "item",
-              "title": "Creating school events",
-              "uri": "/docs/entry-api/events/school-events.md",
-              "slug": "entry-api/events/school-events"
-            }
-          ]
-        },
-        {
-          "type": "group",
-          "title": "Places",
-          "items": [
+              "title": "What are events?",
+              "uri": "/docs/entry-api/events/introduction.md",
+              "slug": "entry-api/events/what-are-events"
+            },
             {
               "type": "item",
-              "title": "Finding and reusing places",
-              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
-              "slug": "entry-api/places/finding-and-reusing-places"
+              "title": "Creating a new event",
+              "uri": "/docs/entry-api/events/create.md",
+              "slug": "entry-api/events/creating-a-new-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating an online event",
+              "uri": "/docs/entry-api/events/create-online.md",
+              "slug": "entry-api/events/creating-an-online-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating an UiTPAS event",
+              "uri": "/docs/entry-api/events/create-uitpas.md",
+              "slug": "entry-api/events/creating-an-uitpas-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating a school event",
+              "uri": "/docs/entry-api/events/create-school.md",
+              "slug": "entry-api/events/creating-a-school-event"
+            },
+            {
+              "type": "item",
+              "title": "Copying an existing event",
+              "uri": "/docs/entry-api/events/copy.md",
+              "slug": "entry-api/events/copying-an-existing-event"
+            },
+            {
+              "type": "item",
+              "title": "Updating an event",
+              "uri": "/docs/entry-api/events/update.md",
+              "slug": "entry-api/events/updating-an-event"
+            },
+            {
+              "type": "item",
+              "title": "Publishing an event",
+              "uri": "/docs/entry-api/events/publish.md",
+              "slug": "entry-api/events/publishing-an-event"
+            },
+            {
+              "type": "item",
+              "title": "Marking an event as sold out",
+              "uri": "/docs/entry-api/events/booking-availability.md",
+              "slug": "entry-api/events/marking-an-event-as-sold-out"
+            },
+            {
+              "type": "item",
+              "title": "Cancelling or postponing an event",
+              "uri": "/docs/entry-api/events/status.md",
+              "slug": "entry-api/events/cancelling-or-postponing-an-event"
+            },
+            {
+              "type": "item",
+              "title": "Deleting an event",
+              "uri": "/docs/entry-api/events/delete.md",
+              "slug": "entry-api/events/deleting-an-event"
             }
           ]
         },
@@ -58,9 +134,141 @@
           "items": [
             {
               "type": "item",
+              "title": "What are organizers?",
+              "uri": "/docs/entry-api/organizers/introduction.md",
+              "slug": "entry-api/organizers/what-are-organizers"
+            },
+            {
+              "type": "item",
               "title": "Finding and reusing organizers",
               "uri": "/docs/entry-api/organizers/finding-and-reusing-organizers.md",
               "slug": "entry-api/organizers/finding-and-reusing-organizers"
+            },
+            {
+              "type": "item",
+              "title": "Creating a new organizer",
+              "uri": "/docs/entry-api/organizers/create.md",
+              "slug": "entry-api/organizers/creating-a-new-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Updating an organizer",
+              "uri": "/docs/entry-api/organizers/update.md",
+              "slug": "entry-api/organizers/updating-an-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Publishing an organizer",
+              "uri": "/docs/entry-api/organizers/publish.md",
+              "slug": "entry-api/organizers/publishing-an-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Deleting an organizer",
+              "uri": "/docs/entry-api/organizers/delete.md",
+              "slug": "entry-api/organizers/deleting-an-organizer"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Places",
+          "items": [
+            {
+              "type": "item",
+              "title": "What are places?",
+              "uri": "/docs/entry-api/places/introduction.md",
+              "slug": "entry-api/places/what-are-places"
+            },
+            {
+              "type": "item",
+              "title": "Finding and reusing places",
+              "uri": "/docs/entry-api/places/finding-and-reusing-places.md",
+              "slug": "entry-api/places/finding-and-reusing-places"
+            },
+            {
+              "type": "item",
+              "title": "Creating a new place",
+              "uri": "/docs/entry-api/places/create.md",
+              "slug": "entry-api/places/creating-a-new-place"
+            },
+            {
+              "type": "item",
+              "title": "Updating a place",
+              "uri": "/docs/entry-api/places/update.md",
+              "slug": "entry-api/places/updating-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Publishing a place",
+              "uri": "/docs/entry-api/places/publish.md",
+              "slug": "entry-api/places/publishing-a-place"
+            },
+            {
+              "type": "item",
+              "title": "Marking a place as sold out",
+              "uri": "/docs/entry-api/places/booking-availability.md",
+              "slug": "entry-api/places/marking-a-place-as-sold-out"
+            },
+            {
+              "type": "item",
+              "title": "Marking a place as temporarily or permanently closed",
+              "uri": "/docs/entry-api/places/status.md",
+              "slug": "entry-api/places/marking-a-place-as-temporarily-or-permanently-closed"
+            },
+            {
+              "type": "item",
+              "title": "Deleting a place",
+              "uri": "/docs/entry-api/places/delete.md",
+              "slug": "entry-api/places/deleting-a-place"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Shared properties",
+          "items": [
+            {
+              "type": "item",
+              "title": "Booking and contact info",
+              "uri": "/docs/entry-api/shared/booking-and-contact-info.md",
+              "slug": "entry-api/shared/booking-and-contact-info"
+            },
+            {
+              "type": "item",
+              "title": "Images",
+              "uri": "/docs/entry-api/shared/images.md",
+              "slug": "entry-api/shared/images"
+            },
+            {
+              "type": "item",
+              "title": "Labels",
+              "uri": "/docs/entry-api/shared/labels.md",
+              "slug": "entry-api/shared/labels"
+            },
+            {
+              "type": "item",
+              "title": "Price info",
+              "uri": "/docs/entry-api/shared/price-info.md",
+              "slug": "entry-api/shared/price-info"
+            },
+            {
+              "type": "item",
+              "title": "Terms",
+              "uri": "/docs/entry-api/shared/terms.md",
+              "slug": "entry-api/shared/terms"
+            },
+            {
+              "type": "item",
+              "title": "Videos",
+              "uri": "/docs/entry-api/shared/videos.md",
+              "slug": "entry-api/shared/videos"
+            },
+            {
+              "type": "item",
+              "title": "Workflow status",
+              "uri": "/docs/entry-api/shared/workflow-status.md",
+              "slug": "entry-api/shared/workflow-status"
             }
           ]
         }
@@ -68,9 +276,9 @@
     },
     {
       "type": "item",
-      "title": "Requirements before going live",
-      "uri": "/docs/entry-api/requirements-before-going-live.md",
-      "slug": "entry-api/requirements-before-going-live"
+      "title": "API reference",
+      "uri": "reference/entry.json",
+      "slug": "entry-api/reference"
     },
     {
       "type": "divider",
@@ -78,8 +286,27 @@
     },
     {
       "type": "item",
-      "title": "API reference",
-      "uri": "reference/search.json"
+      "title": "Introduction",
+      "uri": "docs/search-api/introduction.md",
+      "slug": "search-api/introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/search-api/authentication.md",
+      "slug": "search-api/authentication"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/search-api/openapi.md",
+      "slug": "search-api/openapi-file"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/search-api/postman.md",
+      "slug": "search-api/postman-collection"
     },
     {
       "type": "group",
@@ -91,13 +318,7 @@
           "items": [
             {
               "type": "item",
-              "title": "Default filters",
-              "uri": "/docs/search-api/default-filters.md",
-              "slug": "search-api/default-filters"
-            },
-            {
-              "type": "item",
-              "title": "Embedding",
+              "title": "Embedding result data",
               "uri": "/docs/search-api/embedding.md",
               "slug": "search-api/embedding"
             },
@@ -112,6 +333,60 @@
               "title": "Sorting",
               "uri": "/docs/search-api/sorting.md",
               "slug": "search-api/sorting"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "title": "Common filters",
+          "items": [
+            {
+              "type": "item",
+              "title": "Default filters",
+              "uri": "/docs/search-api/filters/default-filters.md",
+              "slug": "search-api/filters/default-filters"
+            },
+            {
+              "type": "item",
+              "title": "Free text search",
+              "uri": "/docs/search-api/filters/freetext.md",
+              "slug": "search-api/filters/free-text-search"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by date & time",
+              "uri": "/docs/search-api/filters/datetime.md",
+              "slug": "search-api/filters/filtering-by-date-and-time"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by location",
+              "uri": "/docs/search-api/filters/location.md",
+              "slug": "search-api/filters/filtering-by-location"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by type or theme",
+              "uri": "/docs/search-api/filters/terms.md",
+              "slug": "search-api/filters/filtering-by-type-or-theme"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by labels",
+              "uri": "/docs/search-api/filters/labels.md",
+              "slug": "search-api/filters/filtering-by-labels"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by language",
+              "uri": "/docs/search-api/filters/language.md",
+              "slug": "search-api/filters/filtering-by-language"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by target audience age",
+              "uri": "/docs/search-api/filters/age.md",
+              "slug": "search-api/filters/filtering-by-target-audience-age"
             }
           ]
         },
@@ -136,13 +411,38 @@
       ]
     },
     {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/search.json",
+      "slug": "search-api/reference"
+    },
+    {
       "type": "divider",
       "title": "Taxonomy API"
     },
     {
       "type": "item",
-      "title": "API reference",
-      "uri": "reference/taxonomy.json"
+      "title": "Introduction",
+      "uri": "docs/taxonomy-api/introduction.md",
+      "slug": "taxonomy-api/introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/taxonomy-api/authentication.md",
+      "slug": "taxonomy-api/authentication"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/taxonomy-api/openapi.md",
+      "slug": "taxonomy-api/openapi-file"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/taxonomy-api/postman.md",
+      "slug": "taxonomy-api/postman-collection"
     },
     {
       "type": "group",
@@ -150,10 +450,17 @@
       "items": [
         {
           "type": "item",
-          "title": "Terms",
-          "uri": "docs/terms.md"
+          "title": "What are terms?",
+          "uri": "docs/taxonomy-api/terms.md",
+          "slug": "taxonomy-api/what-are-terms"
         }
       ]
+    },
+    {
+      "type": "item",
+      "title": "API reference",
+      "uri": "reference/taxonomy.json",
+      "slug": "taxonomy-api/reference"
     },
     {
       "type": "divider",
@@ -162,17 +469,20 @@
     {
       "type": "item",
       "title": "Event",
-      "uri": "models/event-with-read-example.json"
+      "uri": "models/event-with-read-example.json",
+      "slug": "models/event"
     },
     {
       "type": "item",
       "title": "Place",
-      "uri": "models/place-with-read-example.json"
+      "uri": "models/place-with-read-example.json",
+      "slug": "models/place"
     },
     {
       "type": "item",
       "title": "Organizer",
-      "uri": "models/organizer-with-read-example.json"
+      "uri": "models/organizer-with-read-example.json",
+      "slug": "models/organizer"
     }
   ]
 }

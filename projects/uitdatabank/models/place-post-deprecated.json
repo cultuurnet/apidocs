@@ -14,7 +14,7 @@
       "required": [
         "id"
       ],
-      "description": "The term (type) used to categorize the place. Terms are pre-defined and can be browsed in our [Terms](../docs/terms.md) guide.",
+      "description": "The term (type) used to categorize the place. Terms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).",
       "properties": {
         "id": {
           "type": "string",
