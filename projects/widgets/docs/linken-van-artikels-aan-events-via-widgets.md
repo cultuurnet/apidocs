@@ -17,7 +17,7 @@ Door redactionele content te linken aan evenementen zorgen we op verschillende v
 
 #### Een voorbeeld
 
-BRUZZ schreef een artikel over de miljoenste bezoeker in Trainworld en de nieuwe tentoonstelling "Horta & Van de Velde - De trein der ontwerpers". De redacteur van dat artikel integreerde een widget om de praktische informatie over dat evenement te tonen: <https://www.bruzz.be/samenleving/train-world-schaarbeek-verwelkomt-miljoenste-bezoeker-2023-01-03>
+BRUZZ schreef een artikel over [de miljoenste bezoeker in Trainworld en de nieuwe tentoonstelling "Horta & Van de Velde - De trein der ontwerpers"](https://www.bruzz.be/samenleving/train-world-schaarbeek-verwelkomt-miljoenste-bezoeker-2023-01-03). De redacteur van dat artikel integreerde een widget om de praktische informatie over dat evenement te tonen:
 
 ![redactionele-tools-voorbeeld-embed.png](../assets/images/redactionele-tools-voorbeeld-embed.png)
 
