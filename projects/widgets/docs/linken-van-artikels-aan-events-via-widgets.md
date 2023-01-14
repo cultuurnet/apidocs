@@ -94,7 +94,7 @@ De artikels die je linkt moeten voldoen aan een aantal inhoudelijke vereisten.
 
 * ❌ Zuiver promotionele redactionele content voor evenementen die als organisator zelf organiseert
 * ❌ Redactionele content die geen meerwaarde toevoegt bovenop de aankondiging van het evenement zelf
-* ❌ redactionele content waarbij teruggeblikt wordt naar een afgelopen evenement en waarvoor geen link is met een evenement in de toekomst (bijvoorbeeld de recensie van activiteit die niet meer terugkeert)
+* ❌ Redactionele content waarbij teruggeblikt wordt naar een afgelopen evenement en waarvoor geen link is met een evenement in de toekomst (bijvoorbeeld de recensie van activiteit die niet meer terugkeert)
 
 ### Technische vereisten
 
