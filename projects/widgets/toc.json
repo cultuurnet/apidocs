@@ -1,6 +1,10 @@
 {
   "items": [
     {
+    "type": "divider",
+    "title": "Widgets"
+    },
+    {
       "type": "item",
       "title": "Inleiding",
       "uri": "docs/inleiding.md",
@@ -101,6 +105,16 @@
       "title": "Compatibiliteit",
       "uri": "docs/compatibiliteit.md",
       "slug": "compatibiliteit"
+    },
+    {
+    "type": "divider",
+    "title": "Redactionele tools"
+    },
+    {
+      "type": "item",
+      "title": "Linken van artikels aan events",
+      "uri": "docs/linken-van-artikels-aan-events.md",
+      "slug": "linken-van-artikels-aan-events"
     }
   ]
 }
