@@ -1,6 +1,10 @@
 {
   "items": [
     {
+    "type": "divider",
+    "title": "Widgets"
+    },
+    {
       "type": "item",
       "title": "Inleiding",
       "uri": "docs/inleiding.md",
@@ -103,10 +107,14 @@
       "slug": "compatibiliteit"
     },
     {
+    "type": "divider",
+    "title": "Redactionele tools"
+    },
+    {
       "type": "item",
-      "title": "Linken van artikels aan events via widgets",
-      "uri": "docs/linken-van-artikels-aan-events-via-widgets.md",
-      "slug": "linken-van-artikels-aan-events-via-widgets"
+      "title": "Linken van artikels aan events",
+      "uri": "docs/linken-van-artikels-aan-events.md",
+      "slug": "linken-van-artikels-aan-events"
     }
   ]
 }
