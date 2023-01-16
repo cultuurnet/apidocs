@@ -40,8 +40,8 @@ With an API key, you can only request a user access token, and this can only be 
 
 ### JWT provider URLs
 
-* Test environment: <https://jwt-test.uitdatabank.be>
-* Production environment: <https://jwt.uitdatabank.be>
+* Test environment: `https://jwt-test.uitdatabank.be`
+* Production environment: `https://jwt.uitdatabank.be`
 
 ### Requesting a token
 
