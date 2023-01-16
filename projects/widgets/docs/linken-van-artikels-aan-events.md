@@ -130,7 +130,7 @@ Om artikels te kunnen linken via widgets moet je website voldoen aan volgende te
 
 #### Elk artikel moet een aantal vaste HTML tags bevatten
 
-* Een `<h>` tag met daarin de titel van het artikel
+* Een `<h1>` tag met daarin de titel van het artikel
 * Een `<p>` tag bevatten met daarin de inleiding van het artikel
 * Een `<meta>` tag bevatten met daarin `description`als waarde voor het attribuut `name`:
 
