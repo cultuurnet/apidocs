@@ -145,7 +145,3 @@ Dit favicon zal gebruikt worden om je artikels extra onder de aandacht te brenge
 #### Gebruik van canonical URL's
 
 Door gebruik te maken van [canonical url's](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls) voor je artikels vermijd je dat hetzelfde artikel meerdere keren gelinkt wordt aan een evenement.
-
-## Bronnen
-
-* [Canonicalization van duplicate URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
