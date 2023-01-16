@@ -10,7 +10,7 @@ Most events will be published in [online calendars](#online-calendar) so potenti
 
 Every event is required to have a related [place](#place) as its [location](#location), and can optionally have a related [organizer](#organizer).
 
-### Online event
+## Online event
 
 Same as an [event](#event), but happening online (as indicated by their `attendanceMode` property).
 
@@ -32,7 +32,7 @@ The collective name for events and places. Usually used to indicate the events a
 
 A [place](#place) that a specific [event](#event) is happening at. The place will be included in the event's JSON as a `location` property.
 
-### Nil location
+## Nil location
 
 A location for events that have no [physical location](#physical-location), like [online events](#online-event), to maintain compatibility with older integrations that expect every [event](#event) to have a location.
 
@@ -41,18 +41,18 @@ A location for events that have no [physical location](#physical-location), like
 
 Online events will automatically become related to the nil location. Offline or mixed events have to be located at a [physical location](#physical-location) and cannot be located at the nil location.
 
-### Physical location
+## Physical location
 
 A location of an event that has a real geographical address. (All locations not mentioned under another name on this page.)
 
-### Location in consultation with the school
+## Location in consultation with the school
 
 A location reserved for events that do not have a fixed location, but are bookable by schools for educational purposes.
 
 * Test: <https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2>
 * Production: <https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f>
 
-### Dummy location
+## Dummy location
 
 Events with a dummy location do not have a location `@id`, only an embedded location with a name and address.
 
@@ -70,7 +70,7 @@ By linking events and places to an organizer, they can easily be grouped or link
 
 To prevent accidental duplicates, every organizer must have a unique website URL.
 
-### Dummy organizer
+## Dummy organizer
 
 Events and places with a dummy organizer do not have an organizer `@id`, only an embedded organizer with a name and sometimes contact information.
 
