@@ -74,7 +74,7 @@ Host: https://search-test.uitdatabank.be
 
 ## Migrating from API key to client identification
 
-API key authentication will be supported for the foreseeable future on Search API. However, if you already want to make your integration as futureproof as possible you can easily switch from API key authentication to client identification.
+API key authentication will be supported for the foreseeable future on Search API. However, if you already want to make your integration as future-proof as possible you can easily switch from API key authentication to client identification.
 
 In the near future you will be able to request a client id for your existing integration on our self-service portal.
 
