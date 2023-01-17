@@ -76,7 +76,7 @@ Facilities that differ from event to event.
 
 #### Facilities for persons with hearing impairment
 
-* `Audio induction loop`: an audio induciton loop is a device that allows people with hearing aids to hear electrically amplified spoken language or music without disturbing ambient noise. The sound is converted via an electromagnetic field and that signal can be heard through the hearing aid.
+* `Audio induction loop`: an audio induction loop is a device that allows people with hearing aids to hear electrically amplified spoken language or music without disturbing ambient noise. The sound is converted via an electromagnetic field and that signal can be heard through the hearing aid.
 * `Subtitles`: supertitling or subtitling is a textual version of spoken language. Supertitles are used in live performances. Subtitles in film or video.
 * `Sign language interpreting service`: Flemish Sign Language interpreters ensure smooth communication between hearing persons using spoken language (Dutch) and deaf persons using Flemish Sign Language ("VGT"). And translate the spoken language or music lyrics of your event into Flemish Sign Language.
 
