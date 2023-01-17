@@ -26,7 +26,7 @@ The complete categorisation model is available in our [Taxonomy API](https://doc
 
 Scope: `events`, `places`
 
-The eventtype describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place).
+The `eventtype` describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place).
 
 When creating an event or place in UiTdatabank, a term with domain `eventtype` and the correct `scope` (`events` for events, `places` for places) is mandatory.
 
@@ -35,7 +35,7 @@ When creating an event or place in UiTdatabank, a term with domain `eventtype` a
 Scope: `events`
 
 A term with domain `theme` is used to describe the content of an event more precisely, e.g. a concert can have a theme `pop and rock` or `jazz and blues`.
-There is no strict relationship between eventtypes and themes. However, we strongly advice to make logical combinations. These logical combinations can be found in the taxonomy API as `otherSuggestedTerms`.
+There is no strict relationship between `eventtype` and `theme` terms. However, we strongly advice to make logical combinations. These logical combinations can be found in the taxonomy API as `otherSuggestedTerms`.
 
 When creating an event in UiTdatabank, a term with domain `theme` is optional.
 
