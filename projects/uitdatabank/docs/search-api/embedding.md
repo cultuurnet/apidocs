@@ -281,22 +281,22 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "html":{
-         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Maandag</span> <span class=""cf-date"">28 november 2022</span> <span class=""cf-from cf-meta"">van</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">tot</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Volzet of uitverkocht)</span>"
+         "lg":"<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Maandag</span> <span class=\"cf-date\">28 november 2022</span> <span class=\"cf-from cf-meta\">van</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">tot</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Volzet of uitverkocht)</span>"
       }
    },
    "fr":{
       "html":{
-         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Lundi</span> <span class=""cf-date"">28 novembre 2022</span> <span class=""cf-from cf-meta"">du</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">au</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Complet)</span>"
+         "lg":"<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Lundi</span> <span class=\"cf-date\">28 novembre 2022</span> <span class=\"cf-from cf-meta\">du</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">au</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Complet)</span>"
       }
    },
    "de":{
       "html":{
-         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Montag</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">von</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">bis</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Ausgebucht oder ausverkauft)</span>"
+         "lg":"<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Montag</span> <span class=\"cf-date\">28 November 2022</span> <span class=\"cf-from cf-meta\">von</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">bis</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Ausgebucht oder ausverkauft)</span>"
       }
    },
    "en":{
       "html":{
-         "lg":"<time itemprop=""startDate"" datetime=""2022-11-28T20":"00":"00+01":00"><span class=""cf-weekday cf-meta"">Monday</span> <span class=""cf-date"">28 November 2022</span> <span class=""cf-from cf-meta"">from</span> <span class=""cf-time"">20:00</span></time> <span class=""cf-to cf-meta"">till</span> <time itemprop=""endDate"" datetime=""2022-11-28T21":"00":"00+01":00"><span class=""cf-time"">21:00</span></time> <span class=""cf-status"">(Sold out or fully booked)</span>"
+         "lg":"<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Monday</span> <span class=\"cf-date\">28 November 2022</span> <span class=\"cf-from cf-meta\">from</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">till</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Sold out or fully booked)</span>"
       }
    }
 }
