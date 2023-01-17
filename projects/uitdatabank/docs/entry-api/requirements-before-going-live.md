@@ -5,7 +5,7 @@ stoplight-id: 73ef6e15ee3ec
 # Requirements before going live
 
 For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our the test environment.
-Access to the production environment is given after your integration on test environment has been successful validated by publiq vzw.
+Access to the production environment is given after your integration on the test environment has been successfully validated by publiq vzw.
 
 On this page we describe how this flow works and how you can ensure that you gain access to the production environment as quickly as possible.
 
