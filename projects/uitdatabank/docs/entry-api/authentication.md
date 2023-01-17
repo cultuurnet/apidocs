@@ -53,7 +53,7 @@ For example:
 https://jwt-test.uitdatabank.be/connect?apiKey=YOUR_API_KEY&destination=https://yourapplication.com
 ```
 
-Note that you will need to use the corresponding API key for the chosen enviroment URL. For example you need to use your API key for the test environment when using the test environment URL.
+Note that you will need to use the corresponding API key for the chosen environment URL. For example you need to use your API key for the test environment when using the test environment URL.
 
 Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirect to will also include a `jwt` query parameter, as well as a `refresh` query parameter.
 
@@ -93,19 +93,19 @@ Host: https://jwt-test.uitdatabank.be
 
 The response will then include a new token as `text/plain`. You may then retry the failed request with this new access token.
 
-## Long lived tokens
+## Long-lived tokens
 
-In the distant past publiq provided partners with so-called "long lived" tokens that could be used to authenticate requests to Entry API. As the name implies, these tokens are valid for a very long time and do not need to be refreshed.
+In the distant past publiq provided partners with so-called "long-lived" tokens that could be used to authenticate requests to Entry API. As the name implies, these tokens are valid for a very long time and do not need to be refreshed.
 
-While practical and easy to use, the long lifetime of these tokens also carries security risks. Because of this, it is no longer possible to request new long lived tokens.
+While practical and easy to use, the long lifetime of these tokens also carries security risks. Because of this, it is no longer possible to request new long-lived tokens.
 
 <!-- theme: warning -->
 
-> If you are still using "long lived" tokens in your integration, it is highly recommended to switch to OAuth2 **client access tokens** instead for the same behaviour and better security.
+> If you are still using "long-lived" tokens in your integration, it is highly recommended to switch to OAuth2 **client access tokens** instead for the same behaviour and better security.
 
 ## Migrating from the JWT provider tokens or "long lived" tokens to OAuth2
 
-Tokens from the JWT provider and so-called "long lived" tokens will be supported for the foreseeable future on Entry API. However, if you already want to make your integration as futureproof as possible you can easily switch to OAuth2 tokens.
+Tokens from the JWT provider and so-called "long-lived" tokens will be supported for the foreseeable future on Entry API. However, if you already want to make your integration as future-proof as possible you can easily switch to OAuth2 tokens.
 
 In the near future you will be able to request a client id and secret for your existing integration on our self-service portal.
 
@@ -113,7 +113,7 @@ When you receive your new client credentials, you can update your application to
 
 * If your application lets your end users login via UiTiD and you want to continue doing so, you should keep using **user access tokens**. Because the OAuth2 flows are standardized, you can use one of the SDKs mentioned in the documentation for [user access tokens](https://docs.publiq.be/docs/authentication/methods/user-access-token) to implement the new login flow.
 * If instead you once requested a user token and refresh token for a specific email address, and you use that in the background of your application regardless of the logged in end user, we recommend to switch to **client access tokens**. Contrary to tokens from the JWT provider, user access tokens requested using OAuth2 cannot be refreshed infinitely, while client access tokens can be renewed automatically forever.
-* If you used a so-called "long lived" token, we recommend to use **client access tokens** because those can easily be renewed automatically forever.
+* If you used a so-called "long-lived" token, we recommend to use **client access tokens** because those can easily be renewed automatically forever.
 
 <!-- theme: success -->
 
