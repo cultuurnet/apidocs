@@ -457,7 +457,7 @@ All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch,
 
 To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` field.
 
-For an in-depth understanding of the languages fields and translations we advice you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (TO DO: link naar guide)
 
 **Applicable on endpoints**
 
@@ -606,7 +606,7 @@ GET /events/?q=location.terms.id:8.70.0.0.0
 
 Traditionally, each document created in UiTdatabank starts as Dutch and can then be translated to other languages. However, it is possible to create an event, place or organizer in a different language. The `mainLanguage` property indicates in which language the main content of the document is.
 
-For an in-depth understanding of the languages fields and translations we advice you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (TO DO: link naar guide)
 
 **Applicable on endpoints**
 
@@ -813,7 +813,7 @@ GET /places/?q=regions:nis-01000
 
 The `status` indicates whether an event or place is still available for visits or not.
 
-For an in-depth understanding of the `status` field we advice to read our guide (TO DO: link to guide).
+For an in-depth understanding of the `status` field we advise to read our guide (TO DO: link to guide).
 
 **Applicable on endpoints**
 
