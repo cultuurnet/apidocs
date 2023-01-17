@@ -1,6 +1,6 @@
 # Search API
 
-With Search API you can query all the events, places and organizers stored inside UiTdatabank. This allows you to, for example, build an online calendar targetted to a specific audience on your own website. Our very own [UiTinVlaanderen](https://www.uitinvlaanderen.be) is also powered by Search API under the hood.
+With Search API you can query all the events, places and organizers stored inside UiTdatabank. This allows you to, for example, build an online calendar targeted to a specific audience on your own website. Our very own [UiTinVlaanderen](https://www.uitinvlaanderen.be) is also powered by Search API under the hood.
 
 By integrating directly with Search API in your website you remain in full control of every aspect of the integration. A notable example of this is [UiTinLeuven](https://www.uitinleuven.be).
 
