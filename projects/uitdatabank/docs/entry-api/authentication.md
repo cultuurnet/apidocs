@@ -55,7 +55,7 @@ https://jwt-test.uitdatabank.be/connect?apiKey=YOUR_API_KEY&destination=https://
 
 Note that you will need to use the corresponding API key for the chosen environment URL. For example you need to use your API key for the test environment when using the test environment URL.
 
-Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirect to will also include a `jwt` query parameter, as well as a `refresh` query parameter.
+Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirected to will also include a `jwt` query parameter, as well as a `refresh` query parameter.
 
 You can use the value of the `jwt` query parameter as a token to authenticate requests to Entry API, and the value of the `refresh` parameter to renew expired tokens.
 
