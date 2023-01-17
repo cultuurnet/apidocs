@@ -58,7 +58,7 @@ GET /offers/?start=15000&limit=100
    "title":"Not Found",
    "type":"https://api.publiq.be/probs/url/not-found",
    "status":404,
-   "detail":"The ""start"" parameter should be between 0 and 10000"
+   "detail":"The \"start\" parameter should be between 0 and 10000"
 }
 ```
 
