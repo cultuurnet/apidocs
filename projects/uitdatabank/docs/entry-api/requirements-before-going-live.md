@@ -28,7 +28,7 @@ In this validation process we assess the integration in two manners:
 
 It is important that you go through the checklist below in advance and validate your integration against it. By doing this in advance, you ensure a smooth transition to the production environment.
 
-### Checklist for a succesfull integration
+### Checklist for a successful integration
 
 #### Mandatory properties
 
