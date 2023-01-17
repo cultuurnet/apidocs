@@ -1,6 +1,6 @@
 # Advanced queries
 
-Every endpoint on Search API supports various URL parameters for the most common filters. However these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
+Every endpoint on Search API supports various URL parameters for the most common filters. However, these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
 
 With advanced queries you can make more complex queries using boolean operators, keywords and/or specific field values, and grouping.
 
@@ -42,7 +42,7 @@ With the `addressLocality` field you can limit your results to one or more munic
 
 <!-- theme: warning --> 
 
-> The name of municipalities can change over time (e.g. in the context of municipality mergers). The postal code of municipalities is far less subject to change. Therefore it is better to use the `postalCode` field instead of the `addressLocality` field (when possible).
+> The name of municipalities can change over time (e.g. in the context of municipality mergers). The postal code of municipalities is far less subject to change. Therefore, it is better to use the `postalCode` field instead of the `addressLocality` field (when possible).
 
 **Applicable on endpoints**
 
@@ -301,7 +301,7 @@ Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
 
-> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
@@ -347,7 +347,7 @@ Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
 
-> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
