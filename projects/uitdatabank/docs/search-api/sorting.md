@@ -81,13 +81,13 @@ Sorts the data by its relevance. This is the default sort that is used. For an i
 GET https://search.uitdatabank.be/events/
 ```
 
-The events with the heighest score will appear first.
+The events with the highest score will appear first.
 
 ```
 GET /events/?sort[score]=desc
 ```
 
-The events with the heighest score will appear first.
+The events with the highest score will appear first.
 
 ## Using multiple sort options
 
