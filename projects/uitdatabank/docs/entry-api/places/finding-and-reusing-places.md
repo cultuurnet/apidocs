@@ -122,7 +122,7 @@ If you know the language that the name and address were entered in (for example 
 
 > While this check works for a lot of cases, it is fragile because it depends on the name and street being spelled exactly the same in your application as in UiTdatabank. For example, "Koninklijk Museum voor Schone Kunsten Antwerpen" is often abbreviated to "KSMKA" or "K.M.S.K.A" by users who enter event data.
 >
-> For this reason we advice to always provide a way for your users to [select the right UiTdatabank location in your own entry form](#searching-existing-locations-within-your-entry-form) when possible, because this way the user can change the spelling of the name/address to other variations to find the right match.
+> For this reason we advise to always provide a way for your users to [select the right UiTdatabank location in your own entry form](#searching-existing-locations-within-your-entry-form) when possible, because this way the user can change the spelling of the name/address to other variations to find the right match.
 
 <!-- theme: warning -->
 
