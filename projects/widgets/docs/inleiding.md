@@ -50,7 +50,7 @@ In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API 
 
 **UiTinGent**
 
-[UiTinGent](https://stad.gent/nl/uit-in-gent) gebruikt widgets voor de weergave van de eerstekomende evenementen en hun volledige evenementenkalender. De ontwikkelaars van UiTinGent hebben zelfs de look en feel zodanig aangepast, zodat het lijkt op UiTinVlaanderen.
+[UiTinGent](https://stad.gent/nl/uit-in-gent) gebruikt widgets voor de weergave van de eerstekomende evenementen en hun volledige evenementenkalender. De ontwikkelaars van UiTinGent hebben zelfs de look en feel zodanig aangepast, zodat de agenda lijkt op UiTinVlaanderen.
 
 **Indiestyle**
 

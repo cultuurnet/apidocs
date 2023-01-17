@@ -4,7 +4,7 @@ Bij het maken van een widget moet je altijd vetrekken van een van de vier versch
 
 ![templates](.././assets/images/templates.png)
 
-> Je kan later je widget nog uitgebreid aanpassen, ongeacht het gekozen sjabloon.
+> Je kan later je widget nog uitgebreid aanpassen, ongeacht het gekozen template.
 
 ## Leeg
 
@@ -13,7 +13,7 @@ In dit template begin je met een lege layout die je vervolgens zelf uitbreidt do
 <https://youtu.be/4TxmTGcOUAY>
 
 * ✅ Geschikt wanneer je al een heel goed idee hebt over welk soort widget je wilt configureren
-* ✅ Geschikt als de andere sjablonen niet aan je eisen voldoen
+* ✅ Geschikt wanneer de andere templates niet aan je eisen voldoen
 * ❌ Niet aanbevolen wanneer je voor de eerste keer een widget bouwt en de verschillende opties nog moet ontdekken
 
 Als je ervoor kiest om te vertrekken vanaf een lege template, raden we aan om eerst de documentatie over [rijen en blokken](./rijen-en-blokken.md) door te nemen.
@@ -22,7 +22,7 @@ Als je ervoor kiest om te vertrekken vanaf een lege template, raden we aan om ee
 
 Dit is het meest gebruikte template. Dit template bevat twee rijen:
 
-* De bovenste rij bevat een zoekbox (over de volledige lengte)
+* De bovenste rij bevat een zoekbox (over de volledige breedte)
 * De tweede rij bevat verfijningen (met filters op de regio, datum, enz.) aan de linkerkant en zoekresultaten in het midden
 
 <https://youtu.be/RG1LBY3fuXw>
@@ -35,9 +35,9 @@ Als je het agenda template kiest, kan je meteen starten met het configureren van
 
 ## Tips
 
-Dit sjabloon kan worden gebruikt om een korte lijst samen te stellen van activiteiten die je in de kijker wilt plaatsen. De evenementen kunnen onder of naast elkaar worden weergegeven.
+Dit template kan worden gebruikt om een korte lijst samen te stellen van activiteiten die je in de kijker wilt plaatsen. De evenementen kunnen onder of naast elkaar worden weergegeven.
 
-De tipswidget dient als teaser voor de volledige evenementenkalender. Tipswidgets worden vaak gebruikt om bezoekers van je website naar de volledige kalender toe te leiden. Daarom wordt hij meestal opgenomen op de homepage of een andere vaak bezochte pagina.
+De tipswidget dient als teaser voor de volledige evenementenkalender. Tipswidgets worden vaak gebruikt om bezoekers van je website naar de volledige kalender toe te leiden. Daarom wordt het meestal opgenomen op de homepage of een andere vaak bezochte pagina.
 
 <https://youtu.be/xezCXkmRsks>
 
@@ -50,7 +50,7 @@ Als je voor het tips template kiest kan je meteen starten met het configureren v
 
 ## UiTPAS en Paspartoe
 
-Dit is hetzelfde template als het [agenda template](#Agenda), maar met alle UiTPAS-instellingen al voor jou aangevinkt.
+Dit is hetzelfde template als het [agenda template](#Agenda), met alle UiTPAS-instellingen al voor jou aangevinkt.
 
 <https://youtu.be/gyefNH6ksjg>
 
