@@ -234,7 +234,7 @@ Get all places that are permanently closed:
 GET /places/?q=bookingAvailability:unavailable
 ```
 
-TO DO: link to booking availability guide when that guide is finished.
+@todo: link to booking availability guide when that guide is finished.
 
 ### calendarType
 
@@ -457,7 +457,7 @@ All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch,
 
 To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` field.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
 
 **Applicable on endpoints**
 
@@ -606,7 +606,7 @@ GET /events/?q=location.terms.id:8.70.0.0.0
 
 Traditionally, each document created in UiTdatabank starts as Dutch and can then be translated to other languages. However, it is possible to create an event, place or organizer in a different language. The `mainLanguage` property indicates in which language the main content of the document is.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (TO DO: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
 
 **Applicable on endpoints**
 
@@ -799,7 +799,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see (TO DO: link to guide)
+Any valid region. For a list of all shapes, see (@todo: link to guide)
 
 **Example**
 
@@ -813,7 +813,7 @@ GET /places/?q=regions:nis-01000
 
 The `status` indicates whether an event or place is still available for visits or not.
 
-For an in-depth understanding of the `status` field we advise to read our guide (TO DO: link to guide).
+For an in-depth understanding of the `status` field we advise to read our guide (@todo: link to guide).
 
 **Applicable on endpoints**
 
@@ -871,7 +871,7 @@ GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
 
 Filter out results based on the targeted age group of the event/place with the `typicalAgeRange` field.
 
-For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (TO DO: link to guide).
+For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (@todo: link to guide).
 
 **Applicable on endpoints**
 
@@ -889,7 +889,7 @@ Retrieve all events for children under 12 years old:
 GET /events/?q=typicalAgeRange:[0 TO 12]
 ```
 
-Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
+Note that this query will also return events that are for all ages (see allAges (@todo link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
 
 Retrieve all events exclusively for children under 12 years old:
 
@@ -951,12 +951,12 @@ For events & places:
 * `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
 * `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place.
 * `APPROVED`: the event or place is explicitly approved by a validator.
-* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the rules of UiTdatabank (TO DO: link to rules).
+* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the rules of UiTdatabank (@todo: link to rules).
 * `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
 
-> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
+> By default, only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
 
 For organizers:
 
@@ -965,7 +965,7 @@ For organizers:
 
 <!-- Theme:info -->
 
-> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
+> By default, only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
 
 **Examples**
 
@@ -1075,7 +1075,7 @@ Therefore, first we need to make 2 OR relations:
 1. between the 2 postal code values (because we want to retrieve events from Ghent *or* Leuven): `address.\*.postalCode:(9000 OR 3000)`
 2. between the 2 term id values (because we want to retrieve concerts *or* expositions): `terms.id:(0.0.0.0.0 OR 0.50.4.0.0)`
 
-Consequently we need to link both OR-relations with an AND operator:
+Consequently, we need to link both OR-relations with an AND operator:
 
 ```
 /events/?q=address.\*.postalCode:(9000 OR 3000) AND terms.id:(0.0.0.0.0 OR 0.50.4.0.0)
@@ -1099,7 +1099,7 @@ GET /events/?q=address.\*.postalCode:9000
 
 **Encoding the `+` sign in field values**
 
-The `+` sign should be encoded for as `%2B`. Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+The `+` sign should be encoded for as `%2B`. Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
 
 ```
 GET /events/?q=dateRange:[2022-01-01T00:00:00%2B01:00%20TO%202022-12-31T23:59:59%2B01:00]
