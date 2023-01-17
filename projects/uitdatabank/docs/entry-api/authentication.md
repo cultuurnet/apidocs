@@ -34,7 +34,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 ## JWT provider tokens (using an API key)
 
-Alternatively, if you registered your integration with publiq before or in the beginning of 2023 you will have received an API key instead of an client id and secret.
+Alternatively, if you registered your integration with publiq before or in the beginning of 2023 you will have received an API key instead of a client id and secret.
 
 With an API key, you can only request a user access token, and this can only be done by following a proprietary flow on the UiTdatabank JWT provider.
 
@@ -82,7 +82,7 @@ X-Api-Key: YOUR_API_KEY
 
 When you send requests to Entry API using a token previously obtained from the JWT provider and suddenly receive error responses with status 401, your token has expired.
 
-You can renew your token using the previously obtained refresh token. To do so, send a HTTP request to the `/refresh` endpoint on the JWT provider including an `apiKey` query parameter and `refresh` query parameter.
+You can renew your token using the previously obtained refresh token. To do so, send an HTTP request to the `/refresh` endpoint on the JWT provider including an `apiKey` query parameter and `refresh` query parameter.
 
 For example:
 
