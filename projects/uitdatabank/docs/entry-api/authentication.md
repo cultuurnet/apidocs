@@ -53,7 +53,7 @@ For example:
 https://jwt-test.uitdatabank.be/connect?apiKey=YOUR_API_KEY&destination=https://yourapplication.com
 ```
 
-Note that you will need to use the corresponding API key for the chosen environment URL. For example you need to use your API key for the test environment when using the test environment URL.
+Note that you will need to use the corresponding API key for the chosen environment URL. For example, you need to use your API key for the test environment when using the test environment URL.
 
 Afterward, the JWT provider will redirect the end user back to your application using the given `destination` query parameter. The URL that the user will be redirected to will also include a `jwt` query parameter, as well as a `refresh` query parameter.
 
@@ -117,4 +117,4 @@ When you receive your new client credentials, you can update your application to
 
 <!-- theme: success -->
 
-> When you request client credentials to replace your API key, your API key will still keep working so you have all the time that you need to update your application.
+> When you request client credentials to replace your API key, your API key will still keep working, so you have all the time that you need to update your application.
