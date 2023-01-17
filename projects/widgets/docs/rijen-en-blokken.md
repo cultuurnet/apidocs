@@ -20,15 +20,10 @@ Er zijn vijf verschillende soorten rijen:
 
 `[INSERT IMAGE]`
 
-### Rijen verplaatsen
-
-Je kan rijen omhoog of omlaag verplaatsen met behulp van de pijltjes in de linkerbovenhoek van elke rij.
-
-`[INSERT VIDEO]`
-
-### Rijen verwijderen
-
-Je kan een rij verwijderen door op het prullenbak-icoon in de rechterbovenhoek van de rij te klikken. Wanneer je een rij verwijdert, wordt de volledige rij en alle blokken in die rij uit de widget verwijderd.
+Je kan volgende acties doen met een rij:
+* **Rij toevoegen:** je kan een rij toevoegen, waar je later één of meerdere blokken aan toewijst.
+* **Rij verplaatsen:** je kan rijen omhoog of omlaag verplaatsen met behulp van de pijltjes in de linkerbovenhoek van elke rij.
+* **Rij verwijderen:** je kan een rij verwijderen door op het prullenbakicoon in de rechterbovenhoek van de rij te klikken. Wanneer je een rij verwijdert, wordt de volledige rij en alle blokken in die rij uit de widget verwijderd.
 
 `[INSERT VIDEO]`
 
@@ -46,17 +41,9 @@ Elk blok kan meerdere keren worden toegevoegd aan een rij.
 
 `[INSERT IMAGE]`
 
-### Blokken verplaatsen
-
-Je kan blokken verplaatsen met het *drag and drop* icoontje linksbovenaan in elk blok. Je kan een blok verplaatsen
-
-* naar een andere plaats in dezelfde rij
-* naar een andere rij
-
-`[INSERT VIDEO]`
-
-### Blokken verwijderen
-
-Je kan een blok verwijderen met het prullenbakicoontje in de rechterbovenhoek van het blok.
+Je kan volgende acties doen met een blok:
+* **Blok toevoegen:** je kan één of meerdere blokken toevoegen aan een rij. Elk blok kan ook meerdere keren worden toegevoegd aan een rij.
+* **Blok verplaatsen:** je kan een blok verplaatsen met het *drag and drop* icoontje linksbovenaan in elk blok. Je kan een blok verplaatsen naar een andere plaats in dezelfde rij, of naar een andere rij.
+* **Blok verwijderen:** je kan een blok verwijderen met het prullenbakicoon in de rechterbovenhoek van het blok.
 
 `[INSERT VIDEO]`

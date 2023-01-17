@@ -23,7 +23,7 @@ BRUZZ schreef een artikel over [de miljoenste bezoeker in Trainworld en de nieuw
 
 <!-- theme: success -->
 
-> Eens zo'n tipsblok geïntegreerd is in een artikel wordt dat artikel automatisch gelinkt aan het evenement in UiTdatabank. Het artikel verschijnt nu bij het evenement op [UiTinVlaanderen](https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe) en tal van andere UiT websites
+> Eens zo'n tipsblok geïntegreerd is in een artikel wordt dat artikel automatisch gelinkt aan het evenement in UiTdatabank. Het artikel verschijnt nu bij het evenement op [UiTinVlaanderen](https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe) en tal van andere UiTagenda's.
 
 ![artikel-bruzz-op-uiv.png](../assets/images/artikel-bruzz-op-uiv.png)
 
@@ -54,7 +54,7 @@ Bovenstaande embed-code genereert in het artikel een blok met daarin de praktisc
 
 De waarde van `data-cdbid` uit het `<script>`tag bepaalt welk evenement ingeladen wordt. In het voorbeeld van hierboven is dit het evenement met cdbid `ffe4f207-2f8d-4dce-87a6-08abf59aefbe`.
 
-Een redacteur hoeft dus enkel te kiezen welk evenement hij wilt integreren in zijn artikel, door de waarde voor `data-cdbid` aan te passen. De waarde voor `data-cdbid` kan je terugvinden op verschillende manieren.
+Een redacteur hoeft dus enkel te kiezen welk evenement hij of zij wilt integreren in het artikel, door de waarde voor `data-cdbid` aan te passen. De waarde voor `data-cdbid` kan je terugvinden op verschillende manieren.
 
 * **in de agenda van UiTinVlaanderen**
 
@@ -131,8 +131,8 @@ Om artikels te kunnen linken via widgets moet je website voldoen aan volgende te
 #### Elk artikel moet een aantal vaste HTML tags bevatten
 
 * Een `<h1>` tag met daarin de titel van het artikel
-* Een `<p>` tag bevatten met daarin de inleiding van het artikel
-* Een `<meta>` tag bevatten met daarin `description`als waarde voor het attribuut `name`:
+* Een `<p>` tag met daarin de inleiding van het artikel
+* Een `<meta>` tag met daarin `description`als waarde voor het attribuut `name`:
 
 ```html
 <meta name="description" content="Slongs: sociaal bewogen hangen">

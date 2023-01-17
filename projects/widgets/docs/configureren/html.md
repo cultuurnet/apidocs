@@ -6,7 +6,7 @@ Met een HTML-blok kan je eigen inhoud (tekst & afbeeldingen) toevoegen aan de pa
 
 ## Afbeeldingen opladen in een HTML-blok
 
-Via de HTML-editor kan je één of meerdere afbeeldingen toevoegen aan je widget. Zo kan je een afbeelding toevoegen aan de header of footer van een tipsblok, zoekreesultatenblok en zoekbox of aan een HTML-blok die je zelf toevoegt aan je widget.
+Via de HTML-editor kan je één of meerdere afbeeldingen toevoegen aan je widget. Zo kan je een afbeelding toevoegen aan de header of footer van een tipsblok, zoekresultatenblok en zoekbox of aan een HTML-blok dat je zelf toevoegt aan je widget.
 
 Je gaat hiervoor als volgt te werk:
 
