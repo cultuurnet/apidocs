@@ -22,7 +22,7 @@ The complete categorisation model is available in our [Taxonomy API](https://doc
 
 > The categorisation model only applies on events & places. There is currently no categorisation model for organizers.
 
-## Eventtype
+## eventtype
 
 Scope: `events`, `places`
 
@@ -30,7 +30,7 @@ The `eventtype` describes the form of the event or place, e.g. a `concert` (for 
 
 When creating an event or place in UiTdatabank, a term with domain `eventtype` and the correct `scope` (`events` for events, `places` for places) is mandatory.
 
-## Theme
+## theme
 
 Scope: `events`
 
@@ -39,7 +39,7 @@ There is no strict relationship between `eventtype` and `theme` terms. However, 
 
 When creating an event in UiTdatabank, a term with domain `theme` is optional.
 
-## Facility
+## facility
 
 Scope: `events`, `places`
 
