@@ -4,7 +4,7 @@ With embed parameters you can expand the JSON the Search API returns with extra 
 
 ## Embedding result bodies
 
-By default the search API endpoints only return a list of links to the individual search results.
+By default, the search API endpoints only return a list of links to the individual search results.
 
 To get the actual bodies of the results, there are two options:
 
@@ -110,7 +110,7 @@ The response contains actual JSON-LD documents:
 
 ## Embedding calendar summaries
 
-Formatting a large amount of dates and/or opening hours into a human-readable overview can be complex. Therefore we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places). The calendar summary will be embedded in every result as an additional `calendarSummary` property.
+Formatting a large amount of dates and/or opening hours into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places). The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 
 For every event or place a calendar summary is available in different sizes:
 
