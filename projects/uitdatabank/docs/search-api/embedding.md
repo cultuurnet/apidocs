@@ -381,7 +381,7 @@ GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
 
 UiTPAS prices are not included in the JSON response:
 
-```js
+```json
 {
 "priceInfo": [
     {
