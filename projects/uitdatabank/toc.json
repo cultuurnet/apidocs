@@ -236,6 +236,12 @@
             },
             {
               "type": "item",
+              "title": "Contributors",
+              "uri": "/docs/entry-api/shared/contributors.md",
+              "slug": "entry-api/shared/contributors"
+            },
+            {
+              "type": "item",
               "title": "Images",
               "uri": "/docs/entry-api/shared/images.md",
               "slug": "entry-api/shared/images"
