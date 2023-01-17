@@ -166,9 +166,9 @@ GET /events/?q=attendanceMode:(online OR mixed)
 
 ### audienceType
 
-With the `audienceType` field you can limit your results that are targetted to a specific audience.
+With the `audienceType` field you can limit your results that are targeted to a specific audience.
 
-> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the defaultfilter for audienceType. In the [default filters guide](filters/default-filters.md) you can find how you can reset this filter.
+> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the default filter for audienceType. In the [default filters guide](filters/default-filters.md) you can find how you can reset this filter.
 
 **Applicable on endpoints**
 
@@ -486,7 +486,7 @@ Typically this field is used to filter out events that are happening:
 * in the evening
 * at night
 
-However, these parts of the day are not pre-defined. Using a integer between 0 and 2359 you can define the timeRange yourself.
+However, these parts of the day are not pre-defined. Using an integer between 0 and 2359 you can define the timeRange yourself.
 
 **Applicable on endpoints**
 
@@ -618,7 +618,7 @@ Allowed values for both are any of the two-letter language ISO 639-1 codes, but 
 
 **Examples**
 
-Retrieve events with their mainlanguage set to `fr`:
+Retrieve events with their main language set to `fr`:
 
 ```
 GET /events/?q=mainLanguage:fr
@@ -839,7 +839,7 @@ GET /places/?q=status:Unavailable
 
 ### terms.id
 
-Each event and place in UiTdatabank is categorized with a type (e.g. `concert` for events or `theater` for places). Events can also have a event theme (e.g. `dance music`). Each of these categories (terms) have a unique identifier.
+Each event and place in UiTdatabank is categorized with a type (e.g. `concert` for events or `theater` for places). Events can also have an event theme (e.g. `dance music`). Each of these categories (terms) have a unique identifier.
 
 With the `terms.id` field you can filter results based on their categorisation.
 
@@ -869,7 +869,7 @@ GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
 
 ### typicalAgeRange
 
-Filter out results based on the targetted age group of the event/place with the `typicalAgeRange` field.
+Filter out results based on the targeted age group of the event/place with the `typicalAgeRange` field.
 
 For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (TO DO: link to guide).
 
@@ -883,15 +883,15 @@ A range, consisting of two integers (lower and upper bound), e.g. `[3 TO 5]`
 
 **Example**
 
-Retrieve all events for childeren under 12 years old:
+Retrieve all events for children under 12 years old:
 
 ```
 GET /events/?q=typicalAgeRange:[0 TO 12]
 ```
 
-Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for childeren of 10-15 years old).
+Note that this query will also return events that are for all ages (see allAges (TO DO link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
 
-Retrieve all events exclusively for childeren under 12 years old:
+Retrieve all events exclusively for children under 12 years old:
 
 ```
 GET /events/?q=typicalAgeRange:[0 TO 12] NOT typicalAgeRange:[12 TO *]
@@ -899,7 +899,7 @@ GET /events/?q=typicalAgeRange:[0 TO 12] NOT typicalAgeRange:[12 TO *]
 
 ### videosCount
 
-With the `videosCount` field you can filter events an places by their number of videos.
+With the `videosCount` field you can filter events and places by their number of videos.
 
 **Applicable on endpoints**
 
@@ -938,7 +938,7 @@ GET /offers/?q=videosCount:[5 TO 10]
 
 ### workflowStatus
 
-Use the `workflowStatus` field to retrieve documents with a specific `worfklowStatus`.
+Use the `workflowStatus` field to retrieve documents with a specific `workflowStatus`.
 
 **Applicable on endpoints**
 
@@ -950,13 +950,13 @@ For events & places:
 
 * `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
 * `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place.
-* `APPROVED`: the event or place is explicitely approved by a validator.
-* `REJECTED`: the event or place is explicitely approved by a validator, e.g. because it is a duplicate or it is not conform the rules of UiTdatabank (TO DO: link to rules).
+* `APPROVED`: the event or place is explicitly approved by a validator.
+* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate or it is not conform the rules of UiTdatabank (TO DO: link to rules).
 * `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
 
-> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for worfklowStatus](filters/default-filters.md).
+> By default only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
 
 For organizers:
 
@@ -965,11 +965,11 @@ For organizers:
 
 <!-- Theme:info -->
 
-> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for worfklowStatus](filters/default-filters.md).
+> By default only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
 
 **Examples**
 
-Retrieve only events that are explicitely approved:
+Retrieve only events that are explicitly approved:
 
 ```
 GET /events/?q=workflowStatus:APPROVED
@@ -1048,11 +1048,11 @@ Use round brackets in your advanced queries to:
 * group values that belong to the same field
 * specify the order (hierarchy) between different fields
 * avoid the need to repeat fields
-* keep your query simple, clean and more human readable
+* keep your query simple, clean and more human-readable
 
 ### Use round brackets to group values in the query
 
-In the example below, no round brackets are used. Because of this, the field `address.\*.postalCode` is repeated 3 times. This is unneccesary and makes the query dificult to read.
+In the example below, no round brackets are used. Because of this, the field `address.\*.postalCode` is repeated 3 times. This is unnecessary and makes the query difficult to read.
 
 ```
 GET /events/?q=address.\*.postalCode:9000 OR address.\*.postalCode:1000 OR address.\*.postalCode:2000 OR address.\*.postalCode:3000
