@@ -82,4 +82,4 @@ When you receive your new client id, you can update your application to include 
 
 <!-- theme: success -->
 
-> When you request a client id to replace your API key, your API key will still keep working so you have all the time that you need to update your application.
+> When you request a client id to replace your API key, your API key will still keep working, so you have all the time that you need to update your application.
