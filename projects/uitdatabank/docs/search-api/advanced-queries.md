@@ -479,7 +479,7 @@ GET /offers/?q=languages:("fr" OR "de")
 
 With the `localtimeRange` field it is possible to filter out events that are happening on a specific part of the day, regardless of the day or date of the event.
 
-Typically this field is used to filter out events that are happening:
+Typically, this field is used to filter out events that are happening:
 
 * in the morning
 * in the afternoon
@@ -667,7 +667,7 @@ Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
 
 <!-- theme: info -->
 
-> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that the `+` sign must be encoded for URLs (as `%2B`). Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
 
 **Example**
 
@@ -741,7 +741,7 @@ GET /offers/?q=organizer.labels:"UiTPAS Oostende"
 
 Search for an exact price or a price range with the `price` field.
 
-Currently a price field is always treated as EUR.
+Currently, a price field is always treated as EUR.
 
 **Applicable on endpoints**
 
@@ -951,7 +951,7 @@ For events & places:
 * `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
 * `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place.
 * `APPROVED`: the event or place is explicitly approved by a validator.
-* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate or it is not conform the rules of UiTdatabank (TO DO: link to rules).
+* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the rules of UiTdatabank (TO DO: link to rules).
 * `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
