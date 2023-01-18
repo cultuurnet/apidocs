@@ -2,7 +2,7 @@
 
 Events in UiTdatabank represent cultural, leisure and sport-related activities happening in Flanders, Brussels, and in some cases the rest of Europe.
 
-Events can be temporary in time, permanent or periodic with a recurring schedule, or on request. They are required to have a [location](../places/introduction.md). [Events bookable by schools](create-school.nd) and [online events](create-online.md) also require a location for backward compatibility with older integrations, but use a hardcoded one.
+Events can be temporary in time, permanent or periodic with a recurring schedule, or on request. They are required to have a [location](../places/introduction.md). [Events bookable by schools](create-school.md) and [online events](create-online.md) also require a location for backward compatibility with older integrations, but use a hardcoded one.
 
 Examples include:
 
