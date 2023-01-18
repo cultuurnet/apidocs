@@ -10,6 +10,8 @@ Most events will be published in [online calendars](#online-calendar) so potenti
 
 Every event is required to have a related [place](#place) as its [location](#location), and can optionally have a related [organizer](#organizer).
 
+Find out more about events in the [What are events?](entry-api/events/introduction.md) guide.
+
 ## Online event
 
 Same as an [event](#event), but happening online (as indicated by their `attendanceMode` property).
@@ -23,6 +25,8 @@ An API resource with a unique id that represents a place that can be visited and
 If the place is published, it will also be published in [online calendars](#online-calendar) for interested visitors to find them, or to find other events located at the same place.
 
 Places created as a draft that do not get published can still be used as [locations](#location) for events, but will not be visible in search results in online calendars.
+
+Find out more about places in the [What are places?](entry-api/places/introduction.md) guide.
 
 ## Offer
 
@@ -69,6 +73,8 @@ An API resource with a unique id that represents an organization or person that 
 By linking events and places to an organizer, they can easily be grouped or linked in [online calendars](#online-calendar) to find related events or places from the same organizer.
 
 To prevent accidental duplicates, every organizer must have a unique website URL.
+
+Find out more about organizers in the [What are organizers?](entry-api/organizers/introduction.md) guide.
 
 ## Dummy organizer
 
