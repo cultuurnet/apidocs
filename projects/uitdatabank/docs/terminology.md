@@ -62,6 +62,35 @@ Events with a dummy location do not have a location `@id`, only an embedded loca
 
 An example of an event with a dummy location: <https://io.uitdatabank.be/event/e160f0f3-89a8-45d7-94a6-34fda89fd69c>
 
+```json
+{
+  "location": {
+    "mainLanguage": "nl",
+    "name": {
+      "nl": "Jeugdheem te Bellefontaine - Vertrek Antwerpen - Station Berchem"
+    },
+    "address": {
+      "nl": {
+        "addressCountry": "BE",
+        "addressLocality": "Berchem",
+        "postalCode": "2600",
+        "streetAddress": "Station Berchem "
+      }
+    },
+    "geo": {
+      "latitude": 51.2002552,
+      "longitude": 4.4325658
+    },
+    "status": {
+      "type": "Available"
+    },
+    "bookingAvailability": {
+      "type": "Available"
+    }
+  }
+}
+```
+
 These events were imported from UiTdatabank v2, where their location did not have to be a separate resource that would be linked.
 
 No new events can be created with a dummy location in UiTdatabank v3.
@@ -81,6 +110,16 @@ Find out more about organizers in the [What are organizers?](entry-api/organizer
 Events and places with a dummy organizer do not have an organizer `@id`, only an embedded organizer with a name and sometimes contact information.
 
 An example of an event with a dummy organizer: <https://io.uitdatabank.be/event/206b6d13-5739-4b44-800a-6056bc34ce92>
+
+```json
+{
+  "organizer": {
+    "name": "CCV",
+    "email": ["info@ccv.be"],
+    "phone": ["016389891"]
+  }
+}
+```
 
 These events and places were imported from UiTdatabank v2, where their organizer did not have to be a separate resource that would be linked.
 
