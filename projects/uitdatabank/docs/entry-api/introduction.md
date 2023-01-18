@@ -8,6 +8,6 @@ Aside from events, Entry API also makes it possible to manage locations where ev
 
 Read more:
 
-- [What are events?](events/introduction.md)
-- [What are places?](places/introduction.md)
-- [What are organizers?](organizers/introduction.md)
+* [What are events?](events/introduction.md)
+* [What are places?](places/introduction.md)
+* [What are organizers?](organizers/introduction.md)
