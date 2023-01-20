@@ -22,24 +22,24 @@ The complete categorisation model is available in our [Taxonomy API](https://doc
 
 > The categorisation model only applies on events & places. There is currently no categorisation model for organizers.
 
-## Eventtype
+## eventtype
 
 Scope: `events`, `places`
 
-The eventtype describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place).
+The `eventtype` describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place).
 
 When creating an event or place in UiTdatabank, a term with domain `eventtype` and the correct `scope` (`events` for events, `places` for places) is mandatory.
 
-## Theme
+## theme
 
 Scope: `events`
 
 A term with domain `theme` is used to describe the content of an event more precisely, e.g. a concert can have a theme `pop and rock` or `jazz and blues`.
-There is no strict relationship between eventtypes and themes. However, we strongly advice to make logical combinations. These logical combinations can be found in the taxonomy API as `otherSuggestedTerms`.
+There is no strict relationship between `eventtype` and `theme` terms. However, we strongly advice to make logical combinations. These logical combinations can be found in the taxonomy API as `otherSuggestedTerms`.
 
 When creating an event in UiTdatabank, a term with domain `theme` is optional.
 
-## Facility
+## facility
 
 Scope: `events`, `places`
 
@@ -76,7 +76,7 @@ Facilities that differ from event to event.
 
 #### Facilities for persons with hearing impairment
 
-* `Audio induction loop`: an audio induciton loop is a device that allows people with hearing aids to hear electrically amplified spoken language or music without disturbing ambient noise. The sound is converted via an electromagnetic field and that signal can be heard through the hearing aid.
+* `Audio induction loop`: an audio induction loop is a device that allows people with hearing aids to hear electrically amplified spoken language or music without disturbing ambient noise. The sound is converted via an electromagnetic field and that signal can be heard through the hearing aid.
 * `Subtitles`: supertitling or subtitling is a textual version of spoken language. Supertitles are used in live performances. Subtitles in film or video.
 * `Sign language interpreting service`: Flemish Sign Language interpreters ensure smooth communication between hearing persons using spoken language (Dutch) and deaf persons using Flemish Sign Language ("VGT"). And translate the spoken language or music lyrics of your event into Flemish Sign Language.
 
