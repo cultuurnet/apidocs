@@ -236,6 +236,12 @@
             },
             {
               "type": "item",
+              "title": "Calendar info",
+              "uri": "/docs/entry-api/shared/calendar-info.md",
+              "slug": "entry-api/shared/calendar-info"
+            },
+            {
+              "type": "item",
               "title": "Contributors",
               "uri": "/docs/entry-api/shared/contributors.md",
               "slug": "entry-api/shared/contributors"
