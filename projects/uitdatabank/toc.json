@@ -248,6 +248,12 @@
             },
             {
               "type": "item",
+              "title": "Description",
+              "uri": "/docs/entry-api/shared/description.md",
+              "slug": "entry-api/shared/description"
+            },
+            {
+              "type": "item",
               "title": "Images",
               "uri": "/docs/entry-api/shared/images.md",
               "slug": "entry-api/shared/images"
