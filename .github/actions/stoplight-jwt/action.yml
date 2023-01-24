@@ -13,6 +13,14 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Debug workspaceId
+      shell: bash
+      run: echo ${{ inputs.workspaceId }}
+
+    - name: Debug username
+      shell: bash
+      run: echo ${{ inputs.username }}
+
     - name: Get JWT
       id: getJwt
       uses: fjogeleit/http-request-action@v1
