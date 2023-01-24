@@ -37,6 +37,15 @@ for BRANCH in $HIDDEN_BRANCHES; do
 
    if [[ -z ${EXISTS} ]]; then
     echo "Branch ${BRANCH_SLUG} does not exist in GitHub, removing it from Stoplight..."
+    curl -s --location --request POST 'https://publiq.stoplight.io/graphql' \
+    --header 'Content-Type: application/json' \
+    --header "Authorization: Bearer ${TOKEN}" \
+    --data-raw "{
+      \"query\": \"mutation DeleteBranch(\$branchId: Int!) {\n    deleteBranches(where: {id: {_eq: \$branchId}}) {\n        returning {\n            id\n            projectId\n            __typename\n        }\n        __typename\n    }\n}\",
+      \"variables\": {
+        \"branchId\": ${BRANCH_ID}
+      }
+    }"
     echo "Branch ${BRANCH_SLUG} successfully removed from Stoplight."
   else
     echo "branch ${BRANCH_SLUG} still exists in GitHub, keeping it on Stoplight."
