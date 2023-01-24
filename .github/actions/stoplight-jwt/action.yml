@@ -21,7 +21,7 @@ runs:
         method: 'POST'
         customHeaders: '{"content-type": "application/json"}'
         data: '{
-          "workspaceIntegrationId": "${{ inputs.workspaceId }}", 
+          "workspaceIntegrationId": ${{ inputs.workspaceId }}, 
           "username": "${{ inputs.username }}",
           "password": "${{ inputs.password }}",
           "source": "web"
