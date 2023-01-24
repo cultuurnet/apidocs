@@ -45,7 +45,7 @@ for BRANCH in $HIDDEN_BRANCHES; do
       \"variables\": {
         \"branchId\": ${BRANCH_ID}
       }
-    }"
+    }" > /dev/null
     echo "Branch ${BRANCH_SLUG} successfully removed from Stoplight."
   else
     echo "branch ${BRANCH_SLUG} still exists in GitHub, keeping it on Stoplight."
