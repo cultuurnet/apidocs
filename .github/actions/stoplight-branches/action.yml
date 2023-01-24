@@ -21,5 +21,10 @@ runs:
     - name: Set Stoplight branches in output
       shell: bash
       run: |
-        echo "BRANCHES=${{ toJson(fromJson(steps.getBranches.outputs.response).items) }}" >> $GITHUB_ENV
+        BRANCHES=$(cat << EOF 
+        ${{ toJson(fromJson(steps.getBranches.outputs.response).items) }} 
+        EOF)
+        echo "BRANCHES<<EOF" >> $GITHUB_ENV
+        echo "$BRANCHES" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
         echo "branches=${{ env.branches }}" >> $GITHUB_OUTPUT
