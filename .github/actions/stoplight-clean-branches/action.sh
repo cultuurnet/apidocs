@@ -28,11 +28,12 @@ for BRANCH in $HIDDEN_BRANCHES; do
     }
    BRANCH_SLUG=$(_jq '.slug')
    BRANCH_ID_PREFIX='br:'
-   BRANCH_ID_PREFIXED=$(echo $(_jq '.id') | base64 --decode)
+   BRANCH_ID_ENCODED=$(_jq '.id')
+   BRANCH_ID_PREFIXED=$(echo ${BRANCH_ID_ENCODED} | base64 --decode)
    BRANCH_ID=${BRANCH_ID_PREFIXED#$BRANCH_ID_PREFIX}
 
-   #echo $BRANCH_SLUG
-   #echo $BRANCH_ID
+   echo $BRANCH_SLUG
+   echo $BRANCH_ID
 
    EXISTS=$(git branch --list ${BRANCH_SLUG})
 
