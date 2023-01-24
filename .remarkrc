@@ -24,7 +24,8 @@
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
             "https://www.uitinhasselt.be",
-            "https://github.com/cultuurnet/udb3-acceptance-tests"
+            "https://github.com/cultuurnet/udb3-acceptance-tests",
+            "https://overheid.vlaanderen.be/wedstrijd-api-van-het-jaar-2019"
         ]
     },
     "remark-validate-links": null,
