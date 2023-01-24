@@ -13,14 +13,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Debug workspaceId
-      shell: bash
-      run: echo ${{ inputs.workspaceId }} | sed 's/./& /g'
-
-    - name: Debug username
-      shell: bash
-      run: echo ${{ inputs.username }} | sed 's/./& /g'
-
     - name: Get JWT
       id: getJwt
       uses: fjogeleit/http-request-action@v1
@@ -30,7 +22,7 @@ runs:
         customHeaders: '{"content-type": "application/json"}'
         data: '{
           "workspaceIntegrationId": ${{ inputs.workspaceId }}, 
-          "username": "${{ inputs.username }}",
+          "usernameOrEmail": "${{ inputs.username }}",
           "password": "${{ inputs.password }}",
           "source": "web"
         }'
