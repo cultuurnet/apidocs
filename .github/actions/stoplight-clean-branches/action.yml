@@ -20,4 +20,4 @@ runs:
 
     - name: Run bash script
       shell: bash
-      run: ./.github/actions/stoplight-clean-branches/action.sh
+      run: ./.github/actions/stoplight-clean-branches/action.sh ${{ inputs.workspaceId }} ${{ inputs.username }} ${{ inputs.password }}

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo "Hello!"
+WORKSPACE_ID=$1
+
+echo $WORKSPACE_ID
