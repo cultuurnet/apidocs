@@ -1,0 +1,28 @@
+name: Clean Stoplight Branches
+on:
+  workflow_dispatch:
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get JWT
+        id: getJwt
+        uses: ./.github/actions/stoplight-jwt
+        with:
+          workspaceId: ${{ secrets.STOPLIGHT_WORKSPACE_ID }}
+          username: ${{ secrets.STOPLIGHT_USERNAME }}
+          password: ${{ secrets.STOPLIGHT_PASSWORD }}
+
+      - name: Get branches
+        id: getBranches
+        uses: ./.github/actions/stoplight-branches
+        with:
+          jwt: ${{ steps.getJwt.outputs.jwt }}
+          projectId: 'cHJqOjEyNzIzNg'
+
+      - name: Print branch info
+        run: 'echo ${{ steps.getBranches.output.branches }}'
+
