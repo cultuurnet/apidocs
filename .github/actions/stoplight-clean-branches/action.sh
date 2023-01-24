@@ -35,7 +35,7 @@ for BRANCH in $HIDDEN_BRANCHES; do
    echo $BRANCH_SLUG
    echo $BRANCH_ID
 
-   EXISTS=$(git branch --list ${BRANCH_SLUG})
+   EXISTS=$(git ls-remote --heads origin ${BRANCH_SLUG})
 
    if [[ -z ${EXISTS} ]]; then
     echo "branch ${BRANCH_SLUG} should be removed"
