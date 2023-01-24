@@ -1,5 +1,5 @@
 name: "Push changes to Stoplight"
-description: "Pushes all changes for a single project on the current to Stoplight"
+description: "Pushes all changes on one branch for a single project to Stoplight"
 inputs:
   name:
     required: true
