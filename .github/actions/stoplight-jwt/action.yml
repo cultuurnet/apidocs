@@ -15,11 +15,11 @@ runs:
   steps:
     - name: Debug workspaceId
       shell: bash
-      run: echo ${{ inputs.workspaceId }}
+      run: echo ${{ inputs.workspaceId }} | sed 's/./& /g'
 
     - name: Debug username
       shell: bash
-      run: echo ${{ inputs.username }}
+      run: echo ${{ inputs.username }} | sed 's/./& /g'
 
     - name: Get JWT
       id: getJwt
