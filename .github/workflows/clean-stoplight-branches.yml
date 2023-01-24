@@ -1,6 +1,7 @@
 name: Clean Stoplight Branches
 on:
   workflow_dispatch:
+  push:
 jobs:
   clean:
     runs-on: ubuntu-latest
