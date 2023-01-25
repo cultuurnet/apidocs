@@ -17,7 +17,8 @@ This repository contains all the API documentation available at <https://docs.pu
 * [Links](#links-)
 * [Automatic checks](#automatic-checks-)
 * [Automatically fixing (some) errors](#automatically-fixing-some-errors-)
-* [Publishing your changes](#publishing-your-changes-)
+* [Publishing your changes to Stoplight](#publishing-your-changes-to-stoplight-)
+* [Removing outdated branches from Stoplight](#removing-outdated-branches-from-stoplight-)
 * [Useful tools and resource](#useful-tools-and-resources-)
 
 ## Requirements 🐙
@@ -252,17 +253,30 @@ Note that this workflow can only fix errors in changes that you have already pus
 If the workflow fixed any errors, it will automatically commit them back to your branch.
 Make sure to pull these changes in your local copy of the docs before making more changes to avoid merge conflicts!
 
-## Publishing your changes 🚢
+## Publishing your changes to Stoplight 🚢
 
 Any branches you create will automatically be published as extra versions on <https://docs.publiq.be> in the relevant projects that you made changes to, but as unlisted so they will only be visible to logged-in users.
 
 When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on <https://docs.publiq.be> (visible to any visitor).
 
-![](readme-images/unreleased-branch.png)
+![](readme-images/stoplight-branches.png)
 
 When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` version by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
 
 The workflow will detect that you have run it manually, and push the changes to the `Stable` version on Stoplight instead of the `Unreleased` version.
+
+## Removing outdated branches from Stoplight 🚮
+
+When a branch is deleted from GitHub (for example, after merging a pull request) the ["Clean Stoplight Branches"](https://github.com/cultuurnet/apidocs/actions/workflows/clean-stoplight-branches.yml) actions runs automatically.
+This action uses the (reverse-engineered) Stoplight API to go over all branches in all Stoplight projects and removes those that do not exist in GitHub anymore.
+
+Because the Stoplight API is not officially supported for 3rd-party integrations, the job can sometimes run into issues (and even still be marked as green because the issue did not necessarily cause a crash). 
+Follow these steps to troubleshoot any issues:
+* Keep in mind that "published" branches (i.e. visible to anonymous users, like `Stable` and `Unreleased`) are never removed automatically. Ask a Stoplight admin to remove those manually when needed.
+* If only a few deleted branches are still listed on Stoplight, first try to remove them by running the ["Clean Stoplight Branches"](https://github.com/cultuurnet/apidocs/actions/workflows/clean-stoplight-branches.yml) job manually in the same way that you would run the "Linting docs fix" action (see ["Automatically fixing (some) errors"](#automatically-fixing-some-errors-)). This sometimes fixes any temporary issues that occurred previously.
+* If deleted branches are never removed from a specific project, double check that the project's id is included in [the list of projects to clean](https://github.com/cultuurnet/apidocs/blob/main/.github/workflows/clean-stoplight-branches.yml#L10). (You can find a project's id by going to its settings page in Stoplight.)
+* If deleted branches are never removed from any project, the username and password used to authenticate with Stoplight's API might be outdated. Update the `STOPLIGHT_USERNAME` and `STOPLIGHT_PASSWORD` secrets [in the repository settings](https://github.com/cultuurnet/apidocs/settings/secrets/actions) (make sure to use the credentials of a user that is admin of the publiq Stoplight workspace).
+* If the other troubleshooting steps do not resolve the issue, the Stoplight API might have been updated with breaking changes. Check the action's logs and try to fix [the bash script](https://github.com/cultuurnet/apidocs/blob/main/.github/actions/stoplight-clean-branches/action.sh) that is used by the action.
 
 ## Useful tools and resources 📚
 

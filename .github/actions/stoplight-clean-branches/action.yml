@@ -1,0 +1,26 @@
+name: "Removes stale branches from a Stoplight project"
+description: "Removes branches from a Stoplight project that no longer exist and are not published (= publicly visible)"
+inputs:
+  workspaceId:
+    required: true
+    description: "ID of your Stoplight workspace to get a JWT for"
+  username:
+    required: true
+    description: "Username of a Stoplight user of the workspace"
+  password:
+    required: true
+    description: "Password of a Stoplight user of the workspace"
+  projectId:
+    required: true
+    description: "ID of the Stoplight project to clean up branches in"
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Run bash script
+      shell: bash
+      run: ./.github/actions/stoplight-clean-branches/action.sh ${{ inputs.workspaceId }} ${{ inputs.username }} ${{ inputs.password }} ${{ inputs.projectId }}
