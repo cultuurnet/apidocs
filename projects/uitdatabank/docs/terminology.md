@@ -4,7 +4,7 @@ On this page you can get a grasp of common UiTdatabank terminology and concepts,
 
 ## Event
 
-An API resource with a unique id that represents a cultural, leisure or sport-related activity. Usually happening on one or multiple specific dates and times, or on a pre-defined weekly schedule.
+An API resource with a unique id that represents a cultural, pastime or sport-related activity. Usually happening on one or multiple specific dates and times, or on a pre-defined weekly schedule.
 
 Most events will be published in [online calendars](#online-calendar) so potential attendees can find them.
 

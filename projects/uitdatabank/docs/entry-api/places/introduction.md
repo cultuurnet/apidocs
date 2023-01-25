@@ -1,6 +1,6 @@
 # What are places?
 
-Places in UiTdatabank represent locations that an [event](../events/introduction.md) is happening at like concert halls and theaters. They can also be places like monuments, museums and libraries which are related to culture or leisure and can be visited by the public.
+Places in UiTdatabank represent locations that an [event](../events/introduction.md) is happening at like concert halls and theaters. They can also be places like monuments, museums and libraries which are related to culture or pastime and can be visited by the public.
 
 The latter kind of places are also published on [UiTinVlaanderen](https://www.uitinvlaanderen.be) and over a thousand other calendars, just like events.
 
