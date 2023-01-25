@@ -26,6 +26,8 @@ Alternatively, check out our flexible plug and play [Widgets](https://docs.publi
 
 ## Contact us
 
+For general information about partnerships or the setup of [Widgets](https://docs.publiq.be/docs/widgets) please email us at partnerships@publiq.be.
+
 Email us at technical-support@publiq.be for any technical questions regarding API integrations or Widgets. You can also request access to a channel on our Slack workspace via this email address, for more detailed technical conversations.
 
 Please include the following information (if applicable), so we can help as quickly as possible:
