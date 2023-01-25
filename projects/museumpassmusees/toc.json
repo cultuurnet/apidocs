@@ -7,6 +7,12 @@
       "slug": "introduction"
     },
     {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/authentication.md",
+      "slug": "authentication"
+    },
+    {
       "type": "divider",
       "title": "API References"
     },
