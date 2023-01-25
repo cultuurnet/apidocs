@@ -7,14 +7,14 @@ Eens geïntegreerd in je website erft een widget automatisch de CSS-stijling van
 
 Je vindt beide opties onder de `Stijlen` knop, in de header van de widgetbouwer.
 
+<https://youtu.be/6HN9taq_DZ0>
+
 ## Via thema's
 
 We bieden in de widgetbouwer een aantal kant-en-klare thema's aan waarmee je je agenda in een handomdraai een frisse lay-out geeft:
 
 * `Retro BILL`: stijl je agenda in het retro BILL thema
 * `Retro UiT`: stijl je agenda in het retro UiT thema
-
-`[INSERT VIDEO]`
 
 > Wanneer je kiest om je agenda te stijlen aan de hand van een thema, zal de widget nog nauwelijks stijling overnemen van de website waarin de widget geïntegreerd is.
 
@@ -50,8 +50,6 @@ De definities in onderstaand voorbeeld zorgen ervoor dat alle event titels binne
 ### Stijlhulp
 
 We bieden in de widgetbouwer een stijlhulp aan waarmee je de voornaamste stijlen (kleuren, lettertypes) van een website kan ophalen. Hiervoor geef je het websiteadres in waarop je de widget wilt integreren en klik je vervolgens op `Stijlen ophalen`.
-
-`[INSERT VIDEO]`
 
 ### Stijlgids
 

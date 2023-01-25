@@ -8,6 +8,8 @@ Een zoekresultatenblok bevat altijd een verzameling activiteiten. Voor dit blok 
 
 Hieronder overlopen we elke mogelijke instelling voor het zoekresultatenblok. De instellingen zijn gerangschikt volgens hun positie in de widget builder (van boven naar beneden).
 
+<https://youtu.be/jMG8WHq_WvM>
+
 ## Instellingen
 
 #### Naam zoekresultaten
@@ -17,8 +19,6 @@ Met dit veld kan je de naam van de zoekresultatenpagina wijzigen.
 De naam van deze pagina is standaard `zoekresultaten-1` en wordt niet getoond in de agenda die je uiteindelijk publiceert op je website.
 
 > De naam dient enkel en alleen om het onderscheid tussen verschillende zoekresultatenblokken binnen dezelfde widget te kunnen maken. Het is daarom niet nodig deze naam te wijzigen, tenzij je een widget maakt met meer dan één zoekresultatenblok.
-
-`[INSERT VIDEO]`
 
 ### Algemeen
 
@@ -55,11 +55,11 @@ Hiermee bepaal je hoe de evenementen visueel worden weergegeven:
 
 > Wanneer je kiest voor weergave van evenementen in een raster (`tegelvorm`) raden we aan om het [aantal resultaten per pagina](#Aantal-resultaten-per-pagina) op een veelvoud van 3 te zetten.
 
+<https://youtu.be/50elW-XFryI>
+
 #### Aantal resultaten per pagina
 
 Hiermee bepaal je hoeveel evenemnenten per pagina worden weergegeven. Er is geen minimum- of maximumlimiet.
-
-`[INSERT VIDEO]`
 
 ### Header
 
@@ -111,7 +111,7 @@ Met deze instelling kan je ervoor kiezen om alleen een UiT-tip badge te tonen wa
 
 Als je meerdere waarden wilt toevoegen, moet je ze scheiden met een puntkomma (`;`).
 
-`[INSERT VIDEO]`
+<https://youtu.be/LkejtEkK2EQ>
 
 #### Prijs
 
