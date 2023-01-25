@@ -32,7 +32,7 @@ Binnen dit template kies je zelf welke blokken je toevoegt en je dus kan configu
 Deze templates bevatten 4 verschillende blokken, die je elk apart dient te configureren:
 
 * [HTML](./html.md)
-* [Verfijingen](./verfijningen.md)
+* [Verfijningen](./verfijningen.md)
 * [Zoekbox](./zoekbox.md)
 * [Zoekresultaten](./zoekresultaten.md)
 
