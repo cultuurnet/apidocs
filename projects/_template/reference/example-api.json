@@ -6,7 +6,7 @@
     "description": "This is an example OpenAPI file. It comes with the right authentication for publiq APIs, and some standard error responses. Feel free to edit or remove it!",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be",
+      "email": "technical-support@publiq.be",
       "url": "https://docs.publiq.be"
     }
   },
