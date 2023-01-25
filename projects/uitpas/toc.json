@@ -31,6 +31,12 @@
       "slug": "test-dataset"
     },
     {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/openapi.md",
+      "slug": "openapi"
+    },
+    {
       "type": "divider",
       "title": "Guides"
     },
