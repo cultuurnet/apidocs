@@ -12,12 +12,12 @@ Next to rewards, passholders in need can receive a social tariff ('kansentarief'
 
 Check out our [development quick start guide](https://publiq.stoplight.io/docs/uitpas/docs/quickstart.md) to get up and running.
 
-The UiTPAS API is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). Our API has predictable resource-oriented URLs, returns [JSON](https://www.json.org/json-en.html)-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+The UiTAS API follows the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](./authentication.md)).
 
-In this documentation you'll find:
+In our documentation you will find:
 
-* Code examples so you can see see how it works in practice.
-* Step-by-step guides to common UiTPAS integration scenarios.
-* Explanations of relevant UiTPAS concepts.
-
-
+* Explanations of relevant UiTPAS terminology and concepts
+* Step-by-step guides to common UiTPAS integration scenarios
+* Code examples, so you can see how the APIs works in practice
+* Detailed technical specifications per HTTP endpoint
+* OpenAPI files and Postman collections to get started quickly
