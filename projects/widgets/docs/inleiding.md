@@ -26,7 +26,7 @@ Widgets kunnen in hoge maat op maat ingesteld en verfijnd worden naar je eigen v
 
 ### Voor wie zijn widgets?
 
-Widgets zijn een zeer toegankelijk en veelzijdige tool die een groot aantal partners kan aanspreken. Widgets zijn vooral interessant voor partners die:
+Widgets zijn een zeer toegankelijke en veelzijdige tool die een groot aantal partners kan aanspreken. Widgets zijn vooral interessant voor partners die:
 
 * ✅ op zoek zijn naar een eenvoudige maar robuuste oplossing
 * ✅ niet veel tijd of budget hebben voor de configuratie of ontwikkeling van een agenda
