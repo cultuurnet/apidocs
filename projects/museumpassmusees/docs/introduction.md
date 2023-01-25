@@ -2,7 +2,9 @@
 
 ![](../assets/images/logo.png)
 
-Welcome to the museumPASSmusées API documentation!
+With museumPASSmusées, Belgian museum visitors enjoy access to over 200 museums for a small yearly price.
+
+Learn more about museumPASSmusées at <https://www.museumpassmusees.be>.
 
 ## Partner API
 
