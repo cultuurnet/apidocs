@@ -4,11 +4,13 @@ On this page you can get a grasp of common UiTdatabank terminology and concepts,
 
 ## Event
 
-An API resource with a unique id that represents a cultural, leisure or sport-related activity. Usually happening on one or multiple specific dates and times, or on a pre-defined weekly schedule.
+An API resource with a unique id that represents a cultural, pastime or sport-related activity. Usually happening on one or multiple specific dates and times, or on a pre-defined weekly schedule.
 
 Most events will be published in [online calendars](#online-calendar) so potential attendees can find them.
 
 Every event is required to have a related [place](#place) as its [location](#location), and can optionally have a related [organizer](#organizer).
+
+Find out more about events in the [What are events?](entry-api/events/introduction.md) guide.
 
 ## Online event
 
@@ -23,6 +25,8 @@ An API resource with a unique id that represents a place that can be visited and
 If the place is published, it will also be published in [online calendars](#online-calendar) for interested visitors to find them, or to find other events located at the same place.
 
 Places created as a draft that do not get published can still be used as [locations](#location) for events, but will not be visible in search results in online calendars.
+
+Find out more about places in the [What are places?](entry-api/places/introduction.md) guide.
 
 ## Offer
 
@@ -58,6 +62,35 @@ Events with a dummy location do not have a location `@id`, only an embedded loca
 
 An example of an event with a dummy location: <https://io.uitdatabank.be/event/e160f0f3-89a8-45d7-94a6-34fda89fd69c>
 
+```json
+{
+  "location": {
+    "mainLanguage": "nl",
+    "name": {
+      "nl": "Jeugdheem te Bellefontaine - Vertrek Antwerpen - Station Berchem"
+    },
+    "address": {
+      "nl": {
+        "addressCountry": "BE",
+        "addressLocality": "Berchem",
+        "postalCode": "2600",
+        "streetAddress": "Station Berchem "
+      }
+    },
+    "geo": {
+      "latitude": 51.2002552,
+      "longitude": 4.4325658
+    },
+    "status": {
+      "type": "Available"
+    },
+    "bookingAvailability": {
+      "type": "Available"
+    }
+  }
+}
+```
+
 These events were imported from UiTdatabank v2, where their location did not have to be a separate resource that would be linked.
 
 No new events can be created with a dummy location in UiTdatabank v3.
@@ -70,11 +103,23 @@ By linking events and places to an organizer, they can easily be grouped or link
 
 To prevent accidental duplicates, every organizer must have a unique website URL.
 
+Find out more about organizers in the [What are organizers?](entry-api/organizers/introduction.md) guide.
+
 ## Dummy organizer
 
 Events and places with a dummy organizer do not have an organizer `@id`, only an embedded organizer with a name and sometimes contact information.
 
 An example of an event with a dummy organizer: <https://io.uitdatabank.be/event/206b6d13-5739-4b44-800a-6056bc34ce92>
+
+```json
+{
+  "organizer": {
+    "name": "CCV",
+    "email": ["info@ccv.be"],
+    "phone": ["016389891"]
+  }
+}
+```
 
 These events and places were imported from UiTdatabank v2, where their organizer did not have to be a separate resource that would be linked.
 

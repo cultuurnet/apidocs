@@ -10,7 +10,7 @@ stoplight-id: 7d8d9b4653fc1
 
 The categorisation model of UiTdatabank is a standard aimed at simplifying data exchange and avoiding complex mapping procedures.
 
-The main purpose of the categorisation model is to categorise cultural and leisure activities. The categorisation model consists of 3 domains:
+The main purpose of the categorisation model is to categorise cultural and pastime activities. The categorisation model consists of 3 domains:
 
 1. `eventtype`
 2. `theme`
