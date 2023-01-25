@@ -19,6 +19,12 @@
       "slug": "openapi"
     },
     {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/postman.md",
+      "slug": "postman"
+    },
+    {
       "type": "divider",
       "title": "API Reference"
     },
