@@ -39,12 +39,12 @@ Widgets zijn een zeer toegankelijk en veelzijdige tool die een groot aantal part
 
 ### Voor wie zijn widgets niet?
 
-In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API van UiTdatabank](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) in plaats van met Widgets. We raden aan om te integreren met onze Search API in plaats van widgets als:
+In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API van UiTdatabank](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) in plaats van met Widgets. Widgets zijn minder geschikt als:
 
-* ✅ je volledige controle wilt over elk aspect van de integratie
-* ✅ speciale interacties met eindgebruikers nodig zijn (bijvoorbeeld authenticatie)
-* ✅ je specifieke eisen hebt met betrekking tot SEO
-* ✅ je ook locaties of organisaties in je agenda wilt publiceren
+* ❌ je volledige controle wilt over elk aspect van de integratie
+* ❌ speciale interacties met eindgebruikers nodig zijn (bijvoorbeeld authenticatie)
+* ❌ je specifieke eisen hebt met betrekking tot SEO
+* ❌ je ook locaties of organisaties in je agenda wilt publiceren
 
 ## Inspirerende voorbeelden
 
