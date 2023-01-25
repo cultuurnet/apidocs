@@ -4,7 +4,7 @@
 
 1. [Fill in the form](https://forms.gle/NcAjVQv1jvEwKzAC9) to tell us a bit more about your application and request your credentials for the UiTPAS testing environment.
 
-2. Carefully read [the authentication guide](https://publiq.stoplight.io/docs/authentication/docs/methods.md) and get a grasp of common UiTPAS [terminology](./terminology.md).
+2. Carefully read [the authentication guide](./authentication.md) and get a grasp of common UiTPAS [terminology](./terminology.md).
 
 3. Start building your application on the UiTPAS testing environment.
 
