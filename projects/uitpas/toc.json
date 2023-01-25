@@ -70,7 +70,7 @@
         },
         {
           "type": "item",
-          "title": "Registering multple ticket sales at once",
+          "title": "Registering multiple ticket sales at once",
           "uri": "docs/registering-ticket-sales-multiple.md",
           "slug": "ticket-sales/registering-multiple"
         }
