@@ -258,7 +258,7 @@ Any branches you create will automatically be published as extra versions on <ht
 
 When your branch gets merged to `main`, the changes will automatically be published to the `Unreleased` version of the project you made changes to on <https://docs.publiq.be> (visible to any visitor).
 
-![](readme-images/unreleased-branch.png)
+![](readme-images/stoplight-branches.png)
 
 When you have implemented and deployed all the new features to your API, you can publish all the changes in the `Unreleased` version by manually running the ["Publish {your project name} documentation" workflow](https://github.com/cultuurnet/apidocs/actions) for the `main` branch.
 
