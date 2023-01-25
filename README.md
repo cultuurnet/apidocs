@@ -270,8 +270,9 @@ The workflow will detect that you have run it manually, and push the changes to 
 When a branch is deleted from GitHub (for example, after merging a pull request) the ["Clean Stoplight Branches"](https://github.com/cultuurnet/apidocs/actions/workflows/clean-stoplight-branches.yml) actions runs automatically.
 This action uses the (reverse-engineered) Stoplight API to go over all branches in all Stoplight projects and removes those that do not exist in GitHub anymore.
 
-Because the Stoplight API is not officially supported for 3rd-party integrations, the job can sometimes run into issues (and even still be marked as green because the issue did not necessarily cause a crash). 
+Because the Stoplight API is not officially supported for 3rd-party integrations, the job can sometimes run into issues (and even still be marked as green because the issue did not necessarily cause a crash).
 Follow these steps to troubleshoot any issues:
+
 * Keep in mind that "published" branches (i.e. visible to anonymous users, like `Stable` and `Unreleased`) are never removed automatically. Ask a Stoplight admin to remove those manually when needed.
 * If only a few deleted branches are still listed on Stoplight, first try to remove them by running the ["Clean Stoplight Branches"](https://github.com/cultuurnet/apidocs/actions/workflows/clean-stoplight-branches.yml) job manually in the same way that you would run the "Linting docs fix" action (see ["Automatically fixing (some) errors"](#automatically-fixing-some-errors-)). This sometimes fixes any temporary issues that occurred previously.
 * If deleted branches are never removed from a specific project, double check that the project's id is included in [the list of projects to clean](https://github.com/cultuurnet/apidocs/blob/main/.github/workflows/clean-stoplight-branches.yml#L10). (You can find a project's id by going to its settings page in Stoplight.)
