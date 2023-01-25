@@ -76,8 +76,6 @@ Dit `cdbid` dien je vervolgens te kopiëren en te gebruiken als waarde voor `dat
 
 Je kan ook een zoek bouwen doorheen evenementen in de UiTdatabank vanuit je eigen CMS. Je kan hiervoor gebruik maken van de [UiTdatabank Search API](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-events).
 
-`[VIDEO]`
-
 Voorbeeld request:
 
 ```

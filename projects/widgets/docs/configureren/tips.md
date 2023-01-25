@@ -8,6 +8,8 @@ Het tipsblok dient om een kleine, aantrekkelijke verzameling aan activiteiten in
 
 Hieronder overlopen we elke mogelijke instelling voor het tipsblok. De instellingen zijn gerangschikt naar hun positie in de widgetbouwer (van boven naar beneden).
 
+<https://youtu.be/GT6uPS8BQR0>
+
 ## Instellingen
 
 ### Algemeen
@@ -34,8 +36,6 @@ Wanneer je de een URL voor je detailpagina instelt, kan je vervolgens ook kiezen
 
 * `Cdbid toevoegen aan querystring`: hierbij wordt het event ID als URL-parameter aan de ingegeven URL toegevoegd. Dit werkt enkel in specifieke gevallen.
 * `Cdbid toevoegen aan Url`: hierbij wordt het `cdbid` gewoon achteraan de ingegeven URL toegevoegd. Dit werkt altijd wanneer je de detailpagina van een widgetagenda ingeeft, of linkt naar UiTinVlaanderen.
-
-`[INSERT VIDEO]`
 
 #### Labels altijd weergeven als iconen
 

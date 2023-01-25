@@ -2,6 +2,8 @@
 
 Het verfijningen-blok bevat een samenvatting van de zoekresultaten. Ze kunnen door de bezoeker van je agenda gebruikt worden om de zoekresultaten te filteren. Daarom moet dit blok altijd gekoppeld zijn aan een zoekresultatenblok.
 
+<https://youtu.be/f0pCPgPmKmM>
+
 ## Soorten verfijningen
 
 We bieden volgende groepen van verfijningen aan die de bezoeker van je agenda kan gebruiken om zoekresultaten te filteren:
@@ -91,7 +93,7 @@ Vervolgens voeg je één of meerdere filters toe aan de groep. Voor elke filter 
 * De naam van de filter, bijvoorbeeld `kerstvakantie` of `paasvakantie`)
 * een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `dateRange:[2023-04-03T00:00:00+01:00 TO 2022-04-16T23:59:59+01:00]`
 
-`[INSERT VIDEO]`
+<https://youtu.be/8ZaOJGFkUJc>
 
 ## Een verfijningenblok koppelen aan een zoekresultatenblok
 
@@ -105,5 +107,3 @@ In sommige gevallen moet je een verfijningenblok zelf manueel koppelen aan een z
 
 * Wanneer je vertrekt van een [leeg template](../templates.md#Leeg)
 * Wanneer je een widget hebt met meer dan één zoekresultatenblok
-
-`[INSERT VIDEO]`
