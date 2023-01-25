@@ -45,7 +45,7 @@ Scope: `events`, `places`
 
 A term with domain `facility` describes specific accessibility facilities for people with disabilities, e.g. accessible sanitary facilities. Some facilities apply on locations only, others on events only. Check the term's `scope` property to see if it applies to an event or a place.
 
-> The list of accessibility features below has been compiled in consultation with Inter - Toegankelijk Vlaanderen. These facilities are behind a permission model and can only be added by trusted partners. If you are interested in enriching your own event data or data from third parties with facility information, please contact <vragen@publiq.be>.
+> The list of accessibility features below has been compiled in consultation with Inter - Toegankelijk Vlaanderen. These facilities are behind a permission model and can only be added by trusted partners. If you are interested in enriching your own event data or data from third parties with facility information, please contact <partnerships@publiq.be>.
 
 ### Location-level facilities
 

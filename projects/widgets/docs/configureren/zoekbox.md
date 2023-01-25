@@ -4,6 +4,8 @@ Met een zoekbox bouw je een zoekformulier waarmee de bezoekers van de agenda op 
 
 In een zoekbox kan je verschillende elementen selecteren die naast of onder elkaar verschijnen, afhankelijk van de beschikbare schermbreedte.
 
+<https://youtu.be/aad-WaoRZBI>
+
 ## Instellingen
 
 #### Naam zoekbox
@@ -56,8 +58,6 @@ Bepaal welke tekst boven de vrije zoekbalk moet verschijnen.
 
 Bepaal de voorbeeldtekst die in de vrije zoekbalk verschijnt. Je kan dit gebruiken om de bezoeker van je agenda duidelijk te maken op welke termen gezocht kan worden.
 
-`[INSERT VIDEO]`
-
 #### Groepfilters
 
 Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
@@ -71,8 +71,6 @@ Dit is de tweede kolom (desktopweergave) of rij (mobiele weergave) van je zoekbo
 Bepaal of je de bezoeker van je agenda de mogelijkheid wilt geven om te zoeken op plaats (provincies, gemeenten en deelgemeenten).
 
 De zoek op plaats is een formulier dat automatisch plaatsen suggereert. Typ je bijvoorbeeld `Mol` in het zoekvak, dan zal het formulier zowel `Mol` als `Sint-Jans-Molenbeek` en `Mollem` als suggestie geven.
-
-`[INSERT VIDEO]`
 
 <!-- theme: warning -->
 
@@ -157,7 +155,7 @@ Met groepfilters kan je eigen filters maken, op maat van jouw doelpubliek. Enkel
 * een groep met filters op concertzalen voor een muziekblog
 * een groep met filters op dansthema's voor een dansorganisatie
 
-`[INSERT VIDEO]`
+<https://youtu.be/lgc2YrE4pkU>
 
 Je kan groepfilters toevoegen in elke rij of kolom van de zoekbox, door het selectievakje `Extra groepfilters` aan te vinken.
 
@@ -180,7 +178,7 @@ Hiermee kies je een tekst die je standaard in het dropdown-menu van de groepsfil
 Vervolgens voeg je één of meerdere filters toe aan de groep. Voor elke filter moet je volgende elementen bepalen:
 
 * De naam van de filter, bijvoorbeeld `Ancienne Belgique`, `Trix` of `Ha Concerts`)
-* een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `location.id:f92bf1d6-f713-4022-9450-851d5e7a401b]`
+* een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `location.id:f92bf1d6-f713-4022-9450-851d5e7a401b`
 
 Je kan pas een nieuwe filter toevoegen wanneer je voor de vorige filter een naam en een query hebt ingesteld.
 

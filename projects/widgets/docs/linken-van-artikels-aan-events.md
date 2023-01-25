@@ -76,8 +76,6 @@ Dit `cdbid` dien je vervolgens te kopiëren en te gebruiken als waarde voor `dat
 
 Je kan ook een zoek bouwen doorheen evenementen in de UiTdatabank vanuit je eigen CMS. Je kan hiervoor gebruik maken van de [UiTdatabank Search API](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-events).
 
-`[VIDEO]`
-
 Voorbeeld request:
 
 ```
@@ -101,9 +99,10 @@ Voorbeeld response:
 }
 ```
 
-Vervolgens moet de identifier van het evenement (`ffe4f207-2f8d-4dce-87a6-08abf59aefbe` in bovenstaand voorbeeld) handmatig of automatisch toegevoegd worden als waarde voor `data-cdbid` in het `<script>` tag van de widget. 
+Vervolgens moet de identifier van het evenement (`ffe4f207-2f8d-4dce-87a6-08abf59aefbe` in bovenstaand voorbeeld) handmatig of automatisch toegevoegd worden als waarde voor `data-cdbid` in het `<script>` tag van de widget.
 
 <!-- theme: warning -->
+
 > Om de UiTdatabank Search API aan te spreken heb je `client id` of `api key` nodig. We leggen [hier](https://docs.publiq.be/docs/authentication/requesting-credentials) uit hoe je die credentials verkrijgt.
 
 ## Vereisten

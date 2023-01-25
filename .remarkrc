@@ -24,7 +24,8 @@
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
             "https://www.uitinhasselt.be",
-            "https://github.com/cultuurnet/udb3-acceptance-tests"
+            "https://github.com/cultuurnet/udb3-acceptance-tests",
+            "https://github.com/cultuurnet/apidocs/settings/secrets/actions"
         ]
     },
     "remark-validate-links": null,
