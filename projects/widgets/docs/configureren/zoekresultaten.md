@@ -358,7 +358,7 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toeagnkelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
 
 #### Toon gerelateerde artikels
 
