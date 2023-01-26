@@ -10,7 +10,7 @@ stoplight-id: 7d8d9b4653fc1
 
 The categorisation model of UiTdatabank is a standard aimed at simplifying data exchange and avoiding complex mapping procedures.
 
-The main purpose of the categorisation model is to categorise cultural and leisure activities. The categorisation model consists of 3 domains:
+The main purpose of the categorisation model is to categorise cultural and pastime activities. The categorisation model consists of 3 domains:
 
 1. `eventtype`
 2. `theme`
@@ -45,7 +45,7 @@ Scope: `events`, `places`
 
 A term with domain `facility` describes specific accessibility facilities for people with disabilities, e.g. accessible sanitary facilities. Some facilities apply on locations only, others on events only. Check the term's `scope` property to see if it applies to an event or a place.
 
-> The list of accessibility features below has been compiled in consultation with Inter - Toegankelijk Vlaanderen. These facilities are behind a permission model and can only be added by trusted partners. If you are interested in enriching your own event data or data from third parties with facility information, please contact <vragen@publiq.be>.
+> The list of accessibility features below has been compiled in consultation with Inter - Toegankelijk Vlaanderen. These facilities are behind a permission model and can only be added by trusted partners. If you are interested in enriching your own event data or data from third parties with facility information, please contact <partnerships@publiq.be>.
 
 ### Location-level facilities
 

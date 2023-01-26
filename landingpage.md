@@ -26,4 +26,14 @@ Alternatively, check out our flexible plug and play [Widgets](https://docs.publi
 
 ## Contact us
 
+For general information about partnerships or the setup of [Widgets](https://docs.publiq.be/docs/widgets) please email us at partnerships@publiq.be.
+
 Email us at technical-support@publiq.be for any technical questions regarding API integrations or Widgets. You can also request access to a channel on our Slack workspace via this email address, for more detailed technical conversations.
+
+Please include the following information (if applicable), so we can help as quickly as possible:
+
+* [x] The API(s) that you are integrating with
+* [x] Your client id(s), or alternatively your API key(s) (if you are still using API key authentication on UiTdatabank Entry API or Search API)
+* [x] The environment that you are experiencing issues with (testing, production, or both)
+* [x] An example of the HTTP request(s) that you are sending (including URL, method, headers, and body data)
+* [x] An example of the HTTP response(s) that you are receiving (including status, headers and body data)
