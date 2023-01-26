@@ -6,15 +6,25 @@ stoplight-id: 43709fe00ab3f
 
 Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
 
-<!-- theme: warning -->
-
-> The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
 ## Applicable URLs
 
 * `GET /events`
 * `GET /places`
 * `GET /offers`
+
+## Parameter
+
+To include UiTPAS prices in the search result data, use the `embedUitpasPrices` URL parameter and set it to `true`. The current default is `false`.
+
+Note that you also need to set the `embed` parameter to `true` to [include search result data](./embedding.md) in the first place.
+
+<!-- theme: warning -->
+> The default value of the `embedUitpasPrices` parameter is planned to change to `true` in the future. 
+>
+> It is set to `false` for the time being so that existing integrations can make any changes necessary before the UiTPAS prices are included by default. For example, so they can remove their existing integration with UiTPAS API to fetch the prices because this would otherwise result in duplicate UiTPAS prices being shown.
+>
+> If you do not wish to every display UiTPAS prices from Search API, make sure to explicitly set the `embedUitpasPrices` parameter to `false` to exclude them when the default changes to `true` in the future.
 
 ## Examples
 
