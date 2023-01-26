@@ -62,4 +62,4 @@ Op zoek naar een evenement dat toegankelijk is voor mensen met een handicap? Er 
 
 **UiTPAS Mechelen**
 
-In de agenda van [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) vind je alle evenementen voor UiTPAS binnen Mechelen. Op de detailpagina van elk evenement vind je niet alleen de UiTPAS-prijs, maar ook de verschillende UiTPAS-voordleen die de organisator van het evenement aanbiedt.
+In de agenda van [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) vind je alle evenementen voor UiTPAS binnen Mechelen. Op de detailpagina van elk evenement vind je niet alleen de UiTPAS-prijs, maar ook de verschillende UiTPAS-voordelen die de organisator van het evenement aanbiedt.
