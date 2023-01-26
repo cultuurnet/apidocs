@@ -34,6 +34,8 @@ The calendar summary can be retrieved in `text` and in `html`.
 * `GET /places`
 * `GET /offers`
 
+Calendar summaries are not supported on `GET /organizers` because organizers do not have calendar information.
+
 ## Parameter and possible values
 
 Parameter name: `embedCalendarSummaries[]`
