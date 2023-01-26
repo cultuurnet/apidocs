@@ -36,7 +36,7 @@ Note that you also need to set the `embed` parameter to `true` to [include searc
 Set the `embedUitpasPrices` parameter to `false`:
 
 ```
-GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=false
+GET /events/?embed=true&embedUitpasPrices=false
 ```
 
 **response**
@@ -68,7 +68,7 @@ UiTPAS prices are not included in the JSON response:
 Set the `embedUitpasPrices` parameter to `true`:
 
 ```
-GET /events/?q=id:5330a84f-7496-46a1-b60d-fa7d62ec5fb8&embedUitpasPrices=true
+GET /events/?embed=true&embedUitpasPrices=true
 ```
 
 **response**
