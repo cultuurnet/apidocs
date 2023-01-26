@@ -193,7 +193,9 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/taxonomy-api/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+
+> Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
 #### Leeslink
 
@@ -359,6 +361,8 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 #### Toegankelijkheid
 
 Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+
+> Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
 #### Toon gerelateerde artikels
 
