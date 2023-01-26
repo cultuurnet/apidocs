@@ -25,7 +25,8 @@ To include UiTPAS prices in the search result data, use the `embedUitpasPrices` 
 Note that you also need to set the `embed` parameter to `true` to [include search result data](./embedding.md) in the first place.
 
 <!-- theme: warning -->
-> The default value of the `embedUitpasPrices` parameter is planned to change to `true` in the future. 
+
+> The default value of the `embedUitpasPrices` parameter is planned to change to `true` in the future.
 >
 > It is set to `false` for the time being so that existing integrations can make any changes necessary before the UiTPAS prices are included by default. For example, so they can remove their existing integration with UiTPAS API to fetch the prices because this would otherwise result in duplicate UiTPAS prices being shown.
 >
