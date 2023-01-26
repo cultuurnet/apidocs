@@ -331,28 +331,28 @@
       "title": "Guides",
       "items": [
         {
-          "type": "group",
+          "type": "item",
           "title": "Getting started",
-          "items": [
-            {
-              "type": "item",
-              "title": "Embedding result data",
-              "uri": "/docs/search-api/embedding.md",
-              "slug": "search-api/embedding"
-            },
-            {
-              "type": "item",
-              "title": "Pagination",
-              "uri": "/docs/search-api/pagination.md",
-              "slug": "search-api/pagination"
-            },
-            {
-              "type": "item",
-              "title": "Sorting",
-              "uri": "/docs/search-api/sorting.md",
-              "slug": "search-api/sorting"
-            }
-          ]
+          "uri": "/docs/search-api/getting-started.md",
+          "slug": "search-api/getting-started"
+        },
+        {
+          "type": "item",
+          "title": "Embedding result data",
+          "uri": "/docs/search-api/embedding.md",
+          "slug": "search-api/embedding"
+        },
+        {
+          "type": "item",
+          "title": "Pagination",
+          "uri": "/docs/search-api/pagination.md",
+          "slug": "search-api/pagination"
+        },
+        {
+          "type": "item",
+          "title": "Sorting",
+          "uri": "/docs/search-api/sorting.md",
+          "slug": "search-api/sorting"
         },
         {
           "type": "group",
