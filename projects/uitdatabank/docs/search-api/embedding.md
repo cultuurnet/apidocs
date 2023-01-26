@@ -42,7 +42,7 @@ To get the actual bodies of the results, there are two options:
 
 ## Recommended use
 
-We recommend using the `embed=true` parameter in order to limit the amount of requests that need to be made.
+We recommend setting the `embed` parameter to `true` in order to limit the amount of requests that need to be made if you require the result data. However if you do not need the result data, for example if you only need the result count and you have bandwith concerns, we recommend that you explicitly set the `embed` parameter to `false` in case the default behavior should ever change.
 
 ## Examples
 
