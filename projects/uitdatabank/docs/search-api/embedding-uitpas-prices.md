@@ -4,8 +4,9 @@ stoplight-id: 43709fe00ab3f
 
 # Embedding UiTPAS prices
 
-Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
+While UiTdatabank events can contain price info, they do not contain UiTPAS prices by default as these are calculated by UiTPAS based on the regular prices in UiTdatabank in case of UiTPAS events.
 
+Because you may also want to display UiTPAS prices in event details of your Search API results without setting up an additional integration with the [UiTPAS API](https://docs.publiq.be/docs/uitpas), Search API provides a way to automatically include the UiTPAS prices in the search result data.
 
 ## Applicable URLs
 
