@@ -181,8 +181,6 @@ Bepaal de relatieve positie van de afbeeldingen:
 * `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud.
 * `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud.
 
-`[INSERT VIDEO]`
-
 #### Labels
 
 Bepaal of de labels ("keywords", "tags") die gelinkt zijn aan de evenementen getoond mogen worden of niet.
