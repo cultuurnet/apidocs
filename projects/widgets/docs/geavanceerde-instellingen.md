@@ -16,6 +16,7 @@ Houd er rekening mee dat binnen de mobiele weergave:
 
 * labels altijd als iconen weergegeven zullen worden
 * afbeeldingen boven of onder de event-informatie zal verschijnen in plaats van links of rechts van de event-informatie
+* de beschrijving van evenementen niet getoond zal worden in het resultatenoverzicht van een zoekresultatenblok of tipsblok
 * verfijningen standaard ingeklapt zijn
 
 ## jQuery niet inladen
