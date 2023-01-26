@@ -4,29 +4,17 @@ stoplight-id: 3c97258ab250f
 
 # Embedding calendar summaries
 
-Formatting a large amount of dates and/or opening hours into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places). The calendar summary will be embedded in every result as an additional `calendarSummary` property.
+UiTdatabank events and places have calendar info of different types and can often contain a large amount of dates and/or opening hours.
 
-For every event or place a calendar summary is available in different sizes:
+Formatting this info into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with an easy to read calendar summary for each result. 
 
-* `xs`: extra small
-* `sm`: small
-* `md`: medium
-* `lg`: large
+The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 
-We currently support 4 languages for the calendar summary:
+For every event or place a calendar summary is available in different sizes (`xs`, `sm`, `md`, `lg`) and can be retrieved in `text` and/or `html`.
 
-* `nl`
-* `fr`
-* `en`
-* `de`
+The calendar summary is always provided in `nl`, `fr`, `en` and `de`. It is possible to request multiple sizes and formats at once.
 
-The calendar summary can be retrieved in `text` and in `html`.
-
-<!-- theme: info -->
-
-> The response is always multilingual. It is possible to request multiple sizes and formats at once.
->
-> If applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
+When applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
 
 ## Applicable URLs
 
