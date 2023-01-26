@@ -123,7 +123,7 @@ The response contains actual JSON-LD documents:
           "domain": "eventtype"
         }
       ],
-      "..."
+      "...": "..."
     },
     "..."
   ]
