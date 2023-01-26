@@ -6,6 +6,7 @@ jobs:
   clean:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         projectId: [ # See the settings page of each project on Stoplight to get the IDs
           'cHJqOjEyNjc3NA', # api-design-guidelines
