@@ -6,7 +6,7 @@ stoplight-id: 3c97258ab250f
 
 UiTdatabank events and places have calendar info of different types and can often contain a large amount of dates and/or opening hours.
 
-Formatting this info into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with an easy to read calendar summary for each result.
+Formatting this info into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with an easy-to-read calendar summary for each result.
 
 The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 

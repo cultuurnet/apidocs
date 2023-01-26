@@ -14,7 +14,7 @@ Because you may also want to display UiTPAS prices in event details of your Sear
 * `GET /places`
 * `GET /offers`
 
-Note that while technically allowed, `GET /places` will never include UiTPAS prices because only events can have UiTPAS prices at the moment. However it is supported under the hood because on `GET /offers` you may wish to include UiTPAS prices for events, while also getting place search results.
+Note that while technically allowed, `GET /places` will never include UiTPAS prices because only events can have UiTPAS prices at the moment. However, it is supported under the hood because on `GET /offers` you may wish to include UiTPAS prices for events while also getting place search results.
 
 UiTPAS prices are not supported on `GET /organizers` because organizers do not have price information.
 
