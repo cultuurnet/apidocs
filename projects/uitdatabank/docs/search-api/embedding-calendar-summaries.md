@@ -2,7 +2,7 @@
 stoplight-id: 3c97258ab250f
 ---
 
-## Embedding calendar summaries
+# Embedding calendar summaries
 
 Formatting a large amount of dates and/or opening hours into a human-readable overview can be complex. Therefore, we provide a parameter to expand the results from the API with a calendar summary for each result with calendar information (events, places). The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 
@@ -28,20 +28,20 @@ The calendar summary can be retrieved in `text` and in `html`.
 >
 > If applicable, the calendar summary will also include the `status` or `booking availability` of the event or place.
 
-### Applicable URLs
+## Applicable URLs
 
 * `GET /events`
 * `GET /places`
 * `GET /offers`
 
-### Recommended use
+## Recommended use
 
 * We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
 * We recommend to use `lg` for the detailpage
 * In some cases (e.g. mobile apps) calendar summary `xs` can be useful
 * You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
-### Parameter and possible values
+## Parameter and possible values
 
 Parameter name: `embedCalendarSummaries`
 
@@ -56,9 +56,9 @@ Possible values:
 * `md-html`: medium summary in HTML
 * `lg-html`: large summary in HTML
 
-### Examples
+## Examples
 
-#### Calendar summary `xs-text`
+### Calendar summary `xs-text`
 
 **request**
 
@@ -95,7 +95,7 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
-#### Calendar summary `sm-text` for an event that is happening tonight
+### Calendar summary `sm-text` for an event that is happening tonight
 
 ```json
 {
@@ -122,7 +122,7 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
-#### Calendar summary `md-text` for a cancelled event
+### Calendar summary `md-text` for a cancelled event
 
 **request**
 
@@ -159,7 +159,7 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
-#### Calendar summary `lg-html` for an event that is sold out or fully booked
+### Calendar summary `lg-html` for an event that is sold out or fully booked
 
 **request**
 
@@ -196,7 +196,7 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
-#### Requesting multiple calendar summaries at once
+### Requesting multiple calendar summaries at once
 
 **request**
 

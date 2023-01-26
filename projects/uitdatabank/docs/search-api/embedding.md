@@ -1,4 +1,4 @@
-## Embedding result bodies
+# Embedding result data
 
 By default, the search API endpoints only return a list of links to the individual search results.
 
@@ -7,20 +7,20 @@ To get the actual bodies of the results, there are two options:
 * Loop over the results yourself and perform GET requests using the given URLs
 * Use the `embed`  URL parameter (`bool`, defaults to `false`)
 
-### Applicable URLs
+## Applicable URLs
 
 * `GET /events`
 * `GET /places`
 * `GET /offers`
 * `GET /organizers`
 
-### Recommended use
+## Recommended use
 
 We recommend using the `embed=true` parameter in order to limit the amount of requests that need to be made.
 
-### Examples
+## Examples
 
-#### Without embedding
+### Without embedding
 
 **request**
 
@@ -58,7 +58,7 @@ The response contains a list of links to the individual search results:
 }
 ```
 
-#### With embedding
+### With embedding
 
 **request**
 

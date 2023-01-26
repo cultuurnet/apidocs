@@ -2,7 +2,7 @@
 stoplight-id: 43709fe00ab3f
 ---
 
-## Embedding UiTPAS prices
+# Embedding UiTPAS prices
 
 Currently, UiTPAS prices are by default hidden from the response from the UiTdatabank Search API. You can now easily retrieve the UiTPAS prices for events (if applicable) by setting the `embedUitpasPrices` to `true`.
 
@@ -10,15 +10,15 @@ Currently, UiTPAS prices are by default hidden from the response from the UiTdat
 
 > The `embedUitpasPrices` parameter is a **temporary parameter** which now defaults to `false`. This parameter is specifically provided for those integrators that now retrieve UiTPAS prices from the UiTPAS API and that need to make the switch to UiTPAS prices from the UiTdatabank Search API. This parameter and its documentation will be removed in the foreseeable future and UiTPAS prices will be returned by default.
 
-### Applicable URLs
+## Applicable URLs
 
 * `GET /events`
 * `GET /places`
 * `GET /offers`
 
-### Examples
+## Examples
 
-#### Without UiTPAS prices embedded
+### Without UiTPAS prices embedded
 
 **request**
 
@@ -50,7 +50,7 @@ UiTPAS prices are not included in the JSON response:
 }
 ```
 
-#### With UiTPAS prices embedded
+### With UiTPAS prices embedded
 
 **request**
 
