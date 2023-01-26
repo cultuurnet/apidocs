@@ -2,7 +2,7 @@
 stoplight-id: 3c97258ab250f
 ---
 
-# Embedding calendar summaries
+# Calendar summaries
 
 UiTdatabank events and places have calendar info of different types and can often contain a large amount of dates and/or opening hours.
 

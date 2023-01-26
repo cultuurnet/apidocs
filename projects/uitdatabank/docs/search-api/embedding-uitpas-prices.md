@@ -2,7 +2,7 @@
 stoplight-id: 43709fe00ab3f
 ---
 
-# Embedding UiTPAS prices
+# UiTPAS prices
 
 While UiTdatabank events can contain price info, they do not contain UiTPAS prices by default as these are calculated by UiTPAS based on the regular prices in UiTdatabank in case of UiTPAS events.
 
