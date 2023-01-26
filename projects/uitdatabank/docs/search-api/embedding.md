@@ -29,6 +29,10 @@ To get the actual bodies of the results, there are two options:
 * Loop over the results yourself and perform GET requests using the given URLs
 * Use the `embed`  URL parameter to include the complete result bodies in the response (`bool`, defaults to `false`)
 
+<!-- theme: success -->
+
+> Including the result bodies is not done by default because it used to have a small performance impact as the data was fetched on the fly in the background. This is no longer the case as the data is now cached in Search API v3 itself, but the default has not been changed yet so that integrations that do not require the result data and have bandwith limitations do not suddenly get responses that are a lot bigger than before.
+
 ## Applicable URLs
 
 * `GET /events`
