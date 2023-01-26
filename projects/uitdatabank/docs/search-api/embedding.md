@@ -31,7 +31,7 @@ To get the actual bodies of the results, there are two options:
 
 <!-- theme: success -->
 
-> Including the result bodies is not done by default because it used to have a small performance impact as the data was fetched on the fly in the background. This is no longer the case as the data is now cached in Search API v3 itself, but the default has not been changed yet so that integrations that do not require the result data and have bandwith limitations do not suddenly get responses that are a lot bigger than before.
+> Including the result bodies is not done by default because it used to have a small performance impact as the data was fetched on the fly in the background. This is no longer the case as the data is now cached in Search API v3 itself, but the default has not been changed yet so that integrations that do not require the result data and have bandwidth limitations do not suddenly get responses that are a lot bigger than before.
 
 ## Applicable URLs
 
@@ -42,7 +42,7 @@ To get the actual bodies of the results, there are two options:
 
 ## Recommended use
 
-We recommend setting the `embed` parameter to `true` in order to limit the amount of requests that need to be made if you require the result data. However if you do not need the result data, for example if you only need the result count and you have bandwith concerns, we recommend that you explicitly set the `embed` parameter to `false` in case the default behavior should ever change.
+We recommend setting the `embed` parameter to `true` in order to limit the amount of requests that need to be made if you require the result data. However, if you do not need the result data, for example if you only need the result count and you have bandwidth concerns, we recommend that you explicitly set the `embed` parameter to `false` in case the default behavior should ever change.
 
 ## Examples
 
