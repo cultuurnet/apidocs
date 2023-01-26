@@ -45,7 +45,10 @@ UiTPAS prices are not included in the JSON response:
 
 ```json
 {
-"priceInfo": [
+  "@id": "https://io.uitdatabank.be/event/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
+  "@type": "Event",
+  "...": "...",
+  "priceInfo": [
     {
       "category": "base",
       "name": {
@@ -75,9 +78,12 @@ GET /events/?embed=true&embedUitpasPrices=true
 
 The indicative UiTPAS price for the applicable card system UiTPAS Leuven is included in the JSON response:
 
-```js
+```json
 {
-"priceInfo": [
+  "@id": "https://io.uitdatabank.be/event/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
+  "@type": "Event",
+  "...": "...",
+  "priceInfo": [
     {
       "category": "base",
       "name": {
