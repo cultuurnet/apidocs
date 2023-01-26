@@ -27,7 +27,7 @@ For example:
 To get the actual bodies of the results, there are two options:
 
 * Loop over the results yourself and perform GET requests using the given URLs
-* Use the `embed`  URL parameter (`bool`, defaults to `false`)
+* Use the `embed`  URL parameter to include the complete result bodies in the response (`bool`, defaults to `false`)
 
 ## Applicable URLs
 
