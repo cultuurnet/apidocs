@@ -34,13 +34,6 @@ The calendar summary can be retrieved in `text` and in `html`.
 * `GET /places`
 * `GET /offers`
 
-## Recommended use
-
-* We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
-* We recommend to use `lg` for the detailpage
-* In some cases (e.g. mobile apps) calendar summary `xs` can be useful
-* You can use the `embedCalendarSummaries` parameter with or without `embed=true`
-
 ## Parameter and possible values
 
 Parameter name: `embedCalendarSummaries`
@@ -55,6 +48,13 @@ Possible values:
 * `sm-html`: small summary in HTML
 * `md-html`: medium summary in HTML
 * `lg-html`: large summary in HTML
+
+## Recommended use
+
+* We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
+* We recommend to use `lg` for the detailpage
+* In some cases (e.g. mobile apps) calendar summary `xs` can be useful
+* You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ## Examples
 
