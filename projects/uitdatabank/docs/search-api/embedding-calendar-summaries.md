@@ -36,7 +36,7 @@ The calendar summary can be retrieved in `text` and in `html`.
 
 ## Parameter and possible values
 
-Parameter name: `embedCalendarSummaries`
+Parameter name: `embedCalendarSummaries[]`
 
 Possible values:
 
@@ -48,6 +48,8 @@ Possible values:
 * `sm-html`: small summary in HTML
 * `md-html`: medium summary in HTML
 * `lg-html`: large summary in HTML
+
+You can request multiple sizes and formats by repeating the parameter with different values. (See examples below.)
 
 ## Recommended use
 
