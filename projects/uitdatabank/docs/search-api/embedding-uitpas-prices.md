@@ -41,7 +41,7 @@ GET /events/?embed=true&embedUitpasPrices=false
 
 **response**
 
-UiTPAS prices are not included in the JSON response:
+No UiTPAS prices are included in the JSON response:
 
 ```json
 {
@@ -76,7 +76,7 @@ GET /events/?embed=true&embedUitpasPrices=true
 
 **response**
 
-The indicative UiTPAS price for the applicable card system UiTPAS Leuven is included in the JSON response:
+The indicative UiTPAS price(s) for the applicable card system(s) related to each event are included in the JSON response:
 
 ```json
 {
