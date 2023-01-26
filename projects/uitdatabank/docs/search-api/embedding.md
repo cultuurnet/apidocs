@@ -2,6 +2,28 @@
 
 By default, the search API endpoints only return a list of links to the individual search results.
 
+For example:
+
+```json
+{
+   "@context": "http://www.w3.org/ns/hydra/context.jsonld",
+   "@type": "PagedCollection",
+   "itemsPerPage": 30,
+   "totalItems": 86978,
+   "member": [
+      {
+         "@id": "https://io.uitdatabank.be/event/d9a71b53-1756-4126-9926-a83f5dd84f45",
+         "@type": "Event"
+      },
+      {
+         "@id": "https://io.uitdatabank.be/place/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
+         "@type": "Place"
+      },
+      "..."
+   ]
+}
+```
+
 To get the actual bodies of the results, there are two options:
 
 * Loop over the results yourself and perform GET requests using the given URLs
