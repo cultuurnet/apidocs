@@ -46,6 +46,7 @@ X-Client-Id: YOUR_CLIENT_ID
 ```
 
 Try it out now by replacing `YOUR_CLIENT_ID` below with your own client id for the test environment:
+
 ```json http
 {
   "url": "https://search-test.uitdatabank.be/events",
@@ -61,6 +62,7 @@ Try it out now by replacing `YOUR_CLIENT_ID` below with your own client id for t
 To narrow the search results further down, you can specify additional filters via URL query parameters.
 
 For example, to only return events from Ghent:
+
 ```http
 GET /events?postalCode=9000 HTTP/1.1
 Host: https://search-test.uitdatabank.be
@@ -68,6 +70,7 @@ X-Client-Id: YOUR_CLIENT_ID
 ```
 
 Try it out now by replacing `YOUR_CLIENT_ID` below with your own client id for the test environment:
+
 ```json http
 {
   "url": "https://search-test.uitdatabank.be/events",
