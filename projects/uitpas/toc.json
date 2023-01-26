@@ -3,28 +3,51 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
     },
     {
       "type": "item",
-      "title": "Quickstart",
-      "uri": "docs/quickstart.md"
+      "title": "Getting started",
+      "uri": "docs/quickstart.md",
+      "slug": "getting-started"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/authentication.md",
+      "slug": "authentication"
     },
     {
       "type": "item",
       "title": "Terminology",
-      "uri": "docs/terminology.md"
+      "uri": "docs/terminology.md",
+      "slug": "terminology"
     },
     {
       "type": "item",
       "title": "FAQ",
-      "uri": "docs/faq.md"
+      "uri": "docs/faq.md",
+      "slug": "faq"
     },    
     {
       "type": "item",
       "title": "Test dataset",
-      "uri": "docs/test-dataset.md"
-    },    
+      "uri": "docs/test-dataset.md",
+      "slug": "test-dataset"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/openapi.md",
+      "slug": "openapi"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/postman.md",
+      "slug": "postman"
+    },
     {
       "type": "divider",
       "title": "Guides"
@@ -36,17 +59,20 @@
         {
           "type": "item",
           "title": "Registering ticket sales",
-          "uri": "docs/registering-ticket-sales.md"
+          "uri": "docs/registering-ticket-sales.md",
+          "slug": "ticket-sales/registering"
         },
         {
           "type": "item",
           "title": "Registering ticket sales for group passes",
-          "uri": "docs/registering-ticket-sales-group.md"
+          "uri": "docs/registering-ticket-sales-group.md",
+          "slug": "ticket-sales/registering-group-passes"
         },
         {
           "type": "item",
-          "title": "Registering multple ticket sales at once",
-          "uri": "docs/registering-ticket-sales-multiple.md"
+          "title": "Registering multiple ticket sales at once",
+          "uri": "docs/registering-ticket-sales-multiple.md",
+          "slug": "ticket-sales/registering-multiple"
         }
       ]
     },
@@ -57,12 +83,14 @@
         {
           "type": "item",
           "title": "Registering events",
-          "uri": "docs/registering-events.md"
+          "uri": "docs/registering-events.md",
+          "slug": "events/registering"
         },
         {
           "type": "item",
           "title": "Searching for UiTPAS events",
-          "uri": "docs/searching-for-UiTPAS-events.md"
+          "uri": "docs/searching-for-UiTPAS-events.md",
+          "slug": "events/searching"
         }
       ]
     },
@@ -73,23 +101,26 @@
         {
           "type": "item",
           "title": "UiTPAS points as payment",
-          "uri": "docs/pay-with-UiTPAS-points.md"
+          "uri": "docs/pay-with-UiTPAS-points.md",
+          "slug": "rewards/pay-with-points"
         },
         {
           "type": "item",
           "title": "Creating rewards",
-          "uri": "docs/creating-rewards.md"
+          "uri": "docs/creating-rewards.md",
+          "slug": "rewards/creating"
         }
       ]
     },
     {
       "type": "divider",
-      "title": "API references"
+      "title": "API reference"
     },
     {
       "type": "item",
       "title": "UiTPAS API",
-      "uri": "reference/uitpas.json"
+      "uri": "reference/uitpas.json",
+      "slug": "uitpas-api/reference"
     }
   ]
 }
