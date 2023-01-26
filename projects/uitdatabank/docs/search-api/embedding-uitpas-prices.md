@@ -30,7 +30,7 @@ Note that you also need to set the `embed` parameter to `true` to [include searc
 >
 > It is set to `false` for the time being so that existing integrations can make any changes necessary before the UiTPAS prices are included by default. For example, so they can remove their existing integration with UiTPAS API to fetch the prices because this would otherwise result in duplicate UiTPAS prices being shown.
 >
-> If you do not wish to every display UiTPAS prices from Search API, make sure to explicitly set the `embedUitpasPrices` parameter to `false` to exclude them when the default changes to `true` in the future.
+> If you do not wish to ever display UiTPAS prices from Search API, make sure to explicitly set the `embedUitpasPrices` parameter to `false` to exclude them when the default changes to `true` in the future.
 
 ## Examples
 
