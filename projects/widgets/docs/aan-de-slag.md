@@ -4,7 +4,7 @@
 
 Voordat je kan beginnen met het bouwen van je widget moet je een widgetproject aanmaken op ons [self-service platform Projectaanvraag](https://projectaanvraag.uitdatabank.be). Het registratieproces is zeer eenvoudig en duurt slechts enkele minuten.
 
-<https://youtu.be/P5RHLT7Q37E>
+<https://youtu.be/uWy7-hTO5nY>
 
 Het aangemaakte widgetproject zal evenementendata van onze testomgeving gebruiken. Je hoeft niet te betalen tot dat je beslist om echte evenementendata te gebruiken.
 
