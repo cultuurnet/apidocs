@@ -94,7 +94,7 @@ Om je op weg te helpen met het stijlen geven we hieronder per widgetblok een ove
 | Nr | Onderdeel                 | Selector | Klasse                                |
 | :- | :------------------------ | :------- | :------------------------------------ |
 | 1  | Detailpagina (geheel)     | `div`    | `cnw_searchresult-detail`             |
-| 2  | Eventtitel                 | `h1`     | `cnw-page-title`                      |
+| 2  | Eventtitel                | `h1`     | `cnw-page-title`                      |
 | 3  | Beschrijving (ingeklapt)  | `div`    | `cnw_detail-short-summary`            |
 | 4  | Beschrijving (uitgeklapt) | `div`    | `cnw_detail-full-description`         |
 | 5  | Lees meer knop            | `a`      | `cnw_detail-summary-toggle`           |
