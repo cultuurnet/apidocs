@@ -143,7 +143,7 @@ Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -306,7 +306,7 @@ Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
