@@ -216,6 +216,7 @@ Keep the following restrictions in mind:
 
 * When changing the attendanceMode from `offline` or `mixed` **to** `online`, you must remove the `location` property from the event at the same time (or explicitly set it to the "nil location").
 * When changing the attendanceMode from `online` **to** `offline` or `mixed`, you must add a `location` property with an `@id` that links to the place where the event happens at.
+* When changing the attendanceMode from `online` or `mixed` **to** `offline`, the `onlineUrl` property will be removed from the event if present.
 
 You can also update the `attendanceMode` and/or `onlineUrl` of an event using the following endpoints if you do not want to use the [`PUT /events/{eventId}`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/update-a-event) endpoint to update the event completely:
 
