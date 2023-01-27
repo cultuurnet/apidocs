@@ -62,7 +62,7 @@ Daarnaast kan je in de widgetbouwer je eigen CSS regels definiëren om de widget
 
 ## 3. Je widgetproject activeren om echte eventdata te gebruiken
 
-Om echte evenmeentendata in je widget te kunnen gebruiken moet je je widgetproject activeren op [Projectaanvraag](https://projectaanvraag.uitdatabank.be). Bij activatie ga je akkoord met de betaling van een jaarlijkse vergoeding, tenzij je een couponcode hebt die je gratis toegang geeft (alleen van toepassing onder specifieke voorwaarden).
+Om echte evenementendata in je widget te kunnen gebruiken moet je je widgetproject activeren op [Projectaanvraag](https://projectaanvraag.uitdatabank.be). Bij activatie ga je akkoord met de betaling van een jaarlijkse vergoeding, tenzij je een couponcode hebt die je gratis toegang geeft (alleen van toepassing onder specifieke voorwaarden).
 
 <!-- theme: success -->
 

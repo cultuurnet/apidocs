@@ -36,7 +36,7 @@
           "type": "item",
           "title": "Starten met configureren",
           "uri": "/docs/configureren/starten-met-configureren.md",
-          "slug": "configureren/starten"
+          "slug": "starten-met-configureren/html"
         },
         {
           "type": "item",
@@ -105,6 +105,12 @@
       "title": "Compatibiliteit",
       "uri": "docs/compatibiliteit.md",
       "slug": "compatibiliteit"
+    },
+    {
+      "type": "item",
+      "title": "Responsive gedrag",
+      "uri": "docs/responsive-gedrag.md",
+      "slug": "responsive-gedrag"
     },
     {
     "type": "divider",

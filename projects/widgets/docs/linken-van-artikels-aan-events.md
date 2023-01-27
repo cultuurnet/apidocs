@@ -10,8 +10,8 @@ Met behulp van deze redactionele tools kunnen partners hun artikels eenvoudig au
 
 Door redactionele content te linken aan evenementen zorgen we op verschillende vlakken voor meerwaarde:
 
-* **Redacteurs** bereiken een **groter publiek** voor hun **artikels**, omdat het artikel op tal van websites gepubliceerd wordt.
-* Daarnaast **besparen redacteurs tijd uit**, want aan de hand van de widgets kunnen ze de praktische informatie van een evenement in enkele klikken integreren in artikels, en de informatie is steeds up to date.
+* **Redacteurs** bereiken een **groter publiek** voor hun **artikels**, omdat het artikel op UiTinVlaanderen en de agenda van tal van andere partners gepubliceerd wordt
+* Daarnaast **besparen redacteurs tijd uit**, want aan de hand van de widgets kunnen ze de praktische informatie van een evenement in enkele klikken integreren in artikels, en de informatie is steeds up to date
 * Dankzij de link tussen artikel en evenement krijgen **activiteiten van organisatoren extra publiciteit**
 * **Geïnteresseerde bezoekers** van activiteiten worden **beter en vollediger geïnformeerd** over een evenement
 

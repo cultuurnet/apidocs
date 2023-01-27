@@ -60,7 +60,7 @@ Bepaal de voorbeeldtekst die in de vrije zoekbalk verschijnt. Je kan dit gebruik
 
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Plaats
 
@@ -76,7 +76,7 @@ De zoek op plaats is een formulier dat automatisch plaatsen suggereert. Typ je b
 
 > De suggestielijst houdt **geen** rekening met de query van je agenda. Haal je bijvoorbeeld enkel evenementen op uit de provincie Antwerpen, dan zal de suggestielijst bij een zoek op `Mol` ook nog steeds `Sint-Jans-Molenbeek` en `Mollem` teruggeven. Daarom raden we de zoek op plaats enkel aan voor agenda's waarvoor geen geografische beperkingen ingesteld zijn.
 >
-> Heb je een agenda waarvoor geografische beperkingen ingesteld zijn, maar wil je toch een suggestielijst met plaatsen aanbieden aan de bezoeker van je agenda? Dan kan je dit zelf maken aan de hand van [extra groepfilters](#Groepfilters).
+> Heb je een agenda waarvoor geografische beperkingen ingesteld zijn, maar wil je toch een suggestielijst met plaatsen aanbieden aan de bezoeker van je agenda? Dan kan je dit zelf maken aan de hand van [extra groepfilters](#groepfilters).
 
 Wanneer je de instelling `Zoeken op plaats` aanvinkt, kan je nog volgende instellingen bepalen:
 
@@ -90,7 +90,7 @@ Bepaal de voorbeeldtekst die in de zoekbalk voor zoeken op plaats verschijnt. Je
 
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Tijd
 
@@ -120,13 +120,13 @@ Bepaal welke van de gekozen opties de standaardkeuze is. Je kan hier één van d
 
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Extra opties
 
 #### Extra groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 #### Toegankelijkheid
 
