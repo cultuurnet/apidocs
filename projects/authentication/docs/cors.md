@@ -6,7 +6,7 @@
 
 If you encounter CORS issues after all, double check what headers you are trying to include in your requests. Some APIs may only allow headers that they actually use like `authorization` for tokens, `content-type` and `accept` for content negotiation, etc. Try to keep the headers in your request to the ones that are actually required / useful.
 
-If this doesn't solve the issue contact our support for more help. The API you are using might need to be updated to allow requests from any origin, or there might be a bug in the CORS logic on that specific API. Remember to include a copy of the complete request you are trying to send (for example as `HAR` or `curl`), and ideally also include the complete `OPTIONS` request if the browser is doing a preflight request.
+If this doesn't solve the issue [contact our support](https://docs.publiq.be/#contact-us) for more help. The API you are using might need to be updated to allow requests from any origin, or there might be a bug in the CORS logic on that specific API. Remember to include a copy of the complete request you are trying to send (for example as `HAR` or `curl`), and ideally also include the complete `OPTIONS` request if the browser is doing a preflight request.
 
 ## What is CORS?
 

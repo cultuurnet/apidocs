@@ -13,7 +13,7 @@ This guide will explain how to register an event as an UiTPAS event. This is req
 
 To register an UiTPAS event, the following criteria have to be met:
 
-1. **The event needs to exist in UiTdatabank.** UiTdatabank is a central database of cultural and leisure activities in Flanders and Brussels, including events of organizers that work with UiTPAS.
+1. **The event needs to exist in UiTdatabank.** UiTdatabank is a central database of cultural and pastime activities in Flanders and Brussels, including events of organizers that work with UiTPAS.
 2. The event in UiTdatabank needs to have **a base price**.
 3. The event in UiTdatabank has to be **linked to a known UiTPAS organizer**.
 

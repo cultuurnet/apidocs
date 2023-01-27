@@ -4,6 +4,8 @@ Met een zoekbox bouw je een zoekformulier waarmee de bezoekers van de agenda op 
 
 In een zoekbox kan je verschillende elementen selecteren die naast of onder elkaar verschijnen, afhankelijk van de beschikbare schermbreedte.
 
+<https://youtu.be/aad-WaoRZBI>
+
 ## Instellingen
 
 #### Naam zoekbox
@@ -56,11 +58,9 @@ Bepaal welke tekst boven de vrije zoekbalk moet verschijnen.
 
 Bepaal de voorbeeldtekst die in de vrije zoekbalk verschijnt. Je kan dit gebruiken om de bezoeker van je agenda duidelijk te maken op welke termen gezocht kan worden.
 
-`[INSERT VIDEO]`
-
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Plaats
 
@@ -72,13 +72,11 @@ Bepaal of je de bezoeker van je agenda de mogelijkheid wilt geven om te zoeken o
 
 De zoek op plaats is een formulier dat automatisch plaatsen suggereert. Typ je bijvoorbeeld `Mol` in het zoekvak, dan zal het formulier zowel `Mol` als `Sint-Jans-Molenbeek` en `Mollem` als suggestie geven.
 
-`[INSERT VIDEO]`
-
 <!-- theme: warning -->
 
 > De suggestielijst houdt **geen** rekening met de query van je agenda. Haal je bijvoorbeeld enkel evenementen op uit de provincie Antwerpen, dan zal de suggestielijst bij een zoek op `Mol` ook nog steeds `Sint-Jans-Molenbeek` en `Mollem` teruggeven. Daarom raden we de zoek op plaats enkel aan voor agenda's waarvoor geen geografische beperkingen ingesteld zijn.
 >
-> Heb je een agenda waarvoor geografische beperkingen ingesteld zijn, maar wil je toch een suggestielijst met plaatsen aanbieden aan de bezoeker van je agenda? Dan kan je dit zelf maken aan de hand van [extra groepfilters](#Groepfilters).
+> Heb je een agenda waarvoor geografische beperkingen ingesteld zijn, maar wil je toch een suggestielijst met plaatsen aanbieden aan de bezoeker van je agenda? Dan kan je dit zelf maken aan de hand van [extra groepfilters](#groepfilters).
 
 Wanneer je de instelling `Zoeken op plaats` aanvinkt, kan je nog volgende instellingen bepalen:
 
@@ -92,7 +90,7 @@ Bepaal de voorbeeldtekst die in de zoekbalk voor zoeken op plaats verschijnt. Je
 
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Tijd
 
@@ -122,13 +120,13 @@ Bepaal welke van de gekozen opties de standaardkeuze is. Je kan hier één van d
 
 #### Groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 ### Extra opties
 
 #### Extra groepfilters
 
-Je kan in deze kolom of rij ook [extra groepfilters](#Groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
 
 #### Toegankelijkheid
 
@@ -157,7 +155,7 @@ Met groepfilters kan je eigen filters maken, op maat van jouw doelpubliek. Enkel
 * een groep met filters op concertzalen voor een muziekblog
 * een groep met filters op dansthema's voor een dansorganisatie
 
-`[INSERT VIDEO]`
+<https://youtu.be/lgc2YrE4pkU>
 
 Je kan groepfilters toevoegen in elke rij of kolom van de zoekbox, door het selectievakje `Extra groepfilters` aan te vinken.
 
@@ -180,7 +178,7 @@ Hiermee kies je een tekst die je standaard in het dropdown-menu van de groepsfil
 Vervolgens voeg je één of meerdere filters toe aan de groep. Voor elke filter moet je volgende elementen bepalen:
 
 * De naam van de filter, bijvoorbeeld `Ancienne Belgique`, `Trix` of `Ha Concerts`)
-* een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `location.id:f92bf1d6-f713-4022-9450-851d5e7a401b]`
+* een SAPI 3 query die bepaalt welk aanbod de filter ophaalt, bijvoorbeeld `location.id:f92bf1d6-f713-4022-9450-851d5e7a401b`
 
 Je kan pas een nieuwe filter toevoegen wanneer je voor de vorige filter een naam en een query hebt ingesteld.
 

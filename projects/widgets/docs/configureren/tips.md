@@ -8,6 +8,8 @@ Het tipsblok dient om een kleine, aantrekkelijke verzameling aan activiteiten in
 
 Hieronder overlopen we elke mogelijke instelling voor het tipsblok. De instellingen zijn gerangschikt naar hun positie in de widgetbouwer (van boven naar beneden).
 
+<https://youtu.be/GT6uPS8BQR0>
+
 ## Instellingen
 
 ### Algemeen
@@ -34,8 +36,6 @@ Wanneer je de een URL voor je detailpagina instelt, kan je vervolgens ook kiezen
 
 * `Cdbid toevoegen aan querystring`: hierbij wordt het event ID als URL-parameter aan de ingegeven URL toegevoegd. Dit werkt enkel in specifieke gevallen.
 * `Cdbid toevoegen aan Url`: hierbij wordt het `cdbid` gewoon achteraan de ingegeven URL toegevoegd. Dit werkt altijd wanneer je de detailpagina van een widgetagenda ingeeft, of linkt naar UiTinVlaanderen.
-
-`[INSERT VIDEO]`
 
 #### Labels altijd weergeven als iconen
 
@@ -100,13 +100,13 @@ Bepaal of de organisator van de evenementen getoond mag worden of niet.
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -144,8 +144,6 @@ Bepaal de relatieve positie van de afbeeldingen:
 * `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud.
 * `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud.
 
-`[INSERT VIDEO]`
-
 #### Labels
 
 Bepaal of de labels ("keywords", "tags") die gelinkt zijn aan de evenementen getoond mogen worden of niet.
@@ -162,7 +160,7 @@ Wanneer een bezoeker van je agenda op deze link klikt, wordt hij of zij naar de 
 
 <!-- theme: warning -->
 
-> Als je deze instelling aanvinkt, zorg er dan zeker voor dat je een [detailpagina voor je evenementen](#Linken-naar-detailpagina) voorziet.
+> Als je deze instelling aanvinkt, zorg er dan zeker voor dat je een [detailpagina voor je evenementen](#linken-naar-detailpagina) voorziet.
 
 Indien ingeschakeld kan je ook het label van de leeslink veranderen in een label naar keuze.
 
@@ -172,9 +170,11 @@ In de sectie zoekparameters bepaal je welke evenementen in het tipsblok worden w
 
 #### Query
 
-De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank.
+De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. In het queryveld kan je uitsluitend de [advanced query syntax](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries) gebruiken.
 
-> In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
+> Wist je dat je handig je query kan samenstellen aan de geavanceerde zoekopdracht bouwer in de [UiTdatabank](https://www.uitdatabank.be/search))?
+
+![geavanceerde-zoekopdracht-bouwer.png](<../../assets/images/geavanceerde-zoekopdracht-bouwer.png>)
 
 **Voorbeelden**
 

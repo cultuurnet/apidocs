@@ -8,7 +8,7 @@ Eens je een template hebt gekozen is het tijd om te bepalen:
 
 Het configureren gebeurt per blok. Hiervoor klik je op het blok dat je wilt configureren en vervolgens op het tandwieletje dat links bovenaan het blok verschijnt.
 
-`[INSERT VIDEO]`
+<https://youtu.be/46L8s1OEfro>
 
 Het configureren van de blokken is heel eenvoudig en gebeurt voornamelijk door het aan- en uitvinken van vakjes. Op sommige plaatsen kan je ook tekst ingeven om labels die binnen de widget gebruikt worden te wijzigen.
 
@@ -31,10 +31,10 @@ Binnen dit template kies je zelf welke blokken je toevoegt en je dus kan configu
 
 Deze templates bevatten 4 verschillende blokken, die je elk apart dient te configureren:
 
-* [HTML](/html.md)
-* [Verfijingen](/verfijningen.md)
-* [Zoekbox](/zoekbox.md)
-* [Zoekresultaten](/zoekresultaten.md)
+* [HTML](./html.md)
+* [Verfijningen](./verfijningen.md)
+* [Zoekbox](./zoekbox.md)
+* [Zoekresultaten](./zoekresultaten.md)
 
 ## Tips template
 

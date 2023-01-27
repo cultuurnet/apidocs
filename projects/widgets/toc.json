@@ -107,6 +107,12 @@
       "slug": "compatibiliteit"
     },
     {
+      "type": "item",
+      "title": "Responsive gedrag",
+      "uri": "docs/responsive-gedrag.md",
+      "slug": "responsive-gedrag"
+    },
+    {
     "type": "divider",
     "title": "Redactionele tools"
     },

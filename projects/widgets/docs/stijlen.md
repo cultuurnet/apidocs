@@ -1,11 +1,13 @@
 # Stijlen
 
-Eens geïntegreerd in je website erft een widget automatisch de CSS-stijling van je website over. Je kan de stijling van je widget ook zelf instellen door:
+Eens geïntegreerd in je website erft een widget automatisch het merendeel van de CSS-stijling van je website over. Je kan de stijling van je widget ook zelf instellen door:
 
 * Gebruik te maken van één van de **thema's**
 * Zelf **CSS-regels te definiëren**
 
 Je vindt beide opties onder de `Stijlen` knop, in de header van de widgetbouwer.
+
+<https://youtu.be/6HN9taq_DZ0>
 
 ## Via thema's
 
@@ -13,8 +15,6 @@ We bieden in de widgetbouwer een aantal kant-en-klare thema's aan waarmee je je 
 
 * `Retro BILL`: stijl je agenda in het retro BILL thema
 * `Retro UiT`: stijl je agenda in het retro UiT thema
-
-`[INSERT VIDEO]`
 
 > Wanneer je kiest om je agenda te stijlen aan de hand van een thema, zal de widget nog nauwelijks stijling overnemen van de website waarin de widget geïntegreerd is.
 
@@ -50,8 +50,6 @@ De definities in onderstaand voorbeeld zorgen ervoor dat alle event titels binne
 ### Stijlhulp
 
 We bieden in de widgetbouwer een stijlhulp aan waarmee je de voornaamste stijlen (kleuren, lettertypes) van een website kan ophalen. Hiervoor geef je het websiteadres in waarop je de widget wilt integreren en klik je vervolgens op `Stijlen ophalen`.
-
-`[INSERT VIDEO]`
 
 ### Stijlgids
 
@@ -96,7 +94,7 @@ Om je op weg te helpen met het stijlen geven we hieronder per widgetblok een ove
 | Nr | Onderdeel                 | Selector | Klasse                                |
 | :- | :------------------------ | :------- | :------------------------------------ |
 | 1  | Detailpagina (geheel)     | `div`    | `cnw_searchresult-detail`             |
-| 2  | Eventitel                 | `h1`     | `cnw-page-title`                      |
+| 2  | Eventtitel                | `h1`     | `cnw-page-title`                      |
 | 3  | Beschrijving (ingeklapt)  | `div`    | `cnw_detail-short-summary`            |
 | 4  | Beschrijving (uitgeklapt) | `div`    | `cnw_detail-full-description`         |
 | 5  | Lees meer knop            | `a`      | `cnw_detail-summary-toggle`           |

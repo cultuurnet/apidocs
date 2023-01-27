@@ -8,6 +8,8 @@ Een zoekresultatenblok bevat altijd een verzameling activiteiten. Voor dit blok 
 
 Hieronder overlopen we elke mogelijke instelling voor het zoekresultatenblok. De instellingen zijn gerangschikt volgens hun positie in de widget builder (van boven naar beneden).
 
+<https://youtu.be/jMG8WHq_WvM>
+
 ## Instellingen
 
 #### Naam zoekresultaten
@@ -17,8 +19,6 @@ Met dit veld kan je de naam van de zoekresultatenpagina wijzigen.
 De naam van deze pagina is standaard `zoekresultaten-1` en wordt niet getoond in de agenda die je uiteindelijk publiceert op je website.
 
 > De naam dient enkel en alleen om het onderscheid tussen verschillende zoekresultatenblokken binnen dezelfde widget te kunnen maken. Het is daarom niet nodig deze naam te wijzigen, tenzij je een widget maakt met meer dan één zoekresultatenblok.
-
-`[INSERT VIDEO]`
 
 ### Algemeen
 
@@ -53,13 +53,13 @@ Hiermee bepaal je hoe de evenementen visueel worden weergegeven:
 * `Lijstweergave`: toont de evenementen in een verticale lijst
 * `Tegelvorm`: geeft de evenementen weer in een raster
 
-> Wanneer je kiest voor weergave van evenementen in een raster (`tegelvorm`) raden we aan om het [aantal resultaten per pagina](#Aantal-resultaten-per-pagina) op een veelvoud van 3 te zetten.
+> Wanneer je kiest voor weergave van evenementen in een raster (`tegelvorm`) raden we aan om het [aantal resultaten per pagina](#aantal-resultaten-per-pagina) op een veelvoud van 3 te zetten.
+
+<https://youtu.be/50elW-XFryI>
 
 #### Aantal resultaten per pagina
 
 Hiermee bepaal je hoeveel evenemnenten per pagina worden weergegeven. Er is geen minimum- of maximumlimiet.
-
-`[INSERT VIDEO]`
 
 ### Header
 
@@ -111,7 +111,7 @@ Met deze instelling kan je ervoor kiezen om alleen een UiT-tip badge te tonen wa
 
 Als je meerdere waarden wilt toevoegen, moet je ze scheiden met een puntkomma (`;`).
 
-`[INSERT VIDEO]`
+<https://youtu.be/LkejtEkK2EQ>
 
 #### Prijs
 
@@ -137,19 +137,19 @@ Bepaal of de datum en het tijdstip van de evenementen mogen worden getoond of ni
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
 Bepaal of je taaliconen (indien van toepassing) mogen worden weergegeven of niet.
 
-> Taaliconen geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
+> [Taaliconen](https://www.huisnederlandsbrussel.be/de-taaliconen) geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
 
 #### Afbeelding
 
@@ -181,8 +181,6 @@ Bepaal de relatieve positie van de afbeeldingen:
 * `links`: op desktop zullen de afbeeldingen links van de inhoud van het evenement verschijnen, en op mobiele weergave boven de inhoud.
 * `rechts`: op desktop zullen de afbeeldingen rechts van de inhoud van het evenement verschijnen, en op mobiele weergave onder de inhoud.
 
-`[INSERT VIDEO]`
-
 #### Labels
 
 Bepaal of de labels ("keywords", "tags") die gelinkt zijn aan de evenementen getoond mogen worden of niet.
@@ -193,7 +191,9 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toegankelijkheidsvoorzieningen](../../../uitdatabank/docs/taxonomy-api/terms.md#Facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+
+> Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
 #### Leeslink
 
@@ -306,13 +306,13 @@ Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
 Bepaal of je taaliconen (indien van toepassing) mogen worden weergegeven of niet.
 
-> Taaliconen geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
+> [Taaliconen](https://www.huisnederlandsbrussel.be/de-taaliconen) geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
 
 #### Afbeelding
 
@@ -358,7 +358,9 @@ Je kan bepalen welke specifieke labels mogen worden getoond. Als je meerdere lab
 
 #### Toegankelijkheid
 
-Bepaal of de [toeagnkelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdatabank/7d8d9b4653fc1-terms#facility) die aanwezig zijn op een evenement mogen worden getoond of niet.
+
+> Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
 #### Toon gerelateerde artikels
 
@@ -380,9 +382,12 @@ In de sectie extra parameters bepaal je welke evenementen in je agenda worden we
 
 #### Query
 
-De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank.
+De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. In het queryveld kan je uitsluitend de [advanced query syntax](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries) gebruiken.
 
-> In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
+> Wist je dat je handig je query kan samenstellen aan de geavanceerde zoekopdracht bouwer in de [UiTdatabank](https://www.uitdatabank.be/search)?
+
+![geavanceerde-zoekopdracht-bouwer.png](<../../assets/images/geavanceerde-zoekopdracht-bouwer.png>)
+
 
 **Voorbeelden**
 

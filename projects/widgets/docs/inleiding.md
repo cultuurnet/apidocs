@@ -4,13 +4,13 @@
 
 <br>
 
-# Widgets
+# UiT-Widgets
 
-Welkom op onze widget documentatie! 👋
+Welkom op de UiT-widget documentatie 👋
 
-## Wat zijn widgets?
+## Wat zijn UiT-widgets?
 
-Widgets zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
+UiT-wigdets (of kortweg "widgets") zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
 
 publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt.
 
@@ -26,7 +26,7 @@ Widgets kunnen in hoge maat op maat ingesteld en verfijnd worden naar je eigen v
 
 ### Voor wie zijn widgets?
 
-Widgets zijn een zeer toegankelijk en veelzijdige tool die een groot aantal partners kan aanspreken. Widgets zijn vooral interessant voor partners die:
+Widgets zijn een zeer toegankelijke en veelzijdige tool die een groot aantal partners kan aanspreken. Widgets zijn vooral interessant voor partners die:
 
 * ✅ op zoek zijn naar een eenvoudige maar robuuste oplossing
 * ✅ niet veel tijd of budget hebben voor de configuratie of ontwikkeling van een agenda
@@ -39,12 +39,12 @@ Widgets zijn een zeer toegankelijk en veelzijdige tool die een groot aantal part
 
 ### Voor wie zijn widgets niet?
 
-In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API van UiTdatabank](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) in plaats van met Widgets. We raden aan om te integreren met onze Search API in plaats van widgets als:
+In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API van UiTdatabank](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) in plaats van met Widgets. Widgets zijn minder geschikt als:
 
-* ✅ je volledige controle wilt over elk aspect van de integratie
-* ✅ speciale interacties met eindgebruikers nodig zijn (bijvoorbeeld authenticatie)
-* ✅ je specifieke eisen hebt met betrekking tot SEO
-* ✅ je ook locaties of organisaties in je agenda wilt publiceren
+* ❌ je volledige controle wilt over elk aspect van de integratie
+* ❌ speciale interacties met eindgebruikers nodig zijn (bijvoorbeeld authenticatie)
+* ❌ je specifieke eisen hebt met betrekking tot SEO
+* ❌ je ook locaties of organisaties in je agenda wilt publiceren
 
 ## Inspirerende voorbeelden
 
@@ -62,4 +62,4 @@ Op zoek naar een evenement dat toegankelijk is voor mensen met een handicap? Er 
 
 **UiTPAS Mechelen**
 
-In de agenda van [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) vind je alle evenementen voor UiTPAS binnen Mechelen. Op de detailpagina van elk evenement vind je niet alleen de UiTPAS-prijs, maar ook de verschillende UiTPAS-voordleen die de organisator van het evenement aanbiedt.
+In de agenda van [UiTPAS Mechelen](https://uitin.mechelen.be/uitpas-activiteiten) vind je alle evenementen voor UiTPAS binnen Mechelen. Op de detailpagina van elk evenement vind je niet alleen de UiTPAS-prijs, maar ook de verschillende UiTPAS-voordelen die de organisator van het evenement aanbiedt.

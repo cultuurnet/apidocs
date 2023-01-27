@@ -1,6 +1,6 @@
 # Templates
 
-Bij het maken van een widget moet je altijd vetrekken van een van de vier verschillende aangeboden templates.
+Bij het maken van een widget moet je altijd vertrekken van een van de vier verschillende aangeboden templates.
 
 ![templates](.././assets/images/templates.png)
 

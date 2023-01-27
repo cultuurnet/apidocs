@@ -14,6 +14,6 @@ De wijzigingen die je aan een widget maakt zijn pas zichtbaar op de website waar
 
 Na publicatie ontvang je een unieke embed code (`<script>` tag) die je dient in te plakken op je website. Je vindt de verschillende embed codes voor je verschillende widgets ook steeds in het widgetoverzicht van je project.
 
-`<INSERT VIDEO>`
-
 De `<script>` tags zijn steeds van `HTTPS` voorzien zodat je ze kan inplakken op versleutelde websites (SSL).
+
+<https://youtu.be/oipgNw0nvOg>
