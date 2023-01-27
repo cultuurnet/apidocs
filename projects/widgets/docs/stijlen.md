@@ -1,6 +1,6 @@
 # Stijlen
 
-Eens geïntegreerd in je website erft een widget automatisch de CSS-stijling van je website over. Je kan de stijling van je widget ook zelf instellen door:
+Eens geïntegreerd in je website erft een widget automatisch het merendeel van de CSS-stijling van je website over. Je kan de stijling van je widget ook zelf instellen door:
 
 * Gebruik te maken van één van de **thema's**
 * Zelf **CSS-regels te definiëren**
