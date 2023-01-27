@@ -384,7 +384,7 @@ In de sectie extra parameters bepaal je welke evenementen in je agenda worden we
 
 De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank.
 
-> In het queryveld kan je uitsluitend de [advanced query syntax](../../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
+> In het queryveld kan je uitsluitend de [advanced query syntax](../../uitdatabank/docs/search-api/advanced-queries.md) gebruiken.
 
 **Voorbeelden**
 
