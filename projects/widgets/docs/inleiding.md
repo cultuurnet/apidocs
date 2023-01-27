@@ -4,13 +4,13 @@
 
 <br>
 
-# Widgets
+# UiT-Widgets
 
-Welkom op onze widget documentatie! 👋
+Welkom op de UiT-widget documentatie 👋
 
-## Wat zijn widgets?
+## Wat zijn UiT-widgets?
 
-Widgets zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
+UiT-wigdets (of kortweg "widgets") zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
 
 publiq biedt een widgetbouwer (wizard) aan waar je gemakkelijk je widget kan configureren, zonder dat je hiervoor geavanceerde technische kennis nodig hebt.
 
