@@ -384,9 +384,10 @@ In de sectie extra parameters bepaal je welke evenementen in je agenda worden we
 
 De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. In het queryveld kan je uitsluitend de [advanced query syntax](https://docs.publiq.be/docs/uitdatabank/search-api/advanced-queries) gebruiken.
 
-> Wist je dat je handig je query kan samenstellen aan de geavanceerde zoekopdracht bouwer in de [UiTdatabank](www.uitdatabank.be/search)?
+> Wist je dat je handig je query kan samenstellen aan de geavanceerde zoekopdracht bouwer in de [UiTdatabank](https://www.uitdatabank.be/search)?
 
-![geavanceerde-zoekopdracht-bouwer.png](../../assets/images/geavanceerde-zoekopdracht-bouwer.png)
+![geavanceerde-zoekopdracht-bouwer.png](<../../assets/images/geavanceerde-zoekopdracht-bouwer.png>)
+
 
 **Voorbeelden**
 
