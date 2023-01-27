@@ -2,8 +2,9 @@
 
 De verschillende blokken binnen een widget schalen automatisch mee met de afmetingen van het scherm, van brede computerschermen tot mobiele telefoons. De lay-out is steeds vlot toegankelijk en leesbaar op de smalste schermen.
 
+De content choreografie van de verschillende templates & lay-outs op brede en smalle schermen: 
+
 ![widget choreografie.png](<../assets/images/widget choreografie.png>)
-_De content choreografie van elk template op brede en smalle schermen_ 
 
 Het responsive gedrag van een widget kan je in de widgetbouwer simuleren door te switchen tussen viewports (mobiel, tablet, desktop):
 
