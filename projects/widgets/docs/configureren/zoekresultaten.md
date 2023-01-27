@@ -149,7 +149,7 @@ Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
 Bepaal of je taaliconen (indien van toepassing) mogen worden weergegeven of niet.
 
-> Taaliconen geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
+> [Taaliconen](https://www.huisnederlandsbrussel.be/de-taaliconen) geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
 
 #### Afbeelding
 
@@ -312,7 +312,7 @@ Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
 Bepaal of je taaliconen (indien van toepassing) mogen worden weergegeven of niet.
 
-> Taaliconen geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
+> [Taaliconen](https://www.huisnederlandsbrussel.be/de-taaliconen) geven aan welk kennisniveau van het Nederlandse je nodig hebt om deel te nemen aan een evenement of activiteit.
 
 #### Afbeelding
 
