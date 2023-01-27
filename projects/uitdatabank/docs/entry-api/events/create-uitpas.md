@@ -124,7 +124,7 @@ Try it now by replacing the `YOUR_ACCESS_TOKEN` below with your access token for
 }
 ```
 
-To view the JSON data of your online event afterward, copy the `url` property from the response and open it in your web browser (no authentication required).
+To view the JSON data of your UiTPAS event afterward, copy the `url` property from the response and open it in your web browser (no authentication required).
 
 ### UiTPAS labels
 
