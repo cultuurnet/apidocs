@@ -16,15 +16,15 @@ Hieronder gaan we specifiek in op het standaard responsive gedrag per blok.
 
 ### Zoekbox
 
-- Header en footer worden steeds over de ganse breedte (van de container) boven -en onderaan weergegeven
-- In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven
-- In bredere containers wordt de zijbalk standaard horizontaal weergegeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
+* Header en footer worden steeds over de ganse breedte (van de container) boven -en onderaan weergegeven
+* In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven
+* In bredere containers wordt de zijbalk standaard horizontaal weergegeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
 
 ### Resultatenlijst
 
-- De labels in de rijkoppen (bv. wat, waar, wanneer, prijs, etc.) worden op het kleinste breekpunt vervangen door icoontjes
-- De beschrijving wordt op mobiele weergave niet getoond
-- Afbeeldingen links van de evenementinformatie worden mobiel boven de evenementinformatie weergegeven. Afbeeldingen rechts verschijnen onder de evenementinformatie in mobiele weergave
+* De labels in de rijkoppen (bv. wat, waar, wanneer, prijs, etc.) worden op het kleinste breekpunt vervangen door icoontjes
+* De beschrijving wordt op mobiele weergave niet getoond
+* Afbeeldingen links van de evenementinformatie worden mobiel boven de evenementinformatie weergegeven. Afbeeldingen rechts verschijnen onder de evenementinformatie in mobiele weergave
 
 ### Verfijningen
 
@@ -46,8 +46,8 @@ In de [geavanceerde instellingen](./geavanceerde-instellingen.md) kan je ervoor 
 
 Je kan ook aan de hand van [eigen geschreven CSS](./stijlen.md) de mobiele weergave bepalen. Je kan hiervoor gebruik maken van de breekpunten die de widgets zelf hanteren:
 
-- **tablet**: `786px`
-- **mobile**: `576px`
+* **tablet**: `786px`
+* **mobile**: `576px`
 
 > Je kan ook eigen, extra breekpunten bepalen. Dat raden we echter af omdat dit de content choreografie (onnodig) complex maakt.
 
