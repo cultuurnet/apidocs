@@ -10,7 +10,7 @@ In this guide you will learn how to:
 
 * Create an UiTPAS event in UiTdatabank
 * Get the UiTPAS prices for an event in UiTdatabank
-* Configure which card systems (for example UiTPAS Gent, UiTPAS Oostende, ...) offer discounts for your event
+* Configure which card systems (for example UiTPAS Gent, UiTPAS Oostende, ...) should provide discounts for their passholders when they buy tickets for your event
 * Change an UiTPAS event to a regular event instead
 * Hide an UiTPAS event from online calendars
 
