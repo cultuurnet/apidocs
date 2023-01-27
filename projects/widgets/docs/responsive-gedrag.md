@@ -2,7 +2,7 @@
 
 De verschillende blokken binnen een widget schalen automatisch mee met de afmetingen van het scherm, van brede computerschermen tot mobiele telefoons. De lay-out is steeds vlot toegankelijk en leesbaar op de smalste schermen.
 
-De content choreografie van de verschillende templates & lay-outs op brede en smalle schermen: 
+De content choreografie van de verschillende templates & lay-outs op brede en smalle schermen:
 
 ![widget choreografie.png](<../assets/images/widget choreografie.png>)
 
@@ -12,12 +12,12 @@ Het responsive gedrag van een widget kan je in de widgetbouwer simuleren door te
 
 Hieronder gaan we specifiek in op het standaard responsive gedrag per blok.
 
-## Standaard responsive gedrag 
+## Standaard responsive gedrag
 
 ### Zoekbox
 
 * Header en footer worden steeds over de ganse breedte (van de container) boven -en onderaan weergegeven
-* In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven 
+* In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven
 * In bredere containers wordt de zijbalk standaard horizontaal weergegeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
 
 ### Resultatenlijst
@@ -45,6 +45,7 @@ In de [geavanceerde instellingen](./geavanceerde-instellingen.md) kan je ervoor 
 ### Via CSS
 
 Je kan ook aan de hand van [eigen geschreven CSS](./stijlen.md) de mobiele weergave bepalen. Je kan hiervoor gebruik maken van de breekpunten die de widgets zelf hanteren:
+
 * **tablet**: `786px`
 * **mobile**: `576px`
 
