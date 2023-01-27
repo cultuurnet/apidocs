@@ -53,7 +53,7 @@ Hiermee bepaal je hoe de evenementen visueel worden weergegeven:
 * `Lijstweergave`: toont de evenementen in een verticale lijst
 * `Tegelvorm`: geeft de evenementen weer in een raster
 
-> Wanneer je kiest voor weergave van evenementen in een raster (`tegelvorm`) raden we aan om het [aantal resultaten per pagina](#Aantal-resultaten-per-pagina) op een veelvoud van 3 te zetten.
+> Wanneer je kiest voor weergave van evenementen in een raster (`tegelvorm`) raden we aan om het [aantal resultaten per pagina](#aantal-resultaten-per-pagina) op een veelvoud van 3 te zetten.
 
 <https://youtu.be/50elW-XFryI>
 
@@ -137,7 +137,7 @@ Bepaal of de datum en het tijdstip van de evenementen mogen worden getoond of ni
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 

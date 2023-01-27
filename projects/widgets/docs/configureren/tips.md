@@ -100,13 +100,13 @@ Bepaal of de organisator van de evenementen getoond mag worden of niet.
 
 Bepaal of de leeftijdsdoelgroep van de evenementen mag worden getoond of niet.
 
-> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#Vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
+> Bij evenementen voor kinderen (0 - 12 jaar) wordt de leeftijdsinformatie ook weergegeven in het [Vlieg-icoon](#vlieg-logo). Als je agenda uitsluitend evenementen voor kinderen bevat, raden wijaan alleen het Vlieg-icoon te tonen.
 
 #### Toegang
 
 Bepaal of je wilt tonen voor wie het evenement toegankelijk is.
 
-> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#Doorzoek-ook-ledenaanbod).
+> Het heeft enkel zin om deze instelling aan te zetten als je in je agenda ook evenementen toont die uitsluitend toegankelijk zijn voor [leden](#doorzoek-ook-ledenaanbod).
 
 #### Taaliconen
 
@@ -160,7 +160,7 @@ Wanneer een bezoeker van je agenda op deze link klikt, wordt hij of zij naar de 
 
 <!-- theme: warning -->
 
-> Als je deze instelling aanvinkt, zorg er dan zeker voor dat je een [detailpagina voor je evenementen](#Linken-naar-detailpagina) voorziet.
+> Als je deze instelling aanvinkt, zorg er dan zeker voor dat je een [detailpagina voor je evenementen](#linken-naar-detailpagina) voorziet.
 
 Indien ingeschakeld kan je ook het label van de leeslink veranderen in een label naar keuze.
 
