@@ -174,7 +174,7 @@ De query bepaalt welke evenementen opgehaald worden uit de UiTdatabank. In het q
 
 > Wist je dat je handig je query kan samenstellen aan de geavanceerde zoekopdracht bouwer in de [UiTdatabank](www.uitdatabank.be/search)?
 
-![geavanceerde-zoekopdracht-bouwer.png](<../../assets/images/geavanceerde-zoekopdracht-bouwer.png>)
+![geavanceerde-zoekopdracht-bouwer.png](../../assets/images/geavanceerde-zoekopdracht-bouwer.png)
 
 **Voorbeelden**
 

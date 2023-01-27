@@ -9,7 +9,7 @@ Before diving in, make sure you have read the following guides first:
 
 ## Required permissions
 
-Anyone can create new events in UiTdatabank by using either a user access token or a client access token. 
+Anyone can create new events in UiTdatabank by using either a user access token or a client access token.
 
 The user or client that created the event will become the `creator` of the event, which allows them to later make changes to the event or delete it.
 
@@ -130,6 +130,7 @@ Note that the `mainLanguage` is not strictly the same as the language that is sp
 Possible values are `nl`, `fr`, `en` or `de`.
 
 Example for an event entered originally in French:
+
 ```json
 {
   "mainLanguage": "fr"
@@ -138,11 +139,12 @@ Example for an event entered originally in French:
 
 ### name
 
-This property contains the human-readable name of the event, shown in online calendars and offline publications to readers. 
+This property contains the human-readable name of the event, shown in online calendars and offline publications to readers.
 
 Because it is translatable, it is an object with language keys as properties for the multiple possible values. At least a value for the language provided as `mainLanguage` is required, but values in other allowed language keys (`nl`, `fr`, `de`, `en`) are also allowed.
 
 Example for an event entered originally in Dutch:
+
 ```json
 {
   "mainLanguage": "nl",
@@ -153,6 +155,7 @@ Example for an event entered originally in Dutch:
 ```
 
 Example for an event entered originally in English, with a Dutch translation:
+
 ```json
 {
   "mainLanguage": "en",
@@ -170,6 +173,7 @@ While it is possible to immediately provide translations when creating a new eve
 This property is an object that contains a link to the place where the event is happening, in the form of an `@id` property (inspired by JSON-LD).
 
 Example for an event happening at the Ancienne Belgique (id `787d7420-c06f-4935-b3c5-5cd5a1276796` on the test environment):
+
 ```json
 {
   "mainLanguage": "nl",
@@ -214,6 +218,7 @@ To create an event, at least one term of the domain `eventtype` and a `scope` th
 To use this term on your new event, it is sufficient to add an object with the term's `id` on the event data. The term's `domain` and `name` will be added automatically by UiTdatabank afterward.
 
 Example for a concert at the Ancienne Belgique:
+
 ```json
 {
   "mainLanguage": "nl",
@@ -236,6 +241,7 @@ Keep in mind that the `terms` property must always be an array, even if it only 
 Optionally, you may also add a term to specify the theme of the event. You may use any theme regardless of the chosen type, but we advise to use a logical combination. To find the most suitable themes based on the type, you can browse the themes in the `otherSuggestedTerms` property of the `eventtype` term.
 
 For example, the concert type has the "dance music" theme among it's suggested terms:
+
 ```json
 {
   "id": "0.50.4.0.0",
@@ -271,6 +277,7 @@ For example, the concert type has the "dance music" theme among it's suggested t
 To also add this theme to your new event, simply add an extra object in the `terms` property with the `id` of the chosen theme.
 
 Example for a dance music concert at the Ancienne Belgique:
+
 ```json
 {
   "mainLanguage": "nl",
@@ -297,7 +304,7 @@ Example for a dance music concert at the Ancienne Belgique:
 
 ### calendarType
 
-This property indicates the kind of calendar info that your event contains. Possible values are `single`, `multiple`, `periodic` or `permanent`. Depending on the chosen value, extra properties will become required to specify the calendar info of your event. 
+This property indicates the kind of calendar info that your event contains. Possible values are `single`, `multiple`, `periodic` or `permanent`. Depending on the chosen value, extra properties will become required to specify the calendar info of your event.
 
 For example, when using calendarType `single` the `subEvent` property becomes required and expects exactly one object with a `startDate` and `endDate` to specify when the event is happening:
 
