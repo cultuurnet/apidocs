@@ -21,90 +21,13 @@ When these criteria are met, the event automatically becomes known in UiTPAS by 
 
 You can register your event in UiTdatabank in two ways: programmatically via **UiTdatabank's Entry API**, or manually via **UiTdatabank's user interface** (useful for testing for example).
 
-## Entry API
+## Via the UiTdatabank Entry API
 
-To learn how to import your event programmatically through UiTdatabank's Entry API, [consult the UiTdatabank documentation for event imports](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events.html). (This documentation will be moved to this new documentation portal at a later stage.)
+To learn how to create UiTPAS events programmatically, check out the guide about [creating UiTPAS events via Entry API](https://docs.publiq.be/docs/uitdatabank/entry-api/events/creating-an-uitpas-event) in the UiTdatabank documentation.
 
-You can register your event with all required info in **a single request** to Entry API.
+> When creating an UiTdatabank event through Entry API, **you can use the same access token that you use to communicate with the UiTPAS API**.
 
-### Example request
-
-```http
-POST /imports/events/ HTTP/1.1
-Host: https://io-test.uitdatabank.be
-Authorization: Bearer YOUR_USER_OR_CLIENT_ACCESS_TOKEN
-Content-Type: application/json
-
-{
-  "mainLanguage": "nl",
-  "name": {
-    "nl": "Example UiTPAS event"
-  },
-  "calendarType": "single",
-  "startDate": "2021-01-01T12:00:00+01:00",
-  "endDate": "2021-01-01T16:00:00+01:00",
-  "location": {
-    "@id": "https://io-test.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7"
-  },
-  "terms": [
-    {
-      "id": "0.50.4.0.0"
-    }
-  ],
-  "priceInfo": [
-    {
-      "category": "base",
-      "name": {
-        "nl": "Basistarief"
-      },
-      "price": 11,
-      "priceCurrency": "EUR"
-    }
-  ],
-  "organizer": {
-    "@id": "https://io-test.uitdatabank.be/organizers/67f645d5-72f6-487d-8908-f0f64c5a63d0"
-  }
-}
-```
-
-If successful, you should receive a `200` response with a JSON body including the id of your newly created event:
-
-```http
-{
-  "id": "100d4f49-d155-4f1c-83cb-064291606e60"
-}
-```
-
-<!-- theme: success -->
-
-> ##### Done!
->
-> If you used an **UiTPAS organizer id** in the JSON of the event and specified a base price, **your event will automatically become an UiTPAS event**. There can be small delay between the event being created in UiTdatabank and being discovered by UiTPAS, but generally this takes less than a second.
->
-> You can check that an event has become an UiTPAS event by [fetching it's JSON from UiTdatabank](https://documentatie.uitdatabank.be/content/json-ld/latest/events/event-detail.html) and checking that it has the `UiTPAS` label in its `labels` property.
-
-### Required properties
-
-Of the properties in the example above, the following are always mandatory in UiTdatabank in general:
-
-* `mainLanguage`: The language that your event is described in.
-* `name`: The name of your event.
-* `calendarType`: Specifies how often your event takes place, and based on this other properties like `startDate` and `endDate` may be required.
-* `location`: The location the event takes place at.
-* `terms`: Describes what categories your event belongs to. At least one event type is required.
-
-For more info on mandatory properties, see [the Entry API documentation](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events.html).
-
-Additionally, your event requires two more properties to qualify as an UiTPAS event:
-
-* `priceInfo` with a `base` price.
-* `organizer` with the id of an UiTPAS organizer that organizes the event. Usually your client or user access token is coupled to one or more organizer ids inside UiTPAS and you should use one of those.
-
-### Authentication
-
-> When creating an UiTdatabank event through Entry API, **you can use the same user access token or client access token that you use to communicate with the UiTPAS API**.
-
-## Via the user interface
+## Via the UiTdatabank user interface
 
 You can manually enter events in UiTdatabank by browsing to <https://www.uitdatabank.be>. This is helpful when you just need an event for testing purposes.
 
