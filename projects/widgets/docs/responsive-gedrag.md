@@ -7,7 +7,7 @@ _De content choreografie van elk template op brede en smalle schermen_
 
 Het responsive gedrag van een widget kan je in de widgetbouwer simuleren door te switchen tussen viewports (mobiel, tablet, desktop):
 
-`<INSERT VIDEO>`
+<https://youtu.be/m9o8aYY1JVM>
 
 Hieronder gaan we specifiek in op het standaard responsive gedrag per blok.
 
@@ -19,27 +19,11 @@ Hieronder gaan we specifiek in op het standaard responsive gedrag per blok.
 * In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven 
 * In bredere containers wordt de zijbalk standaard horizontaal weergeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
 
-**Voorbeeld**
-
-Een zoekbox ingesteld met enkel wat, waar, wanneer wordt getoond in drie kolommen naast elkaar, telkens van 33,33% van de beschikbare breedte:
-
-`<INSERT IMAGE>`
-
-In mobiele weergave worden de kolommen van diezelfde zoekbox rijen die verticaal onder elkaar weergegeven worden:
-
-`<INSERT IMAGE>`
-
 ### Resultatenlijst
 
 * De labels in de rijkoppen (bv. wat, waar, wanneer, prijs, etc.) worden op het kleinste breekpunt vervangen door icoontjes
 * De beschrijving wordt op mobiele weergave niet getoond
 * Afbeeldingen links van de evenementinformatie worden mobiel boven de evenementinformatie weergegeven. Afbeeldingen rechts verschijnen onder de evenementinformatie in mobiele weergave
-
-**Voorbeeld**
-
-Weergave van een zoekresultatenlijst op een smartphone, waarbij de labels als iconen getoond worden en de afbeelding boven de evenementinformatie verschijnt: 
-
-`<INSERT IMAGE>`
 
 ### Verfijningen
 
