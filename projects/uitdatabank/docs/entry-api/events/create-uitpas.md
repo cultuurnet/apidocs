@@ -1,6 +1,6 @@
 # UiTPAS events
 
-An UiTPAS event is a regular event that has ticketing options with an [UiTPAS](https://docs.publiq.be/docs/uitpas/introduction) discount. 
+An UiTPAS event is a regular event that has ticketing options with an [UiTPAS](https://docs.publiq.be/docs/uitpas/introduction) discount.
 
 Event organizers that offer UiTPAS discounts can get (partial) reimbursements for those discounts by [registering their ticket sales in UiTPAS](https://docs.publiq.be/docs/uitpas/ticket-sales/registering). However, ticket sales can only be registered for known UiTPAS events.
 
@@ -32,6 +32,7 @@ The user or client that created the event will become the `creator` of the onlin
 An UiTdatabank event is also registered automatically in UiTPAS when it has a `priceInfo` property and is linked to an [UiTPAS `organizer`](../organizers/introduction.md).
 
 For example, by creating an event linked to the organizer `[TEST] UiTPAS Organisatie (Regio Gent + Paspartoe)` that [every UiTPAS integration has access to on the testing environment](https://docs.publiq.be/docs/uitpas/test-dataset):
+
 ```http
 POST /events HTTP/1.1
 Host: https://io-test.uitdatabank.be
@@ -148,7 +149,7 @@ You can also check that the event is registered in UiTPAS by [fetching the card 
 
 <!-- @todo later: document how to get a mapping of card system ids to UiTPAS labels using /uitpas/labels? (Should also be documented as OpenAPI endpoint) -->
 
-> Because **the registration in UiTPAS happens asynchronously**, it may take a couple of seconds for the labels to be added to your event after its creation. 
+> Because **the registration in UiTPAS happens asynchronously**, it may take a couple of seconds for the labels to be added to your event after its creation.
 >
 > Likewise, it may take a couple of seconds before [the request to fetch the event's card systems from the UiTPAS API](https://docs.publiq.be/docs/uitpas/uitpas-api/reference/operations/list-event-card-systems) returns a response with status `200` instead of `404`.
 
@@ -172,9 +173,10 @@ When the event is registered successfully, UiTPAS will automatically add the cor
 
 While UiTPAS automatically calculates and stores the discounted UiTPAS prices for an event, they are currently not returned by default when [fetching the event details from UiTdatabank](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/get-a-event).
 
-To include the UiTPAS prices of an event when fetching it, you must add an `embedUitpasPrices` query parameter to the URL and set it to `true`. 
+To include the UiTPAS prices of an event when fetching it, you must add an `embedUitpasPrices` query parameter to the URL and set it to `true`.
 
 For example:
+
 ```http
 GET /event/a4425f9a-bc3a-4a45-ab20-a23b58e8259c?embedUitpasPrices=true HTTP/1.1
 Host: https://io.uitdatabank.be
@@ -209,6 +211,7 @@ In addition to the price tariffs stored by your integration, one or more tariffs
 ```
 
 Try it now:
+
 ```json http
 {
   "url": "https://io.uitdatabank.be/event/a4425f9a-bc3a-4a45-ab20-a23b58e8259c",
@@ -237,7 +240,7 @@ For example: If the event's organizer is active in both UiTPAS Gent and UiTPAS O
 
 In the near future you will be able to enable/disable specific card systems on your UiTPAS events, so you can specify for which ones discounts should be provided. **This functionality is still under construction, please check back soon.** <!-- @todo Link to an UiTPAS guide on how to configure cardSystems on the event when that is ready. -->
 
-When you enable/disable card systems on your UiTPAS event, the event's [UiTPAS labels](#uitpas-labels) will also be updated to reflect the enabled card systems. UiTPAS labels of disabled card systems are removed from the event. 
+When you enable/disable card systems on your UiTPAS event, the event's [UiTPAS labels](#uitpas-labels) will also be updated to reflect the enabled card systems. UiTPAS labels of disabled card systems are removed from the event.
 
 ## Changing an UiTPAS event to a regular event.
 
@@ -256,6 +259,7 @@ Some UiTPAS events are not meant to be visible in online calendars, for example 
 You can hide an UiTPAS event from online calendars by setting the event's `audience.audienceType` property to `members` instead of the default `everyone`.
 
 For example:
+
 ```json
 {
   "audience": {

@@ -26,6 +26,7 @@ When creating a new event this property is optional and is automatically set to 
 To create an online event instead, include the `attendanceMode` property and set it to `online`. When doing so, you must not include a `location` property.
 
 For example, to create an online concert happening on a single date:
+
 ```http
 POST /events HTTP/1.1
 Host: https://io-test.uitdatabank.be
@@ -58,6 +59,7 @@ After creating your new event, UiTdatabank will automatically add a `location` w
 **Note that you cannot set the location of an event to the nil location yourself.** The only way to use this location on your event is by explicitly setting the `attendanceMode` to `online`.
 
 An example of an online event after it's been created:
+
 ```json
 {
   "@id": "https://io-acc.uitdatabank.be/event/db8253cb-988b-46b0-b8ce-01f2fe319281",
@@ -180,6 +182,7 @@ When creating or [updating](./update.md) an online or mixed event, you can optio
 This property is not required because some online or mixed events may require attendees to purchase a ticket first before they gain access to the online event, for example via a link in an email.
 
 For example, to create an online event for a livestream of a concert on YouTube:
+
 ```http
 POST /events HTTP/1.1
 Host: https://io-test.uitdatabank.be
