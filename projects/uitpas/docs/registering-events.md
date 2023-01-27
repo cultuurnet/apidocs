@@ -1,4 +1,4 @@
-# Registering events
+# Registering UiTPAS events
 
 This guide will explain how to register an event as an UiTPAS event. This is required to be able to:
 
