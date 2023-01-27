@@ -18,7 +18,7 @@ Hieronder gaan we specifiek in op het standaard responsive gedrag per blok.
 
 * Header en footer worden steeds over de ganse breedte (van de container) boven -en onderaan weergegeven
 * In een smalle container (zoals een zijbalk) wordt de zoekbox automatisch verticaal weergegeven 
-* In bredere containers wordt de zijbalk standaard horizontaal weergeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
+* In bredere containers wordt de zijbalk standaard horizontaal weergegeven waarbij het aantal kolommen gelijk is aan het aantal aangevinkte componenten
 
 ### Resultatenlijst
 
