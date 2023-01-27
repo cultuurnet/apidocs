@@ -12,7 +12,7 @@ In this guide you will learn how to:
 * Get the UiTPAS prices for an event in UiTdatabank
 * Configure which card systems (for example UiTPAS Gent, UiTPAS Oostende, ...) offer discounts for your event
 * Change an UiTPAS event to a regular event instead
-* Hiding an UiTPAS event from online calendars
+* Hide an UiTPAS event from online calendars
 
 Before diving in, make sure you have read the following guides first:
 
