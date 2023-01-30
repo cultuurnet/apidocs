@@ -308,7 +308,7 @@ The following level 4 labels must always be combined with
 
 ## Request body examples
 
-**school performance**
+### School performance
 
 Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
 
@@ -350,7 +350,7 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
 }
 ```
 
-**guided tour**
+### Guided tour
 
 Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at university and college students.
 
@@ -380,7 +380,7 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
 }
 ```
 
-**bookable event**
+### Bookable event
 
 Example of a bookable school event aimed at students of "derde graad BSO":
 
