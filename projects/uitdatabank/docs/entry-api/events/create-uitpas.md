@@ -268,7 +268,7 @@ For example:
 }
 ```
 
-You may set this property when creating the event, or when updating it later. You can also set it via the [`PUT /events/{eventId}/audience`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/update-a-event-audience) endpoint.
+You may set this property when creating the event, or when [updating](./update.md) it later. You can also set it via the [`PUT /events/{eventId}/audience`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/update-a-event-audience) endpoint.
 
 ## More info
 
