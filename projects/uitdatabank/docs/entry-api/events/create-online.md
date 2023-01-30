@@ -15,7 +15,7 @@ In this guide you will learn how to:
 
 As with regular events, anyone can create new online events in UiTdatabank by using either a user access token or a client access token.
 
-The user or client that created the event will become the `creator` of the online event, which allows them to later make changes to it or delete it.
+The user or client that created the event will become the `creator` of the online event, which allows them to later make changes to it or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
 
 ## Creating an online event
 
