@@ -86,9 +86,9 @@ For the creation of school events several extra requirements apply:
 
 1. The `audienceType` must be set to `education`
 2. The event must have an `organizer` that has the `Cultuurkuur` label
-3. Specific education related `labels` are mandatory
-4. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events): the `calendarType` must be set to `permanent`
-5. In case of a [bookable event](#bookable-events): the `location in consultation with the school` must be used for the location
+3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events): the `calendarType` must be set to `permanent`
+4. In case of a [bookable event](#bookable-events): the `location in consultation with the school` must be used for the location
+5. Every school event must have at least one label that indicates the education level of the target audience
 
 ### audienceType
 
@@ -126,6 +126,33 @@ Prefix this value with the host url of the according environment and use this as
 ```
 
 > Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on Cultuurkuur](https://www.cultuurkuur.be/faq/hoe-voeg-ik-mijn-organisatie-toe-op-cultuurkuur).
+
+### calendarType
+
+In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events) you must set the value for the `calendarType` property to `permanent`.
+
+```json
+{
+  "calendarType": "permanent"
+}
+```
+
+### location in consultation with the school
+
+In case of a [bookable event](#bookable-events) you must use the url of the "location in consultation with the school" as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+
+**URLs**:
+
+* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
+* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
+
+```json
+{
+"location": {
+    "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
+  }
+}
+```
 
 ### labels
 
@@ -306,33 +333,6 @@ The following level 4 labels must always be combined with
 | Derde graad KSO                     | `cultuurkuur_derde-graad-KSO`                   |
 | Derde graad TSO                     | `cultuurkuur_derde-graad-TSO`                   |
 | Derde graad Voorbereidend jaar HO   | `cultuurkuur_derde-graad-Voorbereidend-jaar-HO` |
-
-### calendarType
-
-In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events) you must set the value for the `calendarType` property to `permanent`.
-
-```json
-{
-  "calendarType": "permanent"
-}
-```
-
-### location in consultation with the school
-
-In case of a [bookable event](#bookable-events) you must use the url of the "location in consultation with the school" as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
-
-**URLs**:
-
-* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
-* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
-
-```json
-{
-"location": {
-    "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
-  }
-}
-```
 
 ## Request body examples
 
