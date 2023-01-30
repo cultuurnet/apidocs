@@ -76,13 +76,15 @@ In order to create a bookable school event you must use
 
 ## Creating a school event
 
-For the creation of school events several extra requirements apply:
+Creating a school event is the same as [creating a regular event](./create.md), but with some extra required properties:
 
-1. The `audienceType` must be set to `education`
-2. The event must have an `organizer` that has the `Cultuurkuur` label
-3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events): the `calendarType` must be set to `permanent`
-4. In case of a [bookable event](#bookable-events): the `location in consultation with the school` must be used for the location
-5. Every school event must have at least one label that indicates the education level of the target audience
+1. The `audience.audienceType` property must be set to `education`
+2. The event must be linked to an `organizer` that has the `Cultuurkuur` label
+3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events), the `calendarType` must be set to `permanent`
+4. In case of a [bookable event](#bookable-events), the `location in consultation with the school` must be used for the location
+5. The event must have at least one label that indicates the education level of the target audience
+
+We will go over these required properties in more detail below, followed by some examples.
 
 ### audienceType
 
