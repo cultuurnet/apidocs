@@ -310,7 +310,7 @@ The following level 4 labels must always be combined with
 
 ### School performance
 
-Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
+Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, from 14:30 to 16:00.
 
 ```json
 {
