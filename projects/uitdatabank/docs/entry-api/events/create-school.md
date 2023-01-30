@@ -2,12 +2,6 @@
 stoplight-id: c7be5835e744b
 ---
 
-<!-- 
-  @todo 
-  Refer to the guide about creating new events first. 
-  Permissions: Who can create school events?
--->
-
 # School events
 
 School events are events that are specifically organized and intended for:
