@@ -68,7 +68,7 @@ For school events you must include an extra property `audienceType` and set the 
 
 ```json
 {
-"audience": {
+  "audience": {
     "audienceType": "education"
   }
 }
@@ -120,7 +120,7 @@ In case of a [bookable event](#bookable-events) you must use the url of the "loc
 
 ```json
 {
-"location": {
+  "location": {
     "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
   }
 }
