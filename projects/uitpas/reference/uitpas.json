@@ -3060,130 +3060,7 @@
       }
     },
     "/passes": {
-      "parameters": [],
-      "get": {
-        "summary": "Retrieve pass",
-        "tags": [
-          "Passholders"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pass"
-                },
-                "examples": {
-                  "Example with expired social tariff and warning message": {
-                    "value": {
-                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
-                      "uitpasNumber": "0560002524314",
-                      "firstName": "Jan",
-                      "points": 12,
-                      "postalCode": "1000",
-                      "socialTariff": {
-                        "expired": false,
-                        "endDate": "2024-04-30T21:59:00"
-                      },
-                      "messages": [
-                        {
-                          "level": "WARN",
-                          "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
-                        }
-                      ]
-                    }
-                  },
-                  "Example without social tariff or messages": {
-                    "value": {
-                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
-                      "uitpasNumber": "0560002524314",
-                      "firstName": "Jan",
-                      "points": 12,
-                      "postalCode": "1000"
-                    }
-                  },
-                  "Example with social tariff": {
-                    "value": {
-                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
-                      "uitpasNumber": "0560002524314",
-                      "firstName": "Jan",
-                      "points": 12,
-                      "postalCode": "1000",
-                      "socialTariff": {
-                        "expired": false,
-                        "endDate": "2024-04-30T21:59:00"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-blocked\n* https://api.publiq.be/probs/uitpas/card-blocked\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/pass-not-found\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-passes",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "description": "Retrieve information related to a pass based on one of three query parameters:\n- uitpasNumber\n- inszNumber\n- chipNumber\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission.",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "uitpasNumber",
-            "description": "Search pass based on `uitpasNumber`"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "inszNumber",
-            "description": "Search pass based on `inszNumber`"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "chipNumber",
-            "description": "Search pass based on `chipNumber`"
-          }
-        ]
-      }
+      "parameters": []
     },
     "/passes/{uitpasNumber}": {
       "parameters": [
@@ -3192,7 +3069,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve pass",
+        "summary": "Retrieve pass by UiTPAS number",
         "tags": [
           "Passholders"
         ],
@@ -3213,7 +3090,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       },
                       "messages": [
@@ -3230,7 +3107,10 @@
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
                     }
                   },
                   "Example with social tariff": {
@@ -3241,7 +3121,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       }
                     }
@@ -3286,8 +3166,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission.\n\n<!-- theme: warning -->\n\n> **This endpoint is deprecrated.** Don't use this endpoint in new integrations, but instead switch to [GET /passes](/reference/uitpas.json/paths/~1passes/get) using the uitpasNumber as a query parameter.",
-        "deprecated": true
+        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
       }
     },
     "/insz-numbers/{inszNumber}": {
@@ -3297,7 +3176,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve INSZ number",
+        "summary": "Retrieve pass by INSZ number",
         "tags": [
           "Passholders"
         ],
@@ -3318,7 +3197,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       },
                       "messages": [
@@ -3335,7 +3214,10 @@
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }                      
                     }
                   },
                   "Example with social tariff": {
@@ -3346,7 +3228,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       }
                     }
@@ -3391,8 +3273,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to an INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission.\n\n<!-- theme: warning -->\n\n> **This endpoint is deprecrated.** Don't use this endpoint in new integrations, but instead switch to  [GET /passes](/reference/uitpas.json/paths/~1passes/get) using the inszNumber as a query parameter.",
-        "deprecated": true
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission."
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -3402,7 +3283,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve chip number",
+        "summary": "Retrieve pass by chip number",
         "tags": [
           "Passholders"
         ],
@@ -3423,7 +3304,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       },
                       "messages": [
@@ -3440,7 +3321,10 @@
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }                      
                     }
                   },
                   "Example with social tariff": {
@@ -3451,7 +3335,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "expired": false,
+                        "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
                       }
                     }
@@ -3496,8 +3380,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission.\n\n<!-- theme: warning -->\n\n> **This endpoint is deprecrated.** Don't use this endpoint in new integrations, but instead switch to  [GET /passes](/reference/uitpas.json/paths/~1passes/get)  using the chipNumber as a query parameter.",
-        "deprecated": true
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission."
       }
     },
     "/rewards": {
@@ -5461,6 +5344,10 @@
           "firstName": "Jan",
           "points": 12,
           "postalCode": "1000",
+          "socialTariff": {
+            "status": "EXPIRED",
+            "endDate": "2022-12-31T22:59:59"
+          },          
           "messages": [
             {
               "level": "WARN",
@@ -5495,24 +5382,27 @@
           },
           "socialTariff": {
             "type": "object",
-            "description": "If the passholder has right to a social tariff, this object contains details like the end date.",
+            "description": "Information about the possible social tariff of the passholder. This object is always present, however a passholder is only entitled to social tariff if the state property has value `ACTIVE`.",
+            "required": [
+              "status"
+            ],
             "properties": {
-              "expired": {
-                "type": "boolean",
-                "description": "If true, the passholder's right to a social tariff has completely expired (the end date has passed and the passholder is no longer in a grace period).",
-                "readOnly": true
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "EXPIRED",
+                  "NONE"
+                ],
+                "description": "Status of the social tariff:\n- `ACTIVE`: the passholder is entitled to social tariff\n- `EXPIRED`: the passholder is NOT entitled to social tariff anymore\n- `NONE`: the passholder is NOT entitled to social tariff"
               },
               "endDate": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Exact moment that the passholder's right to a social tariff expires.",
+                "description": "Exact expiration date of the passholder's entitlement to a social tariff. This property is not available when status is `NONE`.",
                 "readOnly": true
               }
-            },
-            "required": [
-              "expired",
-              "endDate"
-            ]
+            }
           },
           "messages": {
             "type": "array",
@@ -5548,7 +5438,8 @@
           "uitpasNumber",
           "firstName",
           "points",
-          "postalCode"
+          "postalCode",
+          "socialTariff"
         ],
         "readOnly": true
       },
