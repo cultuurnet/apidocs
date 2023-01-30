@@ -82,7 +82,7 @@
       "items": [
         {
           "type": "item",
-          "title": "Registering events",
+          "title": "Registering UiTPAS events",
           "uri": "docs/registering-events.md",
           "slug": "events/registering"
         },

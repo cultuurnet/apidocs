@@ -164,6 +164,12 @@
             },
             {
               "type": "item",
+              "title": "Linking an organizer to an event or place",
+              "uri": "/docs/entry-api/organizers/linking.md",
+              "slug": "entry-api/organizers/linking-to-an-event-or-place"
+            },
+            {
+              "type": "item",
               "title": "Deleting an organizer",
               "uri": "/docs/entry-api/organizers/delete.md",
               "slug": "entry-api/organizers/deleting-an-organizer"

@@ -26,6 +26,8 @@ Note that you also need to set the `embed` parameter to `true` to [include searc
 
 <!-- theme: warning -->
 
+> **The `embedUitpasPrices` parameter has no performance impact.** It only serves as a temporary feature toggle.
+>
 > The default value of the `embedUitpasPrices` parameter is planned to change to `true` in the future.
 >
 > It is set to `false` for the time being so that existing integrations can make any changes necessary before the UiTPAS prices are included by default. For example, so they can remove their existing integration with UiTPAS API to fetch the prices because this would otherwise result in duplicate UiTPAS prices being shown.
