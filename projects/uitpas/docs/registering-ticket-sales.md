@@ -62,7 +62,7 @@ Host: https://api.uitpas.be
 Authorization: Bearer YOUR_CLIENT_ACCESS_TOKEN'
 ```
 
-Have a look at the [test dataset](/docs/test-dataset) for more sample passholders or events.
+Have a look at the [test dataset](./test-dataset.md) for more sample passholders or events.
 
 Example response:
 
@@ -94,7 +94,7 @@ In this example the passholder can select two possible UiTPAS discounts. The soc
 
 > ##### remaining tickets at a tariff
 >
-> For regular passholders, the `remaining` value is always 1. Please refer to [registering ticket sales for group passes](/docs/registering-ticket-sales-group) for more information on group pass ticket sales.
+> For regular passholders, the `remaining` value is always 1. Please refer to [registering ticket sales for group passes](./registering-ticket-sales-group.md) for more information on group pass ticket sales.
 
 ### 5. Passholder selects a tariff
 
@@ -134,9 +134,9 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
 ]
 ```
 
-Have a look at the [test dataset](/docs/test-dataset) for more sample passholders or events.
+Have a look at the [test dataset](./test-dataset.md) for more sample passholders or events.
 
-As you can see, you can also include multiple ticket sale registrations at once. Read more about this in the [registering multiple ticket sales at once](/docs/registering-ticket-sales-multiple) mini guide.
+As you can see, you can also include multiple ticket sale registrations at once. Read more about this in the [registering multiple ticket sales at once](./registering-ticket-sales-multiple.md) mini guide.
 
 This can be helpful when you want to provide your passholders a way to buy multiple tickets at once.
 
@@ -180,4 +180,4 @@ If for some reason you need to [cancel the ticket sale registration](/reference/
 
 ### Frequently asked questions
 
-Having questions? Check out our [FAQ](/docs/faq)!
+Having questions? Check out our [FAQ](./faq.md)!
