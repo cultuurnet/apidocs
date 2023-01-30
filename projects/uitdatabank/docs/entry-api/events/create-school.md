@@ -25,11 +25,7 @@ The user or client that created the event will become the `creator` of the onlin
 
 ## Types
 
-We distinguish 3 different types of school events:
-
-1. **School performances** are events of which both the date and the location is known in advance.
-2. **Guided tours** are events that have no specific date, but they do have a location.
-3. **Bookable events** are events that have no specific date and location (or the date and location is not known in advance). Both the date and the location are determined in mutual agreement between the organizer or artist and the consumer (school).
+We distinguish 3 different types of school events.
 
 ### School performances
 
