@@ -34,22 +34,12 @@ School performances are events of which both the date and the location is known 
 * ✅ date is known in advance
 * ✅ location is known in advance
 
-Since school performances both have a date and a location, you can create them in a very similar way to regular events:
-
-* you can use a calendarType of your preference (`single`, `multiple` or `periodic`)
-* for the location you must use the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
-
 ### Guided tours
 
 Guided tours are events that have no specific date (or the date is not known in advance), but they do have a location. For example, a guided tour in the Royal Museum of Fine Arts Antwerp.
 
 * ❌ date is not known in advance
 * ✅ location is known in advance
-
-In order to create a guided school tour you must use:
-
-* calendarType `permanent`
-* the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
 
 ### Bookable events
 
@@ -59,16 +49,6 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 
 * ❌ date is not known in advance
 * ❌ location is not known in advance
-
-In order to create a bookable school event you must use
-
-* calendarType `permanent`
-* use the URL of the "location in consultation with the school" as `location.@id` in the `POST /events` request of the bookable events
-
-**URL of the location in consultation with the school**:
-
-* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
-* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
 ## Creating a school event
 
