@@ -163,7 +163,7 @@ Subject labels are used to specify the learning objective of the school event.
 | Duurzaamheid, natuur en milieu              | `cultuurkuur_Duurzaamheid, natuur en milieu`              |
 | Filosofie religie                           | `cultuurkuur_Filosofie-religie`                           |
 | Internationale - Europese thema's           | `cultuurkuur_Internationale - Europese thema's`           |
-| kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
+| Kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
 | Leren leren                                 | `cultuurkuur_Leren leren`                                 |
 | Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` |
 | Media                                       | `cultuurkuur_Media`                                       |
