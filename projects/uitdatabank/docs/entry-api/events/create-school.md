@@ -21,7 +21,7 @@ Creating a school event is very similar to [creating a regular new event](./crea
 
 As with regular events, anyone can create new school events in UiTdatabank by using either a user access token or a client access token.
 
-The user or client that created the event will become the `creator` of the school event, which allows them to later make changes to it or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
+The user or client that created the event will become its `creator`, which allows them to later make changes to it or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
 
 ## Types
 
