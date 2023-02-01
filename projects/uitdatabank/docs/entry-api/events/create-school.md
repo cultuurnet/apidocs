@@ -382,7 +382,7 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
 
 ### Bookable event
 
-Example of a bookable school event aimed at students of "derde graad BSO":
+Example of a bookable school event aimed at students of "derde graad BSO". Note that the location points to the *"Locatie in overleg met de school"* place on the test environment in this case.
 
 ```json
 {
