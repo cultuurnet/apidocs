@@ -109,11 +109,17 @@ In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events)
 }
 ```
 
-### location in consultation with the school
+[School performances](#school-performances) should set the `calendarType` property to `single`, `multiple` or `periodic` depending on the schedule of the performance.
 
-In case of a [bookable event](#bookable-events) you must use the url of the "location in consultation with the school" as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+See the [guide about calendar info](../shared/calendar-info.md) for more details.
 
-**URLs**:
+### location
+
+In case of a [bookable event](#bookable-events) you must use the url of the *"Location in consultation with the school"* place as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+
+On the other hand, [school performances](#school-performances) and [guided tours](#guided-tours) must be linked to the place that they are happening at.
+
+**URLs for "location in consultation with school" places**:
 
 * Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
 * Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
