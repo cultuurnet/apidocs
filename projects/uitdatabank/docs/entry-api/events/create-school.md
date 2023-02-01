@@ -13,7 +13,7 @@ School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but no
 
 Creating a school event is very similar to [creating a regular new event](./create.md), so it is recommended to read that guide first.
 
-> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface if you only organize a limited number of school events per year.
+> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface, instead of building an API integration, if you only organize a limited number of school events per year.
 >
 > For questions about school events, please contact <content.cultuurkuur@publiq.be>.
 
