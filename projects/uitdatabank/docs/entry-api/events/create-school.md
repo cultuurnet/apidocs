@@ -109,7 +109,7 @@ In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events)
 }
 ```
 
-[School performances](#school-performances) should set the `calendarType` property to `single`, `multiple` or `periodic` depending on the schedule of the performance.
+In case of [school performances](#school-performances), you must set the `calendarType` property to `single`, `multiple` or `periodic` depending on the schedule of the performance.
 
 See the [guide about calendar info](../shared/calendar-info.md) for more details.
 
