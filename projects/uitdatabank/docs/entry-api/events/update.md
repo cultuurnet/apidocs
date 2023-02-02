@@ -21,7 +21,7 @@ Regardless of whether you update the event in its entirety, or use a specific en
 
 When you need to update multiple properties on an event, you can update an event in its entirety via the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint.
 
-This endpoint accepts a complete [event model](../../models/event-with-read-example.json) in the same format as the [`POST /events`](/reference/entry.json/paths/~1events/post) endpoint, but instead of creating a new event it updates the event at the given URL to the new event data included in the update request.
+This endpoint accepts a complete [event model](../../../models/event-with-read-example.json) in the same format as the [`POST /events`](/reference/entry.json/paths/~1events/post) endpoint, but instead of creating a new event it updates the event at the given URL to the new event data included in the update request.
 
 When updating an event in its entirety, it is important to keep the following points in mind:
 
@@ -29,7 +29,7 @@ When updating an event in its entirety, it is important to keep the following po
 * You can remove one or more optional properties from the event by omitting them from the event data in your update request, or by explicitly setting them to `null`. Note that when setting them to `null`, they will be removed completely from the event.
 * Any existing (optional) properties on the event that are not included in the update request will be removed from the event. If such an optional property has a default value, it will be reverted to that value instead (for example, the [`status.type`](./status.md) property will be reset to `Available` if not included in the update request).
 * As an exception to the points above, extra [labels](../shared/labels.md) added to the event via the UiTdatabank UI will be kept on the event even when not included in the update request. To remove such labels when needed, use the [`DELETE /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/delete) endpoint.
-* While you may include read-only properties like `creator`, `created` and `modified` in your update request, they will be ignored by Entry API. Read-only properties are indicated by a grey `read-only` flag on the right side of their name in [the event model](../../models/event-with-read-example.json).
+* While you may include read-only properties like `creator`, `created` and `modified` in your update request, they will be ignored by Entry API. Read-only properties are indicated by a grey `read-only` flag on the right side of their name in [the event model](../../../models/event-with-read-example.json).
 
 <!-- theme: success -->
 
@@ -51,7 +51,7 @@ Some examples include:
 * [`PUT /events/{eventId}/location/{placeId}`](/reference/entry.json/paths/~1events~1{eventId}~1location~1{placeId}/put) to update the linked location to a new place
 * ...
 
-You can find all possible endpoints to update a single event property in the "Events" group under the ["API reference"](../../reference/entry.json) menu item.
+You can find all possible endpoints to update a single event property in the "Events" group under the ["API reference"](../../../reference/entry.json) menu item.
 
 <!-- theme: success -->
 
