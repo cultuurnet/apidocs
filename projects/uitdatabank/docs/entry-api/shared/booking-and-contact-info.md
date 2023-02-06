@@ -83,7 +83,7 @@ The `availabilityStarts` property is an optional property that indicates when it
 
 ### availabilityEnds
 
-The `availabilityEnds` property is an optional property that indicates when it the booking period ends. It is used to hide the booking info when it is no longer possible to book tickets. It must be an ISO-8601 datetime string.
+The `availabilityEnds` property is an optional property that indicates when the booking period ends. It is used to hide the booking info when it is no longer possible to book tickets. It must be an ISO-8601 datetime string.
 
 ## contactPoint
 
