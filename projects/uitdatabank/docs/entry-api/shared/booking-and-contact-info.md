@@ -60,12 +60,12 @@ It must be an object with language codes, like the `name` property of the event 
 
 While you may choose your own url label, we recommend to use one of the following:
 
-NL | FR | EN | DE
----------|----------|---------|---------
-Koop tickets | Achetez des tickets | Buy tickets | Tickets kaufen
-Reserveer plaatsen | Réservez des places | Reserve places | Platzieren Sie eine Reservierung
-Controleer beschikbaarheid | Controlez la disponibilité | Check availability | Verfügbarkeit prüfen
-Schrijf je in | Inscrivez-vous | Subscribe | Melde dich an
+| NL                         | FR                         | EN                 | DE                               |
+| -------------------------- | -------------------------- | ------------------ | -------------------------------- |
+| Koop tickets               | Achetez des tickets        | Buy tickets        | Tickets kaufen                   |
+| Reserveer plaatsen         | Réservez des places        | Reserve places     | Platzieren Sie eine Reservierung |
+| Controleer beschikbaarheid | Controlez la disponibilité | Check availability | Verfügbarkeit prüfen             |
+| Schrijf je in              | Inscrivez-vous             | Subscribe          | Melde dich an                    |
 
 ### phone
 
