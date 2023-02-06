@@ -6730,6 +6730,80 @@
         ]
       }
     },
+    "/organizers/{organizerId}/contributors": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "put": {
+        "summary": "contributors - update",
+        "operationId": "organizer-contributors-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The contributors have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Updates the list of contributors on the organizer. These users will have edit rights on the organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-contributors-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "info@publiq.be",
+                    "vragen@publiq.be"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of contributors of the organizer. Previous contributors of the organizer but not included in this list will be removed from the contributors of the organizer."
+        }
+      }
+    },
     "/organizers/{organizerId}/description/{language}": {
       "parameters": [
         {
