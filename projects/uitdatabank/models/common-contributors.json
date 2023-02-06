@@ -1,8 +1,5 @@
 {
   "title": "common-contributors",
-  "x-stoplight": {
-    "id": "zbxmwslfoy2or"
-  },
   "type": "array",
   "minItems": 1,
   "uniqueItems": true,

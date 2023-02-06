@@ -1,6 +1,4 @@
 {
   "$ref": "./common-contributors.json",
-  "x-stoplight": {
-    "id": "0fwzz0ni3ks8p"
-  }
+  "title": "organizer.contributors.put"
 }
