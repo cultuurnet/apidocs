@@ -4743,6 +4743,80 @@
         ]
       }
     },
+        "/places/{placeId}/contributors": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "contributors - update",
+        "operationId": "place-contributors-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The contributors have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the list of contributors on the place. These users will have edit rights on the place.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-contributors-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "info@publiq.be",
+                    "vragen@publiq.be"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of contributors of the place. Previous contributors of the place but not included in this list will be removed from the contributors of the place."
+        }
+      }
+    },
     "/places/{placeId}/description/{language}": {
       "parameters": [
         {
