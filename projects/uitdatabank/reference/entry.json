@@ -1548,7 +1548,7 @@
         ]
       }
     },
-        "/events/{eventId}/contributors": {
+    "/events/{eventId}/contributors": {
       "parameters": [
         {
           "$ref": "#/components/parameters/eventId"
