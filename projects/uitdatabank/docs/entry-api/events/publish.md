@@ -135,4 +135,4 @@ In the past, events were typically created by API integrators by "importing" the
 
 If you use this endpoint, your event will automatically get the workflow status `READY_FOR_VALIDATION` instead of `DRAFT`, for backward compatibility with existing integrations.
 
-However, note that this endpoint is deprecated and it is recommended to use [`POST /events`](/reference/entry.json/paths/~1events/post) instead. Both endpoints work the same except that you should set the `workflowStatus` property explicitly to `READY_FOR_VALIDATION` when using the latter and you want to immediately publish your newly created events.
+Note however that this endpoint is deprecated, and it is recommended to use [`POST /events`](/reference/entry.json/paths/~1events/post) instead. Both endpoints work the same except that you should set the `workflowStatus` property explicitly to `READY_FOR_VALIDATION` when you want to immediately publish your newly created events using the latter.
