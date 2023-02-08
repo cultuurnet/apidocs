@@ -6874,7 +6874,7 @@
               }
             }
           },
-          "description": "New list of contributors of the organizer. Previous contributors of the organizer but not included in this list will be removed from the contributors of the organizer."
+          "description": "New list of contributors of the organizer. Previous contributors of the organizer that are not included in this list will be removed."
         }
       }
     },
