@@ -6,7 +6,8 @@
   "description": "An array of emails of users who need to have edit rights.",
   "items": {
     "type": "string",
-    "format": "email"
+    "format": "email",
+    "maxLength": 255
   },
   "examples": [
     [
