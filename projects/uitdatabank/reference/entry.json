@@ -1618,7 +1618,7 @@
               }
             }
           },
-          "description": "New list of contributors of the event. Previous contributors of the event but not included in this list will be removed from the contributors of the event."
+          "description": "New list of contributors of the event. Previous contributors of the event that are not included in this list will be removed."
         }
       }
     },
