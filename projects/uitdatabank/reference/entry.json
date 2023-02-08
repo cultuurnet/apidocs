@@ -1581,7 +1581,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Returns a JSON array of contributors, meaning those that have edit rights on the event.",
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the event.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4813,7 +4813,7 @@
         "tags": [
           "Places"
         ],
-        "description": "Returns a JSON array of contributors, meaning those that have edit rights on the place.",
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the place.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -6911,7 +6911,7 @@
         "tags": [
           "Organizers"
         ],
-        "description": "Returns a JSON array of contributors, meaning those that have edit rights on the organizer.",
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
