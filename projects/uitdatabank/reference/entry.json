@@ -6884,6 +6884,43 @@
           "$ref": "#/components/parameters/organizerId"
         }
       ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "organizer-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Returns a JSON array of contributors, meaning those that have edit rights on the organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "put": {
         "summary": "contributors - update",
         "operationId": "organizer-contributors-put",
