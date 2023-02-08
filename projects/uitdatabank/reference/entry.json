@@ -1554,6 +1554,43 @@
           "$ref": "#/components/parameters/eventId"
         }
       ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "event-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "put": {
         "summary": "contributors - update",
         "operationId": "event-contributors-put",
@@ -4749,6 +4786,43 @@
           "$ref": "#/components/parameters/placeId"
         }
       ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "place-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Places"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the place.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "put": {
         "summary": "contributors - update",
         "operationId": "place-contributors-put",
@@ -6810,6 +6884,43 @@
           "$ref": "#/components/parameters/organizerId"
         }
       ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "organizer-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "put": {
         "summary": "contributors - update",
         "operationId": "organizer-contributors-put",
