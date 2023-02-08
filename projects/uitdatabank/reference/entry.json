@@ -4743,7 +4743,7 @@
         ]
       }
     },
-        "/places/{placeId}/contributors": {
+    "/places/{placeId}/contributors": {
       "parameters": [
         {
           "$ref": "#/components/parameters/placeId"
