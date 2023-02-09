@@ -6,6 +6,7 @@ However, you **should not** delete your event for any of the following reasons:
 
 * It is in the past. UiTinVlaanderen and other online calendars will hide it automatically once it has passed.
 * It is cancelled or postponed. You should instead [mark it as cancelled or postponed in UiTdatabank](./status.md).
+* There are no more tickets/reservations available. You should instead [mark it as fully booked](./booking-availability.md).
 
 Note that when you delete an event, it is not actually deleted but its `workflowStatus` property will be set to `DELETED`. This will hide it from UiTinVlaanderen, other online calendars, and the UiTdatabank search page. You can learn more about the `workflowStatus` property in the guide about [publishing an event](./publish.md).
 
