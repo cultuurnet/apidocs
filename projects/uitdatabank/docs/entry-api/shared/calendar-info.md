@@ -2,7 +2,9 @@
 
 [Events](../events/introduction.md) and [places](../places/introduction.md) in UiTdatabank are required to have calendar info that indicate when they are scheduled to be happening/open.
 
-[Organizers](../organizers/introduction.md), on the other hand, do not have calendar info.
+By adding the right calendar info to your event/place, it has the best chance at being discovered by people that are looking for something to do or visit at a specific moment.
+
+Additionally, by adding the right calendar info to your event/place it will automatically become hidden from online calendars once it's passed so that you do not have to delete it manually.
 
 This guide explains the various types of calendar info, when to use which one, and their required/optional properties.
 
