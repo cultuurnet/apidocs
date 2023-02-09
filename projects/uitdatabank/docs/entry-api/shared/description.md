@@ -2,9 +2,9 @@
 
 Aside from a short `name`, you can also add a longer `description` to your event, place or organizer to share more details about it.
 
+Additionally, a description makes it more likely for your event/place/organizer to be found by users using [free text search](../../search-api/filters/freetext.md).
+
 A description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in most list views of online calendars.
-
-
 
 ## Scope
 
