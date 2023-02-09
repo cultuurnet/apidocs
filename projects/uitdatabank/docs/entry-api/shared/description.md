@@ -51,9 +51,9 @@ Or, including a translation in one language:
 
 Alternatively, you can set a description for one specific language using one of these endpoints:
 
-* For events: [PUT /events/{eventId}/description/{language}](/reference/entry.json/paths/~1events~1{eventId}~1description~1{language}/put)
-* For places: [PUT /places/{placeId}/description/{language}](/reference/entry.json/paths/~1places~1{placeId}~1description~1{language}/put)
-* For organizers: [PUT /organizers/{organizerId}/description/{language}](/reference/entry.json/paths/~1organizers~1{organizerId}~1description~1{language}/put)
+* For events: [`PUT /events/{eventId}/description/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1description~1{language}/put)
+* For places: [`PUT /places/{placeId}/description/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1description~1{language}/put)
+* For organizers: [`PUT /organizers/{organizerId}/description/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1description~1{language}/put)
 
 ## Removing a description
 
