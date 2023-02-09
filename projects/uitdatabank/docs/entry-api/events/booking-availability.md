@@ -1,24 +1,26 @@
-# Marking an event as sold out
+# Sharing ticket/reservation availability
 
-When [creating](./create.md) or (usually) when [updating](./update.md) your event, you can mark it as sold out to indicate to interested attendees that there are no more tickets/seats/reservations available.
+When [creating](./create.md) an event, UiTdatabank will by default assume that there are tickets/seats/reservations available for it. (From here on called "bookings" in this guide.)
 
-Sold out events automatically get an *"(Volzet of uitverkocht)"* label next to their calendar info in online calendars. For example, on UiTinVlaanderen:
+When your event has no more available bookings, you can [update](./update.md) it to indicate to interested attendees that it is fully booked. If necessary, you can also indicate this when creating the event.
+
+When you indicate that there are no more bookings available, your event will automatically get an *"(Volzet of uitverkocht)"* label next to their calendar info in online calendars. For example, on UiTinVlaanderen:
 
 <!-- focus: false -->
 
 ![Screenshot of a summary of the event "De dichters - group 2" on UiTinVlaanderen, as an example of the "(Volzet of uitverkocht)" label](../../../assets/images/event-sold-out.png)
 
-In this guide you will learn how to mark your event, or specific dates of your event, as sold out via Entry API.
+In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API.
 
 Before getting started, we recommend that you have read the following guides:
 
-* [Creating a new event](./create.md) to learn about the basic structure of events
-* [Updating an event](./update.md) to mark an event as sold out after creating it earlier
-* [Calendar info](../shared/calendar-info.md) for more info about the various calendar types and their properties
+* [Creating a new event](./create.md)
+* [Updating an event](./update.md)
+* [Calendar info](../shared/calendar-info.md)
 
 ## Permissions
 
-Anyone who [creates a new event](./create.md) can mark it as sold out. For [updates to an existing event](./update.md), the usual permission checks apply.
+Anyone who [creates a new event](./create.md) can specify its booking availability. For [updates to an existing event](./update.md), the usual permission checks apply.
 
 ## The bookingAvailability property
 
@@ -34,7 +36,7 @@ By default, it looks like this:
 }
 ```
 
-The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out).
+The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
 **When the event has calendarType `single` or `multiple`**, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property. 
 
@@ -65,7 +67,7 @@ For example on an event with multiple dates:
 }
 ```
 
-To mark one of these dates as sold out, change its individual `bookingAvailability.type` to `Unavailable`. For example:
+If one of these dates has no more bookings available, you can change its individual `bookingAvailability.type` to `Unavailable`. For example:
 
 ```json
 {
@@ -93,6 +95,6 @@ Note that you may omit the `bookingAvailability` property on the top level, as i
 
 When at least one `subEvent` has its `bookingAvailability.type` set to `Available`, the top-level `bookingAvailability.type` will automatically be set to `Available` since there are still tickets/seats/reservations available for one or more dates. 
 
-When all subEvents have their `bookingAvailability.type` set to `Unavailable`, the top-level `bookingAvailability.type` will also be set to `Unavailable` since this means that all tickets/seats/reservations for all dates are sold out.
+When all subEvents have their `bookingAvailability.type` set to `Unavailable`, the top-level `bookingAvailability.type` will also be set to `Unavailable` since this means that all tickets/seats/reservations for all dates are booked.
 
-**Events with calendarType `periodic` and `permanent`** span a larger period and have a schedule based on recurring `openingHours`. It is currently not possible to mark them as sold out because it is unlikely that they are completely sold out for their complete duration (especially for permanent events), and there is no way to mark a specific date or timeslot as sold out on events without a `subEvent` property at this moment.
+**Events with calendarType `periodic` and `permanent`** span a larger period and have a schedule based on recurring `openingHours`. It is currently not possible to specify their booking availability because it is unlikely that they are completely booked for their complete duration (especially for permanent events), and there is no way to mark a specific date or timeslot as fully booked on events without a `subEvent` property at this moment.
