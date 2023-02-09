@@ -106,13 +106,11 @@ For example to cancel one date of multiple:
 
 Note that you may omit the `status` property on the top level, as it will automatically be set based on the `status` of each `subEvent`. If you include it anyway, it will be ignored.
 
-When at least one `subEvent` has its `status.type` set to `Available`, the top-level `status.type` will automatically be set to `Available` since there is at least one date that the event is still happening as scheduled. 
+The top-level `status` is determined as follows:
 
-When all subEvents have their `status.type` set to `Unavailable`, the top-level `status.type` will also be set to `Unavailable` since this means that all dates are cancelled.
-
-In the case of `calendarType` `single`, the top-level `status` will automatically get the same `reason` as the one in the `subEvent` property.
-
-Note that the top-level `status` will never contain a `reason` in the case of `calendarType` `multiple`, since the reasons can be different from date to date.
+* When at least one `subEvent` has its `status.type` set to `Available`, the top-level `status.type` will automatically be set to `Available` since there is at least one date that the event is still happening as scheduled. 
+* When all subEvents have their `status.type` set to `Unavailable`, the top-level `status.type` will also be set to `Unavailable` since this means that all dates are cancelled.
+* In case of `calendarType` `single`, the top-level `status` will automatically get the same `reason` as the one in the `subEvent` property. In case of `calendarType` `multiple`, the top-level `status` will never contain a `reason` because the reasons can be different from date to date.
 
 ### With calendarType "periodic" or "multiple"
 
