@@ -26,9 +26,9 @@ Contributors need to be added to an event/place/organizer **after** it is create
 
 The endpoint URL is slightly different per resource type:
 
-* For events: [`PUT /events/{eventId}/contributors`]()
-* For places: [`PUT /places/{placeId}/contributors`]()
-* For organizers: [`PUT /organizers/{organizerId}/contributors`]()
+* For events: [`PUT /events/{eventId}/contributors`](/reference/entry.json/paths/~1events~1{eventId}~1contributors/put)
+* For places: [`PUT /places/{placeId}/contributors`](/reference/entry.json/paths/~1places~1{placeId}~1contributors/put)
+* For organizers: [`PUT /organizers/{organizerId}/contributors`](/reference/entry.json/paths/~1organizers~1{organizerId}~1contributors/put)
 
 You can also construct the URL of this endpoint by appending `/contributors` to the `url` property from the response to your `POST` request to create the event/place/organizer.
 
