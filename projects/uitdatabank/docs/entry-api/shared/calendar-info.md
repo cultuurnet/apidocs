@@ -73,7 +73,7 @@ And for calendarType `multiple`:
 
 Note that if you provide multiple `subEvent` objects when using calendarType `single`, the event will automatically be converted to calendarType `multiple` and vice-versa.
 
-When [fetching the event's details](reference/entry.json/paths/~1events~1{eventId}/get) later, the event will also have top-level `startDate`, `endDate`, `status` and `bookingAvailability` properties based on the data inside the `subEvent` objects.
+When [fetching the event's details](/reference/entry.json/paths/~1events~1{eventId}/get) later, the event will also have top-level `startDate`, `endDate`, `status` and `bookingAvailability` properties based on the data inside the `subEvent` objects.
 
 For example, in case of calendarType `multiple`:
 
