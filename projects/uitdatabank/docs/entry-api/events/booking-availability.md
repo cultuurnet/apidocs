@@ -38,7 +38,7 @@ By default, it looks like this:
 
 The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
-**When the event has calendarType `single` or `multiple`**, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property. 
+When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property. 
 
 For example on an event with multiple dates:
 
@@ -67,7 +67,13 @@ For example on an event with multiple dates:
 }
 ```
 
-If one of these dates has no more bookings available, you can change its individual `bookingAvailability.type` to `Unavailable`. For example:
+## Updating the bookingAvailability
+
+### calendarType single/multiple
+
+If your event has calendarType `single` or `multiple` and one of its dates has no more bookings available, you can change that specific subEvent's `bookingAvailability.type` to `Unavailable`. 
+
+For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
 
 ```json
 {
@@ -87,14 +93,24 @@ If one of these dates has no more bookings available, you can change its individ
         "type": "Unavailable"
       }
     }
-  ]
+  ],
+  "...": "..." // Other properties omitted for brevity
 }
 ```
 
-Note that you may omit the `bookingAvailability` property on the top level, as it will automatically be set based on the `bookingAvailability` of each `subEvent`. If you include it anyway, it will be ignored.
+You may omit the `bookingAvailability` property on the top level as it will automatically be set based on the `bookingAvailability` of each `subEvent`. If you include it anyway, it will be ignored.
 
-When at least one `subEvent` has its `bookingAvailability.type` set to `Available`, the top-level `bookingAvailability.type` will automatically be set to `Available` since there are still tickets/seats/reservations available for one or more dates. 
+The top-level `bookingAvailability` is determined as follows:
 
-When all subEvents have their `bookingAvailability.type` set to `Unavailable`, the top-level `bookingAvailability.type` will also be set to `Unavailable` since this means that all tickets/seats/reservations for all dates are booked.
+* When at least one `subEvent` has its `bookingAvailability.type` set to `Available`, the top-level `bookingAvailability.type` will automatically be set to `Available` since there are still tickets/seats/reservations available for one or more dates. 
+* When all subEvents have their `bookingAvailability.type` set to `Unavailable`, the top-level `bookingAvailability.type` will also be set to `Unavailable` since this means that all tickets/seats/reservations for all dates are booked.
 
-**Events with calendarType `periodic` and `permanent`** span a larger period and have a schedule based on recurring `openingHours`. It is currently not possible to specify their booking availability because it is unlikely that they are completely booked for their complete duration (especially for permanent events), and there is no way to mark a specific date or timeslot as fully booked on events without a `subEvent` property at this moment.
+Alternatively, you can set the top-level `bookingAvailability` by using the separate [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. This endpoint is the equivalent of setting the same `bookingAvailability` on every `subEvent` of the event when updating it in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put).
+
+### calendarType periodic/permanent
+
+Events with calendarType `periodic` and `permanent` span a larger period and have a schedule based on recurring `openingHours`.
+
+Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
+
+It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
