@@ -171,7 +171,7 @@ When the event is registered successfully, UiTPAS will automatically add the cor
 
 ## Getting UiTPAS prices for an event in UiTdatabank
 
-While UiTPAS automatically calculates and stores the discounted UiTPAS prices for an event, they are currently not returned by default when [fetching the event details from UiTdatabank](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/get-a-event).
+While UiTPAS automatically calculates and stores the discounted UiTPAS prices for an event, they are currently not returned by default when [fetching the event details from UiTdatabank](/reference/entry.json/paths/~1events~1{eventId}/get).
 
 To include the UiTPAS prices of an event when fetching it, you must add an `embedUitpasPrices` query parameter to the URL and set it to `true`.
 
@@ -268,7 +268,7 @@ For example:
 }
 ```
 
-You may set this property when creating the event, or when [updating](./update.md) it later. You can also set it via the [`PUT /events/{eventId}/audience`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/update-a-event-audience) endpoint.
+You may set this property when creating the event, or when [updating](./update.md) it later. You can also set it via the [`PUT /events/{eventId}/audience`](/reference/entry.json/paths/~1events~1{eventId}~1audience/put) endpoint.
 
 ## More info
 

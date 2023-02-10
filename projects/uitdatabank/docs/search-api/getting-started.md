@@ -27,13 +27,13 @@ Search API v3 can be reached at two URLs:
 
 Search API consists of three endpoints to query events and/or places:
 
-* [`GET /events`](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-events) to query events
-* [`GET /places`](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-places) to query places
-* [`GET /offers`](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-offers) to query both events and places at the same time
+* [`GET /events`](/reference/search.json/paths/~1events/get) to query events
+* [`GET /places`](/reference/search.json/paths/~1places/get) to query places
+* [`GET /offers`](/reference/search.json/paths/~1offers/get) to query both events and places at the same time
 
 These three endpoints all support the same URL parameters to perform queries and/or filters.
 
-Additionally, Search API also has a [`GET /organizers`](https://docs.publiq.be/docs/uitdatabank/search-api/reference/operations/list-organizers) endpoint to query organizers. This endpoint supports different URL parameters than the ones for events and places, because organizers do not share the exact same properties as events and places.
+Additionally, Search API also has a [`GET /organizers`](/reference/search.json/paths/~1organizers/get) endpoint to query organizers. This endpoint supports different URL parameters than the ones for events and places, because organizers do not share the exact same properties as events and places.
 
 ## Your first request
 
