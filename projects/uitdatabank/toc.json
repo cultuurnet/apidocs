@@ -92,12 +92,6 @@
             },
             {
               "type": "item",
-              "title": "Copying an existing event",
-              "uri": "/docs/entry-api/events/copy.md",
-              "slug": "entry-api/events/copying-an-existing-event"
-            },
-            {
-              "type": "item",
               "title": "Updating an event",
               "uri": "/docs/entry-api/events/update.md",
               "slug": "entry-api/events/updating-an-event"
@@ -161,6 +155,12 @@
               "title": "Publishing an organizer",
               "uri": "/docs/entry-api/organizers/publish.md",
               "slug": "entry-api/organizers/publishing-an-organizer"
+            },
+            {
+              "type": "item",
+              "title": "Linking an organizer to an event or place",
+              "uri": "/docs/entry-api/organizers/linking.md",
+              "slug": "entry-api/organizers/linking-to-an-event-or-place"
             },
             {
               "type": "item",

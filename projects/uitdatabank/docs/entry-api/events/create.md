@@ -11,7 +11,13 @@ Before diving in, make sure you have read the following guides first:
 
 Anyone can create new events in UiTdatabank by using either a user access token or a client access token.
 
-The user or client that created the event will become the `creator` of the event, which allows them to later make changes to the event or delete it.
+The user or client that created the event will become the `creator` of the event, which allows them to later make changes to the event or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
+
+<!-- theme: warning -->
+
+> When you use a client access token to create events, your users will not be able to see those events in their dashboard or edit them when logging in on the [UiTdatabank web application](https://uitdatabank.be), because your client will be the creator of the event and there is no other link between the event and the UiTiD users logging in on UiTdatabank.
+>
+> To fix this, you can [add your users as contributors](../shared/contributors.md) on your event after creating it.
 
 ## Overview
 

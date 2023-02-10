@@ -3,16 +3,36 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
+    },
+    {
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/authentication.md",
+      "slug": "authentication"
+    },
+    {
+      "type": "item",
+      "title": "OpenAPI file",
+      "uri": "docs/openapi.md",
+      "slug": "openapi"
+    },
+    {
+      "type": "item",
+      "title": "Postman collection",
+      "uri": "docs/postman.md",
+      "slug": "postman"
     },
     {
       "type": "divider",
-      "title": "API References"
+      "title": "API Reference"
     },
     {
       "type": "item",
       "title": "Partner API",
-      "uri": "reference/partner-api.json"
+      "uri": "reference/partner-api.json",
+      "slug": "partner-api/reference"
     }
   ]
 }
