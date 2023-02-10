@@ -2,13 +2,7 @@
 stoplight-id: c7be5835e744b
 ---
 
-<!-- 
-  @todo 
-  Refer to the guide about creating new events first. 
-  Permissions: Who can create school events?
--->
-
-# Creating a school event
+# School events
 
 School events are events that are specifically organized and intended for:
 
@@ -17,29 +11,28 @@ School events are events that are specifically organized and intended for:
 
 School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but not on UiTinVlaanderen.
 
-> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface if you only organize a limited number of school events per year.
+Creating a school event is very similar to [creating a regular new event](./create.md), so it is recommended to read that guide first.
+
+> There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface, instead of building an API integration, if you only organize a limited number of school events per year.
 >
 > For questions about school events, please contact <content.cultuurkuur@publiq.be>.
 
+## Required permissions
+
+As with regular events, anyone can create new school events in UiTdatabank by using either a user access token or a client access token.
+
+The user or client that created the event will become its `creator`, which allows them to later make changes to it or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
+
 ## Types
 
-We distinguish 3 different types of school events:
-
-1. **School performances** are events of which both the date and the location is known in advance.
-2. **Guided tours** are events that have no specific date, but they do have a location.
-3. **Bookable events** are events that have no specific date and location (or the date and location is not known in advance). Both the date and the location are determined in mutual agreement between the organizer or artist and the consumer (school).
+We distinguish 3 different types of school events.
 
 ### School performances
 
-School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
+School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in "hetpaleis" on 14/05/2023, from 14:30 to 16:00.
 
 * ✅ date is known in advance
 * ✅ location is known in advance
-
-Since school performances both have a date and a location, you can create them in a very similar way to regular events:
-
-* you can use a calendarType of your preference (`single`, `multiple` or `periodic`)
-* for the location you must use the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
 
 ### Guided tours
 
@@ -47,11 +40,6 @@ Guided tours are events that have no specific date (or the date is not known in 
 
 * ❌ date is not known in advance
 * ✅ location is known in advance
-
-In order to create a guided school tour you must use:
-
-* calendarType `permanent`
-* the URL of an existing place as `location.@id` in the `POST /events` request of the event. More detailed documentation about reusing existing places can be found in [this guide](../places/finding-and-reusing-places.md).
 
 ### Bookable events
 
@@ -62,25 +50,17 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 * ❌ date is not known in advance
 * ❌ location is not known in advance
 
-In order to create a bookable school event you must use
+## Creating a school event
 
-* calendarType `permanent`
-* use the URL of the "location in consultation with the school" as `location.@id` in the `POST /events` request of the bookable events
+Creating a school event is the same as [creating a regular event](./create.md), but with some extra required properties:
 
-**URL of the location in consultation with the school**:
+1. The `audience.audienceType` property must be set to `education`
+2. The event must be linked to an `organizer` that has the `Cultuurkuur` label
+3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events), the `calendarType` must be set to `permanent`
+4. In case of a [bookable event](#bookable-events), the *"Location in consultation with the school"* place must be used for the location
+5. The event must have at least one label that indicates the education level of the target audience
 
-* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
-* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
-
-## How to create a school event
-
-For the creation of school events several extra requirements apply:
-
-1. The `audienceType` must be set to `education`
-2. The event must have an `organizer` that has the `Cultuurkuur` label
-3. Specific education related `labels` are mandatory
-4. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events): the `calendarType` must be set to `permanent`
-5. In case of a [bookable event](#bookable-events): the `location in consultation with the school` must be used for the location
+We will go over these required properties in more detail below, followed by some examples.
 
 ### audienceType
 
@@ -88,7 +68,7 @@ For school events you must include an extra property `audienceType` and set the 
 
 ```json
 {
-"audience": {
+  "audience": {
     "audienceType": "education"
   }
 }
@@ -118,6 +98,39 @@ Prefix this value with the host url of the according environment and use this as
 ```
 
 > Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on Cultuurkuur](https://www.cultuurkuur.be/faq/hoe-voeg-ik-mijn-organisatie-toe-op-cultuurkuur).
+
+### calendarType
+
+In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events) you must set the value for the `calendarType` property to `permanent`.
+
+```json
+{
+  "calendarType": "permanent"
+}
+```
+
+In case of [school performances](#school-performances), you must set the `calendarType` property to `single`, `multiple` or `periodic` depending on the schedule of the performance.
+
+See the [guide about calendar info](../shared/calendar-info.md) for more details.
+
+### location
+
+In case of a [bookable event](#bookable-events) you must use the url of the *"Location in consultation with the school"* place as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+
+On the other hand, [school performances](#school-performances) and [guided tours](#guided-tours) must be linked to the place that they are happening at.
+
+**URLs for "location in consultation with school" places**:
+
+* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
+* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
+
+```json
+{
+  "location": {
+    "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
+  }
+}
+```
 
 ### labels
 
@@ -150,7 +163,7 @@ Subject labels are used to specify the learning objective of the school event.
 | Duurzaamheid, natuur en milieu              | `cultuurkuur_Duurzaamheid, natuur en milieu`              |
 | Filosofie religie                           | `cultuurkuur_Filosofie-religie`                           |
 | Internationale - Europese thema's           | `cultuurkuur_Internationale - Europese thema's`           |
-| kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
+| Kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
 | Leren leren                                 | `cultuurkuur_Leren leren`                                 |
 | Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` |
 | Media                                       | `cultuurkuur_Media`                                       |
@@ -161,9 +174,9 @@ Subject labels are used to specify the learning objective of the school event.
 
 #### Education level labels
 
-Education level labels indicate to which education levels (grades) the school event is aimed at.
+Each school event must have **at least one** education level label.
 
-> A school event must have **at least one** education level label.
+Education level labels indicate to which education levels (grades) the school event is aimed at.
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
@@ -339,38 +352,11 @@ The following level 4 labels must always be combined with
 | Derde graad TSO                     | `cultuurkuur_derde-graad-TSO`                   |
 | Derde graad Voorbereidend jaar HO   | `cultuurkuur_derde-graad-Voorbereidend-jaar-HO` |
 
-### calendarType
-
-In case of a [guided tours](#guided-tours) or [bookable event](#bookable-events) you must set the value for the `calendarType` property to `permanent`.
-
-```json
-{
-  "calendarType": "permanent"
-}
-```
-
-### location in consultation with the school
-
-In case of a [bookable event](#bookable-events) you must use the url of the "location in consultation with the school" as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
-
-**URLs**:
-
-* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
-* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
-
-```json
-{
-"location": {
-    "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
-  }
-}
-```
-
 ## Request body examples
 
-**school performance**
+### School performance
 
-Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, 14:30 - 16:00 PM.
+Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, from 14:30 to 16:00.
 
 ```json
 {
@@ -410,7 +396,7 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
 }
 ```
 
-**guided tour**
+### Guided tour
 
 Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at university and college students.
 
@@ -440,9 +426,9 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
 }
 ```
 
-**bookable event**
+### Bookable event
 
-Example of a bookable school event aimed at students of "derde graad BSO":
+Example of a bookable school event aimed at students of "derde graad BSO". Note that the location points to the *"Locatie in overleg met de school"* place on the test environment in this case.
 
 ```json
 {
