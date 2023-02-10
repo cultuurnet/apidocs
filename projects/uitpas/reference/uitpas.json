@@ -3090,7 +3090,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "status": "ACTIVE",
+                        "status": "EXPIRED",
                         "endDate": "2024-04-30T21:59:00"
                       },
                       "messages": [
@@ -3197,7 +3197,7 @@
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
-                        "status": "ACTIVE",
+                        "status": "EXPIRED",
                         "endDate": "2024-04-30T21:59:00"
                       },
                       "messages": [
@@ -5382,7 +5382,7 @@
           },
           "socialTariff": {
             "type": "object",
-            "description": "Information about the possible social tariff of the passholder. This object is always present, however a passholder is only entitled to social tariff if the state property has value `ACTIVE`.",
+            "description": "Information about the possible social tariff of the passholder. This object is always present, however a passholder is only entitled to social tariff if the `status` property has value `ACTIVE`.",
             "required": [
               "status"
             ],
