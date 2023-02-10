@@ -223,6 +223,6 @@ Keep the following restrictions in mind:
 
 You can also update the `attendanceMode` and/or `onlineUrl` of an event using the following endpoints if you do not want to use the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint to update the event completely:
 
-* [`PUT /events/{eventId}/attendance-mode`](reference/entry.json/paths/~1events~1{eventId}~1attendance-mode/put)
+* [`PUT /events/{eventId}/attendance-mode`](/reference/entry.json/paths/~1events~1{eventId}~1attendance-mode/put)
 * [`PUT /events/{eventId}/online-url`](/reference/entry.json/paths/~1events~1{eventId}~1online-url/put)
 * [`DELETE /events/{eventId}/online-url`](/reference/entry.json/paths/~1events~1{eventId}~1online-url/delete)
