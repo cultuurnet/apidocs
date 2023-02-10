@@ -131,7 +131,7 @@ Alternatively, you can use the [`PUT /events/{eventId}/workflow-status`](/refere
 
 ### When "importing" events (deprecated)
 
-In the past, events were typically created by API integrators by "importing" them via the [`POST /imports/events`](/reference/entry.json/paths/~1imports~1events~1{eventId}/post) endpoint.
+In the past, events were typically created by API integrators by "importing" them via the [`POST /imports/events`](/reference/entry.json/paths/~1imports~1events/post) endpoint.
 
 If you use this endpoint, your event will automatically get the workflow status `READY_FOR_VALIDATION` instead of `DRAFT`, for backward compatibility with existing integrations.
 
