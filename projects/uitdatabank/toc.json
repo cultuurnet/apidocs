@@ -104,9 +104,9 @@
             },
             {
               "type": "item",
-              "title": "Marking an event as sold out",
+              "title": "Sharing ticket/reservation availability",
               "uri": "/docs/entry-api/events/booking-availability.md",
-              "slug": "entry-api/events/marking-an-event-as-sold-out"
+              "slug": "entry-api/events/sharing-ticket-or-reservation-availability"
             },
             {
               "type": "item",
@@ -206,9 +206,9 @@
             },
             {
               "type": "item",
-              "title": "Marking a place as sold out",
+              "title": "Sharing ticket/reservation availability",
               "uri": "/docs/entry-api/places/booking-availability.md",
-              "slug": "entry-api/places/marking-a-place-as-sold-out"
+              "slug": "entry-api/places/sharing-ticket-or-reservation-availability"
             },
             {
               "type": "item",
