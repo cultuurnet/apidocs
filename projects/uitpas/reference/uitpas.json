@@ -5399,7 +5399,7 @@
               "endDate": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Exact expiration date of the passholder's entitlement to a social tariff. This property must not be used to determine the social tariff status, because `status` can be `ACTIVE` while the `endDate` is in the past during a 'grace period'. This property is not available when status is `NONE`. ",
+                "description": "Exact expiration date of the passholder's entitlement to a social tariff. This property must not be used to determine the social tariff status, because `status` can be `ACTIVE` while the `endDate` is in the past during a 'grace period'. This property is not available when status is `NONE`.",
                 "readOnly": true
               }
             }
