@@ -112,6 +112,7 @@ The top-level `status` is determined as follows:
 * When all subEvents have their `status.type` set to `Unavailable`, the top-level `status.type` will also be set to `Unavailable` since this means that all dates are cancelled.
 * In case of `calendarType` `single`, the top-level `status` will automatically get the same `reason` as the one in the `subEvent` property. In case of `calendarType` `multiple`, the top-level `status` will never contain a `reason` because the reasons can be different from date to date.
 
+Alternatively, you can set the top-level `status` by using the separate [`PUT /events/{eventId}/status`](/reference/entry.json/paths/~1events~1{eventId}~1status/put) endpoint. This endpoint is the equivalent of setting the same `status` on every `subEvent` of the event when updating it in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put).
 ### With calendarType "periodic" or "multiple"
 
 To cancel an event with calendarType `periodic` or `permanent`, update the (top-level) `status.type` property and set it to `Unavailable`.
