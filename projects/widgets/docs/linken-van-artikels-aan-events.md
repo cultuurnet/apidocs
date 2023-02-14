@@ -23,7 +23,7 @@ BRUZZ schreef een artikel over [de miljoenste bezoeker in Trainworld en de nieuw
 
 <!-- theme: success -->
 
-> Eens zo'n tipsblok geïntegreerd is in een artikel wordt dat artikel automatisch gelinkt aan het evenement in UiTdatabank. Het artikel verschijnt nu bij het evenement op [UiTinVlaanderen](https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe) en tal van andere UiTagenda's.
+> Eens zo'n tipsblok geïntegreerd is in een artikel wordt dat artikel automatisch gelinkt aan het evenement in UiTdatabank. Het artikel verschijnt nu bij het evenement op UiTinVlaanderen en tal van andere UiTagenda's.
 
 ![artikel-bruzz-op-uiv.png](../assets/images/artikel-bruzz-op-uiv.png)
 

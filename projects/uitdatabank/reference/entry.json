@@ -1548,6 +1548,117 @@
         ]
       }
     },
+    "/events/{eventId}/contributors": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "event-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "contributors - update",
+        "operationId": "event-contributors-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The contributors have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the list of contributors on the event. These users will have edit rights on the event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-contributors-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "info@publiq.be",
+                    "vragen@publiq.be"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of contributors of the event. Previous contributors of the event that are not included in this list will be removed."
+        }
+      }
+    },
     "/events/{eventId}/description/{language}": {
       "parameters": [
         {
@@ -4669,6 +4780,117 @@
         ]
       }
     },
+    "/places/{placeId}/contributors": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "place-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Places"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the place.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "contributors - update",
+        "operationId": "place-contributors-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The contributors have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Places"
+        ],
+        "description": "Updates the list of contributors on the place. These users will have edit rights on the place.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-contributors-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "info@publiq.be",
+                    "vragen@publiq.be"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of contributors of the place. Previous contributors of the place that are not included in this list will be removed."
+        }
+      }
+    },
     "/places/{placeId}/description/{language}": {
       "parameters": [
         {
@@ -6654,6 +6876,117 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      }
+    },
+    "/organizers/{organizerId}/contributors": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "get": {
+        "summary": "contributors - get",
+        "operationId": "organizer-contributors-get",
+        "responses": {
+          "200": {
+            "description": "An array of contributors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/common-contributors.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Returns a JSON array of contributors, meaning users that have edit rights on the organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "contributors - update",
+        "operationId": "organizer-contributors-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The contributors have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Updates the list of contributors on the organizer. These users will have edit rights on the organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-contributors-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "info@publiq.be",
+                    "vragen@publiq.be"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of contributors of the organizer. Previous contributors of the organizer that are not included in this list will be removed."
+        }
       }
     },
     "/organizers/{organizerId}/description/{language}": {

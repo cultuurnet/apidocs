@@ -13,9 +13,15 @@ Anyone can create new events in UiTdatabank by using either a user access token 
 
 The user or client that created the event will become the `creator` of the event, which allows them to later make changes to the event or delete it. In some cases other users or clients may also be able to edit the event afterward. See the permissions info in the guide about [updating an event](./update.md) for more info.
 
+<!-- theme: warning -->
+
+> When you use a client access token to create events, your users will not be able to see those events in their dashboard or edit them when logging in on the [UiTdatabank web application](https://uitdatabank.be), because your client will be the creator of the event and there is no other link between the event and the UiTiD users logging in on UiTdatabank.
+>
+> To fix this, you can [add your users as contributors](../shared/contributors.md) on your event after creating it.
+
 ## Overview
 
-You can create a new event by making a single HTTP request to the [`POST /events`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/create-a-event) endpoint. If successful, the event will be created and the response will contain the event's id and URL which you can store to make changes to the event later.
+You can create a new event by making a single HTTP request to the [`POST /events`](/reference/entry.json/paths/~1events/post) endpoint. If successful, the event will be created and the response will contain the event's id and URL which you can store to make changes to the event later.
 
 A request to create a new event for a music concert happening on a single evening in the Ancienne Belgique, with only the required fields, looks like this:
 
@@ -119,7 +125,7 @@ Let's take a closer look at the properties of an event.
 
 ## Required properties
 
-Every event has a couple of properties that are required to create it, and that are always guaranteed to be on existing events. A summary of every required property is provided below, but you can find more details in the [complete event model](../../../models/event-with-read-example.json) and [`POST /events`](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/create-a-event) endpoint documentation.
+Every event has a couple of properties that are required to create it, and that are always guaranteed to be on existing events. A summary of every required property is provided below, but you can find more details in the [complete event model](../../../models/event-with-read-example.json) and [`POST /events`](/reference/entry.json/paths/~1events/post) endpoint documentation.
 
 ### mainLanguage
 
@@ -186,7 +192,7 @@ Example for an event happening at the Ancienne Belgique (id `787d7420-c06f-4935-
 }
 ```
 
-After creating the event, the rest of the place's data will be embedded automatically in the `location` property when you [fetch the event](https://docs.publiq.be/docs/uitdatabank/entry-api/reference/operations/get-a-event) from UiTdatabank. That way you don't need to fetch the place separately when you want to display the event with its location data (like the address) somewhere.
+After creating the event, the rest of the place's data will be embedded automatically in the `location` property when you [fetch the event](/reference/entry.json/paths/~1events~1{eventId}/get) from UiTdatabank. That way you don't need to fetch the place separately when you want to display the event with its location data (like the address) somewhere.
 
 To find the right place URI to use as `@id`, read our guide about [finding and reusing existing places](../places/finding-and-reusing-places.md). If the place that you need does not exist yet in UiTdatabank, you may also [create a new place](../places/create.md).
 
@@ -194,7 +200,7 @@ To find the right place URI to use as `@id`, read our guide about [finding and r
 
 This property contains a list of [taxonomy terms](../../taxonomy-api/terms.md) that categorize the event in one of various types and optionally a theme. Specific partners may also add accessibility facilities as terms.
 
-The possible taxonomy terms can be browsed via the [`GET /terms`](https://docs.publiq.be/docs/uitdatabank/taxonomy-api/reference/operations/list-terms) endpoint on the Taxonomy API.
+The possible taxonomy terms can be browsed via the [`GET /terms`](/reference/taxonomy.json/paths/~1terms/get) endpoint on the Taxonomy API.
 
 To create an event, at least one term of the domain `eventtype` and a `scope` that contains `events` is required. For example the following term that categorizes an event as a concert:
 

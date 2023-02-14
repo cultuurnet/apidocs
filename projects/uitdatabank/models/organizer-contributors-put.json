@@ -1,0 +1,4 @@
+{
+  "$ref": "./common-contributors.json",
+  "title": "organizer.contributors.put"
+}
