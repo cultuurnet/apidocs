@@ -134,49 +134,9 @@ On the other hand, [school performances](#school-performances) and [guided tours
 
 ### labels
 
-For school events, specific Cultuurkuur-related labels are mandatory. There are 3 different types of Cultuurkuur-related labels:
+For school events, specific Cultuurkuur-related labels are mandatory. 
 
-1. **Target group labels** are used to specify whether the event is for students or for teachers.
-2. **Subject labels** are used to define the learning objective of the school event.
-3. **Education level labels** indicate to which education levels (grades) the school event is aimed at.
-
-#### Target group labels
-
-Target group labels are used to specify whether the event is for students or for teachers.
-
-> A school event must have **exactly one** target group label.
-
-| Target group | Label                      |
-| :----------- | :------------------------- |
-| Students     | `cultuurkuur_Leerlingen`   |
-| Teachers     | `cultuurkuur_leerkrachten` |
-
-#### Subject labels
-
-Subject labels are used to specify the learning objective of the school event.
-
-> A school event must have **at least one** subject label.
-
-| Subject                                     | Label                                                     |
-| :------------------------------------------ | :-------------------------------------------------------- |
-| Actief Burgerschap                          | `cultuurkuur_Actief Burgerschap`                          |
-| Duurzaamheid, natuur en milieu              | `cultuurkuur_Duurzaamheid, natuur en milieu`              |
-| Filosofie religie                           | `cultuurkuur_Filosofie-religie`                           |
-| Internationale - Europese thema's           | `cultuurkuur_Internationale - Europese thema's`           |
-| Kunst en cultuur                            | `cultuurkuur_kunst-en-cultuur`                            |
-| Leren leren                                 | `cultuurkuur_Leren leren`                                 |
-| Lichamelijke, sociale en mentale gezondheid | `cultuurkuur_Lichamelijke, sociale en mentale gezondheid` |
-| Media                                       | `cultuurkuur_Media`                                       |
-| Mobiliteit                                  | `cultuurkuur_Mobiliteit`                                  |
-| Ondernemingszin                             | `cultuurkuur_Ondernemingszin`                             |
-| Taal                                        | `cultuurkuur_taal`                                        |
-| Wiskunde                                    | `cultuurkuur_Wiskunde`                                    |
-
-#### Education level labels
-
-Each school event must have **at least one** education level label.
-
-Education level labels indicate to which education levels (grades) the school event is aimed at.
+Each school event must have **at least one** education level label. Education level labels indicate to which education levels (grades) the school event is aimed at.
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
@@ -185,7 +145,7 @@ There is a hierarchical relationship between the different education level label
 * If a level 4 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 3, level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 3), `cultuurkuur_Gewoon-basisonderwijs` (level 2) and `cultuurkuur_basisonderwijs` (level 1)
 * If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
 
-##### Level 1 labels
+#### Level 1 labels
 
 | Education level          | Label (level 1)                            |
 | :----------------------- | :----------------------------------------- |
@@ -195,7 +155,7 @@ There is a hierarchical relationship between the different education level label
 | Volwassenenonderwijs     | `cultuurkuur_Volwassenenonderwijs`         |
 | Deeltijds kunstonderwijs | `cultuurkuur_Deeltijds-kunstonderwijs-DKO` |
 
-##### Level 2 labels
+#### Level 2 labels
 
 > A level 2 label must always be combined with a level 1 label.
 
@@ -229,7 +189,7 @@ The following labels must always be combined with level 1 label `cultuurkuur_Dee
 | Muziek                          | `cultuurkuur_muziek`                          |
 | Woordkunst & drama              | `cultuurkuur_Woordkunst-drama`                |
 
-##### Level 3 labels
+#### Level 3 labels
 
 > A level 3 label must always be combined with both a level 1 label and a level 2 label.
 
@@ -273,7 +233,7 @@ The following level 3 labels must always be combined with:
 | Secundair na Secundair (Se-n-Se)                      | `cultuurkuur_Secundair-na-secundair-(Se-n-Se)`                    |
 | Onthaalonderwijs voor anderstalige nieuwkomers (OKAN) | `cultuurkuur_Onthaalonderwijs-voor-anderstalige-nieuwkomers-OKAN` |
 
-##### Level 4 labels
+#### Level 4 labels
 
 > A level 4 label must always be combined with both a level 1, level 2 and level 3 label.
 
