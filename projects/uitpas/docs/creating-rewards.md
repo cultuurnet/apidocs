@@ -54,11 +54,11 @@ Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 
 {
- "organizers": {
+ "organizers": [
     {
       "id": "0ce87cbc-9299-4528-8d35-92225dc9489f"
     }
-  },
+  ],
   "title": "Gratis ticket Design Museum Brussels",
   "type": "POINTS",
   "points": 10,
