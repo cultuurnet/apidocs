@@ -3763,6 +3763,14 @@
             "in": "query",
             "name": "status",
             "description": "Include only rewards with this status. Also set `subset=ALL` to include non-ACTIVE rewards."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "isRedeemableBy",
+            "description": "Include only rewards that are redeemable by this passholder ID. This means the reward itself is within its redeem period, and all redeem constraints for the passholder are met. A client using this parameter needs `REWARDS_PASSHOLDER_READ` permission."
           }
         ]
       },
