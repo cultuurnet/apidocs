@@ -277,6 +277,8 @@ For example, when fetching your event or place from Entry API later:
 }
 ```
 
+Alternatively, you can use the [`POST /events/{eventId}/images`](/reference/entry.json/paths/~1events~1{eventId}~1images/post) and [`POST /places/{placeId}/images`](/reference/entry.json/paths/~1places~1{placeId}~1images/post) endpoints to add a single (previously uploaded) image to an event or place without including any other properties.
+
 ## Changing the main image
 
 
