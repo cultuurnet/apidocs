@@ -332,7 +332,7 @@ Alternatively, you can use the [`POST /organizers/{organizerId}/images`](/refere
 
 ## Changing the main image
 
-When creating an event, place or organizer, or when updating them in their entirety, the main image is based on the first entry in the `mediaObjects` property (events/places) or `images` property (organizers). So you can influence which image will become the main image, by setting it in the first position of the array.
+When creating an event, place or organizer, or when updating them in their entirety, the main image is based on the first entry in the `mediaObject` property (events/places) or `images` property (organizers). So you can influence which image will become the main image, by setting it in the first position of the array.
 
 ```json
 {
