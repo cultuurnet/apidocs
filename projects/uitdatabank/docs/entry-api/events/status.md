@@ -4,8 +4,6 @@ When [creating](./create.md) or (usually) when [updating](./update.md) your even
 
 Cancelled events automatically get an *"(geannuleerd)"* label next to their date(s) in online calendars that use [calendar summaries](../../search-api/embedding-calendar-summaries.md) to render the calendar information. For example, on UiTinVlaanderen:
 
-<!-- focus: false -->
-
 ![Screenshot of a summary of the event "Boshyacintenfestival" on UiTinVlaanderen, as an example of the "(Geannuleerd)" label](../../../assets/images/event-cancelled.png)
 
 *Note that when you cancel or postpone your event, you should **not** add AFGELAST or something similar in the title yourself.*
