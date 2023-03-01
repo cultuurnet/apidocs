@@ -8,7 +8,7 @@ Cancelled events automatically get an *"(geannuleerd)"* label next to their cale
 
 ![Screenshot of a summary of the event "Boshyacintenfestival" on UiTinVlaanderen, as an example of the "(Geannuleerd)" label](../../../assets/images/event-cancelled.png)
 
-*Note that when you cancel or postpone your event, you should **not** add AFGELAST or something similar in the title, as it will be redundant as can be seen above.*
+*Note that when you cancel or postpone your event, you should **not** add AFGELAST or something similar in the title yourself.*
 
 In this guide you will learn how to postpone and/or cancel your events, or specific dates of your events, via Entry API.
 
