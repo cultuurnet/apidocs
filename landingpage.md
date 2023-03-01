@@ -24,6 +24,19 @@ If you want to build an API integration:
 
 Alternatively, check out our flexible plug and play [Widgets](https://docs.publiq.be/docs/widgets) to easily add an online calendar to your website without building an API integration.
 
+## Versioning strategy
+
+At publiq, we aim for API evolution over versioning.
+
+Our APIs only have a major version number (for example Search API v3, UiTPAS API v4, ...), which is always supported over the span of many years.
+
+When we make changes to an existing version of an API, we make sure that the changes are backward compatible with existing integrations.
+For example, we may add support for extra **optional** properties in `POST`/`PUT`/`PATCH` requests, we may start returning new properties in `GET` responses (which a typical existing integration should ignore), or we may add new **optional** query parameters to URLs.
+But we will never add new required properties in `POST`/`PUT`/`PATCH` requests, required URL query parameters, and so on.
+
+At some point a new major version of an API may be introduced. While this usually requires a rewrite of existing integrations, this is always communicated well beforehand to all known integrators and we always keep supporting the old version for a long time so that you have sufficient time to switch to the new version.
+We usually only introduce a new major version when we need to make major changes after many years, for example when we switched from an old XML data model to a more modern JSON model in multiple APIs.
+
 ## Contact us
 
 For general information about partnerships or the setup of [Widgets](https://docs.publiq.be/docs/widgets) please email us at partnerships@publiq.be.
