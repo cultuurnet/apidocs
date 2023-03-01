@@ -279,6 +279,57 @@ For example, when fetching your event or place from Entry API later:
 
 Alternatively, you can use the [`POST /events/{eventId}/images`](/reference/entry.json/paths/~1events~1{eventId}~1images/post) and [`POST /places/{placeId}/images`](/reference/entry.json/paths/~1places~1{placeId}~1images/post) endpoints to add a single (previously uploaded) image to an event or place without including any other properties.
 
+### Organizers
+
+You can link previously uploaded images to an organizer when creating it or updating it in its entirety using the `images` property. For example:
+
+```json
+{
+  "images": [
+    {
+      "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c"
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/images/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+    }
+  ]
+}
+```
+*(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
+
+Afterward, UiTdatabank will automatically add more properties like its `description` and `copyrightHolder` to each `images` entry. 
+
+Additionally, a new `mainImage` property will be added on the organizer with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
+
+For example, when fetching your organizer from Entry API later:
+```json
+{
+  "mainImage": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+  "images": [
+    {
+      "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
+      "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
+      "contentUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+      "thumbnailUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
+      "description": "Example description",
+      "copyrightHolder": "Example copyrightHolder",
+      "inLanguage": "en"
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/images/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "id": "5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "contentUrl": "https://images-test.uitdatabank.be/5cf42d51-3a4f-46f0-a8af-1cf672be8c84.jpeg",
+      "thumbnailUrl": "https://images-test.uitdatabank.be/5cf42d51-3a4f-46f0-a8af-1cf672be8c84.jpeg",
+      "description": "Other example description",
+      "copyrightHolder": "Other example copyrightHolder",
+      "inLanguage": "en"
+    }
+  ]
+}
+```
+
+Alternatively, you can use the [`POST /organizers/{organizerId}/images`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/post) endpoint to add a single (previously uploaded) image to an organizer without including any other properties.
+
 ## Changing the main image
 
 
