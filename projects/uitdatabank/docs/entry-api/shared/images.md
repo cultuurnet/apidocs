@@ -332,7 +332,27 @@ Alternatively, you can use the [`POST /organizers/{organizerId}/images`](/refere
 
 ## Changing the main image
 
+When creating an event, place or organizer, or when updating them in their entirety, the main image is based on the first entry in the `mediaObjects` property (events/places) or `images` property (organizers). So you can influence which image will become the main image, by setting it in the first position of the array.
 
+```json
+{
+  "images": [
+    {
+      // This image will become the main image
+      "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c"
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/images/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+    }
+  ]
+}
+```
+
+Alternatively, you can use one of the following endpoints to change the main image to another (previously linked) image without updating any other properties:
+
+* [`PUT /events/{eventId}/images/main`](/reference/entry.json/paths/~1events~1{eventId}~1images/main/put) for events
+* [`PUT /places/{placeId}/images/main`](/reference/entry.json/paths/~1places~1{placeId}~1images/main/put) for places
+* [`PUT /organizers/{organizerId}/images/main`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/main/put) for organizers
 
 ## Editing a linked image
 
