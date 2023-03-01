@@ -3059,6 +3059,9 @@
         ]
       }
     },
+    "/passes": {
+      "parameters": []
+    },
     "/passes/{uitpasNumber}": {
       "parameters": [
         {
@@ -3066,7 +3069,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve pass",
+        "summary": "Retrieve pass by UiTPAS number",
         "tags": [
           "Passholders"
         ],
@@ -3079,12 +3082,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3093,12 +3101,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3141,7 +3166,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
+        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
       }
     },
     "/insz-numbers/{inszNumber}": {
@@ -3151,7 +3176,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve INSZ number",
+        "summary": "Retrieve pass by INSZ number",
         "tags": [
           "Passholders"
         ],
@@ -3164,12 +3189,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3178,12 +3208,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }                      
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3226,7 +3273,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to an INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission."
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -3236,7 +3283,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve chip number",
+        "summary": "Retrieve pass by chip number",
         "tags": [
           "Passholders"
         ],
@@ -3249,12 +3296,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3263,12 +3315,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }                      
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3311,7 +3380,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission."
       }
     },
     "/rewards": {
@@ -5272,8 +5341,13 @@
         "example": {
           "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
           "uitpasNumber": "0560002524314",
+          "firstName": "Jan",
           "points": 12,
           "postalCode": "1000",
+          "socialTariff": {
+            "status": "EXPIRED",
+            "endDate": "2022-12-31T22:59:59"
+          },          
           "messages": [
             {
               "level": "WARN",
@@ -5292,6 +5366,10 @@
             "description": "UiTPAS number of this pass",
             "readOnly": true
           },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the passholder."
+          },
           "points": {
             "type": "integer",
             "description": "Number of points of the passholder of this pass",
@@ -5301,6 +5379,30 @@
             "type": "string",
             "description": "Postal code of the passholder of this pass",
             "readOnly": true
+          },
+          "socialTariff": {
+            "type": "object",
+            "description": "Information about the possible social tariff of the passholder. This object is always present, however a passholder is only entitled to social tariff if the `status` property has value `ACTIVE`.",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "EXPIRED",
+                  "NONE"
+                ],
+                "description": "Status of the social tariff:\n- `ACTIVE`: the passholder is entitled to social tariff\n- `EXPIRED`: the passholder is NOT entitled to social tariff anymore\n- `NONE`: the passholder is NOT entitled to social tariff"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Exact expiration date of the passholder's entitlement to a social tariff. This property must not be used to determine the social tariff status, because `status` can be `ACTIVE` while the `endDate` is in the past during a 'grace period'. This property is not available when status is `NONE`.",
+                "readOnly": true
+              }
+            }
           },
           "messages": {
             "type": "array",
@@ -5334,8 +5436,10 @@
         "required": [
           "passholderId",
           "uitpasNumber",
+          "firstName",
           "points",
-          "postalCode"
+          "postalCode",
+          "socialTariff"
         ],
         "readOnly": true
       },
