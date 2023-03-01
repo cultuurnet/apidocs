@@ -76,7 +76,7 @@ For example on an event with multiple dates:
 To cancel an event with calendarType `single` or `multiple`, update the `status.type` property of the `subEvent` objects that should be cancelled and set it to `Unavailable`.
 
 Optionally, you can include a `reason` property to explain why the event is cancelled on that date. The `reason` property must be an object with language codes like `name`.
-
+The `reason` can only be combined with the statuses `Unavailable` and `TemporarilyUnavailable`. When setting a (sub)Event back to `Available`, the reason(s) will be automatically removed.
 For example to cancel one date of multiple:
 
 ```json
