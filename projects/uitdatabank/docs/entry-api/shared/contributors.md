@@ -1,12 +1,12 @@
 # Contributors
 
-When you create a new [event](../events/create.md), [place](../places/create.md) or [organizer](../organizers/create.md) via Entry API, the owner of the access token that you used becomes the creator of the event/place/organizer. Afterward, it is only editable using an access token of the same user/client (except for UiTdatabank administrators and sometimes content moderators).
+When you create a new [event](../events/create.md), [place](../places/create.md) or [organizer](../organizers/create.md) via Entry API using a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), that client will become the `creator` of the event/place/organizer. This means that it will only be editable afterward with a client access token for the same client. 
 
-For example, when you create a new event using a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token) your API client will be the `creator` of the event, and it will only be editable with a client access token for your client. Similarly, if you use a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) instead, only that user will be able to edit the event afterward.
+If you use a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) instead, that user will become the `creator` of the event/place/organizer and it will only be editable with a user access token for the same user.
 
-In some cases, you may want to give specific other UiTdatabank users also permission to edit the event/place/organizer that you created. For example, so they can add extra info in fields not supported by your integration.
+In some cases, you may want to give other specific UiTdatabank users also permission to edit the event/place/organizer that you created. For example, so they can add extra info in fields not supported by your integration via <https://www.uitdatabank.be>.
 
-In this guide, you will learn how to add extra users as contributors on your event/place/organizer so that they see it in their dashboard on [UiTdatabank](https://www.uitdatabank.be) and are able to edit it if needed.
+In this guide, you will learn how to add extra users as contributors on your event/place/organizer so that they see it in their dashboard on [UiTdatabank](https://www.uitdatabank.be) and are able to edit it when needed.
 
 ## Scope
 
