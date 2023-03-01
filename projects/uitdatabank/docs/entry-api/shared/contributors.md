@@ -72,13 +72,41 @@ Content-Type: application/json
 
 ## Retrieving contributors
 
-For privacy reasons, contributors are not included in the JSON of events/places/organizers, as this data is publicly available. 
+For privacy reasons, only the creator of the event/place/organizer and users that have permission to edit it (including contributors themselves) are able to retrieve the list of contributors on an event/place/organizer.
 
-Instead, you can retrieve contributors of an event/place/organizer by sending a `GET` request to the same URL as for saving them. Only the creator of the event/place/organizer and users that have permission to edit it (including contributors themselves) are able to retrieve the contributors.
+For this reason, contributors are not included in the JSON of events/places/organizers by default, as this data is publicly available.
+
+However, you can include your client or user access token in the request to fetch the JSON of an event/place/organizer, in which case a `contributors` property will be included if you have sufficient permissions to view them (i.e. you can edit the event/place/organizer yourself).
+
+Example request:
+
+```http
+GET /events/787d7420-c06f-4935-b3c5-5cd5a1276796 HTTP/1.1
+Host: https://io-test.uitdatabank.be
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+Example response:
+```json
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@id": "https://io-test.uitdatabank.be/events/787d7420-c06f-4935-b3c5-5cd5a1276796",
+  "...": "...",
+  "contributors": [
+    "john.doe@acme.org",
+    "jane@acme.com",
+    "smith@ipsum.be"
+  ]
+}
+```
+
+Alternatively, you can retrieve contributors of an event/place/organizer by sending a `GET` request to the same URL as when saving them.
 
 Example request:
 ```http
-GET /events/787d7420-c06f-4935-b3c5-5cd5a1276796 HTTP/1.1
+GET /events/787d7420-c06f-4935-b3c5-5cd5a1276796/contributors HTTP/1.1
 Host: https://io-test.uitdatabank.be
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
