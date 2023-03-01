@@ -350,9 +350,9 @@ When creating an event, place or organizer, or when updating them in their entir
 
 Alternatively, you can use one of the following endpoints to change the main image to another (previously linked) image without updating any other properties:
 
-* [`PUT /events/{eventId}/images/main`](/reference/entry.json/paths/~1events~1{eventId}~1images/main/put) for events
-* [`PUT /places/{placeId}/images/main`](/reference/entry.json/paths/~1places~1{placeId}~1images/main/put) for places
-* [`PUT /organizers/{organizerId}/images/main`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/main/put) for organizers
+* [`PUT /events/{eventId}/images/main`](/reference/entry.json/paths/~1events~1{eventId}~1images~1main/put) for events
+* [`PUT /places/{placeId}/images/main`](/reference/entry.json/paths/~1places~1{placeId}~1images~1main/put) for places
+* [`PUT /organizers/{organizerId}/images/main`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images~1main/put) for organizers
 
 ## Editing a linked image
 
