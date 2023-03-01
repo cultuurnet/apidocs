@@ -248,7 +248,7 @@ You can link previously uploaded images to an event or place when creating or up
 
 Afterward, UiTdatabank will automatically add more properties like its `description` and `copyrightHolder` to each `mediaObject` entry. 
 
-Additionally, a new `image` property will be added on the event/place with a URL to the "main" image. This is the image that will be shown in online calendars on pages with search results.
+Additionally, a new `image` property will be added on the event/place with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
 
 For example, when fetching your event or place from Entry API later:
 ```json
