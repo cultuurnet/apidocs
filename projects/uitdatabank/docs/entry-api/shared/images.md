@@ -406,6 +406,16 @@ On organizers, you can overwrite the `description`, `copyrightHolder` and `inLan
 
 ## Removing a linked image
 
+To remove a linked image from an event, place or organizer when updating them in their entirety, you can simply leave out the image from the `mediaObject` property (events/places) or the `images` property (organizers).
+
+Alternatively you can use one of the following endpoints to remove a specific linked image without updating any other properties:
+
+* [`DELETE /events/{eventId}/images/{imageId}`](/reference/entry.json/paths/~1events~1{eventId}~1images~1{imageId}/delete) for events
+* [`DELETE /places/{placeId}/images/{imageId}`](/reference/entry.json/paths/~1places~1{placeId}~1images~1{imageId}/delete) for places
+* [`DELETE /organizers/{organizerId}/images/{imageId}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images~1{imageId}/delete) for organizers
+
+**Note that it is currently not possible to delete an uploaded image completely, you can only remove all links to it from your events, places and organizers.**
+
 ## Resizing an image
 
 Coming soon. <!-- @todo link to resizing guide in Search API when finished -->
