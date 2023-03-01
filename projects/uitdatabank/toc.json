@@ -420,6 +420,12 @@
             },
             {
               "type": "item",
+              "title": "Boosting",
+              "uri": "/docs/search-api/advanced/boosting.md",
+              "slug": "search-api/boosting"
+            },
+            {
+              "type": "item",
               "title": "Facets",
               "uri": "/docs/search-api/advanced/facets.md",
               "slug": "search-api/facets"
