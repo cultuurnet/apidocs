@@ -354,7 +354,55 @@ Alternatively, you can use one of the following endpoints to change the main ima
 * [`PUT /places/{placeId}/images/main`](/reference/entry.json/paths/~1places~1{placeId}~1images~1main/put) for places
 * [`PUT /organizers/{organizerId}/images/main`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images~1main/put) for organizers
 
-## Editing a linked image
+## Overwriting a linked image's properties
+
+By default, linked images on events, places and organizers will inherit the `description`, `copyrightHolder` and `inLanguage` properties from the uploaded image.
+
+You can overwrite these properties by explicitly including them in your create/update request. For example, on an event or place:
+
+```json
+{
+  "mediaObject": [
+    {
+      "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
+      "description": "Updated description"
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/images/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "copyrightHolder": "Updated copyrightHolder",
+      "inLanguage": "fr"
+    }
+  ]
+}
+```
+*(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
+
+Or on an organizer:
+```json
+{
+  "images": [
+    {
+      "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
+      "description": "Updated description"
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/images/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+      "copyrightHolder": "Updated copyrightHolder",
+      "inLanguage": "fr"
+    }
+  ]
+}
+```
+*(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
+
+Alternatively, you can overwite the `description` and `copyrightHolder` properties of a single linked image on an event or place via the following endpoints:
+
+* [`PUT /events/{eventId}/images/{imageId}`](/reference/entry.json/paths/~1events~1{eventId}~1images~1{imageId}/put) for events
+* [`PUT /places/{placeId}/images/{imageId}`](/reference/entry.json/paths/~1places~1{placeId}~1images~1{imageId}/put) for places
+
+On organizers, you can overwrite the `description`, `copyrightHolder` and `inLanguage` properties via the [`PATCH /organizers/{organizerId}/images`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/patch) endpoint.
+
+**Note that these properties will only be overwritten on the specific event, place or organizer that is created/updated.** Other events, places or organizers that have the same image linked will not automatically get these new `description`, `copyrightHolder` or `inLanguage` properties.
 
 ## Removing a linked image
 
