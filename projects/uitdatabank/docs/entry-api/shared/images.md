@@ -4,7 +4,7 @@ Images make your events, places and organizers stand out from the crowd and more
 
 Online calendars typically show a thumbnail of the first image per search result, so results with images are more likely to be checked out by visitors.
 
-In this guide you will learn how to add images to your events, places and organizers. It also covers updating and removing images.
+In this guide you will learn how to add images to your events, places and organizers. Additionally, you'll learn how to update or remove the images afterward.
 
 ## Scope
 
