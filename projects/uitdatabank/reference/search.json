@@ -1291,7 +1291,7 @@
         },
         "in": "query",
         "name": "facets[]",
-        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See (the guide about facets)[../docs/search-api/facets.md] for more information.",
+        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See (the guide about facets)[../docs/search-api/advanced/facets.md] for more information.",
         "style": "form",
         "explode": true
       },
