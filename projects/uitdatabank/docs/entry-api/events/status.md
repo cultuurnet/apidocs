@@ -109,7 +109,8 @@ Note that you may omit the `status` property on the top level, as it will automa
 The top-level `status` is determined as follows:
 
 * When at least one `subEvent` has its `status.type` set to `Available`, the top-level `status.type` will automatically be set to `Available` since there is at least one date that the event is still happening as scheduled. 
-* When all subEvents have their `status.type` set to `Unavailable`, the top-level `status.type` will also be set to `Unavailable` since this means that all dates are cancelled.
+* Otherwise, when at least one `subEvent` has its `status.type` set to `TemporarilyAvailable`, the top-level `status.type` will automatically be set to `TemporarilyAvailable` since there is still at least one date that the event still takes place, but on a later date.
+* Otherwise, the top-level `status.type` will automatically be set to `Unavailable` since every `subEvent` will have its `status.type` set to `Unavailable` which means that the event is cancelled completely.
 * In case of `calendarType` `single`, the top-level `status` will automatically get the same `reason` as the one in the `subEvent` property. In case of `calendarType` `multiple`, the top-level `status` will never contain a `reason` because the reasons can be different from date to date.
 
 Alternatively, you can set the top-level `status` by using the separate [`PUT /events/{eventId}/status`](/reference/entry.json/paths/~1events~1{eventId}~1status/put) endpoint. This endpoint is the equivalent of setting the same `status` on every `subEvent` of the event when updating it in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put).
