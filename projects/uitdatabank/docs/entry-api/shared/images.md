@@ -230,7 +230,7 @@ Note that just as when using cURL, the file name passed to `Psr7\Utils::tryFopen
 
 ### Events and places
 
-You can link previously uploaded images to an event or place when creating or updating it in its entirety using the `mediaObject` property. For example:
+You can link previously uploaded images to an event or place when creating or updating them in their entirety using the `mediaObject` property. For example:
 
 ```json
 {
