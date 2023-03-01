@@ -164,7 +164,7 @@ curl_close($curlHandler);
 
 Just like in the Javascript example, you do not need to set the `content-type` and `content-length` headers explicitly. Although in this case, if you do set them by accident, cURL will override them with its own values.
 
-Note that the file path in the `CURLFile` constructor **MUST** be a local file path on the server, it cannot be a HTTP(S) URL. If you want to upload an image that is not stored on the server that you are sending the request from, you can download the remote image first using `file_get_contents()` and `file_put_contents()`. For example:
+Note that the file path in the `CURLFile` constructor **MUST** be a local file path on the server, it cannot be an HTTP(S) URL. If you want to upload an image that is not stored on the server that you are sending the request from, you can download the remote image first using `file_get_contents()` and `file_put_contents()`. For example:
 
 ```php
 $imageUrl = 'https://example.com/example.png';
@@ -224,7 +224,7 @@ $response = $client->request('POST', 'http://io-test.uitdatabank.be/images', [
 var_dump($response);
 ```
 
-Note that just as when using cURL, the file name passed to `Psr7\Utils::tryFopen()` **MUST** be a local file path on the server. See [the cURL example above](#curl) for a solution to upload remote files with a HTTP(S) URL instead.
+Note that just as when using cURL, the file name passed to `Psr7\Utils::tryFopen()` **MUST** be a local file path on the server. See [the cURL example above](#curl) for a solution to upload remote files with an HTTP(S) URL instead.
 
 ### Response example
 
@@ -239,7 +239,7 @@ After successfully uploading your image, Entry API will send a JSON response lik
 
 You will need the `@id` property to link the image to an event, place or organizer next.
 
-Additionally, when you following the URL in the `@id` property you will recieve a response with all the details of your uploaded image:
+Additionally, when you follow the URL in the `@id` property you will receive a response with all the details of your uploaded image:
 
 ```json
 {
@@ -274,7 +274,7 @@ You can link previously uploaded images to an event or place when creating or up
 ```
 *(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
-Afterward, UiTdatabank will automatically all of the images' properties like their `description` and `copyrightHolder` to every `mediaObject` entry. 
+Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `mediaObject` entry. 
 
 Additionally, a new `image` property will be added on the event/place with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
 
@@ -325,7 +325,7 @@ You can link previously uploaded images to an organizer when creating it or upda
 ```
 *(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
-Afterward, UiTdatabank will automatically all of the images' properties like their `description` and `copyrightHolder` to every `images` entry. 
+Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `images` entry. 
 
 Additionally, a new `mainImage` property will be added on the organizer with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
 
@@ -423,7 +423,7 @@ Or on an organizer:
 ```
 *(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
-Alternatively, you can overwite the `description` and `copyrightHolder` properties of a single linked image on an event or place via the following endpoints:
+Alternatively, you can overwrite the `description` and `copyrightHolder` properties of a single linked image on an event or place via the following endpoints:
 
 * [`PUT /events/{eventId}/images/{imageId}`](/reference/entry.json/paths/~1events~1{eventId}~1images~1{imageId}/put) for events
 * [`PUT /places/{placeId}/images/{imageId}`](/reference/entry.json/paths/~1places~1{placeId}~1images~1{imageId}/put) for places
