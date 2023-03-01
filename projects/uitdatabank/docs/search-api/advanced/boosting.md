@@ -21,6 +21,7 @@ Keep in mind that results that do not match a (boosted) filter at all are always
 ```
 /events/?q=mediaObjectsCount:[1 TO *]^10 OR mediaObjectsCount:0
 ```
+
 *This query matches both events that have 1 or more image and boosts those, and events with exactly 0 images. Events with 0 images are not boosted in this case.*
 
 In another example, you may wish to boost all results with a specific label but also show results that do not have that label:
@@ -28,6 +29,7 @@ In another example, you may wish to boost all results with a specific label but 
 ```
 /events/?q=(labels:lorem^10) OR (NOT labels:lorem)
 ```
+
 *This query matches both events that have the `lorem` label and boosts those, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
 
 ## Negative boosting
@@ -35,9 +37,11 @@ In another example, you may wish to boost all results with a specific label but 
 You can influence the score or results negatively by using a boost value that is between `0` and `1`.
 
 For example:
+
 ```
 /events/?q=(labels:lorem^0.5) OR (NOT labels:lorem)
 ```
+
 *This query matches both events that have the `lorem` label and boosts those negatively, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
 
 Alternatively, you can positively boost the results that do not match a specific filter. For example, you can boost all events that do not have the label `lorem`:
@@ -45,6 +49,7 @@ Alternatively, you can positively boost the results that do not match a specific
 ```
 /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
 ```
+
 *This query matches both events that have the `lorem` label, and events without the `lorem` label and positively boosts the latter ones.*
 
 ## Restrictions
