@@ -295,7 +295,7 @@ You can link previously uploaded images to an organizer when creating it or upda
   ]
 }
 ```
-*(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
+*(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
 Afterward, UiTdatabank will automatically add more properties like its `description` and `copyrightHolder` to each `images` entry. 
 
