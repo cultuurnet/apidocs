@@ -1,0 +1,10 @@
+{
+  "title": "uri",
+  "type": "string",
+  "format": "uri",
+  "pattern": "^http(s?):([/|.|\\w|\\s|-])*\\.(?:jpeg|jpeg|gif|png)",
+  "examples": [
+    "https://www.example.com/sample.jpeg"
+  ],
+  "description": "A URI which links to a valid image."
+}
