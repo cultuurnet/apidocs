@@ -18,5 +18,9 @@
     "copyrightHolder": {
       "$ref": "./common-copyrightHolder.json"
     }
-  }
+  },
+  "required": [
+    "url",
+    "copyrightHolder"
+  ]
 }
