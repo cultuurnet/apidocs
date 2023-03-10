@@ -649,6 +649,9 @@
             "$ref": "#/components/parameters/website"
           },
           {
+            "$ref": "#/components/parameters/id"
+          },
+          {
             "$ref": "#/components/parameters/domain"
           },
           {
