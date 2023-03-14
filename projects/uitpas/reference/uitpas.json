@@ -3565,6 +3565,16 @@
           },
           {
             "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "organizerPostalCode",
+            "description": "Include only rewards applicable for organizers with this postal code. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
+          },
+          {
+            "schema": {
               "type": "string"
             },
             "in": "query",
