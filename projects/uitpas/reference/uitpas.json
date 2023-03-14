@@ -3576,6 +3576,16 @@
           },
           {
             "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "applicableCardSystemId",
+            "description": "Include only rewards applicable to passholders of this card system. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
+          },          
+          {
+            "schema": {
               "type": "string",
               "enum": [
                 "POINTS",
