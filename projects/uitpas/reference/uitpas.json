@@ -3438,7 +3438,8 @@
                           "points": 10,
                           "forKids": false,
                           "sport": false,
-                          "online": false
+                          "online": false,
+                          "featured": true
                         }
                       ],
                       "facet": {
@@ -3674,6 +3675,19 @@
               ]
             },
             "in": "query",
+            "name": "sort[featured]",
+            "description": "Sort on featured",
+            "style": "form"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "in": "query",
             "name": "sort[points]",
             "description": "Sort on reward points",
             "style": "form"
@@ -3744,6 +3758,14 @@
             "in": "query",
             "name": "forKids",
             "description": "Include only rewards with the forKids property true or false. If omitted, rewards with any forKids value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "featured",
+            "description": "Include only rewards with the featured property true or false. If omitted, rewards with any featured value are included."
           },
           {
             "schema": {
@@ -5927,6 +5949,10 @@
           "sport": {
             "type": "boolean",
             "description": "true if this is a sport reward"
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "true if this reward is currently set as 'featured'"
           },
           "online": {
             "type": "boolean",
