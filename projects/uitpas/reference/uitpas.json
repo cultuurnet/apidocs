@@ -3557,12 +3557,13 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array"
             },
             "in": "query",
             "name": "organizerId",
-            "description": "Include only rewards applicable for this organizer",
-            "style": "form"
+            "description": "Include only rewards applicable for this organizer. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
@@ -3576,13 +3577,24 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array"
             },
             "in": "query",
             "name": "owningCardSystemId",
-            "description": "Include only rewards of this card system",
-            "style": "form"
+            "description": "Include only rewards of this card system. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
           },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "applicableCardSystemId",
+            "description": "Include only rewards applicable to passholders of this card system. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
+          },          
           {
             "schema": {
               "type": "string",
