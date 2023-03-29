@@ -2075,7 +2075,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDER_REGISTER_UITID` permission is mandatory.",
+        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDERS_REGISTER_UITID` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2186,7 +2186,7 @@
           }
         },
         "operationId": "get-passholders-me",
-        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
+        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2282,7 +2282,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
         "requestBody": {
           "description": "Passholder details of the current user to register.",
           "content": {
@@ -2387,7 +2387,7 @@
             }
           }
         },
-        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
+        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_SELF_CHECKIN` permission is mandatory.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
@@ -2485,7 +2485,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_TRANSACTION_HISTORY` permission is mandatory.",
+        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_TRANSACTION_HISTORY` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4970,7 +4970,11 @@
           "REWARDS_WRITE",
           "REWARDS_READ",
           "REWARDS_REDEEM",
-          "REWARDS_PASSHOLDERS_READ"
+          "REWARDS_PASSHOLDERS_READ",
+          "PASSHOLDERS_SELF_CHECKIN",
+          "PASSHOLDERS_SELF_READ",
+          "PASSHOLDERS_REGISTER_UITID",
+          "PASSHOLDERS_TRANSACTION_HISTORY"
         ]
       },
       "Organizer": {
