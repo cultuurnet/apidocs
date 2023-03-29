@@ -3612,12 +3612,14 @@
               "type": "string",
               "enum": [
                 "POINTS",
-                "WELCOME"
-              ]
+                "WELCOME",
+                "ANY"
+              ],
+              "default": "POINTS"
             },
             "in": "query",
             "name": "type",
-            "description": "Include only rewards of this type",
+            "description": "Include only rewards of this type. By default, this is set to `POINTS`. Use `ANY` to include rewards of any type.",
             "style": "form"
           },
           {
