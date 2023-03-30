@@ -15,6 +15,8 @@ In the example above, the results would first be sorted by `name` in ascending o
 
 The endpoints using a sort parameter, must clearly document the allowed sort field values.
 
+This syntax for sorting was inspired by `json:api`, for more info see <https://jsonapi.org/format/#fetching-sorting>.
+
 ## Case sensitivity
 
 The sort field names must be handled case insensitively. e.g. both `Name` and `name` must be accepted.
