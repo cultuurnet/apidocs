@@ -1024,6 +1024,7 @@
       },
       "contributors":{
         "schema": {
+          "format": "email",
           "type": "string",
           "example": "technical-support@publiq.be"
         },
