@@ -3653,6 +3653,15 @@
           },
           {
             "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sort",
+            "description": "Sorts the rewards in a specific order. Possible values are: `name`, `creationdate`, `redeemCount`, `featured`, `points`. Multiple values can be combined in a comma separated string so the rewards are first sorted by the first field, then the second and so on. By default the sort uses ascending order. Descending order can be specified by including a `-` sign before the field that needs to be ordered descending. e.g. use `-redeemCount,points` to sort descending on redeemCount, and next ascending on `points`.",
+            "style": "form"
+          },
+          {
+            "schema": {
               "type": "string",
               "enum": [
                 "asc",
@@ -3661,8 +3670,9 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sorts the rewards by their name in ascending or descending order.",
-            "style": "form"
+            "description": "Sorts the rewards by their name in ascending or descending order. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3674,8 +3684,9 @@
             },
             "in": "query",
             "name": "sort[creationDate]",
-            "description": "Sort on reward creation date",
-            "style": "form"
+            "description": "Sort on reward creation date. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3687,8 +3698,9 @@
             },
             "in": "query",
             "name": "sort[redeemCount]",
-            "description": "Sort on redeem count",
-            "style": "form"
+            "description": "Sort on redeem count. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3700,8 +3712,9 @@
             },
             "in": "query",
             "name": "sort[featured]",
-            "description": "Sort on featured",
-            "style": "form"
+            "description": "Sort on featured. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3713,8 +3726,9 @@
             },
             "in": "query",
             "name": "sort[points]",
-            "description": "Sort on reward points",
-            "style": "form"
+            "description": "Sort on reward points. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
