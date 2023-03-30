@@ -263,6 +263,26 @@ Retrieve all permanent events and places:
 GET /offers/?q=calendarType:permanent
 ```
 
+### contributors
+
+Use the `contributor` field to search for documents for which a particular user / email address is a [contributor](https://docs.publiq.be/docs/uitdatabank/entry-api/shared/contributors).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+Any email address.
+
+**Example**
+
+Retrieve all events for which `technical-support@publiq.be` is a contributor:
+
+```
+GET /events/?q=contributors:technical-support@publiq.be
+```
+
 ### completedLanguages
 
 All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch, content editors can use UiTdatabank to translate the name and description of their documents in French (FR), German (DE) and English (EN). The API supports translations in every [two-letter language ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
