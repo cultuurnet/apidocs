@@ -3,11 +3,18 @@
 Endpoints that support sorting based on one or more field names and order(s) must use a `sort` query parameter with the following syntax:
 
 ```
-?sort[field_name_1]=desc&sort[field_name_2]=asc
+?sort=[-]field_name_1[,[-]field_name_2]...
 ```
 
-In the example above, the results would first be sorted by `field_name_1` in a `desc` order, and then by `field_name_2` in an `asc` order.
+Example
+```
+?sort=name,-creationDate
+```
+
+In the example above, the results would first be sorted by `name` in ascending order, and then by `creationDate` in an descending order.
+
+The endpoints using a sort parameter, must clearly document the allowed sort field values.
 
 ## Case sensitivity
 
-The orders `asc` and `desc` must be handled case insensitively. So both `asc` or `ASC` must be accepted.
+The sort field names must be handled case insensitively. e.g. both `Name` and `name` must be accepted.
