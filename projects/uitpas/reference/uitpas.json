@@ -334,7 +334,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDER_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALE_REGISTER`  permission for the organizer of the given event.\n",
+        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALE_REGISTER`  permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -514,7 +514,7 @@
                       ]
                     }
                   },
-                  "Example with passholder (PASSHOLDER_SEARCH permission required)": {
+                  "Example with passholder (PASSHOLDERS_SEARCH permission required)": {
                     "value": {
                       "totalItems": 2,
                       "member": [
@@ -657,7 +657,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALE_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDER_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALE_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1028,7 +1028,7 @@
           }
         },
         "operationId": "get-organizers",
-        "description": "Retrieve organizers based on search parameters.\n\nThe caller of this request must have `ORGANIZER_SEARCH` permission for the given organizer.",
+        "description": "Retrieve organizers based on search parameters.\n\nThe caller of this request must have `ORGANIZERS_SEARCH` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1180,7 +1180,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1379,7 +1379,7 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDER_WRITE` permission for the `registrationOrganizer`.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -1449,7 +1449,7 @@
         "tags": [
           "Passholders"
         ],
-        "description": "Remove this passholder.\n\nThe caller of this request must have `PASSHOLDER_DELETE` permission.",
+        "description": "Remove this passholder.\n\nThe caller of this request must have `PASSHOLDERS_DELETE` permission.",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1890,7 +1890,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `PRICE_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -2029,7 +2029,7 @@
           }
         },
         "operationId": "get-passholders-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDER_READ` and `PRICE_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [],
         "tags": [
           "Passholders"
@@ -2075,7 +2075,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDER_REGISTER_UITID` permission is mandatory.",
+        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDERS_REGISTER_UITID` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2186,7 +2186,7 @@
           }
         },
         "operationId": "get-passholders-me",
-        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
+        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2282,7 +2282,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
         "requestBody": {
           "description": "Passholder details of the current user to register.",
           "content": {
@@ -2387,7 +2387,7 @@
             }
           }
         },
-        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
+        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_SELF_CHECKIN` permission is mandatory.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
@@ -2485,7 +2485,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_TRANSACTION_HISTORY` permission is mandatory.",
+        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_TRANSACTION_HISTORY` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2561,7 +2561,7 @@
             }
           }
         },
-        "description": "Retrieve the passholder's school.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Retrieve the passholder's school.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2612,7 +2612,7 @@
             }
           }
         },
-        "description": "Update the passholder's school relation.\n\nThe caller of this request must have `PASSHOLDER_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Update the passholder's school relation.\n\nThe caller of this request must have `PASSHOLDERS_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2663,7 +2663,7 @@
             }
           }
         },
-        "description": "Delete the passholder's school relation.\n\nThe user or client performing this request must have `PASSHOLDER_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Delete the passholder's school relation.\n\nThe user or client performing this request must have `PASSHOLDERS_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2746,7 +2746,7 @@
             ]
           }
         ],
-        "description": "Retrieve suggested report periods for an organizer.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n"
+        "description": "Retrieve suggested report periods for an organizer.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n"
       }
     },
     "/organizers/{organizerId}/financial-reports": {
@@ -2808,7 +2808,7 @@
         "tags": [
           "Financial reports"
         ],
-        "description": "Starts a financial report export. The result of this request is a `reportId` that can be used to request the status of the report export and the download.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Starts a financial report export. The result of this request is a `reportId` that can be used to request the status of the report export and the download.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2900,7 +2900,7 @@
             }
           }
         },
-        "description": "Get previously exported financial reports. \n\n> Note: Reports will only be available for a limited amount of time. When they become unavailable, a new export can be requested using `POST /organizers/{organizerId}/financial-reports`  \n\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Get previously exported financial reports. \n\n> Note: Reports will only be available for a limited amount of time. When they become unavailable, a new export can be requested using `POST /organizers/{organizerId}/financial-reports`  \n\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2977,7 +2977,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId",
-        "description": "Retrieve the status of a previously started report export.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the status of a previously started report export.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -3041,7 +3041,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId-zip",
-        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "tags": [
           "Financial reports"
         ],
@@ -3217,7 +3217,7 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
-                      }                      
+                      }
                     }
                   },
                   "Example with social tariff": {
@@ -3273,7 +3273,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission."
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -3324,7 +3324,7 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
-                      }                      
+                      }
                     }
                   },
                   "Example with social tariff": {
@@ -3380,7 +3380,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission."
       }
     },
     "/rewards": {
@@ -3536,7 +3536,7 @@
         "tags": [
           "Rewards"
         ],
-        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDER_READ` to use the `isRedeemableBy` query parameter.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
+        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDERS_READ` to use the `isRedeemableBy` query parameter.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3606,18 +3606,20 @@
             "description": "Include only rewards applicable to passholders of this card system. Can be included more than once to allow multiple values.",
             "style": "form",
             "explode": true
-          },          
+          },
           {
             "schema": {
               "type": "string",
               "enum": [
                 "POINTS",
-                "WELCOME"
-              ]
+                "WELCOME",
+                "ANY"
+              ],
+              "default": "POINTS"
             },
             "in": "query",
             "name": "type",
-            "description": "Include only rewards of this type",
+            "description": "Include only rewards of this type. By default, this is set to `POINTS`. Use `ANY` to include rewards of any type.",
             "style": "form"
           },
           {
@@ -3841,7 +3843,7 @@
             },
             "in": "query",
             "name": "isRedeemableByPassholderId",
-            "description": "Include only rewards that are redeemable by this passholder ID. This means the reward itself is within its redeem period, and all redeem constraints for the passholder are met. A client using this parameter needs `REWARDS_PASSHOLDER_READ` permission."
+            "description": "Include only rewards that are redeemable by this passholder ID. This means the reward itself is within its redeem period, and all redeem constraints for the passholder are met. A client using this parameter needs `REWARDS_PASSHOLDERS_READ` permission."
           }
         ]
       },
@@ -4335,7 +4337,7 @@
             }
           }
         },
-        "description": "Check the reward redeem status for a passholder.\n\n\nThe caller of this request must have `REDEEM_REWARDS` permission for the given organizer.",
+        "description": "Check the reward redeem status for a passholder.\n\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the given organizer.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -4462,7 +4464,7 @@
             }
           }
         },
-        "description": "Redeem reward.\n\nThe caller of this request must have `REDEEM_REWARDS` permission for the given organizer.",
+        "description": "Redeem reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the given organizer.",
         "tags": [
           "Rewards"
         ],
@@ -4875,7 +4877,7 @@
         ]
       },
       "TicketSale": {
-        "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDER_SEARCH permission. It is not required for ticket sale registrations.",
+        "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDERS_SEARCH permission. It is not required for ticket sale registrations.",
         "type": "object",
         "example": {
           "regularPrice": 10,
@@ -4945,10 +4947,49 @@
         "properties": {
           "organizer": {
             "$ref": "#/components/schemas/Organizer"
+          },
+          "permissions": {
+            "type": "array",
+            "description": "Permissions of the calling client for this organizer.",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
           }
         },
         "required": [
           "organizer"
+        ]
+      },
+      "Permission": {
+        "title": "Permission",
+        "type": "string",
+        "x-tags": [
+          "Models"
+        ],
+        "enum": [
+          "TARIFFS_READ",
+          "TICKETSALE_SEARCH",
+          "TICKETSALE_REGISTER",
+          "EVENTS_UPDATE",
+          "EVENTS_READ",
+          "ORGANIZERS_SEARCH",
+          "ORGANIZERS_REPORTS",          
+          "PASSHOLDERS_SEARCH",
+          "PASSHOLDERS_WRITE",
+          "PASSHOLDERS_UPDATE",
+          "PASSHOLDERS_DELETE",
+          "MEMBERSHIP_PRICES_READ",
+          "PASSES_READ",
+          "PASSES_INSZNUMBERS_READ",
+          "PASSES_CHIPNUMBERS_READ",
+          "REWARDS_WRITE",
+          "REWARDS_READ",
+          "REWARDS_REDEEM",
+          "REWARDS_PASSHOLDERS_READ",
+          "PASSHOLDERS_SELF_CHECKIN",
+          "PASSHOLDERS_SELF_READ",
+          "PASSHOLDERS_REGISTER_UITID",
+          "PASSHOLDERS_TRANSACTION_HISTORY"
         ]
       },
       "Organizer": {
@@ -5426,7 +5467,7 @@
           "socialTariff": {
             "status": "EXPIRED",
             "endDate": "2022-12-31T22:59:59"
-          },          
+          },
           "messages": [
             {
               "level": "WARN",
