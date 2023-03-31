@@ -265,7 +265,7 @@ GET /offers/?q=calendarType:permanent
 
 ### contributors
 
-Use the `contributor` field to search for documents for which a particular user / email address is a [contributor](https://docs.publiq.be/docs/uitdatabank/entry-api/shared/contributors).
+Use the `contributors` field to search for documents for which a particular user / email address is a [contributor](https://docs.publiq.be/docs/uitdatabank/entry-api/shared/contributors).
 
 **Applicable on endpoints**
 
