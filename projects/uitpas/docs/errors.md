@@ -146,7 +146,7 @@ The request you are trying to perform cannot complete because the given coupon i
 * **Title**: `Invalid distribution key`
 * **Status**: `400`
 
-The request you are trying to perform cannot complete because the no valid distribution key can be found.
+The request you are trying to perform cannot complete because no valid distribution key can be found.
 
 ## invalid-insz-number
 
