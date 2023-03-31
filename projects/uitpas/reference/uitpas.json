@@ -1890,7 +1890,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `UITPASPRICES_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -2029,7 +2029,7 @@
           }
         },
         "operationId": "get-passholders-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `UITPASPRICES_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [],
         "tags": [
           "Passholders"
@@ -4963,7 +4963,7 @@
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
-          "UITPASPRICES_READ",
+          "MEMBERSHIP_PRICES_READ",
           "PASSES_READ",
           "PASSES_INSZNUMBERS_READ",
           "PASSES_CHIPNUMBERS_READ",
