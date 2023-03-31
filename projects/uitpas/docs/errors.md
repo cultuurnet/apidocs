@@ -144,7 +144,7 @@ The request you are trying to perform cannot complete because the given coupon i
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/invalid-distributionkey`
 * **Title**: `Invalid distribution key`
-* **Status**: `500`
+* **Status**: `400`
 
 The request you are trying to perform cannot complete because the no valid distribution key can be found.
 
