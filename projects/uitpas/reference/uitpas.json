@@ -4271,7 +4271,7 @@
                     },
                     "reason": {
                       "type": "string",
-                      "description": "If redeemable is false, this field contains the reason why:\n- `INVALID_CARD`: the given `uitpasNumber` is not valid.\n- `PASSHOLDER_VOLUME`: maximum number of times this reward can be redeemed per passholder has been reached.\n- `PASSHOLDER_POINTS`: passholder does not have enough points to redeem this reward.\n- `REWARD_PERIOD`: the current date is outside the redeemPeriod of this reward\n- `REWARD_VOLUME`: maximum number of times this reward can be redeemed (in general) has been reached.\n- `PASSHOLDER_APPLICABLE_CARDSYSTEMS`: the passholder is not a member of one of the applicable card systems of this reward.\n- `PASSHOLDER_NO_ACTIVE_CARDSYSTEMS`: the passholder is not active or has no active card system memberships\n- `SOCIAL_TARIFF_EXPIRED`: the social tariff of this passholder expired.\n",
+                      "description": "If redeemable is false, this field contains the reason why:\n- `INVALID_CARD`: the given `uitpasNumber` is not valid.\n- `PASSHOLDER_VOLUME`: maximum number of times this reward can be redeemed per passholder has been reached.\n- `PASSHOLDER_POINTS`: passholder does not have enough points to redeem this reward.\n- `REWARD_PERIOD`: the current date is outside the redeemPeriod of this reward\n- `REWARD_VOLUME`: maximum number of times this reward can be redeemed (in general) has been reached.\n- `PASSHOLDER_APPLICABLE_CARDSYSTEMS`: the passholder is not a member of one of the applicable card systems of this reward.\n- `PASSHOLDER_NO_ACTIVE_CARDSYSTEMS`: the passholder is not active or has no active card system memberships\n",
                       "enum": [
                         "INVALID_CARD",
                         "PASSHOLDER_VOLUME",
@@ -4279,7 +4279,6 @@
                         "REWARD_PERIOD",
                         "REWARD_VOLUME",
                         "PASSHOLDER_APPLICABLE_CARDSYSTEMS",
-                        "SOCIAL_TARIFF_EXPIRED",
                         "PASSHOLDER_NO_ACTIVE_CARDSYSTEM"
                       ]
                     },
@@ -4311,7 +4310,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n",
             "content": {
               "application/problem+json": {
                 "schema": {
