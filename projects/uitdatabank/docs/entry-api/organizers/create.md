@@ -4,7 +4,7 @@ This guide explains how to create a new organizer in UiTdatabank using Entry API
 
 <!-- theme: warning -->
 
-> Creating duplicate organizers is not allowed, you must reuse and existing ones. See [finding and reusing organizers](./finding-and-reusing-organizers.md)
+> Creating duplicate organizers is not allowed, you must reuse existing ones. See [finding and reusing organizers](./finding-and-reusing-organizers.md)
 
 Before diving in, make sure you have read the following guides first:
 
@@ -62,6 +62,95 @@ The `url` property contains the complete URL to fetch or [update](update.md) the
 
 Lastly, the `commandId` property is obsolete and may be ignored.
 
+## Try it out
+
+Enter your access token for the Entry API test environment below, choose a unique website and click the "Send API request" button to create the event from the example above.
+
+```json http
+{
+  url: 'https://io-test.uitdatabank.be/organizers',
+  method: "POST",
+  headers: {
+    "authorization": "Bearer YOUR_ACCESS_TOKEN"
+  },
+  body: {
+    "mainLanguage": "nl",
+    "name": {
+      "nl": "Voorbeeld Organizer"
+    },
+    "website": "YOUR_UNIQUE_WEBSITE"
+  }
+}
+```
+
+If you got a `201 Created` response, you successfully created your first organizer using Entry API. If you got an error instead, double check that your access token is valid and try again.
+
+Next, copy the `url` property and open it in your web browser to view the JSON of your new organizer in UiTdatabank (accessible without any authentication).
+
+Let's take a closer look at the properties of an organizer.
+
+## Required properties
+
+Every organizer has a couple of properties that are required to create it, and that are always guaranteed to be on existing organizers. A summary of every required property is provided below, but you can find more details in the [complete organizer model](../../../models/organizer-with-read-example.json) and [`POST /organizers`](/reference/entry.json/paths/~1organizers/post) endpoint documentation.
+
+### mainLanguage
+
+This property indicates the language that the organizer data is originally entered in. Every translatable property on the organizer, like `name` or `description`, will need to have at least a value in this language.
+
+Note that the `mainLanguage` is not strictly the same as the language that is spoken at the event, but in most cases it is.
+
+Possible values are `nl`, `fr`, `en` or `de`.
+
+Example for an event entered originally in French:
+
+```json
+{
+  "mainLanguage": "fr"
+}
+```
+
+### name
+
+This property contains the human-readable name of the organizer, shown in online calendars and offline publications to readers.
+
+Because it is translatable, it is an object with language keys as properties for the multiple possible values. At least a value for the language provided as `mainLanguage` is required, but values in other allowed language keys (`nl`, `fr`, `de`, `en`) are also allowed.
+
+Example for an organizer entered originally in Dutch:
+
+```json
+{
+  "mainLanguage": "nl",
+  "name": {
+    "nl": "Mijn voorbeeld organisatie"
+  }
+}
+```
+
+Example for an organizer entered originally in English, with a Dutch translation:
+
+```json
+{
+  "mainLanguage": "en",
+  "name": {
+    "en": "My example organizer",
+    "nl": "Mijn voorbeeld organisatie"
+  }
+}
+```
+
+While it is possible to immediately provide translations when creating a new organizer, you can also add them later by [updating the organizer](update.md).
+
+### website
+
+This property is an object that contains a website of the organizer, and must be unique.
+
+Example for an organizer with a TODO:
+
+```json
+{
+  "website": "https://organizer.com"
+}
+```
 
 <!--
   @todo
