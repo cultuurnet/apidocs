@@ -24,7 +24,7 @@ The default initial state of a place. As long as a place has this workflow statu
 
 The creator of the place can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)), and publish it once ready. [Contributors](../shared/contributors.md) added to the place can also view it in their dashboard and publish it when ready. When publishing the place, an optional publication date can be set so that the place only becomes visible at a specific moment in the future.
 
-An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the place](./update.md). Like users, API clients can also specify an optional publication date so the place only becomes visible at a specific later moment. The different ways of publishing a place as an API integrator are [described in more detail below](#publishing-an-place-as-an-api-integrator).
+An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the place](./update.md). Like users, API clients can also specify an optional publication date so the place only becomes visible at a specific later moment. The different ways of publishing a place as an API integrator are [described in more detail below](#publishing-a-place-as-an-api-integrator).
 
 ### READY_FOR_VALIDATION
 
