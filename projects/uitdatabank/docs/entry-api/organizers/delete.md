@@ -20,6 +20,6 @@ Unlike events or place, there is only one way to delete an organizer.
 
 ### DELETE endpoint
 
-Using the [`DELETE /events/{organizerId}`](/reference/entry.json/paths/~1events~1{organizerId}/delete) endpoint you can soft-delete the event at the given URL. 
+Using the [`DELETE /organizers/{organizerId}`](/reference/entry.json/paths/~1events~1{organizerId}/delete) endpoint you can soft-delete the event at the given URL. 
 
 The organizer's `workflowStatus` property will automatically be updated to `DELETED`.
