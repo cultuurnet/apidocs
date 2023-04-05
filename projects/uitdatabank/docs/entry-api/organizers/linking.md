@@ -1,4 +1,8 @@
-Coming soon.
+# Linking an organizers
+
+## Permissions
+
+Anyone can link any organizer if they have the permission to [update the event](../events/update.md) or [update the place](../places/update.md) they want to link to the organizer. This does not mean that people who work at the organizer get permission to edit your event or place.
 
 <!-- 
   @todo
