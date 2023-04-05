@@ -30,7 +30,7 @@ You can create a new organizers by making a single HTTP request to the [`POST /o
 A request to create a new organizer with only the required fields (website must be unique), looks like this:
 
 ```http
-POST /events HTTP/1.1
+POST /organizers HTTP/1.1
 Host: https://io-test.uitdatabank.be
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
@@ -64,7 +64,7 @@ Lastly, the `commandId` property is obsolete and may be ignored.
 
 ## Try it out
 
-Enter your access token for the Entry API test environment below, choose a unique website and click the "Send API request" button to create the event from the example above.
+Enter your access token for the Entry API test environment below, choose a unique website and click the "Send API request" button to create the organizer from the example above.
 
 ```json http
 {
@@ -97,11 +97,9 @@ Every organizer has a couple of properties that are required to create it, and t
 
 This property indicates the language that the organizer data is originally entered in. Every translatable property on the organizer, like `name` or `description`, will need to have at least a value in this language.
 
-Note that the `mainLanguage` is not strictly the same as the language that is spoken at the event, but in most cases it is.
-
 Possible values are `nl`, `fr`, `en` or `de`.
 
-Example for an event entered originally in French:
+Example for an organizer entered originally in French:
 
 ```json
 {
