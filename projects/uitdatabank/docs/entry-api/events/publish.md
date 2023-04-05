@@ -1,6 +1,6 @@
 # Publishing an event
 
-When [creating a new event](./create.md), it is by default stored in a `DRAFT` state in [UiTdatabank](https://www.uitdatabank.be). 
+When [creating a new event](./create.md), it is by default stored in a `DRAFT` state in [UiTdatabank](https://www.uitdatabank.be).
 
 For example, when [fetching the details of your event](/reference/entry.json/paths/~1events~1{eventId}/get) after creating it, it will have the following property:
 
@@ -26,7 +26,7 @@ The creator of the event can view it in their UiTdatabank dashboard (if it was c
 
 An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the event](./update.md). Like users, API clients can also specify an optional publication date so the event only becomes visible at a specific later moment. The different ways of publishing an event as an API integrator are [described in more detail below](#publishing-an-event-as-an-api-integrator).
 
-### READY_FOR_VALIDATION
+### READY\_FOR\_VALIDATION
 
 When an event is published by a user or API client, it is put in the `READY_FOR_VALIDATION` status.
 
@@ -58,7 +58,7 @@ An event with any workflow status can move to the `DELETED` status when it is [d
 
 Keep in mind that deleting an event is an irreversible action. If you deleted an event by accident, the best recourse is to create a new one with the same info.
 
-> Note that you must not delete an event just because its end date has been reached. UiTinVlaanderen and other online calendars will automatically hide the event once its end date (`availableTo` property) has been reached. 
+> Note that you must not delete an event just because its end date has been reached. UiTinVlaanderen and other online calendars will automatically hide the event once its end date (`availableTo` property) has been reached.
 >
 > In the case of most events, this is the same as the end date of the event. Only in the case of events with the type *"lessenreeks"* is it the start date of the event, because you can usually no longer register to participate in such an event after it has started.
 
@@ -71,6 +71,7 @@ When you [create a new event](./create.md), it will automatically get the workfl
 **We recommend this approach for most API integrations**, except when your users expect their events to only become visible on online calendars after they have explicitly published them (either in your application or in UiTdatabank itself).
 
 For example:
+
 ```json
 {
   "workflowStatus": "READY_FOR_VALIDATION",
