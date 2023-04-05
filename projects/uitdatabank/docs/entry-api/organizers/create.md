@@ -156,7 +156,6 @@ While you can create a new organizer using just the properties described above, 
 
 You can learn more about these properties under the "Shared properties" section in the menu, or by browsing the complete [organizer model](../../../models/organizer-with-read-example.json).
 
-
 <!--
   @todo
   - Mention that you must always reuse an existing organizer when possible and link to that guide.
