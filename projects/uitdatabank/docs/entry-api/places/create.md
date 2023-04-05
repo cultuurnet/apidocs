@@ -9,8 +9,8 @@ Before diving in, make sure you have read the following guides first:
 * [Finding and reusing places](finding-and-reusing-places.md)
 
 <!-- theme: warning -->
-> When sending event content to UiTdatabank through the Entry API you **must** reuse existing place IDs when available. The creation of a new place is only allowed if the place does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.
 
+> When sending event content to UiTdatabank through the Entry API you **must** reuse existing place IDs when available. The creation of a new place is only allowed if the place does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.
 
 ## Required permissions
 
@@ -180,6 +180,7 @@ While it is possible to immediately provide translations when creating a new pla
 The address the place is located at. Localized because some parts like the municipality or street address can be different in Dutch, French, German and/or English. The address requires at least one locale, specifically the one defined in the mainLanguage of the place.
 
 <!-- theme: warning -->
+
 > Only add a localized version if it's an official variant!
 
 ```json
@@ -257,7 +258,7 @@ Example for museum:
 
 ### calendarType
 
-This property indicates the kind of calendar info that your place contains. Possible values are `periodic` or `permanent`. 
+This property indicates the kind of calendar info that your place contains. Possible values are `periodic` or `permanent`.
 
 For calendarType `periodic` the extra properties `startDate` and `endDate` will become required to specify the calendar info of your place:
 
