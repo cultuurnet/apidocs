@@ -1,6 +1,6 @@
 # Contributors
 
-When you create a new [event](../events/create.md), [place](../places/create.md) or [organizer](../organizers/create.md) via Entry API using a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), that client will become the `creator` of the event/place/organizer. This means that it will only be editable afterward with a client access token for the same client.
+When you create a new [event](../events/create.md), [place](../places/create.md) or [organizer](../organizers/create.md) via Entry API using a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), that client will become the `creator` of the event/place/organizer. This means that it will only be editable afterward with a client access token for the same client. 
 
 If you use a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) instead, that user will become the `creator` of the event/place/organizer and it will only be editable with a user access token for the same user.
 
@@ -32,7 +32,7 @@ The endpoint URL is slightly different per resource type:
 
 You can also construct the URL of this endpoint by appending `/contributors` to the `url` property from the response to your `POST` request to create the event/place/organizer.
 
-Using this endpoint, you can save a list of email addresses of UiTdatabank users that should be able to see the event in their dashboard and edit it.
+Using this endpoint, you can save a list of email addresses of UiTdatabank users that should be able to see the event in their dashboard and edit it. 
 
 **The email addresses do not necessarily have to be registered in UiTiD yet.** You can, for example, save a list of all email addresses of your team members even if they do not have an UiTiD account yet. When they later sign up and log in on UiTdatabank for the first time, the events/places/organizers that they were made a contributor of will be visible and editable by them.
 
@@ -87,7 +87,6 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 Example response:
-
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -106,7 +105,6 @@ Content-Type: application/json
 Alternatively, you can retrieve contributors of an event/place/organizer by sending a `GET` request to the same URL as when saving them.
 
 Example request:
-
 ```http
 GET /events/787d7420-c06f-4935-b3c5-5cd5a1276796/contributors HTTP/1.1
 Host: https://io-test.uitdatabank.be
@@ -114,7 +112,6 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 Example response:
-
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json

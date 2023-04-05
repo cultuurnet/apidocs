@@ -27,7 +27,7 @@ UiTdatabank supports four calendar types:
 * `periodic`: For **events or places** that are scheduled to happen/be open on weekly recurring moments during a longer period. For example a pop-up gallery that is open on a weekly basis for six months, or a weekly "repair café".
 * `permanent`: For **events or places** that are scheduled to happen/be open permanently, optionally with a weekly schedule. For example a park that is open for the public during the day. While events can technically have this calendar type, it is not recommended and typically not correct.
 
-Events with calendarType `single` or `multiple` can conceptually be grouped together as events that only occur on one or more fixed moments, usually relatively close together.
+Events with calendarType `single` or `multiple` can conceptually be grouped together as events that only occur on one or more fixed moments, usually relatively close together. 
 
 Events and places with calendarType `periodic` or `permanent` are typically available for a longer period of time, usually with a recurring weekly schedule.
 
@@ -107,7 +107,7 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 ### periodic/permanent
 
-When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.
+When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available. 
 
 For example, an event or place that is available for attendees/visitors from January 12th 2023 until June 12th 2023 on every Friday, Saturday and Sunday with varying opening hours per day:
 

@@ -34,7 +34,6 @@ For example, for just the main language:
 ```
 
 Or, including a translation in one language:
-
 ```json
 {
   "mainLanguage": "nl",

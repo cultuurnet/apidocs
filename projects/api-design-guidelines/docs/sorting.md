@@ -7,7 +7,6 @@ Endpoints that support sorting based on one or more field names and order(s) mus
 ```
 
 Example
-
 ```
 ?sort=name,-creationDate
 ```

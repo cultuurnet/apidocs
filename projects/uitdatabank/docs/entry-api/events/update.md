@@ -41,7 +41,7 @@ When updating an event in its entirety, it is important to keep the following po
 
 ## Updating a single property
 
-While you can update an event in its entirety to update a single property, you can also update individual properties via endpoints provided specifically for this purpose.
+While you can update an event in its entirety to update a single property, you can also update individual properties via endpoints provided specifically for this purpose. 
 
 Some examples include:
 
