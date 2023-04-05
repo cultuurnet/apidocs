@@ -1,6 +1,6 @@
 # Publishing a place
 
-When [creating a new place](./create.md), it is by default stored in a `DRAFT` state in [UiTdatabank](https://www.uitdatabank.be). 
+When [creating a new place](./create.md), it is by default stored in a `DRAFT` state in [UiTdatabank](https://www.uitdatabank.be).
 
 For example, when [fetching the details of your place](/reference/entry.json/paths/~1places~1{placeId}/get) after creating it, it will have the following property:
 
@@ -26,7 +26,7 @@ The creator of the place can view it in their UiTdatabank dashboard (if it was c
 
 An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the place](./update.md). Like users, API clients can also specify an optional publication date so the place only becomes visible at a specific later moment. The different ways of publishing a place as an API integrator are [described in more detail below](#publishing-an-place-as-an-api-integrator).
 
-### READY_FOR_VALIDATION
+### READY\_FOR\_VALIDATION
 
 When a place is published by a user or API client, it is put in the `READY_FOR_VALIDATION` status.
 
@@ -39,7 +39,7 @@ In some regions there is no local content moderation team and the place will rem
 
 ### APPROVED
 
-Once a place gains the `APPROVED` workflow status, it is visible on all online calendars (_if_ places are published in the agenda).
+Once a place gains the `APPROVED` workflow status, it is visible on all online calendars (*if* places are published in the agenda).
 
 Note that you cannot put your place in the `APPROVED` status yourself. In general, only a content moderation team can do this.
 
@@ -62,6 +62,7 @@ Keep in mind that deleting a place is an irreversible action. If you deleted an 
 > Note that you must not delete a place just because its end date has been reached (in the case of a place with calendarType `periodic`). UiTinVlaanderen and other online calendars will automatically hide the places once its end date (`availableTo` property) has been reached. Permanent places will be published forever, unless they are deleted.
 
 <!-- theme: warning -->
+
 > It is only possible to delete a place when it is not linked to one or more events. If your place is linked to one or more events you must first link the events to another place. Since the place you created can be used by other creators it is possible thatyou cannot move all the events from the place to another place due to permission restrictions. In that case, please contact us on `technical-support@publiq.be`.
 
 ## Publishing a place as an API integrator
@@ -73,6 +74,7 @@ When you [create a new place](./create.md), it will automatically get the workfl
 **We recommend this approach for most API integrations**, except when your users expect their place to only become visible on online calendars after they have explicitly published them (either in your application or in UiTdatabank itself).
 
 For example:
+
 ```json
 {
    "workflowStatus": "READY_FOR_VALIDATION",
