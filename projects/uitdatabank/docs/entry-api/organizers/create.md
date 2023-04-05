@@ -156,10 +156,6 @@ While you can create a new organizer using just the properties described above, 
 
 You can learn more about these properties under the "Shared properties" section in the menu, or by browsing the complete [organizer model](../../../models/organizer-with-read-example.json).
 
-<!--
-  @todo
-  - Mention that you must always reuse an existing organizer when possible and link to that guide.
-  - Focus on creating a simple organizer with just the required properties here.
-  - Explain that you can also supply optional properties and give examples
-  - Link to some other guides as next steps (for example "Updating an organizer", ...)
--->
+## Next steps
+* Go over the [Linking an organizer to an event or place](./linking.md) to learn how to add an organizer to an event or place.
+* Check out the guide about [updating organizers](update.md) to learn how to add, edit or remove properties on your organizer at a later moment after creating it.
