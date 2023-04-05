@@ -26,6 +26,12 @@
     },
     {
       "type": "item",
+      "title": "Errors",
+      "uri": "docs/errors.md",
+      "slug": "errors"
+    },
+    {
+      "type": "item",
       "title": "FAQ",
       "uri": "docs/faq.md",
       "slug": "faq"
