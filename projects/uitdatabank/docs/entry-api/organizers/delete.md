@@ -12,7 +12,7 @@ Keep in mind that deleting an organizer is an irreversible action. If you delete
 
 ## Required permissions
 
-The same permission checks as [updating an organizer](./update.md) are applicable.
+Only users with the permissions `Organisaties beheren` can delete an organizer.
 
 ## Method
 
