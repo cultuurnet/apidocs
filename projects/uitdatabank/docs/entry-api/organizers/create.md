@@ -153,7 +153,7 @@ Example for an organizer with a unique website:
 
 ## More properties
 
-While you can create a new organizer using just the properties described above, an orgaizer can have a some more properties like a [description](../shared/description.md), [images](../shared/images.md). These are useful to make your organizer more attractive to potential audiences and may be included in the same request when creating a new organizer.
+While you can create a new organizer using just the properties described above, an orgaizer can have a some more properties like a [description](../shared/description.md) or [images](../shared/images.md). These are useful to make your organizer more attractive to potential audiences and may be included in the same request when creating a new organizer.
 
 You can learn more about these properties under the "Shared properties" section in the menu, or by browsing the complete [organizer model](../../../models/organizer-with-read-example.json).
 
