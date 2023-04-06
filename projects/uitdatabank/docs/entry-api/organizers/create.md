@@ -11,7 +11,9 @@ Before diving in, make sure you have read the following guides first:
 * [Authentication](../authentication.md)
 * [What are organizers?](introduction.md)
 * [Finding and reusing organizers](finding-and-reusing-organizers.md)
+<!-- theme: warning -->
 
+> When sending event content to UiTdatabank through the Entry API you **must** reuse existing organizer IDs when available. The creation of a new organizer is only allowed if the organizer does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.
 ## Required permissions
 
 Anyone can create new organizers in UiTdatabank by using either a user access token or a client access token.
