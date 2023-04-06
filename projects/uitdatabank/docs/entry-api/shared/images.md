@@ -33,7 +33,7 @@ The following fields are required:
 * `file`: The binary file data of the image to upload.
 * `description`: A description of the image.
 * `copyrightHolder`: The name of the person or entity that holds the copyright on the image. Will be used for attribution.
-* `language`: The language of the image and its description. For example, an image can have some text on it in a specific language. 
+* `language`: The language of the image and its description. For example, an image can have some text on it in a specific language.
 
 ### HTTP example
 
@@ -272,13 +272,15 @@ You can link previously uploaded images to an event or place when creating or up
   ]
 }
 ```
+
 *(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
-Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `mediaObject` entry. 
+Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `mediaObject` entry.
 
 Additionally, a new `image` property will be added on the event/place with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
 
 For example, when fetching your event or place from Entry API later:
+
 ```json
 {
   "image": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
@@ -323,13 +325,15 @@ You can link previously uploaded images to an organizer when creating it or upda
   ]
 }
 ```
+
 *(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
-Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `images` entry. 
+Afterward, UiTdatabank will automatically all the images' properties like their `description` and `copyrightHolder` to every `images` entry.
 
 Additionally, a new `mainImage` property will be added on the organizer with the URL of the "main" image. This is the image that will be shown in online calendars on pages with search results.
 
 For example, when fetching your organizer from Entry API later:
+
 ```json
 {
   "mainImage": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
@@ -403,9 +407,11 @@ You can overwrite these properties by explicitly including them in your create/u
   ]
 }
 ```
+
 *(Other event/place properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
 Or on an organizer:
+
 ```json
 {
   "images": [
@@ -421,6 +427,7 @@ Or on an organizer:
   ]
 }
 ```
+
 *(Other organizer properties like `mainLanguage`, `name` and so on omitted for readability.)*
 
 Alternatively, you can overwrite the `description` and `copyrightHolder` properties of a single linked image on an event or place via the following endpoints:

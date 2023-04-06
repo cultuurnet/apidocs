@@ -134,7 +134,7 @@ On the other hand, [school performances](#school-performances) and [guided tours
 
 ### labels
 
-For school events, specific Cultuurkuur-related labels are mandatory. 
+For school events, specific Cultuurkuur-related labels are mandatory.
 
 Each school event must have **at least one** education level label. Education level labels indicate to which education levels (grades) the school event is aimed at.
 

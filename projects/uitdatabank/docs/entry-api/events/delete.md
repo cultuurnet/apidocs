@@ -22,7 +22,7 @@ There are two ways to delete an event.
 
 ### 1. DELETE endpoint
 
-Using the [`DELETE /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/delete) endpoint you can soft-delete the event at the given URL. 
+Using the [`DELETE /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/delete) endpoint you can soft-delete the event at the given URL.
 
 The event's `workflowStatus` property will automatically be updated to `DELETED`.
 
