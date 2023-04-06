@@ -30,6 +30,6 @@ The place's `workflowStatus` property will automatically be updated to `DELETED`
 
 ### 2. workflowStatus property
 
-Using the [`PUT /place/{placeId}`](/reference/entry.json/paths/~places~1{placeId}/put) endpoint you can update the place at the given URL and set its `workflowStatus` property to `DELETED` to soft-delete it.
+Using the [`PUT /place/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/put) endpoint you can update the place at the given URL and set its `workflowStatus` property to `DELETED` to soft-delete it.
 
 Note that you will need to include the place's complete JSON data to update it via this endpoint, as explained in more detail in the guide about [updating a place](./update.md).
