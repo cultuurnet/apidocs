@@ -88,6 +88,8 @@ If you got a `201 Created` response, you successfully created your first organiz
 
 Next, copy the `url` property and open it in your web browser to view the JSON of your new organizer in UiTdatabank (accessible without any authentication).
 
+![](../../../assets/images/organizer-detail.png)
+
 Let's take a closer look at the properties of an organizer.
 
 ## Required properties
