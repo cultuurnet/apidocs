@@ -211,7 +211,7 @@ This property contains a list of [taxonomy terms](../../taxonomy-api/terms.md) t
 
 The possible taxonomy terms can be browsed via the [`GET /terms`](/reference/taxonomy.json/paths/~1terms/get) endpoint on the Taxonomy API.
 
-To create a place, at least one term of the domain `eventtype` and a `scope` that contains `places` is required. For example the following term that categorizes a place as a museum:
+To create a place, one term (and one only) of the domain `eventtype` and a `scope` that contains `places` is required. For example the following term that categorizes a place as a museum:
 
 ```json
 {
