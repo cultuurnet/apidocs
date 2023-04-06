@@ -24,7 +24,7 @@ There are two ways to delete an place.
 
 ### 1. DELETE endpoint
 
-Using the [`DELETE /places/{placeId}`](/reference/entry.json/paths/~places~1{placeId}/delete) endpoint you can soft-delete the place at the given URL. 
+Using the [`DELETE /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/delete) endpoint you can soft-delete the place at the given URL. 
 
 The place's `workflowStatus` property will automatically be updated to `DELETED`.
 
