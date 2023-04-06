@@ -10,6 +10,7 @@ Before diving in, make sure you have read the following guides first:
 
 * [Authentication](../authentication.md)
 * [What are organizers?](introduction.md)
+* [Finding and reusing organizers](finding-and-reusing-organizers.md)
 
 ## Required permissions
 
