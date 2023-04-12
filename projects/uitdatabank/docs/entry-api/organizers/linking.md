@@ -2,8 +2,9 @@
 
 While organizers aren't mandatory for creating events or places, they can provide useful information for your visitors.
 There are various ways to link an organizer to your event or place.
+
 1. By the [granular endpoint](#granular-endpoint).
-2. By adding the link to the organizer as a property in the [JSON body](#json-body) during a create or complete update. 
+2. By adding the link to the organizer as a property in the [JSON body](#json-body) during a create or complete update.
 
 ## Permissions
 
@@ -27,6 +28,9 @@ Example for an Organizer VIERNULVIER (id `ac1adc43-410b-48bd-b79a-ca417788652f` 
 ## Granular endpoint
 
 You can link an organizer to your event or place via the organizer endpoints.
+
+* [`PUT /events/{eventId}/organizer/{organizerId}`](/reference/entry.json/paths/~1events~1{eventId}~1organizer~1{organizerId}/put)
+* [`PUT /places/{placeId}/organizer/{organizerId}`](/reference/entry.json/paths/~1places~1{placeId}~1organizer~1{organizerId}/put)
 
 ## JSON body
 
