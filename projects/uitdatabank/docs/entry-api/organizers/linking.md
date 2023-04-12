@@ -24,13 +24,13 @@ Example for an Organizer VIERNULVIER (id `ac1adc43-410b-48bd-b79a-ca417788652f` 
 }
 ```
 
-### Granular endpoint
+## Granular endpoint
 
 You can link an organizer to your event or place via the organizer endpoints.
 - [`PUT /events/{eventId}/organizer/{organizerId}`](/reference/entry.json/paths/~1events~1{eventId}~1organizer~1{organizerId}/put)
 - [`PUT /places/{placeId}/organizer/{organizerId}`](/reference/entry.json/paths/~1places~1{placeId}~1organizer~1{organizerId}/put)
 
-### JSON body
+## JSON body
 
 You can link an organizer to your event of by adding the property in the JSON body during a create or complete update.
 
@@ -55,7 +55,8 @@ You can link an organizer to your event of by adding the property in the JSON bo
   "subEvent": [
     {
       "startDate": "2023-02-18T17:30:00+01:00",
-      "endDate": "2023-02-18T23:00:00+01:00"
+      "endDate": "2023-0
+      2-18T23:00:00+01:00"
     }
   ]
 }
