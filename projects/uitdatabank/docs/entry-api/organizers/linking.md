@@ -1,10 +1,9 @@
-# Linking an organizers
+# Linking an organizer
 
 While organizers aren't mandatory for creating events or places, they can provide useful information for your visitors.
 There are various ways to link an organizer to your event or place.
-1. you can immediately provide an organizer when creating a new event
-2. it can also be done later when you make changes to the event later
-3. It can be done via the granular endpoint
+1. By the [granular endpoint](#granular-endpoint).
+2. By adding the link to the organizer as a property in the [JSON body](#json-body) during a create or complete update. 
 
 ## Permissions
 
@@ -12,9 +11,9 @@ Anyone can link any organizer if they have the permission to [update the event](
 
 ## Overview
 
-First you need to [find](./finding-and-reusing-organizers.md) or [create](create.md) the organizer you wish to link to your event or place.
+First you need to [find](./finding-and-reusing-organizers.md) or [create](./create.md) the organizer you wish to link to your event or place.
 
-Then you should have a link to the organizer, in the form of an `@id` property (inspired by JSON-LD).
+Now you should have a link to the organizer, in the form of an `@id` property (inspired by JSON-LD).
 
 Example for an Organizer VIERNULVIER (id `ac1adc43-410b-48bd-b79a-ca417788652f` on the test environment):
 
@@ -25,10 +24,14 @@ Example for an Organizer VIERNULVIER (id `ac1adc43-410b-48bd-b79a-ca417788652f` 
 }
 ```
 
+### Granular endpoint
 
 You can link an organizer to your event or place via the organizer endpoints
 - [`PUT /events/{eventId}/organizer/{organizerId}`](/reference/entry.json/paths/~1events~1{eventId}~1organizer~1{organizerId}/put)
 - [`PUT /places/{placeId}/organizer/{organizerId}`](/reference/entry.json/paths/~1places~1{placeId}~1organizer~1{organizerId}/put)
+
+### JSON body
+
 
 <!-- 
   @todo
