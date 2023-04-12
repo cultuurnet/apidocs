@@ -55,8 +55,7 @@ You can link an organizer to your event of by adding the property in the JSON bo
   "subEvent": [
     {
       "startDate": "2023-02-18T17:30:00+01:00",
-      "endDate": "2023-0
-      2-18T23:00:00+01:00"
+      "endDate": "2023-02-18T23:00:00+01:00"
     }
   ]
 }
