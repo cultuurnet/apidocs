@@ -2,10 +2,6 @@
 
 This guide explains how to create a new organizer in UiTdatabank using Entry API. You'll learn about all the required properties of an organizer and how to define them, and see examples of various possible organizers.
 
-<!-- theme: warning -->
-
-> Creating duplicate organizers is not allowed, you must reuse existing ones. See [finding and reusing organizers](./finding-and-reusing-organizers.md)
-
 Before diving in, make sure you have read the following guides first:
 
 * [Authentication](../authentication.md)
@@ -13,7 +9,7 @@ Before diving in, make sure you have read the following guides first:
 * [Finding and reusing organizers](finding-and-reusing-organizers.md)
 <!-- theme: warning -->
 
-> When sending event content to UiTdatabank through the Entry API you **must** reuse existing organizer IDs when available. The creation of a new organizer is only allowed if the organizer does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.
+> When sending event content to UiTdatabank through the Entry API you **must** reuse existing organizer IDs when available, see [finding and reusing organizers](./finding-and-reusing-organizers.md). The creation of a new organizer is only allowed if the organizer does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.
 ## Required permissions
 
 Anyone can create new organizers in UiTdatabank by using either a user access token or a client access token.
