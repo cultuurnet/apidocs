@@ -6,7 +6,7 @@ Anyone can link any organizer if they have the permission to [update the event](
 
 ## Overview
 
-You can link an organizer to your event or place via the organizer endpoint [`PUT /events/{eventId}/organizer`](/reference/entry.json/paths/~1events~1{eventId}~organizer/put)
+You can link an organizer to your event or place via the organizer endpoint [`PUT /events/{eventId}/organizer`](reference/operations/update-a-event-organizer)
 
 <!-- 
   @todo
