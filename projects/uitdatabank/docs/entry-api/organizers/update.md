@@ -25,6 +25,12 @@ This endpoint accepts a complete [organizer model](../../../models/organizer-wit
 
 When updating an organizer in its entirety, it is important to keep the following points in mind:
 
+* Any updates made to the organizer in UiTdatabank (for example, via the UI) will be reverted if you do not [fetch the organizer details](/reference/entry.json/paths/~1organizers~1{organizerId}/get) first and apply your updates to this data, but instead create the place data only based on data in your own application. **We recommend to always fetch the organizer details first so your local copy of the organizer data is up-to-date and any changes made in UiTdatabank are not reverted by accident.**
+* You can remove one or more optional properties from the place by omitting them from the organizer data in your update request, or by explicitly setting them to `null`. Note that when setting them to `null`, they will be removed completely from the organizer.
+* Any existing (optional) properties on the organizer that are not included in the update request will be removed from the organizer. If such an optional property has a default value, it will be reverted to that value instead (for example, the [`status.type`](./status.md) property will be reset to `Available` if not included in the update request).
+* As an exception to the points above, extra [labels](../shared/labels.md) added to the place via the UiTdatabank UI will be kept on the place even when not included in the update request. To remove such labels when needed, use the [`DELETE /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/delete) endpoint.
+* While you may include read-only properties like `creator`, `created` and `modified` in your update request, they will be ignored by Entry API. Read-only properties are indicated by a grey `read-only` flag on the right side of their name in [the place model](../../../models/organizer-with-read-example.json).
+
 <!-- 
   @todo
   - Explain that you can do complete update via PUT /organizers/{organizerId}, or partial updates using the other endpoints. 
