@@ -26,13 +26,40 @@ Example for an Organizer VIERNULVIER (id `ac1adc43-410b-48bd-b79a-ca417788652f` 
 
 ### Granular endpoint
 
-You can link an organizer to your event or place via the organizer endpoints
+You can link an organizer to your event or place via the organizer endpoints.
 - [`PUT /events/{eventId}/organizer/{organizerId}`](/reference/entry.json/paths/~1events~1{eventId}~1organizer~1{organizerId}/put)
 - [`PUT /places/{placeId}/organizer/{organizerId}`](/reference/entry.json/paths/~1places~1{placeId}~1organizer~1{organizerId}/put)
 
 ### JSON body
 
+You can link an organizer to your event of by adding the property in the JSON body during a create or complete update.
 
+```json
+{
+  "mainLanguage": "nl",
+  "name": {
+    "nl": "Voorbeeld @ VIERNULVIER"
+  },
+  "location": {
+    "@id": "https://io-test.uitdatabank.be/place/d8debf97-9b09-4c1d-8ac0-c3e32650a001"
+  },
+  "organizer": {
+    "@id": "https://io-test.uitdatabank.be/organizers/ac1adc43-410b-48bd-b79a-ca417788652f",
+  },
+  "terms": [
+    {
+      "id": "0.50.4.0.0"
+    }
+  ],
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2023-02-18T17:30:00+01:00",
+      "endDate": "2023-02-18T23:00:00+01:00"
+    }
+  ]
+}
+```
 <!-- 
   @todo
   - Explain who can link which organizers to events/places (= anyone can link any organizer to their own events/places) 
