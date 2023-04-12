@@ -14,7 +14,7 @@ Only users with the permissions `Organisaties beheren` can delete an organizer.
 
 ## Method
 
-Unlike events or place, there is only one way to delete an organizer.
+Unlike events or places, there is only one way to delete an organizer.
 
 ### DELETE endpoint
 
