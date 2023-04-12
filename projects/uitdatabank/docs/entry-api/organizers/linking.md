@@ -4,6 +4,10 @@
 
 Anyone can link any organizer if they have the permission to [update the event](../events/update.md) or [update the place](../places/update.md) they want to link to the organizer. This does not mean that people who work at the organizer get permission to edit your event or place.
 
+## Overview
+
+You can link an organizer to your event or place via the organizer endpoint [`PUT /events/{eventId}/organizer`](/reference/entry.json/paths/~1events~1{eventId}~organizer/put)
+
 <!-- 
   @todo
   - Explain who can link which organizers to events/places (= anyone can link any organizer to their own events/places) 
