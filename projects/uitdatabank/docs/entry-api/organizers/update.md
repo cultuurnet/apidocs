@@ -45,7 +45,7 @@ While you can update an organizer in its entirety to update a single property, y
 
 Some examples include:
 
-* [`PUT /organizers/{organizerId}/description`](/reference/entry.json/paths/~1organizers~1{organizerId}~1description/put) to update the [description](../shared/description.md)
+* [`PUT /organizers/{organizerId}/description/{language}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1description~1{language}/put) to update the [description](../shared/description.md)
 * [`PUT /organizers/{organizerId}/contact-point`](/reference/entry.json/paths/~1organizers~1{organizerId}~1contact-point/put) to add or update the [contact info](../shared/booking-and-contact-info.md)
 * ...
 
