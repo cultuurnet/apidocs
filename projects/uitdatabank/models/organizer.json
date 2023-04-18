@@ -56,6 +56,9 @@
     },
     "creator": {
       "$ref": "./organizer-creator.json"
+    },
+    "contributors": {
+      "$ref": "./organizer-contributors.json"
     }
   },
   "required": [

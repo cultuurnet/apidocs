@@ -1,0 +1,9 @@
+{
+  "$ref": "./common-contributors.json",
+  "x-stoplight": {
+    "id": "428bc0c3a9842"
+  },
+  "title": "organizer.contributors",
+  "readOnly": true,
+  "description": "List of contributors on an [organizer](./organizer.json). Only included if you request the organizer with an authenticated user who has the \"Aanbod bewerken\" permission on the organizer."
+}
