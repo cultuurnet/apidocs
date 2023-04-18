@@ -60,7 +60,7 @@ If a reviewer has approved but there are still open comments (from the same revi
 
 Adding a new project involves multiple steps both in this git repository and on <https://docs.publiq.be>.
 
-Because some of these steps require special permissions, it is not possible to do this yourself. Instead, [create an issue with the "New project" template](https://github.com/cultuurnet/apidocs/issues/new?assignees=bertramakers\&labels=project\&template=new-project.md\&title=New+project%3A+YOUR+PROJECT+NAME+HERE) and fill out all required info.
+Because some of these steps require special permissions, it is not possible to do this yourself. Instead, [create an issue with the "New project" template](https://github.com/cultuurnet/apidocs/issues/new?assignees=JonasVHG\&labels=project\&template=new-project.md\&title=New+project%3A+YOUR+PROJECT+NAME+HERE) and fill out all required info.
 
 An admin will then automatically be assigned to add the new project for you.
 
