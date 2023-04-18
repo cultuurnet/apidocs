@@ -3536,7 +3536,7 @@
         "tags": [
           "Rewards"
         ],
-        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDERS_READ` to use the `isRedeemableBy` query parameter.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
+        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDERS_READ` to use the `isRedeemableByPassholderId` and `isInterestingForPassholderId` query parameters.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3844,6 +3844,14 @@
             "in": "query",
             "name": "isRedeemableByPassholderId",
             "description": "Include only rewards that are redeemable by this passholder ID. This means the reward itself is within its redeem period, and all redeem constraints for the passholder are met. A client using this parameter needs `REWARDS_PASSHOLDERS_READ` permission."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "isInterestingForPassholderId",
+            "description": "Include a list of suggested rewards based on the recent activity of this passholder ID. A client using this parameter needs `REWARDS_PASSHOLDERS_READ` permission."
           }
         ]
       },
