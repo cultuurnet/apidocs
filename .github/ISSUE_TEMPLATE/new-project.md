@@ -3,7 +3,7 @@ name: New project
 about: Request an admin to set up a new project for you.
 title: 'New project: YOUR PROJECT NAME HERE'
 labels: project
-assignees: bertramakers
+assignees: JonasVHG
 
 ---
 
