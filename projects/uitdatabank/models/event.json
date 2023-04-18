@@ -114,7 +114,7 @@
           "$ref": "./event-creator.json"
         },
         "contributors": {
-        "$ref": "./event-contributors.json"
+          "$ref": "./event-contributors.json"
         }
       },
       "required": [

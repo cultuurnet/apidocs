@@ -102,7 +102,7 @@
           "$ref": "./place-sameAs.json"
         },
         "contributors": {
-        "$ref": "./place-contributors.json"
+          "$ref": "./place-contributors.json"
         }
       },
       "required": [
