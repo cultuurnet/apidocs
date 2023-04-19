@@ -8048,11 +8048,16 @@
                   }
                 },
                 "examples": {
-                  "Example": {
+                  "Example 1": {
                     "value": [
                       {
                         "id": "c356dac7-133b-4847-805f-91a8c3c09da6",
-                        "title": "Alex Agnew speelt 'Wake Me Up When It's Over'"
+                        "title": "Alex Agnew speelt 'Wake Me Up When It's Over'",
+                        "otherEvents": [
+                          "https://io.uitdatabank.be/event/4f37a230-8d8d-4dab-a527-62e879629bae",
+                          "https://io.uitdatabank.be/event/7f32b131-deb9-483f-ab32-98541d3c3b77",
+                          "https://io.uitdatabank.be/event/c41effec-0e04-4e01-8804-9ea9b4c6b528"
+                        ]
                       }
                     ]
                   }
