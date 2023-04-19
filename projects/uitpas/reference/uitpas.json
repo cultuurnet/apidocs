@@ -4237,7 +4237,7 @@
         "tags": [
           "Rewards"
         ],
-        "description": "Update reward.\n\nThe caller of this request must have `REWARDS_WRITE` permission for the given organizer."
+        "description": "Update reward.\nTo update a reward correctly, as a client you will typically `GET` the reward first,  make the required changes in the reward json and use this `PUT` request to persist those changes in UiTPAS.\n\nDo note that the following fields are **not editable** after this reward is redeemed by (for POINTS rewards) or granted to (for WELCOME rewards) a passholder:\n* redeemPeriod.begin\n* grantingPeriod.begin\n* points\n\nAttempts to edit such rewards will result in an HTTP 400 error with type `https://api.publiq.be/probs/uitpas/reward-not-editable`\n\nThe caller of this request must have `REWARDS_WRITE` permission for the given organizer."
       }
     },
     "/rewards/{rewardId}/redeem-status": {
