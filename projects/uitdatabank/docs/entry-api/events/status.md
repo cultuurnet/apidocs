@@ -113,7 +113,7 @@ The top-level `status` is determined as follows:
 
 Alternatively, you can set the top-level `status` by using the separate [`PUT /events/{eventId}/status`](/reference/entry.json/paths/~1events~1{eventId}~1status/put) endpoint. This endpoint is the equivalent of setting the same `status` on every `subEvent` of the event when updating it in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put).
 
-### With calendarType "periodic" or "multiple"
+### With calendarType "periodic" or "permanent"
 
 To cancel an event with calendarType `periodic` or `permanent`, update the (top-level) `status.type` property and set it to `Unavailable`.
 
