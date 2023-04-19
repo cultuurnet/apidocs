@@ -1,6 +1,3 @@
-Coming soon.
+# Sharing ticket/reservation availability
 
-<!-- 
-  @todo 
-  Explain that it is currently not supported to mark a place as sold out, as the status is top-level and a place can only be sold out for a specific moment/day and this is currently not possible. 
--->
+> Albeit possible in practice for a place to be sold out for a certain moment/day, we do not currently support this in our API. Places in UiTdatabank do not have granular time information and therefore do not allow to indicate a certain moment as fully booked or sold out. As a result the top-level bookingAvailability for places is always `Available`.
