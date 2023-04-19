@@ -8046,6 +8046,16 @@
                   "items": {
                     "$ref": "../models/production.json"
                   }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                        "title": "Alex Agnew speelt 'Wake Me Up When It's Over'"
+                      }
+                    ]
+                  }
                 }
               }
             }
