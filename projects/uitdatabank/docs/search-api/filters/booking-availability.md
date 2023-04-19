@@ -1,3 +1,3 @@
 # Booking Availability
 
-.
+coming soon.
