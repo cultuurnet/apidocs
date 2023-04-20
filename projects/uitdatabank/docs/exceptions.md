@@ -77,7 +77,7 @@ The translatable fields are different for every entity:
 * name
 * address*
 
-Fields marked with an `*` are not yet indexed under the `completeLanguages` property and are not taken into account when calculating for completed languages.
+Fields marked with an `*` are not yet indexed under the `completedLanguages` property and are not taken into account when calculating for completed languages.
 
 ## bookingInfo
 
