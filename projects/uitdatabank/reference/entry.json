@@ -8016,6 +8016,145 @@
         ]
       }
     },
+    "/productions":{
+        "get": {
+        "summary": "productions - search",
+        "description": "Get a list of existing productions filtered by a search string",
+        "operationId": "productions-get",
+        "responses": {
+          "200": {
+            "description": "Production details",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hydra:member": {
+                      "type": "array",
+                      "description": "Production results for the requested page.",
+                      "items": {
+                        "$ref": "../models/production.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "member": [
+                        {
+                          "name":"Kommil Foo & Brussels Jazz Orchestra - concert",
+                          "production_id":"ea9cdc31-b705-4cd8-a47e-788953ea565f",
+                          "events":[
+                            "11b97c9b-fc18-4303-b893-f4397e55e875",
+                            "4571b8a4-4df1-4679-bdd8-a18f6487c68d",
+                            "5f5f1dac-0c48-4b5d-a787-1af5ea9c8c9e",
+                            "638a405e-78f3-49ff-adc4-3c1e313c703a",
+                            "6dc5b5f5-e699-425b-979b-728905326851",
+                            "7921b1d6-73cd-4669-a85c-962eee8b2337",
+                            "7a079940-1f31-4ad3-bfab-11c9e38746d5",
+                            "7c234583-6f42-4970-b3bd-bbcc4fa20533",
+                            "8d45fb95-188a-48c8-ab8b-221088ae1338",
+                            "bfd36bb3-303a-4b0a-93e8-e7ce959c27d0",
+                            "c33c88d7-a53c-47a0-80f5-f78db9badc1e",
+                            "fb046051-5a0a-4d6f-b159-d04a96933454",
+                            "fc3396ec-07ca-40a3-8e80-93f7ddb6b617",
+                            "fc743872-f748-4638-9bfa-ce9c80d0c0a4",
+                            "fcc791d6-c19f-4334-b86d-6036ee21a5a7"
+                            ]
+                        },
+                        {
+                          "name":"Kommil Foo",
+                          "production_id":"a2fd1561-fbf1-441b-945f-21233fe0d377",
+                          "events":[
+                            "98c45e4f-12a1-45b0-bca6-7dcca4194dbd",
+                            "9cffb31c-c16e-4bf9-b6c1-3ed30fdba52b"
+                            ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../models/production.json"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                        {
+                           "name":"Kommil Foo & Brussels Jazz Orchestra - concert",
+                           "production_id":"ea9cdc31-b705-4cd8-a47e-788953ea565f",
+                           "events":[
+                              "11b97c9b-fc18-4303-b893-f4397e55e875",
+                              "4571b8a4-4df1-4679-bdd8-a18f6487c68d",
+                              "5f5f1dac-0c48-4b5d-a787-1af5ea9c8c9e",
+                              "638a405e-78f3-49ff-adc4-3c1e313c703a",
+                              "6dc5b5f5-e699-425b-979b-728905326851",
+                              "7921b1d6-73cd-4669-a85c-962eee8b2337",
+                              "7a079940-1f31-4ad3-bfab-11c9e38746d5",
+                              "7c234583-6f42-4970-b3bd-bbcc4fa20533",
+                              "8d45fb95-188a-48c8-ab8b-221088ae1338",
+                              "bfd36bb3-303a-4b0a-93e8-e7ce959c27d0",
+                              "c33c88d7-a53c-47a0-80f5-f78db9badc1e",
+                              "fb046051-5a0a-4d6f-b159-d04a96933454",
+                              "fc3396ec-07ca-40a3-8e80-93f7ddb6b617",
+                              "fc743872-f748-4638-9bfa-ce9c80d0c0a4",
+                              "fcc791d6-c19f-4334-b86d-6036ee21a5a7"
+                           ]
+                        },
+                        {
+                           "name":"Kommil Foo",
+                           "production_id":"a2fd1561-fbf1-441b-945f-21233fe0d377",
+                           "events":[
+                              "98c45e4f-12a1-45b0-bca6-7dcca4194dbd",
+                              "9cffb31c-c16e-4bf9-b6c1-3ed30fdba52b"
+                           ]
+                        }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-internal": true,
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "name",
+            "description": "The name or part of the name of the production(s) to search (case-insensitive)."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "start",
+            "description": "The number of productions to skip from the start of the result set. When omitted it starts from the first position (0)."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "The limit of productions included in the result set. When omitted it defaults to 30 items."
+          }
+        ],
+        "tags": [
+          "Productions"
+        ]
+      }
+    },
     "/user": {
       "get": {
         "summary": "current user - get",
@@ -8293,6 +8432,9 @@
     },
     {
       "name": "Places"
+    },
+    {
+      "name": "Productions"
     },
     {
       "name": "Users"
