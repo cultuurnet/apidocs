@@ -3,7 +3,8 @@
 When [sorting by score](../sorting.md), you may wish to influence the scores of results based on specific factors. For example, you may want to show all events that have at least one image before those without images.
 
 You can achieve this by applying a boost factor to specific filters in [advanced queries](advanced-queries.md).
-
+<!-- theme: info -->
+> Boosting does not change which search results you see, but it does change the sorting of these results. By default, search results are sorted by a score that measures the relevance of a search result. A boosting query ensures that certain hits within a result set receive a higher score and therefore rank higher.
 ## Positive boosting
 
 You can use the boost operator `^` in advanced queries to make specific matches more important than others.
