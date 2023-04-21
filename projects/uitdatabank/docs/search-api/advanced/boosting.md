@@ -3,7 +3,9 @@
 When [sorting by score](../sorting.md), you may wish to influence the scores of results based on specific factors. For example, you may want to show all events that have at least one image before those without images.
 
 You can achieve this by applying a boost factor to specific filters in [advanced queries](advanced-queries.md).
+
 <!-- theme: info -->
+
 > Boosting does not change which search results you see, but it does change the sorting of these results. By default, search results are sorted by a score that measures the relevance of a search result. A boosting query ensures that certain hits within a result set receive a higher score and therefore rank higher.
 
 ## Positive boosting
@@ -43,7 +45,6 @@ GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ip
 *This query query matches both events that have the `lorem` and `ipsum` label, and events without those labels. It positvely boosts events with the label `lorem` and `ipsum`, but events with the label `lorem` will appear higher.*
 In the example above,
 
-
 ## Negative boosting
 
 You can influence the score or results negatively by using a boost value that is between `0` and `1`.
@@ -63,7 +64,6 @@ GET /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
 ```
 
 *This query matches both events that have the `lorem` label, and events without the `lorem` label and positively boosts the latter ones.*
-
 
 ## Restrictions
 
