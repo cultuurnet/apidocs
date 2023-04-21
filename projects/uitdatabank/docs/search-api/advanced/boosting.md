@@ -5,6 +5,7 @@ When [sorting by score](../sorting.md), you may wish to influence the scores of 
 You can achieve this by applying a boost factor to specific filters in [advanced queries](advanced-queries.md).
 <!-- theme: info -->
 > Boosting does not change which search results you see, but it does change the sorting of these results. By default, search results are sorted by a score that measures the relevance of a search result. A boosting query ensures that certain hits within a result set receive a higher score and therefore rank higher.
+
 ## Positive boosting
 
 You can use the boost operator `^` in advanced queries to make specific matches more important than others.
@@ -19,16 +20,16 @@ The default boost value is `1`, and it can be any positive `float` number. To ma
 
 Keep in mind that results that do not match a (boosted) filter at all are always excluded. So if you want to for example boost all results with an image, but also show results without images, you should create an `OR` query with both cases and boost one:
 
-```
-/events/?q=mediaObjectsCount:[1 TO *]^10 OR mediaObjectsCount:0
+```http
+GET /events/?q=mediaObjectsCount:[1 TO *]^10 OR mediaObjectsCount:0
 ```
 
 *This query matches both events that have 1 or more image and boosts those, and events with exactly 0 images. Events with 0 images are not boosted in this case.*
 
 In another example, you may wish to boost all results with a specific label but also show results that do not have that label:
 
-```
-/events/?q=(labels:lorem^10) OR (NOT labels:lorem)
+```http
+GET /events/?q=(labels:lorem^10) OR (NOT labels:lorem)
 ```
 
 *This query matches both events that have the `lorem` label and boosts those, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
@@ -39,19 +40,31 @@ You can influence the score or results negatively by using a boost value that is
 
 For example:
 
-```
-/events/?q=(labels:lorem^0.5) OR (NOT labels:lorem)
+```http
+GET /events/?q=(labels:lorem^0.5) OR (NOT labels:lorem)
 ```
 
 *This query matches both events that have the `lorem` label and boosts those negatively, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
 
 Alternatively, you can positively boost the results that do not match a specific filter. For example, you can boost all events that do not have the label `lorem`:
 
-```
-/events/?q=(labels:lorem) OR (NOT labels:lorem)^10
+```http
+GET /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
 ```
 
 *This query matches both events that have the `lorem` label, and events without the `lorem` label and positively boosts the latter ones.*
+
+It is possible to add a hierarchy between multiple parameters when boosting, like in the example below:
+
+```http
+GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ipsum^2 OR NOT labels:ipsum)))
+```
+
+In the example above,
+* both events with the label `lorem` and `ipsum` are boosted
+* the events with the label `lorem` will appear higher than the ones with the labels `ipsum` (because of the higher boost value)
+* the events with the label `ipsum` will still appear higher than the events that have none of both labels
+
 
 ## Restrictions
 
