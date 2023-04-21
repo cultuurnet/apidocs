@@ -12,8 +12,8 @@ You can use the boost operator `^` in advanced queries to make specific matches 
 
 For example, to get all events that have either the `lorem` or `ipsum` labels but show the ones with the `lorem` label first:
 
-```
-/events/?q=labels:lorem^10 OR labels:ipsum
+```http
+GET /events/?q=labels:lorem^10 OR labels:ipsum
 ```
 
 The default boost value is `1`, and it can be any positive `float` number. To make sure that the boost has enough influence on the results' scores, we recommend using large values.
