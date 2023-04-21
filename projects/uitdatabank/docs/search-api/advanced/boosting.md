@@ -34,6 +34,16 @@ GET /events/?q=(labels:lorem^10) OR (NOT labels:lorem)
 
 *This query matches both events that have the `lorem` label and boosts those, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
 
+It is possible to add a hierarchy between multiple parameters when boosting, like in the example below:
+
+```http
+GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ipsum^2 OR NOT labels:ipsum)))
+```
+
+*This query query matches both events that have the `lorem` and `ipsum` label, and events without those labels. It positvely boosts events with the label `lorem` and `ipsum`, but events with the label `lorem` will appear higher.*
+In the example above,
+
+
 ## Negative boosting
 
 You can influence the score or results negatively by using a boost value that is between `0` and `1`.
@@ -54,14 +64,6 @@ GET /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
 
 *This query matches both events that have the `lorem` label, and events without the `lorem` label and positively boosts the latter ones.*
 
-It is possible to add a hierarchy between multiple parameters when boosting, like in the example below:
-
-```http
-GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ipsum^2 OR NOT labels:ipsum)))
-```
-
-*This query query matches both events that have the `lorem` and `ipsum` label, and events without those labels. It positvely boosts events with the label `lorem` and `ipsum`, but events with the label `lorem` will appear higher.*
-In the example above,
 
 ## Restrictions
 
