@@ -3,7 +3,7 @@
   "type": "string",
   "format": "uri",
   "description": "The unique url of the video. Currently only Youtube and Vimeo sources are allowed.",
-  "pattern": "^http(s?):\\/\\/(www\\.)?((youtube\\.com\\/watch\\?v=([^\\/#&?]*))|(vimeo\\.com\\/([^\\/#&?]*))|(youtu\\.be\\/([^\\/#&?]*)))",
+  "pattern": "^http(s?):\\/\\/(www\\.)?((youtube\\.com\\/watch\\?v=([^\\/#&?]*))|(vimeo\\.com\\/([^\\/#&?]*))|(youtu\\.be\\/([^\\/#&?]*))|(youtube.com\/embed\/([^\\/#&?]*)))",
   "examples": [
     "https://www.youtube.com/watch?v=cEItmb_a20D"
   ]

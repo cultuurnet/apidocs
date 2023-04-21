@@ -176,6 +176,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -443,6 +446,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -649,6 +655,9 @@
             "$ref": "#/components/parameters/website"
           },
           {
+            "$ref": "#/components/parameters/id"
+          },
+          {
             "$ref": "#/components/parameters/domain"
           },
           {
@@ -659,6 +668,9 @@
           },
           {
             "$ref": "#/components/parameters/creator"
+          },
+          {
+            "$ref": "#/components/parameters/contributors"
           },
           {
             "$ref": "#/components/parameters/facets"
@@ -852,6 +864,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -1006,6 +1021,16 @@
         "in": "query",
         "name": "q",
         "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields."
+      },
+      "contributors":{
+        "schema": {
+          "format": "email",
+          "type": "string",
+          "example": "technical-support@publiq.be"
+        },
+        "in": "query",
+        "name": "contributors",
+        "description": "Returns results for which a particular user / email address is a contributor"
       },
       "name": {
         "schema": {

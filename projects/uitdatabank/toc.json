@@ -19,6 +19,12 @@
       "slug": "errors"
     },
     {
+      "type": "item",
+      "title": "Exceptions",
+      "uri": "docs/exceptions.md",
+      "slug": "exceptions"
+    },
+    {
       "type": "divider",
       "title": "Entry API"
     },

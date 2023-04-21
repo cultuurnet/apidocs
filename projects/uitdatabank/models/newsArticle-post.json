@@ -2,6 +2,30 @@
   "title": "newsArticle.post",
   "type": "object",
   "x-internal": true,
+  "examples": [
+    {
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "This year publiq won an API reward for it's innovative RESTful API",
+      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
+      "publisher": "BILL",
+      "publisherLogo": "https://www.bill.be/img/favicon.png",
+      "url": "https://www.bill.be/blog/publiq-award"
+    },
+    {
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "These are some exhibitions worth visiting.",
+      "about": "cfa29b53-0eb6-4bf1-8c7a-6394af5c8731",
+      "publisher": "UiTinVlaanderen",
+      "publisherLogo": "https://www.uitinvlaanderen.be/img/favicon.png",
+      "url": "https://www.uitinvlaanderen.be/tip/article",
+      "image": {
+        "url": "https://www.uitinvlaanderen.be/public/image.jpeg",
+        "copyrightHolder": "publiq vzw"
+      }
+    }
+  ],
   "properties": {
     "headline": {
       "type": "string",
@@ -31,6 +55,9 @@
     "url": {
       "$ref": "./common-string-uri.json",
       "description": "The link pointing to the published news article itself."
+    },
+    "image": {
+      "$ref": "./common-newsArticle-image.json"
     }
   },
   "required": [
@@ -41,16 +68,5 @@
     "publisher",
     "publisherLogo",
     "url"
-  ],
-  "examples": [
-    {
-      "headline": "The headline of the news article.",
-      "inLanguage": "en",
-      "text": "This year publiq won an API reward for it's innovative RESTful API",
-      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
-      "publisher": "BILL",
-      "publisherLogo": "https://www.bill.be/img/favicon.png",
-      "url": "https://www.bill.be/blog/publiq-award"
-    }
   ]
 }

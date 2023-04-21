@@ -1,0 +1,26 @@
+{
+  "title": "uri",
+  "type": "object",
+  "format": "uri",
+  "examples": [
+    {
+      "image": {
+        "url": "https://example.com/sample.jpeg",
+        "copyrightHolder": "Publiq vzw"
+      }
+    }
+  ],
+  "description": "A URI which links to a valid image.",
+  "properties": {
+    "url": {
+      "$ref": "./common-string-uri-image.json"
+    },
+    "copyrightHolder": {
+      "$ref": "./common-copyrightHolder.json"
+    }
+  },
+  "required": [
+    "url",
+    "copyrightHolder"
+  ]
+}
