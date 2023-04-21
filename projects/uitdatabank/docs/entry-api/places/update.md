@@ -41,7 +41,7 @@ When updating a place in its entirety, it is important to keep the following poi
 
 ## Updating a single property
 
-While you can update a place in its entirety to update a single property, you can also update individual properties via endpoints provided specifically for this purpose. 
+While you can update a place in its entirety to update a single property, you can also update individual properties via endpoints provided specifically for this purpose.
 
 Some examples include:
 
