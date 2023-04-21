@@ -60,11 +60,8 @@ It is possible to add a hierarchy between multiple parameters when boosting, lik
 GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ipsum^2 OR NOT labels:ipsum)))
 ```
 
+*This query query matches both events that have the `lorem` and `ipsum` label, and events without those labels. It positvely boosts events with the label `lorem` and `ipsum`, but events with the label `lorem` will appear higher.*
 In the example above,
-* both events with the label `lorem` and `ipsum` are boosted
-* the events with the label `lorem` will appear higher than the ones with the labels `ipsum` (because of the higher boost value)
-* the events with the label `ipsum` will still appear higher than the events that have none of both labels
-
 
 ## Restrictions
 
