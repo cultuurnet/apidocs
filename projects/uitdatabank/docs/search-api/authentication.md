@@ -4,6 +4,21 @@
 
 See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) page in the general authentication documentation.
 
+## Tokens
+
+If you are also integrating with UiTdatabank's [Entry API](../entry-api/introduction.md) and/or [UiTPAS API](https://docs.publiq.be/docs/uitpas), you can re-use the [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token) or [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) that you use to authenticate with those APIs.
+
+For example:
+```http
+GET /events/ HTTP/1.1
+Host: https://search-test.uitdatabank.be
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+(**Note**: This only works for tokens obtained using an Auth0 client, not for tokens obtained via the older proprietary "JWT provider" using an API key. If you are using an API key, see "API key" below.)
+
+If you are only integrating with Search API, we recommend to use the simpler client identification instead as documented below.
+
 ## Client identification
 
 When you have received your client credentials, you can authenticate on the Search API using client identification in the form of a `x-client-id` header or `clientId` URL query parameter as authentication.
