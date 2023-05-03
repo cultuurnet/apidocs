@@ -16,11 +16,11 @@ Videos can linked to:
 
 ## Supported video sites
 
-Only videos from [YouTube](https://www.youtube.com/) or [Vimeo](https://vimeo.com/watch) are supported.
+Only videos from <https://www.youtube.com/> or <https://vimeo.com/watch> are supported.
 
 ## Linking a video
 
-When creating or updating an event/place, you can include a `videos` property, with one or more videos. A video must have the video url of a supported site and a language. CopyrightHolder is recommended, but not mandatory.
+When creating or updating an event/place, you can include a `videos` property, with one or more videos. A video must have the video url of a supported site and a language. While copyrightHolder is optional, it is recommended.
 
 For example:
 
