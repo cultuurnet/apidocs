@@ -1,6 +1,6 @@
 # Labels
 
-Labels are a way to enrich your event, place or organizer. They can be used to create search api queries to fetch events for your 
+Labels are a way to enrich your event, place or organizer. They can be used to [create search api queries](../../search-api/filters/labels.md) to fetch events for your 
 agenda. They can be public or private & visible or hidden.
 
 ## Scope
