@@ -12,6 +12,7 @@ Note that when you delete a place, it is not actually deleted but its `workflowS
 Keep in mind that deleting a place is an irreversible action. If you deleted a place by accident, the best recourse is to create a new one with the same info.
 
 <!-- theme: warning -->
+
 > It is only possible to delete a place when it is not linked to one or more events. If your place is linked to one or more events you must first link the events to another place. Since the place you created can be used by other creators it is possible thatyou cannot move all the events from the place to another place due to permission restrictions. In that case, please contact us on `technical-support@publiq.be`.
 
 ## Required permissions
@@ -24,7 +25,7 @@ There are two ways to delete an place.
 
 ### 1. DELETE endpoint
 
-Using the [`DELETE /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/delete) endpoint you can soft-delete the place at the given URL. 
+Using the [`DELETE /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/delete) endpoint you can soft-delete the place at the given URL.
 
 The place's `workflowStatus` property will automatically be updated to `DELETED`.
 
