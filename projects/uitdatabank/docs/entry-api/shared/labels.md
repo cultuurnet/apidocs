@@ -12,9 +12,9 @@ Contributors can be added on:
 * ✅ [Organizers](../organizers/introduction.md)
 
 ## Format
-- The label must be longer than 1 character.
-- The label must be shorter than 255 characters.
-- The label cannot contain semicolons
+* The label must be longer than 1 character.
+* The label must be shorter than 255 characters.
+* The label cannot contain semicolons
 
 ## Visible/hidden Labels
 
