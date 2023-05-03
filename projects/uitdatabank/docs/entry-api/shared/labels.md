@@ -20,10 +20,11 @@ Contributors can be added on:
 
 Labels can be visible or hidden. Visible labels will be shown on public agenda's, hidden labels will not.
 
-## Private Labels
+## Public/private Labels
 
 Some labels are private, which means only users with a role can add them to their event, place or organizer.
 If you do not have the required permission, you will get a validation error, when you try to add it to your event, place or organizer.
+Public labels can be added by anyone.
 
 ## Adding a label
 
@@ -52,7 +53,7 @@ Alternatively, you can set a label using one of these endpoints:
 * For places: [`PUT /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/put)
 * For organizers: [`PUT /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/put)
 
-## Removing a description
+## Removing a label
 
 To remove a label **when updating an event/place/organizer in its entirety**, you can simply leave out the specific `label`.
 
@@ -61,12 +62,3 @@ Alternatively, you can delete a label using one of these endpoints:
 * For events: [`DELETE /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/delete)
 * For places: [`DELETE /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/delete)
 * For organizers: [`DELETE /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/delete)
-
-<!--
-  @todo
-  - What are labels?
-  - Visible and hidden labels
-  - Adding a label to an event/place/organizer
-  - Removing a label
-  - Filtering by labels (refer to Search API guide)
--->
