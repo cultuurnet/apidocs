@@ -40,9 +40,9 @@ For example:
 ```
 Alternatively, you can set a label using one of these endpoints:
 
-* For events: [`PUT /events/{eventId}/labels/{label}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1/put)
-* For places: [`PUT /places/{placeId}/labels/{label}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{label}/put)
-* For organizers: [`PUT /organizers/{organizerId}/labels/{label}`](/reference/entry.json/paths/~1organizers~1~1labels~1{label}/put)
+* For events: [`PUT /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1/put)
+* For places: [`PUT /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/put)
+* For organizers: [`PUT /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1~1labels~1{labelName}/put)
 
 
 <!--
