@@ -16,7 +16,7 @@ Videos can linked to:
 
 ## Supported video sites
 
-Only videos from YouTube(https://www.youtube.com/) or Vimeo are supported.
+Only videos from [YouTube](https://www.youtube.com/) or Vimeo are supported.
 
 ## Linking a video
 
@@ -45,6 +45,8 @@ Alternatively, you can link a video using one of these endpoints:
 
 * For events: [`POST /events/{eventId}/videos/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1videos/post)
 * For places: [`POST /places/{placeId}/videos/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1videos/post)
+
+Once you have added a video to your event or place, it will get an id once you 
 
 ## Updating video information
 
