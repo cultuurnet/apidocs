@@ -71,18 +71,19 @@ For example:
 
 ```json
 "videos": [
-{
-"id": "7a870b7b-a543-4837-a0c2-d8d55bba5e1a",
-"url": "https://www.youtube.com/watch?v=35SMEnyPutE",
-"embedUrl": "https://www.youtube.com/embed/35SMEnyPutE",
-"language": "nl",
-"copyrightHolder": "publiq vzw"
-}
+  {
+    "id": "7a870b7b-a543-4837-a0c2-d8d55bba5e1a",
+    "url": "https://www.youtube.com/watch?v=35SMEnyPutE",
+    "embedUrl": "https://www.youtube.com/embed/35SMEnyPutE",
+    "language": "nl",
+    "copyrightHolder": "publiq vzw"
+  }
 ]
 ```
 
 You can use this in your website:
 
 ```html
-<iframe type="text/html" width="640" height="360" src="https://www.youtube.com/embed/35SMEnyPutE" frameborder="0"></iframe>
+<iframe type="text/html" width="640" height="360" src="https://www.youtube.com/embed/35SMEnyPutE" frameborder="0">
+</iframe>
 ```
