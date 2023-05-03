@@ -52,6 +52,15 @@ Alternatively, you can set a label using one of these endpoints:
 * For places: [`PUT /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/put)
 * For organizers: [`PUT /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/put)
 
+## Removing a description
+
+To remove a label **when updating an event/place/organizer in its entirety**, you can simply leave out the specific `label`.
+
+Alternatively, you can delete a label using one of these endpoints:
+
+* For events: [`DELETE /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/delete)
+* For places: [`DELETE /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/delete)
+* For organizers: [`DELETE /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/delete)
 
 <!--
   @todo
