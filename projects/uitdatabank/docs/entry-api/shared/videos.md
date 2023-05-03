@@ -41,6 +41,11 @@ For example:
 }
 ```
 
+Alternatively, you can link a video using one of these endpoints:
+
+* For events: [`POST /events/{eventId}/videos/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1videos/post)
+* For places: [`POST /places/{placeId}/videos/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1videos/post)
+
 <!--
   @todo
   - Explain supported types of videos
