@@ -46,6 +46,13 @@ Alternatively, you can link a video using one of these endpoints:
 * For events: [`POST /events/{eventId}/videos/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1videos/post)
 * For places: [`POST /places/{placeId}/videos/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1videos/post)
 
+## Updating video information
+
+You can update the information of a video using one of these endpoints:
+
+* For events: [`PATCH /events/{eventId}/videos/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1videos/patch)
+* For places: [`PATCH /places/{placeId}/videos/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1videos/patch)
+
 <!--
   @todo
   - Explain supported types of videos
