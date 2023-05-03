@@ -4,7 +4,7 @@ Videos make your events or places stand out from the crowd and more attractive t
 
 Online calendars can show an embedded video player, so results with videos are more likely to be checked out by visitors.
 
-In this guide you will learn how to add videos to your events and places. Additionally, you'll learn how to update or remove the videos afterward.
+In this guide you will learn how to link videos to your events and places. Additionally, you'll learn how to update or remove the videos afterward.
 
 ## Scope
 
@@ -14,6 +14,9 @@ Videos can be uploaded and linked to:
 * ✅ [Places](../places/introduction.md)
 * ❌ [Organizers](../organizers/introduction.md)
 
+## Supported video sites
+
+Only videos from [YouTube](https://www.youtube.com/) or [Vimeo](https://vimeo.com/) are supported
 
 <!--
   @todo
