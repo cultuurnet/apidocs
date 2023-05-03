@@ -3,6 +3,14 @@
 Labels are a way to enrich your event, place or organizer. They can be used to create search api queries to fetch events for your 
 agenda. They can be public or private & visible or hidden.
 
+## Scope
+
+Contributors can be added on:
+
+* ✅ [Events](../events/introduction.md)
+* ✅ [Places](../places/introduction.md)
+* ✅ [Organizers](../organizers/introduction.md)
+
 ## Format
 - The label must be longer than 1 character.
 - The label must be shorter than 255 characters.
@@ -40,9 +48,9 @@ For example:
 ```
 Alternatively, you can set a label using one of these endpoints:
 
-* For events: [`PUT /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1/put)
+* For events: [`PUT /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/put)
 * For places: [`PUT /places/{placeId}/labels/{labelName}`](/reference/entry.json/paths/~1places~1{placeId}~1labels~1{labelName}/put)
-* For organizers: [`PUT /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1~1labels~1{labelName}/put)
+* For organizers: [`PUT /organizers/{organizerId}/labels/{labelName}`](/reference/entry.json/paths/~1organizers~1{organizerId}~1labels~1{labelName}/put)
 
 
 <!--
