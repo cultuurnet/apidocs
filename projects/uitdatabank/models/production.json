@@ -5,7 +5,7 @@
   "description": "A production that 2 or more events are part of",
   "examples": [
     {
-      "production_id": "c356dac7-133b-4847-805f-91a8c3c09da6",
+      "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
       "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
       "events": [
         "4f37a230-8d8d-4dab-a527-62e879629bae",
@@ -15,7 +15,7 @@
     }
   ],
   "properties": {
-    "production_id": {
+    "productionId": {
       "$ref": "./common-string-uuid.json",
       "description": "The uuid of the production"
     },
@@ -28,13 +28,12 @@
       "type": "array",
       "description": "List of events that are part of the production",
       "items": {
-        "type": "string",
-        "format": "uuid"
+        "type": "string"
       }
     }
   },
   "required": [
-    "production_id",
+    "productionId",
     "name",
     "events"
   ]
