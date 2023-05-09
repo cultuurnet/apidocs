@@ -16,7 +16,7 @@ Videos can linked to:
 
 ## Supported video sites
 
-Only videos from [YouTube](https://www.youtube.com/) or Vimeo are supported.
+Only videos from YouTube or Vimeo are supported.
 
 ## Linking a video
 
