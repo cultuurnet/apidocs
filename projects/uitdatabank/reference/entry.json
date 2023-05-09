@@ -8043,7 +8043,7 @@
                     "value": {
                       "hydra:member": [
                         {
-                          "production_id": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                          "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
                           "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
                           "events": [
                             "4f37a230-8d8d-4dab-a527-62e879629bae",
@@ -8067,7 +8067,7 @@
                   "Example 1": {
                     "value": [
                       {
-                        "production_id": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                        "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
                         "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
                         "events": [
                           "4f37a230-8d8d-4dab-a527-62e879629bae",
