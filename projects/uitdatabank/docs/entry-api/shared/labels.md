@@ -22,7 +22,7 @@ Labels can be visible or hidden. Visible labels will be shown on public agenda's
 
 ## Public/private Labels
 
-Some labels are private, which means only users with a role can add them to their event, place or organizer.
+Some labels are private, which means only users or clients with specific permissions can add them to events, places or organizers.
 If you do not have the required permission, you will get a validation error, when you try to add it to your event, place or organizer.
 Public labels can be added by anyone.
 
