@@ -1,3 +1,7 @@
+---
+stoplight-id: 5d710e87cf4d1
+---
+
 # Facets
 
 Facets allow you to summarize your search results in relation to one or more filters (e.g. regions). Each facet has a

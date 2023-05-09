@@ -421,25 +421,31 @@
             {
               "type": "item",
               "title": "Advanced queries",
-              "uri": "/docs/search-api/advanced-queries.md",
+              "uri": "/docs/search-api/advanced/advanced-queries.md",
               "slug": "search-api/advanced-queries"
             },
             {
               "type": "item",
+              "title": "Boosting",
+              "uri": "/docs/search-api/advanced/boosting.md",
+              "slug": "search-api/boosting"
+            },
+            {
+              "type": "item",
               "title": "Facets",
-              "uri": "/docs/search-api/facets.md",
+              "uri": "/docs/search-api/advanced/facets.md",
               "slug": "search-api/facets"
             },
             {
               "type": "item",
               "title": "Calendar summaries",
-              "uri": "/docs/search-api/embedding-calendar-summaries.md",
+              "uri": "/docs/search-api/advanced/embedding-calendar-summaries.md",
               "slug": "search-api/calendar-summaries"
             },
             {
               "type": "item",
               "title": "UiTPAS prices",
-              "uri": "/docs/search-api/embedding-uitpas-prices.md",
+              "uri": "/docs/search-api/advanced/embedding-uitpas-prices.md",
               "slug": "search-api/uitpas-prices"
             }
           ]
