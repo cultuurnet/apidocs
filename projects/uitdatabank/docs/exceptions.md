@@ -2,7 +2,7 @@
 
 This page contains an overview of possible exceptions and deprecated data.
 
-## Missing `@id` for location
+## Missing @id for location
 
 It is possible an event has **a place without `@id`**.
 
@@ -25,7 +25,8 @@ It is possible an event has **a place without `@id`**.
 
 We call this a [dummy location](terminology.md); legacy data from the previous version of UiTdatabank. These places can't be ignored because they contain the address and geocoordinates needed to locate the event.
 
-## Missing `@id` for organizer
+## Missing @id for organizer
+
 
 It is possible an event has **an organizer without `@id`**
 
