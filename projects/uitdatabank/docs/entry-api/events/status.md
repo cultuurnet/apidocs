@@ -2,7 +2,7 @@
 
 When [creating](./create.md) or (usually) when [updating](./update.md) your event, you can mark it as postponed or cancelled to indicate to attendees that it will be moved to another date or not take place at all.
 
-Cancelled events automatically get an *"(geannuleerd)"* label next to their date(s) in online calendars that use [calendar summaries](../../search-api/embedding-calendar-summaries.md) to render the calendar information. For example, on UiTinVlaanderen:
+Cancelled events automatically get an *"(geannuleerd)"* label next to their date(s) in online calendars that use [calendar summaries](../../search-api/advanced/embedding-calendar-summaries.md) to render the calendar information. For example, on UiTinVlaanderen:
 
 ![Screenshot of a summary of the event "Boshyacintenfestival" on UiTinVlaanderen, as an example of the "(Geannuleerd)" label](../../../assets/images/event-cancelled.png)
 
@@ -113,7 +113,7 @@ The top-level `status` is determined as follows:
 
 Alternatively, you can set the top-level `status` by using the separate [`PUT /events/{eventId}/status`](/reference/entry.json/paths/~1events~1{eventId}~1status/put) endpoint. This endpoint is the equivalent of setting the same `status` on every `subEvent` of the event when updating it in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put).
 
-### With calendarType "periodic" or "multiple"
+### With calendarType "periodic" or "permanent"
 
 To cancel an event with calendarType `periodic` or `permanent`, update the (top-level) `status.type` property and set it to `Unavailable`.
 

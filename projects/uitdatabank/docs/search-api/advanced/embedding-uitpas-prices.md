@@ -22,7 +22,7 @@ UiTPAS prices are not supported on `GET /organizers` because organizers do not h
 
 To include UiTPAS prices in the search result data, use the `embedUitpasPrices` URL parameter and set it to `true`. The current default is `false`.
 
-Note that you also need to set the `embed` parameter to `true` to [include search result data](./embedding.md) in the first place.
+Note that you also need to set the `embed` parameter to `true` to [include search result data](../embedding.md) in the first place.
 
 <!-- theme: warning -->
 
