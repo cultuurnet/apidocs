@@ -1,7 +1,3 @@
----
-stoplight-id: d9e657d20fe21
----
-
 # Advanced queries
 
 Every endpoint on Search API supports various URL parameters for the most common filters. However, these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
