@@ -1,7 +1,3 @@
----
-stoplight-id: d9e657d20fe21
----
-
 # Advanced queries
 
 Every endpoint on Search API supports various URL parameters for the most common filters. However, these URL parameters have certain limitations, for example grouping and custom boolean operators are not possible.
@@ -238,7 +234,7 @@ Get all places that are permanently closed:
 GET /places/?q=bookingAvailability:unavailable
 ```
 
-@todo: link to booking availability guide when that guide is finished.
+For an in-depth understanding of the `bookingAvailability` field we advise to read [our guide](filters/booking-availability.md).
 
 ### calendarType
 
@@ -357,7 +353,9 @@ GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
 
 ### dateRange
 
-Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
+Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future. 
+
+For an in-depth understanding of filtering on date and time we recommend to read [our guide](filters/datetime.md).
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
@@ -481,7 +479,7 @@ All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch,
 
 To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` field.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our [languages guide](filters/language.md)
 
 **Applicable on endpoints**
 
@@ -630,7 +628,7 @@ GET /events/?q=location.terms.id:8.70.0.0.0
 
 Traditionally, each document created in UiTdatabank starts as Dutch and can then be translated to other languages. However, it is possible to create an event, place or organizer in a different language. The `mainLanguage` property indicates in which language the main content of the document is.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our [language guide](filters/language.md).
 
 **Applicable on endpoints**
 
@@ -823,7 +821,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see (@todo: link to guide)
+Any valid region. For a list of all shapes, see [our guide](filters/location.md).
 
 **Example**
 
@@ -837,7 +835,7 @@ GET /places/?q=regions:nis-01000
 
 The `status` indicates whether an event or place is still available for visits or not.
 
-For an in-depth understanding of the `status` field we advise to read our guide (@todo: link to guide).
+For an in-depth understanding of the `status` field we advise to read [our guide](filters/status.md).
 
 **Applicable on endpoints**
 
@@ -895,7 +893,7 @@ GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
 
 Filter out results based on the targeted age group of the event/place with the `typicalAgeRange` field.
 
-For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (@todo: link to guide).
+For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read [our guide about filtering on age](filters/age.md).
 
 **Applicable on endpoints**
 
@@ -913,7 +911,7 @@ Retrieve all events for children under 12 years old:
 GET /events/?q=typicalAgeRange:[0 TO 12]
 ```
 
-Note that this query will also return events that are for all ages (see allAges (@todo link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
+Note that this query will also return events that are for all ages and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
 
 Retrieve all events exclusively for children under 12 years old:
 
@@ -975,7 +973,7 @@ For events & places:
 * `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
 * `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place.
 * `APPROVED`: the event or place is explicitly approved by a validator.
-* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the rules of UiTdatabank (@todo: link to rules).
+* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the [rules of UiTdatabank](https://helpdesk.publiq.be/hc/nl/articles/360008702459-Welke-activiteiten-mag-ik-invoeren-in-UiTdatabank).
 * `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
