@@ -24,7 +24,9 @@
         "skipUrlPatterns": [
             "https://helpdesk.publiq.be",
             "https://www.uitinhasselt.be",
-            "https://github.com/cultuurnet/udb3-acceptance-tests"
+            "https://github.com/cultuurnet/udb3-acceptance-tests",
+            "https://github.com/cultuurnet/apidocs/settings/secrets/actions",
+            "https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe"
         ]
     },
     "remark-validate-links": null,

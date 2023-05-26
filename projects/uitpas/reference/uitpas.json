@@ -5,10 +5,10 @@
     "version": "4.0",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be",
+      "email": "technical-support@publiq.be",
       "url": "https://docs.publiq.be"
     },
-    "description": "With UiTPAS API 4.0 you can retrieve ticket sale prices for specific UiTPAS numbers, and register ticket sales for specific UiTPAS numbers.\n\nFuture versions will also include support for more features like saving points and exchanging them for benefits.\n\n## Postman\n\n<!-- focus: false -->\n\n[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=uitpas-api)\n\nDo you already have a **client id** and **client secret**?\nDownload a personalized Postman collection to start making requests in seconds!"
+    "description": "With UiTPAS API 4.0 you can retrieve ticket prices and register ticket sales for passholders. You can also save UiTPAS points and exchange them for rewards for a passholder, and much more."
   },
   "servers": [
     {
@@ -52,7 +52,7 @@
       "name": "Ticket sales"
     },
     {
-      "name": "UiTID"
+      "name": "UiTiD"
     }
   ],
   "paths": {
@@ -334,7 +334,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDER_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALE_REGISTER`  permission for the organizer of the given event.\n",
+        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALE_REGISTER`  permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -514,7 +514,7 @@
                       ]
                     }
                   },
-                  "Example with passholder (PASSHOLDER_SEARCH permission required)": {
+                  "Example with passholder (PASSHOLDERS_SEARCH permission required)": {
                     "value": {
                       "totalItems": 2,
                       "member": [
@@ -548,6 +548,7 @@
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0930012345615",
                             "cardSystemMemberships": [
                               {
                                 "cardSystem": {
@@ -610,6 +611,7 @@
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0930012345615",
                             "cardSystemMemberships": [
                               {
                                 "cardSystem": {
@@ -657,7 +659,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALE_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDER_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -734,7 +736,7 @@
             }
           }
         },
-        "description": "Cancels a single ticket sale registration by its id. (Returned in the response of the ticket sale registration request.)\n\nThe caller of this request must have `TICKETSALE_REGISTER` permission for the organizer of the event of the ticketsale.",
+        "description": "Cancels a single ticket sale registration by its id. (Returned in the response of the ticket sale registration request.)\n\nThe caller of this request must have `TICKETSALES_REGISTER` permission for the organizer of the event of the ticketsale.",
         "tags": [
           "Ticket sales"
         ],
@@ -900,7 +902,7 @@
           },
           "description": "New list of card systems that an event is related to. Will overwrite the old list."
         },
-        "description": "Update the `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nThis update is used to toggle the `enabled` state for specific card systems or distribution keys.\n\nTo update the `enabled` state, you MUST retrieve the possible `EventCardSystem` objects first using  `GET /events/{eventId}/card-systems`. \nNote that you can reuse the response from the `GET` request, \naltering the `enabled` state, or you can also omit the name properties. \nOnly the required fields are used in this update request.\n\n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_UPDATE` permission for the organizer of this event.\n",
+        "description": "Update the `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nThis update is used to toggle the `enabled` state for specific card systems or distribution keys.\n\nTo update the `enabled` state for card systems or distribution keys, you typically retrieve the possible `EventCardSystem` objects first using  `GET /events/{eventId}/card-systems`. You can then reuse the response from the `GET` request, \naltering the `enabled` state. Note that you can also omit the name properties. \nOnly the required fields are used in this update request.\n\nHowever, in case you know the card system(s) and distribution key(s) in advance, you might also make this `PUT` request without prior `GET` e.g. in case you need to disable all card systems for an event, you can simply put an empty array `[]` to indicate that (missing card systems in the array will be treated the same way as card systems with `enabled: \"false\"`).\nAlso note the implementation of this `PUT` endpoint is robust enough to allow updating card systems before the event is known in UiTPAS. (so even before the `GET` returns a valid HTTP 200 response).\n\n\n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_UPDATE` permission for the organizer of this event or the caller of this request must have \"Aanbod bewerken\" permission in the UiTdatabank for the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1028,7 +1030,7 @@
           }
         },
         "operationId": "get-organizers",
-        "description": "Retrieve organizers based on search parameters.\n\nThe caller of this request must have `ORGANIZER_SEARCH` permission for the given organizer.",
+        "description": "Retrieve organizers based on search parameters.\n\nThe caller of this request must have `ORGANIZERS_SEARCH` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1124,6 +1126,7 @@
                           },
                           "points": 10,
                           "uitidStatus": "UNREGISTERED",
+                          "uitpasNumber": "0930012345615",
                           "cardSystemMemberships": [
                             {
                               "cardSystem": {
@@ -1180,7 +1183,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1316,6 +1319,7 @@
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
+                      "uitpasNumber": "0930012345615",                      
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -1379,7 +1383,7 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDER_WRITE` permission for the `registrationOrganizer`.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -1449,7 +1453,7 @@
         "tags": [
           "Passholders"
         ],
-        "description": "Remove this passholder.\n\nThe caller of this request must have `PASSHOLDER_DELETE` permission.",
+        "description": "Remove this passholder.\n\nThe caller of this request must have `PASSHOLDERS_DELETE` permission.",
         "responses": {
           "204": {
             "description": "No Content"
@@ -1484,7 +1488,7 @@
     "/passholders/me/uitid/registration-token": {
       "parameters": [],
       "get": {
-        "summary": "Retrieve UiTID registration token",
+        "summary": "Retrieve UiTiD registration token",
         "operationId": "get-uitid-passholder-registration-token",
         "responses": {
           "200": {
@@ -1512,7 +1516,7 @@
                 }
               }
             },
-            "description": "OK\n\nThe passholder can proceed UiTID registration."
+            "description": "OK\n\nThe passholder can proceed UiTiD registration."
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1541,7 +1545,7 @@
             }
           }
         },
-        "description": "This is step 1 of the process to register an UiTPAS passholder in UiTID using their UiTPAS number and date of birth. It is used to retrieve an UiTID registration token for the passholder. If the passholder already has a token via an email they received to register in UiTID, this step can be skipped.\n\nThis endpoint uses HTTP Basic Authentication using:\n* Username: uitpasNumber \n* Password: dateOfBirth in the form yyyy-mm-dd\n\nIn summary, this header should look like: \n\n```\nAuthorization: Basic base64(uitpasNumber+dateOfBirth)\n```\n\nThe response will contain a `token` property that can be used in step 2 of the process, [retrieving the UiTID registration status](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1status/get).\n\nThis caller of this method is identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) and does not require any permissions, but please note this endpoint is rate-limited on IP address to prevent abuse.",
+        "description": "This is step 1 of the process to register an UiTPAS passholder in UiTiD using their UiTPAS number and date of birth. It is used to retrieve an UiTiD registration token for the passholder. If the passholder already has a token via an email they received to register in UiTiD, this step can be skipped.\n\nThis endpoint uses HTTP Basic Authentication using:\n* Username: uitpasNumber \n* Password: dateOfBirth in the form yyyy-mm-dd\n\nIn summary, this header should look like: \n\n```\nAuthorization: Basic base64(uitpasNumber+dateOfBirth)\n```\n\nThe response will contain a `token` property that can be used in step 2 of the process, [retrieving the UiTiD registration status](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1status/get).\n\nThis caller of this method is identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) and does not require any permissions, but please note this endpoint is rate-limited on IP address to prevent abuse.",
         "parameters": [
           {
             "schema": {
@@ -1570,7 +1574,7 @@
     "/passholders/me/uitid/status": {
       "parameters": [],
       "get": {
-        "summary": "Retrieve UiTID registration status",
+        "summary": "Retrieve UiTiD registration status",
         "operationId": "get-uitid-passholder-status",
         "responses": {
           "200": {
@@ -1626,7 +1630,7 @@
                 }
               }
             },
-            "description": "OK\n\nThe passholder can proceed UiTID registration."
+            "description": "OK\n\nThe passholder can proceed UiTiD registration."
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
@@ -1655,7 +1659,7 @@
             }
           }
         },
-        "description": "Retrieves the UiTID registration status of a passholder. This is step 2 in the process of registering an UiTPAS passholder in UiTID.\n\nThis endpoint requires a registation token in the `x-registration-token` header. A client can obtain such a token using [`GET /passholders/me/uitid/registration-token`](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get). Alternatively, a token may already be available to the client because the user may have received an email link including it.\n\nBased on the state value, the client can proceed in 2 ways:\n\n- If state is `UNREGISTERED`\n\nThe passholder can proceed to step 3, [retrieving the UiTID email address status](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get).\n\nThe response can include the linked `email` address of the passholder if one is known. This can be used in the next step of the registration process ([`GET /uitid/emails/{email}`](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get)). If no email address is included, the client should prompt the user to enter their email address first before proceeding to step 3.\n\n- If state is `REGISTERED` \n\nThe passholder is already `REGISTERED` so the user must continue by authenticating instead. The `email` address field contains the email address of the linked UiTID account that should be used to authenticate.\n\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) does not require any permissions.",
+        "description": "Retrieves the UiTiD registration status of a passholder. This is step 2 in the process of registering an UiTPAS passholder in UiTiD.\n\nThis endpoint requires a registation token in the `x-registration-token` header. A client can obtain such a token using [`GET /passholders/me/uitid/registration-token`](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get). Alternatively, a token may already be available to the client because the user may have received an email link including it.\n\nBased on the state value, the client can proceed in 2 ways:\n\n- If state is `UNREGISTERED`\n\nThe passholder can proceed to step 3, [retrieving the UiTiD email address status](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get).\n\nThe response can include the linked `email` address of the passholder if one is known. This can be used in the next step of the registration process ([`GET /uitid/emails/{email}`](/reference/uitpas.json/paths/~1uitid~1emails~1{email}/get)). If no email address is included, the client should prompt the user to enter their email address first before proceeding to step 3.\n\n- If state is `REGISTERED` \n\nThe passholder is already `REGISTERED` so the user must continue by authenticating instead. The `email` address field contains the email address of the linked UiTiD account that should be used to authenticate.\n\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification) does not require any permissions.",
         "parameters": [
           {
             "schema": {
@@ -1694,7 +1698,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve UiTID email address status",
+        "summary": "Retrieve UiTiD email address status",
         "operationId": "get-uitid-email",
         "responses": {
           "200": {
@@ -1710,7 +1714,7 @@
                         "UITID_REGISTERED",
                         "UITPAS_ALREADY_LINKED"
                       ],
-                      "description": "* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first"
+                      "description": "* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTiD first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTiD first"
                     }
                   },
                   "required": [
@@ -1756,9 +1760,9 @@
             }
           }
         },
-        "description": "Retrieves the email address status in UiTPAS and UiTID for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTID.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTID first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTID first\n\nAfter [UiTID authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTID for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
+        "description": "Retrieves the email address status in UiTPAS and UiTiD for a given email address. This is step 3 in the process of registering an UiTPAS passholder in UiTiD.\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UITPAS_ALREADY_LINKED` : the user cannot use this email address to register another UiTPAS\n* `UITID_UNREGISTERED` : the user can use this email address to register their UiTPAS but must register on UiTiD first\n* `UITID_REGISTERED` : the user can use this email address to register their UiTPAS but must login on UiTiD first\n\nAfter [UiTiD authentication](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) the client should proceed to step 4 of the process, [registering UiTiD for the passholder](/reference/uitpas.json/paths/~1passholders~1me~1uitid/put).\n\nThis caller of this method, identified with [client identification](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDY5-client-identification), does not require any permissions but please note this endpoint is rate-limited on IP address to prevent abuse.",
         "tags": [
-          "UiTID"
+          "UiTiD"
         ],
         "parameters": [],
         "security": [
@@ -1890,7 +1894,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `PRICE_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -2029,7 +2033,7 @@
           }
         },
         "operationId": "get-passholders-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDER_READ` and `PRICE_READ` permission.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [],
         "tags": [
           "Passholders"
@@ -2052,7 +2056,7 @@
     "/passholders/me/uitid": {
       "parameters": [],
       "put": {
-        "summary": "Register UiTID for passholder",
+        "summary": "Register UiTiD for passholder",
         "operationId": "register-uitid-passholder",
         "responses": {
           "201": {
@@ -2075,7 +2079,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers the UiTID for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTID.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTID *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDER_REGISTER_UITID` permission is mandatory.",
+        "description": "Registers the UiTiD for this passholder. This is step 4, and the final step, in the process of registering an UiTPAS passholder in UiTiD.\n\nThis request requires an `Authorization` header with the [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) of an authenticated UiTiD *and* it requires a `x-registration-token` header containing a valid registration token of the passholder.\n\nA user access token of a client with `PASSHOLDERS_REGISTER_UITID` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2128,6 +2132,7 @@
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
+                      "uitpasNumber": "0930012345615",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -2186,7 +2191,7 @@
           }
         },
         "operationId": "get-passholders-me",
-        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTID user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
+        "description": "Allows users to retrieve their passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_READ` permission is mandatory. The passholder is retrieved by `inszNumber` if the access token contains the custom claim `https://publiq.be/rrn` (i.e. user has logged in using connection ACM), or by linked UiTiD user (`sub` or `https://publiq.be/uitidv1id` claim of the user access token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2215,6 +2220,7 @@
                       "name": "Lastname",
                       "firstName": "Firstname",
                       "inszNumber": "19800101003",
+                      "uitpasNumber": "0999100000002",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -2282,7 +2288,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDER_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
+        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nAllows users to self-register a passholder using a user access token.\n\nA user access token of a client with `PASSHOLDERS_SELF_REGISTRATION` permission for the `registrationOrganizer` is mandatory. Furthermore, the user access token must contain the custom claim `https://publiq.be/rrn` (i.e. user has to login using connection ACM).\n\nPlease note a user can only self-register one passholder. Use `GET /passholders/me` to check if a passholder already exists for this user.",
         "requestBody": {
           "description": "Passholder details of the current user to register.",
           "content": {
@@ -2387,7 +2393,7 @@
             }
           }
         },
-        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_SELF_CHECKIN` permission is mandatory.",
+        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_SELF_CHECKIN` permission is mandatory.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
@@ -2485,7 +2491,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDER_TRANSACTION_HISTORY` permission is mandatory.",
+        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_TRANSACTION_HISTORY` permission is mandatory.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2561,7 +2567,7 @@
             }
           }
         },
-        "description": "Retrieve the passholder's school.\n\nThe caller of this request must have `PASSHOLDER_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Retrieve the passholder's school.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2612,7 +2618,7 @@
             }
           }
         },
-        "description": "Update the passholder's school relation.\n\nThe caller of this request must have `PASSHOLDER_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Update the passholder's school relation.\n\nThe caller of this request must have `PASSHOLDERS_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2663,7 +2669,7 @@
             }
           }
         },
-        "description": "Delete the passholder's school relation.\n\nThe user or client performing this request must have `PASSHOLDER_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
+        "description": "Delete the passholder's school relation.\n\nThe user or client performing this request must have `PASSHOLDERS_UPDATE` permission.\n\n<!-- theme: warning -->\n\n> Passholder schools are used to manage passholders in a very specific case. If you are not explicitly working with UiTPAS schools, you will probably **NOT** need this API. \n\nUsing [GET](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/get), [PUT](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/put) and [DELETE](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1school/delete) on this endpoint, the school of a passholder can be retrieved, updated and deleted. All schools are organizers.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2746,7 +2752,7 @@
             ]
           }
         ],
-        "description": "Retrieve suggested report periods for an organizer.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n"
+        "description": "Retrieve suggested report periods for an organizer.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n"
       }
     },
     "/organizers/{organizerId}/financial-reports": {
@@ -2808,7 +2814,7 @@
         "tags": [
           "Financial reports"
         ],
-        "description": "Starts a financial report export. The result of this request is a `reportId` that can be used to request the status of the report export and the download.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Starts a financial report export. The result of this request is a `reportId` that can be used to request the status of the report export and the download.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2900,7 +2906,7 @@
             }
           }
         },
-        "description": "Get previously exported financial reports. \n\n> Note: Reports will only be available for a limited amount of time. When they become unavailable, a new export can be requested using `POST /organizers/{organizerId}/financial-reports`  \n\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Get previously exported financial reports. \n\n> Note: Reports will only be available for a limited amount of time. When they become unavailable, a new export can be requested using `POST /organizers/{organizerId}/financial-reports`  \n\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2977,7 +2983,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId",
-        "description": "Retrieve the status of a previously started report export.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the status of a previously started report export.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -3041,7 +3047,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId-zip",
-        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZER_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "tags": [
           "Financial reports"
         ],
@@ -3059,6 +3065,9 @@
         ]
       }
     },
+    "/passes": {
+      "parameters": []
+    },
     "/passes/{uitpasNumber}": {
       "parameters": [
         {
@@ -3066,7 +3075,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve pass",
+        "summary": "Retrieve pass by UiTPAS number",
         "tags": [
           "Passholders"
         ],
@@ -3079,12 +3088,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3093,12 +3107,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3141,7 +3172,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
+        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
       }
     },
     "/insz-numbers/{inszNumber}": {
@@ -3151,7 +3182,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve INSZ number",
+        "summary": "Retrieve pass by INSZ number",
         "tags": [
           "Passholders"
         ],
@@ -3164,12 +3195,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3178,12 +3214,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3226,7 +3279,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to an INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `INSZ_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission."
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -3236,7 +3289,7 @@
         }
       ],
       "get": {
-        "summary": "Retrieve chip number",
+        "summary": "Retrieve pass by chip number",
         "tags": [
           "Passholders"
         ],
@@ -3249,12 +3302,17 @@
                   "$ref": "#/components/schemas/Pass"
                 },
                 "examples": {
-                  "Example with warning message": {
+                  "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
                       "messages": [
                         {
                           "level": "WARN",
@@ -3263,12 +3321,29 @@
                       ]
                     }
                   },
-                  "Example without messages": {
+                  "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
                       "points": 12,
-                      "postalCode": "1000"
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
                     }
                   }
                 }
@@ -3311,7 +3386,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `CHIP_NUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission."
       }
     },
     "/rewards": {
@@ -3369,7 +3444,8 @@
                           "points": 10,
                           "forKids": false,
                           "sport": false,
-                          "online": false
+                          "online": false,
+                          "featured": true
                         }
                       ],
                       "facet": {
@@ -3466,7 +3542,7 @@
         "tags": [
           "Rewards"
         ],
-        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDER_READ` to use the `isRedeemableBy` query parameter.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
+        "description": "Search rewards.\n\nThe caller of this request does not need special permissions permission except `REWARDS_PASSHOLDERS_READ` to use the `isRedeemableByPassholderId` and `isInterestingForPassholderId` query parameters.\n\nThis endpoint allows authentication with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), [client access tokens](/docs/authentication/ZG9jOjExODE5NDY4-client-access-token), and [user access tokens](/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3487,33 +3563,69 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "in": "query",
             "name": "organizerId",
-            "description": "Include only rewards applicable for this organizer",
-            "style": "form"
+            "description": "Include only rewards applicable for this organizer. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "organizerPostalCode",
+            "description": "Include only rewards applicable for organizers with this postal code. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "in": "query",
             "name": "owningCardSystemId",
-            "description": "Include only rewards of this card system",
-            "style": "form"
+            "description": "Include only rewards of this card system. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "applicableCardSystemId",
+            "description": "Include only rewards applicable to passholders of this card system. Can be included more than once to allow multiple values.",
+            "style": "form",
+            "explode": true
           },
           {
             "schema": {
               "type": "string",
               "enum": [
                 "POINTS",
-                "WELCOME"
-              ]
+                "WELCOME",
+                "ANY"
+              ],
+              "default": "POINTS"
             },
             "in": "query",
             "name": "type",
-            "description": "Include only rewards of this type",
+            "description": "Include only rewards of this type. By default, this is set to `POINTS`. Use `ANY` to include rewards of any type.",
             "style": "form"
           },
           {
@@ -3550,6 +3662,16 @@
           {
             "schema": {
               "type": "string",
+              "example":"-redeemCount,points"
+            },
+            "in": "query",
+            "name": "sort",
+            "description": "Sorts the rewards in a specific order. Possible values are: `name`, `creationdate`, `redeemCount`, `featured`, `points`. Multiple values can be combined in a comma separated string so the rewards are first sorted by the first field, then the second and so on. By default the sort uses ascending order. Descending order can be specified by including a `-` sign before the field that needs to be ordered descending. e.g. use `-redeemCount,points` to sort descending on redeemCount, and next ascending on `points`.",
+            "style": "form"
+          },
+          {
+            "schema": {
+              "type": "string",
               "enum": [
                 "asc",
                 "desc"
@@ -3557,8 +3679,9 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sorts the rewards by their name in ascending or descending order.",
-            "style": "form"
+            "description": "Sorts the rewards by their name in ascending or descending order. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3570,8 +3693,9 @@
             },
             "in": "query",
             "name": "sort[creationDate]",
-            "description": "Sort on reward creation date",
-            "style": "form"
+            "description": "Sort on reward creation date. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3583,8 +3707,23 @@
             },
             "in": "query",
             "name": "sort[redeemCount]",
-            "description": "Sort on redeem count",
-            "style": "form"
+            "description": "Sort on redeem count. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "in": "query",
+            "name": "sort[featured]",
+            "description": "Sort on featured. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3596,8 +3735,9 @@
             },
             "in": "query",
             "name": "sort[points]",
-            "description": "Sort on reward points",
-            "style": "form"
+            "description": "Sort on reward points. This parameter is deprecated. Use the `sort` parameter for more advanced sorting options.",
+            "style": "form",
+            "deprecated": true
           },
           {
             "schema": {
@@ -3671,6 +3811,14 @@
               "type": "boolean"
             },
             "in": "query",
+            "name": "featured",
+            "description": "Include only rewards with the featured property true or false. If omitted, rewards with any featured value are included."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
             "name": "online",
             "description": "Include only rewards with the online property true or false. If omitted, rewards with any online value are included."
           },
@@ -3694,6 +3842,22 @@
             "in": "query",
             "name": "status",
             "description": "Include only rewards with this status. Also set `subset=ALL` to include non-ACTIVE rewards."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "isRedeemableByPassholderId",
+            "description": "Include only rewards that are redeemable by this passholder ID. This means the reward itself is within its redeem period, and all redeem constraints for the passholder are met. A client using this parameter needs `REWARDS_PASSHOLDERS_READ` permission."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "isInterestingForPassholderId",
+            "description": "Include a list of suggested rewards based on the recent activity of this passholder ID. A client using this parameter needs `REWARDS_PASSHOLDERS_READ` permission."
           }
         ]
       },
@@ -4087,7 +4251,7 @@
         "tags": [
           "Rewards"
         ],
-        "description": "Update reward.\n\nThe caller of this request must have `REWARDS_WRITE` permission for the given organizer."
+        "description": "Update reward.\nTo update a reward correctly, as a client you will typically `GET` the reward first,  make the required changes in the reward json and use this `PUT` request to persist those changes in UiTPAS.\n\nDo note that the following fields are **not editable** after this reward is redeemed by (for POINTS rewards) or granted to (for WELCOME rewards) a passholder:\n* redeemPeriod.begin\n* grantingPeriod.begin\n* points\n\nAttempts to edit such rewards will result in an HTTP 400 error with type `https://api.publiq.be/probs/uitpas/reward-not-editable`\n\nThe caller of this request must have `REWARDS_WRITE` permission for the given organizer."
       }
     },
     "/rewards/{rewardId}/redeem-status": {
@@ -4121,7 +4285,7 @@
                     },
                     "reason": {
                       "type": "string",
-                      "description": "If redeemable is false, this field contains the reason why:\n- `INVALID_CARD`: the given `uitpasNumber` is not valid.\n- `PASSHOLDER_VOLUME`: maximum number of times this reward can be redeemed per passholder has been reached.\n- `PASSHOLDER_POINTS`: passholder does not have enough points to redeem this reward.\n- `REWARD_PERIOD`: the current date is outside the redeemPeriod of this reward\n- `REWARD_VOLUME`: maximum number of times this reward can be redeemed (in general) has been reached.\n- `PASSHOLDER_APPLICABLE_CARDSYSTEMS`: the passholder is not a member of one of the applicable card systems of this reward.\n- `PASSHOLDER_NO_ACTIVE_CARDSYSTEMS`: the passholder is not active or has no active card system memberships\n- `SOCIAL_TARIFF_EXPIRED`: the social tariff of this passholder expired.\n",
+                      "description": "If redeemable is false, this field contains the reason why:\n- `INVALID_CARD`: the given `uitpasNumber` is not valid.\n- `PASSHOLDER_VOLUME`: maximum number of times this reward can be redeemed per passholder has been reached.\n- `PASSHOLDER_POINTS`: passholder does not have enough points to redeem this reward.\n- `REWARD_PERIOD`: the current date is outside the redeemPeriod of this reward\n- `REWARD_VOLUME`: maximum number of times this reward can be redeemed (in general) has been reached.\n- `PASSHOLDER_APPLICABLE_CARDSYSTEMS`: the passholder is not a member of one of the applicable card systems of this reward.\n- `PASSHOLDER_NO_ACTIVE_CARDSYSTEMS`: the passholder is not active or has no active card system memberships\n",
                       "enum": [
                         "INVALID_CARD",
                         "PASSHOLDER_VOLUME",
@@ -4129,7 +4293,6 @@
                         "REWARD_PERIOD",
                         "REWARD_VOLUME",
                         "PASSHOLDER_APPLICABLE_CARDSYSTEMS",
-                        "SOCIAL_TARIFF_EXPIRED",
                         "PASSHOLDER_NO_ACTIVE_CARDSYSTEM"
                       ]
                     },
@@ -4161,7 +4324,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4187,7 +4350,7 @@
             }
           }
         },
-        "description": "Check the reward redeem status for a passholder.\n\n\nThe caller of this request must have `REDEEM_REWARDS` permission for the given organizer.",
+        "description": "Check the reward redeem status for a passholder.\n\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the given organizer.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -4314,7 +4477,7 @@
             }
           }
         },
-        "description": "Redeem reward.\n\nThe caller of this request must have `REDEEM_REWARDS` permission for the given organizer.",
+        "description": "Redeem reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the given organizer.",
         "tags": [
           "Rewards"
         ],
@@ -4727,7 +4890,7 @@
         ]
       },
       "TicketSale": {
-        "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDER_SEARCH permission. It is not required for ticket sale registrations.",
+        "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDERS_SEARCH permission. It is not required for ticket sale registrations.",
         "type": "object",
         "example": {
           "regularPrice": 10,
@@ -4797,10 +4960,50 @@
         "properties": {
           "organizer": {
             "$ref": "#/components/schemas/Organizer"
+          },
+          "permissions": {
+            "type": "array",
+            "description": "Permissions of the calling client for this organizer.",
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            }
           }
         },
         "required": [
           "organizer"
+        ]
+      },
+      "Permission": {
+        "title": "Permission",
+        "type": "string",
+        "x-tags": [
+          "Models"
+        ],
+        "enum": [
+          "TARIFFS_READ",
+          "TICKETSALES_SEARCH",
+          "TICKETSALES_REGISTER",
+          "EVENTS_UPDATE",
+          "EVENTS_READ",
+          "ORGANIZERS_SEARCH",
+          "ORGANIZERS_REPORTS",          
+          "PASSHOLDERS_SEARCH",
+          "PASSHOLDERS_WRITE",
+          "PASSHOLDERS_UPDATE",
+          "PASSHOLDERS_DELETE",
+          "MEMBERSHIP_PRICES_READ",
+          "PASSES_READ",
+          "PASSES_INSZNUMBERS_READ",
+          "PASSES_CHIPNUMBERS_READ",
+          "REWARDS_WRITE",
+          "REWARDS_READ",
+          "REWARDS_REDEEM",
+          "REWARDS_PASSHOLDERS_READ",
+          "PASSHOLDERS_SELF_REGISTRATION",
+          "PASSHOLDERS_SELF_CHECKIN",
+          "PASSHOLDERS_SELF_READ",
+          "PASSHOLDERS_REGISTER_UITID",
+          "PASSHOLDERS_TRANSACTION_HISTORY"
         ]
       },
       "Organizer": {
@@ -4981,6 +5184,7 @@
           },
           "points": 10,
           "uitidStatus": "UNREGISTERED",
+          "uitpasNumber": "0930012345615",
           "cardSystemMemberships": [
             {
               "cardSystem": {
@@ -5034,6 +5238,10 @@
             "type": "string",
             "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
           },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
+          },
           "cardSystemMemberships": {
             "type": "array",
             "description": "This field is always available in responses.",
@@ -5080,7 +5288,7 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "Whether or not the passholder has a an UiTID registered. This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
             "readOnly": true
           },
           "address": {
@@ -5272,8 +5480,13 @@
         "example": {
           "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
           "uitpasNumber": "0560002524314",
+          "firstName": "Jan",
           "points": 12,
           "postalCode": "1000",
+          "socialTariff": {
+            "status": "EXPIRED",
+            "endDate": "2022-12-31T22:59:59"
+          },
           "messages": [
             {
               "level": "WARN",
@@ -5292,6 +5505,10 @@
             "description": "UiTPAS number of this pass",
             "readOnly": true
           },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the passholder."
+          },
           "points": {
             "type": "integer",
             "description": "Number of points of the passholder of this pass",
@@ -5301,6 +5518,30 @@
             "type": "string",
             "description": "Postal code of the passholder of this pass",
             "readOnly": true
+          },
+          "socialTariff": {
+            "type": "object",
+            "description": "Information about the possible social tariff of the passholder. This object is always present, however a passholder is only entitled to social tariff if the `status` property has value `ACTIVE`.",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "EXPIRED",
+                  "NONE"
+                ],
+                "description": "Status of the social tariff:\n- `ACTIVE`: the passholder is entitled to social tariff\n- `EXPIRED`: the passholder is NOT entitled to social tariff anymore\n- `NONE`: the passholder is NOT entitled to social tariff"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Exact expiration date of the passholder's entitlement to a social tariff. This property must not be used to determine the social tariff status, because `status` can be `ACTIVE` while the `endDate` is in the past during a 'grace period'. This property is not available when status is `NONE`.",
+                "readOnly": true
+              }
+            }
           },
           "messages": {
             "type": "array",
@@ -5334,8 +5575,10 @@
         "required": [
           "passholderId",
           "uitpasNumber",
+          "firstName",
           "points",
-          "postalCode"
+          "postalCode",
+          "socialTariff"
         ],
         "readOnly": true
       },
@@ -5813,6 +6056,10 @@
           "sport": {
             "type": "boolean",
             "description": "true if this is a sport reward"
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "true if this reward is currently set as 'featured'"
           },
           "online": {
             "type": "boolean",

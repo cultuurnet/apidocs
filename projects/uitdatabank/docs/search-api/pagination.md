@@ -7,7 +7,7 @@ Every search endpoint supports pagination using two url parameters:
 
 Pagination will only work for a limited result set:
 
-* The maximum value for for `start` is set to `10000`
+* The maximum value for `start` is set to `10000`
 * The maximum value for `limit` is set to `2000`
 
 ## Examples
@@ -58,7 +58,7 @@ GET /offers/?start=15000&limit=100
    "title":"Not Found",
    "type":"https://api.publiq.be/probs/url/not-found",
    "status":404,
-   "detail":"The ""start"" parameter should be between 0 and 10000"
+   "detail":"The \"start\" parameter should be between 0 and 10000"
 }
 ```
 

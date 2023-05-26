@@ -3,6 +3,32 @@
   "title": "newsArticle",
   "type": "object",
   "description": "A news article that is linked to an event.",
+  "examples": [
+    {
+      "id": "7ef7075c-e2da-4837-af92-a5176e3a348f",
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "This year publiq won an API reward for it's innovative RESTful API",
+      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
+      "publisher": "BILL",
+      "publisherLogo": "https://www.bill.be/img/favicon.png",
+      "url": "https://www.bill.be/blog/publiq-award"
+    },
+    {
+      "id": "5796bacc-1134-4711-9586-38722f78d2e5",
+      "headline": "The headline of the news article.",
+      "inLanguage": "en",
+      "text": "These are some exhibitions worth visiting.",
+      "about": "cfa29b53-0eb6-4bf1-8c7a-6394af5c8731",
+      "publisher": "UiTinVlaanderen",
+      "publisherLogo": "https://www.uitinvlaanderen.be/img/favicon.png",
+      "url": "https://www.uitinvlaanderen.be/tip/article",
+      "image": {
+        "url": "https://www.uitinvlaanderen.be/public/image.jpeg",
+        "copyrightHolder": "publiq vzw"
+      }
+    }
+  ],
   "properties": {
     "id": {
       "$ref": "./common-string-uuid.json",
@@ -39,6 +65,9 @@
     "url": {
       "$ref": "./common-string-uri.json",
       "description": "The link pointing to the published news article itself."
+    },
+    "image": {
+      "$ref": "./common-newsArticle-image.json"
     }
   },
   "required": [
@@ -50,17 +79,5 @@
     "publisher",
     "publisherLogo",
     "url"
-  ],
-  "examples": [
-    {
-      "id": "7ef7075c-e2da-4837-af92-a5176e3a348f",
-      "headline": "The headline of the news article.",
-      "inLanguage": "en",
-      "text": "This year publiq won an API reward for it's innovative RESTful API",
-      "about": "17284745-7bcf-461a-aad0-d3ad54880e75",
-      "publisher": "BILL",
-      "publisherLogo": "https://www.bill.be/img/favicon.png",
-      "url": "https://www.bill.be/blog/publiq-award"
-    }
   ]
 }

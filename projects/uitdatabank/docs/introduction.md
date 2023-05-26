@@ -2,32 +2,28 @@
 
 ![](../assets/images/uitdatabank.png)
 
-A warm welcome to our UiTdatabank API documentation! 👋
+## What is UiTdatabank?
+
+UiTdatabank is the largest database of cultural and pastime activities happening in Flanders and Brussels (Belgium). Each year, over 28.000 organizers enter more than 215.000 activities into in the UiTdatabank free of charge.
+
+Enter your planned activity into the UiTdatabank using [Entry API](entry-api/introduction.md) and it is broadcast on a whole range of online and offline channels. Obviously on our very own [UiTinVlaanderen](https://www.uitinvlaanderen.be), but also in over 1000 online and printed calendars run by local or national media, authorities and organisations.
+
+Interested in setting up your own calendar aimed at a specific target group? Around 500 partners from around the cultural and pastime sectors, the Flemish government and the media have already embraced UiT calendars, which they feature on their websites in their own visual identity. These automated connections with the UiTdatabank are built using [Search API](search-api/introduction.md) or through [Widgets](https://docs.publiq.be/docs/widgets).
+
+## About our APIs
+
+The UiTdatabank APIs follow the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](https://docs.publiq.be/docs/authentication).
+
+In 2019, the UiTdatabank APIs won the ["API of the year" award](https://www.publiq.be/nl/nieuws/de-uitdatabank-wint-de-award-voor-api-van-het-jaar). Since then, we have continuously been improving them while also maintaining compatibility with all existing integrations.
+
+In our documentation you will find:
+
+* Explanations of relevant UiTdatabank terminology and concepts
+* Step-by-step guides to common UiTdatabank integration scenarios
+* Code examples, so you can see how the APIs works in practice
+* Detailed technical specifications per HTTP endpoint
+* OpenAPI files and Postman collections to get started quickly
 
 <!-- theme: warning -->
 
-> ##### Construction ahead 🚧
->
-> We are hard at work to port our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.
-
-## Authentication
-
-To use the UiTdatabank APIs as they are documented here, you will need a **client id** and **client secret** to [retrieve a token](https://docs.publiq.be/docs/authentication) to authenticate your requests. This is a new authentication mechanism that will be used to make it easier to authenticate compared to the [**API key** authentication](https://documentatie.uitdatabank.be/content/entry_api_3/latest/authentication.html) that we already provide.
-
-Currently new client ids and secrets are only provided to a select few partners that are trying out this new authentication mechanism. In the future this authentication mechanism will be available to all integrators.
-
-Want to start building right now? There are two options:
-
-1. Contact us at <vragen@uitdatabank.be> to get a client id and client secret, to start using the new authentication mechanism already. Once you have your client id and secret, follow the [new authentication documentation](https://docs.publiq.be/docs/authentication) for all of publiq's APIs.
-2. **Or**, register your project at [Projectaanvraag](https://projectaanvraag.uitdatabank.be) to automatically get a test **API key** that you can use as described on [EntryAPI's Authentication documentation](https://documentatie.uitdatabank.be/content/entry_api_3/latest/authentication.html). While this way of authentication will be fased out in the future for new integrators, it will still be supported for existing integrations for the foreseeable future.
-
-> Aside from the authentication method all API operations work exactly the same whether you have a client id and secret, or an API key.
-
-## Postman
-
-<!-- focus: false -->
-
-[![Download postman collection](https://postman.publiq.be/postman-download.svg)](https://postman.publiq.be/?api=udb-entry)
-
-Do you already have a **client id** and **client secret**?
-Download a personalized Postman collection to start making requests in seconds!
+> We are hard at work to move our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.

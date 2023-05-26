@@ -6,7 +6,7 @@ The client can request a token on publiq's authorization server with its client 
 
 The token serves as proof of identity of the client, in other words your backend system. Because browsers and native applications cannot securely store the necessary client secret, they must not use client access tokens. A possible alternative in this case would be using [user access tokens](./user-access-token.md) with the PKCE flow.
 
-If your browser or native application cannot work with user logins via publiq's UiTID, you may also send requests from your frontend application to your own backend, and make API requests from there with a client access token. Note that you will be responsible to determine who may or may not access your backend to prevent abuse.
+If your browser or native application cannot work with user logins via publiq's UiTiD, you may also send requests from your frontend application to your own backend, and make API requests from there with a client access token. Note that you will be responsible to determine who may or may not access your backend to prevent abuse.
 
 > Not sure if client access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 

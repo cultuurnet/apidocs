@@ -14,14 +14,14 @@ There are 3 possible scenarios for an endpoint:
 
 The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. For example an API may support both client access tokens and user access tokens in general, but only user access tokens on an endpoint to get the current user information (as that would be impossible without a user access token).
 
-APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/9b63d9296d981-taxonomy-api), are not included in this table.
+APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/taxonomy-api/introduction), are not included in this table.
 
-| API                                                                                           | Client identification | Client access tokens | User access tokens |
-| --------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
-| [UiTdatabank Search API v3](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) | ✅                     | No                   | No                 |
-| [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/5c4fcee8036e0-entry-api)   | No                    | ✅                    | ✅                  |
-| [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                           | No                    | ✅                    | ✅                  |
-| [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)               | No                    | ✅                    | No                 |
+| API                                                                                          | Client identification | Client access tokens | User access tokens |
+| -------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
+| [UiTdatabank Search API v3](https://docs.publiq.be/docs/uitdatabank/search-api/introduction) | ✅                     | ✅                    | ✅                  |
+| [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/entry-api/introduction)   | No                    | ✅                    | ✅                  |
+| [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                          | No                    | ✅                    | ✅                  |
+| [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)              | No                    | ✅                    | No                 |
 
 You can always mix requests with different authentication methods if needed. For example you can use your client id to make a request to UiTdatabank's Search API using client identification, and you can use the same client id in combination with your client secret to request a token to make requests to UiTdatabank's Entry API.
 
@@ -61,11 +61,11 @@ API endpoints that support the authentication of an API client with a client id 
 
 👉 [Learn more about client access tokens](./client-access-token.md)
 
-### User access tokens (login via UiTID)
+### User access tokens (login via UiTiD)
 
 API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
 
-Usually used in situations where a user will log in through publiq's **UiTID** service and your application will then make requests in that user's name.
+Usually used in situations where a user will log in through publiq's **UiTiD** service and your application will then make requests in that user's name.
 
 * ✅ Suitable for frontend applications
 * ✅ Suitable for backend applications

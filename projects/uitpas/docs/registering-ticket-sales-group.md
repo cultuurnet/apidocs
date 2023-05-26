@@ -1,6 +1,6 @@
 # Registering ticket sales for group passes
 
-This mini-guide illustrates how to register UiTPAS discounted ticket sales for a group pass. It builds upon the [Registering ticket sales guide](/docs/registering-ticket-sales-group.md) which you need to read first to learn more about authentication, the work flow and registering events.
+This mini-guide illustrates how to register UiTPAS discounted ticket sales for a group pass. It builds upon the [Registering ticket sales guide](./registering-ticket-sales.md) which you need to read first to learn more about authentication, the work flow and registering events.
 
 > ##### What is a group pass?
 >
@@ -22,7 +22,7 @@ Host: https://api.uitpas.be
 Authorization: Bearer YOUR_CLIENT_ACCESS_TOKEN'
 ```
 
-Have a look at the [test dataset](/docs/test-dataset) for more sample passholders or events.
+Have a look at the [test dataset](./test-dataset.md) for more sample passholders or events.
 
 Example response:
 
@@ -93,7 +93,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN'
 ]
 ```
 
-Have a look at the [test dataset](/docs/test-dataset) for more sample passholders or events.
+Have a look at the [test dataset](./test-dataset.md) for more sample passholders or events.
 
 For more information about each property, see the documentation for the [POST /ticket-sales](/reference/uitpas.json/paths/~1ticket-sales/post) endpoint.
 
@@ -152,4 +152,4 @@ If for some reason you need to [cancel the ticket sale registration](/reference/
 
 ### Frequently asked questions
 
-Having questions? Check out our [FAQ](/docs/faq)!
+Having questions? Check out our [FAQ](./faq.md)!

@@ -5,8 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -   name: Checkout
-          uses: actions/checkout@v2
-          with: 
+          uses: actions/checkout@v3
+          with:
             # We need to use a PAT for the dev@publiq.be user to commit the changes in that user's name. Otherwise it would be committed
             # by a "Github Actions" user, which would not trigger a new workflow run, preventing the CI checks from running after this
             # fixer job has run.

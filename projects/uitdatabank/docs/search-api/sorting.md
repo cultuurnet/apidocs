@@ -21,7 +21,7 @@ For every sort parameter it is possible to change the sort `order`:
 
 > Only applicable on events and places.
 
-Sorts the results on the date-time that they are last visible on most publication channels. This is most commonly used to show events & places that will be ending soon first. Sorting on availableTo (ascending) is what we advice for event calendars.
+Sorts the results on the date-time that they are last visible on most publication channels. This is most commonly used to show events & places that will be ending soon first. Sorting on availableTo (ascending) is what we advise for event calendars.
 
 **Example**
 
@@ -47,7 +47,7 @@ Newly created organizers will appear first.
 
 <!-- theme: info -->
 
-> Only applicable on `/events`, `/places` and `/offers`, and only when the the `coordinates` and `distance` parameters are also present
+> Only applicable on `/events`, `/places` and `/offers`, and only when the `coordinates` and `distance` parameters are also present
 
 When searching by `coordinates` and `distance`, it is possible to sort the results by the distance from the given coordinates.
 
@@ -81,13 +81,13 @@ Sorts the data by its relevance. This is the default sort that is used. For an i
 GET https://search.uitdatabank.be/events/
 ```
 
-The events with the heighest score will appear first.
+The events with the highest score will appear first.
 
 ```
 GET /events/?sort[score]=desc
 ```
 
-The events with the heighest score will appear first.
+The events with the highest score will appear first.
 
 ## Using multiple sort options
 

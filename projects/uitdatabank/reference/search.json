@@ -3,10 +3,10 @@
   "info": {
     "title": "Search API",
     "version": "3.0",
-    "description": "UiTdatabank's Search API is used to programmatically search events, places and organizers.\n\n## Authentication\n\n### Client id\n\nSearch API v3 does not require a token, only [client identification](https://docs.publiq.be/docs/authentication/80fc7c74970af-client-identification).\n\nYou can authenticate your requests using client identification by either including a `?clientId=YOUR_CLIENT_ID` query parameter in the URL, or including a `x-client-id: YOUR_CLIENT_ID` header in your requests.\n\nThis is a new authentication mechanism that will replace the older API key authentication (see below).\n\nCurrently new client ids are only provided to a select few partners that are trying out this new authentication mechanism. In the future this authentication mechanism will be available to all integrators.\n\n### API key\n\nSearch API v3 also supports API keys, which anyone can request at https://projectaanvraag.uitdatabank.be.\n\nYou can authenticate your requests using an API key by either including a `?apiKey=YOUR_API_KEY` query parameter in the URL, or including a `x-api-key: YOUR_API_KEY` header in your requests.\n \nThis authentication mechanism will be phased out for **new** integrations once the client id authentication becomes available to all integrators. However, API key authentication will still be supported for existing integrations so it is safe to use for the foreseeable future.",
+    "description": "With UiTdatabank's Search API you can search events, places and organizers.",
     "contact": {
       "name": "publiq helpdesk",
-      "email": "vragen@publiq.be",
+      "email": "technical-support@publiq.be",
       "url": "https://docs.publiq.be"
     }
   },
@@ -176,6 +176,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -219,6 +222,12 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -437,6 +446,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -480,6 +492,12 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -637,6 +655,9 @@
             "$ref": "#/components/parameters/website"
           },
           {
+            "$ref": "#/components/parameters/id"
+          },
+          {
             "$ref": "#/components/parameters/domain"
           },
           {
@@ -647,6 +668,9 @@
           },
           {
             "$ref": "#/components/parameters/creator"
+          },
+          {
+            "$ref": "#/components/parameters/contributors"
           },
           {
             "$ref": "#/components/parameters/facets"
@@ -840,6 +864,9 @@
             "$ref": "#/components/parameters/modifiedTo"
           },
           {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
             "$ref": "#/components/parameters/creator"
           },
           {
@@ -883,6 +910,9 @@
           },
           {
             "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
@@ -992,6 +1022,16 @@
         "name": "q",
         "description": "An advanced query in Lucene syntax, allowing you to construct complex AND/OR filters on specific fields."
       },
+      "contributors":{
+        "schema": {
+          "format": "email",
+          "type": "string",
+          "example": "technical-support@publiq.be"
+        },
+        "in": "query",
+        "name": "contributors",
+        "description": "Returns results for which a particular user / email address is a contributor"
+      },
       "name": {
         "schema": {
           "type": "string",
@@ -999,7 +1039,7 @@
         },
         "in": "query",
         "name": "name",
-        "description": "Returns only results whose name autocompletes on the given name."
+        "description": "Returns only results whose name autocompletes on the given name. For example searching for `pub` will return matches with `publiq` in the name."
       },
       "website": {
         "schema": {
@@ -1087,7 +1127,7 @@
         },
         "in": "query",
         "name": "availableFrom",
-        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "availableTo": {
         "schema": {
@@ -1097,7 +1137,7 @@
         },
         "in": "query",
         "name": "availableTo",
-        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "attendanceMode": {
         "schema": {
@@ -1195,7 +1235,7 @@
         },
         "in": "query",
         "name": "creator",
-        "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTID v1), an Auth0 user id (for new UiTID v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
+        "description": "Returns only results that have a creator with the given user identifier. Due to historic reasons and evolutions in the id management systems, a user identifier can be one of: a UUID (for creators that had an UiTiD v1), an Auth0 user id (for new UiTiD v2 creators), or in some very old cases even an email address or nickname. (No new events or places are created with an email address or nickname as creator.) Can also be a client id suffixed with `@clients` in the case of results created with a client access token instead of a user access token."
       },
       "dateFrom": {
         "schema": {
@@ -1276,7 +1316,7 @@
         },
         "in": "query",
         "name": "facets[]",
-        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See (the guide about facets)[../docs/search-api/facets.md] for more information.",
+        "description": "Adds an extra `facet` property in the response with possible values for a given filter, and a prediction of the total results if applied. May be repeated to include facet counts for multiple filters. See the operation's description above for more info on how to repeat parameters. See (the guide about facets)[../docs/search-api/advanced/facets.md] for more information.",
         "style": "form",
         "explode": true
       },
@@ -1361,6 +1401,32 @@
         "name": "labels[]",
         "style": "form",
         "description": "Returns only results that have the given label(s) in either their `labels` or `hiddenLabels` properties. May be repeated to only return results that have all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "locationLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "locationLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their location's `labels` or `hiddenLabels` properties. May be repeated to only return results with a location that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "organizerLabels": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "organizerLabels[]",
+        "style": "form",
+        "description": "Returns only results that have the given label(s) in their organizer's `labels` or `hiddenLabels` properties. May be repeated to only return results with an organizer that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "mainLanguage": {
@@ -1587,7 +1653,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       },
       "workflowStatusOrganizer": {
         "schema": {
@@ -1606,7 +1672,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
       }
     },
     "responses": {
