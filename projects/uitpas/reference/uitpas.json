@@ -109,13 +109,6 @@
                           "price": 8,
                           "remaining": 1,
                           "type": "COUPON"
-                        },
-                        {
-                          "id": "REWARD5464",
-                          "name": "50% korting op een specifiek event",
-                          "price": 5,
-                          "remaining": 1,
-                          "type": "REWARD"
                         }
                       ]
                     }
@@ -129,19 +122,6 @@
                           "price": 1.5,
                           "remaining": 20,
                           "type": "SOCIALTARIFF"
-                        }
-                      ]
-                    }
-                  },
-                  "Example with reward tariff": {
-                    "value": {
-                      "available": [
-                        {
-                          "id": "REWARD5464",
-                          "name": "50% korting voor 10 UiTPAS punten",
-                          "price": 5,
-                          "remaining": 1,
-                          "type": "REWARD"
                         }
                       ]
                     }
@@ -221,6 +201,142 @@
         ]
       }
     },
+    "/tariffs/static": {
+      "parameters": [],
+      "get": {
+        "summary": "Get static tariffs without passholder",
+        "tags": [
+          "Ticket sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TariffsResponse"
+                },
+                "examples": {
+                  "Single tariff example": {
+                    "value": {
+                      "available": [
+                        {
+                          "id": "SOCIALTARIFF-1",
+                          "name": "Kansentarief",
+                          "price": 1.5,
+                          "type": "SOCIALTARIFF",
+                          "remaining": 1
+                        }
+                      ]
+                    }
+                  },
+                  "Multiple tariffs example": {
+                    "value": {
+                      "available": [
+                        {
+                          "id": "SOCIALTARIFF-1",
+                          "name": "Kansentarief",
+                          "price": 1.5,
+                          "remaining": 1,
+                          "type": "SOCIALTARIFF"
+                        },
+                        {
+                          "id": "COUPON1234",
+                          "name": "Cultuurbon 6 euro",
+                          "price": 4,
+                          "remaining": 1,
+                          "type": "COUPON"
+                        },
+                        {
+                          "id": "COUPON2345",
+                          "name": "2 euro korting op een specifiek event",
+                          "price": 8,
+                          "remaining": 1,
+                          "type": "COUPON"
+                        }
+                      ]
+                    }
+                  },
+                  "Single tariff with multiple number of tickets": {
+                    "value": {
+                      "available": [
+                        {
+                          "id": "SOCIALTARIFF",
+                          "name": "Kansentarief",
+                          "price": 1.5,
+                          "remaining": 20,
+                          "type": "SOCIALTARIFF"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Event not found": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/event-not-found",
+                      "title": "Event id 267B6FCF-46F8-4DA2-8D7D-AADCD2C2715E not found",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-tariffs-static",
+        "description": "Returns the **static** UiTPAS discounted **tariffs for an event**.\n    \n<!-- theme: warning -->\n    \n> ##### Important\n> UiTPAS tariffs are different for each indiviual passholder, but this endpoint does NOT take the passholder into consideration. Use this endpoint only in specific cases, e.g. when listing the UiTPAS tariff before the passholder is known. The actual passholder tariffs might be different than this response. Use [GET /tariffs](/reference/uitpas.json/paths/~1tariffs/get) to retrieve indidivual tariffs for a passholder.\n  \n\nThis UiTPAS tariffs are calculated based on:\n\n- **The regular price** of the ticket.\nThis is the price your user would have to pay for the specific ticket without UiTPAS discount.\n- **The event id** of the UiTdatabank event. UiTPAS discounts are limited to specific UiTdatabank events, so it's important to specify the event id to retrieve a list of possible tariffs.\n\nBecause the passholder is unknown, UiTPAS will return the tariffs for a passholder with social tariff, who lives in the same region as the event organizer.\n\nThe caller of this request must have `TARIFFS_READ` permission for the organizer of the given event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "regularPrice",
+            "description": "The regular price the passholder would have to pay for the ticket if they are not eligible for discounts",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventId",
+            "description": "The id of the event for which the ticket is sold",
+            "required": true
+          }
+        ]
+      }
+    },
     "/ticket-sales": {
       "parameters": [],
       "post": {
@@ -285,22 +401,6 @@
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
-                      }
-                    ]
-                  },
-                  "Example using a reward tariff": {
-                    "value": [
-                      {
-                        "id": "489144",
-                        "tariff": {
-                          "id": "REWARD1234",
-                          "name": "50% korting voor 10 punten",
-                          "price": 5,
-                          "type": "REWARD"
-                        },
-                        "uitpasNumber": "0560002524314",
-                        "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
-                        "regularPrice": 10
                       }
                     ]
                   }
@@ -1319,7 +1419,7 @@
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
-                      "uitpasNumber": "0930012345615",                      
+                      "uitpasNumber": "0930012345615",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -3662,7 +3762,7 @@
           {
             "schema": {
               "type": "string",
-              "example":"-redeemCount,points"
+              "example": "-redeemCount,points"
             },
             "in": "query",
             "name": "sort",
@@ -4818,23 +4918,22 @@
           },
           "name": {
             "type": "string",
-            "readOnly": true,
-            "description": "Human-readable name of the tariff"
+            "description": "Human-readable name of the tariff",
+            "readOnly": true
           },
           "price": {
             "type": "number",
-            "readOnly": true,
-            "description": "Discounted price to pay for this tariff, in euro."
+            "description": "Discounted price to pay for this tariff, in euro.",
+            "readOnly": true
           },
           "type": {
             "type": "string",
             "enum": [
               "SOCIALTARIFF",
-              "COUPON",
-              "REWARD"
+              "COUPON"
             ],
-            "readOnly": true,
-            "description": "Type of discount being applied."
+            "description": "Type of discount being applied.",
+            "readOnly": true
           }
         },
         "required": [
@@ -4986,7 +5085,7 @@
           "EVENTS_UPDATE",
           "EVENTS_READ",
           "ORGANIZERS_SEARCH",
-          "ORGANIZERS_REPORTS",          
+          "ORGANIZERS_REPORTS",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
