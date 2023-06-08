@@ -109,13 +109,6 @@
                           "price": 8,
                           "remaining": 1,
                           "type": "COUPON"
-                        },
-                        {
-                          "id": "REWARD5464",
-                          "name": "50% korting op een specifiek event",
-                          "price": 5,
-                          "remaining": 1,
-                          "type": "REWARD"
                         }
                       ]
                     }
@@ -304,23 +297,7 @@
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       }
                     ]
-                  },
-                  "Example using a reward tariff": {
-                    "value": [
-                      {
-                        "id": "489144",
-                        "tariff": {
-                          "id": "REWARD1234",
-                          "name": "50% korting voor 10 punten",
-                          "price": 5,
-                          "type": "REWARD"
-                        },
-                        "uitpasNumber": "0560002524314",
-                        "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
-                        "regularPrice": 10
-                      }
-                    ]
-                  }
+                  }                 
                 }
               }
             }
@@ -4847,8 +4824,7 @@
             "type": "string",
             "enum": [
               "SOCIALTARIFF",
-              "COUPON",
-              "REWARD"
+              "COUPON"              
             ],
             "readOnly": true,
             "description": "Type of discount being applied."
