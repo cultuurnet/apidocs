@@ -136,13 +136,15 @@
                   },
                   "Coupon tariff with message about social tariff": {
                     "value": {
-                      "available": [{
+                      "available": [
+                        {
                           "id": "COUPON2345",
                           "name": "2 euro korting op een specifiek event",
                           "price": 8,
                           "remaining": 1,
                           "type": "COUPON"
-                        }],
+                        }
+                      ],
                       "endUserMessage": {
                         "nl": "Je hebt geen recht meer op kansentarief voor deze activiteit. Je kan maximaal 1 ticket per maand kopen aan kansentarief voor deze activiteit."
                       }
@@ -155,7 +157,7 @@
                         "nl": "Je hebt een coupon voor deze activiteit, maar je kan hiermee maximaal 1 ticket per maand kopen."
                       }
                     }
-                  }                  
+                  }
                 }
               }
             }
@@ -248,7 +250,7 @@
                   "$ref": "#/components/schemas/TariffsResponse"
                 },
                 "examples": {
-                  "Single tariff example": {
+                  "Social tariff": {
                     "value": {
                       "available": [
                         {
@@ -260,53 +262,13 @@
                         }
                       ]
                     }
-                  },
-                  "Multiple tariffs example": {
-                    "value": {
-                      "available": [
-                        {
-                          "id": "SOCIALTARIFF-1",
-                          "name": "Kansentarief",
-                          "price": 1.5,
-                          "remaining": 1,
-                          "type": "SOCIALTARIFF"
-                        },
-                        {
-                          "id": "COUPON1234",
-                          "name": "Cultuurbon 6 euro",
-                          "price": 4,
-                          "remaining": 1,
-                          "type": "COUPON"
-                        },
-                        {
-                          "id": "COUPON2345",
-                          "name": "2 euro korting op een specifiek event",
-                          "price": 8,
-                          "remaining": 1,
-                          "type": "COUPON"
-                        }
-                      ]
-                    }
-                  },
-                  "Single tariff with multiple number of tickets": {
-                    "value": {
-                      "available": [
-                        {
-                          "id": "SOCIALTARIFF",
-                          "name": "Kansentarief",
-                          "price": 1.5,
-                          "remaining": 20,
-                          "type": "SOCIALTARIFF"
-                        }
-                      ]
-                    }
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\n",
+            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/social-tariff-not-available\n\n",
             "content": {
               "application/problem+json": {
                 "schema": {
