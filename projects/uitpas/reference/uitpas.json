@@ -25,6 +25,9 @@
       "name": "Card Systems"
     },
     {
+      "name": "Checkins"
+    },
+    {
       "name": "Current Passholder"
     },
     {
@@ -697,6 +700,156 @@
           {
             "$ref": "#/components/parameters/limit"
           }
+        ]
+      }
+    },
+    "/checkins": {
+      "parameters": [],
+      "post": {
+        "summary": "Check in passholder",
+        "operationId": "post-checkins",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Checkin"
+                },
+                "examples": {
+                  "Example with passholder": {
+                    "value": {
+                      "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                      "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "uitpasNumber": "0560002524314",
+                      "points": 1,
+                      "passholder": {
+                        "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "dateOfBirth": "2000-01-01",
+                        "postalCode": "9300",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        },
+                        "creationDate": "2012-08-24T14:15:22Z",
+                        "registrationOrganizer": {
+                          "id": "1234",
+                          "name": "Example UiTPAS Organizer"
+                        },
+                        "points": 10,
+                        "uitidStatus": "UNREGISTERED",
+                        "uitpasNumber": "0560002524314",
+                        "cardSystemMemberships": [
+                          {
+                            "cardSystem": {
+                              "id": 1,
+                              "name": "UiTPAS Dender",
+                              "branding": {
+                                "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                "primaryColor": "rgba(0,0,0,1.0)",
+                                "secondaryColor": "rgba(97,166,14,1.0)"
+                              },
+                              "links": {
+                                "website": "https://www.uitpas.be"
+                              },
+                              "cities": [
+                                {
+                                  "postalCode": "9300",
+                                  "name": "Aalst"
+                                },
+                                {
+                                  "postalCode": "9400",
+                                  "name": "Ninove"
+                                }
+                              ],
+                              "permanent": true
+                            },
+                            "uitpasNumber": "0560002524314",
+                            "status": "ACTIVE",
+                            "socialTariff": {
+                              "endDate": "2022-08-24T14:15:22Z",
+                              "inGracePeriod": false,
+                              "expired": false
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Example without passholder": {
+                    "value": {
+                      "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                      "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "uitpasNumber": "0560002524314",
+                      "points": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Social tariff discount expired": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/social-tariff-discount-expired",
+                      "title": "Social tariff discount expired",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Checkin"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+                    "uitpasNumber": "0900000095902"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Check-in request body"
+        },
+        "tags": [
+          "Checkins"
         ]
       }
     },
@@ -4956,6 +5109,52 @@
           "uitpasNumber"
         ]
       },
+      "Checkin": {
+        "description": "Model used both for registering and searching checkins.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDERS_SEARCH permission. It is not required for check-in creation.",
+        "type": "object",
+        "title": "Checkin",
+        "x-tags": [
+          "Models"
+        ],
+        "x-stoplight": {
+          "id": "e0c828e2c92cb"
+        },
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique id of a check-in. Not required for check-in creation.",
+            "readOnly": true
+          },
+          "eventId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Id of the event where the passholder checked in"
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The passholder's UiTPAS number used to create the check-in. Note that the uitpasNumber of a passholder might change over time. This field will always contain the uitpasNumber used when creating the check-in. To identify the passholder, use the `passholder` field."
+          },
+          "points": {
+            "type": "integer",
+            "description": "Points earned by the passholder as a result of this check-in.",
+            "readOnly": true
+          },
+          "passholder": {
+            "description": "Full passholder object of this check-in.",
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Passholder"
+              }
+            ]
+          }
+        },
+        "required": [
+          "eventId",
+          "uitpasNumber"
+        ]
+      },
       "Error": {
         "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json"
       },
@@ -4993,6 +5192,7 @@
           "TICKETSALES_REGISTER",
           "EVENTS_UPDATE",
           "EVENTS_READ",
+          "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",          
           "PASSHOLDERS_SEARCH",
