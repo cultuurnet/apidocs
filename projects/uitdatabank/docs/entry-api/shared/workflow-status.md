@@ -17,7 +17,7 @@ Events & places always have exactly one of the following workflow statuses:
 
 *The workflowStatus of evwents and places represents the "life stage" of an event or place. It follows a lineair path: it is never possible to go back to an earlier stage.*
 
-Events and places with the workflowStatus `DRAFT`, `REJECTED` AND `DELETED` are by default hidden from the Search API results by the [default filters](../../search-api/filters/default-filters).
+Events and places with the workflowStatus `DRAFT`, `REJECTED` AND `DELETED` are by default hidden from the Search API results by the [default filters](../../search-api/filters/default-filters.md).
 
 [UiTinVlaanderen](https://www.uitinvlaanderen.be) and many other online calendars will show events that are either `READY_FOR_VALIDATION` or `APPROVED`.
 Some online calendars will only show `APPROVED` events.
