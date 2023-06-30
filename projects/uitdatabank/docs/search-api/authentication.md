@@ -9,6 +9,7 @@ See the [requesting client credentials](https://docs.publiq.be/docs/authenticati
 If you are also integrating with UiTdatabank's [Entry API](../entry-api/introduction.md) and/or [UiTPAS API](https://docs.publiq.be/docs/uitpas), you can re-use the [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token) or [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) that you use to authenticate with those APIs.
 
 For example:
+
 ```http
 GET /events/ HTTP/1.1
 Host: https://search-test.uitdatabank.be
