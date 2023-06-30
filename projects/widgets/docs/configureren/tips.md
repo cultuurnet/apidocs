@@ -239,8 +239,6 @@ Alle evenementen ophalen die 's avonds doorgaan:
 localTimeRange:[1700 TO 2359]
 ```
 
-Meer tips en tricks over het samenstellen van een goede query voor je tipswidget vind je [hier](#de-content-scope-bepalen).
-
 #### Doorzoek ook ledenaanbod
 
 Bepaal of je evenementen voor leden wilt tonen of niet.
