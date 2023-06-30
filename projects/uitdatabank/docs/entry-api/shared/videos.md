@@ -46,7 +46,7 @@ Alternatively, you can link a video using one of these endpoints:
 * For events: [`POST /events/{eventId}/videos/{language}`](/reference/entry.json/paths/~1events~1{eventId}~1videos/post)
 * For places: [`POST /places/{placeId}/videos/{language}`](/reference/entry.json/paths/~1places~1{placeId}~1videos/post)
 
-After linking the video to your event or place, it will get an id. You can retrieve this id by fetching the [event](/reference/entry.json/paths/~1events~1{eventId}/get) or [place](/reference/entry.json/paths/~1places~1{placeId}/get) from UiTdatabank. 
+After linking the video to your event or place, it will get an id. You can retrieve this id by fetching the [event](/reference/entry.json/paths/~1events~1{eventId}/get) or [place](/reference/entry.json/paths/~1places~1{placeId}/get) from UiTdatabank.
 You need this id to update the video information or removing the video from your event or place.
 
 ## Updating video information

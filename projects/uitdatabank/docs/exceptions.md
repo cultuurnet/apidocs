@@ -27,7 +27,6 @@ We call this a [dummy location](terminology.md); legacy data from the previous v
 
 ## Missing @id for organizer
 
-
 It is possible an event has **an organizer without `@id`**
 
 ```json
