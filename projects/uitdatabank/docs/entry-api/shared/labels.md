@@ -1,6 +1,6 @@
 # Labels
 
-Labels are a way to enrich your event, place or organizer. They can be used to [create search api queries](../../search-api/filters/labels.md) to fetch events for your 
+Labels are a way to enrich your event, place or organizer. They can be used to [create search api queries](../../search-api/filters/labels.md) to fetch events for your
 agenda. They can be public or private & visible or hidden.
 
 ## Scope
@@ -12,6 +12,7 @@ Contributors can be added on:
 * ✅ [Organizers](../organizers/introduction.md)
 
 ## Format
+
 * The label must be longer than 1 character.
 * The label must be shorter than 255 characters.
 * The label cannot contain semicolons
@@ -47,6 +48,7 @@ For example:
   ]
 }
 ```
+
 Alternatively, you can set a label using one of these endpoints:
 
 * For events: [`PUT /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/put)

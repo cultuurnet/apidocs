@@ -353,7 +353,7 @@ GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
 
 ### dateRange
 
-Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future. 
+Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
 
 For an in-depth understanding of filtering on date and time we recommend to read [our guide](../filters/datetime.md).
 
