@@ -1,4 +1,5 @@
-# Gebruiksvoorwaarden publicatietools 
+# Gebruiksvoorwaarden publicatietools
+ 
 (dd 20/06/2023)
 
 Onder publicatietools wordt begrepen:
@@ -19,6 +20,7 @@ Met "gebruiker" verwijzen we naar een persoon, entiteit of organisatie die de AP
 ## II. Gebruik van de UiTdatabank publicatietools
 
 ### Servicevoorwaarden
+
 Als gebruiker kan je een project indienen om gebruik te maken van een van de publicatietools.
 
 ### Omgevingen en toegang
@@ -34,6 +36,7 @@ publiq biedt ook generieke developer keys aan voor toegang tot de productieomgev
 De API-sleutel (`access key`) die aan de gebruiker is toegewezen, is uitsluitend voor persoonlijk gebruik en mag niet worden overgedragen of doorgegeven aan derden.
 
 ### Ondersteuning
+
 Alle technische documentatie voor het gebruik van de publicatietools vind je op http://docs.publiq.be
 
 Voor technische ondersteuning bij het gebruik van de API bieden we geen gratis ondersteuning binnen bovenstaand kader.
