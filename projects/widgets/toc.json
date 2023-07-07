@@ -121,6 +121,16 @@
       "title": "Linken van artikels aan events",
       "uri": "docs/linken-van-artikels-aan-events.md",
       "slug": "linken-van-artikels-aan-events"
+    },
+    {
+    "type": "divider",
+    "title": "Gebruiksvoorwaarden"
+    },
+    {
+      "type": "item",
+      "title": "Gebruiksvoorwaarden",
+      "uri": "docs/gebruiksvoorwaarden.md",
+      "slug": "linken-van-artikels-aan-events"
     }
   ]
 }
