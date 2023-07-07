@@ -1,5 +1,5 @@
 # Gebruiksvoorwaarden publicatietools
- 
+
 (dd 20/06/2023)
 
 Onder publicatietools wordt begrepen:
@@ -13,8 +13,7 @@ De agendawidgets en Culturefeed Modules zijn gebouwd bovenop de UiTdatabank API.
 
 publiq biedt de mogelijkheid om gemakkelijk toegang te krijgen tot de gegevens van de UiTdatabank via de UiTdatabank API. Om van de API, de UiTdatabank en de gegevens gebruik te maken, moet je akkoord gaan met de volgende voorwaarden en ze naleven. 
 
-publiq behoudt zich het recht voor om deze gebruiksvoorwaarden op elk moment uit te breiden of te wijzigen. De meest recente versie en technische documentatie is altijd te vinden op https://docs.publiq.be. We adviseren je om regelmatig te controleren op wijzigingen.
-
+publiq behoudt zich het recht voor om deze gebruiksvoorwaarden op elk moment uit te breiden of te wijzigen. De meest recente versie en technische documentatie is altijd te vinden op de [documentatieomgeving](https://docs.publiq.be) van publiq. We adviseren je om regelmatig te controleren op wijzigingen.
 Met "gebruiker" verwijzen we naar een persoon, entiteit of organisatie die de API gebruikt om toegang te krijgen tot de UiTdatabank en de bijbehorende gegevens. Of je nu rechtstreeks gebruikmaakt van de publicatietools of de diensten van een IT-leverancier of softwareontwikkelaar inschakelt, maakt daarbij niet uit.
 
 ## II. Gebruik van de UiTdatabank publicatietools
@@ -37,7 +36,7 @@ De API-sleutel (`access key`) die aan de gebruiker is toegewezen, is uitsluitend
 
 ### Ondersteuning
 
-Alle technische documentatie voor het gebruik van de publicatietools vind je op http://docs.publiq.be
+Alle technische documentatie voor het gebruik van de publicatietools vind je op de [documentatieomgeving](https://docs.publiq.be) van publiq.
 
 Voor technische ondersteuning bij het gebruik van de API bieden we geen gratis ondersteuning binnen bovenstaand kader.
 
