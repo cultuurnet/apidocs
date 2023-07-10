@@ -1127,7 +1127,7 @@
         },
         "in": "query",
         "name": "availableFrom",
-        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
+        "description": "Returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/common-filters/default-filters.md] for more information."
       },
       "availableTo": {
         "schema": {
@@ -1137,7 +1137,7 @@
         },
         "in": "query",
         "name": "availableTo",
-        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
+        "description": "Returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request. The default value can be disabled by setting the value to `*` or by using the `disableDefaultFilters` query parameter. See (the guide about default filters)[../docs/search-api/common-filters/default-filters.md] for more information."
       },
       "attendanceMode": {
         "schema": {
@@ -1653,7 +1653,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that either have the workflow status `READY_FOR_VALIDATION` or `APPROVED`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/common-filters/default-filters.md] for more information."
       },
       "workflowStatusOrganizer": {
         "schema": {
@@ -1672,7 +1672,7 @@
         "explode": false,
         "in": "query",
         "name": "workflowStatus",
-        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/filters/default-filters.md] for more information."
+        "description": "Returns only results with exactly the same workflow status as the given enum value. Accepts multiple comma-separated values to return results that have one of the given workflow statuses. Defaults to only return results that have the workflow status `ACTIVE`. The default value can be reset by setting the parameter to `*`. See (the guide about default filters)[../docs/search-api/common-filters/default-filters.md] for more information."
       }
     },
     "responses": {
