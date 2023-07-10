@@ -194,6 +194,9 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
@@ -464,6 +467,9 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
@@ -685,6 +691,9 @@
             "$ref": "#/components/parameters/coordinates"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/distance"
           },
           {
@@ -859,6 +868,9 @@
           },
           {
             "$ref": "#/components/parameters/createdTo"
+          },
+          {
+            "$ref": "#/components/parameters/embed"
           },
           {
             "$ref": "#/components/parameters/modifiedFrom"
@@ -1081,6 +1093,14 @@
         "in": "query",
         "name": "isDuplicate",
         "description": "Returns only results that include or excludes duplicate places"
+      },
+      "embed": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "embed",
+        "description": "Returns the results with the actual JSON bodies of the individual items"
       },
       "addressCountry": {
         "schema": {
