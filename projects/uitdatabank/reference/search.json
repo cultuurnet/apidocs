@@ -485,6 +485,9 @@
             "$ref": "#/components/parameters/id"
           },
           {
+            "$ref": "#/components/parameters/isDuplicate"
+          },
+          {
             "$ref": "#/components/parameters/locationId"
           },
           {
@@ -903,6 +906,9 @@
             "$ref": "#/components/parameters/id"
           },
           {
+            "$ref": "#/components/parameters/isDuplicate"
+          },
+          {
             "$ref": "#/components/parameters/locationId"
           },
           {
@@ -1067,6 +1073,14 @@
         "in": "query",
         "name": "postalCode",
         "description": "Returns only results that have the exact same postal code in their address. Typically 4 digits for Belgian addresses but can also be a different format for international addresses."
+      },
+      "isDuplicate": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "isDuplicate",
+        "description": "Returns only results that include or excludes duplicate places"
       },
       "addressCountry": {
         "schema": {
