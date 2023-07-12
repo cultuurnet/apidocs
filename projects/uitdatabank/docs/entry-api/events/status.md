@@ -2,7 +2,7 @@
 
 When [creating](./create.md) or (usually) when [updating](./update.md) your event, you can mark it as postponed or cancelled to indicate to attendees that it will be moved to another date or not take place at all.
 
-Cancelled events automatically get an *"(geannuleerd)"* label next to their date(s) in online calendars that use [calendar summaries](../../search-api/embedding-calendar-summaries.md) to render the calendar information. For example, on UiTinVlaanderen:
+Cancelled events automatically get an *"(geannuleerd)"* label next to their date(s) in online calendars that use [calendar summaries](../../search-api/advanced/embedding-calendar-summaries.md) to render the calendar information. For example, on UiTinVlaanderen:
 
 ![Screenshot of a summary of the event "Boshyacintenfestival" on UiTinVlaanderen, as an example of the "(Geannuleerd)" label](../../../assets/images/event-cancelled.png)
 

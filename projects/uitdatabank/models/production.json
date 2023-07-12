@@ -1,0 +1,40 @@
+{
+  "x-internal": true,
+  "title": "production",
+  "type": "object",
+  "description": "A production that 2 or more events are part of",
+  "examples": [
+    {
+      "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
+      "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
+      "events": [
+        "4f37a230-8d8d-4dab-a527-62e879629bae",
+        "7f32b131-deb9-483f-ab32-98541d3c3b77",
+        "c41effec-0e04-4e01-8804-9ea9b4c6b528"
+      ]
+    }
+  ],
+  "properties": {
+    "productionId": {
+      "$ref": "./common-string-uuid.json",
+      "description": "The uuid of the production"
+    },
+    "name": {
+      "type": "string",
+      "description": "The title of the production",
+      "example": "Alex Agnew speelt 'Wake Me Up When It's Over'"
+    },
+    "events": {
+      "type": "array",
+      "description": "List of events that are part of the production",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "productionId",
+    "name",
+    "events"
+  ]
+}

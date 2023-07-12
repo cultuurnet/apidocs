@@ -12,7 +12,7 @@ Advanced queries are defined using the `q` parameter which uses the Lucene query
 
 With the `addressCountry` field you can limit your results to one or more countries.
 
-> By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](./filters/default-filters.md).
+> By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
 **Applicable on endpoints**
 
@@ -168,7 +168,7 @@ GET /events/?q=attendanceMode:(online OR mixed)
 
 With the `audienceType` field you can limit your results that are targeted to a specific audience.
 
-> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the default filter for audienceType. In the [default filters guide](filters/default-filters.md) you can find how you can reset this filter.
+> By default, the search API will only return results that have audienceType set as everyone. In order to search for a specific audienceType you'll need to disable the default filter for audienceType. In the [default filters guide](../filters/default-filters.md) you can find how you can reset this filter.
 
 **Applicable on endpoints**
 
@@ -188,7 +188,7 @@ GET /events/?q=audienceType:members&audienceType=*
 
 Using the `availableRange` field, you can get all events and places that were available in a given range in the past, or will be available in a given range in the future.
 
-> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](filters/default-filters.md).
+> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
 Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series).
 
@@ -234,7 +234,7 @@ Get all places that are permanently closed:
 GET /places/?q=bookingAvailability:unavailable
 ```
 
-@todo: link to booking availability guide when that guide is finished.
+For an in-depth understanding of the `bookingAvailability` field we advise to read [our guide](../filters/booking-availability.md).
 
 ### calendarType
 
@@ -355,7 +355,9 @@ GET /offers/?q=creator:86a02c65-696d-5b12-a9b1-9e3bc8e6303c
 
 Using the `dateRange` field, you can get all events and places that took place in a given range in the past, or will take place in a given range in the future.
 
-> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](filters/default-filters.md).
+For an in-depth understanding of filtering on date and time we recommend to read [our guide](../filters/datetime.md).
+
+> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
 **Applicable on endpoints**
 
@@ -477,7 +479,7 @@ All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch,
 
 To limit your results to documents that have translations for `name` and `description` in a specific language, you can use the `languages` field.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our [languages guide](../filters/language.md)
 
 **Applicable on endpoints**
 
@@ -612,7 +614,7 @@ Using the `location.terms.id` field you can filter out events that take place on
 
 **Possible values**
 
-Any valid term id applicable on locations (places). For a list of available terms, see [our guide about taxonomy terms](../taxonomy-api/terms.md).
+Any valid term id applicable on locations (places). For a list of available terms, see [our guide about taxonomy terms](../../taxonomy-api/terms.md).
 
 **Example**
 
@@ -626,7 +628,7 @@ GET /events/?q=location.terms.id:8.70.0.0.0
 
 Traditionally, each document created in UiTdatabank starts as Dutch and can then be translated to other languages. However, it is possible to create an event, place or organizer in a different language. The `mainLanguage` property indicates in which language the main content of the document is.
 
-For an in-depth understanding of the languages fields and translations we advise you to read our Language guide. (@todo: link naar guide)
+For an in-depth understanding of the languages fields and translations we advise you to read our [language guide](../filters/language.md).
 
 **Applicable on endpoints**
 
@@ -819,7 +821,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see (@todo: link to guide)
+Any valid region. For a list of all shapes, see [our guide](../filters/location.md).
 
 **Example**
 
@@ -833,7 +835,7 @@ GET /places/?q=regions:nis-01000
 
 The `status` indicates whether an event or place is still available for visits or not.
 
-For an in-depth understanding of the `status` field we advise to read our guide (@todo: link to guide).
+For an in-depth understanding of the `status` field we advise to read [our guide](../filters/status.md).
 
 **Applicable on endpoints**
 
@@ -863,7 +865,7 @@ Each event and place in UiTdatabank is categorized with a type (e.g. `concert` f
 
 With the `terms.id` field you can filter results based on their categorisation.
 
-A complete overview of our terms can be found on in our [guide about taxonomy terms](../taxonomy-api/terms.md).
+A complete overview of our terms can be found on in our [guide about taxonomy terms](../../taxonomy-api/terms.md).
 
 **Applicable on endpoints**
 
@@ -871,7 +873,7 @@ A complete overview of our terms can be found on in our [guide about taxonomy te
 
 **Possible values**
 
-See our [guide about taxonomy terms](../taxonomy-api/terms.md).
+See our [guide about taxonomy terms](../../taxonomy-api/terms.md).
 
 **Example**
 
@@ -891,7 +893,7 @@ GET /events/?q=terms.id:(0.50.4.0.0 AND 1.8.3.3.0)
 
 Filter out results based on the targeted age group of the event/place with the `typicalAgeRange` field.
 
-For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read our guide (@todo: link to guide).
+For an in-depth understanding of the different fields and parameters to filter on age information we recommend to read [our guide about filtering on age](../filters/age.md).
 
 **Applicable on endpoints**
 
@@ -909,7 +911,7 @@ Retrieve all events for children under 12 years old:
 GET /events/?q=typicalAgeRange:[0 TO 12]
 ```
 
-Note that this query will also return events that are for all ages (see allAges (@todo link to docs)) and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
+Note that this query will also return events that are for all ages and events for ages that only partially overlap with the given age range (e.g. an event for children of 10-15 years old).
 
 Retrieve all events exclusively for children under 12 years old:
 
@@ -971,12 +973,12 @@ For events & places:
 * `DRAFT`: the event or place is created but misses some information and is therefore not ready for publication.
 * `READY_FOR_VALIDATION`: the event or place is created with all mandatory fields present. The event or place is ready for validation, meaning that an external validator can either approve or reject the event or place.
 * `APPROVED`: the event or place is explicitly approved by a validator.
-* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the rules of UiTdatabank (@todo: link to rules).
+* `REJECTED`: the event or place is explicitly approved by a validator, e.g. because it is a duplicate, or it is not conform the [rules of UiTdatabank](https://helpdesk.publiq.be/hc/nl/articles/360008702459-Welke-activiteiten-mag-ik-invoeren-in-UiTdatabank).
 * `DELETED`: the event or place is deleted.
 
 <!-- Theme:info -->
 
-> By default, only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
+> By default, only events and places with a workflowStatus `READY_FOR_VALIDATION` or `APPROVED` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](../filters/default-filters.md).
 
 For organizers:
 
@@ -985,7 +987,7 @@ For organizers:
 
 <!-- Theme:info -->
 
-> By default, only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](filters/default-filters.md).
+> By default, only organizers with a workflowStatus `ACTIVE` are returned by Search API. To include documents with another workflowStatus in your search results, you need to disable the [default filter for workflowStatus](../filters/default-filters.md).
 
 **Examples**
 

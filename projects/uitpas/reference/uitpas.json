@@ -25,6 +25,9 @@
       "name": "Card Systems"
     },
     {
+      "name": "Checkins"
+    },
+    {
       "name": "Current Passholder"
     },
     {
@@ -109,13 +112,6 @@
                           "price": 8,
                           "remaining": 1,
                           "type": "COUPON"
-                        },
-                        {
-                          "id": "REWARD5464",
-                          "name": "50% korting op een specifiek event",
-                          "price": 5,
-                          "remaining": 1,
-                          "type": "REWARD"
                         }
                       ]
                     }
@@ -133,17 +129,36 @@
                       ]
                     }
                   },
-                  "Example with reward tariff": {
+                  "No available tariffs with message about social tariff": {
+                    "value": {
+                      "available": [],
+                      "endUserMessage": {
+                        "nl": "Je hebt geen recht meer op kansentarief voor deze activiteit. Je kan maximaal 1 ticket per maand kopen aan kansentarief voor deze activiteit."
+                      }
+                    }
+                  },
+                  "Coupon tariff with message about social tariff": {
                     "value": {
                       "available": [
                         {
-                          "id": "REWARD5464",
-                          "name": "50% korting voor 10 UiTPAS punten",
-                          "price": 5,
+                          "id": "COUPON2345",
+                          "name": "2 euro korting op een specifiek event",
+                          "price": 8,
                           "remaining": 1,
-                          "type": "REWARD"
+                          "type": "COUPON"
                         }
-                      ]
+                      ],
+                      "endUserMessage": {
+                        "nl": "Je hebt geen recht meer op kansentarief voor deze activiteit. Je kan maximaal 1 ticket per maand kopen aan kansentarief voor deze activiteit."
+                      }
+                    }
+                  },
+                  "No available tariffs with message about coupon": {
+                    "value": {
+                      "available": [],
+                      "endUserMessage": {
+                        "nl": "Je hebt een coupon voor deze activiteit, maar je kan hiermee maximaal 1 ticket per maand kopen."
+                      }
                     }
                   }
                 }
@@ -217,6 +232,117 @@
             "name": "uitpasNumber",
             "description": "UiTPAS Number identifying the passholder who wants to buy a ticket",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ANY",
+                "SOCIALTARIFF",
+                "COUPON"
+              ],
+              "default": "ANY"
+            },
+            "in": "query",
+            "name": "type",
+            "description": "Return only available tariffs of this type. Defaults to ANY type.",
+            "required": false
+          }
+        ]
+      }
+    },
+    "/tariffs/static": {
+      "parameters": [],
+      "get": {
+        "summary": "Get static tariffs without passholder",
+        "tags": [
+          "Ticket sales"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TariffsResponse"
+                },
+                "examples": {
+                  "Social tariff": {
+                    "value": {
+                      "available": [
+                        {
+                          "id": "SOCIALTARIFF-1",
+                          "name": "Kansentarief",
+                          "price": 1.5,
+                          "type": "SOCIALTARIFF",
+                          "remaining": 1
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/social-tariff-not-available\n\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Event not found": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/event-not-found",
+                      "title": "Event id 267B6FCF-46F8-4DA2-8D7D-AADCD2C2715E not found",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-tariffs-static",
+        "description": "Returns the **static** UiTPAS discounted **tariffs for an event**.\n    \n<!-- theme: warning -->\n    \n> ##### Important\n> UiTPAS tariffs are different for each indiviual passholder, but this endpoint does NOT take the passholder into consideration. Use this endpoint only in specific cases, e.g. when listing the UiTPAS tariff before the passholder is known. The actual passholder tariffs might be different than this response. Use [GET /tariffs](/reference/uitpas.json/paths/~1tariffs/get) to retrieve indidivual tariffs for a passholder.\n  \n\nThis UiTPAS tariffs are calculated based on:\n\n- **The regular price** of the ticket.\nThis is the price your user would have to pay for the specific ticket without UiTPAS discount.\n- **The event id** of the UiTdatabank event. UiTPAS discounts are limited to specific UiTdatabank events, so it's important to specify the event id to retrieve a list of possible tariffs.\n\nBecause the passholder is unknown, UiTPAS will return the tariffs for a passholder with social tariff, who lives in the same region as the event organizer.\n\nThe caller of this request must have `TARIFFS_READ` permission for the organizer of the given event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "regularPrice",
+            "description": "The regular price the passholder would have to pay for the ticket if they are not eligible for discounts",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventId",
+            "description": "The id of the event for which the ticket is sold",
+            "required": true
           }
         ]
       }
@@ -285,22 +411,6 @@
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
-                      }
-                    ]
-                  },
-                  "Example using a reward tariff": {
-                    "value": [
-                      {
-                        "id": "489144",
-                        "tariff": {
-                          "id": "REWARD1234",
-                          "name": "50% korting voor 10 punten",
-                          "price": 5,
-                          "type": "REWARD"
-                        },
-                        "uitpasNumber": "0560002524314",
-                        "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
-                        "regularPrice": 10
                       }
                     ]
                   }
@@ -548,6 +658,7 @@
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0930012345615",
                             "cardSystemMemberships": [
                               {
                                 "cardSystem": {
@@ -610,6 +721,7 @@
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0930012345615",
                             "cardSystemMemberships": [
                               {
                                 "cardSystem": {
@@ -686,6 +798,156 @@
           {
             "$ref": "#/components/parameters/limit"
           }
+        ]
+      }
+    },
+    "/checkins": {
+      "parameters": [],
+      "post": {
+        "summary": "Check in passholder",
+        "operationId": "post-checkins",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Checkin"
+                },
+                "examples": {
+                  "Example with passholder": {
+                    "value": {
+                      "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                      "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "uitpasNumber": "0560002524314",
+                      "points": 1,
+                      "passholder": {
+                        "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "dateOfBirth": "2000-01-01",
+                        "postalCode": "9300",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        },
+                        "creationDate": "2012-08-24T14:15:22Z",
+                        "registrationOrganizer": {
+                          "id": "1234",
+                          "name": "Example UiTPAS Organizer"
+                        },
+                        "points": 10,
+                        "uitidStatus": "UNREGISTERED",
+                        "uitpasNumber": "0560002524314",
+                        "cardSystemMemberships": [
+                          {
+                            "cardSystem": {
+                              "id": 1,
+                              "name": "UiTPAS Dender",
+                              "branding": {
+                                "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                "primaryColor": "rgba(0,0,0,1.0)",
+                                "secondaryColor": "rgba(97,166,14,1.0)"
+                              },
+                              "links": {
+                                "website": "https://www.uitpas.be"
+                              },
+                              "cities": [
+                                {
+                                  "postalCode": "9300",
+                                  "name": "Aalst"
+                                },
+                                {
+                                  "postalCode": "9400",
+                                  "name": "Ninove"
+                                }
+                              ],
+                              "permanent": true
+                            },
+                            "uitpasNumber": "0560002524314",
+                            "status": "ACTIVE",
+                            "socialTariff": {
+                              "endDate": "2022-08-24T14:15:22Z",
+                              "inGracePeriod": false,
+                              "expired": false
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Example without passholder": {
+                    "value": {
+                      "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                      "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "uitpasNumber": "0560002524314",
+                      "points": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Social tariff discount expired": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/social-tariff-discount-expired",
+                      "title": "Social tariff discount expired",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Checkin"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+                    "uitpasNumber": "0900000095902"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Check-in request body"
+        },
+        "tags": [
+          "Checkins"
         ]
       }
     },
@@ -1124,6 +1386,7 @@
                           },
                           "points": 10,
                           "uitidStatus": "UNREGISTERED",
+                          "uitpasNumber": "0930012345615",
                           "cardSystemMemberships": [
                             {
                               "cardSystem": {
@@ -1316,6 +1579,7 @@
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
+                      "uitpasNumber": "0930012345615",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -2128,6 +2392,7 @@
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
+                      "uitpasNumber": "0930012345615",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -2215,6 +2480,7 @@
                       "name": "Lastname",
                       "firstName": "Firstname",
                       "inszNumber": "19800101003",
+                      "uitpasNumber": "0999100000002",
                       "cardSystemMemberships": [
                         {
                           "cardSystem": {
@@ -3656,7 +3922,7 @@
           {
             "schema": {
               "type": "string",
-              "example":"-redeemCount,points"
+              "example": "-redeemCount,points"
             },
             "in": "query",
             "name": "sort",
@@ -4812,23 +5078,22 @@
           },
           "name": {
             "type": "string",
-            "readOnly": true,
-            "description": "Human-readable name of the tariff"
+            "description": "Human-readable name of the tariff",
+            "readOnly": true
           },
           "price": {
             "type": "number",
-            "readOnly": true,
-            "description": "Discounted price to pay for this tariff, in euro."
+            "description": "Discounted price to pay for this tariff, in euro.",
+            "readOnly": true
           },
           "type": {
             "type": "string",
             "enum": [
               "SOCIALTARIFF",
-              "COUPON",
-              "REWARD"
+              "COUPON"
             ],
-            "readOnly": true,
-            "description": "Type of discount being applied."
+            "description": "Type of discount being applied.",
+            "readOnly": true
           }
         },
         "required": [
@@ -4942,6 +5207,52 @@
           "uitpasNumber"
         ]
       },
+      "Checkin": {
+        "description": "Model used both for registering and searching checkins.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDERS_SEARCH permission. It is not required for check-in creation.",
+        "type": "object",
+        "title": "Checkin",
+        "x-tags": [
+          "Models"
+        ],
+        "x-stoplight": {
+          "id": "e0c828e2c92cb"
+        },
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique id of a check-in. Not required for check-in creation.",
+            "readOnly": true
+          },
+          "eventId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Id of the event where the passholder checked in"
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The passholder's UiTPAS number used to create the check-in. Note that the uitpasNumber of a passholder might change over time. This field will always contain the uitpasNumber used when creating the check-in. To identify the passholder, use the `passholder` field."
+          },
+          "points": {
+            "type": "integer",
+            "description": "Points earned by the passholder as a result of this check-in.",
+            "readOnly": true
+          },
+          "passholder": {
+            "description": "Full passholder object of this check-in.",
+            "readOnly": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Passholder"
+              }
+            ]
+          }
+        },
+        "required": [
+          "eventId",
+          "uitpasNumber"
+        ]
+      },
       "Error": {
         "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json"
       },
@@ -4979,8 +5290,9 @@
           "TICKETSALES_REGISTER",
           "EVENTS_UPDATE",
           "EVENTS_READ",
+          "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
-          "ORGANIZERS_REPORTS",          
+          "ORGANIZERS_REPORTS",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
@@ -5178,6 +5490,7 @@
           },
           "points": 10,
           "uitidStatus": "UNREGISTERED",
+          "uitpasNumber": "0930012345615",
           "cardSystemMemberships": [
             {
               "cardSystem": {
@@ -5230,6 +5543,10 @@
           "inszNumber": {
             "type": "string",
             "description": "Unique national (Belgian) INSZ number of an individual passholder to look up."
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
           },
           "cardSystemMemberships": {
             "type": "array",
@@ -5852,6 +6169,9 @@
             }
           ]
         },
+        "x-tags": [
+          "Models"
+        ],
         "properties": {
           "available": {
             "type": "array",
@@ -5859,11 +6179,33 @@
             "items": {
               "$ref": "#/components/schemas/TariffAvailibility"
             }
+          },
+          "endUserMessage": {
+            "type": "object",
+            "description": "Optional property that, if provided, contains information for the end-user about potentially unavailable tariffs (while the end user might expect otherwise). e.g. if no tariff of type `SOCIALTARIFF` is available, while the passholder has a valid social tariff, this field can contain a human-readable explanation of the problem, specifically for end-users, in one or more languages. An `nl` value is always provided, other languages may be provided. When this property is included, it is strongly encouraged to show this to the end-user. It is also important to note that this message is context-aware: e.g. when filtering tariffs on `type=SOCIALTARIFF`, this message won't include information about coupons. Furthermore keep in mind this 'end user message' does not necessarily contain a fatal error. A message might be relevant to show while there are still other tariffs available.",
+            "properties": {
+              "nl": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+              },
+              "fr": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+              },
+              "de": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+              },
+              "en": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+              }
+            },
+            "required": [
+              "nl"
+            ]
           }
-        },
-        "x-tags": [
-          "Models"
-        ]
+        }
       },
       "TariffAvailibility": {
         "example": {

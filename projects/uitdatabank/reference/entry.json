@@ -8016,6 +8016,105 @@
         ]
       }
     },
+    "/productions": {
+      "get": {
+        "summary": "productions - search",
+        "description": "Get a list of existing productions filtered by a search string",
+        "operationId": "productions-get",
+        "responses": {
+          "200": {
+            "description": "Production details",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hydra:member": {
+                      "type": "array",
+                      "description": "Production results for the requested page.",
+                      "items": {
+                        "$ref": "../models/production.json"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "hydra:member": [
+                        {
+                          "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                          "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
+                          "events": [
+                            "4f37a230-8d8d-4dab-a527-62e879629bae",
+                            "7f32b131-deb9-483f-ab32-98541d3c3b77",
+                            "c41effec-0e04-4e01-8804-9ea9b4c6b528"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../models/production.json"
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                        "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
+                        "events": [
+                          "4f37a230-8d8d-4dab-a527-62e879629bae",
+                          "7f32b131-deb9-483f-ab32-98541d3c3b77",
+                          "c41effec-0e04-4e01-8804-9ea9b4c6b528"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-internal": true,
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "name",
+            "description": "The name or part of the name of the production(s) to search (case-insensitive)."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "start",
+            "description": "The number of productions to skip from the start of the result set. When omitted it starts from the first position (0)."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "The limit of productions included in the result set. When omitted it defaults to 30 items."
+          }
+        ],
+        "tags": [
+          "Productions"
+        ]
+      }
+    },
     "/user": {
       "get": {
         "summary": "current user - get",
@@ -8293,6 +8392,9 @@
     },
     {
       "name": "Places"
+    },
+    {
+      "name": "Productions"
     },
     {
       "name": "Users"

@@ -2,7 +2,7 @@
 
 In some exceptional cases, you may want to delete your organizer from UiTdatabank. For example, if it has been entered more than once.
 
-However, you **should not** delete your organizer because it has no current events. UiTinVlaanderen and other online calendars focus on events and will not show your organizer. 
+However, you **should not** delete your organizer because it has no current events. UiTinVlaanderen and other online calendars focus on events and will not show your organizer.
 
 Note that when you delete an organizer, it is not actually deleted but its `workflowStatus` property will be set to `DELETED`. This will hide it from the autocomplete in the [UiTdatabank web application](https://uitdatabank.be). You can learn more about the `workflowStatus` property in the guide [workflowStatus](../shared/workflow-status.md).
 
@@ -18,6 +18,6 @@ Unlike events or places, there is only one way to delete an organizer.
 
 ### DELETE endpoint
 
-Using the [`DELETE /organizers/{organizerId}`](/reference/entry.json/paths/~1organizers~1{organizerId}/delete) endpoint you can soft-delete the organizer at the given URL. 
+Using the [`DELETE /organizers/{organizerId}`](/reference/entry.json/paths/~1organizers~1{organizerId}/delete) endpoint you can soft-delete the organizer at the given URL.
 
 The organizer's `workflowStatus` property will automatically be updated to `DELETED`.

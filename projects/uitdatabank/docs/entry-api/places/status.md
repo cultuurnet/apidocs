@@ -28,7 +28,8 @@ By default, it looks like this:
 }
 ```
 
-The nested `type` property can either have one of the following values: 
+The nested `type` property can either have one of the following values:
+
 * `Available`: the place is ‘open’ and can be visited during opening hours
 * `Unavailable`: the place still exists (physically), but is permanently closed)
 * `TemporarilyUnavailable`: the place is temporarily closed (due to renovations for example)
@@ -61,4 +62,3 @@ For example:
 ## Marking a place as permanently closed
 
 Marking a place as permanently closed works exactly the same as marking it as temporarily closed, but instead of setting the `status.type` of the place to `TemporarilyUnavailable`, you should set it to `Unavailable`.
-
