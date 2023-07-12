@@ -200,6 +200,9 @@
             "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
+            "$ref": "#/components/parameters/embedUitpasPrices"
+          },
+          {
             "$ref": "#/components/parameters/facets"
           },
           {
@@ -471,6 +474,9 @@
           },
           {
             "$ref": "#/components/parameters/embedCalendarSummaries"
+          },
+          {
+            "$ref": "#/components/parameters/embedUitpasPrices"
           },
           {
             "$ref": "#/components/parameters/facets"
@@ -873,6 +879,12 @@
             "$ref": "#/components/parameters/embed"
           },
           {
+            "$ref": "#/components/parameters/embedCalendarSummaries"
+          },
+          {
+            "$ref": "#/components/parameters/embedUitpasPrices"
+          },
+          {
             "$ref": "#/components/parameters/modifiedFrom"
           },
           {
@@ -895,9 +907,6 @@
           },
           {
             "$ref": "#/components/parameters/localTimeTo"
-          },
-          {
-            "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
             "$ref": "#/components/parameters/facets"
@@ -1101,6 +1110,14 @@
         "in": "query",
         "name": "embed",
         "description": "Returns the results with the actual JSON bodies of the individual items"
+      },
+      "embedUitpasPrices": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "embedUitpasPrices",
+        "description": "Returns the results with the UiTPAS prices included (if applicable)"
       },
       "addressCountry": {
         "schema": {
