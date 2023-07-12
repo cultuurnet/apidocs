@@ -1,0 +1,45 @@
+{
+  "title": "newsArticle.post",
+  "x-stoplight": {
+    "id": "b3de07e8deb24"
+  },
+  "type": "object",
+  "x-internal": true,
+  "examples": [
+    {
+      "name": "Don Vitalski - Gewoon Blijven Ademen",
+      "eventIds": [
+        "17c84549-15c5-4dd4-974f-3becdcd952c8",
+        "7ee2e70d-78ee-4436-bbcf-1b2ecdd945af"
+      ]
+    },
+    {
+      "name": "Kommil Foo - GRIND",
+      "eventIds": [
+        "04923b0e-aefc-480b-a1b6-8e5f7ed1d3d6",
+        "04e2e6f8-dda1-4531-b4f8-736eecc46f18",
+        "0618c6a0-ab16-4c7d-a291-89b495120a39",
+        "07fb8c75-5f34-44bc-9e67-ffe20de6cf2b",
+        "08d88c9a-2523-4b8f-b774-6f39ed4dcf0e",
+        "0dfc2b41-74a6-4cff-ae9b-51300ac611e6",
+        "0fd38824-3dac-4b9d-ae15-f5a3951dc282",
+        "1492676c-0bce-4245-844e-9bf1643d1a2f"
+      ]
+    }
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the production. The name includes the performer and the title of the played piece or event.",
+      "example": "Kommil Foo - GRIND"
+    },
+    "eventIds": {
+      "$ref": "production-eventIds.json",
+      "description": "The event id's that are part of the production"
+    }
+  },
+  "required": [
+    "name",
+    "eventIds"
+  ]
+}
