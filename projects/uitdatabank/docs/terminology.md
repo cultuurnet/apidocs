@@ -136,3 +136,33 @@ Examples include:
 * [UiTinVlaanderen](https://www.uitinvlaanderen.be) to browse all events and places in Flanders
 * [UiTinGent](https://www.uitingent.be), [UiTinHasselt](https://www.uitinhasselt.be), [UiTinLeuven](https://www.uitinleuven.be), ... to find events and places in the municipality that you live in or want to visit
 * [Erfgoed in Leuven](https://www.erfgoedcelleuven.be/nl/agenda), [INTER](https://inter.vlaanderen/alle-evenementen), [Indiestyle](https://www.indiestyle.be/agenda) ... to find events and places for specific target audiences
+
+## Label
+
+A label is a keyword or tag that makes an activity more easily picked up by search engines or certain calendars. Everyone can add labels to events, places and organizers, even if they did not enter the item.
+
+A label is either private or public and visible or hidden.
+
+### Public versus private labels
+
+Public labels can be added by anyone, whereas private labels can only be added by users that are granted the permission in UiTdatabank to use the label. Labels are by default public.
+
+### Visible versus hidden labels
+
+Visible labels are sometimes displayed in [online calendars](#online-calendar), whereas hidden labels are not meant for publication.
+
+**Example of a visible label**
+
+```json
+"labels": [
+   "jongerentip"
+],
+```
+
+**Example of a hidden label**
+
+```json
+"hiddenLabels": [
+   "UiTPAS Maasmechelen"
+],
+```
