@@ -8022,7 +8022,7 @@
         "operationId": "productions-create",
         "responses": {
           "201": {
-            "description": "The News Article was created successfully",
+            "description": "The production was created successfully",
             "content": {
               "application/ld+json": {
                 "schema": {

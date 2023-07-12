@@ -1,8 +1,5 @@
 {
-  "title": "newsArticle.post",
-  "x-stoplight": {
-    "id": "b3de07e8deb24"
-  },
+  "title": "production.post",
   "type": "object",
   "x-internal": true,
   "examples": [
