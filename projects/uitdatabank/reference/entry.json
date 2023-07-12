@@ -8017,6 +8017,67 @@
       }
     },
     "/productions": {
+      "post": {
+        "summary": "productions - create",
+        "operationId": "productions-create",
+        "responses": {
+          "201": {
+            "description": "The News Article was created successfully",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "../models/production-post.json"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/production-post.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a production",
+        "x-internal": true,
+        "requestBody": {
+          "description": "The complete details of the new production to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/production-post.json"
+              }
+            }
+          }
+        },
+         "tags": [
+          "Productions"
+        ]
+      },
       "get": {
         "summary": "productions - search",
         "description": "Get a list of existing productions filtered by a search string",
