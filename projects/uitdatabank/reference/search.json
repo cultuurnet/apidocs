@@ -206,6 +206,9 @@
             "$ref": "#/components/parameters/facets"
           },
           {
+            "$ref": "#/components/parameters/groupBy"
+          },
+          {
             "$ref": "#/components/parameters/regions"
           },
           {
@@ -480,6 +483,9 @@
           },
           {
             "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/groupBy"
           },
           {
             "$ref": "#/components/parameters/regions"
@@ -910,6 +916,9 @@
           },
           {
             "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/groupBy"
           },
           {
             "$ref": "#/components/parameters/regions"
@@ -1371,6 +1380,7 @@
         "style": "form",
         "explode": true
       },
+
       "regions": {
         "schema": {
           "type": "array",
@@ -1413,6 +1423,17 @@
         "in": "query",
         "name": "bounds",
         "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`)."
+      },
+      "groupBy": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "productionId"
+          ]
+        },
+        "in": "query",
+        "name": "groupBy",
+        "description": "Groups the results by their production. Grouping by productions ensures that for every production, only 1 event is returned in the search results"
       },
       "id": {
         "schema": {
