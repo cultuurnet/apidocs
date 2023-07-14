@@ -8016,6 +8016,72 @@
         ]
       }
     },
+    "/productions/skip": {
+      "post": {
+        "summary": "productions - skip",
+        "operationId": "productions-skip",
+        "responses": {
+          "200": {
+            "description": "The production was skipped successfully",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "../models/productions-skip.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required property (eventIds) is missing."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Productions"
+        ],
+        "description": "Skip a pair of suggested events. The suggested pair will not be linked to a production and will not be suggested again.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true,
+        "requestBody": {
+          "description": "The complete details of the new production to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/productions-skip.json"
+              }
+            }
+          }
+        }
+      }
+    },
     "/productions": {
       "get": {
         "summary": "productions - search",
