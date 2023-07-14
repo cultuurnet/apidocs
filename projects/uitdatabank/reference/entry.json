@@ -8016,6 +8016,46 @@
         ]
       }
     },
+    "/productions/{productionId1}/merge/{productionId2}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/productionId1"
+        },
+        {
+          "$ref": "#/components/parameters/productionId2"
+        }
+      ],
+      "put": {
+        "summary": "production-merge",
+        "operationId": "productions-merge",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Productions"
+        ],
+        "description": "Merges to productions into one. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/productions": {
       "get": {
         "summary": "productions - search",
@@ -8256,6 +8296,28 @@
           "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
         },
         "description": "Unique id of a news article, in the format of a UUID"
+      },
+      "productionId1": {
+        "name": "productionId1",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+        },
+        "description": "Unique id of a production into which another production is merged, in the format of a UUID"
+      },
+      "productionId2": {
+        "name": "productionId2",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+        },
+        "description": "Unique id of a production that is merged into another production, in the format of a UUID"
       },
       "language": {
         "name": "language",
