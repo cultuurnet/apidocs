@@ -135,4 +135,4 @@ Examples include:
 
 * [UiTinVlaanderen](https://www.uitinvlaanderen.be) to browse all events and places in Flanders
 * [UiTinGent](https://www.uitingent.be), [UiTinHasselt](https://www.uitinhasselt.be), [UiTinLeuven](https://www.uitinleuven.be), ... to find events and places in the municipality that you live in or want to visit
-* [Erfgoed in Leuven](https://www.erfgoedcelleuven.be/nl/agenda), [INTER](https://inter.vlaanderen/alle-evenementen), [Indiestyle](https://www.indiestyle.be/agenda) ... to find events and places for specific target audiences
+* [SeniorenNet](https://www.seniorennet.be/page/info/agenda), [INTER](https://inter.vlaanderen/alle-evenementen), [Indiestyle](https://www.indiestyle.be/agenda) ... to find events and places for specific target audiences
