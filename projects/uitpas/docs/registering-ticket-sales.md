@@ -90,22 +90,11 @@ Content-Type: application/json
 }
 ```
 
-In this example the passholder can select two possible UiTPAS discounts. The social tariff, and a coupon. Both tariffs are valid for one ticket for this event for this passholder.
-
 > ##### remaining tickets at a tariff
 >
 > For regular passholders, the `remaining` value is always 1. Please refer to [registering ticket sales for group passes](/docs/registering-ticket-sales-group) for more information on group pass ticket sales.
 
-### 5. Passholder selects a tariff
-
-If the API response contained one or more UiTPAS tariffs, your website or application should present them to the passholder to select one (or none). Since some discounts are only usable once, it's important that passholders can choose when to use a specific discount.
-
-For example if all the discounted tariffs are based on one-time-use coupons, but the passholder does not wish to use any coupons after all, he/she should be able to not select one.
-
-> ##### type
->
-> Tariffs can be of different types, e.g. `SOCIALTARIFF` or `COUPON`.
-> *If* the passholder is entitled to a social tariff, only one such tariff will be available. If your application does not wish to support the use of coupon tariffs, it could auto-select the tariff with type `SOCIALLTARIFF` when available, without asking the pasholder.
+In this example the passholder can select two possible UiTPAS discounts. The social tariff, and a coupon. Both tariffs are valid for one ticket for this event for this passholder.
 
 When the passholder doesn't have a tariff available, **you'll receive an endUserMessage explaining why**. **It's best practice to always display this message to the passholder when you receive one.** This way, lots of confusion can be avoided, as the user can clearly understand what's wrong.
 
@@ -125,6 +114,17 @@ When the passholder doesn't have a tariff available, **you'll receive an endUser
 }
 
 ```
+
+### 5. Passholder selects a tariff
+
+If the API response contained one or more UiTPAS tariffs, your website or application should present them to the passholder to select one (or none). Since some discounts are only usable once, it's important that passholders can choose when to use a specific discount.
+
+For example if all the discounted tariffs are based on one-time-use coupons, but the passholder does not wish to use any coupons after all, he/she should be able to not select one.
+
+> ##### type
+>
+> Tariffs can be of different types, e.g. `SOCIALTARIFF` or `COUPON`.
+> *If* the passholder is entitled to a social tariff, only one such tariff will be available. If your application does not wish to support the use of coupon tariffs, it could auto-select the tariff with type `SOCIALLTARIFF` when available, without asking the pasholder.
 
 ### 6. Register the ticket sale
 
