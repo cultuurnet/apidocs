@@ -33,7 +33,7 @@ In this case you'll receive a 400-response with an endUserMessage explaining wha
 
 ```
 
-Sometimes, the endUserMessage can be returned in the 200 response. This happens when there isn't a real "error" as defined in the API, but we want to clarify something to the user to make things clear.
+Sometimes, the endUserMessage can be returned in the 200 response. This happens when there isn't a real "error" as defined in the API, but we still want to clarify something to the user.
 
 For example, in [GET /tariffs](/reference/uitpas.json/paths/~1tariffs/get), a passholder might be using his or her card for an event that isn't in the UiTPAS-region. We'll return a 200 with an empty available": [] and an endUserMessage:
 
@@ -51,5 +51,5 @@ bv. een maximum prijs waarvoor een kansentarief mogelijk is. Neem contact op met
 
 ## Conclusion
 
-As a best practice, always check if there's an EndUserMessage in the response and show it to the user. This way, lots of confusion can be avoided, as the user can clearly see what's wrong.
+As a best practice, always check if there's an endUserMessage in the response and show it to the user. This way, lots of confusion can be avoided, as the user can clearly see what's wrong.
 
