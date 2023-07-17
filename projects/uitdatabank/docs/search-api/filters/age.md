@@ -10,7 +10,7 @@ With the `minAge` URL parameter you can find events and/or places which are only
 
 **Applicable on endpoints**
 
-`offers` `events` `places`
+`/offers` `/events` `/places`
 
 **Examples**
 
@@ -26,7 +26,7 @@ With the `maxAge` URL parameter you can find events and/or places which are are 
 
 **Applicable on endpoints**
 
-`offers` `events` `places`
+`/offers` `/events` `/places`
 
 **Examples**
 
@@ -42,7 +42,7 @@ With the `allAges` parameter you can filter out events and place that are (not) 
 
 **Applicable on endpoints**
 
-`offers` `events` `places` 
+`/offers` `/events` `/places` 
 
 **Examples**
 
@@ -68,26 +68,22 @@ The `allAges`
 
 ### typicalAgeRange
 
-With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group.
+With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group. This `q` parameter allows more advanced queries than by using the `minAge` and/or `maxAge` URL parameter. 
 
 **Applicable on endpoints**
 
-`offers` `events` `places`
+`/offers` `/events` `/places`
 
 **Examples**
 
-...
+Retrieve all events that are suitable for the age group 6 - 12 years:
 
 ```http
-GET /events/?maxAge=17
+GET /events/?q=typicalAgeRange:[6 TO 12]
 ```
 
+Note that any overlap with the given query is a match. In the example above also events with a typicalAgeRange of 3-99 or 11-14 will be returned. To avoid this you can exclude anything that falls out of this range:
 
-Using the q parameter, you can execute more advanced queries than by using the minAge and/or maxAge URL parameter.
-
-For example:
-
-GET https://search.uitdatabank.be/offers/?q=typicalAgeRange:[12 TO 14] OR typicalAgeRange:[* TO 8]
-You can also use the same allAges parameter as mentioned above:
-
-GET https://search.uitdatabank.be/offers/?q=allAges:false
+```http
+GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
+```
