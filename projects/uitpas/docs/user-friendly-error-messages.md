@@ -14,7 +14,7 @@ This way, you don't need to translate error codes to explain the problem to the 
 
 You can use the [GET /tariffs](/reference/uitpas.json/paths/~1tariffs/get) endpoint to check which tariffs are applicable for a passholder, typically in a ticketing flow where the passholder will enter his or her UiTPAS-number to receive a discount.
 
-There may be different reasons why passholder doesn't have an UiTPAS-tariff available.
+There may be different reasons why a passholder doesn't have an UiTPAS-tariff available.
 
 For example, the social tariff of the passholder might have expired.
 
