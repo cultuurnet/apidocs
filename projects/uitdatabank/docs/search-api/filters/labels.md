@@ -16,17 +16,17 @@ With the `labels` parameter you can find events, places or organizers that have 
 
 **Applicable on endpoints**
 
-`offers` `events` `places` `organizers`
+`/offers` `/events` `/places` `/organizers`
 
 **Examples**
 
-Retrieve all organizers that have the label `Erkend_SCVW`:
+Retrieve all events that have the label `ook voor kinderen` with the URL parameter `labels`:
 
 ```http
-GET /organizers/?labels="Erkend_SCVW"
+GET /events/?labels="ook voor kinderen"
 ```
 
-Retrieve all events with the label `ook voor kinderen`:
+Or, with the advanced query parameter `labels`:
 
 ```http
 GET /events/?q=labels:"ook voor kinderen"
@@ -34,32 +34,44 @@ GET /events/?q=labels:"ook voor kinderen"
 
 ### location labels
 
-With the `locationLabels` URL parameter and the advanced query parameter `location.labels`
+With the `locationLabels` URL parameter and the advanced query parameter `location.labels` you can filter out events that have a location with a certain label.
 
 **Applicable on endpoints**
 
-`offers` `events` 
+`/offers` `/events` 
 
 **Examples**
 
-Retrieve all events of which the location has the label `internationaal`
+Retrieve all events of which the location has the label `internationaal` with the URL parameter `locationLabels`:
 
 ```http
 GET /events/?locationLabels="internationaal"
 ```
 
+Or, with the advanced query parameter `location.labels`:
+
+```http
+GET /events/?q=location.labels:"internationaal"
+```
+
 ### organizer labels
 
-With the `organizerLabels` URL parameter and the advanced query parameter `organizer.labels`
+With the `organizerLabels` URL parameter and the advanced query parameter `organizer.labels` you can filter out events that have an organizer with a certain label.
 
 **Applicable on endpoints**
 
-`offers` `events` `places` 
+`/offers` `/events` `/places` 
 
 **Examples**
 
-Retrieve all events of which the organizer has the label `Erkend_SCVW`
+Retrieve all events of which the organizer has the label `Erkend_SCVW` with the URL parameter `organizerLabels`:
 
 ```http
 GET /events/?organizerLabels="Erkend_SCVW"
+```
+
+Or, with the advanced query parameter `organizer.labels`:
+
+```http
+GET /events/?q=organizer.labels:"Erkend_SCVW"
 ```
