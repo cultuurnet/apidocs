@@ -6,11 +6,60 @@ Het tipsblok dient om een kleine, aantrekkelijke verzameling aan activiteiten in
 * **welke informatie** wordt getoond over de evenementen (locatie, datum & tijd, prijsinformatie, etc.)
 * **hoe** de informatie **visueel** wordt weergegeven.
 
+In een tipswidget zet je enkele evenementen in de kijker. Door de widget op een veel bezochte webpagina te integreren genereer je
+* **extra aandacht** voor de evenementen binnen de tipswidget
+* **traffic** naar je volledige agenda
+
+## Bepalen van je content scope
+
+Voor je aan de slag gaat met het configureren van je tipswidget raden we aan om je content scope vast te leggen: welke evenementen wil je precies uitlichten in je tipsblok? Eens je beslist hebt over je contentscope, kan je de [query](#query) voor je tipswidget aanpassen.
+
+Voor het bepalen van je contentstcope zijn er verschillende mogelijkheden:
+
+### Een gecureerde lijst weergeven
+
+Je toont enkel gecureerde evenementen in je tipsblok, bijvoorbeeld door een zelfgekozen label (bijvoorbeeld `uittiplier`) aan specifieke evenementen te hangen in de [UiTdatabank](https://www.uitdatabank.be/search) en vervolgens de evenementen met dat label op te halen in je tispblok.
+
+De query voor je tipsblok wordt dan:
+```
+labels:uittiplier
+```
+
+* ✅  Je hebt 100% controle over de evenementen die in je tipsblok verschijnen.
+
+* ❌  Vereist manueel werk. Niet curereren zal resulteren in een lega agenda.
+
+### Eerstkomende evenementen weergeven
+
+Je gebruikt in dit geval dezelfde query als voor je volledige agenda. 
+
+* ✅ Eenvoudig & weinig werk
+* ❌ Het tipsblok verschilt inhoudelijk niet van de eerste evenementen van je agenda
+
+### Evenementen met bepaalde eigenschappen weergeven
+
+Je haalt enkel evenementen op die bepaalde (kwalitatieve) eigenschappen hebben. Hiervoor breid je de query van je volledige agenda uit met de kwalitatieve eigenschappen waar je extra op wilt filteren. Enkele voorbeelden:
+
+**enkel evenementen weergeven die een afbeelding hebben**
+```
+[...] AND mediaObjectsCount:>=1
+```
+
+**enkel evenementen weergeven die gratis zijn**
+```
+[...] AND price:0
+```
+
+**enkel evenementen van bepaalde organiatoren ophalen**
+```
+[...] AND organizer.id:("X" OR "Y" OR "Z")
+```
+
+## Instellingen
+
 Hieronder overlopen we elke mogelijke instelling voor het tipsblok. De instellingen zijn gerangschikt naar hun positie in de widgetbouwer (van boven naar beneden).
 
 <https://youtu.be/GT6uPS8BQR0>
-
-## Instellingen
 
 ### Algemeen
 
@@ -230,3 +279,4 @@ address.\*.addressCountry:(BE OR DE)
 ### Footer
 
 De footer is een HTML-blok waarin je tekst en afbeeldingen kan toevoegen.
+
