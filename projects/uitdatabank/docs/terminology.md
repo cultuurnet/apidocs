@@ -187,7 +187,7 @@ Find out more about places in the [What are places?](entry-api/places/introducti
 
 A production is a bundle of events. These events have the same content, but time and / or location differs.
 
-An example of a production are movies which are screened several times a day or week, and on different locations. The movie itself, e.g. Frozen 2 (= the [event](#event)) is always the same. 
+An example of a production are movies which are screened several times a day or week, and on different locations. The movie itself, e.g. Frozen 2 (= the [event](#event)) is always the same.
 Other examples are theatre productions, dance productions, cabaret shows, etc.
 
 Some events in UiTdatabank are linked to a production. These events have an extra property `production` in their JSON:
@@ -227,4 +227,4 @@ When creating an event in UiTdatabank, a term with domain theme is optional.
 
 ### Facility
 
-A term with domain `facility` describes specific accessibility facilities for people with disabilities, e.g. accessible sanitary facilities. Some facilities apply on places only, others on events only. 
+A term with domain `facility` describes specific accessibility facilities for people with disabilities, e.g. accessible sanitary facilities. Some facilities apply on places only, others on events only.

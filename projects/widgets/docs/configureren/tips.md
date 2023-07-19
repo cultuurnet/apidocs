@@ -7,6 +7,7 @@ Het tipsblok dient om een kleine, aantrekkelijke verzameling aan activiteiten in
 * **hoe** de informatie **visueel** wordt weergegeven.
 
 In een tipswidget zet je enkele evenementen in de kijker. Door de widget op een veel bezochte webpagina te integreren genereer je
+
 * **extra aandacht** voor de evenementen binnen de tipswidget
 * **traffic** naar je volledige agenda
 
@@ -21,6 +22,7 @@ Voor het bepalen van je contentstcope zijn er verschillende mogelijkheden:
 Je toont enkel gecureerde evenementen in je tipsblok, bijvoorbeeld door een zelfgekozen label (bijvoorbeeld `uittiplier`) aan specifieke evenementen te hangen in de [UiTdatabank](https://www.uitdatabank.be/search) en vervolgens de evenementen met dat label op te halen in je tispblok.
 
 De query voor je tipsblok wordt dan:
+
 ```
 labels:uittiplier
 ```
@@ -31,7 +33,7 @@ labels:uittiplier
 
 ### Eerstkomende evenementen weergeven
 
-Je gebruikt in dit geval dezelfde query als voor je volledige agenda. 
+Je gebruikt in dit geval dezelfde query als voor je volledige agenda.
 
 * ✅ Eenvoudig & weinig werk
 * ❌ Het tipsblok verschilt inhoudelijk niet van de eerste evenementen van je agenda
@@ -41,16 +43,19 @@ Je gebruikt in dit geval dezelfde query als voor je volledige agenda.
 Je haalt enkel evenementen op die bepaalde (kwalitatieve) eigenschappen hebben. Hiervoor breid je de query van je volledige agenda uit met de kwalitatieve eigenschappen waar je extra op wilt filteren. Enkele voorbeelden:
 
 **enkel evenementen weergeven die een afbeelding hebben**
+
 ```
 [...] AND mediaObjectsCount:>=1
 ```
 
 **enkel evenementen weergeven die gratis zijn**
+
 ```
 [...] AND price:0
 ```
 
 **enkel evenementen van bepaalde organiatoren ophalen**
+
 ```
 [...] AND organizer.id:("X" OR "Y" OR "Z")
 ```
@@ -279,4 +284,3 @@ address.\*.addressCountry:(BE OR DE)
 ### Footer
 
 De footer is een HTML-blok waarin je tekst en afbeeldingen kan toevoegen.
-
