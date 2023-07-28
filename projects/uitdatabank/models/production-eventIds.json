@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-string-uuid.json",
+  "title": "production.eventIds",
+  "description": "Two or more events that are identical but happens at a different time and/or different place"
+}
