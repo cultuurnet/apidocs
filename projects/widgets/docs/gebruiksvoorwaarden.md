@@ -3,6 +3,7 @@
 (dd 20/06/2023)
 
 Onder publicatietools wordt begrepen:
+
 * UiTdatabank API
 * Agendawidgets: agendamodule gehost door publiq
 * Culturefeed Module Suite: een set van agenda-modules gebaseerd op Drupal
@@ -11,7 +12,7 @@ De agendawidgets en Culturefeed Modules zijn gebouwd bovenop de UiTdatabank API.
 
 ## I. Onvoorwaardelijke aanvaarding van de gebruiksvoorwaarden
 
-publiq biedt de mogelijkheid om gemakkelijk toegang te krijgen tot de gegevens van de UiTdatabank via de UiTdatabank API. Om van de API, de UiTdatabank en de gegevens gebruik te maken, moet je akkoord gaan met de volgende voorwaarden en ze naleven. 
+publiq biedt de mogelijkheid om gemakkelijk toegang te krijgen tot de gegevens van de UiTdatabank via de UiTdatabank API. Om van de API, de UiTdatabank en de gegevens gebruik te maken, moet je akkoord gaan met de volgende voorwaarden en ze naleven.
 
 publiq behoudt zich het recht voor om deze gebruiksvoorwaarden op elk moment uit te breiden of te wijzigen. De meest recente versie en technische documentatie is altijd te vinden op de [documentatieomgeving](https://docs.publiq.be) van publiq. We adviseren je om regelmatig te controleren op wijzigingen.
 Met "gebruiker" verwijzen we naar een persoon, entiteit of organisatie die de API gebruikt om toegang te krijgen tot de UiTdatabank en de bijbehorende gegevens. Of je nu rechtstreeks gebruikmaakt van de publicatietools of de diensten van een IT-leverancier of softwareontwikkelaar inschakelt, maakt daarbij niet uit.
@@ -40,7 +41,7 @@ Alle technische documentatie voor het gebruik van de publicatietools vind je op 
 
 Voor technische ondersteuning bij het gebruik van de API bieden we geen gratis ondersteuning binnen bovenstaand kader.
 
-Ad hoc support is beschikbaar als professional service, en wordt in rekening gebracht op basis van manuren, met een minimum van 3 uur. Neem hiervoor contact op met [partnerships@publiq.be](mailto:partnerships@publiq.be).
+Ad hoc support is beschikbaar als professional service, en wordt in rekening gebracht op basis van manuren, met een minimum van 3 uur. Neem hiervoor contact op met <partnerships@publiq.be>.
 
 ### Geoorloofd gebruik
 
