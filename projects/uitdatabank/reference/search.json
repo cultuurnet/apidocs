@@ -194,10 +194,19 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
+            "$ref": "#/components/parameters/embedUitpasPrices"
+          },
+          {
             "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/groupBy"
           },
           {
             "$ref": "#/components/parameters/regions"
@@ -464,10 +473,19 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/embedCalendarSummaries"
           },
           {
+            "$ref": "#/components/parameters/embedUitpasPrices"
+          },
+          {
             "$ref": "#/components/parameters/facets"
+          },
+          {
+            "$ref": "#/components/parameters/groupBy"
           },
           {
             "$ref": "#/components/parameters/regions"
@@ -483,6 +501,9 @@
           },
           {
             "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/isDuplicate"
           },
           {
             "$ref": "#/components/parameters/locationId"
@@ -682,6 +703,9 @@
             "$ref": "#/components/parameters/coordinates"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
             "$ref": "#/components/parameters/distance"
           },
           {
@@ -858,6 +882,15 @@
             "$ref": "#/components/parameters/createdTo"
           },
           {
+            "$ref": "#/components/parameters/embed"
+          },
+          {
+            "$ref": "#/components/parameters/embedCalendarSummaries"
+          },
+          {
+            "$ref": "#/components/parameters/embedUitpasPrices"
+          },
+          {
             "$ref": "#/components/parameters/modifiedFrom"
           },
           {
@@ -882,10 +915,10 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
-            "$ref": "#/components/parameters/embedCalendarSummaries"
+            "$ref": "#/components/parameters/facets"
           },
           {
-            "$ref": "#/components/parameters/facets"
+            "$ref": "#/components/parameters/groupBy"
           },
           {
             "$ref": "#/components/parameters/regions"
@@ -901,6 +934,9 @@
           },
           {
             "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/isDuplicate"
           },
           {
             "$ref": "#/components/parameters/locationId"
@@ -1067,6 +1103,30 @@
         "in": "query",
         "name": "postalCode",
         "description": "Returns only results that have the exact same postal code in their address. Typically 4 digits for Belgian addresses but can also be a different format for international addresses."
+      },
+      "isDuplicate": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "isDuplicate",
+        "description": "Returns only results that include or excludes duplicate places"
+      },
+      "embed": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "embed",
+        "description": "Returns the results with the actual JSON bodies of the individual items"
+      },
+      "embedUitpasPrices": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "embedUitpasPrices",
+        "description": "Returns the results with the UiTPAS prices included (if applicable)"
       },
       "addressCountry": {
         "schema": {
@@ -1320,6 +1380,7 @@
         "style": "form",
         "explode": true
       },
+
       "regions": {
         "schema": {
           "type": "array",
@@ -1362,6 +1423,17 @@
         "in": "query",
         "name": "bounds",
         "description": "Returns only results that are located in a specific geographical area defined by a pair of south-west coordinates and north-east coordinates. The two pairs of coordinates are separated by a pipe character (`|`)."
+      },
+      "groupBy": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "productionId"
+          ]
+        },
+        "in": "query",
+        "name": "groupBy",
+        "description": "Groups the results by their production. Grouping by productions ensures that for every production, only 1 event is returned in the search results"
       },
       "id": {
         "schema": {
