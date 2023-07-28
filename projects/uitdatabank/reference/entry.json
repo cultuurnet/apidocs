@@ -2792,6 +2792,93 @@
         }
       }
     },
+    "/events/{eventId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "status - update",
+        "operationId": "event-status-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The status has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as JSON."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Updates the general status on the top level of the event with the given `eventId`.\n\nThe status of any subEvents that the event has will also be updated to match the general status.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-status.json"
+              },
+              "examples": {
+                "Event takes place as planned": {
+                  "value": {
+                    "type": "Available"
+                  }
+                },
+                "Event postponed to a later date yet to be determined": {
+                  "value": {
+                    "type": "TemporarilyUnavailable"
+                  }
+                },
+                "Event cancelled": {
+                  "value": {
+                    "type": "Unavailable",
+                    "reason": {
+                      "nl": "Geannuleerd wegens ziekte van de lesgever"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "New status to set on the event."
+        },
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/sub-events": {
       "parameters": [
         {
@@ -5784,6 +5871,90 @@
           },
           "description": "New priceInfo to set on the place."
         }
+      }
+    },
+    "/places/{placeId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "put": {
+        "summary": "status - update",
+        "operationId": "place-status-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The status has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as JSON."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Updates the status on the top level of the place with the given `placeId`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-status.json"
+              },
+              "examples": {
+                "Place is open and can be visited during opening hours": {
+                  "value": {
+                    "type": "Available"
+                  }
+                },
+                "Place is temporarily closed": {
+                  "value": {
+                    "type": "TemporarilyUnavailable"
+                  }
+                },
+                "Place still exists (physically), but is permanently closed": {
+                  "value": {
+                    "type": "Unavailable"
+                  }
+                }
+              }
+            }
+          },
+          "description": "New status to set on the place."
+        },
+        "tags": [
+          "Events"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places/{placeId}/type/{termId}": {
