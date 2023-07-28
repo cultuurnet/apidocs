@@ -8187,6 +8187,47 @@
         ]
       }
     },
+    "/productions/{productionId}/events/{eventId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/productionId"
+        },
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "productions - add event",
+        "operationId": "productions-add-event",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Productions"
+        ],
+        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      }
+    },
     "/productions/skip": {
       "post": {
         "summary": "productions - skip",
@@ -8482,6 +8523,17 @@
           "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
         },
         "description": "Unique id of an organizer, in the format of a UUID"
+      },
+      "productionId": {
+        "name": "productionId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+        },
+        "description": "Unique id of a production"
       },
       "articleId": {
         "name": "articleId",
