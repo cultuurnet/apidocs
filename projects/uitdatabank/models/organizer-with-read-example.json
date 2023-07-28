@@ -80,6 +80,10 @@
       "hiddenLabels": [
         "labelA",
         "labelB"
+      ],
+      "contributors": [
+        "info@publiq.be",
+        "vragen@uitdatabank.be"
       ]
     }
   ]

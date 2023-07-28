@@ -1,0 +1,18 @@
+{
+  "title": "common-contributors",
+  "type": "array",
+  "minItems": 0,
+  "uniqueItems": true,
+  "description": "An array of emails of users who need to have edit rights.",
+  "examples": [
+    [
+      "info@publiq.be",
+      "vragen@uitdatabank.be"
+    ]
+  ],
+  "items": {
+    "type": "string",
+    "format": "email",
+    "maxLength": 255
+  }
+}

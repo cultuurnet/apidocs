@@ -1,7 +1,7 @@
 {
   "type": "object",
   "title": "event",
-  "description": "A cultural, sport, or leisure activity.",
+  "description": "A cultural, sport, or pastime activity.",
   "allOf": [
     {
       "properties": {
@@ -112,6 +112,9 @@
         },
         "creator": {
           "$ref": "./event-creator.json"
+        },
+        "contributors": {
+          "$ref": "./event-contributors.json"
         }
       },
       "required": [

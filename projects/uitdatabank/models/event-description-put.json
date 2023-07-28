@@ -1,0 +1,13 @@
+{
+  "title": "event.description.put",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "A human-readable description of the [event](./event.json) localized in the language from the URL parameter."
+    }
+  },
+  "required": [
+    "description"
+  ]
+}

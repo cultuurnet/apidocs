@@ -1,6 +1,6 @@
 # Searching for UiTPAS events
 
-This mini-guide will explain how to search for UiTPAS events using the [Search API](https://documentatie.uitdatabank.be/content/search_api\_3/latest/searching.html).
+This mini-guide will explain how to search for UiTPAS events using the [Search API](https://documentatie.uitdatabank.be/content/search_api_3/latest/searching.html).
 
 > ##### Getting the organizerIds
 >

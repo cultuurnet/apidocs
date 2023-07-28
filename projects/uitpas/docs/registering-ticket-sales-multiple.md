@@ -1,14 +1,14 @@
 # Registering multiple ticket sales at once
 
-This mini-guide illustrates how to register UiTPAS discounted ticket sales for multiple tickets at once. It builds upon the [Registering ticket sales guide](/docs/registering-ticket-sales-group.md) which you need to read first to learn more about authentication, the work flow and registering events.
+This mini-guide illustrates how to register UiTPAS discounted ticket sales for multiple tickets at once. It builds upon the [Registering ticket sales guide](./registering-ticket-sales.md) which you need to read first to learn more about authentication, the work flow and registering events.
 
 ### 1. Determine possible UiTPAS tariffs
 
 The register ticket sale request accepts an array of ticket sales. This array can contain multiple ticket sales for:
 
-*   one passholder for multiple events
-*   multiple passholders for one event
-*   or even multiple passholders for multiple events
+* one passholder for multiple events
+* multiple passholders for one event
+* or even multiple passholders for multiple events
 
 It is important to pass TicketSale objects with tariffs that are applicable to that passholder, for the given event. Do note that the register ticket sale request will fail for the complete set of ticket sales if one of those ticket sales would trigger an error.
 
@@ -22,7 +22,7 @@ Host: https://api.uitpas.be
 Authorization: Bearer YOUR_CLIENT_ACCESS_TOKEN'
 ```
 
-Have a look at the [test dataset](/docs/test-dataset) for more sample passholders or events.
+Have a look at the [test dataset](./test-dataset.md) for more sample passholders or events.
 
 Example response:
 
@@ -155,4 +155,4 @@ If for some reason you need to [cancel the ticket sale registration](/reference/
 
 ### Frequently asked questions
 
-Having questions? Check out our [FAQ](/docs/faq)!
+Having questions? Check out our [FAQ](./faq.md)!

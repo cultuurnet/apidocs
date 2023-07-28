@@ -4,30 +4,43 @@ Each publiq API supports one of three authentication methods, depending on the s
 
 ## When to use which method
 
-Which authentication method you need to use will in the first place be **determined by which API endpoint(s) you want to access**.
+Which authentication method you need to use will in the first place be **determined by which API(s) or which specific endpoint(s) you want to access**.
 
 There are 3 possible scenarios for an endpoint:
 
-1.  The endpoint requires **no authentication** at all. For example fetching the JSON representation of a specific event from UiTdatabank.
-2.  The endpoint requires **[client identification](#client-identification)**. You will only need to include your client id in the request and you don't need a token. For example Search API.
-3.  The endpoint requires a **[token](#tokens)**. You can pick whatever token type is best suited to your situation (almost every endpoint will support both types). See their respective documentation for more info.
+1. The endpoint requires **no authentication** at all.
+2. The endpoint requires **[client identification](#client-identification)**. You will only need to include your client id in the request either as a header or a URL parameter, and you won't need a token.
+3. The endpoint requires a **[token](#tokens)**. If the endpoint supports both client access tokens and user access tokens you can pick whichever you prefer. See their respective documentation for more info.
 
-> An endpoint that requires authentication will require either client identification (#2) **or** a token (#3), never both.
+The following table provides a summary of the supported authentication methods on our APIs. Note that APIs may have a few exceptions on specific endpoints. For example an API may support both client access tokens and user access tokens in general, but only user access tokens on an endpoint to get the current user information (as that would be impossible without a user access token).
 
-You can find the authentication method(s) that an endpoint supports in its own documentation.
+APIs that require no authentication at all, like [UiTdatabank Taxonomy API v3](https://docs.publiq.be/docs/uitdatabank/taxonomy-api/introduction), are not included in this table.
 
-Below you can find a short overview of how each authentication method works.
+| API                                                                                          | Client identification | Client access tokens | User access tokens |
+| -------------------------------------------------------------------------------------------- | --------------------- | -------------------- | ------------------ |
+| [UiTdatabank Search API v3](https://docs.publiq.be/docs/uitdatabank/search-api/introduction) | ✅                     | ✅                    | ✅                  |
+| [UiTdatabank Entry API v3](https://docs.publiq.be/docs/uitdatabank/entry-api/introduction)   | No                    | ✅                    | ✅                  |
+| [UiTPAS API v4](https://docs.publiq.be/docs/uitpas)                                          | No                    | ✅                    | ✅                  |
+| [museumPASSmusées Partner API v1](https://docs.publiq.be/docs/museumpassmusees)              | No                    | ✅                    | No                 |
+
+You can always mix requests with different authentication methods if needed. For example you can use your client id to make a request to UiTdatabank's Search API using client identification, and you can use the same client id in combination with your client secret to request a token to make requests to UiTdatabank's Entry API.
+
+Below you can find a short summary of how each authentication method works, with links to more detailed documentation.
 
 ## Client identification
 
-API endpoints that require no real authentication but need to know what client is accessing it for customization and technical support reasons use [Client identification](./client-identification.md).
+API endpoints that require no real authentication but need to know what client is accessing it for customization and technical support reasons use [client identification](./client-identification.md).
 
-Usually used by APIs that need to provide info to anonymous users in web browsers, for example UiTdatabank's Search API.
+This is the simplest method, it works by including your client id as a header or URL query parameter in your API request.
 
-*   ✅ Suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Does not expire
-*   🔓 Offers no real security, so only used in APIs that expose public information
+It is usually used by APIs that need to provide info to anonymous users in web browsers, where both client access tokens and user access tokens cannot be used. For example UiTdatabank's Search API.
+
+* ✅ Suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Does not expire
+* 🔓 Offers no real security, so only used in APIs that expose public information
+
+👉 [Learn more about client identification](./client-identification.md)
 
 ## Tokens
 
@@ -39,30 +52,24 @@ Most API endpoints that require a token accept both **client** access tokens and
 
 ### Client access tokens
 
-API endpoints that support the authentication of an API client with a client id and client secret use [Client access tokens](./client-access-token.md).
+API endpoints that support the authentication of an API client with a client id and client secret use [client access tokens](./client-access-token.md).
 
-*   ❌ Not suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Expires, but can be renewed automatically
-*   🔐 Secure, used by APIs that work with private information and/or write access
+* ❌ Not suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Expires, but can be renewed automatically by requesting a new one
+* 🔐 Secure, used by APIs that work with private information and/or write access
 
-### User access tokens
+👉 [Learn more about client access tokens](./client-access-token.md)
 
-API endpoints that support authentication as a user use [User access tokens](./user-access-token.md).
+### User access tokens (login via UiTiD)
 
-Usually used in situations where a user will log in through publiq's **UiTID** service and your application will then make requests in that user's name.
+API endpoints that support authentication as a user use [user access tokens](./user-access-token.md).
 
-*   ✅ Suitable for frontend applications
-*   ✅ Suitable for backend applications
-*   ⏱ Expires and requires your user to log in again through UiTID
-*   🔐 Secure, used by APIs that work with private information and/or write access
+Usually used in situations where a user will log in through publiq's **UiTiD** service and your application will then make requests in that user's name.
 
-### Token expiration
+* ✅ Suitable for frontend applications
+* ✅ Suitable for backend applications
+* ⏱ Expires, but can be renewed automatically with a refresh token
+* 🔐 Secure, used by APIs that work with private information and/or write access
 
-Both *client access tokens* and *user access tokens* expire after a period of time. We reserve the ability to change this period of time whenever we see fit, so you should never hardcode this in your app somewhere.
-
-Instead keep using your token until you get a `401` response from an API endpoint, which indicates that the token has expired. Or use the `expires_in` property that is included in the response with your token when you request one to determine the lifetime of the token.
-
-To get a new client access token, you can simply request a new one using your client id and secret as described in [Client access tokens](./client-access-token.md).
-
-To get a new user access token, you will need to let your user login again as described in [User access tokens](./user-access-token.md).
+👉 [Learn more about user access tokens](./user-access-token.md)

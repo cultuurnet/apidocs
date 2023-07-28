@@ -1,28 +1,50 @@
 {
   "items": [
     {
+      "type": "item",
+      "title": "Introduction",
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
+    },
+    {
+      "type": "item",
+      "title": "Requesting client credentials",
+      "uri": "docs/requesting-credentials.md",
+      "slug": "requesting-credentials"
+    },
+    {
+      "type": "item",
+      "title": "Authorization server URLs",
+      "uri": "docs/environments.md",
+      "slug": "authorization-server-urls"
+    },
+    {
       "type": "divider",
       "title": "Authentication methods"
     },
     {
       "type": "item",
       "title": "Overview",
-      "uri": "docs/methods.md"
+      "uri": "docs/methods.md",
+      "slug": "methods/overview"
     },
     {
       "type": "item",
       "title": "Client identification",
-      "uri": "docs/client-identification.md"
+      "uri": "docs/client-identification.md",
+      "slug": "methods/client-identification"
     },
     {
       "type": "item",
       "title": "Client access token",
-      "uri": "docs/client-access-token.md"
+      "uri": "docs/client-access-token.md",
+      "slug": "methods/client-access-token"
     },
     {
       "type": "item",
-      "title": "User access token",
-      "uri": "docs/user-access-token.md"
+      "title": "User access token (login via UiTiD)",
+      "uri": "docs/user-access-token.md",
+      "slug": "methods/user-access-token"
     },
     {
       "type": "divider",
@@ -30,13 +52,21 @@
     },
     {
       "type": "item",
-      "title": "Errors",
-      "uri": "docs/errors.md"
+      "title": "How to handle 401 and 403 API errors",
+      "uri": "docs/errors.md",
+      "slug": "errors"
     },
     {
       "type": "item",
       "title": "CORS",
-      "uri": "docs/cors.md"
+      "uri": "docs/cors.md",
+      "slug": "cors"
+    },
+    {
+      "type": "item",
+      "title": "HTTPS",
+      "uri": "docs/https.md",
+      "slug": "https"
     }
   ]
 }

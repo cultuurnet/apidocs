@@ -3,8 +3,10 @@
   "type": "string",
   "format": "uri",
   "description": "The unique url of the video. Currently only Youtube and Vimeo sources are allowed.",
-  "pattern": "^http(s?):\\/\\/(www\\.)?((youtube\\.com\\/watch\\?v=([^\\/#&?]*))|(vimeo\\.com\\/([^\\/#&?]*))|(youtu\\.be\\/([^\\/#&?]*)))",
+  "pattern": "^http(s?):\\/\\/(www\\.)?((youtube\\.com\\/watch\\?v=([^\\/#&?]*))|(vimeo\\.com\\/([^\\/#&?]*))|(youtu\\.be\\/([^\\/#&?]*))|(youtube.com/embed/([^\\/#&?]*))|(youtube.com/shorts/([^\\/#&?]*)))",
   "examples": [
-    "https://www.youtube.com/watch?v=cEItmb_a20D"
+    "https://www.youtube.com/watch?v=cEItmb_a20D",
+    "https://www.vimeo.com/54fdrg",
+    "https://www.youtube.com/shorts/ViOS7SeT0HE"
   ]
 }

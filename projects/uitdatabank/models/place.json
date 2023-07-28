@@ -1,7 +1,7 @@
 {
   "title": "place",
   "type": "object",
-  "description": "A cultural, leisure, or sports-related location that can be visited or where an event can be located at.",
+  "description": "A cultural, pastime, or sports-related location that can be visited or where an event can be located at.",
   "allOf": [
     {
       "properties": {
@@ -100,6 +100,9 @@
         },
         "sameAs": {
           "$ref": "./place-sameAs.json"
+        },
+        "contributors": {
+          "$ref": "./place-contributors.json"
         }
       },
       "required": [

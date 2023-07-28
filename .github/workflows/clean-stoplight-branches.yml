@@ -1,0 +1,30 @@
+name: Clean Stoplight Branches
+on:
+  workflow_dispatch:
+  delete:
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        projectId: [ # See the settings page of each project on Stoplight to get the IDs
+          'cHJqOjEyNjc3NA', # api-design-guidelines
+          'cHJqOjEyNjc1Mg', # authentication
+          'cHJqOjEyNjc2OQ', # errors
+          'cHJqOjEyNjc0OA', # museumpassmusees
+          'cHJqOjEyNzIzNg', # uitdatabank
+          'cHJqOjEzNjk4MQ', # uitpas
+          'cHJqOjEyNjI2MA', # widgets
+        ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Clean branches in Stoplight project
+        uses: ./.github/actions/stoplight-clean-branches
+        with:
+            workspaceId: ${{ secrets.STOPLIGHT_WORKSPACE_ID }}
+            username: ${{ secrets.STOPLIGHT_USERNAME }}
+            password: ${{ secrets.STOPLIGHT_PASSWORD }}
+            projectId: ${{ matrix.projectId }}

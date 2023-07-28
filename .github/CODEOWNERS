@@ -1,28 +1,19 @@
 # CODEOWNERS are automatically assigned as possible reviewers to new PRs.
 
-# Global owners (also need to be duplicated in later rules)
-* @bertramakers
+# Default owners (only for PRs that make changes to files not covered below, like GitHub Actions, README, etc)
+* @JonasVHG @willaerk @simon-debruijn
 
 # Authentication owners
-/projects/authentication @bertramakers @erwin1
+/projects/authentication @corneelwille @JurgenG @JonasVHG
 
 # museumPASSmusées owners
-/projects/museumpassmusees @bertramakers @erwin1
-
-# museumPASSmusées Markdown docs owners
-/projects/museumpassmusees/docs @bertramakers @erwin1 @Stiksels @DizzyMissLizzy
+/projects/museumpassmusees @DizzyMissLizzy @erwin1
 
 # UiTdatabank owners
-/projects/uitdatabank @bertramakers @LucWollants
-
-# UiTdatabank Markdown docs owners
-/projects/uitdatabank/docs @bertramakers @LucWollants @corneelwille
+/projects/uitdatabank @JonasVHG @LucWollants @corneelwille
 
 # UiTPAS owners
-/projects/uitpas @bertramakers @erwin1
-
-# UiTPAS Markdown docs owners
-/projects/uitpas/docs @bertramakers @erwin1 @JurgenG @brusselsregular
+/projects/uitpas @erwin1 @JurgenG @brusselsregular
 
 # Widgets owners
-/projects/widgets @bertramakers @corneelwille
+/projects/widgets @JonasVHG @corneelwille

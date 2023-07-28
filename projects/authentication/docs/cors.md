@@ -6,7 +6,7 @@
 
 If you encounter CORS issues after all, double check what headers you are trying to include in your requests. Some APIs may only allow headers that they actually use like `authorization` for tokens, `content-type` and `accept` for content negotiation, etc. Try to keep the headers in your request to the ones that are actually required / useful.
 
-If this doesn't solve the issue contact our support for more help. The API you are using might need to be updated to allow requests from any origin, or there might be a bug in the CORS logic on that specific API. Remember to include a copy of the complete request you are trying to send (for example as `HAR` or `curl`), and ideally also include the complete `OPTIONS` request if the browser is doing a preflight request.
+If this doesn't solve the issue [contact our support](https://docs.publiq.be/#contact-us) for more help. The API you are using might need to be updated to allow requests from any origin, or there might be a bug in the CORS logic on that specific API. Remember to include a copy of the complete request you are trying to send (for example as `HAR` or `curl`), and ideally also include the complete `OPTIONS` request if the browser is doing a preflight request.
 
 ## What is CORS?
 
@@ -14,7 +14,9 @@ If this doesn't solve the issue contact our support for more help. The API you a
 
 For example when you make a request from a **frontend** application to an external API endpoint, you might see the following error in your browser's console:
 
-    Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at ...
+```
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at ...
+```
 
 This policy is built into modern browsers to for example prevent [CSRF](https://owasp.org/www-community/attacks/csrf) attacks due to the browser making an authenticated request to another domain using cookies, without the consent or the knowledge of the user.
 

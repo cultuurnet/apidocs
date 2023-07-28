@@ -21,10 +21,11 @@
             "type": "string",
             "enum": [
               "base",
-              "tariff"
+              "tariff",
+              "uitpas"
             ],
             "example": "base",
-            "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs."
+            "description": "Indicates whether this is the base price or a custom tariff.\n`base` for the base price, and `tariff` for custom/extra tariffs.  Tariffs with category `uitpas` are automatically added by UiTdatabank and read-only. They will be updated whenever other tariffs change."
           },
           "price": {
             "type": "number",

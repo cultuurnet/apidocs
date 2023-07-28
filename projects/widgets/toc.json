@@ -1,22 +1,136 @@
 {
   "items": [
     {
-      "type": "item",
-      "title": "Introduction",
-      "uri": "docs/introduction.md",
-      "slug": "introduction"
+    "type": "divider",
+    "title": "Widgets"
     },
     {
       "type": "item",
-      "title": "Example page with videos",
-      "uri": "docs/video.md",
-      "slug": "video"
+      "title": "Inleiding",
+      "uri": "docs/inleiding.md",
+      "slug": "inleiding"
     },
     {
       "type": "item",
-      "title": "demo",
-      "uri": "docs/demo.md",
-      "slug": "demo"
+      "title": "Aan de slag",
+      "uri": "docs/aan-de-slag.md",
+      "slug": "aan-de-slag"
+    },
+    {
+      "type": "item",
+      "title": "Templates",
+      "uri": "docs/templates.md",
+      "slug": "templates"
+    },
+    {
+      "type": "item",
+      "title": "Rijen en blokken",
+      "uri": "docs/rijen-en-blokken.md",
+      "slug": "rijen-en-blokken"
+    },
+    {
+      "type": "group",
+      "title": "Configureren",
+      "items": [
+        {
+          "type": "item",
+          "title": "Starten met configureren",
+          "uri": "/docs/configureren/starten-met-configureren.md",
+          "slug": "starten-met-configureren/html"
+        },
+        {
+          "type": "item",
+          "title": "HTML",
+          "uri": "/docs/configureren/html.md",
+          "slug": "configureren/html"
+        },
+        {
+          "type": "item",
+          "title": "Tips",
+          "uri": "/docs/configureren/tips.md",
+          "slug": "configureren/tips"
+        },
+        {
+          "type": "item",
+          "title": "Verfijningen",
+          "uri": "/docs/configureren/verfijningen.md",
+          "slug": "configureren/verfijningen"
+        },
+        {
+          "type": "item",
+          "title": "Zoekbox",
+          "uri": "/docs/configureren/zoekbox.md",
+          "slug": "configureren/zoekbox"
+        },
+        {
+          "type": "item",
+          "title": "Zoekresultaten",
+          "uri": "/docs/configureren/zoekresultaten.md",
+          "slug": "configureren/zoekresultaten"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "Stijlen",
+      "uri": "docs/stijlen.md",
+      "slug": "stijlen"
+    },
+    {
+      "type": "item",
+      "title": "Publiceren en embedden op je website",
+      "uri": "docs/publiceren-en-embedden-op-je-website.md",
+      "slug": "publiceren-en-embedden-op-je-website"
+    },
+    {
+      "type": "item",
+      "title": "Dupliceren",
+      "uri": "docs/dupliceren.md",
+      "slug": "dupliceren"
+    },
+    {
+      "type": "item",
+      "title": "Geavanceerde instellingen",
+      "uri": "docs/geavanceerde-instellingen.md",
+      "slug": "geavanceerde-instellingen"
+    },
+    {
+      "type": "item",
+      "title": "Taalinstellingen",
+      "uri": "docs/taalinstellingen.md",
+      "slug": "taalinstellingen"
+    },
+    {
+      "type": "item",
+      "title": "Compatibiliteit",
+      "uri": "docs/compatibiliteit.md",
+      "slug": "compatibiliteit"
+    },
+    {
+      "type": "item",
+      "title": "Responsive gedrag",
+      "uri": "docs/responsive-gedrag.md",
+      "slug": "responsive-gedrag"
+    },
+    {
+    "type": "divider",
+    "title": "Redactionele tools"
+    },
+    {
+      "type": "item",
+      "title": "Linken van artikels aan events",
+      "uri": "docs/linken-van-artikels-aan-events.md",
+      "slug": "linken-van-artikels-aan-events"
+    },
+    {
+    "type": "divider",
+    "title": "Gebruiksvoorwaarden"
+    },
+    {
+      "type": "item",
+      "title": "Gebruiksvoorwaarden",
+      "uri": "docs/gebruiksvoorwaarden.md",
+      "slug": "gebruiksvoorwaarden"
     }
   ]
 }

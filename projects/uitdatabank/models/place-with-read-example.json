@@ -157,7 +157,11 @@
       ],
       "bookingAvailability": {
         "type": "Available"
-      }
+      },
+      "contributors": [
+        "info@publiq.be",
+        "vragen@uitdatabank.be"
+      ]
     }
   ]
 }

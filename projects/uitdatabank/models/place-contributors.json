@@ -1,0 +1,9 @@
+{
+  "$ref": "./common-contributors.json",
+  "x-stoplight": {
+    "id": "6c50cec2bdd57"
+  },
+  "title": "place.contributors",
+  "readOnly": true,
+  "description": "List of contributors on a [place](./place.json). Only included if you request the place with an authenticated user who has the \"Aanbod bewerken\" permission on the place."
+}

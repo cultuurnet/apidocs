@@ -1,5 +1,5 @@
 name: "Push changes to Stoplight"
-description: "Pushes all changes for a single project on the current to Stoplight"
+description: "Pushes all changes on one branch for a single project to Stoplight"
 inputs:
   name:
     required: true
@@ -14,11 +14,13 @@ runs:
   using: "composite"
   steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Get branch name
       id: branch-name
-      uses: tj-actions/branch-names@v5.2
+      uses: tj-actions/branch-names@v6.2
 
     - name: Set branch_name ENV variable
       shell: bash
@@ -26,13 +28,22 @@ runs:
 
     - name: Replace image URLs in .md files
       shell: bash
-      run: cd projects/${{ inputs.name }}/docs && find . -type f -name '*.md' -exec sed -i -r 's_\]\([./]+/assets/_](https://raw.githubusercontent.com/cultuurnet/apidocs/${{ env.branch_name }}/projects/${{ inputs.name }}/assets/_g' {} +
+      run: cd projects/${{ inputs.name }}/docs && find . -type f -name '*.md' -exec sed -i -r 's;\]\([./]+/assets/;](https://raw.githubusercontent.com/cultuurnet/apidocs/${{ env.branch_name }}/projects/${{ inputs.name }}/assets/;g' {} +
 
     - name: Rename branch from 'main' to 'unreleased'
       if: ${{ env.branch_name == 'main' && inputs.event != 'workflow_dispatch' }}
       shell: bash
       run: echo "branch_name=unreleased" >> $GITHUB_ENV
 
+    - name: Count the changed files (in the project) compared to the main branch
+      shell: bash
+      run: echo "project_files_changed_count=$(git diff --name-only origin/main HEAD | grep 'projects/${{ inputs.name }}/' | wc -l)" >> $GITHUB_ENV
+
+    - name: Show count of changed files (in the project) compared to the main branch for debugging
+      shell: bash
+      run: echo "${{ env.project_files_changed_count }}"
+
     - name: Publish
+      if: ${{ env.project_files_changed_count > 0 || inputs.event == 'workflow_dispatch' || env.branch_name == 'main' || env.branch_name == 'unreleased' }}
       shell: bash
       run: npx @stoplight/cli@5 push -d projects/${{ inputs.name }} -b ${{ env.branch_name }} --ci-token ${{ inputs.token }} --verbose

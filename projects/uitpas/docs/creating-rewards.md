@@ -2,8 +2,8 @@
 
 There are two ways to create new rewards:
 
-*   The UiTPAS regional coordinator can create new rewards via the UiTPAS admin tools.
-*   New rewards can be created programmatically via the API.
+* The UiTPAS regional coordinator can create new rewards via the UiTPAS admin tools.
+* New rewards can be created programmatically via the API.
 
 This guide explains **how to create UiTPAS rewards programmatically**.
 
@@ -29,20 +29,21 @@ Rewards are published to public channels where passholders can view and redeem t
 
 To create any type of [**reward**](terminology.md#rewards), **the following properties are required:**
 
-*   **Title**: choose a clear title for the reward.
-*   **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
-*   **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
-*   **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
+* **Title**: choose a clear title for the reward.
+* **Type**: choose which type of reward you are creating, possible values are [**"POINTS" or "WELCOME"**](terminology.md#rewards)
+* **Promotional description:** give some more detail about the reward, describe what the passholder will receive.
+* **Publication period:** choose a period wherein this reward can be redeemed. For example: for a concert ticket, de end date should be the day of the concert.
 
 To create a reward of type [POINTS](terminology.md#points-rewards) **the following properties are also required**:
-*   **Points**: how many points will this reward cost the passholder.
-*   **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
-*   **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
+
+* **Points**: how many points will this reward cost the passholder.
+* **Category:** choose one or more categories that fit the reward. Allowed values are: "Eten en drinken", "Doen", "Gadget of item" and "Goede doel".
+* **More info URL:** Add a URL where passholders can learn more about this reward, or the organizer offering this reward.
 
 The following properties are not required for points and welcome rewards, **but we strongly advice to add them:**
 
-*   **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions/get).
-*   **pictures**: add one or more URLs to images related to your reward. The URL can be external, hosted on your own server. Make sure you don't remove the image as we won't store a copy of it.
+* **organizers**: list of organizers where this reward can be redeemed. Unique IDs of UiTPAS organizers. (same organizer IDs as in UiTdatabank). If you leave this empty, the first organizer you have permission to create rewards for will be linked to the new reward. You can get access to your list of organizers with the [GET /permissions endpoint](/reference/uitpas.json/paths/~1permissions/get).
+* **pictures**: add one or more URLs to images related to your reward. The URL can be external, hosted on your own server. Make sure you don't remove the image as we won't store a copy of it.
 
 Example request:
 
@@ -53,11 +54,11 @@ Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 
 {
- "organizers": {
+ "organizers": [
     {
       "id": "0ce87cbc-9299-4528-8d35-92225dc9489f"
     }
-  },
+  ],
   "title": "Gratis ticket Design Museum Brussels",
   "type": "POINTS",
   "points": 10,

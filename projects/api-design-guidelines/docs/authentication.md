@@ -8,7 +8,7 @@
 
 ## Client identification guidelines
 
-*   Read [how client identification must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NDY5-client-identification).
+* Read [how client identification must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NDY5-client-identification).
 
 When using client identification, APIs should support both the `x-client-id` header and `clientId` URL query parameter. If both are provided, preference should be given to the header.
 
@@ -34,8 +34,8 @@ The above example indicates that the client has access to UiTdatabank's Search A
 
 ## Token guidelines
 
-*   Read [how client access tokens must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NDY4-client-access-token).
-*   Read [how user access tokens must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).
+* Read [how client access tokens must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NDY4-client-access-token).
+* Read [how user access tokens must work from an integrator's perspective](https://publiq.stoplight.io/docs/authentication/ZG9jOjExODE5NTM5-user-access-token).
 
 When using tokens, endpoints should support both client and user access tokens wherever possible.
 
@@ -43,15 +43,15 @@ Examples of acceptable exceptions include endpoints like `/user` that provide in
 
 To validate a token, check that:
 
-*   The signature can be verified with the public key of our Auth0 tenant
-*   The `nbf` claim is in the past
-*   The `exp` claim is **not** in the past
-*   The `aud` claim is equal to `https://api.publiq.be`
-*   The `iss` claim is equal to either (depending on what environment your API is running on):
-    *   `https://account.uitid.be/`
-    *   `https://account-test.uitid.be/`
-    *   `https://account-acc.uitid.be/`
-*   The `https://publiq.be/publiq-apis` claim is present and contains a value representing your api
+* The signature can be verified with the public key of our Auth0 tenant
+* The `nbf` claim is in the past
+* The `exp` claim is **not** in the past
+* The `aud` claim is equal to `https://api.publiq.be`
+* The `iss` claim is equal to either (depending on what environment your API is running on):
+  * `https://account.uitid.be/`
+  * `https://account-test.uitid.be/`
+  * `https://account-acc.uitid.be/`
+* The `https://publiq.be/publiq-apis` claim is present and contains a value representing your api
 
 The value of the `https://publiq.be/publiq-apis` claim is the same as the one in the client metadata of the client that requested the token. For example:
 
