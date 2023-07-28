@@ -3,7 +3,7 @@
   "description": "A URI with the HTTP or HTTPS protocol.",
   "type": "string",
   "format": "uri",
-  "pattern": "^https?:\\/\\/[\\w\\-\\.]+\\.\\w{2,}(\\/.*)?$",
+  "pattern": "^http[s]?:\\/\\/[\\w\\-\\.]+\\.\\w{2,}(\\/.*)?$",
   "examples": [
     "https://www.example.com"
   ]
