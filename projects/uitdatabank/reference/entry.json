@@ -1720,7 +1720,7 @@
         }
       },
       "delete": {
-        "summary": "Event delete",
+        "summary": "event - delete",
         "tags": [
           "Events"
         ],
@@ -5069,7 +5069,7 @@
         }
       },
       "delete": {
-        "summary": "Place delete",
+        "summary": "place - delete",
         "tags": [
           "Places"
         ],
