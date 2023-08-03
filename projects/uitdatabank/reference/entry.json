@@ -7160,7 +7160,7 @@
         }
       }
     },
-    "/organizers/{organizerId}/description/{language}": {
+    "/organizers/{organizerId}/educational-description/{language}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/organizerId"
@@ -7270,6 +7270,100 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      }
+    },
+    "/organizers/{organizerId}/eduactional-description/{language}": {
+      "parameters": [
+        {
+          "name": "organizerId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
+          },
+          "description": "Unique id of an organizer, in the format of a UUID"
+        },
+        {
+          "name": "language",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "nl",
+              "fr",
+              "en",
+              "de"
+            ]
+          },
+          "description": "The language of the request body properties"
+        }
+      ],
+      "put": {
+        "summary": "educationalDescription - update",
+        "description": "Updates the description of the organizer with the given `organizerId`. The new description of the request body will be set on the organizer in the given `language`. The new description needs to be at least one character long.",
+        "operationId": "organizer-educationalDescription-put",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer description has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (description) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-educationalDescription.json"
+              }
+            }
+          }
+        }
       }
     },
     "/organizers/{organizerId}/images": {
