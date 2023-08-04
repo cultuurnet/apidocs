@@ -7397,7 +7397,7 @@
               "examples": {
                 "Example": {
                   "value": {
-                    "description": "This organizer is responsible for creating cultural events for schools around Brussels."
+                    "educationalDescription": "This organizer is responsible for creating cultural events for schools around Brussels."
                   }
                 }
               }
