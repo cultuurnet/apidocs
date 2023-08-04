@@ -1718,6 +1718,36 @@
           },
           "description": "The new description of the event."
         }
+      },
+      "delete": {
+        "summary": "description - delete",
+        "tags": [
+          "Events"
+        ],
+        "operationId": "event-description-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The description was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes the localized description of an event based on the given `eventId` and `language` inside the URL. \n\n<!-- theme: info -->",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/events/{eventId}/facilities": {
@@ -5017,7 +5047,7 @@
           }
         },
         "operationId": "place-description-put",
-        "description": "Updates the localized description of a place based on the given `placeId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\\n`\n\n<!-- theme: info -->\n\n> There is no DELETE endpoint. To remove the description, perform a PUT request with a blank description.",
+        "description": "Updates the localized description of a place based on the given `placeId` and `language` inside the URL. The description is not limited in size, but it is recommended to use the first 200 characters of the description for promotional copy as these characters are visible in the list-view of results.\n\n<!-- theme: info -->\n\n> Keep in mind: \n> - The description should be UTF-8 encoded \n> - Linebreaks are encoded as `\\n`\n\n<!-- theme: info -->",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -5037,6 +5067,36 @@
           },
           "description": "The new description of the place."
         }
+      },
+      "delete": {
+        "summary": "description - delete",
+        "tags": [
+          "Places"
+        ],
+        "operationId": "place-description-delete",
+        "responses": {
+          "204": {
+            "description": "No Content. The description was successfully deleted."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Deletes the localized description of a place based on the given `placeId` and `language` inside the URL. \n\n<!-- theme: info -->",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/places/{placeId}/facilities": {
@@ -7160,7 +7220,7 @@
         }
       }
     },
-    "/organizers/{organizerId}/educational-description/{language}": {
+    "/organizers/{organizerId}/description/{language}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/organizerId"
@@ -7272,45 +7332,25 @@
         ]
       }
     },
-    "/organizers/{organizerId}/eduactional-description/{language}": {
+    "/organizers/{organizerId}/educational-description/{language}": {
       "parameters": [
         {
-          "name": "organizerId",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid",
-            "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
-          },
-          "description": "Unique id of an organizer, in the format of a UUID"
+          "$ref": "#/components/parameters/organizerId"
         },
         {
-          "name": "language",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "enum": [
-              "nl",
-              "fr",
-              "en",
-              "de"
-            ]
-          },
-          "description": "The language of the request body properties"
+          "$ref": "#/components/parameters/language"
         }
       ],
       "put": {
-        "summary": "educationalDescription - update",
-        "description": "Updates the description of the organizer with the given `organizerId`. The new description of the request body will be set on the organizer in the given `language`. The new description needs to be at least one character long.",
-        "operationId": "organizer-educationalDescription-put",
+        "summary": "description - update",
+        "description": "Updates the educational description of the organizer with the given `organizerId`. The new educational description of the request body will be set on the organizer in the given `language`. The new educational description needs to be at least one character long.",
+        "operationId": "organizer-educational-description-put",
         "tags": [
           "Organizers"
         ],
         "responses": {
           "204": {
-            "description": "No Content. The organizer description has been updated successfully."
+            "description": "No Content. The organizer educational description has been updated successfully."
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
@@ -7347,6 +7387,23 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
+        "requestBody": {
+          "description": "New educational description to set on the organizer (localized in the given language in the URL).",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-educational-description-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "description": "This organizer is responsible for creating cultural events for schools around Brussels."
+                  }
+                }
+              }
+            }
+          }
+        },
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7354,16 +7411,7 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/organizer-educationalDescription.json"
-              }
-            }
-          }
-        }
+        ]
       }
     },
     "/organizers/{organizerId}/images": {
