@@ -7332,6 +7332,88 @@
         ]
       }
     },
+    "/organizers/{organizerId}/educational-description/{language}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        },
+        {
+          "$ref": "#/components/parameters/language"
+        }
+      ],
+      "put": {
+        "summary": "description - update",
+        "description": "Updates the educational description of the organizer with the given `organizerId`. The new educational description of the request body will be set on the organizer in the given `language`. The new educational description needs to be at least one character long.",
+        "operationId": "organizer-educational-description-put",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The organizer educational description has been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (description) are missing"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "description": "New educational description to set on the organizer (localized in the given language in the URL).",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/organizer-educational-description-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "educationalDescription": "This organizer is responsible for creating cultural events for schools around Brussels."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/organizers/{organizerId}/images": {
       "parameters": [
         {
