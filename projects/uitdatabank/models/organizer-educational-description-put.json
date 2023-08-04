@@ -1,0 +1,13 @@
+{
+  "title": "organizer.educationalDescription.put",
+  "type": "object",
+  "properties": {
+    "description": {
+      "$ref": "./common-description-localized.json",
+      "description": "New educational description of the organizer, localized in a single language."
+    }
+  },
+  "required": [
+    "description"
+  ]
+}
