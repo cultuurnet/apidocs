@@ -7342,7 +7342,7 @@
         }
       ],
       "put": {
-        "summary": "description - update",
+        "summary": "educational description - update",
         "description": "Updates the educational description of the organizer with the given `organizerId`. The new educational description of the request body will be set on the organizer in the given `language`. The new educational description needs to be at least one character long.",
         "operationId": "organizer-educational-description-put",
         "tags": [
@@ -7412,6 +7412,36 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "delete": {
+        "summary": "educational description - delete",
+        "operationId": "organizer-educational-description-delete",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The educational description has been deleted."
+          },
+          "400": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Deletes the educational description in the given `language` from the organizer with the given `organizerId`."
       }
     },
     "/organizers/{organizerId}/images": {
