@@ -1544,6 +1544,14 @@
             "in": "query",
             "name": "dateOfBirthTo",
             "description": "Returns only passholders with a date of birth of this value (including) or older. Format `yyyy-mm-dd`, e.g. `2003-01-01`"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitidId",
+            "description": "Unique ID of the UiTiD user linked to an individual passholder to look up."
           }
         ]
       },
