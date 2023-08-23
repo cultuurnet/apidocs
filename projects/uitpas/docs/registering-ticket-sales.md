@@ -58,7 +58,7 @@ Example request:
 
 ```http
 GET /tariffs/?eventId=5a0967f9-cc06-4c3c-9206-30481a767434&uitpasNumber=0900000672312&regularPrice=10 HTTP/1.1
-Host: https://api.uitpas.be
+Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_CLIENT_ACCESS_TOKEN'
 ```
 
@@ -90,11 +90,30 @@ Content-Type: application/json
 }
 ```
 
-In this example the passholder can select two possible UiTPAS discounts. The social tariff, and a coupon. Both tariffs are valid for one ticket for this event for this passholder.
-
 > ##### remaining tickets at a tariff
 >
 > For regular passholders, the `remaining` value is always 1. Please refer to [registering ticket sales for group passes](./registering-ticket-sales-group.md) for more information on group pass ticket sales.
+
+In this example the passholder can select two possible UiTPAS discounts. The social tariff, and a coupon. Both tariffs are valid for one ticket for this event for this passholder.
+
+When the passholder doesn't have a tariff available, **you'll receive an endUserMessage explaining why**. **It's best practice to always display this message to the passholder when you receive one.** This way, lots of confusion can be avoided, as the user can clearly understand what's wrong.
+
+```json
+{
+  "type": "https://api.publiq.be/probs/uitpas/social-tariff-expired",
+  "title": "Social tariff expired",
+  "status": 400,
+  "detail": "",
+  "endUserMessage": {
+    "nl": "Je kansenstatuut is vervallen, daarom kan je je UiTPAS momenteel niet gebruiken. Informeer of je dit statuut kan hernieuwen bij het UiTPAS-aankooppunt waar je jouw pas hebt gekocht."
+  }
+}
+
+```
+
+> #####
+> An endUserMessage can be returned in a 200 response or an error response.
+> Learn more about [user friendly error messages](/docs/user-friendly-error-messages).
 
 ### 5. Passholder selects a tariff
 
@@ -118,7 +137,7 @@ For example:
 ```http
 POST /ticket-sales HTTP/1.1
 Content-Type: application/json
-Host: https://api.uitpas.be
+Host: https://api-test.uitpas.be
 Authorization: Bearer YOUR_ACCESS_TOKEN'
 
 [

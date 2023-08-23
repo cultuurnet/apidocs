@@ -59,6 +59,11 @@
       "title": "Guides"
     },
     {
+      "type": "item",
+      "title": "User friendly error messages",
+      "uri": "docs/user-friendly-error-messages.md"
+    },
+    {
       "type": "group",
       "title": "Ticket sales",
       "items": [
