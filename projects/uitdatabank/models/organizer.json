@@ -18,6 +18,9 @@
     "description": {
       "$ref": "./organizer-description.json"
     },
+    "educationalDescription": {
+      "$ref": "./organizer-educationalDescription.json"
+    },
     "address": {
       "$ref": "./organizer-address.json"
     },
