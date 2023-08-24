@@ -1,0 +1,25 @@
+{
+  "title": "production.skip",
+  "x-stoplight": {
+    "id": "f00f510de9fe7"
+  },
+  "type": "object",
+  "x-internal": true,
+  "examples": [
+    {
+      "eventIds": [
+        "e1881d57-569a-49f9-a238-cfdafae8d46b",
+        "f8c8e192-be53-4c54-a59d-28e5525a29f5"
+      ]
+    }
+  ],
+  "properties": {
+    "eventIds": {
+      "$ref": "production-eventIds.json",
+      "description": "The event id's that are part of the production"
+    }
+  },
+  "required": [
+    "eventIds"
+  ]
+}

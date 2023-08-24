@@ -12,7 +12,6 @@ Events & places always have exactly one of the following workflow statuses:
 * `REJECTED`: The workflowstatus an event or place gets, when it is rejected by content moderation.
 * `DELETED`: The workflow status an [event](../events/delete.md) or [place](../places/delete.md) gets, when it is deleted.
 
-
 ![wfstatus.png](../../../assets/images/wfstatus.png)
 
 *The workflowStatus of evwents and places represents the "life stage" of an event or place. It follows a lineair path: it is never possible to go back to an earlier stage.*
