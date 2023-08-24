@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-name.json",
+  "title": "production.name",
+  "description": "The human-readable, localized name of the [production](./production.json).\n\nRequires at least one value."
+}

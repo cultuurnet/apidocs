@@ -1443,7 +1443,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_ALL` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1544,6 +1544,14 @@
             "in": "query",
             "name": "dateOfBirthTo",
             "description": "Returns only passholders with a date of birth of this value (including) or older. Format `yyyy-mm-dd`, e.g. `2003-01-01`"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitidId",
+            "description": "Unique ID of the UiTiD user linked to an individual passholder to look up."
           }
         ]
       },
@@ -5294,6 +5302,7 @@
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
           "PASSHOLDERS_SEARCH",
+          "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
