@@ -8398,165 +8398,128 @@
         ],
         "x-internal": true,
         "description": "Merges to productions into one. If the request is successful a `204 No Content` will be returned."
-      },
-      "/productions/{productionId}/events/{eventId}": {
-        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned.",
-        "parameters": [
+      }
+    },
+    "/productions/{productionId}/events/{eventId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/productionId"
+        },
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "productions - add event",
+        "operationId": "productions-add-event",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Productions"
+        ],
+        "security": [
           {
-            "$ref": "#/components/parameters/productionId"
+            "USER_ACCESS_TOKEN": []
           },
           {
-            "$ref": "#/components/parameters/eventId"
+            "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "put": {
-          "summary": "productions - add event",
-          "operationId": "productions-add-event",
-          "responses": {
-            "204": {
-              "description": "No Content"
-            },
-            "401": {
-              "$ref": "#/components/responses/Unauthorized"
-            },
-            "403": {
-              "$ref": "#/components/responses/Forbidden"
-            },
-            "404": {
-              "$ref": "#/components/responses/NotFound"
-            }
-          },
-          "tags": [
-            "Productions"
-          ],
-          "security": [
-            {
-              "USER_ACCESS_TOKEN": []
-            },
-            {
-              "CLIENT_ACCESS_TOKEN": []
-            }
-          ],
-          "x-internal": true
-        }
-      },
-      "/productions/skip": {
-        "post": {
-          "summary": "productions - skip",
-          "operationId": "productions-skip",
-          "responses": {
-            "200": {
-              "description": "The production was skipped successfully",
-              "content": {
-                "application/ld+json": {
-                  "schema": {
-                    "$ref": "../models/productions-skip.json"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-              "content": {
-                "application/problem+json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Error"
-                  },
-                  "examples": {
-                    "Invalid data": {
-                      "value": {
-                        "type": "https://api.publiq.be/probs/body/invalid-data",
-                        "title": "Invalid body data",
-                        "status": 400,
-                        "schemaErrors": [
-                          {
-                            "jsonPointer": "/",
-                            "error": "The required property (eventIds) is missing."
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "tags": [
-            "Productions"
-          ],
-          "description": "Skip a pair of suggested events. The suggested pair will not be linked to a production and will not be suggested again.",
-          "security": [
-            {
-              "USER_ACCESS_TOKEN": []
-            },
-            {
-              "CLIENT_ACCESS_TOKEN": []
-            }
-          ],
-          "x-internal": true,
-          "requestBody": {
-            "description": "The complete details of the new production to create.",
+        "x-internal": true,
+        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned."
+      }
+    },
+    "/productions/skip": {
+      "post": {
+        "summary": "productions - skip",
+        "operationId": "productions-skip",
+        "responses": {
+          "200": {
+            "description": "The production was skipped successfully",
             "content": {
-              "application/json": {
+              "application/ld+json": {
                 "schema": {
                   "$ref": "../models/productions-skip.json"
                 }
               }
             }
-          }
-        }
-      },
-      "/productions": {
-        "post": {
-          "summary": "productions - create",
-          "operationId": "productions-create",
-          "responses": {
-            "201": {
-              "description": "The production was created successfully",
-              "content": {
-                "application/ld+json": {
-                  "schema": {
-                    "$ref": "../models/production-post.json"
-                  }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 },
-                "application/json": {
-                  "schema": {
-                    "$ref": "../models/production-post.json"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-              "content": {
-                "application/problem+json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Error"
-                  },
-                  "examples": {
-                    "Invalid data": {
-                      "value": {
-                        "type": "https://api.publiq.be/probs/body/invalid-data",
-                        "title": "Invalid body data",
-                        "status": 400,
-                        "schemaErrors": [
-                          {
-                            "jsonPointer": "/",
-                            "error": "The required properties (name) are missing."
-                          }
-                        ]
-                      }
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required property (eventIds) is missing."
+                        }
+                      ]
                     }
                   }
                 }
               }
             }
+          }
+        },
+        "tags": [
+          "Productions"
+        ],
+        "description": "Skip a pair of suggested events. The suggested pair will not be linked to a production and will not be suggested again.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
           },
-          "description": "Creates a production",
-          "x-internal": true,
-          "requestBody": {
-            "description": "The complete details of the new production to create.",
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true,
+        "requestBody": {
+          "description": "The complete details of the new production to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/productions-skip.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/productions": {
+      "post": {
+        "summary": "productions - create",
+        "operationId": "productions-create",
+        "responses": {
+          "201": {
+            "description": "The production was created successfully",
             "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "../models/production-post.json"
+                }
+              },
               "application/json": {
                 "schema": {
                   "$ref": "../models/production-post.json"
@@ -8564,59 +8527,73 @@
               }
             }
           },
-          "tags": [
-            "Productions"
-          ]
-        },
-        "get": {
-          "summary": "productions - search",
-          "description": "Get a list of existing productions filtered by a search string",
-          "operationId": "productions-get",
-          "responses": {
-            "200": {
-              "description": "Production details",
-              "content": {
-                "application/ld+json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "hydra:member": {
-                        "type": "array",
-                        "description": "Production results for the requested page.",
-                        "items": {
-                          "$ref": "../models/production.json"
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The required properties (name) are missing."
                         }
-                      }
+                      ]
                     }
-                  },
-                  "examples": {
-                    "Example": {
-                      "value": {
-                        "hydra:member": [
-                          {
-                            "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
-                            "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
-                            "events": [
-                              "4f37a230-8d8d-4dab-a527-62e879629bae",
-                              "7f32b131-deb9-483f-ab32-98541d3c3b77",
-                              "c41effec-0e04-4e01-8804-9ea9b4c6b528"
-                            ]
-                          }
-                        ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a production",
+        "x-internal": true,
+        "requestBody": {
+          "description": "The complete details of the new production to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/production-post.json"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Productions"
+        ]
+      },
+      "get": {
+        "summary": "productions - search",
+        "description": "Get a list of existing productions filtered by a search string",
+        "operationId": "productions-get",
+        "responses": {
+          "200": {
+            "description": "Production details",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hydra:member": {
+                      "type": "array",
+                      "description": "Production results for the requested page.",
+                      "items": {
+                        "$ref": "../models/production.json"
                       }
                     }
                   }
                 },
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "../models/production.json"
-                    }
-                  },
-                  "examples": {
-                    "Example 1": {
-                      "value": [
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "hydra:member": [
                         {
                           "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
                           "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
@@ -8630,118 +8607,141 @@
                     }
                   }
                 }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../models/production.json"
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "productionId": "c356dac7-133b-4847-805f-91a8c3c09da6",
+                        "name": "Alex Agnew speelt 'Wake Me Up When It's Over'",
+                        "events": [
+                          "4f37a230-8d8d-4dab-a527-62e879629bae",
+                          "7f32b131-deb9-483f-ab32-98541d3c3b77",
+                          "c41effec-0e04-4e01-8804-9ea9b4c6b528"
+                        ]
+                      }
+                    ]
+                  }
+                }
               }
             }
+          }
+        },
+        "x-internal": true,
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "name",
+            "description": "The name or part of the name of the production(s) to search (case-insensitive)."
           },
-          "x-internal": true,
-          "parameters": [
-            {
-              "schema": {
-                "type": "string",
-                "minLength": 1
-              },
-              "in": "query",
-              "name": "name",
-              "description": "The name or part of the name of the production(s) to search (case-insensitive)."
+          {
+            "schema": {
+              "type": "integer"
             },
-            {
-              "schema": {
-                "type": "integer"
-              },
-              "in": "query",
-              "name": "start",
-              "description": "The number of productions to skip from the start of the result set. When omitted it starts from the first position (0)."
+            "in": "query",
+            "name": "start",
+            "description": "The number of productions to skip from the start of the result set. When omitted it starts from the first position (0)."
+          },
+          {
+            "schema": {
+              "type": "integer"
             },
-            {
-              "schema": {
-                "type": "integer"
-              },
-              "in": "query",
-              "name": "limit",
-              "description": "The limit of productions included in the result set. When omitted it defaults to 30 items."
-            }
-          ],
-          "tags": [
-            "Productions"
-          ]
-        }
-      },
-      "/user": {
-        "get": {
-          "summary": "current user - get",
-          "operationId": "user-get",
-          "description": "Returns the details of the current user.",
-          "tags": [
-            "Users"
-          ],
-          "responses": {
-            "200": {
-              "description": "The user details.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "uuid": {
-                        "type": "string",
-                        "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                        "format": "uuid",
-                        "description": "UUID of the user."
-                      },
-                      "email": {
-                        "type": "string",
-                        "example": "info@publiq.be",
-                        "description": "The email address of the user."
-                      },
-                      "username": {
-                        "type": "string",
-                        "example": "username",
-                        "description": "The username of the user."
-                      },
-                      "id": {
-                        "type": "string",
-                        "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                        "description": "Deprecated, use `uuid` instead.",
-                        "deprecated": true
-                      },
-                      "nick": {
-                        "type": "string",
-                        "example": "username",
-                        "description": "Deprecated, use `username` instead.",
-                        "deprecated": true
-                      }
+            "in": "query",
+            "name": "limit",
+            "description": "The limit of productions included in the result set. When omitted it defaults to 30 items."
+          }
+        ],
+        "tags": [
+          "Productions"
+        ]
+      }
+    },
+    "/user": {
+      "get": {
+        "summary": "current user - get",
+        "operationId": "user-get",
+        "description": "Returns the details of the current user.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid",
+                      "description": "UUID of the user."
                     },
-                    "required": [
-                      "uuid",
-                      "email",
-                      "username"
-                    ]
+                    "email": {
+                      "type": "string",
+                      "example": "info@publiq.be",
+                      "description": "The email address of the user."
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
+                    }
                   },
-                  "examples": {
-                    "Example": {
-                      "value": {
-                        "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                        "email": "info@publiq.be",
-                        "username": "username"
-                      }
+                  "required": [
+                    "uuid",
+                    "email",
+                    "username"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "email": "info@publiq.be",
+                      "username": "username"
                     }
                   }
                 }
               }
-            },
-            "401": {
-              "$ref": "#/components/responses/Unauthorized"
-            },
-            "404": {
-              "$ref": "#/components/responses/NotFound"
             }
           },
-          "security": [
-            {
-              "USER_ACCESS_TOKEN": []
-            }
-          ]
-        }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ]
       }
     }
   },
