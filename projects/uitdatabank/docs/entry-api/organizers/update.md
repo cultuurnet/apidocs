@@ -53,7 +53,7 @@ You can find all possible endpoints to update a single organizer property in the
 
 <!-- theme: success -->
 
-> It is recommended to use these property-specific endpoints when you only need to support updates to one or a few properties, and/or when you have a create or edit form in your application that auto-saves changes to fields like in the [UiTdatabank web application](https://www.uitdatabank.be).
+> It is recommended to use these property-specific endpoints when you only temp need to support updates to one or a few properties, and/or when you have a create or edit form in your application that auto-saves changes to fields like in the [UiTdatabank web application](https://www.uitdatabank.be).
 
 <!-- 
   @todo
