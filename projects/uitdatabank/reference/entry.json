@@ -8360,7 +8360,6 @@
       }
     },
     "/productions/{productionId1}/merge/{productionId2}": {
-      "description": "Merges to productions into one. If the request is successful a `204 No Content` will be returned.",
       "parameters": [
         {
           "$ref": "#/components/parameters/productionId1"
@@ -8397,10 +8396,11 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "x-internal": true
+        "x-internal": true,
+        "description": "Merges to productions into one. If the request is successful a `204 No Content` will be returned."
       }
+    },
     "/productions/{productionId}/events/{eventId}": {
-      "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned.",
       "parameters": [
         {
           "$ref": "#/components/parameters/productionId"
@@ -8437,7 +8437,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "x-internal": true
+        "x-internal": true,
+        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned."
       }
     },
     "/productions/skip": {
@@ -8564,7 +8565,7 @@
             }
           }
         },
-         "tags": [
+        "tags": [
           "Productions"
         ]
       },
