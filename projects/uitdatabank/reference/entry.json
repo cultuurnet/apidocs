@@ -3,7 +3,7 @@
   "info": {
     "title": "Entry API",
     "version": "3.0",
-    "description": "With UiTdatabank's Entry API you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.",
+    "description": "With UiTdatabank's Entry API TEMP you can create new events, places and organizers, and add extra info to them with specific requests to add/update properties. For example there are operations to add a label, remove a label, add an image, and so on.",
     "contact": {
       "name": "publiq helpdesk",
       "email": "technical-support@publiq.be",
