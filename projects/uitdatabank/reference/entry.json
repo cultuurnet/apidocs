@@ -8359,47 +8359,6 @@
         ]
       }
     },
-    "/productions/{productionId1}/merge/{productionId2}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/productionId1"
-        },
-        {
-          "$ref": "#/components/parameters/productionId2"
-        }
-      ],
-      "put": {
-        "summary": "productions - merge",
-        "operationId": "productions-merge",
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          }
-        },
-        "tags": [
-          "Productions"
-        ],
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
-        "x-internal": true,
-        "description": "Merges to productions into one. If the request is successful a `204 No Content` will be returned."
-      }
-    },
     "/productions/{productionId}/events/{eventId}": {
       "parameters": [
         {
@@ -8429,6 +8388,7 @@
         "tags": [
           "Productions"
         ],
+        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -8437,8 +8397,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "x-internal": true,
-        "description": "Add a single event to an existing production. If the request is successful a `204 No Content` will be returned."
+        "x-internal": true
       }
     },
     "/productions/skip": {
@@ -8508,67 +8467,6 @@
       }
     },
     "/productions": {
-      "post": {
-        "summary": "productions - create",
-        "operationId": "productions-create",
-        "responses": {
-          "201": {
-            "description": "The production was created successfully",
-            "content": {
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "../models/production-post.json"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "../models/production-post.json"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "Invalid data": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/",
-                          "error": "The required properties (name) are missing."
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "Creates a production",
-        "x-internal": true,
-        "requestBody": {
-          "description": "The complete details of the new production to create.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "../models/production-post.json"
-              }
-            }
-          }
-        },
-        "tags": [
-          "Productions"
-        ]
-      },
       "get": {
         "summary": "productions - search",
         "description": "Get a list of existing productions filtered by a search string",
@@ -8819,28 +8717,6 @@
           "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
         },
         "description": "Unique id of a news article, in the format of a UUID"
-      },
-      "productionId1": {
-        "name": "productionId1",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "format": "uuid",
-          "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
-        },
-        "description": "Unique id of a production into which another production is merged, in the format of a UUID"
-      },
-      "productionId2": {
-        "name": "productionId2",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "format": "uuid",
-          "example": "497f6eca-6276-4993-bfeb-53cbbbba6f08"
-        },
-        "description": "Unique id of a production that is merged into another production, in the format of a UUID"
       },
       "language": {
         "name": "language",
