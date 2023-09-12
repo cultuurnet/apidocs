@@ -2920,13 +2920,10 @@
                 "$ref": "#/components/schemas/FamilyMember"
               },
               "examples": {
-                "Example with icon": {
+                "Example": {
                   "value": {
                     "icon": "https://www.uitpas.be/_nuxt/img/icon1.png"
                   }
-                },
-                "Example without icon": {
-                  "value": {}
                 }
               }
             }
@@ -6282,6 +6279,9 @@
             "readOnly": true
           }
         },
+        "required": [
+          "icon"
+        ],
         "readOnly": true
       },
       "CardSystemMembership": {
