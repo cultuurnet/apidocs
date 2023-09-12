@@ -2791,6 +2791,338 @@
         ]
       }
     },
+    "/passholders/me/family-members": {
+      "get": {
+        "summary": "Retrieve family members of the current passholder",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FamilyMember"
+                  }
+                },
+                "examples": {
+                  "Multiple family members": {
+                    "value": [
+                      {
+                        "passholderId": "352143de-92fe-46f0-bb41-c28f76b038db",
+                        "creationDate": "2019-08-24T14:15:22Z",
+                        "uitpasNumber": "0930012345615",
+                        "firstName": "Marc",
+                        "name": "Peeters",
+                        "points": 10,
+                        "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
+                        "headOfFamily": true
+                      },
+                      {
+                        "passholderId": "29eb93bc-d38f-4b05-a99e-85b4f380b436",
+                        "creationDate": "2023-08-24T14:15:22Z",
+                        "uitpasNumber": "0900000067513",
+                        "firstName": "Clara",
+                        "name": "Peeters",
+                        "points": 7,
+                        "icon": "https://www.uitpas.be/_nuxt/img/icon2.png",
+                        "headOfFamily": false
+                      },
+                      {
+                        "passholderId": "55a96a3f-a570-4d4f-8580-fe00caeafcf0",
+                        "creationDate": "2023-08-24T14:18:22Z",
+                        "uitpasNumber": "0900000036112",
+                        "firstName": "Louis",
+                        "name": "Peeters",
+                        "points": 2,
+                        "icon": "https://www.uitpas.be/_nuxt/img/icon3.png",
+                        "headOfFamily": false
+                      }
+                    ]
+                  },
+                  "No other family members": {
+                    "value": [
+                      {
+                        "passholderId": "352143de-92fe-46f0-bb41-c28f76b038db",
+                        "creationDate": "2019-08-24T14:15:22Z",
+                        "uitpasNumber": "0930012345615",
+                        "firstName": "Marc",
+                        "name": "Peeters",
+                        "points": 10,
+                        "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
+                        "headOfFamily": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found\n\nIf the user does not have a passholder. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-passholders-me-family-members",
+        "description": "Allows a passholder to retrieve their family members.\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Current Passholder"
+        ]
+      },
+      "post": {
+        "summary": "Add family members to the current passholder's family",
+        "operationId": "post-passholders-me-family-members",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Allows a passholder to add other passholders as family members.\n\nThis endpoint requires a registration token of the passholder to add as a family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nA user access token of a passholder using a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is required.",
+        "requestBody": {
+          "description": "Registration token of the passholder to add as a family member.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyMember"
+              },
+              "examples": {
+                "Example with icon": {
+                  "value": {
+                    "icon": "https://www.uitpas.be/_nuxt/img/icon1.png"
+                  }
+                },
+                "Example without icon": {
+                  "value": {}
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Current Passholder"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "x-registration-token",
+            "description": "the registration token of the passholder to add as family member"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/passholders/me/family-members/{familyMemberId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "familyMemberId",
+          "in": "path",
+          "required": true,
+          "description": "Passholder ID of the family member"
+        }
+      ],
+      "put": {
+        "summary": "Update a family member",
+        "operationId": "put-passholders-me-family-members-familyMemberId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Allows a passholder to update family member information.\n\nA user access token of a passholder using a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is required.",
+        "parameters": [],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyMember"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "icon": "https://www.uitpas.be/_nuxt/img/icon1.png"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Updated information of the family member."
+        },
+        "tags": [
+          "Current Passholder"
+        ]
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-passholders-me-family-members-familyMemberId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Allows a passholder to remove a family member from their family.\n",
+        "tags": [
+          "Current Passholder"
+        ]
+      }
+    },
+    "/passholders/me/families": {
+      "get": {
+        "summary": "Retrieve family members of the current passholder",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "List of families",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the head of the family",
+                        "readOnly": true
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "description": "The firstname of the head of the family",
+                        "readOnly": true
+                      },
+                      "passholderId": {
+                        "type": "string",
+                        "description": "The passholder ID of the head of the family",
+                        "readOnly": true
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "The email address of the head of the family",
+                        "readOnly": true
+                      },
+                      "memberSince": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The creationdate of the current passholder in this family",
+                        "readOnly": true
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "firstName",
+                      "passholderId",
+                      "memberSince"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "passholderId": "55a96a3f-a570-4d4f-8580-fe00caeafcf0",
+                        "email": "marc.peeters@uitpas.be",
+                        "memberSince": "2023-08-24T14:15:22Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-passholders-me-families",
+        "description": "Allows a passholder to retrieve the other families of which they are a member. This explicitly excludes the passholder's own family.\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Current Passholder"
+        ]
+      },
+      "parameters": []
+    },
     "/passholders/{passholderId}/school": {
       "parameters": [
         {
@@ -5895,6 +6227,61 @@
           "postalCode",
           "socialTariff"
         ],
+        "readOnly": true
+      },
+      "FamilyMember": {
+        "type": "object",
+        "title": "FamilyMember",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "The `FamilyMember` entity includes basic information about the family member `Passholder`.  ",
+        "x-stoplight": {
+          "id": "2e1288b442b2a"
+        },
+        "x-examples": {},
+        "properties": {
+          "passholderId": {
+            "type": "string",
+            "description": "ID of the family member passholder. This field is always available in responses.",
+            "readOnly": true
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creationdate of the family member in its family. This field is always available in responses.",
+            "readOnly": true
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "UiTPAS number of the family member passholder. This field is always available in responses.",
+            "readOnly": true
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the family member passholder. This field is always available in responses.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the family member passholder. This field is always available in responses.",
+            "readOnly": true
+          },
+          "points": {
+            "type": "integer",
+            "description": "Number of points of the family member passholder. This field is always available in responses.",
+            "readOnly": true
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon of the family member"
+          },
+          "headOfFamily": {
+            "type": "boolean",
+            "description": "Indicates whether this family member is the head of this family.",
+            "readOnly": true
+          }
+        },
         "readOnly": true
       },
       "CardSystemMembership": {
