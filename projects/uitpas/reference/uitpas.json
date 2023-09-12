@@ -2913,17 +2913,20 @@
         },
         "description": "Allows a passholder to add other passholders as family members.\n\nThis endpoint requires a registration token of the passholder to add as a family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nA user access token of a passholder using a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is required.",
         "requestBody": {
-          "description": "Registration token of the passholder to add as a family member.",
+          "description": "New family member",
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/FamilyMember"
               },
               "examples": {
-                "Example": {
+                "Example with icon": {
                   "value": {
                     "icon": "https://www.uitpas.be/_nuxt/img/icon1.png"
                   }
+                },
+                "Example without icon": {
+                  "value": {}
                 }
               }
             }
@@ -6232,11 +6235,10 @@
         "x-tags": [
           "Models"
         ],
-        "description": "The `FamilyMember` entity includes basic information about the family member `Passholder`.  ",
+        "description": "The `FamilyMember` entity including basic information about the `Passholder` family member.",
         "x-stoplight": {
           "id": "2e1288b442b2a"
         },
-        "x-examples": {},
         "properties": {
           "passholderId": {
             "type": "string",
@@ -6278,11 +6280,7 @@
             "description": "Indicates whether this family member is the head of this family.",
             "readOnly": true
           }
-        },
-        "required": [
-          "icon"
-        ],
-        "readOnly": true
+        }
       },
       "CardSystemMembership": {
         "title": "CardSystemMembership",
