@@ -3018,7 +3018,7 @@
         ]
       },
       "delete": {
-        "summary": "",
+        "summary": "Delete a family member",
         "operationId": "delete-passholders-me-family-members-familyMemberId",
         "responses": {
           "202": {
@@ -3039,7 +3039,7 @@
     },
     "/passholders/me/families": {
       "get": {
-        "summary": "Retrieve family members of the current passholder",
+        "summary": "Retrieve families of the current passholder",
         "responses": {
           "200": {
             "description": "OK",
