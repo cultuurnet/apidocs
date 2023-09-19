@@ -2795,8 +2795,8 @@
       "get": {
         "summary": "Retrieve family members of the current passholder",
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2858,6 +2858,9 @@
               }
             }
           },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer."
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2876,7 +2879,7 @@
           }
         },
         "operationId": "get-passholders-me-family-members",
-        "description": "Allows a passholder to retrieve their family members.\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
+        "description": "Allows a passholder to retrieve their family members.\n\nThe current passholder is always a member of their family (boolean `headOfFamily` is `true`).\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2895,7 +2898,7 @@
             "description": "Created"
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/family-member-already-added\n* https://api.publiq.be/probs/uitpas/too-many-family-members\n* https://api.publiq.be/probs/uitpas/too-many-adults-in-family\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2973,7 +2976,7 @@
             "description": "Accepted"
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3024,6 +3027,9 @@
           "202": {
             "description": "Accepted"
           },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer."
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -3031,7 +3037,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Allows a passholder to remove a family member from their family.\n",
+        "description": "Allows a passholder to remove a family member from their family.\n\nThe current passholder is always a member of their family (boolean `headOfFamily` is `true`) and cannot be removed.",
         "tags": [
           "Current Passholder"
         ]
