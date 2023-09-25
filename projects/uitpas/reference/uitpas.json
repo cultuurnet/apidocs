@@ -3040,6 +3040,11 @@
         "description": "Allows a passholder to remove a family member from their family.\n\nThe current passholder is always a member of their family (boolean `headOfFamily` is `true`) and cannot be removed.",
         "tags": [
           "Current Passholder"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
         ]
       }
     },
