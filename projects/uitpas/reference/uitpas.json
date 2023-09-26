@@ -2966,7 +2966,7 @@
             },
             "in": "header",
             "name": "x-registration-token",
-            "description": "the registration token of the passholder to add as family member"
+            "description": "the registration token of the passholder to add as family member. This header  is required when using an end-user token. It can be omitted when using an admin or client access token with the appropriate permissions."
           }
         ],
         "tags": [
