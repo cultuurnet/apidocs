@@ -14,6 +14,12 @@
     },
     {
       "type": "item",
+      "title": "Content scope",
+      "uri": "docs/content-scope.md",
+      "slug": "content-scope"
+    },
+    {
+      "type": "item",
       "title": "Errors",
       "uri": "docs/errors.md",
       "slug": "errors"
