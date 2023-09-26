@@ -2901,7 +2901,7 @@
             "description": "Created"
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/family-member-already-added\n* https://api.publiq.be/probs/uitpas/too-many-family-members\n* https://api.publiq.be/probs/uitpas/too-many-adults-in-family\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/family-member-already-added\n* https://api.publiq.be/probs/uitpas/too-many-family-members\n* https://api.publiq.be/probs/uitpas/too-many-adults-in-family\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
