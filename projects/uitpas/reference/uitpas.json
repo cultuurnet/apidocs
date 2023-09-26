@@ -40,6 +40,9 @@
       "name": "Organizers"
     },
     {
+      "name": "Passholder Family"
+    },
+    {
       "name": "Passholders"
     },
     {
@@ -2791,7 +2794,7 @@
         ]
       }
     },
-    "/passholders/me/family-members": {
+    "/passholders/{passholderId}/family-members": {
       "get": {
         "summary": "Retrieve family members of the current passholder",
         "responses": {
@@ -2858,16 +2861,6 @@
               }
             }
           },
-          "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -2875,7 +2868,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found\n\nIf the user does not have a passholder. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n",
+            "description": "Not Found\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2885,27 +2878,30 @@
             }
           }
         },
-        "operationId": "get-passholders-me-family-members",
-        "description": "Allows a passholder to retrieve their family members.\n\nThe current passholder is always a member of their family (boolean `headOfFamily` is `true`).\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
+        "operationId": "get-passholders-passholderId-family-members",
+        "description": "Retrieve family members of a given passholder.\n\nThe list of family members is specific to this passholder and the family relation is not mutual.\nThe total number of passholder and the number of adults in a family is limited. \n\nThe passholder identified by `{passholderId}` is always part of this list and its boolean property `headOfFamily` will be set to `true`.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
         ],
         "parameters": [],
         "tags": [
-          "Current Passholder"
+          "Passholder Family"
         ]
       },
       "post": {
         "summary": "Add family members to the current passholder's family",
-        "operationId": "post-passholders-me-family-members",
+        "operationId": "post-passholders-passholderId-family-members",
         "responses": {
           "201": {
             "description": "Created"
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/family-member-already-added\n* https://api.publiq.be/probs/uitpas/too-many-family-members\n* https://api.publiq.be/probs/uitpas/too-many-adults-in-family\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/family-member-already-added\n* https://api.publiq.be/probs/uitpas/too-many-family-members\n* https://api.publiq.be/probs/uitpas/too-many-adults-in-family\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2931,7 +2927,7 @@
             }
           }
         },
-        "description": "Allows a passholder to add other passholders as family members.\n\nThis endpoint requires a registration token of the passholder to add as a family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nA user access token of a passholder using a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is required.",
+        "description": "Add another passholder as a family member of the give passholder.\n\nSpecify the `uitpasNumber` and optionally an `icon` for the new family member.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.\n\nIf a user access token is used of the passholder (e.g. in an end-user application), an extra `x-registration-header` header is required containing the registration token of the new family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nIf the an admin user token or client access token with the appropriate permissions is used, the `x-registration-token` header can be ommitted.",
         "requestBody": {
           "description": "New family member",
           "content": {
@@ -2942,11 +2938,14 @@
               "examples": {
                 "Example with icon": {
                   "value": {
+                    "uitpasNumber": "1000000520006",
                     "icon": "https://www.uitpas.be/_nuxt/img/icon1.png"
                   }
                 },
                 "Example without icon": {
-                  "value": {}
+                  "value": {
+                    "uitpasNumber": "1000000520006"
+                  }
                 }
               }
             }
@@ -2955,10 +2954,10 @@
         "security": [
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
-        ],
-        "tags": [
-          "Current Passholder"
         ],
         "parameters": [
           {
@@ -2969,12 +2968,34 @@
             "name": "x-registration-token",
             "description": "the registration token of the passholder to add as family member"
           }
+        ],
+        "tags": [
+          "Passholder Family"
         ]
       },
-      "parameters": []
-    },
-    "/passholders/me/family-members/{familyMemberId}": {
       "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of an UiTPAS passholder."
+        }
+      ]
+    },
+    "/passholders/me/family-members/{familyMemberId}/{passholderId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of an UiTPAS passholder."
+        },
         {
           "schema": {
             "type": "string"
@@ -2982,18 +3003,18 @@
           "name": "familyMemberId",
           "in": "path",
           "required": true,
-          "description": "Passholder ID of the family member"
+          "description": "Passholder ID of the family member to update"
         }
       ],
       "put": {
         "summary": "Update a family member",
-        "operationId": "put-passholders-me-family-members-familyMemberId",
+        "operationId": "put-passholders-passholderId-family-members-familyMemberId",
         "responses": {
           "202": {
             "description": "Accepted"
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3007,13 +3028,26 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
-        "description": "Allows a passholder to update family member information.\n\nA user access token of a passholder using a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is required.",
+        "description": "Update information of a family member of the given passholder.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "parameters": [],
         "security": [
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
         ],
         "requestBody": {
@@ -3034,18 +3068,24 @@
           "description": "Updated information of the family member."
         },
         "tags": [
-          "Current Passholder"
+          "Passholder Family"
         ]
       },
       "delete": {
         "summary": "Delete a family member",
-        "operationId": "delete-passholders-me-family-members-familyMemberId",
+        "operationId": "delete-passholders-passholderId-family-members-familyMemberId",
         "responses": {
           "202": {
             "description": "Accepted"
           },
-          "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3053,26 +3093,23 @@
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Allows a passholder to remove a family member from their family.\n\nThe current passholder is always a member of their family (boolean `headOfFamily` is `true`) and cannot be removed.",
-        "tags": [
-          "Current Passholder"
-        ],
+        "description": "Delete a family member of a given passholder.\n\nThe given passholder is always a member of their family (boolean `headOfFamily` is `true`) and cannot be deleted.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
+        ],
+        "tags": [
+          "Passholder Family"
         ]
       }
     },
-    "/passholders/me/families": {
+    "/passholders/{passholderId}/families": {
       "get": {
         "summary": "Retrieve families of the current passholder",
         "responses": {
@@ -3142,21 +3179,44 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
-        "operationId": "get-passholders-me-families",
-        "description": "Allows a passholder to retrieve the other families of which they are a member. This explicitly excludes the passholder's own family.\n\nA user access token of a client with `PASSHOLDERS_FAMILY_MEMBERS` permission is mandatory. ",
+        "operationId": "get-passholders-passholderId-families",
+        "description": "Retrieve the other families to which the given passholder was added. This explicitly excludes the passholder's own family.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
         ],
         "parameters": [],
         "tags": [
-          "Current Passholder"
+          "Passholder Family"
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of an UiTPAS passholder."
+        }
+      ]
     },
     "/passholders/{passholderId}/school": {
       "parameters": [
@@ -6289,8 +6349,7 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "UiTPAS number of the family member passholder. This field is always available in responses.",
-            "readOnly": true
+            "description": "UiTPAS number of the family member passholder. This field is always available in responses, mandatory in POST requests and ignored in PUT requests."
           },
           "firstName": {
             "type": "string",
