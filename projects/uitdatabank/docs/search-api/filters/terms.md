@@ -1,7 +1,8 @@
 # Terms
 
 Through terms we categorize events and places. We distinguish 3 different sort of terms:
-1. `eventtype`: describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place). Every event and place in UiTdatabank has exact 1 term of this domain. 
+
+1. `eventtype`: describes the form of the event or place, e.g. a `concert` (for an event) or a `theatre hall` (for a place). Every event and place in UiTdatabank has exact 1 term of this domain.
 2. `theme`: describes the content of an event more precisely, e.g. a concert can have a theme `pop and rock` or `jazz and blues`. Events can have a theme, places don't.
 3. `facility`: describes specific accessibility facilities for people with disabilities, e.g. accessible sanitary facilities. Some facilities are applicable on events, others on places.
 
