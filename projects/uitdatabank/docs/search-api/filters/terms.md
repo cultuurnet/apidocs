@@ -7,7 +7,7 @@ Through terms we categorize events and places. We distinguish 3 different sort o
 
 It is possible to filter the results from Search API based on the presence or absence of one or more terms.
 
-Want to know more about terms and our taxonomy? You can read more over [here](../taxonomy-api/introduction.md).
+Want to know more about terms and our taxonomy? You can read more over [here](../../taxonomy-api/introduction.md).
 
 ## Parameters
 
