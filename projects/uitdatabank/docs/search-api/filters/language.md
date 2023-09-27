@@ -7,8 +7,8 @@ All documents created in UiTdatabank are available in Dutch (`NL`). Besides Dutc
 In the UiTdatabank API you can use the following parameters to get relevant (translated) information:
 * [languages](#languages): to limit your results to documents that have translations for `name` and `description` in a specific language
 * [\_exists\_](#\_exists\_): to look for documents that have a translation for one or more specific fields (e.g. `address`)
-* [completedLanguages](#completedLanguages): to only look for documents that are fully translated to a specific language
-* [mainLanguage](#mainLanguage): to filter documents based on their initial language
+* [completedLanguages](#completedlanguages): to only look for documents that are fully translated to a specific language
+* [mainLanguage](#mainlanguage): to filter documents based on their initial language
 
 ### languages
 
