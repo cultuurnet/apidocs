@@ -525,6 +525,16 @@
       "title": "Organizer",
       "uri": "models/organizer-with-read-example.json",
       "slug": "models/organizer"
+    },
+    {
+      "type": "divider",
+      "title": "Terms of use"
+    },
+    {
+      "type": "item",
+      "title": "Terms of use",
+      "uri": "docs/terms-of-use/terms-of-use.md",
+      "slug": "terms-of-use/terms-of-use"
     }
   ]
 }
