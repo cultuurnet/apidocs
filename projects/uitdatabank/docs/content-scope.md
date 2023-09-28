@@ -36,7 +36,7 @@ Any public event, activity or location used for leisure purposes can be entered 
 
 ### Activities without date and/or location that need to be booked
 * ❌ Activities where the date or location depend on mutual agreement or consultation.
-* ✅ An exception to this are bookable school events solely targetted towards schools, and can be booked by a teacher or school for educational purposes.
+* ✅ An exception to this are bookable school events solely targeted towards schools, and can be booked by a teacher or school for educational purposes.
 
 ### Never allowed
 * ❌ Activities that you do not organize yourself and for which the organizer in question did not instruct you to promote them. Incorrectly entering activities in the UiTdatabank or incorrectly attributing an activity to a specific organizer can be prosecuted by those involved.
