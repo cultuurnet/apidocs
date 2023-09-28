@@ -68,6 +68,15 @@ The request you are trying to perform cannot complete because the event already 
 
 The request you are trying to perform cannot complete because the provided event cannot be found.
 
+
+## family-member-already-added
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/family-member-already-added`
+* **Title**: `Forbidden Underaged`
+* **Status**: `400`
+
+The request you are trying to perform cannot complete because the family member was already added to the family of the current passholder.
+
 ## forbidden-underaged
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/forbidden-underaged`
@@ -331,6 +340,22 @@ The request you are trying to perform cannot complete because the passholder has
 * **Status**: `404`
 
 The request you are trying to perform cannot complete because the given ticket sale cannot be found.
+
+## too-many-adults-in-family
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/too-many-adults-in-family`
+* **Title**: `Forbidden Underaged`
+* **Status**: `400`
+
+The request you are trying to perform cannot complete because the family of the current passholder already contains the maximum allowed number of adults.
+
+## too-many-family-members
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/too-many-family-members`
+* **Title**: `Forbidden Underaged`
+* **Status**: `400`
+
+The request you are trying to perform cannot complete because the family of the current passholder already contains the maximum allowed number of members.
 
 ## uitid-already-registered
 
