@@ -171,7 +171,7 @@ Examples include:
 
 * [UiTinVlaanderen](https://www.uitinvlaanderen.be) to browse all events and places in Flanders
 * [UiTinGent](https://www.uitingent.be), [UiTinHasselt](https://www.uitinhasselt.be), [UiTinLeuven](https://www.uitinleuven.be), ... to find events and places in the municipality that you live in or want to visit
-* [Seniorennet](https://www.seniorennet.be/page/info/agenda), [INTER](https://www.vlaanderen.be/inter/meedoen-aan-een-toegankelijke-samenleving/agenda-toegankelijke-evenementen), [Indiestyle](https://www.indiestyle.be/agenda) ... to find events and places for specific target audiences
+* [Seniorennet](https://www.seniorennet.be/page/info/agenda), [INTER](https://www.vlaanderen.be/inter/meedoen-aan-een-toegankelijke-samenleving/agenda-toegankelijke-evenementen/toegankelijke-evenementen-op-uit-in-vlaanderen), [Indiestyle](https://www.indiestyle.be/agenda) ... to find events and places for specific target audiences
 
 ## Place
 

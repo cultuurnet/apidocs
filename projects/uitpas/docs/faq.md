@@ -23,7 +23,7 @@ You shouldn't calculcate these discounts yourself because they can vary from a r
 
 One of the biggest advantages of creating UiTdatabank events, is that your events will be available throughout thousand of local events calendars and websites such as [UiTinVlaanderen](http://www.uitinvlaanderen.be).
 
-If you don't want your events to be published in this way you [should set the audienceType](https://documentatie.uitdatabank.be/content/json-ld-crud-api/latest/events/event-audience.html) to "members" on your events.
+If you don't want your events to be published in this way you [should set the audienceType](https://docs.publiq.be/docs/uitdatabank/entry-api%2Freference%2Foperations%2Fupdate-a-event-audience) to "members" on your events.
 
 ```
 "audience": {
