@@ -4,7 +4,7 @@ It is possible to filter the results from Search API based on the age group the 
 
 ## Parameters
 
-### minAge 
+### minAge
 
 With the `minAge` URL parameter you can find events and/or places which are only accessible to people of a certain age, or are targetted to people of certain minimum age. You can use the `minAge` parameter on its own, or combined it with other parameters like `maxAge` and/or `allAges`.
 
@@ -42,7 +42,7 @@ With the `allAges` parameter you can filter out events and place that are (not) 
 
 **Applicable on endpoints**
 
-`/offers` `/events` `/places` 
+`/offers` `/events` `/places`
 
 **Examples**
 
@@ -66,7 +66,7 @@ GET /offers/?allAges=*
 
 ### typicalAgeRange
 
-With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group. This `q` parameter allows more advanced queries than by using the `minAge` and/or `maxAge` URL parameter. 
+With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group. This `q` parameter allows more advanced queries than by using the `minAge` and/or `maxAge` URL parameter.
 
 **Applicable on endpoints**
 
@@ -79,9 +79,10 @@ Retrieve all events that are suitable for the age group 6 - 12 years:
 ```http
 GET /events/?q=typicalAgeRange:[6 TO 12]
 ```
+
 <!-- theme: info -->
 
-> Note that any overlap with the given query is a match. In the example above also events with a typicalAgeRange of 3-99 or 11-14 will be returned. 
+> Note that any overlap with the given query is a match. In the example above also events with a typicalAgeRange of 3-99 or 11-14 will be returned.
 
 If you don't want partial matches to be returned you can exclude anything that falls out of the given age range as follows:
 

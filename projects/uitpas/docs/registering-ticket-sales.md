@@ -112,6 +112,7 @@ When the passholder doesn't have a tariff available, **you'll receive an endUser
 ```
 
 > #####
+>
 > An endUserMessage can be returned in a 200 response or an error response.
 > Learn more about [user friendly error messages](/docs/user-friendly-error-messages).
 
