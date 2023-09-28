@@ -2981,11 +2981,11 @@
           "name": "passholderId",
           "in": "path",
           "required": true,
-          "description": "Unique ID of an UiTPAS passholder."
+          "description": "Passholder ID of the main family member"
         }
       ]
     },
-    "/passholders/me/family-members/{familyMemberId}/{passholderId}": {
+    "/passholders/{passholderId}/family-members/{familyMemberId}": {
       "parameters": [
         {
           "schema": {
@@ -2994,7 +2994,7 @@
           "name": "passholderId",
           "in": "path",
           "required": true,
-          "description": "Unique ID of an UiTPAS passholder."
+          "description": "Passholder ID of the main family member"
         },
         {
           "schema": {
@@ -3003,7 +3003,7 @@
           "name": "familyMemberId",
           "in": "path",
           "required": true,
-          "description": "Passholder ID of the family member to update"
+          "description": "Passholder ID of the family member"
         }
       ],
       "put": {
@@ -3214,7 +3214,7 @@
           "name": "passholderId",
           "in": "path",
           "required": true,
-          "description": "Unique ID of an UiTPAS passholder."
+          "description": "Passholder ID"
         }
       ]
     },
