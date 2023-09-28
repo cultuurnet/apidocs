@@ -13,7 +13,7 @@ Any public event, activity or location used for leisure purposes can be entered 
 * ❌ Activities that exclusively express one political opinion (e.g. a speech).
 * ✅ Activities involving more than one political party or opinion, or where no political position is taken and the leisure content prevails (e.g. a debate or dinner party).
 
-### Religous activities
+### Religious activities
 * ❌  Activities aimed exclusively at propagating or professing a religion or cult, or aimed at a community of believers or adherents (e.g. weekly Eucharist).
 * ✅  Activities that are rooted in religion, but are publicly accessible and where the leisure aspect prevails. Examples: a procession, a performance in a synagogue, or a tour of a mosque.
 
