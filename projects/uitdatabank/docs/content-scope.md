@@ -23,7 +23,7 @@ Any public event, activity or location used for leisure purposes can be entered 
 * ✅ Online events
 
 ### Hotels, campsites, rooms or restaurants 
-* ❌ Overnight stays, menus (e.g. a valentines menu in a restaurant)
+* ❌ Overnight stays, menus (e.g. a valentines' menu in a restaurant)
 * ✅ Leisure events, e.g. a concert or performance in a café.
 
 ### Activities where money and opportunity are central
