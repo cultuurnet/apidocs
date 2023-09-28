@@ -24,7 +24,7 @@ Any public event, activity or location used for leisure purposes can be entered 
 
 ### Hotels, campsites, rooms or restaurants 
 * ❌ Overnight stays, menus (e.g. a valentines menu in a restaurant)
-* ✅ Leisure events, e.g. a concert or perforamnce in a cafe.
+* ✅ Leisure events, e.g. a concert or performance in a café.
 
 ### Activities where money and opportunity are central
 * ❌ Activities that involve gambling, or that take place at a location where gambling takes place, entail financial risk and risk of addiction
