@@ -2879,7 +2879,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-family-members",
-        "description": "Retrieve family members of a given passholder.\n\nThe list of family members is specific to this passholder and the family relation is not mutual.\nThe total number of passholder and the number of adults in a family is limited. \n\nThe passholder identified by `{passholderId}` is always part of this list and its boolean property `headOfFamily` will be set to `true`.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
+        "description": "Retrieve family members of a given passholder.\n\nThe list of family members is specific to this passholder, the family relation is not mutual, \nthe total number of family members and the number of adults in a family is limited. \n\nThe passholder identified by `{passholderId}` is always part of this list and its boolean property `headOfFamily` will be set to `true`.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2927,7 +2927,7 @@
             }
           }
         },
-        "description": "Add another passholder as a family member of the give passholder.\n\nSpecify the `uitpasNumber` and optionally an `icon` for the new family member.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.\n\nIf a user access token is used of the passholder (e.g. in an end-user application), an extra `x-registration-header` header is required containing the registration token of the new family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nIf the an admin user token or client access token with the appropriate permissions is used, the `x-registration-token` header can be ommitted.",
+        "description": "Add another passholder as a family member of the give passholder.\n\nSpecify the `uitpasNumber` and optionally an `icon` for the new family member.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.\n\nIf a user access token of a passholder is used (e.g. in an end-user application), an extra `x-registration-header` header is required containing the registration token of the new family member. Use [GET /passholders/me/uitid/registration-token](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1registration-token/get) to retrieve a registration token.\n\nIf an admin user token or client access token with the appropriate permissions is used, the `x-registration-token` header can be ommitted.",
         "requestBody": {
           "description": "New family member",
           "content": {
