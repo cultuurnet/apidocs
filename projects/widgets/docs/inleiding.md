@@ -54,7 +54,7 @@ De meest volledige agenda voor alternatieve concerten is te vinden op de website
 
 **Inter - Toegankelijk Vlaanderen**
 
-Op zoek naar een evenement dat toegankelijk is voor mensen met een handicap? Er is geen agenda die meer volledige toegankelijkheidsinformatie biedt dan die van [Inter - Toegankelijk Vlaanderen](https://inter.vlaanderen/alle-evenementen). Voor elk evenement zie je welke van de 23 toegankelijkheidsvoorzieningen aanwezig zijn. Een aangepaste zoekbox maakt het bovendien erg gemakkelijk om evenementen te vinden met voorzieningen voor een specifieke doelgroep.
+Op zoek naar een evenement dat toegankelijk is voor mensen met een handicap? Er is geen agenda die meer volledige toegankelijkheidsinformatie biedt dan die van [Inter - Toegankelijk Vlaanderen](https://www.vlaanderen.be/inter/meedoen-aan-een-toegankelijke-samenleving/agenda-toegankelijke-evenementen/toegankelijke-evenementen-op-uit-in-vlaanderen). Voor elk evenement zie je welke van de 23 toegankelijkheidsvoorzieningen aanwezig zijn. Een aangepaste zoekbox maakt het bovendien erg gemakkelijk om evenementen te vinden met voorzieningen voor een specifieke doelgroep.
 
 **UiTPAS Mechelen**
 

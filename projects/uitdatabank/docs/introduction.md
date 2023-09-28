@@ -23,7 +23,3 @@ In our documentation you will find:
 * Code examples, so you can see how the APIs works in practice
 * Detailed technical specifications per HTTP endpoint
 * OpenAPI files and Postman collections to get started quickly
-
-<!-- theme: warning -->
-
-> We are hard at work to move our documentation to this new documentation portal. If you cannot find what you are looking for, check out our old documentation portal at <https://documentatie.uitdatabank.be>.
