@@ -2819,7 +2819,7 @@
                         "name": "Peeters",
                         "points": 10,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
-                        "headOfFamily": true
+                        "mainFamilyMember": true
                       },
                       {
                         "passholderId": "29eb93bc-d38f-4b05-a99e-85b4f380b436",
@@ -2829,7 +2829,7 @@
                         "name": "Peeters",
                         "points": 7,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon2.png",
-                        "headOfFamily": false
+                        "mainFamilyMember": false
                       },
                       {
                         "passholderId": "55a96a3f-a570-4d4f-8580-fe00caeafcf0",
@@ -2839,7 +2839,7 @@
                         "name": "Peeters",
                         "points": 2,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon3.png",
-                        "headOfFamily": false
+                        "mainFamilyMember": false
                       }
                     ]
                   },
@@ -2853,7 +2853,7 @@
                         "name": "Peeters",
                         "points": 10,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
-                        "headOfFamily": true
+                        "mainFamilyMember": true
                       }
                     ]
                   }
@@ -2879,7 +2879,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-family-members",
-        "description": "Retrieve family members of a given passholder.\n\nThe list of family members is specific to this passholder, the family relation is not mutual, \nthe total number of family members and the number of adults in a family is limited. \n\nThe passholder identified by `{passholderId}` is always part of this list and its boolean property `headOfFamily` will be set to `true`.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
+        "description": "Retrieve family members of a given passholder.\n\nThe list of family members is specific to this passholder, the family relation is not mutual, \nthe total number of family members and the number of adults in a family is limited. \n\nThe passholder identified by `{passholderId}` is always part of this list and its boolean property `mainFamilyMember` will be `true`.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3095,7 +3095,7 @@
             }
           }
         },
-        "description": "Delete a family member of a given passholder.\n\nThe given passholder is always a member of their family (boolean `headOfFamily` is `true`) and cannot be deleted.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
+        "description": "Delete a family member of a given passholder.\n\nThe given passholder is always a member of their family (boolean `mainFamilyMember` is `true`) and cannot be deleted.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3125,22 +3125,22 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "The name of the head of the family",
+                        "description": "The name of the main family member",
                         "readOnly": true
                       },
                       "firstName": {
                         "type": "string",
-                        "description": "The firstname of the head of the family",
+                        "description": "The firstname of the main family member",
                         "readOnly": true
                       },
                       "passholderId": {
                         "type": "string",
-                        "description": "The passholder ID of the head of the family",
+                        "description": "The passholder ID of the main family member",
                         "readOnly": true
                       },
                       "email": {
                         "type": "string",
-                        "description": "The email address of the head of the family",
+                        "description": "The email address of the main family member",
                         "readOnly": true
                       },
                       "memberSince": {
@@ -6370,9 +6370,9 @@
             "type": "string",
             "description": "Icon of the family member"
           },
-          "headOfFamily": {
+          "mainFamilyMember": {
             "type": "boolean",
-            "description": "Indicates whether this family member is the head of this family.",
+            "description": "Indicates whether this is the main family member (= the passholder that created this list of family members)",
             "readOnly": true
           }
         }
