@@ -243,7 +243,7 @@ You will need the `@id` property to link the image to an event, place or organiz
 ### Viewing the details of an image
 
 Additionally, when you follow the URL in the `@id` property you will receive a response with all the details of your uploaded image,
-or you can use the `id` property to view the details of any image: [`GET /images`](/reference/entry.json/paths/~1images/get) for places
+or you can use the `id` property to view the details of any image: [`GET /images`](/reference/entry.json/paths/~1images~1{imageId}/get) for places
 
 ```json
 {
