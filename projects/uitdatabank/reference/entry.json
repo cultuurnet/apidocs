@@ -8368,7 +8368,7 @@
           "$ref": "#/components/parameters/productionId2"
         }
       ],
-      "put": {
+      "post": {
         "summary": "productions - merge",
         "operationId": "productions-merge",
         "responses": {
