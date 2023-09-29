@@ -3680,6 +3680,36 @@
         ]
       }
     },
+    "/images/{imageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/imageId"
+        }
+      ],
+      "get": {
+        "summary": "image - get",
+        "tags": [
+          "Images"
+        ],
+        "operationId": "image-get",
+        "responses": {
+          "200": {
+            "description": "Image details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/image.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Returns the details of the image for the given `imageId`."
+      }
+    },
     "/places": {
       "post": {
         "summary": "place - create",
