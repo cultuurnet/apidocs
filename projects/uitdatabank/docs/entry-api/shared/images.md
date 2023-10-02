@@ -233,19 +233,23 @@ After successfully uploading your image, Entry API will send a JSON response lik
 ```json
 {
   "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
-  "id": "d18121ed-7040-49e0-8655-62709f756bf3"
+  "id": "546a90cd-a238-417b-aa98-1b6c50c1345c"
 }
 ```
 
 You will need the `@id` property to link the image to an event, place or organizer next.
 
-Additionally, when you follow the URL in the `@id` property you will receive a response with all the details of your uploaded image:
+
+### Viewing the details of an image
+
+Additionally, when you follow the URL in the `@id` property you will receive a response with all the details of your uploaded image,
+or you can use the `id` property to view the details of any image: [`GET /images`](/reference/entry.json/paths/~1images~1{imageId}/get) for places
 
 ```json
 {
   "@id": "https://io-test.uitdatabank.be/images/546a90cd-a238-417b-aa98-1b6c50c1345c",
   "@type": "schema:ImageObject",
-  "id": "d18121ed-7040-49e0-8655-62709f756bf3",
+  "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
   "contentUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
   "thumbnailUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
   "description": "Example description",
