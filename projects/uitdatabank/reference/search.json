@@ -288,9 +288,6 @@
           },
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
-          },
-          {
-            "$ref": "#/components/parameters/embedCalendarSummaries"
           }
         ]
       },
