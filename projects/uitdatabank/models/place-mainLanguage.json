@@ -1,5 +1,5 @@
 {
   "$ref": "./common-mainLanguage.json",
   "title": "place.mainLanguage",
-  "description": "The main language that the [place](./place.json) is described in. All localized properties like [name](./place-name.json) and [description](./place-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
+  "description": "The main language that the [place](https://docs.publiq.be/docs/uitdatabank/models/place) is described in. All localized properties like [name](./place-name.json) and [description](./place-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
 }

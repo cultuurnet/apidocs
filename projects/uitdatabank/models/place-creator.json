@@ -1,5 +1,5 @@
 {
   "$ref": "./common-creator.json",
   "title": "place.creator",
-  "description": "The unique identifier of the creator of the [place](./place.json). Usually a UUID, but can historally be an e-mail address.\n\nAdded automatically by UiTdatabank based on the authentication credentials used to create the place."
+  "description": "The unique identifier of the creator of the [place](https://docs.publiq.be/docs/uitdatabank/models/place). Usually a UUID, but can historally be an e-mail address.\n\nAdded automatically by UiTdatabank based on the authentication credentials used to create the place."
 }

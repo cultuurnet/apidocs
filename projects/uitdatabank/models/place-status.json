@@ -1,7 +1,7 @@
 {
   "$ref": "./common-status.json",
   "title": "place.status",
-  "description": "Indicates if the [place](./place.json) is still open for visitations or not.",
+  "description": "Indicates if the [place](https://docs.publiq.be/docs/uitdatabank/models/place) is still open for visitations or not.",
   "examples": [
     {
       "type": "Available"

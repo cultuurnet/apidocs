@@ -1,7 +1,7 @@
 {
   "title": "place.typicalAgeRange.put",
   "type": "object",
-  "description": "Describes the request body to set the typical age range of a [place](./place.json).",
+  "description": "Describes the request body to set the typical age range of a [place](https://docs.publiq.be/docs/uitdatabank/models/place).",
   "examples": [
     {
       "typicalAgeRange": "6-12"
