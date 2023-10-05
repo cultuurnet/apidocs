@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime.json",
   "title": "event.startDate",
-  "description": "The date & time that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) or [subEvent](./event-subEvent.json) starts, as an ISO-8601 date. For example `2021-05-17T22:00:00+00:00`.\n\nRequired on events when using one of the following calendarTypes:\n\n- `single`\n- `multiple`\n- `periodic`\n\nAlways required on subEvents."
+  "description": "The date & time that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) or [subEvent](./models/event-subEvent.json) starts, as an ISO-8601 date. For example `2021-05-17T22:00:00+00:00`.\n\nRequired on events when using one of the following calendarTypes:\n\n- `single`\n- `multiple`\n- `periodic`\n\nAlways required on subEvents."
 }
