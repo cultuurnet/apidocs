@@ -1,7 +1,7 @@
 {
   "title": "event.audience",
   "type": "object",
-  "description": "Indicates the intended audience of the [event](https://docs.publiq.be/docs/uitdatabank/models/event).",
+  "description": "Indicates the intended audience of the [event](./models/event.json).",
   "properties": {
     "audienceType": {
       "type": "string",

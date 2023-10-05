@@ -1,5 +1,5 @@
 {
   "$ref": "./common-bookingInfo.json",
   "title": "event.bookingInfo",
-  "description": "Booking info of the [event](https://docs.publiq.be/docs/uitdatabank/models/event). Can contain a phone number, and/or an email address, and/or a website URL."
+  "description": "Booking info of the [event](./models/event.json). Can contain a phone number, and/or an email address, and/or a website URL."
 }

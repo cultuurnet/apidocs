@@ -1,7 +1,7 @@
 {
   "type": "array",
   "title": "event.terms",
-  "description": "A list of taxonomy terms used to categorize the [event](https://docs.publiq.be/docs/uitdatabank/models/event).\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\nAn event requires at least one term, to define its type. (For example a concert, theater show, ...)",
+  "description": "A list of taxonomy terms used to categorize the [event](./models/event.json).\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\nAn event requires at least one term, to define its type. (For example a concert, theater show, ...)",
   "uniqueItems": true,
   "minItems": 1,
   "contains": {

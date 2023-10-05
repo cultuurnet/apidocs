@@ -2,5 +2,5 @@
   "$ref": "./common-string-uri.json",
   "examples": [],
   "title": "event.onlineUrl",
-  "description": "The url to follow the [event](https://docs.publiq.be/docs/uitdatabank/models/event) online."
+  "description": "The url to follow the [event](./models/event.json) online."
 }

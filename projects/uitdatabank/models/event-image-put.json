@@ -1,7 +1,7 @@
 {
   "title": "event.image.put",
   "type": "object",
-  "description": "Describes the request body to update an image at an [event](https://docs.publiq.be/docs/uitdatabank/models/event).",
+  "description": "Describes the request body to update an image at an [event](./models/event.json).",
   "examples": [
     {
       "description": "Picture of the last publiq event",

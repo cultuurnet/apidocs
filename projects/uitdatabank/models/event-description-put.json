@@ -4,7 +4,7 @@
   "properties": {
     "description": {
       "type": "string",
-      "description": "A human-readable description of the [event](https://docs.publiq.be/docs/uitdatabank/models/event) localized in the language from the URL parameter."
+      "description": "A human-readable description of the [event](./models/event.json) localized in the language from the URL parameter."
     }
   },
   "required": [

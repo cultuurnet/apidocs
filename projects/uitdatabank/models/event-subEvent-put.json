@@ -1,7 +1,7 @@
 {
   "title": "event.subEvent.put",
   "type": "array",
-  "description": "A list of occurrences of the [event](https://docs.publiq.be/docs/uitdatabank/models/event) when using the `single` or `multiple` [calendarType](./models/event-calendarType.json).",
+  "description": "A list of occurrences of the [event](./models/event.json) when using the `single` or `multiple` [calendarType](./models/event-calendarType.json).",
   "examples": [
     [
       {
