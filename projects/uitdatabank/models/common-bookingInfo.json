@@ -1,7 +1,7 @@
 {
   "title": "bookingInfo",
   "type": "object",
-  "description": "Booking info to buy tickets or reserve a place, containing one or more phone numbers, email addresses, and/or website URLs.",
+  "description": "Booking info to buy tickets or reserve a place, containing one or more phone numbers, email addresses, and/or website URLs. [Here is a detailed guide](./entry-api/shared/booking-and-contact-info#bookinginfo) with more information.",
   "dependentRequired": {
     "url": [
       "urlLabel"
@@ -41,7 +41,7 @@
     },
     "urlLabel": {
       "type": "object",
-      "description": "Call-to-action text to show for the link to the booking url. See [our suggested values](./shared/booking-and-contact-info#urllabel).",
+      "description": "Call-to-action text to show for the link to the booking url. See [our suggested values](./entry-api/shared/booking-and-contact-info#urllabel).",
       "minProperties": 1,
       "examples": [
         {

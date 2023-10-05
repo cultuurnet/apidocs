@@ -1,5 +1,5 @@
 {
   "$ref": "./common-contactPoint.json",
   "title": "place.contactPoint",
-  "description": "Contact info of the [place](./models/place.json), containing one or more phone numbers, email addresses, and/or website URLs."
+  "description": "Contact info of the [place](./models/place.json), containing one or more phone numbers, email addresses, and/or website URLs. [Here is a detailed guide](./entry-api/shared/booking-and-contact-info#contactpoint) with more information."
 }
