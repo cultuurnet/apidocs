@@ -21,7 +21,7 @@
     },
     "urlLabel": {
       "type": "object",
-      "description": "Call-to-action text to show for the link to the booking url",
+      "description": "Call-to-action text to show for the link to the booking url. See [our suggested values](./shared/booking-and-contact-info#urllabel).",
       "minProperties": 1,
       "examples": [
         {
