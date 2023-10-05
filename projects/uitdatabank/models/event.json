@@ -117,7 +117,7 @@
           "$ref": "./event-contributors.json"
         },
         "embedCalendarSummaries": {
-          "$ref": "./event-embedCalendarSummaries.json"
+          "$ref": "./event-calendarSummary.json"
         }
       },
       "required": [

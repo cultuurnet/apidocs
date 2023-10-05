@@ -105,7 +105,7 @@
           "$ref": "./place-contributors.json"
         },
         "embedCalendarSummaries": {
-          "$ref": "./place-embedCalendarSummaries.json"
+          "$ref": "./place-calendarSummary.json"
         }
       },
       "required": [
