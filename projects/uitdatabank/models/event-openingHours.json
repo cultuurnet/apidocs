@@ -1,5 +1,5 @@
 {
   "$ref": "./common-openingHours.json",
   "title": "event.openingHours",
-  "description": "A list of multiple open/closed times and weekdays indicating when the [event](./event.json) is happening when using the `periodic` [calendarType](./event-calendarType.json)."
+  "description": "A list of multiple open/closed times and weekdays indicating when the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is happening when using the `periodic` [calendarType](./event-calendarType.json)."
 }

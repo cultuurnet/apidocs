@@ -1,5 +1,5 @@
 {
   "$ref": "./common-sameAs.json",
   "title": "event.sameAs",
-  "description": "One or more URIs that represent the same [event](./event.json) on another API or website, not necessarily in JSON-LD format.\n\nAdded automatically by UiTdatabank based on info from other systems.\n\nFor example `http://www.uitinvlaanderen.be/agenda/e/test-event/85b04295-479c-40f5-b3dd-469dfb4387b3`."
+  "description": "One or more URIs that represent the same [event](https://docs.publiq.be/docs/uitdatabank/models/event) on another API or website, not necessarily in JSON-LD format.\n\nAdded automatically by UiTdatabank based on info from other systems.\n\nFor example `http://www.uitinvlaanderen.be/agenda/e/test-event/85b04295-479c-40f5-b3dd-469dfb4387b3`."
 }

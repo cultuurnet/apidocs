@@ -1,5 +1,5 @@
 {
   "$ref": "./common-status.json",
   "title": "event.status",
-  "description": "Indicates if the [event](./event.json) is still happening as scheduled or not."
+  "description": "Indicates if the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is still happening as scheduled or not."
 }

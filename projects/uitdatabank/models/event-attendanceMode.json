@@ -1,7 +1,7 @@
 {
   "title": "event.attendanceMode",
   "type": "string",
-  "description": "Indicates if the [event](./event.json) is happening online, offline, or both (mixed).",
+  "description": "Indicates if the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is happening online, offline, or both (mixed).",
   "enum": [
     "online",
     "offline",

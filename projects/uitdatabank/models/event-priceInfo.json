@@ -1,5 +1,5 @@
 {
   "$ref": "./common-priceInfo.json",
   "title": "event.priceInfo",
-  "description": "A list of tariffs available for tickets/reservations to attend the [event](./event.json)."
+  "description": "A list of tariffs available for tickets/reservations to attend the [event](https://docs.publiq.be/docs/uitdatabank/models/event)."
 }

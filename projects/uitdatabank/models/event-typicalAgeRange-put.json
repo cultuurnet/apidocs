@@ -1,7 +1,7 @@
 {
   "title": "event.typicalAgeRange.put",
   "type": "object",
-  "description": "Describes the request body to set the typical age range of an [event](./event.json).",
+  "description": "Describes the request body to set the typical age range of an [event](https://docs.publiq.be/docs/uitdatabank/models/event).",
   "examples": [
     {
       "typicalAgeRange": "6-12"

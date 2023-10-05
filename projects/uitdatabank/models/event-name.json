@@ -1,5 +1,5 @@
 {
   "$ref": "./common-name.json",
   "title": "event.name",
-  "description": "The human-readable, localized name of the [event](./event.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./event-mainLanguage.json) property."
+  "description": "The human-readable, localized name of the [event](https://docs.publiq.be/docs/uitdatabank/models/event).\n\nRequires at least one value, for the language specified in the [mainLanguage](./event-mainLanguage.json) property."
 }

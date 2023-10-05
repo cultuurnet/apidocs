@@ -1,7 +1,7 @@
 {
   "title": "event.image.post",
   "type": "object",
-  "description": "Describes the request body to add an image to an [event](./event.json).",
+  "description": "Describes the request body to add an image to an [event](https://docs.publiq.be/docs/uitdatabank/models/event).",
   "properties": {
     "mediaObjectId": {
       "$ref": "./common-string-uuid.json",
