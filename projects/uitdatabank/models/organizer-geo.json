@@ -1,5 +1,5 @@
 {
   "$ref": "./common-coordinates.json",
   "title": "organizer.geo",
-  "description": "Geographic coordinates corresponding to the [address](./organizer-address.json) the organizer is located at. Calculated automatically by UiTdatabank."
+  "description": "Geographic coordinates corresponding to the [address](./models/organizer-address.json) the organizer is located at. Calculated automatically by UiTdatabank."
 }
