@@ -1,5 +1,5 @@
 {
   "$ref": "./common-address.json",
   "title": "place.address",
-  "description": "The address the [place](https://docs.publiq.be/docs/uitdatabank/models/place) is located at. Localized because some parts like the municipality or street address can be different in Dutch, French, German and/or English.\n\nRequires at least one locale, specifically the one defined in the [mainLanguage](./place-mainLanguage.json) of the place.\n\n**Only add a localized version if it's an official variant!**"
+  "description": "The address the [place](https://docs.publiq.be/docs/uitdatabank/models/place) is located at. Localized because some parts like the municipality or street address can be different in Dutch, French, German and/or English.\n\nRequires at least one locale, specifically the one defined in the [mainLanguage](./models/place-mainLanguage.json) of the place.\n\n**Only add a localized version if it's an official variant!**"
 }
