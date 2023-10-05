@@ -52,7 +52,7 @@
   "properties": {
     "nl": {
       "$ref": "./offer-calendarSummary.detail.json",
-      "description": "T"
+      "description": "Contains all Dutch calendar summaries"
     },
     "fr": {
       "$ref": "./offer-calendarSummary.detail.json",
