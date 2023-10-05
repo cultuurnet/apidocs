@@ -1,5 +1,5 @@
 {
   "$ref": "./common-languages.json",
   "title": "event.languages",
-  "description": "List of languages that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is available in. (Not all localizable properties may contain every language though)\n\nAdded automatically by UiTdatabank based on the languages present in localized properties.\n\nSee also [completedLanguages](./event-completedLanguages.json)."
+  "description": "List of languages that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is available in. (Not all localizable properties may contain every language though)\n\nAdded automatically by UiTdatabank based on the languages present in localized properties.\n\nSee also [completedLanguages](./models/event-completedLanguages.json)."
 }
