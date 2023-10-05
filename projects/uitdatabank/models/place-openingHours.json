@@ -1,5 +1,5 @@
 {
   "$ref": "./common-openingHours.json",
   "title": "place.openingHours",
-  "description": "A list of multiple open/closed times and weekdays indicating when the [place](https://docs.publiq.be/docs/uitdatabank/models/place) is open."
+  "description": "A list of multiple open/closed times and weekdays indicating when the [place](./models/place.json) is open."
 }

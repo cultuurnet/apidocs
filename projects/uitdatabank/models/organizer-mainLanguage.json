@@ -1,5 +1,5 @@
 {
   "$ref": "./common-mainLanguage.json",
   "title": "organizer.mainLanguage",
-  "description": "The main language that the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) is described in. All localized properties like [name](./models/organizer-name.json) and [description](./models/organizer-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
+  "description": "The main language that the [organizer](./models/organizer.json) is described in. All localized properties like [name](./models/organizer-name.json) and [description](./models/organizer-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
 }

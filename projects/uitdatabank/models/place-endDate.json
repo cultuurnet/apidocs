@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime.json",
   "title": "place.endDate",
-  "description": "The date & time that the [place](https://docs.publiq.be/docs/uitdatabank/models/place) ends when using the `periodic` [calendarType](./models/place-calendarType.json), as an ISO-8601 date.\n\nFor example `2021-05-17T22:00:00+00:00`."
+  "description": "The date & time that the [place](./models/place.json) ends when using the `periodic` [calendarType](./models/place-calendarType.json), as an ISO-8601 date.\n\nFor example `2021-05-17T22:00:00+00:00`."
 }

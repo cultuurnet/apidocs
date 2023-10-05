@@ -1,5 +1,5 @@
 {
   "$ref": "./common-address-localized.json",
   "title": "place.address.put",
-  "description": "New address of the [place](https://docs.publiq.be/docs/uitdatabank/models/place), localized in a single language."
+  "description": "New address of the [place](./models/place.json), localized in a single language."
 }

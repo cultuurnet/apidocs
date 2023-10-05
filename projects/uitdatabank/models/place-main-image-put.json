@@ -1,7 +1,7 @@
 {
   "title": "place.main.image.put",
   "type": "object",
-  "description": "Describes the request body to set an image as the main image of a [place](https://docs.publiq.be/docs/uitdatabank/models/place).",
+  "description": "Describes the request body to set an image as the main image of a [place](./models/place.json).",
   "examples": [
     {
       "mediaObjectId": "4b349765-9499-4d35-b295-c82ede576cf0"

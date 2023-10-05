@@ -5,5 +5,5 @@
   },
   "title": "organizer.contributors",
   "readOnly": true,
-  "description": "List of contributors on an [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer). Only included if you request the organizer with an authenticated user who has the \"Aanbod bewerken\" permission on the organizer."
+  "description": "List of contributors on an [organizer](./models/organizer.json). Only included if you request the organizer with an authenticated user who has the \"Aanbod bewerken\" permission on the organizer."
 }

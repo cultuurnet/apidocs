@@ -1,5 +1,5 @@
 {
   "$ref": "./common-typicalAgeRange.json",
   "type": "string",
-  "description": "Indicates the minimum and maximum age to visit the [place](https://docs.publiq.be/docs/uitdatabank/models/place). For example `6-12`, `0-12`, `-12`, or `6-`."
+  "description": "Indicates the minimum and maximum age to visit the [place](./models/place.json). For example `6-12`, `0-12`, `-12`, or `6-`."
 }

@@ -1,7 +1,7 @@
 {
   "title": "organizer.contact",
   "type": "array",
-  "description": "Contact info of the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) in a legacy format, containing one or more phone numbers, email addresses and/or website URLs.\n\nA type is used to categories the kind of contact information. The type can be either: url, email or phone.",
+  "description": "Contact info of the [organizer](./models/organizer.json) in a legacy format, containing one or more phone numbers, email addresses and/or website URLs.\n\nA type is used to categories the kind of contact information. The type can be either: url, email or phone.",
   "examples": [
     [
       {

@@ -1,5 +1,5 @@
 {
   "$ref": "./common-mainImage.json",
   "title": "organizer.mainImage",
-  "description": "URL to the main image of the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer). Will be automatically be set by UiTdatabank to the URL of the first image in `images`."
+  "description": "URL to the main image of the [organizer](./models/organizer.json). Will be automatically be set by UiTdatabank to the URL of the first image in `images`."
 }

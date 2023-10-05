@@ -1,5 +1,5 @@
 {
   "$ref": "./place-reference.json",
   "title": "event.location",
-  "description": "A reference to a [place](https://docs.publiq.be/docs/uitdatabank/models/place) linked to the event. When writing an event it should only contain an `@id` property. When reading an event it will contain all the properties from the [place](https://docs.publiq.be/docs/uitdatabank/models/place). Always required when creating/updating an event, except when using [attendanceMode](./models/event-attendanceMode.json) `online`."
+  "description": "A reference to a [place](./models/place.json) linked to the event. When writing an event it should only contain an `@id` property. When reading an event it will contain all the properties from the [place](./models/place.json). Always required when creating/updating an event, except when using [attendanceMode](./models/event-attendanceMode.json) `online`."
 }

@@ -1,7 +1,7 @@
 {
   "title": "place.image.put",
   "type": "object",
-  "description": "Describes the request body to update an image at a [place](https://docs.publiq.be/docs/uitdatabank/models/place).",
+  "description": "Describes the request body to update an image at a [place](./models/place.json).",
   "examples": [
     {
       "description": "Picture of the last publiq event",
