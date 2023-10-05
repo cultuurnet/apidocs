@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime-readOnly.json",
   "title": "place.availableTo",
-  "description": "The last date & time that the [place](./models/place.json) is allowed to be visible on publication channels.\n\nAdded automatically by UiTdatabank based on either the [startDate](./place-startDate) or [endDate](./place-endDate.json) depending on the [event type](./place-terms.json).\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
+  "description": "The last date & time that the [place](./models/place.json) is allowed to be visible on publication channels.\n\nAdded automatically by UiTdatabank based on either the [startDate](./models/place-startDate) or [endDate](./models/place-endDate.json) depending on the [event type](./models/place-terms.json).\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
 }
