@@ -1,7 +1,7 @@
 {
   "type": "object",
   "title": "event",
-  "description": "A cultural, sport, or pastime activity.",
+  "description": "A cultural, sport, or pastime activity.\n\n<a href=\"https://docs.publiq.be/docs/uitdatabank/entry-api/events/what-are-events\">What are events?</a>",
   "allOf": [
     {
       "properties": {
