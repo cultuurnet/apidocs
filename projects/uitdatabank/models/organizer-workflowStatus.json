@@ -1,7 +1,7 @@
 {
   "type": "string",
   "title": "organizer.workflowStatus",
-  "description": "The status of the [organizer](./organizer.json) in the moderation workflow.\n\nCan be one of two values:\n\n- `ACTIVE`: The organizer is created and can be used.\n- `DELETED`: The organizer was deleted and should not be visible on any publication channels.",
+  "description": "The status of the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) in the moderation workflow.\n\nCan be one of two values:\n\n- `ACTIVE`: The organizer is created and can be used.\n- `DELETED`: The organizer was deleted and should not be visible on any publication channels.",
   "enum": [
     "ACTIVE",
     "DELETED"

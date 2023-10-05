@@ -1,5 +1,5 @@
 {
   "$ref": "./common-images.json",
   "title": "organizer.images",
-  "description": "Describes an array of images that are linked to an [organizer](./organizer.json). The main image of the organizer will always be set to the first image in this list when creating/updating an organizer with multiple images."
+  "description": "Describes an array of images that are linked to an [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer). The main image of the organizer will always be set to the first image in this list when creating/updating an organizer with multiple images."
 }

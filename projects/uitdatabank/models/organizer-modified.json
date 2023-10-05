@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime-readOnly.json",
   "title": "organizer.modified",
-  "description": "Date formatted as an ISO-8601 datetime, added automatically by UiTdatabank based on the date & time the [organizer](./organizer.json) was last modified.\n\nFor example `2021-05-17T22:00:00+00:00`."
+  "description": "Date formatted as an ISO-8601 datetime, added automatically by UiTdatabank based on the date & time the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) was last modified.\n\nFor example `2021-05-17T22:00:00+00:00`."
 }

@@ -1,5 +1,5 @@
 {
   "$ref": "./common-creator.json",
   "title": "organizer.creator",
-  "description": "The unique identifier of the creator of the [organizer](./organizer.json). Usually a UUID, but can historally be an e-mail address.\n\nAdded automatically by UiTdatabank based on the authentication credentials used to create the organizer."
+  "description": "The unique identifier of the creator of the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer). Usually a UUID, but can historally be an e-mail address.\n\nAdded automatically by UiTdatabank based on the authentication credentials used to create the organizer."
 }

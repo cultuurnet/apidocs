@@ -1,5 +1,5 @@
 {
   "$ref": "./organizer-reference.json",
   "title": "event.organizer",
-  "description": "A reference to an [organizer](./organizer.json) linked to the event. When writing an event it should only contain an `@id` property. When reading an event it will contain all the properties from the [organizer](./organizer.json)."
+  "description": "A reference to an [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) linked to the event. When writing an event it should only contain an `@id` property. When reading an event it will contain all the properties from the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer)."
 }

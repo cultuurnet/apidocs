@@ -1,5 +1,5 @@
 {
   "$ref": "./common-description.json",
   "title": "organizer.educationalDescription",
-  "description": "A human-readable, internationalized educational description of the [organizer](./organizer.json) that can be used as a description targeted to schools and teachers.\n\nRequires at least one value, for the language specified in the [mainLanguage](./organizer-mainLanguage.json) property."
+  "description": "A human-readable, internationalized educational description of the [organizer](https://docs.publiq.be/docs/uitdatabank/models/organizer) that can be used as a description targeted to schools and teachers.\n\nRequires at least one value, for the language specified in the [mainLanguage](./organizer-mainLanguage.json) property."
 }
