@@ -115,6 +115,9 @@
         },
         "contributors": {
           "$ref": "./event-contributors.json"
+        },
+        "embedCalendarSummaries": {
+          "$ref": "./event-embedCalendarSummaries.json"
         }
       },
       "required": [
