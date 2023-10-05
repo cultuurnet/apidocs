@@ -1,5 +1,5 @@
 {
   "$ref": "./common-mainLanguage.json",
   "title": "event.mainLanguage",
-  "description": "The main language that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is described in. All localized properties like [name](./event-name.json) and [description](./event-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
+  "description": "The main language that the [event](https://docs.publiq.be/docs/uitdatabank/models/event) is described in. All localized properties like (./models/event-openingHours.json)(./models/event-name.json) and [description](./models/event-description.json) will be required to have at least a value for this language.\n\nCan be one of `nl`, `fr`, `de`, or `en`."
 }
