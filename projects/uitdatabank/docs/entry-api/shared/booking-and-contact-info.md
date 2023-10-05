@@ -26,7 +26,7 @@ For example, on UiTinVlaanderen a button will be shown under your event's summar
 
 Additionally, you can customize the label of the button, or add a telephone number or email address to book tickets instead of a website. You may also specify the start- and end date of the booking period.
 
-An example of a comlete `bookingInfo` property looks like this:
+An example of a complete `bookingInfo` property looks like this:
 
 ```json
 {
@@ -105,7 +105,7 @@ For example, on UiTinVlaanderen this will look like this:
 
 ![Screenshot of example contact info of an event on UiTinVlaanderen](../../../assets/images/contact-point.png)
 
-An example of a comlete `contactPoint` property looks like this:
+An example of a complete `contactPoint` property looks like this:
 
 ```json
 {
