@@ -5,5 +5,5 @@
   },
   "title": "place.contributors",
   "readOnly": true,
-  "description": "List of contributors on a [place](./models/place.json). Only included if you request the place with an authenticated user who has the \"Aanbod bewerken\" permission on the place."
+  "description": "List of contributors on a [place](./models/place.json). Only included if you request the place with an authenticated user who has the \"Aanbod bewerken\" permission on the place. [Here is a detailed guide](./entry-api/shared/contributors) with more information."
 }

@@ -1246,7 +1246,7 @@
         "explode": false,
         "in": "query",
         "name": "calendarType",
-        "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types."
+        "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. [Here is a detailed guide](./entry-api/shared/calendar-info#calendartype) with more information."
       },
       "createdFrom": {
         "schema": {
