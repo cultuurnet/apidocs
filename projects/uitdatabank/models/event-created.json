@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime-readOnly.json",
   "title": "event.created",
-  "description": "Date formatted as an ISO-8601 datetime, added automatically by UiTdatabank based on the date & time the [event](./event.json) was created at.\n\nFor example `2021-05-17T22:00:00+00:00`."
+  "description": "Date formatted as an ISO-8601 datetime, added automatically by UiTdatabank based on the date & time the [event](./models/event.json) was created at.\n\nFor example `2021-05-17T22:00:00+00:00`."
 }

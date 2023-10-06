@@ -1,5 +1,5 @@
 {
   "$ref": "./common-labels.json",
   "title": "place.hiddenLabels",
-  "description": "Same as [labels](./place-labels.json), but for labels that should not be visible for end users on publication channels and should instead only be used for filtering or other processing."
+  "description": "Same as [labels](./models/place-labels.json), but for labels that should not be visible for end users on publication channels and should instead only be used for filtering or other processing."
 }

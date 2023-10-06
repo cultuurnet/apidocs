@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime-readOnly.json",
   "title": "event.availableTo",
-  "description": "The last date & time that the [event](./event.json) is allowed to be visible on publication channels.\n\nAdded automatically by UiTdatabank based on either the [startDate](./event-startDate.json) or [endDate](./event-endDate.json) depending on the [event type](./event-terms.json).\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
+  "description": "The last date & time that the [event](./models/event.json) is allowed to be visible on publication channels.\n\nAdded automatically by UiTdatabank based on either the [startDate](./models/event-startDate.json) or [endDate](./models/event-endDate.json) depending on the [event type](./models/event-terms.json).\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
 }

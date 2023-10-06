@@ -4,7 +4,7 @@
   "properties": {
     "availableFrom": {
       "$ref": "./common-string-datetime.json",
-      "description": "The first date & time that the [event](./event.json) is allowed to be visible on publication channels.\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
+      "description": "The first date & time that the [event](./models/event.json) is allowed to be visible on publication channels.\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
     }
   },
   "required": [

@@ -2,7 +2,7 @@
   "title": "organizer.@id",
   "type": "string",
   "format": "uri",
-  "description": "A unique URI that acts as globally unique ID for the [organizer](./organizer.json). Based on [JSON-LD node identifiers](https://www.w3.org/TR/json-ld/#node-identifiers).",
+  "description": "A unique URI that acts as globally unique ID for the [organizer](./models/organizer.json). Based on [JSON-LD node identifiers](https://www.w3.org/TR/json-ld/#node-identifiers).",
   "examples": [
     "https://io-test.uitdatabank.be/organizers/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
   ],

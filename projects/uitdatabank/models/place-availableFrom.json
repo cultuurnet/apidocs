@@ -1,5 +1,5 @@
 {
   "$ref": "./common-string-datetime.json",
   "title": "place.availableFrom",
-  "description": "The first date & time that the [place](./place.json) is allowed to be visible on publication channels.\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
+  "description": "The first date & time that the [place](./models/place.json) is allowed to be visible on publication channels.\n\nFormatted as an ISO-8601 datetime. For example `2021-05-17T22:00:00+00:00`."
 }

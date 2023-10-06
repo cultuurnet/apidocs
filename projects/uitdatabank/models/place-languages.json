@@ -1,5 +1,5 @@
 {
   "$ref": "./common-languages.json",
   "title": "place.languages",
-  "description": "List of languages that the [place](./place.json) is available in. (Not all localizable properties may contain every language though)\n\nAdded automatically by UiTdatabank based on the languages present in localized properties.\n\nSee also [completedLanguages](./place-completedLanguages.json)."
+  "description": "List of languages that the [place](./models/place.json) is available in. (Not all localizable properties may contain every language though)\n\nAdded automatically by UiTdatabank based on the languages present in localized properties.\n\nSee also [completedLanguages](./models/place-completedLanguages.json)."
 }

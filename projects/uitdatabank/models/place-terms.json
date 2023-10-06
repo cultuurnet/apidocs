@@ -1,7 +1,7 @@
 {
   "type": "array",
   "title": "place.terms",
-  "description": "A list of taxonomy terms used to categorize the [place](./place.json).\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\nA place requires at least one term, to define its type. (For example a museum, monument, ...)",
+  "description": "A list of taxonomy terms used to categorize the [place](./models/place.json).\n\nTerms are pre-defined and can be found using our [guide about taxonomy terms](../docs/taxonomy-api/terms.md).\n\nA place requires at least one term, to define its type. (For example a museum, monument, ...)",
   "uniqueItems": true,
   "minItems": 1,
   "contains": {

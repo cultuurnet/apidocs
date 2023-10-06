@@ -1,5 +1,5 @@
 {
   "$ref": "./common-address.json",
   "title": "organizer.address",
-  "description": "The address the [organizer](./organizer.json) is located at. Localized because some parts like the municipality or street address can be different in Dutch, French, German and/or English.\n\nRequires at least one locale, specifically the one defined in the [mainLanguage](./organizer-mainLanguage.json) of the organizer.\n\n**Only add a localized version if it's an official variant!**"
+  "description": "The address the [organizer](./models/organizer.json) is located at. Localized because some parts like the municipality or street address can be different in Dutch, French, German and/or English.\n\nRequires at least one locale, specifically the one defined in the [mainLanguage](./models/organizer-mainLanguage.json) of the organizer.\n\n**Only add a localized version if it's an official variant!**"
 }

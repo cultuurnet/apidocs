@@ -1,5 +1,5 @@
 {
   "$ref": "./common-labels.json",
   "title": "place.labels",
-  "description": "One or more labels that categorize the [place](./place.json). Compared to [terms](./place-terms.json), labels do not have a defined set of possible values or a hierarchy.\n\nLabels are allowed to be visible for end users on publication channels.\n\nSee [hiddenLabels](./place-hiddenLabels.json) for labels that should not be visible on publication channels."
+  "description": "One or more labels that categorize the [place](./models/place.json). Compared to [terms](./models/place-terms.json), labels do not have a defined set of possible values or a hierarchy.\n\nLabels are allowed to be visible for end users on publication channels.\n\nSee [hiddenLabels](./models/place-hiddenLabels.json) for labels that should not be visible on publication channels."
 }

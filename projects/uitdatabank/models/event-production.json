@@ -1,5 +1,5 @@
 {
-  "description": "The production that the [event](./event.json) belongs to.\n\nA production is a group of events that share the same subject but are taking place in different locations and/or are organized by different organizers.\n\nFor example a theatre show that is scheduled to be performed at different locations, or a movie that will be screened at different cinema's.",
+  "description": "The production that the [event](./models/event.json) belongs to.\n\nA production is a group of events that share the same subject but are taking place in different locations and/or are organized by different organizers.\n\nFor example a theatre show that is scheduled to be performed at different locations, or a movie that will be screened at different cinema's.",
   "type": "object",
   "examples": [
     {

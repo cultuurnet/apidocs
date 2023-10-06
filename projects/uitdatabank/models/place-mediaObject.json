@@ -1,5 +1,5 @@
 {
   "$ref": "./common-images.json",
   "title": "place.mediaObject",
-  "description": "A list of media objects related to the [place](./place.json), in reality always images but called mediaObject for backward compatibility. The main image of the place will always be set to the first image in this list when creating/updating a place with multiple images."
+  "description": "A list of media objects related to the [place](./models/place.json), in reality always images but called mediaObject for backward compatibility. The main image of the place will always be set to the first image in this list when creating/updating a place with multiple images."
 }

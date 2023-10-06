@@ -1,5 +1,5 @@
 {
   "$ref": "./common-priceInfo.json",
   "title": "place.priceInfo",
-  "description": "A list of tariffs available for tickets/reservations to visit the [place](./place.json)."
+  "description": "A list of tariffs available for tickets/reservations to visit the [place](./models/place.json)."
 }

@@ -3,7 +3,7 @@
   "type": "string",
   "format": "uri",
   "pattern": "^http[s]?:\\/\\/.+?\\/event[s]?\\/([0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12})[\\/]?",
-  "description": "A unique URI that acts as globally unique ID for the [event](./event.json). Based on [JSON-LD node identifiers](https://www.w3.org/TR/json-ld/#node-identifiers).",
+  "description": "A unique URI that acts as globally unique ID for the [event](./models/event.json). Based on [JSON-LD node identifiers](https://www.w3.org/TR/json-ld/#node-identifiers).",
   "examples": [
     "https://io-test.uitdatabank.be/event/85b04295-479c-40f5-b3dd-469dfb4387b3"
   ]

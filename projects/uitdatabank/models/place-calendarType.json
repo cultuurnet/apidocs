@@ -1,7 +1,7 @@
 {
   "type": "string",
   "title": "place.calendarType",
-  "description": "Determines how long the [place](./place.json) exists.\n\nPossible values: `periodic`, `permanent`.\n\n- **periodic**: For places that only exist for a specific period. **Must** have a [startDate](./place-startDate.json) and [endDate](./place-endDate.json). Can optionally have [openingHours](./place-openingHours.json).\n\n- **permanent**: For places that exist permanently. Can optionally have [openingHours](./place-openingHours.json).",
+  "description": "Determines how long the [place](./models/place) exists.\n\nPossible values: `periodic`, `permanent`.\n\n- **periodic**: For places that only exist for a specific period. **Must** have a [startDate](./models/place-startDate.json) and [endDate](./models/place-endDate.json). Can optionally have [openingHours](./models/place-openingHours.json).\n\n- **permanent**: For places that exist permanently. Can optionally have [openingHours](./models/place-openingHours.json). [Here is a detailed guide](./entry-api/shared/calendar-info#calendartype) with more information.",
   "enum": [
     "periodic",
     "permanent"

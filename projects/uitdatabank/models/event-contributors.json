@@ -2,5 +2,5 @@
   "$ref": "./common-contributors.json",
   "title": "event.contributors",
   "readOnly": true,
-  "description": "List of contributors on an [event](./event.json). Only included if you request the event with an authenticated user who has the \"Aanbod bewerken\" permission on the event."
+  "description": "List of contributors on an [event](./models/event.json). Only included if you request the event with an authenticated user who has the \"Aanbod bewerken\" permission on the event. [Here is a detailed guide](./entry-api/shared/contributors) with more information."
 }

@@ -1,5 +1,5 @@
 {
   "$ref": "./common-description.json",
   "title": "event.description",
-  "description": "A human-readable, internationalized description of the [event](./event.json). \n\nRequires at least one value, for the language specified in the [mainLanguage](./event-mainLanguage.json) property."
+  "description": "A human-readable, internationalized description of the [event](./models/event.json). \n\nRequires at least one value, for the language specified in the [mainLanguage](./models/event-mainLanguage.json) property."
 }
