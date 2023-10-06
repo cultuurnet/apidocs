@@ -116,7 +116,7 @@
         "contributors": {
           "$ref": "./event-contributors.json"
         },
-        "embedCalendarSummaries": {
+        "calendarSummary": {
           "$ref": "./event-calendarSummary.json"
         }
       },
