@@ -104,7 +104,7 @@
         "contributors": {
           "$ref": "./place-contributors.json"
         },
-        "embedCalendarSummaries": {
+        "calendarSummary": {
           "$ref": "./place-calendarSummary.json"
         }
       },
