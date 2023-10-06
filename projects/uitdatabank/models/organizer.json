@@ -1,7 +1,7 @@
 {
   "title": "organizer",
   "type": "object",
-  "description": "An organization that is hosting an event or is the owner of a location.",
+  "description": "An organization that is hosting an event or is the owner of a location.\n\nFor more information: <a href=\"https://docs.publiq.be/docs/uitdatabank/entry-api/organizers/what-are-organizers\">What are organizers?</a>",
   "properties": {
     "@id": {
       "$ref": "./organizer-@id.json"

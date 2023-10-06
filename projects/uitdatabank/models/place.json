@@ -1,7 +1,7 @@
 {
   "title": "place",
   "type": "object",
-  "description": "A cultural, pastime, or sports-related location that can be visited or where an event can be located at.",
+  "description": "A cultural, pastime, or sports-related location that can be visited or where an event can be located at.\n\nFor more information: <a href=\"https://docs.publiq.be/docs/uitdatabank/entry-api/places/what-are-places\">What are places?</a>",
   "allOf": [
     {
       "properties": {
