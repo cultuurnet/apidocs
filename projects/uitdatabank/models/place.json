@@ -103,6 +103,9 @@
         },
         "contributors": {
           "$ref": "./place-contributors.json"
+        },
+        "calendarSummary": {
+          "$ref": "./place-calendarSummary.json"
         }
       },
       "required": [

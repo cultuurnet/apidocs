@@ -1,0 +1,61 @@
+{
+  "description": "Human readable format of dates used in the calendar summary, in both HTML and textual representation.",
+  "title": "offer.calendarSummary.detail",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "object",
+      "description": "Textual represenation of the date of the event / place",
+      "properties": {
+        "xs": {
+          "type": "string",
+          "description": "Extra small date, example \"28 nov\""
+        },
+        "sm": {
+          "type": "string",
+          "description": "Small date, example: Tot 28 nov 2022"
+        },
+        "md": {
+          "type": "string",
+          "description": "Medium date, example: Ma 28 november 2022 (uitverkocht)"
+        },
+        "lg": {
+          "type": "string",
+          "description": "Large date, example: Maandag 28 november 2022 van 20:00 tot 21:00 (Volzet of uitverkocht)"
+        }
+      }
+    },
+    "html": {
+      "type": "object",
+      "description": "HTML represenation of the date of the event / place",
+      "properties": {
+        "xs": {
+          "type": "string",
+          "description": "Extra date label in HTML"
+        },
+        "sm": {
+          "type": "string",
+          "description": "Small date in HTML"
+        },
+        "md": {
+          "type": "string",
+          "description": "Medium date in HTML"
+        },
+        "lg": {
+          "type": "string",
+          "description": "Large date in HTML"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "text": {
+        "sm": "Tot 30 jun 2021"
+      },
+      "html": {
+        "lg": "<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Maandag</span> <span class=\"cf-date\">28 november 2022</span> <span class=\"cf-from cf-meta\">van</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">tot</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Volzet of uitverkocht)</span>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "title": "place.calendarSummary",
+  "type": "object",
+  "description": "Only visible when adding the extra `embedCalendarSummaries` property to the search query. This contains one or more formatted human-readable summaries of the date/time info of the result.",
+  "examples": [
+    {
+      "nl": {
+        "text": {
+          "xs": "28 nov"
+        }
+      },
+      "fr": {
+        "text": {
+          "xs": "28 nov"
+        }
+      },
+      "de": {
+        "text": {
+          "xs": "28 Nov"
+        }
+      },
+      "en": {
+        "text": {
+          "xs": "28 Nov"
+        }
+      }
+    },
+    {
+      "nl": {
+        "text": {
+          "xs": "28 nov"
+        }
+      },
+      "fr": {
+        "text": {
+          "xs": "28 nov"
+        }
+      },
+      "de": {
+        "text": {
+          "xs": "28 Nov"
+        }
+      },
+      "en": {
+        "text": {
+          "xs": "28 Nov"
+        }
+      }
+    }
+  ],
+  "minProperties": 1,
+  "properties": {
+    "nl": {
+      "$ref": "./offer-calendarSummary.detail.json",
+      "description": "Contains all Dutch calendar summaries"
+    },
+    "fr": {
+      "$ref": "./offer-calendarSummary.detail.json",
+      "description": "Contains all French calendar summaries"
+    },
+    "de": {
+      "$ref": "./offer-calendarSummary.detail.json",
+      "description": "Contains all German calendar summaries"
+    },
+    "en": {
+      "$ref": "./offer-calendarSummary.detail.json",
+      "description": "Contains all English calendar summaries"
+    }
+  },
+  "readOnly": true
+}
