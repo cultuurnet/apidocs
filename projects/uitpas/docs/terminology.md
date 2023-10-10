@@ -14,13 +14,13 @@ Similar to a passholder, but issued to a group of people in specific circumstanc
 
 Certain actions within UiTPAS are linked to specific events, for example when [registering a ticket sale](./registering-ticket-sales.md) at a discounted UiTPAS tariff.
 
-Those events need to exist in [UiTdatabank](https://docs.publiq.be/docs/uitdatabank). UiTdatabank is a central database of cultural and pastime activities in Flanders and Brussels. [To register an UiTPAS event](./registering-events.md), the event in UiTdatabank needs to have a base price and has to be linked to a known UiTPAS organizer.
+Those events need to exist in [UiTdatabank](https://docs.publiq.be/docs/uitdatabank/introduction). UiTdatabank is a central database of cultural and pastime activities in Flanders and Brussels. [To register an UiTPAS event](./registering-events.md), the event in UiTdatabank needs to have a base price and has to be linked to a known UiTPAS organizer.
 
 ## UiTPAS Organizer
 
 The organizer of an UiTPAS event. To pay for the social tariff for people in need, the organizer is partly reimbursed by the local government. That's why it's important to always create UiTPAS events with the correct UiTPAS organizer.
 
-Just like events, organizers are saved in [UiTdatabank](https://docs.publiq.be/docs/uitdatabank).
+Just like events, organizers are saved in [UiTdatabank](https://docs.publiq.be/docs/uitdatabank/introduction).
 
 ## UiTPAS Tariffs
 
