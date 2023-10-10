@@ -15,9 +15,9 @@ Before starting this guide, make sure you clearly understand which type of rewar
 
 ## Authentication
 
-Before you can [create rewards](/reference/uitpas.json/paths/~1rewards/post), you'll need **client credentials**, so you can access the UiTPAS API using a [Client Access Token](https://publiq.stoplight.io/docs/authentication/docs/client-access-token.md) or [User access Token](https://publiq.stoplight.io/docs/authentication/docs/user-access-token.md).
+Before you can [create rewards](/reference/uitpas.json/paths/~1rewards/post), you'll need **client credentials**, so you can access the UiTPAS API using a [Client Access Token](https://publiq.stoplight.io/docs/authentication/methods/client-access-token) or [User access Token](https://publiq.stoplight.io/docs/authentication/methods/user-access-token).
 
-To decide what kind of token to use, see the [overview of token types](https://publiq.stoplight.io/docs/authentication/docs/methods.md).
+To decide what kind of token to use, see the [overview of token types](https://publiq.stoplight.io/docs/authentication/methods/overview).
 
 > ##### Permissions to create and redeem rewards
 >
