@@ -68,7 +68,6 @@ The request you are trying to perform cannot complete because the event already 
 
 The request you are trying to perform cannot complete because the provided event cannot be found.
 
-
 ## family-member-already-added
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/family-member-already-added`

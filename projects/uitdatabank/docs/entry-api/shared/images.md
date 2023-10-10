@@ -239,7 +239,6 @@ After successfully uploading your image, Entry API will send a JSON response lik
 
 You will need the `@id` property to link the image to an event, place or organizer next.
 
-
 ### Viewing the details of an image
 
 Additionally, when you follow the URL in the `@id` property you will receive a response with all the details of your uploaded image,

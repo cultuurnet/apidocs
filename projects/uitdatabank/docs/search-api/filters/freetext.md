@@ -5,7 +5,9 @@ Using either the `text` (or `name`) and the `q` URL parameters, you can search f
 ```http
 GET /offers/?text="this is a test"
 ```
+
 or
+
 ```http
 GET /offers/?q="this is a test"
 ```
@@ -17,7 +19,9 @@ For example, the following queries will NOT return the same results:
 ```http
 GET /offers/?text=labels:Paspartoe
 ```
+
 vs.
+
 ```http
 GET /offers/?q=labels:Paspartoe
 ```
@@ -25,11 +29,13 @@ GET /offers/?q=labels:Paspartoe
 In this example, the `text` parameter will look for documents that have the string `labels:Paspartoe` in them, while the `q` parameter will look for documents that actually have the label `Paspartoe`.
 
 <!-- theme: warning -->
-> The `text` parameter will return results faster. In addition, using specific characters (such as `:`) may produce different results than you expect when using the `q` parameter. 
-> 
-> Therefore we strongly advise to use the `text` or `name` parameter to execute free text searches instead of the `q` parameter. 
+
+> The `text` parameter will return results faster. In addition, using specific characters (such as `:`) may produce different results than you expect when using the `q` parameter.
+>
+> Therefore we strongly advise to use the `text` or `name` parameter to execute free text searches instead of the `q` parameter.
 
 ## Parameters
+
 ### q
 
 The following fields will be searched when using the `q` parameter with free text:
@@ -58,7 +64,7 @@ The following fields will be searched when using the `q` parameter with free tex
 
 **Applicable on endpoints**
 
-`/offers` `/events` `/places` 
+`/offers` `/events` `/places`
 
 **Examples**
 
@@ -67,6 +73,7 @@ GET /offers/text=monument*
 ```
 
 The query above will return all events & places that have the word "monument" in its document. This can include
+
 * places with the eventtype `monument`
 * events with the label `open monumentendag`
 * an event that has the word "oorlogsmonument" or "monumentaal" in its document
@@ -92,7 +99,7 @@ Encapsulated terms can still be combined with other terms, for example:
 GET /offers/?text="lekker vegetarisch" eten bereiden koken
 ```
 
-## Localization \(Translations\)
+## Localization (Translations)
 
 By default the free text search looks for matching terms in both the original documents and their translations.
 

@@ -5,8 +5,9 @@ All documents created in UiTdatabank are available in Dutch (`NL`). Besides Dutc
 ## Parameters
 
 In the UiTdatabank API you can use the following parameters to get relevant (translated) information:
+
 * [languages](#languages): to limit your results to documents that have translations for `name` and `description` in a specific language
-* [\_exists\_](#\_exists\_): to look for documents that have a translation for one or more specific fields (e.g. `address`)
+* [\_exists\_](#_exists_): to look for documents that have a translation for one or more specific fields (e.g. `address`)
 * [completedLanguages](#completedlanguages): to only look for documents that are fully translated to a specific language
 * [mainLanguage](#mainlanguage): to filter documents based on their initial language
 
@@ -44,7 +45,7 @@ GET /offers/?q=languages:("FR" OR "DE")
 
 ## \_exists\_
 
-With the `languages` parameter above, you might still get results that only have partial translations. This is because as soon as a single field (`name` or `description`) is translated to a specific language, the whole document is considered to have a translation in that specific language \(albeit an incomplete one\).
+With the `languages` parameter above, you might still get results that only have partial translations. This is because as soon as a single field (`name` or `description`) is translated to a specific language, the whole document is considered to have a translation in that specific language (albeit an incomplete one).
 
 If you require specific fields to be translated, you can search for those documents by using the `_exists_` field in the advanced query parameters.
 
@@ -78,7 +79,7 @@ This will return all documents that are missing French translations for either `
 
 ## completedLanguages
 
-Alternatively, you use the `completedLanguages` URL parameter \(and field in [advanced queries](../advanced/advanced-queries.md) to only look for documents that are fully translated to a specific language.
+Alternatively, you use the `completedLanguages` URL parameter (and field in [advanced queries](../advanced/advanced-queries.md) to only look for documents that are fully translated to a specific language.
 
 **Applicable on endpoints**
 
