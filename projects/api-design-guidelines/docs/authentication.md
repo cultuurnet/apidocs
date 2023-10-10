@@ -2,7 +2,7 @@
 
 <!-- theme: info -->
 
-> APIs should support one or more of the authentication methods described in the [authentication docs](https://publiq.stoplight.io/docs/authentication). **Read those first** to see how they should work from an integrator's perspective, and **how to pick the right authentication mechanism(s) for your API**.
+> APIs should support one or more of the authentication methods described in the [authentication docs](https://publiq.stoplight.io/docs/authentication/introduction). **Read those first** to see how they should work from an integrator's perspective, and **how to pick the right authentication mechanism(s) for your API**.
 >
 > This page gives some more info how those authentication mechanisms should be implemented on the API.
 
@@ -66,15 +66,15 @@ The value of the `https://publiq.be/publiq-apis` claim is the same as the one in
 
 The example above indicates that the token is usable on the UiTPAS API and UiTdatabank's Search API. Note that the claim can be missing, in which case it is considered to be empty.
 
-**If the token has an invalid signature, is not usable yet, is expired, or has an invalid `aud` or `iss` claim** you must return a **[401 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/docs/errors.md#unauthorized)**
+**If the token has an invalid signature, is not usable yet, is expired, or has an invalid `aud` or `iss` claim** you must return a **[401 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/errors#unauthorized)**
 
-**If the token is not usable on your API**, you must return a **[403 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/docs/errors.md#forbidden)**. (The difference with the other checks being that the token is valid on *some* of our APIs, but forbidden on your specific API.)
+**If the token is not usable on your API**, you must return a **[403 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/errors#forbidden)**. (The difference with the other checks being that the token is valid on *some* of our APIs, but forbidden on your specific API.)
 
 ## Permissions
 
 User/client permissions to perform actions inside your API should be managed inside the API itself.
 
-If the specific client or user cannot perform a requested action, you must return a [403 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/docs/errors.md#forbidden).
+If the specific client or user cannot perform a requested action, you must return a [403 error (see authentication docs)](https://publiq.stoplight.io/docs/authentication/errors#forbidden).
 
 ## Scopes
 
