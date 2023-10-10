@@ -23,3 +23,4 @@ In our documentation you will find:
 * Code examples, so you can see how the APIs works in practice
 * Detailed technical specifications per HTTP endpoint
 * OpenAPI files and Postman collections to get started quickly
+* Remove this label
