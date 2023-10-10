@@ -20,7 +20,7 @@ Those events need to exist in [UiTdatabank](../../uitdatabank/docs/introduction.
 
 The organizer of an UiTPAS event. To pay for the social tariff for people in need, the organizer is partly reimbursed by the local government. That's why it's important to always create UiTPAS events with the correct UiTPAS organizer.
 
-Just like events, organizers are saved in [UiTdatabank](https://docs.publiq.be/docs/uitdatabank).
+Just like events, organizers are saved in [UiTdatabank](../../uitdatabank/docs/introduction.md).
 
 ## UiTPAS Tariffs
 
