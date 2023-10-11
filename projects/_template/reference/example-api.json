@@ -54,7 +54,7 @@
             "scopes": {}
           }
         },
-        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://publiq.stoplight.io/docs/authentication/docs/client-access-token.md) for more info."
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token) for more info."
       }
     },
     "responses": {
