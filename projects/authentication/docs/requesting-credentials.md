@@ -26,4 +26,4 @@ Aside from the authentication method all API operations on the UiTdatabank APIs 
 
 ## museumPASSmusées
 
-Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees) is only provided to very specific partners for now as the primary use case at the moment is registering museum visits via a card reader. To request your credentials, please contact <support@museumpassmusees.be>.
+Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees/introduction) is only provided to very specific partners for now as the primary use case at the moment is registering museum visits via a card reader. To request your credentials, please contact <support@museumpassmusees.be>.
