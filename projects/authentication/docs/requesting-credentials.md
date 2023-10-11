@@ -8,7 +8,7 @@ While we are working on a new self-service platform where you will be able to re
 
 ## UiTPAS
 
-To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas), see its [quickstart guide](https://docs.publiq.be/docs/uitpas/d0748f47a3dba-quick-start) to request a client id and client secret via the linked Google Form.
+To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas/introduction), see its [quickstart guide](https://docs.publiq.be/docs/uitpas/d0748f47a3dba-quick-start) to request a client id and client secret via the linked Google Form.
 
 ## UiTdatabank
 
