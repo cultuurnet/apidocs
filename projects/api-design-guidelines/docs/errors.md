@@ -2,7 +2,7 @@
 
 <!-- theme: info -->
 
-> APIs must support the errors described in the [errors docs](https://publiq.stoplight.io/docs/errors) and [authentication error docs](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors) for integrators. Read those first to see how they should work from an integrator's perspective.
+> APIs must support the errors described in the [errors docs](https://publiq.stoplight.io/docs/errors/d6a8ba3f3c186-introduction) and [authentication error docs](https://docs.publiq.be/docs/authentication/ZG9jOjMyMzA0Mw-errors) for integrators. Read those first to see how they should work from an integrator's perspective.
 >
 > This page gives more info when to use which error type, and when/how to create custom error types for your API.
 
