@@ -12,7 +12,7 @@ Interested in setting up your own calendar aimed at a specific target group? Aro
 
 ## About our APIs
 
-The UiTdatabank APIs follow the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](https://docs.publiq.be/docs/authentication).
+The UiTdatabank APIs follow the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](https://docs.publiq.be/docs/authentication/introduction).
 
 In 2019, the UiTdatabank APIs won the ["API of the year" award](https://www.publiq.be/nl/nieuws/de-uitdatabank-wint-de-award-voor-api-van-het-jaar). Since then, we have continuously been improving them while also maintaining compatibility with all existing integrations.
 
