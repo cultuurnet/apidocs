@@ -43,7 +43,7 @@
             "scopes": {}
           }
         },
-        "description": "A user access token, obtained by redirecting the end user to publiq's authorization server to login. See the [authentication docs about user access tokens](https://publiq.stoplight.io/docs/authentication/docs/user-access-token.md) for more info."
+        "description": "A user access token, obtained by redirecting the end user to publiq's authorization server to login. See the [authentication docs about user access tokens](https://docs.publiq.be/docs/authentication/methods/user-access-token) for more info."
       },
       "CLIENT_ACCESS_TOKEN": {
         "type": "oauth2",
