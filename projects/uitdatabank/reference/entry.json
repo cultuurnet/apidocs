@@ -6047,6 +6047,131 @@
         ]
       }
     },
+    "/place/{placeId}/sub-events": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "patch": {
+        "summary": "subEvent - patch",
+        "operationId": "place-subEvent-patch",
+        "description": "Updates the given subEvents on the place with the given `placeId`.\n\nAllows partial updates, omitted properties will be ignored and remain unchanged. Omitted subEvents will also remain unchanged.\n\nEvery subEvent to update requires an `id` property that is an integer that corresponds to their index in the list of subEvents on the parent place. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\n<!-- theme: warning -->\n\n> Note! If you change the `startDate` of a subEvent, the subEvents will be re-ordered on the parent event afterwards because subEvents are always sorted chronologically.\n\nOnly places with calendar type `single` and `multiple` have subEvents, so only places with those calendar types support this endpoint.",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The subEvents have been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+                      "title": "Calendar type not supported",
+                      "status": 400,
+                      "detail": "Not allowed to update subEvents on calendar type: \"permanent\". Only subEvents on single and multiple calendar types can be updated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/place-subEvent-patch.json"
+              },
+              "examples": {
+                "Updating the dates of the first subEvent": {
+                  "value": [
+                    {
+                      "id": 0,
+                      "startDate": "2021-05-17T22:00:00+00:00",
+                      "endDate": "2021-05-17T22:00:00+00:00"
+                    }
+                  ]
+                },
+                "Updating the status of the second subEvent": {
+                  "value": [
+                    {
+                      "id": 1,
+                      "status": {
+                        "type": "Unavailable",
+                        "reason": {
+                          "nl": "Afgelast wegens corona"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "Updating the booking availability of the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable"
+                      }
+                    }
+                  ]
+                },
+                "Updating multiple": {
+                  "value": [
+                    {
+                      "id": 0,
+                      "startDate": "2021-05-17T22:00:00+00:00",
+                      "endDate": "2021-05-17T22:00:00+00:00"
+                    },
+                    {
+                      "id": 1,
+                      "status": {
+                        "type": "Unavailable",
+                        "reason": {
+                          "nl": "Afgelast wegens corona"
+                        }
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent place. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/places/{placeId}/type/{termId}": {
       "parameters": [
         {
