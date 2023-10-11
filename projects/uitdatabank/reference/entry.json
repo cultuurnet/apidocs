@@ -6035,7 +6035,7 @@
           "description": "New status to set on the place."
         },
         "tags": [
-          "Events"
+          "Places"
         ],
         "security": [
           {
