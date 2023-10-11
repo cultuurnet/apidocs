@@ -22,7 +22,7 @@ If you want to build an API integration:
 4. Browse the how-to guides and API specifications of the product that you're integrating with. Every API also has an **OpenAPI file** and a **Postman collection** to get you started quickly.
 5. Get building!
 
-Alternatively, check out our flexible plug and play [Widgets](https://docs.publiq.be/docs/widgets) to easily add an online calendar to your website without building an API integration.
+Alternatively, check out our flexible plug and play [Widgets](https://docs.publiq.be/docs/widgets/inleiding) to easily add an online calendar to your website without building an API integration.
 
 ## Versioning strategy
 
@@ -39,7 +39,7 @@ We usually only introduce a new major version when we need to make major changes
 
 ## Contact us
 
-For general information about partnerships or the setup of [Widgets](https://docs.publiq.be/docs/widgets) please email us at partnerships@publiq.be.
+For general information about partnerships or the setup of [Widgets](https://docs.publiq.be/docs/widgets/inleiding) please email us at partnerships@publiq.be.
 
 Email us at technical-support@publiq.be for any technical questions regarding API integrations or Widgets. You can also request access to a channel on our Slack workspace via this email address, for more detailed technical conversations.
 

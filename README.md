@@ -75,7 +75,7 @@ projects/
 ├─ guidelines/      # https://docs.publiq.be/docs/guidelines
 ├─ uitdatabank/     # https://docs.publiq.be/docs/uitdatabank
 ├─ uitpas/          # https://docs.publiq.be/docs/uitpas
-├─ widgets/         # https://docs.publiq.be/docs/widgets
+├─ widgets/         # https://docs.publiq.be/docs/widgets/inleiding
 ├─ ...
 ```
 

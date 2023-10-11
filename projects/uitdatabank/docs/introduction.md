@@ -8,7 +8,7 @@ UiTdatabank is the largest database of cultural and pastime activities happening
 
 Enter your planned activity into the UiTdatabank using [Entry API](entry-api/introduction.md) and it is broadcast on a whole range of online and offline channels. Obviously on our very own [UiTinVlaanderen](https://www.uitinvlaanderen.be), but also in over 1000 online and printed calendars run by local or national media, authorities and organisations.
 
-Interested in setting up your own calendar aimed at a specific target group? Around 500 partners from around the cultural and pastime sectors, the Flemish government and the media have already embraced UiT calendars, which they feature on their websites in their own visual identity. These automated connections with the UiTdatabank are built using [Search API](search-api/introduction.md) or through [Widgets](https://docs.publiq.be/docs/widgets).
+Interested in setting up your own calendar aimed at a specific target group? Around 500 partners from around the cultural and pastime sectors, the Flemish government and the media have already embraced UiT calendars, which they feature on their websites in their own visual identity. These automated connections with the UiTdatabank are built using [Search API](search-api/introduction.md) or through [Widgets](https://docs.publiq.be/docs/widgets/inleiding).
 
 ## About our APIs
 
