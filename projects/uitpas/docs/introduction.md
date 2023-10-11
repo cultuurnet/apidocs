@@ -10,7 +10,7 @@ Next to rewards, passholders in need can receive a social tariff ('kansentarief'
 
 ## About our API
 
-Check out our [development quick start guide](https://publiq.stoplight.io/docs/uitpas/docs/quickstart.md) to get up and running.
+Check out our [development quick start guide](https://docs.publiq.be/docs/uitpas/getting-started) to get up and running.
 
 The UiTPAS API follows the [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) principles. Our APIs have predictable resource-oriented URLs, accept and return [JSON](https://www.json.org/json-en.html)-encoded data, and use standard HTTP methods, status codes and [authentication](./authentication.md)).
 
