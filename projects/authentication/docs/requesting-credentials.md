@@ -8,7 +8,7 @@ While we are working on a new self-service platform where you will be able to re
 
 ## UiTPAS
 
-To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas), see its [quickstart guide](https://docs.publiq.be/docs/uitpas/d0748f47a3dba-quick-start) to request a client id and client secret via the linked Google Form.
+To use [UiTPAS API v4](https://docs.publiq.be/docs/uitpas/introduction), see its [quickstart guide](https://docs.publiq.be/docs/uitpas/d0748f47a3dba-quick-start) to request a client id and client secret via the linked Google Form.
 
 ## UiTdatabank
 
@@ -26,4 +26,4 @@ Aside from the authentication method all API operations on the UiTdatabank APIs 
 
 ## museumPASSmusées
 
-Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees) is only provided to very specific partners for now as the primary use case at the moment is registering museum visits via a card reader. To request your credentials, please contact <support@museumpassmusees.be>.
+Access to the [museumPASSmusées Partner API](https://docs.publiq.be/docs/museumpassmusees/introduction) is only provided to very specific partners for now as the primary use case at the moment is registering museum visits via a card reader. To request your credentials, please contact <support@museumpassmusees.be>.
