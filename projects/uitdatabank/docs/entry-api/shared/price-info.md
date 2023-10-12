@@ -24,7 +24,7 @@ Each price line in Uitdatabank breaks down into several components:
 ```
 
 ### What is the category base?
-The 'base' category the primary pricing baseline for events or places. This price will later be used for calculating discounts (eg. Uitpas tariff).
+The 'base' category the primary pricing baseline for events or places. If applicable, this price is used to calculate the UiTPAS discount.
 When defining a price info object with the category 'base,' it should always use the recommended matching name:
 
 | Language | Translation   |
