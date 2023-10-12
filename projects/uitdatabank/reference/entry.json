@@ -2815,7 +2815,56 @@
               "schema": {
                 "$ref": "../models/event-priceInfo.json"
               },
-              "examples": {}
+              "examples": {
+                "Example 1": {
+                  "value": [
+                    {
+                      "category": "base",
+                      "price": 10.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "en": "Base tariff",
+                        "de": "Basisrate"
+                      }
+                    }
+                  ]
+                },
+                "Example 2": {
+                  "value": [
+                    {
+                      "category": "base",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "en": "Base tariff",
+                        "de": "Basisrate"
+                      },
+                      "price": 10,
+                      "priceCurrency": "EUR"
+                    },
+                    {
+                      "category": "tariff",
+                      "name": {
+                        "nl": "Jongeren",
+                        "en": "Youth"
+                      },
+                      "price": 0,
+                      "priceCurrency": "EUR"
+                    },
+                    {
+                      "category": "tariff",
+                      "name": {
+                        "nl": "Senioren",
+                        "en": "Elderly"
+                      },
+                      "price": 6,
+                      "priceCurrency": "EUR"
+                    }
+                  ]
+                }
+              }
             }
           },
           "description": "New priceInfo to set on the event."
@@ -5956,7 +6005,56 @@
               "schema": {
                 "$ref": "../models/place-priceInfo.json"
               },
-              "examples": {}
+              "examples": {
+                "Example 1": {
+                  "value": [
+                    {
+                      "category": "base",
+                      "price": 10.5,
+                      "priceCurrency": "EUR",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "en": "Base tariff",
+                        "de": "Basisrate"
+                      }
+                    }
+                  ]
+                },
+                "Example 2": {
+                  "value": [
+                    {
+                      "category": "base",
+                      "name": {
+                        "nl": "Basistarief",
+                        "fr": "Tarif de base",
+                        "en": "Base tariff",
+                        "de": "Basisrate"
+                      },
+                      "price": 10,
+                      "priceCurrency": "EUR"
+                    },
+                    {
+                      "category": "tariff",
+                      "name": {
+                        "nl": "Jongeren",
+                        "en": "Youth"
+                      },
+                      "price": 0,
+                      "priceCurrency": "EUR"
+                    },
+                    {
+                      "category": "tariff",
+                      "name": {
+                        "nl": "Senioren",
+                        "en": "Elderly"
+                      },
+                      "price": 6,
+                      "priceCurrency": "EUR"
+                    }
+                  ]
+                }
+              }
             }
           },
           "description": "New priceInfo to set on the place."
