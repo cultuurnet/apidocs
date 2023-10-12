@@ -2,7 +2,7 @@
 
 This page contains an overview of all possible error types inside the `https://api.publiq.be/probs/uitpas/` namespace that can be returned by UiTPAS APIs.
 
-> For more info about error handling on our APIs in general, see the dedicated [Errors](https://docs.publiq.be/docs/errors) space.
+> For more info about error handling on our APIs in general, see the dedicated [Errors](https://docs.publiq.be/docs/errors/d6a8ba3f3c186-introduction) space.
 
 ## card-blocked
 
@@ -67,7 +67,6 @@ The request you are trying to perform cannot complete because the event already 
 * **Status**: `404`
 
 The request you are trying to perform cannot complete because the provided event cannot be found.
-
 
 ## family-member-already-added
 

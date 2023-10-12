@@ -8,7 +8,7 @@ Don't document an example as a `curl` command. Instead, use the [HTTP message fo
 
 `curl` examples are great for copy-pasting to try something out quickly in a terminal, but are hard to read if you want to perform the HTTP request in another tool or programming language.
 
-To make your example easy to try out, you can include a "try it" block using the [HTTP request maker functionality](https://meta.stoplight.io/docs/studio/docs/Documentation/03a-stoplight-flavored-markdown.md#http-request-maker) provided by Stoplight.
+To make your example easy to try out, you can include a "try it" block using the [HTTP request maker functionality](https://stoplight.my.site.com/s/article/What-is-Stoplight-Flavored-Markdown) provided by Stoplight.
 
 This will make it easy to perform the request from the page the visitor is on, or copy-paste code to perform a HTTP request in a programming language of their choice (including `curl`).
 
@@ -65,7 +65,7 @@ Content-Type: application/json
 
 ### ✅ Try it out functionality
 
-The HTTP request maker functionality is documented [in Stoplight's own documentation](https://meta.stoplight.io/docs/studio/docs/Documentation/03a-stoplight-flavored-markdown.md#http-request-maker).
+The HTTP request maker functionality is documented [in Stoplight's own documentation](https://stoplight.my.site.com/s/article/What-is-Stoplight-Flavored-Markdown).
 
 For example, to demonstrate how to retrieve an event from UiTdatabank:
 
