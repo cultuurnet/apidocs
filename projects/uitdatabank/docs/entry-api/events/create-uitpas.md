@@ -78,7 +78,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 * An organizer is linked to an event in the exact same way as the event's `location`, but via the `organizer` property and using an organizer URI instead of a place URI. This is explained in more detail in [the guide about linking organizers to events](../organizers/linking.md).
 * How to add price info to your event is explained in more detail in [the price info guide](../shared/price-info.md).
 * Read on below to learn how to find the right organizer, and what price info to provide exactly for UiTPAS events.
-* Note that in order to register your event in UiTPAS your event need to be published. Read all about it in [our guide about publishing events](../publish.md).
+* Note that in order to register your event in UiTPAS your event need to be published. Read all about it in [our guide about publishing events](./publish.md).
 
 Try it now by replacing the `YOUR_ACCESS_TOKEN` below with your access token for the testing environment of Entry API:
 

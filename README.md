@@ -75,7 +75,7 @@ projects/
 ├─ guidelines/      # https://docs.publiq.be/docs/guidelines
 ├─ uitdatabank/     # https://docs.publiq.be/docs/uitdatabank
 ├─ uitpas/          # https://docs.publiq.be/docs/uitpas
-├─ widgets/         # https://docs.publiq.be/docs/widgets
+├─ widgets/         # https://docs.publiq.be/docs/widgets/inleiding
 ├─ ...
 ```
 
@@ -204,7 +204,7 @@ They will always point to a specific branch (or the default one), and you either
 
 ## Automatic checks 🔁
 
-To avoid common mistakes like dead links in how-to guides or violations of our [API design guidelines](https://docs.publiq.be/docs/guidelines) in OpenAPI files, automatic checks will run for every push to a branch.
+To avoid common mistakes like dead links in how-to guides or violations of our [API design guidelines](./projects/api-design-guidelines/docs/introduction.md) in OpenAPI files, automatic checks will run for every push to a branch.
 
 If you create a pull request for your branch and some checks are failing, your pull request cannot be merged until the reported errors are fixed.
 

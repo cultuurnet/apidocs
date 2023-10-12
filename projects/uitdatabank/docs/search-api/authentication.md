@@ -6,7 +6,7 @@ See the [requesting client credentials](https://docs.publiq.be/docs/authenticati
 
 ## Tokens
 
-If you are also integrating with UiTdatabank's [Entry API](../entry-api/introduction.md) and/or [UiTPAS API](https://docs.publiq.be/docs/uitpas), you can re-use the [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token) or [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) that you use to authenticate with those APIs.
+If you are also integrating with UiTdatabank's [Entry API](../entry-api/introduction.md) and/or [UiTPAS API](https://docs.publiq.be/docs/uitpas/introduction), you can re-use the [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token) or [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) that you use to authenticate with those APIs.
 
 For example:
 
