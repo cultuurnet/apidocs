@@ -12,8 +12,6 @@ Each price line in Uitdatabank breaks down into several components:
 | price         | number | Pricevalue is a floating-point number, use 0.0 for free events/places                                                                          | 10.0             |
 | priceCurrency | string | 3-characters currency indicator                                                                                                                | EUR              |
 
-**Schema**: [Price info structure](./../../../models/common-priceInfo.json)
-
 ```json json_schema
 {
   "type": "object",
