@@ -3763,8 +3763,8 @@
             }
           }
         },
-        "operationId": "get-organizers-financial-reports-reportId",
-        "description": "Retrieve a temporary download link of an `available` report.\n\nThis endpoint allows you to obtain a short-lived, hassle-free download link for your reports. After generation, this link remains active for a limited time, enabling direct report downloads without the need for additional authentication. (in particular convenient for single-page applications)\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "operationId": "get-organizers-financial-reports-reportId-downloadLink",
+        "description": "Retrieve a temporary download link of an `available` report.\n\nThis endpoint allows you to obtain a short-lived, hassle-free download link for your reports. After generation, this link remains active for a limited time, enabling direct report downloads without the need for additional authentication. This is in particular convenient for single-page applications, where you can present this download link to your users. If you wish to download the actual report in your client application, you can use [Download financial report](/reference/uitpas.json/paths/~1organizers~1organizerId~1financial-reports~1reportId/get).\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -3828,7 +3828,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId-zip",
-        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the actual report zip file of an `available` report.\n\nIf you need a download link for your users, you can use [Get financial report temporary download link](/reference/uitpas.json/paths/~1organizers~1organizerId~1financial-reports~1reportId/get) instead.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "tags": [
           "Financial reports"
         ],
