@@ -3693,6 +3693,92 @@
         ]
       }
     },
+    "/organizers/{organizerId}/financial-reports/{reportId}/download-link": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of an UiTPAS organizer. (Same as its ID in UiTdatabank)"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "reportId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of the generated financial report."
+        }
+      ],
+      "get": {
+        "summary": "Get financial report temporary download link",
+        "tags": [
+          "Financial reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "downloadLink": {
+                      "type": "string",
+                      "description": "Download link of the report"
+                    }
+                  },
+                  "required": [
+                    "downloadLink"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "downloadLink": "https://api-test.uitpas.be/some/path/to/report.zip?ts=202310231357&hash=1b5413636b41e9f774d416358060e613398b3ab017da13f3815c771a988b2d84"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/report-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-organizers-financial-reports-reportId",
+        "description": "Retrieve a temporary download link of an `available` report.\n\nThis endpoint allows you to obtain a short-lived, hassle-free download link for your reports. After generation, this link remains active for a limited time, enabling direct report downloads without the need for additional authentication. (in particular convenient for single-page applications)\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ]
+      }
+    },
     "/organizers/{organizerId}/financial-reports/{reportId}.zip": {
       "parameters": [
         {
