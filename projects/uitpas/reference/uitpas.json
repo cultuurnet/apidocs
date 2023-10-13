@@ -3828,7 +3828,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId-zip",
-        "description": "Retrieve the actual report zip file of an `available` report.\n\nIf you need a download link for your users, you can use [Get financial report temporary download link](/reference/uitpas.json/paths/~1organizers~1{organizerId}~1financial-reports~1{reportId}~1/download-link/get) instead.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the actual report zip file of an `available` report.\n\nIf you need a download link for your users, you can use [Get financial report temporary download link](/reference/uitpas.json/paths/~1organizers~1{organizerId}~1financial-reports~1{reportId}~1download-link/get) instead.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "tags": [
           "Financial reports"
         ],
