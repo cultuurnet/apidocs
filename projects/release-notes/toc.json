@@ -5,32 +5,48 @@
          "title":"UiTdatabank"
       },
       {
-         "type":"group",
-         "title":"Latest",
-         "items":[
-            {
-               "type":"item",
-               "title":"October, 2023",
-               "uri":"UiTdatabank/october-2023.md",
-               "slug":"udb-october-2023"
-            }
-         ]
+              "type":"item",
+              "title":"2023",
+              "uri":"UiTdatabank/2023.md",
+              "slug":"udb-2023"
+      },
+      {
+              "type":"item",
+              "title":"2022",
+              "uri":"UiTdatabank/2022.md",
+              "slug":"udb-2022"
       },
       {
          "type":"divider",
          "title":"UiTPAS"
       },
       {
-         "type":"group",
-         "title":"Latest",
-         "items":[
-            {
                "type":"item",
-               "title":"October, 2023",
-               "uri":"UiTPAS/october-2023.md",
-               "slug":"ups-october-2023"
-            }
-         ]
+               "title":"2023",
+               "uri":"UiTPAS/2023.md",
+               "slug":"ups-2023"
+      },
+      {
+         "type":"divider",
+         "title":"Widgets"
+      },
+      {
+               "type":"item",
+               "title":"2023",
+               "uri":"Widgets/2023.md",
+               "slug":"wid-2023"
+      },
+      {
+               "type":"item",
+               "title":"2022",
+               "uri":"Widgets/2022.md",
+               "slug":"wid-2022"
+      },
+      {
+               "type":"item",
+               "title":"2021",
+               "uri":"Widgets/2021.md",
+               "slug":"wid-2021"
       }
-   ]
+    ]
 }
