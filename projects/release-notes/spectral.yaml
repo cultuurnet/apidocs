@@ -1,0 +1,4 @@
+# DO NOT REMOVE!
+# Extend our shared Spectral ruleset here so it can also be used in Stoplight Studio with just this specific project open.
+extends:
+  - ../../.spectral.json
