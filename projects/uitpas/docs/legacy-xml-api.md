@@ -4,7 +4,7 @@ stoplight-id: 3uxj1ivx91h12
 
 # Legacy XML-API (UiTPAS API 3.0)
 
-[Via this link you can find the documentation]( https://files.uitpas.be/xml-api/index.html ) of the previous version of the UiTPAS API. 
+[Via this link you can find the documentation](https://files.uitpas.be/xml-api/index.html) of the previous version of the UiTPAS API.
 
 Note that the XML-API will be phased out by **18th of December 2024**.
 
