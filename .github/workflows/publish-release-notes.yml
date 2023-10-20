@@ -1,0 +1,16 @@
+name: Publish release notes documentation
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Publish
+        uses: ./.github/actions/stoplight-push
+        with:
+          name: release-notes
+          token: ${{ secrets.CI_TOKEN_RELEASE_NOTES }}
+          event: ${{ github.event_name }}
