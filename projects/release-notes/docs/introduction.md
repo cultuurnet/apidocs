@@ -1,6 +1,6 @@
 # Welcome to our release notes 🚀
 
-Welcome to our public release notes. In this dedicated space we will publish a changelog for our different products and API's:
+Welcome to our public release notes. In this dedicated space we will publish a changelog for our different products and APIs:
 * Authentication methods
 * UiTdatabank Entry API
 * UiTdatabank Search API
