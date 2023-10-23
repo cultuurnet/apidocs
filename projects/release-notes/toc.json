@@ -1,6 +1,12 @@
 {
    "items":[
       {
+         "type": "item",
+         "title": "Introduction",
+         "uri": "docs/introduction.md",
+         "slug": "introduction"
+      },
+      {
          "type":"divider",
          "title":"UiTdatabank"
       },
