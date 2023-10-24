@@ -40,7 +40,9 @@
           "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
         }
       },
-      "required": ["nl"]
+      "required": [
+        "nl"
+      ]
     },
     "schemaErrors": {
       "type": "array",
@@ -69,5 +71,6 @@
     "type",
     "title",
     "status"
-  ]
+  ],
+  "x-internal": false
 }

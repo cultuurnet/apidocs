@@ -742,7 +742,7 @@
           }
         ],
         "description": "Creates a new event based on all the properties of an existing event with the given `eventId`. Only the calendar information will be completely replaced with a new one, which has to be included in the request body.\n\nThe schema of the request body is the same as the one for the [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) endpoint.",
-        "x-internal": true
+        "x-internal": false
       }
     },
     "/events/{eventId}/attendance-mode": {
