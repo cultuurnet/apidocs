@@ -169,7 +169,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\n",
+            "description": "Bad Request. The response will include a JSON body with more details in the form of a RFC7807 error model. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/social-tariff-suspended\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -422,7 +422,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/maximum-reached\n* https://api.publiq.be/probs/uitpas/invalid-number-of-tickets\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/invalid-coupon\n\n\nThe type indicates the error on one of the failed ticket sale registrations. All other ticket sale registration in the request will be rolled back in case of an error.\n\nThe property `jsonPointer` will a referene to the erroneous `TicketSaleRequest` object if applicable.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/social-tariff-suspended\n* https://api.publiq.be/probs/uitpas/maximum-reached\n* https://api.publiq.be/probs/uitpas/invalid-number-of-tickets\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/invalid-coupon\n\n\nThe type indicates the error on one of the failed ticket sale registrations. All other ticket sale registration in the request will be rolled back in case of an error.\n\nThe property `jsonPointer` will a referene to the erroneous `TicketSaleRequest` object if applicable.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -686,6 +686,7 @@
                                 "uitpasNumber": "0930012345615",
                                 "status": "ACTIVE",
                                 "socialTariff": {
+                                  "status": "ACTIVE",
                                   "endDate": "2022-08-24T14:15:22Z",
                                   "inGracePeriod": false,
                                   "expired": false
@@ -749,6 +750,7 @@
                                 "uitpasNumber": "0930012345615",
                                 "status": "ACTIVE",
                                 "socialTariff": {
+                                  "status": "ACTIVE",
                                   "endDate": "2022-08-24T14:15:22Z",
                                   "inGracePeriod": false,
                                   "expired": false
@@ -871,6 +873,7 @@
                             "uitpasNumber": "0560002524314",
                             "status": "ACTIVE",
                             "socialTariff": {
+                              "status": "ACTIVE",
                               "endDate": "2022-08-24T14:15:22Z",
                               "inGracePeriod": false,
                               "expired": false
@@ -1414,6 +1417,7 @@
                               "uitpasNumber": "0930012345615",
                               "status": "ACTIVE",
                               "socialTariff": {
+                                "status": "ACTIVE",
                                 "endDate": "2022-08-24T14:15:22Z",
                                 "inGracePeriod": false,
                                 "expired": false
@@ -1615,6 +1619,7 @@
                           "uitpasNumber": "0930012345615",
                           "status": "ACTIVE",
                           "socialTariff": {
+                            "status": "ACTIVE",
                             "endDate": "2022-08-24T14:15:22Z",
                             "inGracePeriod": false,
                             "expired": false
@@ -2432,6 +2437,7 @@
                           "uitpasNumber": "0930012345615",
                           "status": "ACTIVE",
                           "socialTariff": {
+                            "status": "ACTIVE",
                             "endDate": "2022-08-24T14:15:22Z",
                             "inGracePeriod": false,
                             "expired": false
@@ -5956,6 +5962,7 @@
               "uitpasNumber": "0930012345615",
               "status": "ACTIVE",
               "socialTariff": {
+                "status": "ACTIVE",
                 "endDate": "2022-08-24T14:15:22Z",
                 "inGracePeriod": false,
                 "expired": false
@@ -6403,23 +6410,39 @@
           },
           "socialTariff": {
             "type": "object",
-            "description": "If the passholder has right to a social tariff, this object contains details like the end date.",
+            "description": "If the passholder has (or had) right to a social tariff, this object contains details like the  end date. Check the `status` of the `socialTariff`: the passholder is only currently entitled to a social tariff is `status` is `ACTIVE`. ",
             "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "EXPIRED",
+                  "SUSPENDED"
+                ],
+                "description": "Status of the social tariff:\n- `ACTIVE`: the passholder is entitled to social tariff\n- `EXPIRED`: the passholder is NOT entitled to social tariff anymore\n- `SUSPENDED`: the passholder is temporarily NOT entitled to social tariff. In this case a extra property `suspendedUntilDate` will also be available."
+              },
               "endDate": {
                 "type": "string",
                 "format": "date-time",
-                "description": "Exact moment that the passholder's right to a social tariff expires."
+                "description": "Exact moment the passholder's right to a social tariff expires."
               },
               "inGracePeriod": {
                 "type": "boolean",
                 "description": "When the end date of the right to a social tariff has passed, the passholder may still be in a grace period that they can buy tickets at a social tariff until their right to a social tariff has been renewed."
               },
+              "suspendedUntilDate": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Date until this social tarif is suspended (only available when status is `SUSPENDED`)"
+              },
               "expired": {
                 "type": "boolean",
-                "description": "If true, the passholder's right to a social tariff has completely expired (the end date has passed and the passholder is no longer in a grace period)."
+                "description": "If true, the passholder's right to a social tariff has completely expired (the end date has passed and the passholder is no longer in a grace period). **This property is deprecated.** Please use the `status` property instead.",
+                "deprecated": true
               }
             },
             "required": [
+              "status",
               "endDate"
             ]
           }
