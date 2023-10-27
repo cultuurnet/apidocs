@@ -296,9 +296,6 @@
           },
           {
             "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
           }
         ]
       },
@@ -589,9 +586,6 @@
           },
           {
             "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
           }
         ]
       },
@@ -758,9 +752,6 @@
           },
           {
             "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
           }
         ]
       },
@@ -1041,9 +1032,6 @@
           },
           {
             "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
           }
         ]
       },
