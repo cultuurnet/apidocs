@@ -289,20 +289,20 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
         ]
       },
-      "parameters": [],
-      "security": [
-        {
-          "CLIENT_IDENTIFICATION": []
-        },
-        {
-          "CLIENT_ACCESS_TOKEN": []
-        },
-        {
-          "USER_ACCESS_TOKEN": []
-        }
-      ]
+      "parameters": []
     },
     "/offers": {
       "get": {
@@ -582,20 +582,20 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
         ]
       },
-      "parameters": [],
-      "security": [
-        {
-          "CLIENT_IDENTIFICATION": []
-        },
-        {
-          "CLIENT_ACCESS_TOKEN": []
-        },
-        {
-          "USER_ACCESS_TOKEN": []
-        }
-      ]
+      "parameters": []
     },
     "/organizers": {
       "get": {
@@ -1034,20 +1034,20 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
         ]
       },
-      "parameters": [],
-      "security": [
-        {
-          "CLIENT_IDENTIFICATION": []
-        },
-        {
-          "CLIENT_ACCESS_TOKEN": []
-        },
-        {
-          "USER_ACCESS_TOKEN": []
-        }
-      ]
+      "parameters": []
     }
   },
   "tags": [
