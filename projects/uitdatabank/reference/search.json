@@ -292,23 +292,17 @@
         ]
       },
       "parameters": [],
-      "security":[
-   {
-      "CLIENT_IDENTIFICATION":[
-         
+      "security": [
+        {
+          "CLIENT_IDENTIFICATION": []
+        },
+        {
+          "CLIENT_ACCESS_TOKEN": []
+        },
+        {
+          "USER_ACCESS_TOKEN": []
+        }
       ]
-   },
-   {
-      "CLIENT_ACCESS_TOKEN":[
-         
-      ]
-   },
-   {
-      "USER_ACCESS_TOKEN":[
-         
-      ]
-   }
-]
     },
     "/offers": {
       "get": {
@@ -591,23 +585,17 @@
         ]
       },
       "parameters": [],
-      "security":[
-   {
-      "CLIENT_IDENTIFICATION":[
-         
+      "security": [
+        {
+          "CLIENT_IDENTIFICATION": []
+        },
+        {
+          "CLIENT_ACCESS_TOKEN": []
+        },
+        {
+          "USER_ACCESS_TOKEN": []
+        }
       ]
-   },
-   {
-      "CLIENT_ACCESS_TOKEN":[
-         
-      ]
-   },
-   {
-      "USER_ACCESS_TOKEN":[
-         
-      ]
-   }
-]
     },
     "/organizers": {
       "get": {
@@ -766,23 +754,17 @@
         ]
       },
       "parameters": [],
-      "security":[
-   {
-      "CLIENT_IDENTIFICATION":[
-         
+      "security": [
+        {
+          "CLIENT_IDENTIFICATION": []
+        },
+        {
+          "CLIENT_ACCESS_TOKEN": []
+        },
+        {
+          "USER_ACCESS_TOKEN": []
+        }
       ]
-   },
-   {
-      "CLIENT_ACCESS_TOKEN":[
-         
-      ]
-   },
-   {
-      "USER_ACCESS_TOKEN":[
-         
-      ]
-   }
-]
     },
     "/places": {
       "get": {
@@ -1055,23 +1037,17 @@
         ]
       },
       "parameters": [],
-      "security":[
-   {
-      "CLIENT_IDENTIFICATION":[
-         
+      "security": [
+        {
+          "CLIENT_IDENTIFICATION": []
+        },
+        {
+          "CLIENT_ACCESS_TOKEN": []
+        },
+        {
+          "USER_ACCESS_TOKEN": []
+        }
       ]
-   },
-   {
-      "CLIENT_ACCESS_TOKEN":[
-         
-      ]
-   },
-   {
-      "USER_ACCESS_TOKEN":[
-         
-      ]
-   }
-]
     }
   },
   "tags": [
