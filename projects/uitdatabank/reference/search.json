@@ -291,7 +291,24 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "security":[
+   {
+      "CLIENT_IDENTIFICATION":[
+         
+      ]
+   },
+   {
+      "CLIENT_ACCESS_TOKEN":[
+         
+      ]
+   },
+   {
+      "USER_ACCESS_TOKEN":[
+         
+      ]
+   }
+]
     },
     "/offers": {
       "get": {
@@ -573,7 +590,24 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "security":[
+   {
+      "CLIENT_IDENTIFICATION":[
+         
+      ]
+   },
+   {
+      "CLIENT_ACCESS_TOKEN":[
+         
+      ]
+   },
+   {
+      "USER_ACCESS_TOKEN":[
+         
+      ]
+   }
+]
     },
     "/organizers": {
       "get": {
@@ -731,7 +765,24 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "security":[
+   {
+      "CLIENT_IDENTIFICATION":[
+         
+      ]
+   },
+   {
+      "CLIENT_ACCESS_TOKEN":[
+         
+      ]
+   },
+   {
+      "USER_ACCESS_TOKEN":[
+         
+      ]
+   }
+]
     },
     "/places": {
       "get": {
@@ -1003,7 +1054,24 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "security":[
+   {
+      "CLIENT_IDENTIFICATION":[
+         
+      ]
+   },
+   {
+      "CLIENT_ACCESS_TOKEN":[
+         
+      ]
+   },
+   {
+      "USER_ACCESS_TOKEN":[
+         
+      ]
+   }
+]
     }
   },
   "tags": [
