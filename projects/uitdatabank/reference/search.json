@@ -1059,6 +1059,12 @@
     }
   ],
   "components": {
+    "schemas": {
+      "Error": {
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
+        "x-internal": true
+      }
+    },
     "securitySchemes": {
       "USER_ACCESS_TOKEN": {
         "type": "oauth2",
@@ -1074,12 +1080,6 @@
         "name": "x-client-id",
         "type": "apiKey",
         "in": "header"
-      }
-    },
-    "schemas": {
-      "Error": {
-        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
-        "x-internal": true
       }
     },
     "parameters": {
