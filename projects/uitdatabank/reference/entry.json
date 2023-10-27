@@ -6839,7 +6839,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content. The organizer was deleted successfully."
+            "description": "No Content test. The organizer was deleted successfully."
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
