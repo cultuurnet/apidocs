@@ -2712,11 +2712,21 @@
         }
       ]
     },
-    "/passholders/me/transactions": {
-      "parameters": [],
+    "/passholders/{passholderId}/transactions": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "Passholder ID or `me`"
+        }
+      ],
       "get": {
-        "summary": "Retrieve transaction history of the current passholder",
-        "operationId": "get-passholders-me-transactions",
+        "summary": "Retrieve transaction history of a passholder",
+        "operationId": "get-passholders-passholderId-transactions",
         "responses": {
           "200": {
             "description": "OK",
@@ -2772,7 +2782,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve the transaction history of the current passholder.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_TRANSACTION_HISTORY` permission is mandatory.",
+        "description": "Retrieve the transaction history of the passholder.\n\nIf a user access token of a passholder is used, you can specify the path parameter `passholderId` as:\n- the id of the passsholder of the access token (you can retrieve the id using `/passholders/me`)\n- `me` as a short form for the passholder of the access token\n- a passholder id of one of the passholder's family members\n\nIf a user access token of an admin, or a client access token is used, `me` cannot be used as a passholder id.\n\nThe caller of this method must have `PASSHOLDERS_SELF_CHECKIN` permission for the given passholder.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2800,7 +2810,7 @@
           }
         ],
         "tags": [
-          "Current Passholder"
+          "Passholders"
         ]
       }
     },
