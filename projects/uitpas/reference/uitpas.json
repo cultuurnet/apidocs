@@ -2599,10 +2599,10 @@
       },
       "parameters": []
     },
-    "/passholders/me/checkins": {
+    "/passholders/{passholderId}/checkins": {
       "post": {
-        "summary": "Check in the current passholder",
-        "operationId": "post-passholders-me-checkin",
+        "summary": "Check-in passholder using a check-in code",
+        "operationId": "post-passholders-passholderId-checkin",
         "responses": {
           "201": {
             "description": "Created",
@@ -2664,7 +2664,7 @@
             }
           }
         },
-        "description": "Allows users to self check-in at an event using a user access token and a check-in code.\n\nA user access token of a passholder, authenticated via a client with `PASSHOLDERS_SELF_CHECKIN` permission is mandatory.",
+        "description": "Allow passholders to self check-in at an event using a check-in code (typically a QR code the passholder can scan).\n\nIf a user access token of a passholder is used, you can specify the path parameter `passholderId` as:\n- the id of the passsholder of the access token (you can retrieve the id using `/passholders/me`)\n- `me` as a short form for the passholder of the access token\n- a passholder id of one of the passholder's family members\n\nIf a user access token of an admin, or a client access token is used, `me` cannot be used as a passholder id.\n\nThe caller of this method must have `PASSHOLDERS_SELF_CHECKIN` permission for the given passholder.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
@@ -2697,10 +2697,20 @@
           }
         ],
         "tags": [
-          "Current Passholder"
+          "Passholders"
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "Passholder ID or `me`"
+        }
+      ]
     },
     "/passholders/me/transactions": {
       "parameters": [],
