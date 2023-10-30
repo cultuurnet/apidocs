@@ -918,7 +918,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1  checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2664,7 +2664,7 @@
             }
           }
         },
-        "description": "Allow passholders to self check-in at an event using a check-in code (typically a QR code the passholder can scan).\n\nIf a user access token of a passholder is used, you can specify the path parameter `passholderId` as:\n- the id of the passsholder of the access token (you can retrieve the id using `/passholders/me`)\n- `me` as a short form for the passholder of the access token\n- a passholder id of one of the passholder's family members\n\nIf a user access token of an admin, or a client access token is used, `me` cannot be used as a passholder id.\n\nThe caller of this method must have `PASSHOLDERS_SELF_CHECKIN` permission for the given passholder.",
+        "description": "Allow passholders to self check-in at an event using a check-in code (typically a QR code the passholder can scan). If you want to check-in a passholder based on an event id, use [POST /checkins](/reference/uitpas.json/paths/~1checkins/post) instead. \n\nIf a user access token of a passholder is used, you can specify the path parameter `passholderId` as:\n- the id of the passsholder of the access token (you can retrieve the id using `/passholders/me`)\n- `me` as a short form for the passholder of the access token\n- a passholder id of one of the passholder's family members\n\nIf a user access token of an admin, or a client access token is used, `me` cannot be used as a passholder id.\n\nThe caller of this method must have `PASSHOLDERS_SELF_CHECKIN` permission for the given passholder.",
         "requestBody": {
           "description": "The check-in code of an event is typically presented to the user as a printed QR code or as a QR code displayed on a check-in device.",
           "content": {
