@@ -289,6 +289,14 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       },
       "parameters": []
@@ -571,6 +579,14 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       },
       "parameters": []
@@ -728,6 +744,14 @@
           },
           {
             "$ref": "#/components/parameters/sortModified"
+          }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
         ]
       },
@@ -1001,6 +1025,14 @@
           {
             "$ref": "#/components/parameters/workflowStatusOffer"
           }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       },
       "parameters": []
@@ -1015,11 +1047,27 @@
     }
   ],
   "components": {
-    "securitySchemes": {},
     "schemas": {
       "Error": {
         "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
         "x-internal": true
+      }
+    },
+    "securitySchemes": {
+      "USER_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {},
+        "description": "A user access token, obtained by redirecting the end user to publiq's authorization server to login using the **Authorization Code OAuth Flow**. See the [authentication docs about user access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token) for more info."
+      },
+      "CLIENT_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {},
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server using the **Client Credentials OAuth Flow**. See the [authentication docs about client access tokens](https://docs.publiq.be/docs/authentication/methods/user-access-token) for more info."
+      },
+      "CLIENT_IDENTIFICATION": {
+        "name": "x-client-id",
+        "type": "apiKey",
+        "in": "header"
       }
     },
     "parameters": {

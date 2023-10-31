@@ -55,13 +55,20 @@
       "slug": "postman"
     },
     {
+      "type": "item",
+      "title": "Legacy XML-API",
+      "uri": "docs/legacy-xml-api.md",
+      "slug": "legacy-xml-api"
+    },
+    {
       "type": "divider",
       "title": "Guides"
     },
     {
       "type": "item",
       "title": "User friendly error messages",
-      "uri": "docs/user-friendly-error-messages.md"
+      "uri": "docs/user-friendly-error-messages.md",
+      "slug": "user-friendly-error-messages"
     },
     {
       "type": "group",
