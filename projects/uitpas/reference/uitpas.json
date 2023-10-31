@@ -3693,6 +3693,92 @@
         ]
       }
     },
+    "/organizers/{organizerId}/financial-reports/{reportId}/download-link": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of an UiTPAS organizer. (Same as its ID in UiTdatabank)"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "reportId",
+          "in": "path",
+          "required": true,
+          "description": "Unique ID of the generated financial report."
+        }
+      ],
+      "get": {
+        "summary": "Get financial report temporary download link",
+        "tags": [
+          "Financial reports"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "downloadLink": {
+                      "type": "string",
+                      "description": "Download link of the report"
+                    }
+                  },
+                  "required": [
+                    "downloadLink"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "downloadLink": "https://api-test.uitpas.be/some/path/to/report.zip?ts=202310231357&hash=1b5413636b41e9f774d416358060e613398b3ab017da13f3815c771a988b2d84"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/report-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-organizers-financial-reports-reportId-downloadLink",
+        "description": "Retrieve a temporary download link of an `available` report.\n\nThis endpoint allows you to obtain a short-lived, hassle-free download link for your reports. After generation, this link remains active for a limited time, enabling direct report downloads without the need for additional authentication. This is in particular convenient for applications that need to offer this link to users to start the download. If you wish to download the actual report in your client application, you can use [Download financial report](/reference/uitpas.json/paths/~1organizers~1{organizerId}~1financial-reports~1{reportId}.zip/get).\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ]
+      }
+    },
     "/organizers/{organizerId}/financial-reports/{reportId}.zip": {
       "parameters": [
         {
@@ -3742,7 +3828,7 @@
           }
         },
         "operationId": "get-organizers-financial-reports-reportId-zip",
-        "description": "Retrieve the actual report zip file of an `available` report.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
+        "description": "Retrieve the actual report zip file of an `available` report.\n\nIf you need a download link for your users, you can use [Get financial report temporary download link](/reference/uitpas.json/paths/~1organizers~1{organizerId}~1financial-reports~1{reportId}~1download-link/get) instead.\n\nThe caller of this request must have `ORGANIZERS_REPORTS` permission for the given organizer.\n",
         "tags": [
           "Financial reports"
         ],
