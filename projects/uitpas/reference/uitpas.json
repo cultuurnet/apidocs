@@ -3795,7 +3795,10 @@
             "description": "OK",
             "content": {
               "application/x-zip-compressed": {
-                "schema": {},
+                "schema": {  
+                  "type": "string",
+                  "format": "binary"
+                },
                 "examples": {}
               }
             },
