@@ -6543,6 +6543,24 @@
           "id": "2e1288b442b2a"
         },
         "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "vffgzwi7q0jmc"
+            },
+            "description": "UiTPAS number of the family member passholder. This field is always available in responses, mandatory in POST requests and ignored in PUT requests."
+          },
+          "passholder": {
+            "x-stoplight": {
+              "id": "hx6tv58az4pq2"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Passholder"
+              }
+            ],
+            "readOnly": true
+          },
           "creationDate": {
             "type": "string",
             "format": "date-time",
@@ -6565,17 +6583,6 @@
               "id": "k5onwtvwl8j5a"
             },
             "readOnly": true
-          },
-          "passholder": {
-            "x-stoplight": {
-              "id": "hx6tv58az4pq2"
-            },
-            "readOnly": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Passholder"
-              }
-            ]
           }
         }
       },
