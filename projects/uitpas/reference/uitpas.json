@@ -2832,12 +2832,61 @@
                   "Multiple family members": {
                     "value": [
                       {
-                        "passholderId": "352143de-92fe-46f0-bb41-c28f76b038db",
+                        "passholder": {
+                          "id": "1be0fb53-0695-405b-ac09-deafead650af",
+                          "name": "Peeters",
+                          "firstName": "Marc",
+                          "inszNumber": "00000009007",
+                          "dateOfBirth": "2000-01-01",
+                          "postalCode": "9300",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          },
+                          "creationDate": "2012-08-24T14:15:22Z",
+                          "registrationOrganizer": {
+                            "id": "1234",
+                            "name": "Example UiTPAS Organizer"
+                          },
+                          "points": 10,
+                          "uitidStatus": "UNREGISTERED",
+                          "uitpasNumber": "0930012345615",
+                          "cardSystemMemberships": [
+                            {
+                              "cardSystem": {
+                                "id": 1,
+                                "name": "UiTPAS Dender",
+                                "branding": {
+                                  "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                  "primaryColor": "rgba(0,0,0,1.0)",
+                                  "secondaryColor": "rgba(97,166,14,1.0)"
+                                },
+                                "links": {
+                                  "website": "https://www.uitpas.be"
+                                },
+                                "cities": [
+                                  {
+                                    "postalCode": "9300",
+                                    "name": "Aalst"
+                                  },
+                                  {
+                                    "postalCode": "9400",
+                                    "name": "Ninove"
+                                  }
+                                ],
+                                "permanent": true
+                              },
+                              "uitpasNumber": "0930012345615",
+                              "status": "ACTIVE",
+                              "socialTariff": {
+                                "endDate": "2022-08-24T14:15:22Z",
+                                "inGracePeriod": false,
+                                "expired": false
+                              }
+                            }
+                          ]
+                        },
                         "creationDate": "2019-08-24T14:15:22Z",
-                        "uitpasNumber": "0930012345615",
-                        "firstName": "Marc",
-                        "name": "Peeters",
-                        "points": 10,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
                         "mainFamilyMember": true
                       },
@@ -2866,12 +2915,61 @@
                   "No other family members": {
                     "value": [
                       {
-                        "passholderId": "352143de-92fe-46f0-bb41-c28f76b038db",
+                        "passholder": {
+                          "id": "1be0fb53-0695-405b-ac09-deafead650af",
+                          "name": "Peeters",
+                          "firstName": "Marc",
+                          "inszNumber": "00000009007",
+                          "dateOfBirth": "2000-01-01",
+                          "postalCode": "9300",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          },
+                          "creationDate": "2012-08-24T14:15:22Z",
+                          "registrationOrganizer": {
+                            "id": "1234",
+                            "name": "Example UiTPAS Organizer"
+                          },
+                          "points": 10,
+                          "uitidStatus": "UNREGISTERED",
+                          "uitpasNumber": "0930012345615",
+                          "cardSystemMemberships": [
+                            {
+                              "cardSystem": {
+                                "id": 1,
+                                "name": "UiTPAS Dender",
+                                "branding": {
+                                  "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                  "primaryColor": "rgba(0,0,0,1.0)",
+                                  "secondaryColor": "rgba(97,166,14,1.0)"
+                                },
+                                "links": {
+                                  "website": "https://www.uitpas.be"
+                                },
+                                "cities": [
+                                  {
+                                    "postalCode": "9300",
+                                    "name": "Aalst"
+                                  },
+                                  {
+                                    "postalCode": "9400",
+                                    "name": "Ninove"
+                                  }
+                                ],
+                                "permanent": true
+                              },
+                              "uitpasNumber": "0930012345615",
+                              "status": "ACTIVE",
+                              "socialTariff": {
+                                "endDate": "2022-08-24T14:15:22Z",
+                                "inGracePeriod": false,
+                                "expired": false
+                              }
+                            }
+                          ]
+                        },
                         "creationDate": "2019-08-24T14:15:22Z",
-                        "uitpasNumber": "0930012345615",
-                        "firstName": "Marc",
-                        "name": "Peeters",
-                        "points": 10,
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
                         "mainFamilyMember": true
                       }
@@ -3815,7 +3913,7 @@
             "description": "OK",
             "content": {
               "application/x-zip-compressed": {
-                "schema": {  
+                "schema": {
                   "type": "string",
                   "format": "binary"
                 },
@@ -6445,34 +6543,13 @@
           "id": "2e1288b442b2a"
         },
         "properties": {
-          "passholderId": {
-            "type": "string",
-            "description": "ID of the family member passholder. This field is always available in responses.",
-            "readOnly": true
+          "passholder": {
+            "$ref": "#/components/schemas/Passholder"
           },
           "creationDate": {
             "type": "string",
             "format": "date-time",
             "description": "Creationdate of the family member in its family. This field is always available in responses.",
-            "readOnly": true
-          },
-          "uitpasNumber": {
-            "type": "string",
-            "description": "UiTPAS number of the family member passholder. This field is always available in responses, mandatory in POST requests and ignored in PUT requests."
-          },
-          "firstName": {
-            "type": "string",
-            "description": "First name of the family member passholder. This field is always available in responses.",
-            "readOnly": true
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the family member passholder. This field is always available in responses.",
-            "readOnly": true
-          },
-          "points": {
-            "type": "integer",
-            "description": "Number of points of the family member passholder. This field is always available in responses.",
             "readOnly": true
           },
           "icon": {
