@@ -6575,14 +6575,6 @@
             "type": "boolean",
             "description": "Indicates whether this is the main family member (= the passholder that created this list of family members)",
             "readOnly": true
-          },
-          "test": {
-            "type": "string",
-            "description": "Test of the family member",
-            "x-stoplight": {
-              "id": "k5onwtvwl8j5a"
-            },
-            "readOnly": true
           }
         }
       },
