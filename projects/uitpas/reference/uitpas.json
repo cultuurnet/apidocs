@@ -2947,6 +2947,7 @@
                               "uitpasNumber": "0900000067513",
                               "status": "ACTIVE",
                               "socialTariff": {
+                                "status": "ACTIVE",
                                 "endDate": "2022-08-24T14:15:22Z",
                                 "inGracePeriod": false,
                                 "expired": false
