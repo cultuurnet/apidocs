@@ -2885,6 +2885,7 @@
                               "uitpasNumber": "0930012345615",
                               "status": "ACTIVE",
                               "socialTariff": {
+                                "status": "ACTIVE",
                                 "endDate": "2022-08-24T14:15:22Z",
                                 "inGracePeriod": false,
                                 "expired": false
@@ -3071,6 +3072,7 @@
                               "uitpasNumber": "0930012345615",
                               "status": "ACTIVE",
                               "socialTariff": {
+                                "status": "ACTIVE",
                                 "endDate": "2022-08-24T14:15:22Z",
                                 "inGracePeriod": false,
                                 "expired": false
