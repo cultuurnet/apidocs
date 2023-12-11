@@ -3322,7 +3322,7 @@
             }
           }
         },
-        "description": "Delete a family member of a given passholder.\n\nThe given passholder is always a member of their family (boolean `mainFamilyMember` is `true`) and cannot be deleted.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the given passholder, except for custom token authentication.\n\n\n<!-- theme: info -->\n\n> Custom tokens\n>\n> Next to regular client and user access tokens, this endpoint also supports 'custom tokens'. In this scenario, the custom token is sent out in an email to the passholder, who is added as a family member. This allows for the reversal of the add operation directly from that email, without further authentication. Unless your client is implementing this  flow, you can ignore custom tokens.",
+        "description": "Delete a family member of a given passholder.\n\nThe main family member is always a member of their family (boolean `mainFamilyMember` is `true`) and cannot be deleted.\n\nThe caller of this method must have `PASSHOLDERS_FAMILY_MEMBERS` permission for the *main family member* or for the *to be deleted family member*, except for custom token authentication.\n\n\n<!-- theme: info -->\n\n> Custom tokens\n>\n> Next to regular client and user access tokens, this endpoint also supports 'custom tokens'. In this scenario, the custom token is sent out in an email to the passholder, who is added as a family member. This allows for the reversal of the add operation directly from that email, without further authentication. Unless your client is implementing this  flow, you can ignore custom tokens.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
