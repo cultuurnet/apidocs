@@ -52,7 +52,7 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 | `1000000520006` |           no          |     9000    |            no            |    active    | `80010101392` |                 -                |
 | `0900000093204` | yes (in other region) |     9000    | 2 coupons (other region) |    active    | `10010105762` |                 -                |
 | `0900000074519` |          yes          |     n/a     |            n/a           | unregistered |      N/A      |                 -                |
-| `0900000075706` |           no          |     n/a     |            n/a           | unregistered |      N/A      |                 -                |
+| `0900000020405` |           no          |     n/a     |            n/a           | unregistered |      N/A      |                 -                |
 
 ## Group passes
 
