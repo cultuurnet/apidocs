@@ -1556,6 +1556,17 @@
       "get": {
         "summary": "contributors - get",
         "operationId": "event-contributors-get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "embedContributors",
+            "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
+          }
+        ],
         "responses": {
           "200": {
             "description": "An array of contributors.",
@@ -4984,6 +4995,17 @@
       "get": {
         "summary": "contributors - get",
         "operationId": "place-contributors-get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "embedContributors",
+            "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
+          }
+        ],
         "responses": {
           "200": {
             "description": "An array of contributors.",
@@ -7245,6 +7267,17 @@
       "get": {
         "summary": "contributors - get",
         "operationId": "organizer-contributors-get",
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "minLength": 1
+            },
+            "in": "query",
+            "name": "embedContributors",
+            "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
+          }
+        ],
         "responses": {
           "200": {
             "description": "An array of contributors.",
