@@ -1564,6 +1564,7 @@
             },
             "in": "query",
             "name": "embedContributors",
+            "required": true,
             "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
           }
         ],
@@ -5003,6 +5004,7 @@
             },
             "in": "query",
             "name": "embedContributors",
+            "required": true,
             "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
           }
         ],
@@ -7275,6 +7277,7 @@
             },
             "in": "query",
             "name": "embedContributors",
+            "required": true,
             "description": "Includes the contributors in the response body if the authenticated user or client has the permission to view contributors on the item"
           }
         ],
