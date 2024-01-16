@@ -89,6 +89,10 @@ Bepaal of het UiTPAS-logo mag worden weergegeven bij evenementen voor UiTPAS en 
 
 Bepaal of het Museumpas-logo mag worden weergegeven bij evenementen die toegankelijk zijn met Museumpassmusées of niet.
 
+#### UiTX-logo
+
+Bepaal of het UiTX-logo mag worden weergegeven bij culturele evenementen die geschikt zijn voor jongeren tussen 16 en 26 jaar.
+
 #### Beschrijving
 
 Bepaal of je de beschrijving van evenementen wilt tonen of niet.
