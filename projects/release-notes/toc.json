@@ -12,6 +12,12 @@
       },
       {
               "type":"item",
+              "title":"2024",
+              "uri":"docs/uitdatabank/2024.md",
+              "slug":"udb-2024"
+      },
+      {
+              "type":"item",
               "title":"2023",
               "uri":"docs/uitdatabank/2023.md",
               "slug":"udb-2023"
@@ -47,6 +53,12 @@
       {
          "type":"divider",
          "title":"Widgets"
+      },
+      {
+               "type":"item",
+               "title":"2024",
+               "uri":"docs/widgets/2024.md",
+               "slug":"wid-2024"
       },
       {
                "type":"item",
