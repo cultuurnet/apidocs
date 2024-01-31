@@ -3866,7 +3866,7 @@
                   "properties": {
                     "query": {
                       "type": "string",
-                      "description": "URI to existing places"
+                      "description": "When multiple duplicated places are round, this provides a URI to existing places"
                     },
                     "type": {
                       "type": "string",
@@ -3883,8 +3883,21 @@
                     "detail": {
                       "type": "string",
                       "description": "Detailed description of the error"
+                    },
+                    "duplicatePlaceUri": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "625qzdfcsviv2"
+                      },
+                      "description": "When a single duplicated place is found, this is the URI of the original place"
                     }
-                  }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status",
+                    "detail"
+                  ]
                 },
                 "examples": {
                   "Multi duplicated places found": {
@@ -3898,7 +3911,7 @@
                   },
                   "Single duplicated place found": {
                     "value": {
-                      "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "duplicatePlaceUri": "/place/581314d4-637e-407b-ba35-8b60847012d0",
                       "type": "https://api.publiq.be/probs/url/status-conflict",
                       "title": "Status conflict",
                       "status": 409,
