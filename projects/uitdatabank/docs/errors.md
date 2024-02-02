@@ -104,24 +104,24 @@ The action you are trying to perform on an event cannot be done because the even
 
 When handling an image on an event / place / organizer, for example when making it the main image or when updating its `description` and/or `copyrightHolder`, the image id must be one of the images that are already linked to the event / place / organizer. Add the image first, so you can then perform the action on it.
 
-## image-must-be-linked-to-resource
+## duplicate-place
 
-* **Complete type:** `https://api.publiq.be/probs/uitdatabank/status-conflict`
-* **Title**: `Status conflict`
+* **Complete type:** `https://api.publiq.be/probs/uitdatabank/duplicate-place`
+* **Title**: `Duplicate place`
 * **Status**: `409`
 
 To ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address. You get this error when (multiple) matches already exist in the system.
 You can use the attached query to get existing place(s).
 Subsequently, appropriate actions, such as updates to an existing Place, can be done to maintain uniqueness and coherence in UDB.
 
-*Example:*
-```
-    {
-        "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
-        "type": "https://api.publiq.be/probs/url/status-conflict",
-        "title": "Status conflict",
-        "status": 409,
-        "detail": "This place already exists. Use the attached query to get existing place(s) for the place you tried to create."
-    }
-```
+*Example single place returned:*
 
+```json
+{
+  "type": "https://api.publiq.be/probs/url/status-conflict",
+  "title": "Status conflict",
+  "status": 409,
+  "detail": "A place with this address / name combination already exists. Please use the existing place for your purposes.",
+  "duplicatePlaceUrl": "/place/581314d4-637e-407b-ba35-8b60847012d0"
+}
+```
