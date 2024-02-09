@@ -1581,6 +1581,7 @@
           "Events"
         ],
         "description": "Returns a JSON array of contributors, meaning users that have edit rights on the event.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1630,6 +1631,7 @@
           "Events"
         ],
         "description": "Updates the list of contributors on the event. These users will have edit rights on the event.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -5009,6 +5011,7 @@
           "Places"
         ],
         "description": "Returns a JSON array of contributors, meaning users that have edit rights on the place.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -5058,6 +5061,7 @@
           "Places"
         ],
         "description": "Updates the list of contributors on the place. These users will have edit rights on the place.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7270,6 +7274,7 @@
           "Organizers"
         ],
         "description": "Returns a JSON array of contributors, meaning users that have edit rights on the organizer.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7319,6 +7324,7 @@
           "Organizers"
         ],
         "description": "Updates the list of contributors on the organizer. These users will have edit rights on the organizer.",
+        "x-internal": true,
         "security": [
           {
             "USER_ACCESS_TOKEN": []
