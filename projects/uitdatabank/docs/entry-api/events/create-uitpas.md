@@ -241,9 +241,7 @@ By default, all the card systems that the event's UiTPAS organizer is active in 
 
 For example: If the event's organizer is active in both UiTPAS Gent and UiTPAS Oostende, those card systems will be enabled by default on the event and passholders from both regions will be able to buy tickets with an UiTPAS discount for the event.
 
-In the near future you will be able to enable/disable specific card systems on your UiTPAS events, so you can specify for which ones discounts should be provided. **This functionality is still under construction, please check back soon.** <!-- @todo Link to an UiTPAS guide on how to configure cardSystems on the event when that is ready. -->
-
-When you enable/disable card systems on your UiTPAS event, the event's [UiTPAS labels](#uitpas-labels) will also be updated to reflect the enabled card systems. UiTPAS labels of disabled card systems are removed from the event.
+It is possible to [enable/disable specific card systems](../uitpas/uitpas-api/reference/operations/update-a-event-card-system) on your UiTPAS event. When you enable/disable card systems on your UiTPAS event, the event's [UiTPAS labels](#uitpas-labels) will also be updated to reflect the enabled card systems. UiTPAS labels of disabled card systems are removed from the event.
 
 ## Changing an UiTPAS event to a regular event.
 
