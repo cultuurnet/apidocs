@@ -921,7 +921,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1  checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n  \nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -952,6 +952,125 @@
           },
           "description": "Check-in request body"
         },
+        "tags": [
+          "Checkins"
+        ]
+      }
+    },
+    "/checkin-status": {
+      "parameters": [],
+      "get": {
+        "summary": "Get checkin status",
+        "operationId": "get-checkin-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "allowed": {
+                      "type": "boolean",
+                      "x-stoplight": {
+                        "id": "1jf059cl165uh"
+                      },
+                      "description": "Indicates whether a checkin is currently possible."
+                    },
+                    "endUserMessage": {
+                      "type": "object",
+                      "description": "Optional property that, if provided, contains information for the end-user about why the checkin is currently not allowed.",
+                      "properties": {
+                        "nl": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+                        },
+                        "fr": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+                        },
+                        "de": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+                        },
+                        "en": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+                        }
+                      },
+                      "required": [
+                        "nl"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "allowed"
+                  ]
+                },
+                "examples": {
+                  "Example allowed": {
+                    "value": {
+                      "allowed": true
+                    }
+                  },
+                  "Example not allowed": {
+                    "value": {
+                      "allowed": false,
+                      "endUserMessage": {
+                        "nl": "Deze activiteit is afgelopen, je kan op deze activiteit geen punt meer sparen."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the current checkin status for a passholder and a given event.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "required": true,
+            "description": "UiTPAS number of the passholder who wants to checkin"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventId",
+            "required": true,
+            "description": "Id of the event where the passholder wants to checkin"
+          }
+        ],
         "tags": [
           "Checkins"
         ]
