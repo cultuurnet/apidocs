@@ -6,6 +6,7 @@ The UiTdatabank Search API provides several options to sort events, places and o
 * `created`
 * `distance`
 * `modified`
+* `completeness`
 * `score`
 
 For every sort parameter it is possible to change the sort `order`:
@@ -71,17 +72,23 @@ GET /events/?sort[modified]=desc
 
 The events that were modified recently will appear first.
 
+### completeness
+
+Sorts the data by its completeness. This is a score that is calculated based on the amount of fields that are filled in. The more fields are filled in, the higher the completeness score.
+
+**Examples**
+
+```
+GET /events/?sort[completeness]=desc
+```
+
+The events with the highest completeness score will appear first.
+
 ### score
 
 Sorts the data by its relevance. This is the default sort that is used. For an in-depth look how relevance (`score`) is calculated, see the [elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html).
 
 **Examples**
-
-```
-GET https://search.uitdatabank.be/events/
-```
-
-The events with the highest score will appear first.
 
 ```
 GET /events/?sort[score]=desc
