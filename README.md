@@ -283,4 +283,4 @@ Follow these steps to troubleshoot any issues:
 
 While not required, you can use the following links to help you write excellent documentation:
 
-* <https://hemingwayapp.com/> for writing clearly by avoiding passive voice, long sentences, and so on.
+* hemingwayapp.com for writing clearly by avoiding passive voice, long sentences, and so on.
