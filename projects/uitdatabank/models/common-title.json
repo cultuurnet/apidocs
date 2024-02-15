@@ -1,0 +1,9 @@
+{
+  "title": "copyrightHolder",
+  "description": "Name of the copyright holder of a specific media file.",
+  "type": "string",
+  "example": "publiq",
+  "minLength": 2,
+  "maxLength": 250,
+  "pattern": "\\S"
+}
