@@ -315,7 +315,7 @@ With the `completeness` field you can filter events, places and organizers by th
 
 > #### New functionality 🚧
 >
-> The completeness is a new parameter that is still under construction. At the moment the completeness is only calculated for events, places and organizers created since February 15, 2024. 
+> The completeness is a new parameter that is still under construction. At the moment the completeness is only calculated for events, places and organizers created since February 15, 2024.
 
 **Applicable on endpoints**
 
@@ -340,7 +340,7 @@ Retrieve all events and places that have a completeness of exactly 60:
 GET /offers/?q=completeness:60
 ```
 
-Retrieve all organizers that have a completeness between 70 and 80: 
+Retrieve all organizers that have a completeness between 70 and 80:
 
 ```
 GET /organizers/?q=completeness:[70 TO 80]
