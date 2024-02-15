@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-completeness.json",
+  "title": "place.completeness",
+  "description": "Indicates the level of completeness of a place. The score is calculated by UiTdatabank"
+}

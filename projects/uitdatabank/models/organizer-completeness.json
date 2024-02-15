@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-completeness.json",
+  "title": "organizer.completeness",
+  "description": "Indicates the level of completeness of an organizer. The score is calculated by UiTdatabank"
+}

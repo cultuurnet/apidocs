@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-completeness.json",
+  "title": "event.completeness",
+  "description": "Indicates the level of completeness of an event. The score is calculated by UiTdatabank"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "title": "completeness",
+  "description": "Indicates the level of completeness of an event, place or organizer. The score is calculated by UiTdatabank",
+  "examples": [
+    "60",
+    "85",
+    "92"
+  ],
+  "pattern": "^[1-9][0-9]?$|^100$"
+}
