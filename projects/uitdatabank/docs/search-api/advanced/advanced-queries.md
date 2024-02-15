@@ -958,6 +958,45 @@ Retrieve all events and places that have 5 to 10 videos:
 GET /offers/?q=videosCount:[5 TO 10]
 ```
 
+### completeness
+
+With the `completeness` field you can filter events, places and organizers by their completeness score. The completeness score is a number between 0 and 100 that indicates how complete the information of an event, place or organizer is.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+* an integer, e.g. `50`
+* a range, consisting of two integers (lower and upper bound), e.g. `[50 TO *]`
+
+**Examples**
+
+Retrieve all events and places that have at least a completeness score of 50:
+
+```
+GET /offers/?q=completeness:>=50
+```
+
+Retrieve all events and places that have completeness score of exactly 65:
+
+```
+GET /offers/?q=completeness:65
+```
+
+Retrieve all events and places that have a completeness score less than 50:
+
+```
+GET /offers/?q=completeness:<50
+```
+
+Retrieve all events and places that have a completeness score between 50 and 75:
+
+```
+GET /offers/?q=completeness:[50 TO 75]
+```
+
 ### workflowStatus
 
 Use the `workflowStatus` field to retrieve documents with a specific `workflowStatus`.
