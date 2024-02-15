@@ -110,7 +110,7 @@ When handling an image on an event / place / organizer, for example when making 
 * **Title**: `Duplicate place`
 * **Status**: `409`
 
-To ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address. You get this error when (multiple) matches already exist in the system.
+To ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language, title and address. You get this error when (multiple) matches already exist in the system.
 You can use the attached query to get existing place(s).
 Subsequently, appropriate actions, such as updates to an existing Place, can be done to maintain uniqueness and coherence in UDB.
 
