@@ -307,6 +307,51 @@ Retrieve all organizers that are fully translated in English:
 GET /organizers/?q=completedLanguages:en
 ```
 
+### completeness
+
+With the `completeness` field you can filter events, places and organizers by their completeness. The completeness is a score calculated by UiTdatabank to indiciate how complete an item is. This score is always an integer between 0 and 100.
+
+<!-- theme: info -->
+
+> #### New functionality 🚧
+>
+> The completeness is a new parameter that is still under construction. At the moment the completeness is only calculated for events, places and organizers created since February 15, 2024. 
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+* an integer, e.g. `65`
+* a range, consisting of two integers (lower and upper bound), e.g. `[80 TO *]`
+
+**Examples**
+
+Retrieve all events and places that have a completeness equal to or higher than 80:
+
+```
+GET /offers/?q=completeness:>=80
+```
+
+Retrieve all events and places that have a completeness of exactly 60:
+
+```
+GET /offers/?q=completeness:60
+```
+
+Retrieve all organizers that have a completeness between 70 and 80: 
+
+```
+GET /organizers/?q=completeness:[70 TO 80]
+```
+
+Retrieve all events and places that have a completeness equal to or lower than 60:
+
+```
+GET /offers/?q=completeness:[* TO 60]
+```
+
 ### created
 
 UiTdatabank keeps track of the creation dates of each document. This metadata for the creation date can be queried with the `created` field.
