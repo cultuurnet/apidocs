@@ -76,7 +76,7 @@ The events that were modified recently will appear first.
 
 Sorts the data by its completeness. This value is calculated based on the amount of fields that are filled in. The more fields are filled in, the higher the completeness score.
 
-**Examples**
+**Example**
 
 ```
 GET /events/?sort[completeness]=desc
