@@ -3,10 +3,10 @@
 The UiTdatabank Search API provides several options to sort events, places and organizers.
 
 * `availableTo`
+* `completeness`
 * `created`
 * `distance`
 * `modified`
-* `completeness`
 * `score`
 
 For every sort parameter it is possible to change the sort `order`:
@@ -31,6 +31,18 @@ GET /offers/?sort[availableTo]=asc
 ```
 
 Events & places that end soon will appear first, permanent events and places last.
+
+### completeness
+
+Sorts the data by its completeness. This value is calculated based on the amount of fields that are filled in. The more fields are filled in, the higher the completeness score.
+
+**Example**
+
+```
+GET /events/?sort[completeness]=desc
+```
+
+The events with the highest completeness score will appear first.
 
 ### created
 
@@ -71,18 +83,6 @@ GET /events/?sort[modified]=desc
 ```
 
 The events that were modified recently will appear first.
-
-### completeness
-
-Sorts the data by its completeness. This value is calculated based on the amount of fields that are filled in. The more fields are filled in, the higher the completeness score.
-
-**Example**
-
-```
-GET /events/?sort[completeness]=desc
-```
-
-The events with the highest completeness score will appear first.
 
 ### score
 
