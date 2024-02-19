@@ -190,7 +190,7 @@ Using the `availableRange` field, you can get all events and places that were av
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
-Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series).
+Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series or Camping).
 
 Places are considered to be permanently available, starting when they are published (or, again, when their scheduled publication date has been reached). A small portion of the events is permanent as well, depending on their calendar information.
 
@@ -261,26 +261,6 @@ Retrieve all permanent events and places:
 
 ```
 GET /offers/?q=calendarType:permanent
-```
-
-### contributors
-
-Use the `contributors` field to search for documents for which a particular user / email address is a [contributor](https://docs.publiq.be/docs/uitdatabank/entry-api/shared/contributors).
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-**Possible values**
-
-Any email address.
-
-**Example**
-
-Retrieve all events for which `technical-support@publiq.be` is a contributor:
-
-```
-GET /events/?q=contributors:technical-support@publiq.be
 ```
 
 ### completedLanguages

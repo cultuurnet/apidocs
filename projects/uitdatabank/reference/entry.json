@@ -3849,10 +3849,84 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "409": {
+            "description": "Status conflict\n\nTo ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address. You get this error when (multiple) matches already exist in the system.\nYou can use the attached query to get existing place(s).\nSubsequently, appropriate actions, such as updates to an existing Place, can be done to maintain uniqueness and coherence in UDB.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/url/status-conflict",
+                      "title": "Status conflict",
+                      "status": 409,
+                      "detail": "This place already exists. Use the attached query to get existing place(s) for the place you tried to create."
+                    }
+                  },
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "When multiple duplicated places are round, this provides a URI to existing places"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "https://api.publiq.be/probs/url/status-conflict"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Status conflict"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "409\n"
+                    },
+                    "detail": {
+                      "type": "string",
+                      "description": "Detailed description of the error"
+                    },
+                    "duplicatePlaceUri": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "625qzdfcsviv2"
+                      },
+                      "description": "When a single duplicated place is found, this is the URI of the original place"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status",
+                    "detail"
+                  ]
+                },
+                "examples": {
+                  "Multi duplicated places found": {
+                    "value": {
+                      "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/url/status-conflict",
+                      "title": "Status conflict",
+                      "status": 409,
+                      "detail": "This place already exists. Use the attached query to get existing place(s) for the place you tried to create."
+                    }
+                  },
+                  "Single duplicated place found": {
+                    "value": {
+                      "duplicatePlaceUri": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/url/status-conflict",
+                      "title": "Status conflict",
+                      "status": 409,
+                      "detail": "A place with this address / name combination already exists. Please use the existing place for your purposes."
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "place-post",
-        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.",
+        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.\n\nTo ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []

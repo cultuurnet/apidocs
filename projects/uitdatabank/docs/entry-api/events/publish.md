@@ -60,7 +60,7 @@ Keep in mind that deleting an event is an irreversible action. If you deleted an
 
 > Note that you must not delete an event just because its end date has been reached. UiTinVlaanderen and other online calendars will automatically hide the event once its end date (`availableTo` property) has been reached.
 >
-> In the case of most events, this is the same as the end date of the event. Only in the case of events with the type *"lessenreeks"* is it the start date of the event, because you can usually no longer register to participate in such an event after it has started.
+> In the case of most events, this is the same as the end date of the event. Only in the case of events with the type *"lessenreeks"* or *"Kamp of vakantie"* is it the start date of the event, because you can usually no longer register to participate in such an event after it has started.
 
 ## Publishing an event as an API integrator
 
