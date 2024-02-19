@@ -104,6 +104,9 @@
         "contributors": {
           "$ref": "./place-contributors.json"
         },
+        "completeness": {
+          "$ref": "./common-completeness.json"
+        },
         "calendarSummary": {
           "$ref": "./place-calendarSummary.json"
         }
