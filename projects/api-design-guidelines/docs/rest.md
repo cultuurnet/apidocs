@@ -53,7 +53,7 @@ Contrary to popular belief, the REST architecture does not dictate how URLs must
 
 While not required by the REST architecture, we have agreed on some additional naming conventions that must always be followed on APIs built by/for publiq to ensure a consistent developer experience:
 
-* URIs must always use `kebab-case`. 
+* URIs must always use `kebab-case`.
 * Collections must be pluralized. For example `/weather-predictions`, `/users`, ...
 * Collections may support query parameters to filter them. For example `/users?postalCode=1000` could be the URI for all users that live in Brussels.
 * Individual resources may use a database ID as part of their URI, but do not need to. If they do, it is advised to not use incremental IDs to avoid "URI guessing", but to use [UUIDs](https://nl.wikipedia.org/wiki/Universally_unique_identifier) instead. For example `/users/foo` may be used for the user with username `foo`, or `/users/550e8400-e29b-41d4-a716-446655440000` for the user with the database ID `550e8400-e29b-41d4-a716-446655440000`.

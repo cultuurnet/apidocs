@@ -3,6 +3,7 @@
 The UiTdatabank Search API provides several options to sort events, places and organizers.
 
 * `availableTo`
+* `completeness`
 * `created`
 * `distance`
 * `modified`
@@ -30,6 +31,18 @@ GET /offers/?sort[availableTo]=asc
 ```
 
 Events & places that end soon will appear first, permanent events and places last.
+
+### completeness
+
+Sorts the data by its completeness. This value is calculated based on the amount of fields that are filled in. The more fields are filled in, the higher the completeness score.
+
+**Example**
+
+```
+GET /events/?sort[completeness]=desc
+```
+
+The events with the highest completeness score will appear first.
 
 ### created
 
@@ -75,13 +88,7 @@ The events that were modified recently will appear first.
 
 Sorts the data by its relevance. This is the default sort that is used. For an in-depth look how relevance (`score`) is calculated, see the [elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html).
 
-**Examples**
-
-```
-GET https://search.uitdatabank.be/events/
-```
-
-The events with the highest score will appear first.
+**Example**
 
 ```
 GET /events/?sort[score]=desc
