@@ -992,7 +992,7 @@ GET /offers/?q=completeness:65
 Retrieve all organizers that have a completeness score less than 50:
 
 ```
-GET /offers/?q=completeness:<50
+GET /organizers/?q=completeness:<50
 ```
 
 Retrieve all events and places that have a completeness score between 50 and 75:
