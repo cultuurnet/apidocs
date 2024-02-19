@@ -989,7 +989,7 @@ Retrieve all events and places that have completeness score of exactly 65:
 GET /offers/?q=completeness:65
 ```
 
-Retrieve all events and places that have a completeness score less than 50:
+Retrieve all organizers that have a completeness score less than 50:
 
 ```
 GET /offers/?q=completeness:<50
