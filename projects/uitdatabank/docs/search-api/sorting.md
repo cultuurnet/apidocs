@@ -88,7 +88,7 @@ The events with the highest completeness score will appear first.
 
 Sorts the data by its relevance. This is the default sort that is used. For an in-depth look how relevance (`score`) is calculated, see the [elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/guide/current/relevance-intro.html).
 
-**Examples**
+**Example**
 
 ```
 GET /events/?sort[score]=desc
