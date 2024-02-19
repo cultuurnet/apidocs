@@ -1,0 +1,11 @@
+{
+  "title": "Completeness",
+  "description": "The completeness score is a number between 0 and 100 that indicates how complete the information of an event, place or organizer is.",
+  "type": "integer",
+  "examples": [],
+  "maximum": 100,
+  "default": 0,
+  "example": 56,
+  "minimum": 0,
+  "readOnly": true
+}

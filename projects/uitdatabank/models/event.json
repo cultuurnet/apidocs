@@ -116,6 +116,9 @@
         "contributors": {
           "$ref": "./event-contributors.json"
         },
+        "completeness": {
+          "$ref": "./common-completeness.json"
+        },
         "calendarSummary": {
           "$ref": "./event-calendarSummary.json"
         }

@@ -62,6 +62,9 @@
     },
     "contributors": {
       "$ref": "./organizer-contributors.json"
+    },
+    "completeness": {
+      "$ref": "./common-completeness.json"
     }
   },
   "required": [
