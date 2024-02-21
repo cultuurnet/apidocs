@@ -254,12 +254,6 @@
             },
             {
               "type": "item",
-              "title": "Contributors",
-              "uri": "/docs/entry-api/shared/contributors.md",
-              "slug": "entry-api/shared/contributors"
-            },
-            {
-              "type": "item",
               "title": "Description",
               "uri": "/docs/entry-api/shared/description.md",
               "slug": "entry-api/shared/description"
