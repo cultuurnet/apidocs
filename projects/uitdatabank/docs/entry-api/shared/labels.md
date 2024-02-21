@@ -5,7 +5,7 @@ agenda. They can be public or private & visible or hidden.
 
 ## Scope
 
-Contributors can be added on:
+Labels can be added on:
 
 * ✅ [Events](../events/introduction.md)
 * ✅ [Places](../places/introduction.md)
