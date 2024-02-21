@@ -59,6 +59,10 @@ Alternatively, you can set a label using one of these endpoints:
 
 To remove a label **when updating an event/place/organizer in its entirety**, you can simply leave out the specific `label`.
 
+<!-- theme: danger -->
+>
+> Exception: some existing labels or hiddenLabels may be kept on the event even if they are not included in the update request. For example if they were added via the UiTdatabank UI, or if the client or user making the request does not have sufficient permission to remove some specific labels.
+
 Alternatively, you can delete a label using one of these endpoints:
 
 * For events: [`DELETE /events/{eventId}/labels/{labelName}`](/reference/entry.json/paths/~1events~1{eventId}~1labels~1{labelName}/delete)
