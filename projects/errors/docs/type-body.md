@@ -51,3 +51,11 @@ The included file has a type that is not accepted by the server. The `detail` pr
 * **Status**: `400`
 
 The included file has a size that is not accepted by the server. Typically it is too big. The `detail` property in the response should include more info like the maximum (and/or minimum) file size.
+
+## duplicate-place
+
+* **Type:** `https://api.publiq.be/probs/body/duplicate-place`
+* **Title**: `Duplicate place`
+* **Status**: `409`
+
+The body you included (typically JSON) includes a new place that already exists on the server.
