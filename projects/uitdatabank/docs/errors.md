@@ -118,8 +118,8 @@ Subsequently, appropriate actions, such as updates to an existing Place, can be 
 
 ```json
 {
-  "type": "https://api.publiq.be/probs/url/status-conflict",
-  "title": "Status conflict",
+  "type": "https://api.publiq.be/probs/uitdatabank/duplicate-place",
+  "title": "Duplicate place",
   "status": 409,
   "detail": "A place with this address / name combination already exists. Please use the existing place for your purposes.",
   "duplicatePlaceUrl": "/place/581314d4-637e-407b-ba35-8b60847012d0"
