@@ -25,5 +25,6 @@
       "minLength": 1,
       "pattern": "\\S"
     }
-  }
+  },
+  "x-internal": true
 }
