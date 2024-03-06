@@ -8228,6 +8228,81 @@
         ]
       }
     },
+    "/ownerships": {
+      "post": {
+        "summary": "ownership - request",
+        "description": "Request the ownership of a given item\n",
+        "operationId": "ownership-request",
+        "tags": [
+          "Ownerships"
+        ],
+        "responses": {
+          "201": {
+            "description": "The ownership has been requested",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The id of newly created ownership."
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "6b476d79-c404-425f-8b1c-357e39a60410"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "requestBody": {
+          "description": "The details of an ownership to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/ownership-post.json"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "parameters": []
+    },
     "/news-articles": {
       "post": {
         "summary": "news article - create",
@@ -9181,6 +9256,9 @@
     },
     {
       "name": "Organizers"
+    },
+    {
+      "name": "Ownerships"
     },
     {
       "name": "Places"

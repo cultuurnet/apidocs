@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "x-internal": true,
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "description": "The id of the item",
+      "example": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
+      "pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12}",
+      "readOnly": true
+    },
+    "itemType": {
+      "type": "string",
+      "example": "organizer",
+      "description": "The type of the item",
+      "enum": [
+        "organizer"
+      ],
+      "readOnly": true
+    },
+    "ownerId": {
+      "type": "string",
+      "description": "The id of the owner",
+      "example": "7a583ed3-cbc1-481d-93b1-d80fff0174dd",
+      "minLength": 1,
+      "pattern": "\\S",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "itemId",
+    "itemType",
+    "ownerId"
+  ]
+}
