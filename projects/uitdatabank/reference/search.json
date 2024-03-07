@@ -1574,8 +1574,7 @@
               "nl",
               "fr",
               "de",
-              "en",
-              "*"
+              "en"
             ]
           }
         },
@@ -1595,8 +1594,7 @@
               "nl",
               "fr",
               "de",
-              "en",
-              "*"
+              "en"
             ]
           }
         },
@@ -1716,8 +1714,7 @@
             "enum": [
               "Available",
               "TemporarilyUnavailable",
-              "Unavailable",
-              "*"
+              "Unavailable"
             ]
           }
         },
