@@ -1256,8 +1256,7 @@
             "enum": [
               "online",
               "offline",
-              "mixed",
-              "*"
+              "mixed"
             ]
           }
         },
@@ -1272,8 +1271,7 @@
           "type": "string",
           "enum": [
             "Available",
-            "Unavailable",
-            "*"
+            "Unavailable"
           ]
         },
         "in": "query",
@@ -1289,8 +1287,7 @@
               "single",
               "multiple",
               "periodic",
-              "permanent",
-              "*"
+              "permanent"
             ]
           }
         },
@@ -1560,8 +1557,7 @@
             "nl",
             "fr",
             "de",
-            "en",
-            "*"
+            "en"
           ]
         },
         "in": "query",
