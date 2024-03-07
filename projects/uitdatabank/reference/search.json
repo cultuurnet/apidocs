@@ -1219,7 +1219,8 @@
           "enum": [
             "everyone",
             "members",
-            "education"
+            "education",
+            "*"
           ],
           "default": "everyone"
         },
@@ -1255,7 +1256,8 @@
             "enum": [
               "online",
               "offline",
-              "mixed"
+              "mixed",
+              "*"
             ]
           }
         },
@@ -1270,7 +1272,8 @@
           "type": "string",
           "enum": [
             "Available",
-            "Unavailable"
+            "Unavailable",
+            "*"
           ]
         },
         "in": "query",
@@ -1286,7 +1289,8 @@
               "single",
               "multiple",
               "periodic",
-              "permanent"
+              "permanent",
+              "*"
             ]
           }
         },
@@ -1556,7 +1560,8 @@
             "nl",
             "fr",
             "de",
-            "en"
+            "en",
+            "*"
           ]
         },
         "in": "query",
@@ -1573,7 +1578,8 @@
               "nl",
               "fr",
               "de",
-              "en"
+              "en",
+              "*"
             ]
           }
         },
@@ -1593,7 +1599,8 @@
               "nl",
               "fr",
               "de",
-              "en"
+              "en",
+              "*"
             ]
           }
         },
@@ -1713,7 +1720,8 @@
             "enum": [
               "Available",
               "TemporarilyUnavailable",
-              "Unavailable"
+              "Unavailable",
+              "*"
             ]
           }
         },
