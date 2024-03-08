@@ -21,4 +21,4 @@ In our documentation you will find:
 * Code examples, so you can see how the APIs works in practice
 * Detailed technical specifications per HTTP endpoint
 * OpenAPI files and Postman collections to get started quickly
-* Release notes to keep up-to-date with recent changes in our API
+* [Release notes](https://docs.publiq.be/docs/release-notes/introduction) to keep up-to-date with recent changes in our API
