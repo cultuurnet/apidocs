@@ -1,5 +1,7 @@
 {
   "$ref": "./common-name.json",
   "title": "organizer.name",
-  "description": "The human-readable, localized name of the [organizer](./models/organizer.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./models/organizer-mainLanguage.json) property."
+  "description": "The human-readable, localized name of the [organizer](./models/organizer.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./models/organizer-mainLanguage.json) property.",
+  "minLength": 1,
+  "maxLength": 90
 }

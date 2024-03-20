@@ -3,6 +3,7 @@
   "title": "name.localized",
   "description": "A human-readable name localized in a single value.",
   "minLength": 1,
+  "maxLength": 90,
   "pattern": "\\S",
   "examples": [
     "Example name"

@@ -1,5 +1,7 @@
 {
   "$ref": "./common-name.json",
   "title": "place.name",
-  "description": "The human-readable, localized name of the [place](./models/place.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./models/place-mainLanguage.json) property."
+  "description": "The human-readable, localized name of the [place](./models/place.json).\n\nRequires at least one value, for the language specified in the [mainLanguage](./models/place-mainLanguage.json) property.",
+  "minLength": 1,
+  "maxLength": 90
 }
