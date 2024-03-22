@@ -58,7 +58,8 @@ Het gebruik van de publicatietools is enkel toegestaan voor niet-commerciële do
 
 De Gebruiker mag geen gebruik maken van de publicatietools op een wijze die of voor een doel dat niet in overeenstemming is met de wet, in de meest ruime betekenis van het woord. Hieronder worden begrepen, zonder een exhaustieve opsomming te zijn, de regels van het toepasselijke internationale, nationale, regionale, lokale recht of van het gewoonterecht. Zo dient u onder meer de regelgeving inzake intellectuele eigendomsrechten, inzake bescherming van de privacy en inzake bescherming van databanken te respecteren.
 
-Het gebruik van de publicatietools is enkel toegestaan mits expliciete vermelding van de bron. In een agendaoverzicht wordt steeds verwezen naar uitinvlaanderen.be als bron, via link of beeldmerk en link. Indien mogelijk vermeld je ook de bron onderaan op het detail van het evenement. Bijvoorbeeld, Bron: uitinvlaanderen.be. De beeldmerken zijn te vinden op <https://platform.publiq.be>
+
+Het gebruik van de publicatietools is enkel toegestaan mits expliciete vermelding van de bron. In een agendaoverzicht wordt steeds verwezen naar uitinvlaanderen.be als bron, via link of beeldmerk en link. Indien mogelijk vermeld je ook de bron onderaan op het detail van het evenement. Bijvoorbeeld, Bron: uitinvlaanderen.be. De beeldmerken zijn te vinden op <https://projectaanvraag.uitdatabank.be>
 
 Eventuele aanpassingen en aanvullingen van de data, o.m. verrijkingen en correcties, moeten terugstromen naar de UiTdatabank. publiq moet deze aanpassingen kunnen verspreiden naar andere gebruikers.
 
