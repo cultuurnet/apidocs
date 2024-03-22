@@ -3,17 +3,18 @@
 (versie 21/03/24)
 
 Deze Gebruiksvoorwaarden zijn van toepassing op de Publicatietools van het publiq platform. Dd 21/03/24 wordt hieronder begrepen:
+
 * UiTdatabank API (Entry (schrijven van data) / Search (lezen van data))
 * Agendawidgets: door publiq gehoste agendamodule
 * UiTPAS API
 
 ## I. Onvoorwaardelijke aanvaarding van de gebruiksvoorwaarden
 
-publiq biedt u de mogelijkheid om via het gebruik van UiTpublicatietools op een eenvoudige wijze toegang te krijgen tot de gegevens van de UiTdatabank en UiTPAS. De UiTpublicatietools zijn web services beschikbaar via de URL te vinden op https://docs.publiq.be. Hier staat ook alle technische documentatie.
+publiq biedt u de mogelijkheid om via het gebruik van UiTpublicatietools op een eenvoudige wijze toegang te krijgen tot de gegevens van de UiTdatabank en UiTPAS. De UiTpublicatietools zijn web services beschikbaar via de URL te vinden op <https://docs.publiq.be>. Hier staat ook alle technische documentatie.
 
 Het gebruik van de UiTpublicatietools en van de gegevens van de tools is slechts toegestaan indien u, zonder enig voorbehoud, instemt met alle hierna volgende voorwaarden en ze correct naleeft en toepast.
 
-publiq behoudt zich het recht om deze gebruiksvoorwaarden op elk ogenblik uit te breiden of te wijzigen. De meest actuele versie is steeds beschikbaar via https://docs.publiq.be. Wij raden u dus aan om op geregelde tijdstippen deze gebruiksvoorwaarden te consulteren en te controleren op wijzigingen.
+publiq behoudt zich het recht om deze gebruiksvoorwaarden op elk ogenblik uit te breiden of te wijzigen. De meest actuele versie is steeds beschikbaar via <https://docs.publiq.be>. Wij raden u dus aan om op geregelde tijdstippen deze gebruiksvoorwaarden te consulteren en te controleren op wijzigingen.
 
 Met het begrip “Gebruiker” wordt hierna bedoeld: de fysieke persoon, de entiteit of de rechtspersoon die gebruik maakt van de UiTpublicatietools en via deze tools toegang krijgt tot UiTdatabank en UiTPAS en de gegevens van deze toepassingen. De bepalingen van deze gebruiksvoorwaarden zijn van toepassing ongeacht of de Gebruiker zelf rechtstreeks gebruikmaakt van de publicatietools of hiervoor een beroep doet op bijvoorbeeld een IT-leverancier of softwareontwikkelaar.
 
@@ -43,12 +44,11 @@ De toegangssleutels tot de API’s (API key of client ID en secret) die aan de G
 
 ### Ondersteuning
 
-Alle technische documentatie voor gebruik van de publicatietools is te vinden op https://docs.publiq.be. Hier zijn ook best practices inzake implementaties terug te vinden.
+Alle technische documentatie voor gebruik van de publicatietools is te vinden op <https://docs.publiq.be>. Hier zijn ook best practices inzake implementaties terug te vinden.
 
 Met betrekking tot het gebruik van de API bieden we geen gratis technische ondersteuning. Integratoren met functionele vragen bij de documentatie kunnen terecht in een Slack-kanaal dat door publiq-collega’s volgens best effort principe opgevolgd wordt.
 
 Ad hoc-support is beschikbaar als professional service, en wordt aangerekend in functie van gepresteerde uren, met een minimum van 3u. Neem hiervoor contact op met <partnerships@publiq.be>.
-
 
 ### Geoorloofd gebruik
 
@@ -58,7 +58,7 @@ Het gebruik van de publicatietools is enkel toegestaan voor niet-commerciële do
 
 De Gebruiker mag geen gebruik maken van de publicatietools op een wijze die of voor een doel dat niet in overeenstemming is met de wet, in de meest ruime betekenis van het woord. Hieronder worden begrepen, zonder een exhaustieve opsomming te zijn, de regels van het toepasselijke internationale, nationale, regionale, lokale recht of van het gewoonterecht. Zo dient u onder meer de regelgeving inzake intellectuele eigendomsrechten, inzake bescherming van de privacy en inzake bescherming van databanken te respecteren.
 
-Het gebruik van de publicatietools is enkel toegestaan mits expliciete vermelding van de bron. In een agendaoverzicht wordt steeds verwezen naar uitinvlaanderen.be als bron, via link of beeldmerk en link. Indien mogelijk vermeld je ook de bron onderaan op het detail van het evenement. Bijvoorbeeld, Bron: uitinvlaanderen.be. De beeldmerken zijn te vinden op https://platform.publiq.be
+Het gebruik van de publicatietools is enkel toegestaan mits expliciete vermelding van de bron. In een agendaoverzicht wordt steeds verwezen naar uitinvlaanderen.be als bron, via link of beeldmerk en link. Indien mogelijk vermeld je ook de bron onderaan op het detail van het evenement. Bijvoorbeeld, Bron: uitinvlaanderen.be. De beeldmerken zijn te vinden op <https://platform.publiq.be>
 
 Eventuele aanpassingen en aanvullingen van de data, o.m. verrijkingen en correcties, moeten terugstromen naar de UiTdatabank. publiq moet deze aanpassingen kunnen verspreiden naar andere gebruikers.
 
@@ -81,9 +81,9 @@ publiq kan actief en reactief toezicht houden op de naleving van deze Gebruiksvo
 ### Versionering
 
 publiq voert onderhoud en ontwikkelingen uit op de publicatietools.
-Voor de publicatietools wordt een versiebeleid gehanteerd dat steeds op https://docs.publiq.be/#versioning-strategy geraadpleegd kan worden.
+Voor de publicatietools wordt een versiebeleid gehanteerd dat steeds op <https://docs.publiq.be/#versioning-strategy> geraadpleegd kan worden.
 
-### Gebrekkig functioneren 
+### Gebrekkig functioneren
 
 Hoewel publiq haar diensten naar beste inzicht en vermogen zal uitvoeren en/of verlenen, biedt zij geen enkele garantie met betrekking tot de diensten, waaronder de garantie dat de diensten geschikt zullen zijn voor een bepaald doel of dat zij zullen voldoen aan de wensen van de Gebruiker. De Gebruiker erkent en aanvaardt dat, publiq enkel gebonden is door een middelenverbintenis en niet door een resultaatsverbintenis.
 
@@ -117,7 +117,7 @@ Het is de collectieve verantwoordelijkheid van alle belanghebbenden om de integr
 
 De Gebruiker en zijn medewerkers of aangestelden die toegang krijgen tot persoonlijke informatie zijn gehouden aan de normen gesteld door de Algemene Verordening Gegevensbescherming (kortweg AVG of GDPR) en het Decreet van 23 juni 2023 tot structurele subsidiëring van kernorganisaties om de digitale transformatie van de cultuursector aan te sturen.
 
-Om ongeoorloofd toegang tot persoonsgegevens te vermijden, is de toegang tot het Platform strikt persoonlijk en gekoppeld aan een persoonlijke account. De toegang tot die persoonlijke account moet voldoende afgeschermd worden, onder andere door tijdig uit te loggen uit de applicatie en het paswoord persoonlijk te houden. Wanneer een medewerker niet langer in functie is, dient de organisatie de rechten van de gebruiker in te trekken en publiq zo snel mogelijk hierover te informeren. 
+Om ongeoorloofd toegang tot persoonsgegevens te vermijden, is de toegang tot het Platform strikt persoonlijk en gekoppeld aan een persoonlijke account. De toegang tot die persoonlijke account moet voldoende afgeschermd worden, onder andere door tijdig uit te loggen uit de applicatie en het paswoord persoonlijk te houden. Wanneer een medewerker niet langer in functie is, dient de organisatie de rechten van de gebruiker in te trekken en publiq zo snel mogelijk hierover te informeren.
 
 Op de verwerking van persoonsgegevens zijn de Algemene Verwerkingsvoorwaarden van het Platform van toepassing welke gelden als Verwerkingsovereenkomst tussen Partijen. Deze maken als bijlage integraal deel uit van deze Gebruiksvoorwaarden en zijn van toepassing op elke Gebruiker en zijn medewerkers en aangestelden.
 
@@ -143,6 +143,7 @@ De gegevens van het Platform zijn beschermd overeenkomstig de bepalingen van de 
 De publicatietools  laten toe data en audiovisueel materiaal aan te leveren aan de UiTdatabank. De Gebruiker dient zich ervan bewust te zijn dat de via de publicatietools  aangeleverde data en audiovisueel materialen openbaar worden verspreid. De Gebruiker dient bijgevolg alle geldende auteurs- en portretrechten te respecteren en zich te verzekeren dat zijn aangestelden of dienstverleners deze ook respecteren evenals alle andere toepasselijke wetgeving. Gebruiker kan daarvoor ook aansprakelijk worden gehouden.
 
 Meer specifiek is Gebruiker verantwoordelijk voor:
+
 * de kwaliteit van de verzamelde data inclusief de aanbieding of transformatie ervan in het gepaste formaat;
 * de conformiteit van de verzamelde data en de daarin vervatte persoonsgegevens met de voorwaarden van de AVG (GDPR);
 * het respecteren en honoreren van verzoeken van betrokkene in hun rechten op basis van de AVG met toepassing van de Algemene Verwerkingsvoorwaarden - bij een verzoek tot verwijdering zullen de betrokken gegevens worden geanonimiseerd;
@@ -157,7 +158,7 @@ De gegevens beschikbaar via de UiTpublicatietools zijn beschermd overeenkomstig 
 
 ### Wijziging gebruiksvoorwaarden
 
-Het staat publiq vrij deze Gebruiksvoorwaarden te wijzigen indien dit vereist is om het gebruik van de publicatietools voor alle Gebruikers te optimaliseren, mogelijk te maken of te houden. 
+Het staat publiq vrij deze Gebruiksvoorwaarden te wijzigen indien dit vereist is om het gebruik van de publicatietools voor alle Gebruikers te optimaliseren, mogelijk te maken of te houden.
 
 Dergelijke wijzigingen worden op voorhand meegedeeld aan de Gebruiker, en treden in werking dertig (30) kalenderdagen nadat de wijziging is meegedeeld. Indien de Gebruiker niet akkoord gaat met de voorgestelde wijziging, heeft hij het recht het gebruik van de publicatietools en de samenwerkingsovereenkomt inclusief deze voorwaarden binnen deze termijn van dertig (30) kalenderdagen te beëindigen, mits schriftelijke kennisgeving aan publiq via de contactgegevens zoals aangegeven op het platform.
 
@@ -165,7 +166,7 @@ Indien Gebruiker binnen de termijn van inwerkingtreding niet reageert, wordt hij
 
 ### Overmacht
 
-Partijen zullen niet aansprakelijk zijn voor enige vertragingen of schendingen van de uitvoering wegens overmacht, daaronder begrepen uitval van dienstverlening door weersomstandigheden, stroom- of andere energiepannes, handelingen of (verzuim van) handelingen door derde partijen, etc. 
+Partijen zullen niet aansprakelijk zijn voor enige vertragingen of schendingen van de uitvoering wegens overmacht, daaronder begrepen uitval van dienstverlening door weersomstandigheden, stroom- of andere energiepannes, handelingen of (verzuim van) handelingen door derde partijen, etc.
 
 ### Overdraagbaarheid
 
@@ -175,17 +176,17 @@ Voor de uitvoering van haar diensten heeft publiq het recht om onderaannemers va
 
 ### Mededelingen
 
-Alle mededelingen worden in eerste instantie gedaan via het e-mailadres waarmee Gebruiker geregistreerd staat. Gebruiker kan contact opnemen via de contactgegevens die op het platform beschikbaar worden gesteld. 
+Alle mededelingen worden in eerste instantie gedaan via het e-mailadres waarmee Gebruiker geregistreerd staat. Gebruiker kan contact opnemen via de contactgegevens die op het platform beschikbaar worden gesteld.
 
 Eventuele klachten kunnen door Gebruiker ingediend worden. publiq zal trachten binnen uiterlijk 72 uur de klacht op te volgen en een begin van antwoord of oplossing te bieden. Deze termijn geldt als richttermijn. Lukt het publiq niet binnen deze termijn een oplossing te bieden, dan zal publiq zich inspannen om dit alsnog binnen een redelijke termijn te doen.
 
 ### Afstand van rechten
 
-Geen van de bepalingen zal beschouwd worden als een afstand van rechten, en geen schending van de voorwaarden als vrijgesteld, behalve indien de afstand of toestemming schriftelijk ondertekend is door de Partij die zulke afstand of toestemming toekent. 
+Geen van de bepalingen zal beschouwd worden als een afstand van rechten, en geen schending van de voorwaarden als vrijgesteld, behalve indien de afstand of toestemming schriftelijk ondertekend is door de Partij die zulke afstand of toestemming toekent.
 
 Van één of meer bepalingen kan uitsluitend worden afgeweken als dit uitdrukkelijk schriftelijk is overeengekomen. De overige bepalingen blijven in dat geval onverkort van kracht.
 
-Elke terzijdestelling, aanvulling en/of wijziging van enige bepaling, is slechts bindend, indien deze schriftelijk is overeengekomen en door beide Partijen is ondertekend. 
+Elke terzijdestelling, aanvulling en/of wijziging van enige bepaling, is slechts bindend, indien deze schriftelijk is overeengekomen en door beide Partijen is ondertekend.
 
 ### Toepasselijk recht
 
@@ -194,5 +195,4 @@ Het Belgische recht is van toepassing op interpretatie en uitvoering van deze ge
 ### Deelbaarheid van clausules
 
 De onwettigheid of nietigheid van één bepaling van deze gebruiksvoorwaarden zal geenszins de onwettigheid of nietigheid van de overige bepalingen in deze gebruiksvoorwaarden of van deze gebruiksvoorwaarden in z’n geheel met zich meebrengen. publiq behoudt zich het recht voor om, in voorkomend geval de onwettige of nietige bepaling te vervangen door een werkbare en geldige bepaling.
-Artikelen die bedoeld zijn om de beëindiging van de overeenkomst te overleven (zoals, maar niet beperkt tot) de bepalingen inzake aansprakelijkheid, vertrouwelijkheid en verwerking van persoonsgegevens), zullen de beëindiging van de overeenkomst overleven. 
-
+Artikelen die bedoeld zijn om de beëindiging van de overeenkomst te overleven (zoals, maar niet beperkt tot) de bepalingen inzake aansprakelijkheid, vertrouwelijkheid en verwerking van persoonsgegevens), zullen de beëindiging van de overeenkomst overleven.
