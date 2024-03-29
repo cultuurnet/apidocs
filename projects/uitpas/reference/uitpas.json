@@ -2073,6 +2073,7 @@
                     "value": [
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 12,
                           "name": "UiTPAS Oostende",
@@ -2095,6 +2096,7 @@
                       },
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 8,
                           "name": "UiTPAS Gent",
@@ -2121,6 +2123,7 @@
                       },
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 1,
                           "name": "UiTPAS Dender",
@@ -2223,6 +2226,7 @@
                     "value": [
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 12,
                           "name": "UiTPAS Oostende",
@@ -2245,6 +2249,7 @@
                       },
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 8,
                           "name": "UiTPAS Gent",
@@ -2271,6 +2276,7 @@
                       },
                       {
                         "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
                         "cardSystem": {
                           "id": 1,
                           "name": "UiTPAS Dender",
@@ -2954,7 +2960,7 @@
                               }
                             }
                           ]
-                        },                        
+                        },
                         "icon": "https://www.uitpas.be/_nuxt/img/icon2.png",
                         "mainFamilyMember": false
                       },
@@ -3015,7 +3021,7 @@
                               }
                             }
                           ]
-                        },                             
+                        },
                         "firstName": "Louis",
                         "name": "Peeters",
                         "points": 2,
@@ -5916,6 +5922,207 @@
           "description": "The ID of the requested card system"
         }
       ]
+    },
+    "/card-systems/{cardSystemId}/membership-prices": {
+      "get": {
+        "summary": "Retrieve card system membership prices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MembershipPrice"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "price": 5,
+                        "priceLabel": "Digitale UiTPAS +18 jaar",
+                        "cardSystem": {
+                          "id": 12,
+                          "name": "UiTPAS Oostende",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "8400",
+                              "name": "Oostende"
+                            }
+                          ],
+                          "permanent": true
+                        }
+                      },
+                      {
+                        "price": 2,
+                        "priceLabel": "Digitale UiTPAS -18 jaar",
+                        "cardSystem": {
+                          "id": 8,
+                          "name": "UiTPAS Gent",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "9000",
+                              "name": "Gent"
+                            },
+                            {
+                              "postalCode": "9050",
+                              "name": "Gent-Brugge"
+                            }
+                          ],
+                          "permanent": true
+                        }
+                      },
+                      {
+                        "price": 5,
+                        "priceLabel": "Standaard UiTPAS +18 jaar",
+                        "cardSystem": {
+                          "id": 1,
+                          "name": "UiTPAS Dender",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "9300",
+                              "name": "Aalst"
+                            },
+                            {
+                              "postalCode": "9400",
+                              "name": "Ninove"
+                            }
+                          ],
+                          "permanent": true
+                        }
+                      },
+                      {
+                        "price": 2,
+                        "priceLabel": "Digitale UiTPAS -18 jaar",
+                        "cardSystem": {
+                          "id": 8,
+                          "name": "UiTPAS Gent",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "9000",
+                              "name": "Gent"
+                            },
+                            {
+                              "postalCode": "9050",
+                              "name": "Gent-Brugge"
+                            }
+                          ],
+                          "permanent": true
+                        }
+                      },
+                      {
+                        "price": 1,
+                        "priceLabel": "UiTPAS Kansenpas",
+                        "cardSystem": {
+                          "id": 1,
+                          "name": "UiTPAS Dender",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "9300",
+                              "name": "Aalst"
+                            },
+                            {
+                              "postalCode": "9400",
+                              "name": "Ninove"
+                            }
+                          ],
+                          "permanent": true
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-card-systems-cardsystemid-membership-prices",
+        "description": "Retrieve the membership prices for a card system. The result will contain all prices for cardsystems. \n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions. TODO: is dit OK -> open request, geen permissies vereist?",
+        "parameters": [],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Card Systems"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the card system"
+        }
+      ]
     }
   },
   "components": {
@@ -5970,6 +6177,7 @@
         "x-internal": false,
         "example": {
           "price": 5,
+          "priceLabel": "Standaard UiTPAS +18 jaar",
           "cardSystem": {
             "id": 1,
             "name": "UiTPAS Dender",
@@ -6002,12 +6210,20 @@
             "description": "Price for the card system membership, in euro.",
             "type": "number"
           },
+          "priceLabel": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pw5cjsq3l7ory"
+            },
+            "description": "Label of the price that can be displayed to the end-user."
+          },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
           }
         },
         "required": [
           "price",
+          "priceLabel",
           "cardSystem"
         ]
       },
