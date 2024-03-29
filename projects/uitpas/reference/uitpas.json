@@ -2826,6 +2826,94 @@
         ]
       }
     },
+    "/passholders/status/insz-numbers/{inszNumber}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "inszNumber",
+          "in": "path",
+          "required": true,
+          "description": "the INSZ number to check"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve the status of a passholder based on INSZ number",
+        "operationId": "passholders-status-insz-numbers-insznumber",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Status response",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rqttsls3qw5rx"
+                      },
+                      "enum": [
+                        "USED",
+                        "UNUSED"
+                      ],
+                      "description": "State of the given INSZ number"
+                    }
+                  },
+                  "required": [
+                    "state"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "state": "UNUSED"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.\n"
+          }
+        },
+        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n\nThe caller of this method must have `PASSHOLDERS_SELF_REGISTRATION` permission for the given passholder.\n",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
     "/passholders/{passholderId}/family-members": {
       "get": {
         "summary": "Retrieve family members of the current passholder",
