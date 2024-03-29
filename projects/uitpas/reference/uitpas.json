@@ -5832,9 +5832,6 @@
       "get": {
         "x-internal": false,
         "summary": "Retrieve card system",
-        "tags": [
-          "Rewards"
-        ],
         "responses": {
           "200": {
             "description": "Details of the requested card system.",
@@ -5903,7 +5900,10 @@
             "USER_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve card system by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions."
+        "description": "Retrieve card system by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "tags": [
+          "Card Systems"
+        ]
       },
       "parameters": [
         {
