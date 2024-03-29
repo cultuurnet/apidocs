@@ -5831,7 +5831,7 @@
     "/card-systems/{cardSystemId}": {
       "get": {
         "x-internal": false,
-        "summary": "Retrieve CardSystem",
+        "summary": "Retrieve card system",
         "tags": [
           "Rewards"
         ],
