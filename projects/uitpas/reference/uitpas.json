@@ -5827,6 +5827,95 @@
           }
         ]
       }
+    },
+    "/card-systems/{cardSystemId}": {
+      "get": {
+        "x-internal": false,
+        "summary": "Retrieve CardSystem",
+        "tags": [
+          "Rewards"
+        ],
+        "responses": {
+          "200": {
+            "description": "Details of the requested card system.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSystem"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": 1,
+                      "name": "UiTPAS Dender",
+                      "branding": {
+                        "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                        "primaryColor": "rgba(0,0,0,1.0)",
+                        "secondaryColor": "rgba(97,166,14,1.0)"
+                      },
+                      "links": {
+                        "website": "https://www.uitpas.be"
+                      },
+                      "cities": [
+                        {
+                          "postalCode": "9300",
+                          "name": "Aalst"
+                        },
+                        {
+                          "postalCode": "9400",
+                          "name": "Ninove"
+                        }
+                      ],
+                      "permanent": true,
+                      "allowsCardlessRegistration": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cardsystems-cardsystemid",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve card system by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the requested card system"
+        }
+      ]
     }
   },
   "components": {
