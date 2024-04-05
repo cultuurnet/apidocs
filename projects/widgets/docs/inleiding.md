@@ -1,9 +1,3 @@
-<!-- focus: false -->
-
-![widgets logo.png](../assets/images/widgets-logo.png)
-
-<br>
-
 ## Wat zijn UiTwidgets?
 
 UiTwidgets (of kortweg "widgets") zijn kant-en-klare HTML/JS modules die je in je website kan integreren om zo snel en eenvoudig een volledig doorzoekbare UiTagenda op je website te publiceren.
