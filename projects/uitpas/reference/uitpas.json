@@ -6024,6 +6024,86 @@
           "description": "The ID of the card system"
         }
       ]
+    },
+    "/card-systems/{cardSystemId}/social-tariff-conditions": {
+      "get": {
+        "summary": "Retrieve card system social tariff conditions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SocialTariffCondition"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "label": "Verhoogde tegemoetkoming",
+                        "description": "Recht hebt op verhoogde tegemoetkoming",
+                        "proofOfEntitlement": "Een attest verhoogde tegemoetkoming kan je opvragen bij je mutualiteit"
+                      },
+                      {
+                        "label": "OCMW attest",
+                        "description": "Schuldbedemiddelingsattest van het OCMW",
+                        "proofOfEntitlement": "Een schuldbedemiddelingsattest kan je opvragen bij het OCMW"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-card-systems-cardsystemid-social-tariff-conditions",
+        "description": "Retrieve the conditions for social tariff entitlement for a card system. The optional `postalCode` is important because conditions may vary within a card system based on postal code. If `postalCode` is omitted, the default conditions for the card system are returned.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions. ",
+        "parameters": [],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Card Systems"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the card system"
+        }
+      ]
     }
   },
   "components": {
@@ -6123,6 +6203,53 @@
           "price",
           "priceLabel"
         ]
+      },
+      "SocialTariffCondition": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "if04bp9j36y0p"
+        },
+        "title": "SocialTariffCondition",
+        "description": "The object describes a condition for social tariff entitlement.",
+        "x-internal": false,
+        "x-tags": [
+          "Models"
+        ],
+        "properties": {
+          "label": {
+            "description": "Label of the condition",
+            "type": "string",
+            "x-stoplight": {
+              "id": "3csunywnm4xvn"
+            }
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pw5cjsq3l7ory"
+            },
+            "description": "Description of the condition"
+          },
+          "proofOfEntitlement": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rgoltjiwexbte"
+            },
+            "description": "Description how to prove the entitlement of this condition"
+          }
+        },
+        "required": [
+          "label",
+          "description",
+          "proofOfEntitlement"
+        ],
+        "x-examples": {
+          "Example": {
+            "label": "Verhoogde tegemoetkoming",
+            "description": "Recht hebt op verhoogde tegemoetkoming",
+            "proofOfEntitlement": "Een attest verhoogde tegemoetkoming kan je opvragen bij je mutualiteit"
+          }
+        }
       },
       "TicketSale": {
         "description": "Model used both for registering new ticket sales and when searching for past ticket sales.\n\nThe `passholder` field is automatically included in responses if you have PASSHOLDERS_SEARCH permission. It is not required for ticket sale registrations.",
