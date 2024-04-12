@@ -2104,7 +2104,7 @@
             }
           }
         },
-        "operationId": "get-passholders-passholderId-membership-prices",
+        "operationId": "get-passholders-passholderId-membership-prices-cardsystemid",
         "description": "Retrieve the membership prices for a new passholder. `postalCode` and `dateOfBirth` are mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
@@ -2206,7 +2206,7 @@
             }
           }
         },
-        "operationId": "get-passholders-membership-prices",
+        "operationId": "get-passholders-membership-prices-cardsystemid",
         "description": "Retrieve the membership prices for an existing passholder in a new card system. \n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
