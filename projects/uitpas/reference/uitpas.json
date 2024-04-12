@@ -5812,7 +5812,7 @@
                             }
                           ],
                           "permanent": true,
-                          "allowsCardlessRegistration": false
+                          "cardlessRegistrationType": "ALL"
                         }
                       ]
                     }
@@ -5958,7 +5958,7 @@
                         }
                       ],
                       "permanent": true,
-                      "allowsCardlessRegistration": false
+                      "cardlessRegistrationType": "NONE"
                     }
                   }
                 }
@@ -7249,9 +7249,15 @@
             "type": "boolean",
             "description": "Indicates whether this is a permanent card system"
           },
-          "allowsCardlessRegistration": {
-            "type": "boolean",
-            "description": "Indicates whether this cardsystem allows online cardless registrations."
+          "cardlessRegistrationType": {
+            "type": "string",
+            "description": "Indicates the types of online cardless registrations this cardsystem supports.",
+            "enum": [
+              "ALL",
+              "REGULAR",
+              "SOCIALTARIFF",
+              "NONE"
+            ]
           }
         },
         "required": [
