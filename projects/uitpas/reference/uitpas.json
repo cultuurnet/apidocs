@@ -6077,7 +6077,16 @@
         },
         "operationId": "get-card-systems-cardsystemid-social-tariff-conditions",
         "description": "Retrieve the conditions for social tariff entitlement for a card system. The optional `postalCode` is important because conditions may vary within a card system based on postal code. If `postalCode` is omitted, the default conditions for the card system are returned.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions. ",
-        "parameters": [],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postalCode",
+            "description": "postal code of the residence of the user. Must be a valid Belgian postal code or `0000` for foreign places."
+          }
+        ],
         "security": [
           {
             "CLIENT_IDENTIFICATION": []
