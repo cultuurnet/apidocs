@@ -37,6 +37,9 @@
       "name": "Financial reports"
     },
     {
+      "name": "Orders"
+    },
+    {
       "name": "Organizers"
     },
     {
@@ -6113,6 +6116,113 @@
           "description": "The ID of the card system"
         }
       ]
+    },
+    "/orders": {
+      "post": {
+        "summary": "Create online order",
+        "operationId": "post-orders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
+          }
+        ],
+        "description": "Create an online order for one or more passholders.\n\nThis caller of this method, identified by client identification, client access token or user access token, must have ORDERS_CREATE permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mainPassholder": {
+                    "$ref": "#/components/schemas/Passholder"
+                  },
+                  "extraPassholders": {
+                    "$ref": "#/components/schemas/Passholder"
+                  }
+                },
+                "required": [
+                  "mainPassholder"
+                ]
+              }
+            }
+          },
+          "description": "Details of the new order to create."
+        },
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "summary": "Retrieve order",
+        "operationId": "get-orders-orderid",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve order by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the order"
+        }
+      ]
     }
   },
   "components": {
@@ -6755,8 +6865,8 @@
           "city": {
             "type": "string",
             "deprecated": true,
-            "readOnly": true,
-            "description": "Name of the municipality that the passholder lives in. Deprecated in favor of `address.city`."
+            "description": "Name of the municipality that the passholder lives in. Deprecated in favor of `address.city`.",
+            "readOnly": true
           },
           "phoneNumber": {
             "type": "string",
@@ -6789,10 +6899,10 @@
             },
             "required": [
               "serviceMails",
+              "milestoneMails",
               "infoMails",
               "sms",
-              "post",
-              "milestoneMails"
+              "post"
             ]
           },
           "nationality": {
@@ -6817,6 +6927,30 @@
           "registrationCardSystemId": {
             "type": "integer",
             "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
+            "writeOnly": true
+          },
+          "registrationSocialTariff": {
+            "type": "object",
+            "description": "Only used in passholder registration. Fill in if the passholder is requesting social tariff. Note: the order will have to pass through an approval flow ",
+            "properties": {
+              "proofOfEntitlement": {
+                "type": "string",
+                "description": "TODO: is dit dan een link naar een geuploade file?"
+              },
+              "profilePicture": {
+                "type": "string",
+                "description": "TODO: is dit dan een link naar een geuploade file?"
+              }
+            },
+            "required": [
+              "proofOfEntitlement",
+              "profilePicture"
+            ],
+            "writeOnly": true
+          },
+          "registrationVoucher": {
+            "type": "string",
+            "description": "Only used in passholder registration when the ser has a price reduction voucher.",
             "writeOnly": true
           }
         },
@@ -7831,6 +7965,68 @@
         "required": [
           "postalCode",
           "name"
+        ]
+      },
+      "Order": {
+        "type": "object",
+        "title": "Order",
+        "description": "Order object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "n9hihx4x3wa17"
+            },
+            "description": "ID of the order",
+            "readOnly": true
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6t5j0p21gcxwj"
+            },
+            "enum": [
+              "PENDING_PAYMENT",
+              "PENDING_APPROVAL",
+              "PENDING_UITID",
+              "COMPLETED"
+            ],
+            "description": "Status of the order",
+            "readOnly": true
+          },
+          "paymentUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "bmo5ep7z3wbn2"
+            },
+            "description": "Payment URL (only when status is `PENDING_PAYMENT`)"
+          },
+          "uitidUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9heoomg0mq75m"
+            },
+            "description": "Uitid authentication URL (only when status is `PENDING_UITID`)"
+          },
+          "totalPrice": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "f198xd50mpxmg"
+            },
+            "description": "Total price of the order"
+          },
+          "mainPassholder": {
+            "$ref": "#/components/schemas/Passholder"
+          },
+          "extraPassholders": {
+            "$ref": "#/components/schemas/Passholder"
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "uitidUrl",
+          "totalPrice"
         ]
       }
     },
