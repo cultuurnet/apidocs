@@ -6141,6 +6141,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           }
         },
         "security": [
@@ -6196,6 +6202,12 @@
               }
             }
           },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -6207,9 +6219,20 @@
             }
           }
         },
-        "description": "Retrieve order by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.",
+        "description": "Retrieve order by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case of client identification, the response is limited to non-privacy-sensitive status information.",
         "tags": [
           "Orders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
+          }
         ]
       },
       "parameters": [
