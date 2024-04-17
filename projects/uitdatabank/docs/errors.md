@@ -125,3 +125,21 @@ Subsequently, appropriate actions, such as updates to an existing Place, can be 
   "duplicatePlaceUrl": "/place/581314d4-637e-407b-ba35-8b60847012d0"
 }
 ```
+
+## failed-subscription-to-newsletter
+
+* **Complete type:** `https://api.publiq.be/probs/uitdatabank/duplicate-place`
+* **Title**: `https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter`
+* **Status**: `400`
+
+When trying to subscribe to a newsletter, you might get this error when there are problems with the external e-mail service.
+The *detail* will contain the error message from the mail service.
+
+```json
+{
+  "type": "https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter",
+  "title": "Failed to subscribe to newsletter",
+  "status": 400,
+  "detail": "Details of the mailservice error",
+}
+```
