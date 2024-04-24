@@ -6965,25 +6965,6 @@
             "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
           },
-          "registrationSocialTariff": {
-            "type": "object",
-            "description": "Only used in passholder registration. Fill in if the passholder is requesting social tariff. Note: the order will have to pass through an approval flow ",
-            "properties": {
-              "proofOfEntitlement": {
-                "type": "string",
-                "description": "TODO: is dit dan een link naar een geuploade file?"
-              },
-              "profilePicture": {
-                "type": "string",
-                "description": "TODO: is dit dan een link naar een geuploade file?"
-              }
-            },
-            "required": [
-              "proofOfEntitlement",
-              "profilePicture"
-            ],
-            "writeOnly": true
-          },
           "registrationVoucher": {
             "type": "string",
             "description": "Only used in passholder registration when the ser has a price reduction voucher.",
