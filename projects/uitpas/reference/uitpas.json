@@ -5999,8 +5999,21 @@
           }
         },
         "operationId": "get-card-systems-cardsystemid-membership-prices",
-        "description": "Retrieve the membership prices for a card system. The result will contain all prices for cardsystems. \n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions. TODO: is dit OK -> open request, geen permissies vereist?",
-        "parameters": [],
+        "description": "Retrieve the membership prices for a card system. The result will contain all prices for cardsystems. \n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DIGITAL",
+                "NFC_CARD"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "Type of the card"
+          }
+        ],
         "security": [
           {
             "CLIENT_IDENTIFICATION": []
