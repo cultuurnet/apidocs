@@ -7351,6 +7351,10 @@
             "type": "boolean",
             "description": "Indicates whether this is a permanent card system"
           },
+          "cardlessRegistration": {
+            "type": "boolean",
+            "description": "Indicates if cardless registration is enabled"
+          },
           "cardlessRegistrationType": {
             "type": "string",
             "description": "Indicates the types of online cardless registrations this cardsystem supports.",
