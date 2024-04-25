@@ -2155,6 +2155,9 @@
           },
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
           }
         ]
       },
