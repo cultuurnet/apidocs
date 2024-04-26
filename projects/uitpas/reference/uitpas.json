@@ -2107,7 +2107,7 @@
             }
           }
         },
-        "operationId": "get-passholders-passholderId-membership-prices-cardsystemid",
+        "operationId": "get-passholders-membership-prices-cardSystemId",
         "description": "Retrieve the membership prices for a new passholder. `postalCode` and `dateOfBirth` are mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
@@ -2144,6 +2144,19 @@
             "in": "query",
             "name": "voucher",
             "description": "optional voucher that might reduce the membership price"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NFC_CARD",
+                "DIGITAL"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "type of the card",
+            "required": true
           }
         ],
         "tags": [
@@ -2164,7 +2177,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "cardSystemId",
           "in": "path",
@@ -2212,7 +2225,7 @@
             }
           }
         },
-        "operationId": "get-passholders-membership-prices-cardsystemid",
+        "operationId": "get-passholders-passholderId-membership-prices-cardSystemId",
         "description": "Retrieve the membership prices for an existing passholder in a new card system. \n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
@@ -2230,6 +2243,19 @@
             "in": "query",
             "name": "voucher",
             "description": "optional voucher that might reduce the membership price"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NFC_CARD",
+                "DIGITAL"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "type of the card",
+            "required": true
           }
         ],
         "tags": [
@@ -2256,7 +2282,7 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "cardSystemId",
           "in": "path",
@@ -2751,94 +2777,6 @@
             "description": "Sorts the transactions by creationDate in ascending or descending order."
           }
         ],
-        "tags": [
-          "Passholders"
-        ]
-      }
-    },
-    "/passholders/status/insz-numbers/{inszNumber}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "inszNumber",
-          "in": "path",
-          "required": true,
-          "description": "the INSZ number to check"
-        }
-      ],
-      "get": {
-        "summary": "Retrieve the status of a passholder based on INSZ number",
-        "operationId": "passholders-status-insz-numbers-insznumber",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "description": "Status response",
-                  "properties": {
-                    "state": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "rqttsls3qw5rx"
-                      },
-                      "enum": [
-                        "USED",
-                        "UNUSED"
-                      ],
-                      "description": "State of the given INSZ number"
-                    }
-                  },
-                  "required": [
-                    "state"
-                  ]
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "state": "UNUSED"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "429": {
-            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.\n"
-          }
-        },
-        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n\nThe caller of this method must have `PASSHOLDERS_SELF_REGISTRATION` permission for the given passholder.\n",
-        "security": [
-          {
-            "CLIENT_IDENTIFICATION": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
-          }
-        ],
-        "parameters": [],
         "tags": [
           "Passholders"
         ]
@@ -5932,7 +5870,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "cardSystemId",
           "in": "path",
@@ -6262,6 +6200,94 @@
           "description": "ID of the order"
         }
       ]
+    },
+    "/passholders/status/insz-numbers/{inszNumber}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "inszNumber",
+          "in": "path",
+          "required": true,
+          "description": "the INSZ number to check"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve the status of a passholder based on INSZ number",
+        "operationId": "passholders-status-insz-numbers-insznumber",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Status response",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rqttsls3qw5rx"
+                      },
+                      "enum": [
+                        "USED",
+                        "UNUSED"
+                      ],
+                      "description": "State of the given INSZ number"
+                    }
+                  },
+                  "required": [
+                    "state"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "state": "UNUSED"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.\n"
+          }
+        },
+        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n\nThe caller of this method must have `PASSHOLDERS_SELF_REGISTRATION` permission for the given passholder.\n",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Passholders"
+        ]
+      }
     }
   },
   "components": {
@@ -7348,7 +7374,7 @@
             "type": "boolean",
             "description": "Indicates whether this is a permanent card system"
           },
-          "cardlessRegistration": {
+          "allowsCardlessRegistration": {
             "type": "boolean",
             "description": "Indicates if cardless registration is enabled"
           },
