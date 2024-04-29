@@ -2072,7 +2072,8 @@
                   "Example": {
                     "value": {
                       "price": 5,
-                      "priceLabel": "Standaard UiTPAS +18 jaar"
+                      "label": "UiTPAS +18 jaar",
+                      "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
                     }
                   }
                 }
@@ -2201,7 +2202,8 @@
                   "Example": {
                     "value": {
                       "price": 5,
-                      "priceLabel": "Standaard UiTPAS +18 jaar"
+                      "label": "UiTPAS +18 jaar",
+                      "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
                     }
                   }
                 }
@@ -5897,24 +5899,29 @@
                   "Example": {
                     "value": [
                       {
+                        "price": 3,
+                        "label": "UiTPAS inwoners +18 jaar",
+                        "description": "Volwassenen die binnen de regio wonen, betalen 3 euro voor hun UiTPAS"
+                      },
+                      {
+                        "price": 0,
+                        "label": "UiTPAS inwoners -18 jaar",
+                        "description": "Kinderen die binnen de regio wonen krijgen een gratis UiTPAS"
+                      },
+                      {
                         "price": 5,
-                        "priceLabel": "Digitale UiTPAS +18 jaar"
+                        "label": "UiTPAS niet-inwoners +18 jaar",
+                        "description": "Volwassenen die buiten de regio wonen, betalen 5 euro voor hun UiTPAS"
                       },
                       {
                         "price": 2,
-                        "priceLabel": "Digitale UiTPAS -18 jaar"
-                      },
-                      {
-                        "price": 5,
-                        "priceLabel": "Standaard UiTPAS +18 jaar"
-                      },
-                      {
-                        "price": 2,
-                        "priceLabel": "Digitale UiTPAS -18 jaar"
+                        "label": "UiTPAS niet-inwoners -18 jaar",
+                        "description": "Kinderen die buiten de regio wonen, betalen 2 euro voor hun UiTPAS"
                       },
                       {
                         "price": 1,
-                        "priceLabel": "UiTPAS Kansenpas"
+                        "label": "UiTPAS Kansenpas",
+                        "description": "Kansenpashouders betalen 1 euro voor hun UiTPAS"
                       }
                     ]
                   }
@@ -6342,30 +6349,8 @@
         "x-internal": false,
         "example": {
           "price": 5,
-          "priceLabel": "Standaard UiTPAS +18 jaar",
-          "cardSystem": {
-            "id": 1,
-            "name": "UiTPAS Dender",
-            "branding": {
-              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-              "primaryColor": "rgba(0,0,0,1.0)",
-              "secondaryColor": "rgba(97,166,14,1.0)"
-            },
-            "links": {
-              "website": "https://www.uitpas.be"
-            },
-            "cities": [
-              {
-                "postalCode": "9300",
-                "name": "Aalst"
-              },
-              {
-                "postalCode": "9400",
-                "name": "Ninove"
-              }
-            ],
-            "permanent": true
-          }
+          "label": "UiTPAS +18 jaar",
+          "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"          
         },
         "x-tags": [
           "Models"
@@ -6375,17 +6360,25 @@
             "description": "Price for the card system membership, in euro.",
             "type": "number"
           },
-          "priceLabel": {
+          "label": {
             "type": "string",
             "x-stoplight": {
               "id": "pw5cjsq3l7ory"
             },
             "description": "Label of the price that can be displayed to the end-user."
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "10d0zi5ldphwj"
+            },
+            "description": "Description of the price that can be displayed to the end-user."
           }
         },
         "required": [
           "price",
-          "priceLabel"
+          "label",
+          "description"
         ]
       },
       "SocialTariffCondition": {
