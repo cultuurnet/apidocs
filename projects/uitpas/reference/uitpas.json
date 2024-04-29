@@ -6180,7 +6180,7 @@
             }
           }
         },
-        "description": "Retrieve order by ID.\n\nThe caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case of client identification, the response is limited to non-privacy-sensitive status information.",
+        "description": "Retrieve order by ID.\n\nThe caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case this order is retrieved using a custom token, `mainPassholder` and `extraPassholders` are left out of the response.",
         "tags": [
           "Orders"
         ],
@@ -6192,7 +6192,7 @@
             "CLIENT_ACCESS_TOKEN": []
           },
           {
-            "CLIENT_IDENTIFICATION": []
+            "CUSTOM_TOKEN": []
           }
         ]
       },
@@ -6350,7 +6350,7 @@
         "example": {
           "price": 5,
           "label": "UiTPAS +18 jaar",
-          "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"          
+          "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
         },
         "x-tags": [
           "Models"
@@ -8031,7 +8031,8 @@
             "enum": [
               "PENDING_PAYMENT",
               "PENDING_APPROVAL",
-              "PENDING_UITID",
+              "PENDING_UITID_AUTH",
+              "PENDING_UITID_CONNECT",
               "COMPLETED"
             ],
             "description": "Status of the order",
@@ -8044,12 +8045,12 @@
             },
             "description": "Payment URL (only when status is `PENDING_PAYMENT`)"
           },
-          "uitidUrl": {
+          "uitidAuthUrl": {
             "type": "string",
             "x-stoplight": {
               "id": "9heoomg0mq75m"
             },
-            "description": "Uitid authentication URL (only when status is `PENDING_UITID`)"
+            "description": "Uitid authentication URL (only when status is `PENDING_UITID_AUTH`)"
           },
           "totalPrice": {
             "type": "number",
@@ -8058,17 +8059,32 @@
             },
             "description": "Total price of the order"
           },
+          "registrationToken": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "q1oexa53dyky7"
+            },
+            "description": "Optional registration token. If this order is `PENDING_UITID_CONNECT` this field is present to allow for easy UiTiD account linking."
+          },
           "mainPassholder": {
             "$ref": "#/components/schemas/Passholder"
           },
           "extraPassholders": {
             "$ref": "#/components/schemas/Passholder"
+          },
+          "customToken": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "l5vfd22u00ejb"
+            },
+            "description": "Custom token that can be used to retrieve this order. (e.g. later in the flow after payment)",
+            "writeOnly": true
           }
         },
         "required": [
           "id",
           "status",
-          "uitidUrl",
+          "uitidAuthUrl",
           "totalPrice"
         ]
       }
