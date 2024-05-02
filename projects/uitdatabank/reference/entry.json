@@ -9026,7 +9026,7 @@
         ]
       }
     },
-    "/mailinglist/{mailinglistId}": {
+    "/mailing-list/{mailinglistId}": {
       "parameters": [
         {
           "schema": {
@@ -9035,12 +9035,12 @@
           "name": "mailinglistId",
           "in": "path",
           "required": true,
-          "description": "The mailinglist id"
+          "description": "The mailing list id"
         }
       ],
       "put": {
-        "summary": "Subscribe to mailinglist",
-        "operationId": "put-mailinglist-mailinglistId",
+        "summary": "Subscribe to mailing list",
+        "operationId": "put-mailing-list",
         "tags": [
           "Mailing"
         ],
