@@ -924,7 +924,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1  checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2109,7 +2109,7 @@
           }
         },
         "operationId": "get-passholders-membership-prices-cardSystemId",
-        "description": "Retrieve the membership prices for a new passholder. `postalCode` and `dateOfBirth` are mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
+        "description": "Retrieve the exact membership price for a new passholder. `cardType`, `postalCode` and `dateOfBirth` are mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nTo retrieve a list of prices for a card system if not all details are known yet, you can use [GET /card-systems/{cardSystemId}/membership-prices](/reference/uitpas.json/paths/~1card-systems~1{cardSystemId}~1membership-prices/get).\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -2132,7 +2132,8 @@
           },
           {
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": "false"
             },
             "in": "query",
             "name": "socialTariff",
@@ -2228,7 +2229,7 @@
           }
         },
         "operationId": "get-passholders-passholderId-membership-prices-cardSystemId",
-        "description": "Retrieve the membership prices for an existing passholder in a new card system. \n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
+        "description": "Retrieve the exact membership price for an existing passholder in a new card system. `cardType` is mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nTo retrieve the price for a *new* passholder, use [GET /passholders/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1membership-prices~1{cardSystemId}/get).\n\nTo retrieve a list of prices for a card system if not all details are known yet, you can use [GET /card-systems/{cardSystemId}/membership-prices](/reference/uitpas.json/paths/~1card-systems~1{cardSystemId}~1membership-prices/get).\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -5883,7 +5884,7 @@
     },
     "/card-systems/{cardSystemId}/membership-prices": {
       "get": {
-        "summary": "Retrieve card system membership prices",
+        "summary": "Retrieve all card system membership prices",
         "responses": {
           "200": {
             "description": "OK",
@@ -5947,7 +5948,7 @@
           }
         },
         "operationId": "get-card-systems-cardsystemid-membership-prices",
-        "description": "Retrieve the membership prices for a card system. The result will contain all prices for cardsystems. \n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "description": "Retrieve all membership prices by card type for a card system. The result will contain all prices for the cardsystem, which is primarily useful to display to a an anonymous user. To retrieve the price for an individual passholder, you can use [GET /passholders/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1membership-prices~1{cardSystemId}/get) (more details like social tariff, date of birth and residence are required) or [GET /passholders/{passholderId}/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1membership-prices~1{cardSystemId}/get) (if the passholder already exists).\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
         "parameters": [
           {
             "schema": {
@@ -5959,7 +5960,8 @@
             },
             "in": "query",
             "name": "cardType",
-            "description": "Type of the card"
+            "description": "Type of the card",
+            "required": true
           }
         ],
         "security": [
