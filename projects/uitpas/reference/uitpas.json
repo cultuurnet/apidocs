@@ -2133,7 +2133,7 @@
           {
             "schema": {
               "type": "boolean",
-              "default": "false"
+              "default": false
             },
             "in": "query",
             "name": "socialTariff",
@@ -5982,7 +5982,7 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "cardSystemId",
           "in": "path",
@@ -8032,10 +8032,9 @@
             },
             "enum": [
               "PENDING_PAYMENT",
-              "PENDING_APPROVAL",
-              "PENDING_UITID_AUTH",
               "PENDING_UITID_CONNECT",
-              "COMPLETED"
+              "COMPLETED",
+              "CANCELLED"
             ],
             "description": "Status of the order",
             "readOnly": true
@@ -8052,7 +8051,7 @@
             "x-stoplight": {
               "id": "9heoomg0mq75m"
             },
-            "description": "Uitid authentication URL (only when status is `PENDING_UITID_AUTH`)"
+            "description": "Uitid authentication URL (only when status is `PENDING_UITID_CONNECT`)"
           },
           "totalPrice": {
             "type": "number",
@@ -8080,6 +8079,14 @@
               "id": "l5vfd22u00ejb"
             },
             "description": "Custom token that can be used to retrieve this order. (e.g. later in the flow after payment)",
+            "writeOnly": true
+          },
+          "redirectUrlAfterPayment": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "fdnymah1sqn77"
+            },
+            "description": "Where to redirect after payment",
             "writeOnly": true
           }
         },
