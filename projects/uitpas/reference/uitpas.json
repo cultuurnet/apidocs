@@ -1120,7 +1120,7 @@
           }
         },
         "operationId": "get-permissions",
-        "description": "Lists the organizers that the current user or client (depending on the token) has access to incuding a list of its permissions.\n\nUse this endpoint if you obtained a user or client access token and need to know its organizer permissions. Use TODO to manage permissions for any client.",
+        "description": "Lists the organizers that the current user or client (depending on the token) has access to incuding a list of its permissions.\n\nUse this endpoint if you obtained a user or client access token and need to know its organizer permissions. Use [GET /permissions/clientID](/reference/uitpas.json/paths/~1permissions~1clientId/get) to manage permissions for any client.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1210,7 +1210,7 @@
           }
         },
         "operationId": "get-permissions-clientId",
-        "description": "Lists the organizer permissions of the given client ID.\n\nThe caller of this request must have `PERMISSIONS_READ` permission.\n",
+        "description": "Lists the organizer permissions of the given client ID.\n\nUse this endpoint to manage permissions for any client. Use [GET /permissions](/reference/uitpas.json/paths/~1permissions/get) to retrieve permissions for your token (current client or user).\n\nThe caller of this request must have `PERMISSIONS_READ` permission.\n",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
