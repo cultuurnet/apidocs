@@ -6134,7 +6134,11 @@
                     "$ref": "#/components/schemas/Passholder"
                   },
                   "extraPassholders": {
-                    "$ref": "#/components/schemas/Passholder"
+                    "type": "array",
+                    "description": "Optional list of extra passholders to order",
+                    "items": {
+                      "$ref": "#/components/schemas/Passholder"
+                    }
                   }
                 },
                 "required": [
