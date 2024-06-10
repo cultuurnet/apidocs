@@ -1232,7 +1232,7 @@
         }
       ],
       "put": {
-        "summary": "Get permissions for a client",
+        "summary": "Update permissions for a client",
         "operationId": "put-permissions-clientId",
         "responses": {
           "204": {
