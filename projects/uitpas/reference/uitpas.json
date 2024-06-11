@@ -2081,7 +2081,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2207,6 +2207,16 @@
                       "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
