@@ -1041,13 +1041,42 @@
                         "organizer": {
                           "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                           "name": "CC De Werf"
-                        }
+                        },
+                        "permissions": [
+                          "TARIFFS_READ",
+                          "TICKETSALES_SEARCH"
+                        ],
+                        "permissionDetails": [
+                          {
+                            "id": "TARIFFS_READ",
+                            "label": {
+                              "nl": "Tarieven opvragen"
+                            }
+                          },
+                          {
+                            "id": "TICKETSALES_SEARCH",
+                            "label": {
+                              "nl": "Ticketsales zoeken"
+                            }
+                          }
+                        ]
                       },
                       {
                         "organizer": {
                           "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
                           "name": "CC De Schakel"
-                        }
+                        },
+                        "permissions": [
+                          "ORGANIZERS_SEARCH"
+                        ],
+                        "permissionDetails": [
+                          {
+                            "id": "ORGANIZERS_SEARCH",
+                            "label": {
+                              "nl": "Organisators zoeken"
+                            }
+                          }
+                        ]
                       }
                     ]
                   },
@@ -1057,7 +1086,25 @@
                         "organizer": {
                           "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                           "name": "CC De Werf"
-                        }
+                        },
+                        "permissions": [
+                          "TARIFFS_READ",
+                          "TICKETSALES_SEARCH"
+                        ],
+                        "permissionDetails": [
+                          {
+                            "id": "TARIFFS_READ",
+                            "label": {
+                              "nl": "Tarieven opvragen"
+                            }
+                          },
+                          {
+                            "id": "TICKETSALES_SEARCH",
+                            "label": {
+                              "nl": "Ticketsales zoeken"
+                            }
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1073,7 +1120,7 @@
           }
         },
         "operationId": "get-permissions",
-        "description": "Lists the organizers that the current user or client (depending on the token) has access to. The possible permissions on each organizer can also differ (will be added later).",
+        "description": "Lists the organizers that the current user or client (depending on the token) has access to incuding a list of its permissions.\n\nUse this endpoint if you obtained a user or client access token and need to know its organizer permissions. Use [GET /permissions/clientID](/reference/uitpas.json/paths/~1permissions~1clientId/get) to manage permissions for any client.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1087,6 +1134,189 @@
         ]
       },
       "parameters": []
+    },
+    "/permissions/{clientId}": {
+      "get": {
+        "summary": "Get permissions for a client",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizerPermissions"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf"
+                        },
+                        "permissionDetails": [
+                          {
+                            "id": "TARIFFS_READ",
+                            "label": {
+                              "nl": "Tarieven opvragen"
+                            }
+                          },
+                          {
+                            "id": "TICKETSALES_SEARCH",
+                            "label": {
+                              "nl": "Ticketsales zoeken"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "organizer": {
+                          "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
+                          "name": "CC De Schakel"
+                        },
+                        "permissionDetails": [
+                          {
+                            "id": "ORGANIZERS_SEARCH",
+                            "label": {
+                              "nl": "Organisators zoeken"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/client-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-permissions-clientId",
+        "description": "Lists the organizer permissions of the given client ID.\n\nUse this endpoint to manage permissions for any client. Use [GET /permissions](/reference/uitpas.json/paths/~1permissions/get) to retrieve permissions for your token (current client or user).\n\nThe caller of this request must have `PERMISSIONS_READ` permission.\n",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Permissions"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "clientId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the client"
+        }
+      ],
+      "put": {
+        "summary": "Update permissions for a client",
+        "operationId": "put-permissions-clientId",
+        "responses": {
+          "204": {
+            "description": "Permissions Updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/client-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update the organizer permissions of the given client ID.\n\nThe caller of this request must have `PERMISSIONS_WRITE` permission.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OrganizerPermissions"
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    {
+                      "organizer": {
+                        "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1"
+                      },
+                      "permissionDetails": [
+                        {
+                          "id": "TARIFFS_READ"
+                        },
+                        {
+                          "id": "TICKETSALES_SEARCH"
+                        }
+                      ]
+                    },
+                    {
+                      "organizer": {
+                        "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35"
+                      },
+                      "permissionDetails": [
+                        {
+                          "id": "ORGANIZERS_SEARCH"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "Full set of organizer permissions for the client"
+        },
+        "tags": [
+          "Permissions"
+        ]
+      }
     },
     "/events/{eventId}/card-systems": {
       "parameters": [
@@ -2954,7 +3184,7 @@
                               }
                             }
                           ]
-                        },                        
+                        },
                         "icon": "https://www.uitpas.be/_nuxt/img/icon2.png",
                         "mainFamilyMember": false
                       },
@@ -3015,7 +3245,7 @@
                               }
                             }
                           ]
-                        },                             
+                        },
                         "firstName": "Louis",
                         "name": "Peeters",
                         "points": 2,
@@ -6026,9 +6256,20 @@
           },
           "permissions": {
             "type": "array",
-            "description": "Permissions of the calling client for this organizer.",
+            "description": "Permissions of the calling client for this organizer. This field is deprecated. Please use `permissionsDetail`, which includes a user-readable label, instead.",
+            "deprecated": true,
             "items": {
               "$ref": "#/components/schemas/Permission"
+            }
+          },
+          "permissionDetails": {
+            "x-stoplight": {
+              "id": "lgsc4nn0l16m6"
+            },
+            "description": "Permissions of the calling client for this organizer.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionDetail"
             }
           }
         },
@@ -6069,7 +6310,86 @@
           "PASSHOLDERS_SELF_READ",
           "PASSHOLDERS_REGISTER_UITID",
           "PASSHOLDERS_TRANSACTION_HISTORY",
-          "PASSHOLDERS_FAMILY_MEMBERS"
+          "PASSHOLDERS_FAMILY_MEMBERS",
+          "PERMISSIONS_READ",
+          "PERMISSIONS_WRITE"
+        ]
+      },
+      "PermissionDetail": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "c5794f747a78b"
+        },
+        "title": "PermissionDetail",
+        "description": "Permission details",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "TARIFFS_READ",
+              "TICKETSALES_SEARCH",
+              "TICKETSALES_REGISTER",
+              "EVENTS_UPDATE",
+              "EVENTS_READ",
+              "CHECKINS_WRITE",
+              "ORGANIZERS_SEARCH",
+              "ORGANIZERS_REPORTS",
+              "PASSHOLDERS_SEARCH",
+              "PASSHOLDERS_SEARCH_ALL",
+              "PASSHOLDERS_WRITE",
+              "PASSHOLDERS_UPDATE",
+              "PASSHOLDERS_DELETE",
+              "MEMBERSHIP_PRICES_READ",
+              "PASSES_READ",
+              "PASSES_INSZNUMBERS_READ",
+              "PASSES_CHIPNUMBERS_READ",
+              "REWARDS_WRITE",
+              "REWARDS_READ",
+              "REWARDS_REDEEM",
+              "REWARDS_PASSHOLDERS_READ",
+              "PASSHOLDERS_SELF_REGISTRATION",
+              "PASSHOLDERS_SELF_CHECKIN",
+              "PASSHOLDERS_SELF_READ",
+              "PASSHOLDERS_REGISTER_UITID",
+              "PASSHOLDERS_TRANSACTION_HISTORY",
+              "PASSHOLDERS_FAMILY_MEMBERS",
+              "PERMISSIONS_READ",
+              "PERMISSIONS_WRITE"
+            ],
+            "x-stoplight": {
+              "id": "tm10mhvqf21i7"
+            },
+            "description": "ID of the permission"
+          },
+          "label": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "as7mh3yk45vow"
+            },
+            "description": "Human-readable label of the permission",
+            "properties": {
+              "nl": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "rrvu7pjsljjiu"
+                },
+                "description": "Human-readable label of the permission in Dutch"
+              },
+              "en": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "n6md8dvbaqbz9"
+                },
+                "description": "Human-readable label of the permission in English"
+              }
+            },
+            "required": [
+              "nl"
+            ]
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "Organizer": {
