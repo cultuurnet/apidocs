@@ -9025,6 +9025,119 @@
           }
         ]
       }
+    },
+    "/mailing-list/{mailinglistId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "mailinglistId",
+          "in": "path",
+          "required": true,
+          "description": "The mailing list id"
+        }
+      ],
+      "put": {
+        "summary": "Subscribe to mailing list",
+        "operationId": "put-mailing-list",
+        "tags": [
+          "Mailing"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "The given request body could not be parsed as json": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as json."
+                    }
+                  },
+                  "The property email is required": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The property 'email' is required."
+                        }
+                      ]
+                    }
+                  },
+                  "The given request body could not be parsed as json.": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as json."
+                    }
+                  },
+                  "Failed to subscribe to newsletter": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter",
+                      "title": "Failed to subscribe to newsletter",
+                      "status": 400,
+                      "detail": "Details of the mailservice error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "email": "koen@test.be"
+                  }
+                },
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Must be a valid e-mail address"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "email": "john.doe@publiq.be"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Send the email to subscribe."
+        },
+        "parameters": [],
+        "description": "This endpoint allows users to subscribe an email address to a specified mailing list.",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -9250,6 +9363,9 @@
     },
     {
       "name": "Images"
+    },
+    {
+      "name": "Mailing"
     },
     {
       "name": "News articles"
