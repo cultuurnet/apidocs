@@ -1690,9 +1690,7 @@
                       "id": "abc12345"
                     },
                     "address": {
-                      "street": "Grote markt",
-                      "number": "12",
-                      "box": "",
+                      "street": "Grote markt 12",
                       "postalCode": "9300",
                       "city": "Aalst",
                       "country": "be"
@@ -6093,9 +6091,7 @@
                         "id": "abc12345"
                       },
                       "address": {
-                        "street": "Grote markt",
-                        "number": "12",
-                        "box": "",
+                        "street": "Grote markt 12",
                         "postalCode": "9300",
                         "city": "Aalst",
                         "country": "be"
@@ -6684,6 +6680,7 @@
           "Models"
         ],
         "description": "Person who holds an UiTPAS, the end-user of an UiTPAS. \n\nA `Passholder` can be identified by its `id`. However, there are cases where the passholder identifies using one of its UiTPAS numbers. That number is CardSystem specific, so it can be found under `cardSystemMemberships`. Every passholder should have at least one cardsystem membership.",
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "string",
@@ -6765,15 +6762,17 @@
             "properties": {
               "street": {
                 "type": "string",
-                "description": "Street name of the address."
+                "description": "Street name, number and optional box number of the address."
               },
               "number": {
                 "type": "string",
-                "description": "House number."
+                "description": "House number. This field is deprecated and will be empty. The house number is part of the `street` property.",
+                "deprecated": true
               },
               "box": {
                 "type": "string",
-                "description": "Postal box number."
+                "description": "Postal box number. This field is deprecated and will be empty. The box number is part of the `street` property.",
+                "deprecated": true
               },
               "postalCode": {
                 "type": "string",
@@ -6874,8 +6873,7 @@
           "dateOfBirth",
           "registrationOrganizer",
           "address"
-        ],
-        "x-examples": {}
+        ]
       },
       "PassholderSelfRegistration": {
         "title": "PassholderSelfRegistration",
