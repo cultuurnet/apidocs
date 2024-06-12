@@ -5702,6 +5702,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/postal-code-required\nhttps://api.publiq.be/probs/uitpas/invalid-postal-code",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -6001,19 +6011,6 @@
         }
       ]
     },
-    "/card-systems/{cardSystemId}/social-tariff-conditions": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cardSystemId",
-          "in": "path",
-          "required": true,
-          "description": "The ID of the card system"
-        }
-      ]
-    },
     "/orders": {
       "post": {
         "summary": "Create online order",
@@ -6258,7 +6255,7 @@
             "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.\n"
           }
         },
-        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n\nThe caller of this method must have `PASSHOLDERS_SELF_REGISTRATION` permission for the given passholder.\n",
+        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n",
         "security": [
           {
             "CLIENT_IDENTIFICATION": []
