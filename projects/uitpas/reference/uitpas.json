@@ -6151,9 +6151,12 @@
                 }
               }
             }
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited"
           }
         },
-        "description": "Retrieve order by ID.\n\nThe caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case this order is retrieved using a custom token, `mainPassholder` and `extraPassholders` are left out of the response.",
+        "description": "Retrieve order by ID.\n\nThe caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case this order is retrieved using client identification, `mainPassholder` and `extraPassholders` are left out of the response.\n\nThis endpoint is rate limited.",
         "tags": [
           "Orders"
         ],
@@ -6165,7 +6168,7 @@
             "CLIENT_ACCESS_TOKEN": []
           },
           {
-            "CUSTOM_TOKEN": []
+            "CLIENT_IDENTIFICATION": []
           }
         ]
       },
@@ -7919,12 +7922,12 @@
             "description": "Payment URL (only when status is `PENDING_PAYMENT`)",
             "readOnly": true
           },
-          "uitidAuthUrl": {
+          "email": {
             "type": "string",
             "x-stoplight": {
               "id": "9heoomg0mq75m"
             },
-            "description": "Uitid authentication URL (only when status is `PENDING_UITID_CONNECT`. This property is always present in responses.",
+            "description": "Email of the orderer. This property is always present in responses.",
             "readOnly": true
           },
           "totalPrice": {
@@ -7952,14 +7955,6 @@
             "items": {
               "$ref": "#/components/schemas/Passholder"
             }
-          },
-          "customToken": {
-            "type": "string",
-            "x-stoplight": {
-              "id": "l5vfd22u00ejb"
-            },
-            "description": "Custom token that can be used to retrieve this order. (e.g. later in the flow after payment)",
-            "writeOnly": true
           },
           "redirectUrlAfterPayment": {
             "type": "string",
