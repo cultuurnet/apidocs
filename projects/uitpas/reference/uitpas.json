@@ -6027,7 +6027,8 @@
                       "id": "123456789",
                       "status": "PENDING_PAYMENT",
                       "paymentUrl": "https://payment-url.com",
-                      "totalPrice": 10
+                      "totalPrice": 10,
+                      "customToken": "U742hZr^FkBQfxqQtz7Y%tt@q%SpoEkR52Q$2heET#G*S&N88CM64&E&H$%Sonop%adVxybPziNYm$NL%%fkKhQwQKpkoSmb8vWVmZ58VPd@87Xa@@a%hPQP&8"
                     }
                   },
                   "Example pending uitid connect": {
@@ -6168,7 +6169,7 @@
             "CLIENT_ACCESS_TOKEN": []
           },
           {
-            "CLIENT_IDENTIFICATION": []
+            "CUSTOM_TOKEN": []
           }
         ]
       },
@@ -7944,6 +7945,11 @@
               "id": "q1oexa53dyky7"
             },
             "description": "Optional registration token. If this order is `PENDING_UITID_CONNECT` this field is present to allow for easy UiTiD account linking.",
+            "readOnly": true
+          },
+          "customToken": {
+            "type": "string",
+            "description": "Custom token that can be used for a limited number of time to request this order using `GET /orders/id` without any further authentication.",
             "readOnly": true
           },
           "mainPassholder": {
