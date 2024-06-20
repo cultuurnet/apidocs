@@ -5902,7 +5902,7 @@
     },
     "/card-systems/{cardSystemId}/membership-prices": {
       "get": {
-        "summary": "Retrieve all card system membership prices",
+        "summary": "Retrieve membership prices for a card system",
         "responses": {
           "200": {
             "description": "OK",
@@ -7407,6 +7407,16 @@
           "cardlessRegistrationType": {
             "type": "string",
             "description": "Indicates the types of online cardless registrations this cardsystem supports.",
+            "enum": [
+              "ALL",
+              "REGULAR",
+              "SOCIALTARIFF",
+              "NONE"
+            ]
+          },
+          "socialTariffInfo": {
+            "type": "string",
+            "description": "Optional information about social tariff entitlement in this card system.",
             "enum": [
               "ALL",
               "REGULAR",
