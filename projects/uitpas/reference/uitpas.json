@@ -6521,7 +6521,9 @@
           "PASSHOLDERS_SELF_READ",
           "PASSHOLDERS_REGISTER_UITID",
           "PASSHOLDERS_TRANSACTION_HISTORY",
-          "PASSHOLDERS_FAMILY_MEMBERS"
+          "PASSHOLDERS_FAMILY_MEMBERS",
+          "ORDERS_READ",
+          "ORDERS_CREATE"
         ]
       },
       "Organizer": {
@@ -7416,13 +7418,7 @@
           },
           "socialTariffInfo": {
             "type": "string",
-            "description": "Optional information about social tariff entitlement in this card system.",
-            "enum": [
-              "ALL",
-              "REGULAR",
-              "SOCIALTARIFF",
-              "NONE"
-            ]
+            "description": "Optional information about social tariff entitlement in this card system." 
           }
         },
         "required": [
