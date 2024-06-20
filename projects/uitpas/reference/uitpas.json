@@ -6879,6 +6879,161 @@
           "address"
         ]
       },
+      "PassholderRegistration": {
+        "title": "PassholderRegistration",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Registration request of a passholder, mainly used in the online order flow.\n\nA `PassholderRegistration` is not yet `Passholder` but one can be created (e.g. when the order is paid) using the information from the `PassholderRegistration`.",
+        "x-examples": {},
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the PassholderRegistation. **Note:** This is not same as the later `Passholder` id. This field is always available in responses.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Last name of the passholder to register."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the passholder to register."
+          },
+          "inszNumber": {
+            "type": "string",
+            "description": "Unique national (Belgian) INSZ number of an individual passholder."
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email address of the passholder to register"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "This field is always available in responses.",
+            "readOnly": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date that the passholder to register was born."
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE",
+              "X"
+            ],
+            "description": "Gender of the passholder to register."
+          },
+          "registrationOrganizer": {
+            "$ref": "#/components/schemas/Organizer"
+          },
+          "address": {
+            "type": "object",
+            "description": "Address that the passholder to register lives at. Always present in responses. Passholders living outside of Belgium (usually near the border) will only have a `postalCode` and `city` in their address.",
+            "required": [
+              "postalCode",
+              "city"
+            ],
+            "properties": {
+              "street": {
+                "type": "string",
+                "description": "Street name, number and optional box number of the address."
+              },
+              "number": {
+                "type": "string",
+                "description": "House number. This field is deprecated and will be empty. The house number is part of the `street` property.",
+                "deprecated": true
+              },
+              "box": {
+                "type": "string",
+                "description": "Postal box number. This field is deprecated and will be empty. The box number is part of the `street` property.",
+                "deprecated": true
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "Postal code of the municipality."
+              },
+              "city": {
+                "type": "string",
+                "description": "Human-readable name of the municipality."
+              },
+              "country": {
+                "type": "string",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            }
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the passholder to register, for example for SMS alerts."
+          },
+          "optInPreferences": {
+            "type": "object",
+            "description": "Permissions that the passholder has given to be contacted.",
+            "properties": {
+              "serviceMails": {
+                "type": "boolean",
+                "description": "Important information about the functionality of UiTPAS."
+              },
+              "milestoneMails": {
+                "type": "boolean",
+                "description": "Notification when you reach an important UiTPAS milestone, for example a specific amount of points or an exclusive reward becomes available to you."
+              },
+              "infoMails": {
+                "type": "boolean",
+                "description": "Rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "sms": {
+                "type": "boolean",
+                "description": "Free (sporadic) SMS messages with rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "post": {
+                "type": "boolean",
+                "description": "Sporadic post mail with information about UiTPAS. Will be sent to the passholder's postal address."
+              }
+            },
+            "required": [
+              "serviceMails",
+              "milestoneMails",
+              "infoMails",
+              "sms",
+              "post"
+            ]
+          },
+          "parentalConsent": {
+            "type": "boolean",
+            "description": "Set to true for under-aged passholder that have parental consent."
+          },
+          "legalTermsPaper": {
+            "type": "boolean",
+            "description": "Set to true for passholders that received legal terms on paper."
+          },
+          "legalTermsDigital": {
+            "type": "boolean",
+            "description": "Set to true for passholders that received legal terms digitally."
+          },
+          "registrationCardSystemId": {
+            "type": "integer",
+            "description": "Set to the id of the card system of which the passholder has to become a member."
+          },
+          "registrationVoucher": {
+            "type": "string",
+            "description": "Price reduction voucher."
+          }
+        },
+        "required": [
+          "name",
+          "firstName",
+          "dateOfBirth",
+          "registrationOrganizer",
+          "address"
+        ]
+      },
       "PassholderSelfRegistration": {
         "title": "PassholderSelfRegistration",
         "type": "object",
@@ -7952,14 +8107,14 @@
             "description": "Custom token that can be used for a limited number of time to request this order using `GET /orders/id` without any further authentication.",
             "readOnly": true
           },
-          "mainPassholder": {
-            "$ref": "#/components/schemas/Passholder"
+          "mainPassholderRegistration": {
+            "$ref": "#/components/schemas/PassholderRegistration"
           },
-          "extraPassholders": {
+          "extraPassholderRegistrations": {
             "type": "array",
             "description": "Optional list of extra passholders in the order",
             "items": {
-              "$ref": "#/components/schemas/Passholder"
+              "$ref": "#/components/schemas/PassholderRegistration"
             }
           },
           "redirectUrlAfterPayment": {
