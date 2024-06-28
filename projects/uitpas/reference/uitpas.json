@@ -25,6 +25,9 @@
       "name": "Card Systems"
     },
     {
+      "name": "Cards"
+    },
+    {
       "name": "Checkins"
     },
     {
@@ -6041,6 +6044,117 @@
           }
         ]
       }
+    },
+    "/cards": {
+      "get": {
+        "summary": "Retrieve card status",
+        "tags": [
+          "Cards"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                },
+                "examples": {
+                  "Active card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "chipNumber": "042F51B2712380",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "ACTIVE",
+                      "socialTariff": false
+                    }
+                  },
+                  "Provisioned card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "PROVISIONED",
+                      "socialTariff": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cards",
+        "description": "Retrieve card status for a given `uitpasNumber` of `chipNumber`.\n\nThe caller of this request must have `CARDS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -7791,6 +7905,71 @@
         "required": [
           "postalCode",
           "name"
+        ]
+      },
+      "Card": {
+        "title": "Card",
+        "x-stoplight": {
+          "id": "zqvfbrdvemv9g"
+        },
+        "type": "object",
+        "description": "Representation of an UiTPAS card.",
+        "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wt5795os9zlly"
+            },
+            "description": "UiTPAS number of this card."
+          },
+          "chipNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rvkccy92o6rk7"
+            },
+            "description": "Chipnumber of this card. Only present for cards of type `NFC_CARD` and when not in status `PROVISIONED`"
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
+          },
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0wg00e7ok83tp"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of this card."
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ic0htdaaq5wmr"
+            },
+            "description": "Status of this card.",
+            "enum": [
+              "PROVISIONED",
+              "LOCAL_STOCK",
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          },
+          "socialTariff": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "k6sdxxpe9zvpe"
+            },
+            "description": "Indicated the social tariff status of this card."
+          }
+        },
+        "required": [
+          "uitpasNumber",
+          "cardSystem",
+          "status",
+          "socialTariff"
         ]
       }
     },
