@@ -6127,6 +6127,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/invalid-uitpas-number",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -6145,13 +6155,31 @@
           }
         },
         "operationId": "get-cards",
-        "description": "Retrieve card status for a given `uitpasNumber` of `chipNumber`.\n\nThe caller of this request must have `CARDS_READ` permission.",
+        "description": "Retrieve card status for a given `uitpasNumber` or `chipNumber`.\n\nThe caller of this request must have `CARDS_READ` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
           },
           {
             "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "description": "The UiTPAS number of the card to search"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chipNumber",
+            "description": "The chip number of the card to search"
           }
         ]
       }
@@ -7921,13 +7949,6 @@
               "id": "wt5795os9zlly"
             },
             "description": "UiTPAS number of this card."
-          },
-          "chipNumber": {
-            "type": "string",
-            "x-stoplight": {
-              "id": "rvkccy92o6rk7"
-            },
-            "description": "Chipnumber of this card. Only present for cards of type `NFC_CARD` and when not in status `PROVISIONED`"
           },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
