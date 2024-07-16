@@ -6027,8 +6027,37 @@
                       "id": "123456789",
                       "status": "PENDING_PAYMENT",
                       "paymentUrl": "https://payment-url.com",
+                      "email": "example@example.org",
                       "totalPrice": 10,
-                      "customToken": "U742hZr^FkBQfxqQtz7Y%tt@q%SpoEkR52Q$2heET#G*S&N88CM64&E&H$%Sonop%adVxybPziNYm$NL%%fkKhQwQKpkoSmb8vWVmZ58VPd@87Xa@@a%hPQP&8"
+                      "customToken": "U742hZr^FkBQfxqQtz7Y%tt@q%SpoEkR52Q$2heET#G*S&N88CM64&E&H$%Sonop%adVxybPziNYm$NL%%fkKhQwQKpkoSmb8vWVmZ58VPd@87Xa@@a%hPQP&8",
+                      "mainPassholderRegistration": {
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "email": "marc.peeters@example.com",
+                        "dateOfBirth": "2000-01-01",
+                        "registrationOrganizer": {
+                          "id": "abc12345"
+                        },
+                        "address": {
+                          "street": "Grote markt 12",
+                          "postalCode": "9300",
+                          "city": "Aalst",
+                          "country": "be"
+                        },
+                        "optInPreferences": {
+                          "serviceMails": true,
+                          "infoMails": true,
+                          "milestoneMails": true,
+                          "sms": false,
+                          "post": true
+                        },
+                        "nationality": "Belg",
+                        "legalConsentPaper": false,
+                        "legalConsentDigital": true,
+                        "parentalConsent": false,
+                        "registrationCardSystemId": 1
+                      }
                     }
                   },
                   "Example pending uitid connect": {
@@ -6036,8 +6065,37 @@
                       "id": "123456789",
                       "status": "PENDING_UITID_CONNECT",
                       "uitidAuthUrl": "https://uitid.be/auth",
+                      "email": "example@example.org",
                       "totalPrice": 10,
-                      "registrationToken": "123456789"
+                      "registrationToken": "123456789",
+                      "mainPassholderRegistration": {
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "email": "marc.peeters@example.com",
+                        "dateOfBirth": "2000-01-01",
+                        "registrationOrganizer": {
+                          "id": "abc12345"
+                        },
+                        "address": {
+                          "street": "Grote markt 12",
+                          "postalCode": "9300",
+                          "city": "Aalst",
+                          "country": "be"
+                        },
+                        "optInPreferences": {
+                          "serviceMails": true,
+                          "infoMails": true,
+                          "milestoneMails": true,
+                          "sms": false,
+                          "post": true
+                        },
+                        "nationality": "Belg",
+                        "legalConsentPaper": false,
+                        "legalConsentDigital": true,
+                        "parentalConsent": false,
+                        "registrationCardSystemId": 1
+                      }                      
                     }
                   }
                 }
@@ -6082,7 +6140,8 @@
               "examples": {
                 "Example": {
                   "value": {
-                    "mainPassholder": {
+                    "email": "example@example.org",
+                    "mainPassholderRegistration": {
                       "name": "Peeters",
                       "firstName": "Marc",
                       "inszNumber": "00000009007",
@@ -8131,7 +8190,11 @@
             "description": "Where to redirect after payment",
             "writeOnly": true
           }
-        }
+        },
+        "required": [
+          "email",
+          "mainPassholderRegistration"
+        ]
       }
     },
     "securitySchemes": {
