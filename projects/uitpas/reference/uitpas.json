@@ -1703,8 +1703,8 @@
                       "post": true
                     },
                     "nationality": "Belg",
-                    "legalConsentPaper": false,
-                    "legalConsentDigital": true,
+                    "legalTermsPaper": false,
+                    "legalTermsDigital": true,
                     "parentalConsent": false,
                     "registrationCardSystemId": 1
                   }
@@ -6053,8 +6053,8 @@
                           "post": true
                         },
                         "nationality": "Belg",
-                        "legalConsentPaper": false,
-                        "legalConsentDigital": true,
+                        "legalTermsPaper": false,
+                        "legalTermsDigital": true,
                         "parentalConsent": false,
                         "registrationCardSystemId": 1
                       }
@@ -6091,8 +6091,8 @@
                           "post": true
                         },
                         "nationality": "Belg",
-                        "legalConsentPaper": false,
-                        "legalConsentDigital": true,
+                        "legalTermsPaper": false,
+                        "legalTermsDigital": true,
                         "parentalConsent": false,
                         "registrationCardSystemId": 1
                       }                      
@@ -6164,8 +6164,8 @@
                         "post": true
                       },
                       "nationality": "Belg",
-                      "legalConsentPaper": false,
-                      "legalConsentDigital": true,
+                      "legalTermsPaper": false,
+                      "legalTermsDigital": true,
                       "parentalConsent": false,
                       "registrationCardSystemId": 1
                     }
