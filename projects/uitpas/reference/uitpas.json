@@ -8184,12 +8184,12 @@
           },
           "redirectUrlAfterPayment": {
             "type": "string",
-            "description": "Where to redirect after payment",
+            "description": "Where to redirect after payment. Extra query params `orderId` and `customToken` are added to this URL when used to redirect the user, so the receiving client can `GET` the latest status of the order.",
             "writeOnly": true
           },
           "redirectUrlAfterCancelPayment": {
             "type": "string",
-            "description": "Where to redirect after payment is cancelled",
+            "description": "Where to redirect after payment is cancelled. Extra query params `orderId` and `customToken` are added to this URL when used to redirect the user, so the receiving client can `GET` the latest status of the order.",
             "writeOnly": true
           }
         },
