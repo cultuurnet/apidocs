@@ -1,7 +1,3 @@
----
-stoplight-id: 73ef6e15ee3ec
----
-
 # Getting started
 
 For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our the test environment.
