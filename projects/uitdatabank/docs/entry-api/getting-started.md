@@ -13,7 +13,7 @@ You can easily get free test credentials in our API portal:
 
 <!-- focus: false -->
 
-[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be/nl/integraties/nieuw?type=entry-api)
+[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
 
 Once you've obtained your personal test credentials you can start with the development of your integration with the UiTdatabank Entry API on our test environment.
 
@@ -55,4 +55,4 @@ When the created content & integration meets the listed conditions, we will imme
 
 ## 3. Switch to the production environment
 
-After a successful validation you will receive the credentials to connect to the production environment.
+After a successful validation you will automatically receive your production credentials in our [API portal](https://platform.publiq.be).
