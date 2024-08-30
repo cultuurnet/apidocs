@@ -96,7 +96,7 @@ Host: https://search-test.uitdatabank.be
 
 API key authentication will be supported for the foreseeable future on Search API. However, if you already want to make your integration as future-proof as possible you can easily switch from API key authentication to client identification.
 
-On our [self-service portal](https://publiq.platform.be) you are able to request a client id for your existing integration. 
+On our [self-service portal](https://platform.publiq.be) you are able to request a client id for your existing integration. 
 
 When you receive your new client id, you can update your application to include the client id in your API requests as described above using an `x-client-id` header instead of an `x-api-key` header, or a `clientId` query parameter instead of an `apiKey` query parameter.
 
