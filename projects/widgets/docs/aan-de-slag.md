@@ -2,11 +2,13 @@
 
 ## 1. Een widgetproject registreren
 
-Voordat je kan beginnen met het bouwen van je widget moet je een widgetproject aanmaken op ons [self-service platform Projectaanvraag](https://projectaanvraag.uitdatabank.be). Het registratieproces is zeer eenvoudig en duurt slechts enkele minuten.
+Voordat je kan beginnen met het bouwen van je widget moet je een widgetintegratie aanmaken op ons self-servcie portaal [publiq platform](https://platform.publiq.be). Het registratieproces is zeer eenvoudig en duurt slechts enkele minuten.
 
-<https://youtu.be/uWy7-hTO5nY>
+<!-- focus: false -->
 
-Het aangemaakte widgetproject zal evenementendata van onze testomgeving gebruiken. Je hoeft niet te betalen tot dat je beslist om echte evenementendata te gebruiken.
+[![Creëer je widget integratie](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/create-widget-button.svg)](https://platform.publiq.be)
+
+De aangemaakte widgetintegratie zal evenementendata van onze testomgeving gebruiken. Je hoeft niet te betalen tot dat je beslist om echte evenementendata te gebruiken.
 
 <!-- theme: success -->
 
