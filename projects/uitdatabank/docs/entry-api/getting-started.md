@@ -1,25 +1,25 @@
----
-stoplight-id: 73ef6e15ee3ec
----
-
-# Requirements before going live
+# Getting started
 
 For the integration with the UiTdatabank Entry API, there is a flow in which you first obtain access to our the test environment.
 Access to the production environment is given after your integration on the test environment has been successfully validated by publiq vzw.
 
 On this page we describe how this flow works and how you can ensure that you gain access to the production environment as quickly as possible.
 
-> Make sure you read this guide before you start developing on our test environment.
+> There are a few requirements that must be met to go live. Make sure you read this guide before you start developing on our test environment.
 
 ## 1. Start on the test environment
 
-You can easily apply for free test credentials. All information about how to request these can be found [here](https://docs.publiq.be/docs/authentication/requesting-credentials#uitdatabank).
+You can easily get free test credentials in our API portal:
+
+<!-- focus: false -->
+
+[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
 
 Once you've obtained your personal test credentials you can start with the development of your integration with the UiTdatabank Entry API on our test environment.
 
 ## 2. Validation by publiq vzw
 
-As soon as you have finished developing your integration with the Entry API, you send a minimum of 5 of events to our test environment. [Contact us](https://docs.publiq.be/#contact-us) with the email subject "content check". In the email you give us the identifiers of the created test events. We will then validate your integration as soon as possible.
+As soon as you have finished developing your integration with the Entry API, you can request the activation of your integration through our [API portal](https://platform.publiq.be). When doing so, you also send a minimum of 5 of events to our test environment. [Contact us](https://docs.publiq.be/#contact-us) with the email subject "content check". In the email you give us the identifiers of the created test events. We will then validate your integration as soon as possible.
 
 In this validation process we assess the integration in two manners:
 
@@ -55,4 +55,4 @@ When the created content & integration meets the listed conditions, we will imme
 
 ## 3. Switch to the production environment
 
-After a successful validation you will receive the credentials to connect to the production environment.
+After a successful validation you will automatically receive your production credentials in our [API portal](https://platform.publiq.be).

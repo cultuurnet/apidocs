@@ -48,9 +48,9 @@
     },
     {
       "type": "item",
-      "title": "Requirements before going live",
-      "uri": "/docs/entry-api/requirements-before-going-live.md",
-      "slug": "entry-api/requirements-before-going-live"
+      "title": "Getting started",
+      "uri": "/docs/entry-api/getting-started.md",
+      "slug": "entry-api/getting-started"
     },
     {
       "type": "item",

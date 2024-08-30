@@ -2,7 +2,11 @@
 
 ## Requesting credentials
 
-See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) page in the general authentication documentation.
+You can easily get free test credentials in publiq platform, our self-service portal:
+
+[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
+
+After registering your integration on publiq platform you'll immediately get client credentials that grant you access to our test environment.
 
 ## OAuth2 tokens (using a client id & secret)
 
