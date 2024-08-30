@@ -1,3 +1,7 @@
+---
+stoplight-id: 4t7cbhmtptk4m
+---
+
 # Getting started
 
 On this page we outline the basic steps to integrate your application with UiTPAS.
