@@ -10,7 +10,7 @@ On this page we outline the basic steps to integrate your application with UiTPA
 
 ## 1. Start on the test environment
 
-Create an integration on publiq platform, our self-service portal to request your credentials for the UiTPAS testing environment. 
+Create an integration on publiq platform, our self-service portal to request your credentials for the UiTPAS testing environment.
 
 <!-- focus: false -->
 

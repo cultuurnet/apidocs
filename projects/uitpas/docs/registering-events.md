@@ -55,7 +55,8 @@ Click on the `Prijzen` tab in step 6, and provide a *Basistarief* that is not 0 
 
 ### 3. Linking an UiTPAS organizer
 
-Click the `Organisatie toevoegen` tab. You can now either 
+Click the `Organisatie toevoegen` tab. You can now either
+
 * select an organizer you have used in the past for creating events
 * select a new organizer
 
@@ -65,13 +66,11 @@ UiTPAS organizers always have a grey `UiTPAS` badge next to them.
 
 ![](../assets/images/uitdatabank-uitpas-event-organizer.png)
 
-
 Once you have added your UiTPAS organizer, the applicable UiTPAS prices are automatically calculated by UiTdatabank:
 
 <!-- focus: false -->
 
 ![](../assets/images/uitdatabank-uitpas-event-price-calculated.png)
-
 
 ### 4. Done!
 
@@ -80,7 +79,6 @@ Shortly after you have selected an UiTPAS organizer, you should see a new *UiTPA
 <!-- focus: false -->
 
 ![image.png](../assets/images/uitdatabank-uitpas-event-cardsystems.png)
-
 
 **If you see this field, your event is now registered as an UiTPAS event**, and you can optionally change the possible card systems that it belongs to if the UiTPAS organizer is active in multiple card systems.
 
