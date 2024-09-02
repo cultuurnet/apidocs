@@ -1,16 +1,18 @@
 # Status
 
-All events and places created in UiTdatabank have a `status` property. The status indicates whether 
-- an event is still happening as plannend or not
-- a place is still open for visits or not
+All events and places created in UiTdatabank have a `status` property. The status indicates whether
+
+* an event is still happening as plannend or not
+* a place is still open for visits or not
 
 > The status only indicates whether an event or place is proceeding as planned or is currently open. It does not provide information about the availability of tickets or spots, which is instead indicated by the [bookingAvailability](#booking-availability.md).
 
 ## Using the status parameter
 
 You can use the `status` for filtering out items that are still available for visits or not. You can use the status filter as:
-- an url parameter (e.g. `status=available`) 
-- an advanced query parameter (e.g. `status:avaialble`)
+
+* an url parameter (e.g. `status=available`)
+* an advanced query parameter (e.g. `status:avaialble`)
 
 **Applicable on endpoints**
 
@@ -19,14 +21,16 @@ You can use the `status` for filtering out items that are still available for vi
 **Possible values**
 
 Events:
-- `available`: the event takes place as planned This is the default value when no status for the event or subEvent is included.
-- `temporarilyUnavailable`: the event has been postponed to a later date yet to be determined.
-- `unavailable`: the event has been cancelled.
 
-Places: 
-- `available`: the place is 'open' and can be visited during opening hours. This is the default value when no status for the place is included.
-- `temporarilyUnavailable`: the place is temporarily closed (due to renovations for example).
-- `unavailable`: the place still exists (physically), but is permanently closed.
+* `available`: the event takes place as planned This is the default value when no status for the event or subEvent is included.
+* `temporarilyUnavailable`: the event has been postponed to a later date yet to be determined.
+* `unavailable`: the event has been cancelled.
+
+Places:
+
+* `available`: the place is 'open' and can be visited during opening hours. This is the default value when no status for the place is included.
+* `temporarilyUnavailable`: the place is temporarily closed (due to renovations for example).
+* `unavailable`: the place still exists (physically), but is permanently closed.
 
 **Examples**
 

@@ -1,12 +1,14 @@
 # Requesting client credentials
 
 ## UiTPAS API & UiTdatabank APIs
+
 Before you can start making authenticated API requests to UiTPAS and/or UiTdatabank, you need to register your integration on our self-service platform [publiq platform](https://platform.publiq.be). In the registration process you'll need to pick the API you want to use:
+
 * [UiTPAS API](https://docs.publiq.be/docs/uitpas/introduction)
 * [UiTdatabank Entry API](https://docs.publiq.be/docs/uitdatabank/entry-api/introduction)
 * [UiTdatabank Search API](https://docs.publiq.be/docs/uitdatabank/search-api/introduction)
 
-Note that the UiTPAS API will also grant you access to the UiTdatabank Entry API. 
+Note that the UiTPAS API will also grant you access to the UiTdatabank Entry API.
 
 Registration and access to our test environment is free. After registration you'll immediately get your test credentials.
 

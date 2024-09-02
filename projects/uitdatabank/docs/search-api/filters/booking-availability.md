@@ -12,8 +12,8 @@ All events and places created in UiTdatabank have a `bookingAvailability` proper
 
 **Possible values**
 
-- `Available`: there are still tickets or seats left for the event, or the capacity for the event is unlimited.
-- `Unavailable`: the event is sold out or fully booked.
+* `Available`: there are still tickets or seats left for the event, or the capacity for the event is unlimited.
+* `Unavailable`: the event is sold out or fully booked.
 
 **Examples**
 
