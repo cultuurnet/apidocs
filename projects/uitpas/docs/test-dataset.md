@@ -56,7 +56,7 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 
 ## Group passes
 
-| UitpasNumber    |   Chip Number    | Social tariff | Coupons | Card status |           Comment           |
+| UitpasNumber    |    Chip Number   | Social tariff | Coupons | Card status |           Comment           |
 | --------------- | :--------------: | :-----------: | :-----: | :---------: | :-------------------------: |
 | `0900000045410` | `04D0AB6AF85C80` |      yes      |    no   |    active   |              -              |
 | `0900000191800` | `048B25DAEE3880` |       no      |   yes   |    active   | max. 50 ticketsales per day |
@@ -69,7 +69,7 @@ If you want to test rewards without creating your own rewards, you can use these
 | --------------------------------- | :----: | :-------: | :------------------: |
 | Test Voordeel Regio Gent          | `5687` |  `POINTS` | Without restrictions |
 | Test Welkomstvoordeel Regio Gent  | `5688` | `WELCOME` | Without restrictions |
-| Test Voordeel Regio Gent - 1/week | `5823` |  `POINTS` | 1 per week           |
+| Test Voordeel Regio Gent - 1/week | `5823` |  `POINTS` |      1 per week      |
 | Test Online Voordeel - 10/dag     | `5824` |  `POINTS` | Online Reward 10/day |
-| Test Vervallen Voordeel           | `5825` |  `POINTS` | Should not work      |
-| Test Vervallen Welkomsvoordeel    | `5826` | `WELCOME` | Should not work      |
+| Test Vervallen Voordeel           | `5825` |  `POINTS` |    Should not work   |
+| Test Vervallen Welkomsvoordeel    | `5826` | `WELCOME` |    Should not work   |
