@@ -4,7 +4,7 @@ All events and places created in UiTdatabank have a `status` property. The statu
 - an event is still happening as plannend or not
 - a place is still open for visits or not
 
-> The status only indicates whether an event or place is proceeding as planned or is currently open. It does not provide information about the availability of tickets or spots, which is instead indicated by the [bookingAvailability](#booking-availability.md).
+> The status only indicates whether an event or place is proceeding as planned or is currently open. It does not provide information about the availability of tickets or spots, which is instead indicated by the [bookingAvailability](/booking-availability.md).
 
 ## Using the status parameter
 
