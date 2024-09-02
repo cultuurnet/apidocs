@@ -4,7 +4,7 @@ All events and places created in UiTdatabank have a `status` property. The statu
 - an event is still happening as plannend or not
 - a place is still open for visits or not
 
-> The status only indicates whether an event or place is proceeding as planned or is currently open. It does not provide information about the availability of tickets or spots, which is instead indicated by the [bookingAvailability](/booking-availability.md).
+> The status only indicates whether an event or place is proceeding as planned or is currently open. It does not provide information about the availability of tickets or spots, which is instead indicated by the `booking-availability`.
 
 ## Using the status parameter
 
@@ -46,4 +46,4 @@ Search for all events that are available in a given date range (advanced query p
 
 ```https
 GET /events/?q=status:Unavailable AND dateRange:[2025-05-01T00\:00\:00%2B01\:00 TO 2025-06-31T23\:59\:59%2B01\:00]
-````
+```

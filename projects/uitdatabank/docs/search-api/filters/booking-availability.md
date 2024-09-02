@@ -2,7 +2,7 @@
 
 All events and places created in UiTdatabank have a `bookingAvailability` property. The bookingAvailability indicates whether there are still tickets or seats available for an event.
 
-> The bookingAvailability only indicates whether there are still tickets or seats available for an event. It does not provide information about any cancellations or date changes, which are instead indicated by the [status](/status.md).
+> The bookingAvailability only indicates whether there are still tickets or seats available for an event. It does not provide information about any cancellations or date changes, which are instead indicated by the `status`.
 
 ## Using the bookingAvailability parameter
 
