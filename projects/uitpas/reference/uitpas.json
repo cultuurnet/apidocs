@@ -6337,6 +6337,7 @@
               "ORGANIZERS_REPORTS",
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
+              "PASSHOLDERS_SEARCH_BY_ID",
               "PASSHOLDERS_WRITE",
               "PASSHOLDERS_UPDATE",
               "PASSHOLDERS_DELETE",
