@@ -1680,7 +1680,7 @@
           }
         },
         "operationId": "get-passholders",
-        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_ALL` permission.",
+        "description": "Retrieve passholders based on search parameters.\n\nNote: by default passholders in the response are alphabetically sorted by name.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL` permission. \n\nIn case of `PASSHOLDERS_SEARCH` permission, passholder results are filtered based on the allowed card systems of the caller, unless searched by one of the ID fields:\n* `uitpasNumber`\n* `chipNumber`\n* `inszNumber`\n* `uitidId`\n\nIn case of `PASSHOLDERS_SEARCH_BY_ID` permission, the caller can only make use of those ID fields.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -6294,6 +6294,7 @@
           "ORGANIZERS_REPORTS",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
+          "PASSHOLDERS_SEARCH_BY_ID",
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
@@ -6336,6 +6337,7 @@
               "ORGANIZERS_REPORTS",
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
+              "PASSHOLDERS_SEARCH_BY_ID",
               "PASSHOLDERS_WRITE",
               "PASSHOLDERS_UPDATE",
               "PASSHOLDERS_DELETE",
