@@ -48,9 +48,9 @@
     },
     {
       "type": "item",
-      "title": "Requirements before going live",
-      "uri": "/docs/entry-api/requirements-before-going-live.md",
-      "slug": "entry-api/requirements-before-going-live"
+      "title": "Getting started",
+      "uri": "/docs/entry-api/getting-started.md",
+      "slug": "entry-api/getting-started"
     },
     {
       "type": "item",
@@ -372,9 +372,9 @@
             },
             {
               "type": "item",
-              "title": "Free text search",
-              "uri": "/docs/search-api/filters/freetext.md",
-              "slug": "search-api/filters/free-text-search"
+              "title": "Filtering by booking availability",
+              "uri": "/docs/search-api/filters/booking-availability.md",
+              "slug": "search-api/filters/filtering-by-booking-availability"
             },
             {
               "type": "item",
@@ -384,21 +384,15 @@
             },
             {
               "type": "item",
-              "title": "Filtering by location",
-              "uri": "/docs/search-api/filters/location.md",
-              "slug": "search-api/filters/filtering-by-location"
-            },
-            {
-              "type": "item",
-              "title": "Filtering by type or theme",
-              "uri": "/docs/search-api/filters/terms.md",
-              "slug": "search-api/filters/filtering-by-type-or-theme"
-            },
-            {
-              "type": "item",
               "title": "Filtering by labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by location",
+              "uri": "/docs/search-api/filters/location.md",
+              "slug": "search-api/filters/filtering-by-location"
             },
             {
               "type": "item",
@@ -408,9 +402,27 @@
             },
             {
               "type": "item",
+              "title": "Filtering by status",
+              "uri": "/docs/search-api/filters/status.md",
+              "slug": "search-api/filters/filtering-by-status"
+            },
+            {
+              "type": "item",
               "title": "Filtering by target audience age",
               "uri": "/docs/search-api/filters/age.md",
               "slug": "search-api/filters/filtering-by-target-audience-age"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by type or theme",
+              "uri": "/docs/search-api/filters/terms.md",
+              "slug": "search-api/filters/filtering-by-type-or-theme"
+            },
+            {
+              "type": "item",
+              "title": "Free text search",
+              "uri": "/docs/search-api/filters/freetext.md",
+              "slug": "search-api/filters/free-text-search"
             }
           ]
         },

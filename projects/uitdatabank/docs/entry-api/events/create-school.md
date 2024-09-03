@@ -15,7 +15,7 @@ Creating a school event is very similar to [creating a regular new event](./crea
 
 > There is also a user interface available to enter school events, on <https://www.uitdatabank.be>. We recommend using this interface, instead of building an API integration, if you only organize a limited number of school events per year.
 >
-> For questions about school events, please contact <content.cultuurkuur@publiq.be>.
+> For questions about school events, please contact <vragen@cultuurkuur.be>.
 
 ## Required permissions
 
