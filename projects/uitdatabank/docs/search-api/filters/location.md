@@ -9,8 +9,8 @@ You can filter results from Search API based on the country the event / place / 
 > By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
 The `addressCountry` is available as both an URL parameter and as an advanced query field:
-- URL parameter: `addressCountry`
-- Advanced query parameter: `address.{language}.addressCountry`
+* URL parameter: `addressCountry`
+* Advanced query parameter: `address.{language}.addressCountry`
 
 **Applicable on endpoints**
 
@@ -43,14 +43,14 @@ GET /places/?addressCountry=NL
 ## Filtering on regions
 
 publiq has a list of pre-indexed geographical shapes that represent the administrative state of Belgium. The geographical coördinates of events and places are then matched with pre-indexed geographical shapes for:
-- Provinces
-- Regions
-- Municipalities
-- Submunicipalities
+* Provinces
+* Regions
+* Municipalities
+* Submunicipalities
 
 Using the `regions` parameter, you can filter on pre-indexed geographical shapes or regions. `regions` is available as both an URL parameter and as an advanced query field:
-- URL parameter: `regions`
-- Advanced query parameter: `regions`
+* URL parameter: `regions`
+* Advanced query parameter: `regions`
 
 > Filtering by region uses a cache in advanced queries, which is faster but may be slightly out of date. The URL parameter on the other hand does the filtering on-demand, which is slower but always up to date.
 
@@ -120,8 +120,8 @@ GET /places/?q=address.\*.addressLocality:Bruxelles
 
 Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` field.
 The `postalCode` is available as both an URL parameter and as advanced query field:
-- URL parameter: `postalCode`
-- Advanced query parameter: `address.{language}.postalCode`
+* URL parameter: `postalCode`
+* Advanced query parameter: `address.{language}.postalCode`
 
 **Applicable on endpoints**
 
@@ -158,8 +158,8 @@ GET /events/?q=address.\*.postalCode:(3600 OR 3700)
 ## Filtering on a specific location
 
 You can filter on specific locations or venues using the ID of the location.
-- URL parameter: `id` (on the `/places` endpoint) or locationId (on `/events` endpoint)
-- Advanced query parameter: `id` (on the `/places` endpoint) or `location.id` (on `/events` endpoint)
+* URL parameter: `id` (on the `/places` endpoint) or locationId (on `/events` endpoint)
+* Advanced query parameter: `id` (on the `/places` endpoint) or `location.id` (on `/events` endpoint)
 
 <!-- theme: warning --> 
 
@@ -202,8 +202,8 @@ GET /events/?q=attendanceMode:online
 ## Filtering on a specific address 
 
 With the `streetAddress` field you can limit your results to a certain street or a specific address. The `streetAddress` is available as both an URL parameter and as advanced query field:
-- URL parameter: `streetAddress`
-- Advanced query parameter: `address.{language}.streetAddress`
+* URL parameter: `streetAddress`
+* Advanced query parameter: `address.{language}.streetAddress`
 
 **Applicable on endpoints**
 
