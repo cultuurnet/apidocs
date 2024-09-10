@@ -34,7 +34,7 @@ Use a wildcard instead of specifying a language:
 GET /places/?q=address.\*.addressCountry:NL&addressCountry=*
 ```
 
-In the queries above, we disabled the addressCountry default filter using a URL parameter and applied a filter for the Netherlands through the advanced query parameter (address.nl.AddressCountry). However, if the goal is to restrict results solely to locations within the Netherlands, it’s simpler to use just the URL parameter:
+In the queries above, we disabled the addressCountry default filter using a URL parameter and applied a filter for the Netherlands through the advanced query parameter (`address.nl.AddressCountry`). However, if the goal is to restrict results solely to locations within the Netherlands, it’s simpler to use just the URL parameter:
 
 ```
 GET /places/?addressCountry=NL
@@ -90,9 +90,9 @@ With the `addressLocality` field you can limit your results to one or more munic
 
 <!-- theme: warning --> 
 
-> The name of municipalities can change over time (e.g. in the context of municipality mergers). The postal code of municipalities is far less subject to change. Therefore, it is better to use the `postalCode` field instead of the `addressLocality` field (when possible).
+> The name of municipalities can change over time (e.g. in the context of municipality mergers). The postal code of municipalities is far less subject to change. Therefore, it is better to use the `postalCode` field instead of the `addressLocality` field.
 
-The `addressLocality` is available as both an URL parameter and the advanced query field `address.{language}.addressLocality`
+The `addressLocality` is available as both an URL parameter and the advanced query field `address.{language}.addressLocality`.
 
 **Applicable on endpoints**
 
