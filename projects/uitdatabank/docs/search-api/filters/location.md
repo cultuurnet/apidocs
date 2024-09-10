@@ -9,9 +9,8 @@ You can filter results from Search API based on the country the event / place / 
 > By default, the search API will only return results that are in Belgium. In order to retrieve results outside Belgium you'll need to disable the default filter of the addressCountry URL parameter. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
 The `addressCountry` is available as both an URL parameter and as an advanced query field:
-
-* URL parameter: `addressCountry`
-* Advanced query parameter: `address.{language}.addressCountry`
+- URL parameter: `addressCountry`
+- Advanced query parameter: `address.{language}.addressCountry`
 
 **Applicable on endpoints**
 
@@ -44,16 +43,14 @@ GET /places/?addressCountry=NL
 ## Filtering on regions
 
 publiq has a list of pre-indexed geographical shapes that represent the administrative state of Belgium. The geographical coördinates of events and places are then matched with pre-indexed geographical shapes for:
-
-* Provinces
-* Regions
-* Municipalities
-* Submunicipalities
+- Provinces
+- Regions
+- Municipalities
+- Submunicipalities
 
 Using the `regions` parameter, you can filter on pre-indexed geographical shapes or regions. `regions` is available as both an URL parameter and as an advanced query field:
-
-* URL parameter: `regions`
-* Advanced query parameter: `regions`
+- URL parameter: `regions`
+- Advanced query parameter: `regions`
 
 > Filtering by region uses a cache in advanced queries, which is faster but may be slightly out of date. The URL parameter on the other hand does the filtering on-demand, which is slower but always up to date.
 
@@ -107,7 +104,7 @@ The value for `addressLocality` can be any municipality in a supported language.
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below.
+Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below. 
 
 ```
 GET /places/?q=address.fr.addressLocality:Bruxelles
@@ -123,9 +120,8 @@ GET /places/?q=address.\*.addressLocality:Bruxelles
 
 Filter on the postal code (zipcode) of an event, place or organizer with the `postalCode` field.
 The `postalCode` is available as both an URL parameter and as advanced query field:
-
-* URL parameter: `postalCode`
-* Advanced query parameter: `address.{language}.postalCode`
+- URL parameter: `postalCode`
+- Advanced query parameter: `address.{language}.postalCode`
 
 **Applicable on endpoints**
 
@@ -162,9 +158,8 @@ GET /events/?q=address.\*.postalCode:(3600 OR 3700)
 ## Filtering on a specific location
 
 You can filter on specific locations or venues using the ID of the location.
-
-* URL parameter: `id` (on the `/places` endpoint) or locationId (on `/events` endpoint)
-* Advanced query parameter: `id` (on the `/places` endpoint) or `location.id` (on `/events` endpoint)
+- URL parameter: `id` (on the `/places` endpoint) or locationId (on `/events` endpoint)
+- Advanced query parameter: `id` (on the `/places` endpoint) or `location.id` (on `/events` endpoint)
 
 <!-- theme: warning --> 
 
@@ -172,7 +167,7 @@ You can filter on specific locations or venues using the ID of the location.
 
 **Applicable on endpoints**
 
-`/events` `/places` `/offers`
+`/events` `/places` `/offers` 
 
 **Possible values**
 
@@ -204,12 +199,11 @@ However, in order we recommend using the attendanceMode filter for that:
 GET /events/?q=attendanceMode:online
 ```
 
-## Filtering on a specific address
+## Filtering on a specific address 
 
 With the `streetAddress` field you can limit your results to a certain street or a specific address. The `streetAddress` is available as both an URL parameter and as advanced query field:
-
-* URL parameter: `streetAddress`
-* Advanced query parameter: `address.{language}.streetAddress`
+- URL parameter: `streetAddress`
+- Advanced query parameter: `address.{language}.streetAddress`
 
 **Applicable on endpoints**
 
@@ -231,7 +225,7 @@ GET /organizers/?q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 
 With the `coordinates` parameter you can limit results that lie on a specific coordinate. The parameter is only available as URL-parameter.
 
-In order to search by geo distancce, you can combine the `coordinates` parameter with the [distance](#With-Distance) parameter.
+In order to search by geo distancce, you can combine the `coordinates` parameter with the [distance](#Filtering-on-distance) parameter.
 
 **Applicable on endpoints**
 
@@ -279,7 +273,7 @@ Using bounds you can find items that are located in a specific region (a specifi
 
 **Possible values**
 
-Valid coordinates, decimal representations of latitude & longitude (in that order), separated by a comma.
+Valid coordinates, decimal representations of latitude & longitude \(in that order\), separated by a comma.
 
 > It's important that you pass the south-west coordinates first, and the north-east coordinates second.
 
