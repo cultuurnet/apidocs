@@ -844,7 +844,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see [our guide](../filters/location.md).
+Any valid region. For an overview of all shapes, see [this list](https://search.uitdatabank.be/autocomplete.json).
 
 **Example**
 
