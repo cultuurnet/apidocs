@@ -225,7 +225,7 @@ GET /organizers/?q=address.nl.streetAddress:"Henegouwenkaai 41-43"
 
 With the `coordinates` parameter you can limit results that lie on a specific coordinate. The parameter is only available as URL-parameter.
 
-In order to search by geo distancce, you can combine the `coordinates` parameter with the [distance](#Filtering-on-distance) parameter.
+In order to search by geo distancce, you can combine the `coordinates` parameter with the [distance](#filtering-on-distance) parameter.
 
 **Applicable on endpoints**
 
@@ -245,7 +245,7 @@ GET /offers/?coordinates=50.8511740,4.3386740&distance=10km
 
 ## Filtering on distance
 
-With the `distance` parameter you can limit results that lie at a certain range of a given coordinate. The distance parameter is only available as URL parameter and must always be combined with the [coordinates parameter](#Filtering-on-coordinates).
+With the `distance` parameter you can limit results that lie at a certain range of a given coordinate. The distance parameter is only available as URL parameter and must always be combined with the [coordinates parameter](#filtering-on-coordinates).
 
 **Applicable on endpoints**
 
