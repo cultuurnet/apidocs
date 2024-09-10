@@ -24,7 +24,7 @@ The value for this field must always be an [ISO 3166-1 alpha-2](https://en.wikip
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language, as in the example below. 
+Because a document can have address translations, you can search by a specific language, as in the example below.
 
 ```
 GET /places/?q=address.nl.addressCountry:BE 
@@ -288,9 +288,11 @@ GET /organizers/?q=completedLanguages:en
 ```
 
 ### completeness
+
 <!-- theme: info -->
 
 > #### New functionality 🚧
+>
 > `completeness` is a new parameter that is still under construction. At the moment the completeness is only calculated for events, places and organizers created after February 15, 2024.
 
 With the `completeness` field you can filter events, places and organizers by their completeness score. The completeness score is a number between 0 and 100 that indicates how complete the information of an event, place or organizer is.
