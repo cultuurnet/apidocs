@@ -62,7 +62,7 @@ Using the `regions` parameter, you can filter on pre-indexed geographical shapes
 
 **Possible values**
 
-Any valid region. You can find a list of all pre-indexed regions over here:
+Any valid region. You can find a list of all pre-indexed regions over [here](https://search.uitdatabank.be/autocomplete.json).
 
 **Examples**
 
