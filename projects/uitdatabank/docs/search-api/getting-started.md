@@ -6,7 +6,7 @@ You can use Search API to build your own online calendar with current events, or
 
 <!-- focus: false -->
 
-[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
+[![Add your search API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
 
 Search API is also used to [find existing places](../entry-api/places/finding-and-reusing-places.md) and [organizers](../entry-api/organizers/finding-and-reusing-organizers.md) to reuse when [creating new events](../entry-api/events/create.md) with Entry API.
 
