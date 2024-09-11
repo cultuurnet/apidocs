@@ -974,44 +974,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "allowed": {
-                      "type": "boolean",
-                      "x-stoplight": {
-                        "id": "1jf059cl165uh"
-                      },
-                      "description": "Indicates whether a checkin is currently possible."
-                    },
-                    "endUserMessage": {
-                      "type": "object",
-                      "description": "Optional property that, if provided, contains information for the end-user about why the checkin is currently not allowed.",
-                      "properties": {
-                        "nl": {
-                          "type": "string",
-                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
-                        },
-                        "fr": {
-                          "type": "string",
-                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
-                        },
-                        "de": {
-                          "type": "string",
-                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
-                        },
-                        "en": {
-                          "type": "string",
-                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
-                        }
-                      },
-                      "required": [
-                        "nl"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "allowed"
-                  ]
+                  "$ref": "#/components/schemas/CheckinStatus"
                 },
                 "examples": {
                   "Example allowed": {
@@ -8778,9 +8741,9 @@
         },
         "required": [
           "mainPassholderRegistration"
-        ]      
-    },
-    "Card": {
+        ]
+      },
+      "Card": {
         "title": "Card",
         "x-stoplight": {
           "id": "zqvfbrdvemv9g"
@@ -8836,7 +8799,42 @@
           "cardSystem",
           "status",
           "socialTariff"
-        ]    
+        ]
+      },
+      "CheckinStatus": {
+        "title": "CheckinStatus",
+        "type": "object",
+        "properties": {
+          "allowed": {
+            "type": "boolean",
+            "description": "Indicates whether a checkin is currently possible."
+          },
+          "endUserMessage": {
+            "type": "object",
+            "description": "Optional property that, if provided, contains information for the end-user about why the checkin is currently not allowed.",
+            "properties": {
+              "nl": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+              },
+              "fr": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+              },
+              "de": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+              },
+              "en": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+              }
+            },
+            "required": [
+              "nl"
+            ]
+          }
+        }
       }
     },
     "securitySchemes": {
