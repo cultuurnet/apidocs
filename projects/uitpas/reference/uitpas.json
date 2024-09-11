@@ -2077,6 +2077,70 @@
         ]
       }
     },
+    "/passholders/{passholderId}/picture": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get picture of passholder",
+        "operationId": "get-passholders-passholderId-picture",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassholderPicture"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "pictureUrl": "https://api-test.uitpas.be/passholders/481f8595-97cb-45c5-8a04-7fe3df860e0b/picture.png?token=b0f08488-f1f2-4709-8748-c529de66fdc5"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve picture of the given passholder.\n\nThis endpoint allows you to obtain a short-lived link to the picture of the passholder. After generation, this link remains active for a limited time, enabling you to include it in HTML pages displayed to your users.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_READ` permission for the given passholder.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
     "/passholders/me/uitid/registration-token": {
       "parameters": [],
       "get": {
@@ -8835,6 +8899,25 @@
             ]
           }
         }
+      },
+      "PassholderPicture": {
+        "title": "PassholderPicture",
+        "x-stoplight": {
+          "id": "3ipzpxwesu2dv"
+        },
+        "type": "object",
+        "properties": {
+          "pictureUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "je23zfyodev7c"
+            },
+            "description": "URL of the picture of the passholder."
+          }
+        },
+        "required": [
+          "pictureUrl"
+        ]
       }
     },
     "securitySchemes": {
