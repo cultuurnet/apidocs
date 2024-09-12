@@ -6520,7 +6520,6 @@
               "examples": {
                 "Example": {
                   "value": {
-                    "email": "example@example.org",
                     "mainPassholderRegistration": {
                       "name": "Peeters",
                       "firstName": "Marc",
