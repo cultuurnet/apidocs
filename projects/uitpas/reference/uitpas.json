@@ -7092,6 +7092,7 @@
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
+          "PASSHOLDERS_PICTURE_READ",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -7115,7 +7116,8 @@
           "ORDERS_READ",
           "ORDERS_CREATE",
           "PERMISSIONS_READ",
-          "PERMISSIONS_WRITE"
+          "PERMISSIONS_WRITE",
+          "CARDS_READ"
         ]
       },
       "PermissionDetail": {
@@ -7137,6 +7139,7 @@
               "CHECKINS_WRITE",
               "ORGANIZERS_SEARCH",
               "ORGANIZERS_REPORTS",
+              "PASSHOLDERS_PICTURE_READ",
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
               "PASSHOLDERS_SEARCH_BY_ID",
@@ -7158,7 +7161,8 @@
               "PASSHOLDERS_TRANSACTION_HISTORY",
               "PASSHOLDERS_FAMILY_MEMBERS",
               "PERMISSIONS_READ",
-              "PERMISSIONS_WRITE"
+              "PERMISSIONS_WRITE",
+              "CARDS_READ"
             ],
             "x-stoplight": {
               "id": "tm10mhvqf21i7"
