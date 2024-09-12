@@ -25,6 +25,9 @@
       "name": "Card Systems"
     },
     {
+      "name": "Cards"
+    },
+    {
       "name": "Checkins"
     },
     {
@@ -35,6 +38,9 @@
     },
     {
       "name": "Financial reports"
+    },
+    {
+      "name": "Orders"
     },
     {
       "name": "Organizers"
@@ -921,7 +927,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1  checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -952,6 +958,88 @@
           },
           "description": "Check-in request body"
         },
+        "tags": [
+          "Checkins"
+        ]
+      }
+    },
+    "/checkin-status": {
+      "parameters": [],
+      "get": {
+        "summary": "Get checkin status",
+        "operationId": "get-checkin-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckinStatus"
+                },
+                "examples": {
+                  "Example allowed": {
+                    "value": {
+                      "allowed": true
+                    }
+                  },
+                  "Example not allowed": {
+                    "value": {
+                      "allowed": false,
+                      "endUserMessage": {
+                        "nl": "Deze activiteit is afgelopen, je kan op deze activiteit geen punt meer sparen."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the current checkin status for a passholder and a given event.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "required": true,
+            "description": "UiTPAS number of the passholder who wants to checkin"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventId",
+            "required": true,
+            "description": "Id of the event where the passholder wants to checkin"
+          }
+        ],
         "tags": [
           "Checkins"
         ]
@@ -1807,7 +1895,7 @@
                 "examples": {
                   "Example": {
                     "value": {
-                      "id": "1be0fb53-0695-405b-ac09-deafead650af",
+                      "id": "1be0fb53-0695-405b-ac09-deafead650afx",
                       "name": "Peeters",
                       "firstName": "Marc",
                       "inszNumber": "00000009007",
@@ -1863,7 +1951,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1889,7 +1977,7 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
+        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -1917,9 +2005,7 @@
                       "id": "abc12345"
                     },
                     "address": {
-                      "street": "Grote markt",
-                      "number": "12",
-                      "box": "",
+                      "street": "Grote markt 12",
                       "postalCode": "9300",
                       "city": "Aalst",
                       "country": "be"
@@ -1932,10 +2018,11 @@
                       "post": true
                     },
                     "nationality": "Belg",
-                    "legalConsentPaper": false,
-                    "legalConsentDigital": true,
+                    "legalTermsPaper": false,
+                    "legalTermsDigital": true,
                     "parentalConsent": false,
-                    "registrationCardSystemId": 1
+                    "registrationCardSystemId": 1,
+                    "registrationCardType": "DIGITAL"
                   }
                 }
               }
@@ -1988,6 +2075,70 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/picture": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get picture of passholder",
+        "operationId": "get-passholders-passholderId-picture",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassholderPicture"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "pictureUrl": "https://api-test.uitpas.be/passholders/481f8595-97cb-45c5-8a04-7fe3df860e0b/picture.png?token=b0f08488-f1f2-4709-8748-c529de66fdc5"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve picture of the given passholder.\n\nThis endpoint allows you to obtain a short-lived link to the picture of the passholder. After generation, this link remains active for a limited time, enabling you to include it in HTML pages displayed to your users.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_READ` permission for the given passholder.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
         ]
       }
     },
@@ -2284,105 +2435,31 @@
         ]
       }
     },
-    "/passholders/membership-prices": {
+    "/passholders/membership-prices/{cardSystemId}": {
       "get": {
-        "summary": "Retrieve new membership prices",
+        "summary": "Retrieve new membership price",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/MembershipPrice"
-                  }
+                  "$ref": "#/components/schemas/MembershipPrice"
                 },
                 "examples": {
                   "Example": {
-                    "value": [
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 12,
-                          "name": "UiTPAS Oostende",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "8400",
-                              "name": "Oostende"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      },
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 8,
-                          "name": "UiTPAS Gent",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "9000",
-                              "name": "Gent"
-                            },
-                            {
-                              "postalCode": "9050",
-                              "name": "Gent-Brugge"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      },
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 1,
-                          "name": "UiTPAS Dender",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "9300",
-                              "name": "Aalst"
-                            },
-                            {
-                              "postalCode": "9400",
-                              "name": "Ninove"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      }
-                    ]
+                    "value": {
+                      "price": 5,
+                      "label": "UiTPAS +18 jaar",
+                      "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
+                    }
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2397,10 +2474,20 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
-        "operationId": "get-passholders-passholderId-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for a new passholder. All parameters are optional. If `postalCode` is specified, the most relevant price comes first.\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
+        "operationId": "get-passholders-membership-prices-cardSystemId",
+        "description": "Retrieve the exact membership price for a new passholder. `cardType`, `postalCode` and `dateOfBirth` are mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nTo retrieve a list of prices for a card system if not all details are known yet, you can use [GET /card-systems/{cardSystemId}/membership-prices](/reference/uitpas.json/paths/~1card-systems~1{cardSystemId}~1membership-prices/get).\n\nThe caller of this request must have `MEMBERSHIP_PRICES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -2408,7 +2495,8 @@
             },
             "in": "query",
             "name": "postalCode",
-            "description": "postal code of the residence of the user so the result is sorted on most nearby options first. Must be a valid Belgian postal code or `0000` for foreign places."
+            "description": "postal code of the residence of the user. Must be a valid Belgian postal code or `0000` for foreign places.",
+            "required": true
           },
           {
             "schema": {
@@ -2417,7 +2505,38 @@
             },
             "in": "query",
             "name": "dateOfBirth",
-            "description": "date of birth of the user used to determine the correct price. The default price is used when omitted."
+            "description": "date of birth of the user used to determine the correct price.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "name": "socialTariff",
+            "description": "whether or not the user is entitled to a social tariff"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "voucher",
+            "description": "optional voucher that might reduce the membership price"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NFC_CARD",
+                "DIGITAL"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "type of the card",
+            "required": true
           }
         ],
         "tags": [
@@ -2429,104 +2548,53 @@
           },
           {
             "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
           }
         ]
       },
-      "parameters": []
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the card system."
+        }
+      ]
     },
-    "/passholders/{passholderId}/membership-prices": {
+    "/passholders/{passholderId}/membership-prices/{cardSystemId}": {
       "get": {
-        "summary": "Retrieve upgrade membership prices",
+        "summary": "Retrieve upgrade membership price",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/MembershipPrice"
-                  }
+                  "$ref": "#/components/schemas/MembershipPrice"
                 },
                 "examples": {
                   "Example": {
-                    "value": [
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 12,
-                          "name": "UiTPAS Oostende",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "8400",
-                              "name": "Oostende"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      },
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 8,
-                          "name": "UiTPAS Gent",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "9000",
-                              "name": "Gent"
-                            },
-                            {
-                              "postalCode": "9050",
-                              "name": "Gent-Brugge"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      },
-                      {
-                        "price": 5,
-                        "cardSystem": {
-                          "id": 1,
-                          "name": "UiTPAS Dender",
-                          "branding": {
-                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                            "primaryColor": "rgba(0,0,0,1.0)",
-                            "secondaryColor": "rgba(97,166,14,1.0)"
-                          },
-                          "links": {
-                            "website": "https://www.uitpas.be"
-                          },
-                          "cities": [
-                            {
-                              "postalCode": "9300",
-                              "name": "Aalst"
-                            },
-                            {
-                              "postalCode": "9400",
-                              "name": "Ninove"
-                            }
-                          ],
-                          "permanent": true
-                        }
-                      }
-                    ]
+                    "value": {
+                      "price": 5,
+                      "label": "UiTPAS +18 jaar",
+                      "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
+                    }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -2536,11 +2604,51 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
-        "operationId": "get-passholders-membership-prices",
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRetrieve the membership prices for an existing passholder. The result will contain only prices for cardsystems where the passholder is not already a member. The result will be sorted on most relevant price first.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
-        "parameters": [],
+        "operationId": "get-passholders-passholderId-membership-prices-cardSystemId",
+        "description": "Retrieve the exact membership price for an existing passholder in a new card system. `cardType` is mandatory to determine the correct price. `socialTariff` and `voucher` are optional.\n\nTo retrieve the price for a *new* passholder, use [GET /passholders/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1membership-prices~1{cardSystemId}/get).\n\nTo retrieve a list of prices for a card system if not all details are known yet, you can use [GET /card-systems/{cardSystemId}/membership-prices](/reference/uitpas.json/paths/~1card-systems~1{cardSystemId}~1membership-prices/get).\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "socialTariff",
+            "description": "whether or not the user is entitled to a social tariff"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "voucher",
+            "description": "optional voucher that might reduce the membership price"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NFC_CARD",
+                "DIGITAL"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "type of the card",
+            "required": true
+          }
+        ],
         "tags": [
           "Passholders"
         ],
@@ -2555,7 +2663,22 @@
       },
       "parameters": [
         {
-          "$ref": "#/components/parameters/passholderId"
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the card system."
         }
       ]
     },
@@ -3131,7 +3254,7 @@
                         "uitpasNumber": "0900000067513",
                         "creationDate": "2023-08-24T14:15:22Z",
                         "passholder": {
-                          "id": "1be0fb53-0695-405b-ac09-deafead650af",
+                          "id": "2be0fb53-0695-405b-ac09-deafead650af",
                           "name": "Peeters",
                           "firstName": "Clara",
                           "inszNumber": "00000009008",
@@ -3192,7 +3315,7 @@
                         "uitpasNumber": "0900000036112",
                         "creationDate": "2023-08-24T14:18:22Z",
                         "passholder": {
-                          "id": "1be0fb53-0695-405b-ac09-deafead650af",
+                          "id": "3be0fb53-0695-405b-ac09-deafead650af",
                           "name": "Peeters",
                           "firstName": "Loius",
                           "inszNumber": "00000009009",
@@ -5948,11 +6071,21 @@
                             }
                           ],
                           "permanent": true,
-                          "allowsCardlessRegistration": false
+                          "cardlessRegistrationType": "ALL"
                         }
                       ]
                     }
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/postal-code-required\nhttps://api.publiq.be/probs/uitpas/invalid-postal-code",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -6024,6 +6157,22 @@
             "description": "Search card systems by postal code. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
             "style": "form",
             "explode": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sort",
+            "description": "Sorts the cardsystems in a specific order. Possible values are: `name`, `postalCode`. By default the sort uses ascending order. Descending order can be specified by including a `-` sign before the field that needs to be ordered descending. e.g. use `-name` to sort on name descending. `postalCode` sort will geographically sort based on the query param `postalCodeSort`."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postalCodeSort",
+            "description": "The postalCode that will be used by `sort=postalCode` as its geographic center. If `sort` is not `postalCode` this parameter is ignored. If `sort` is `postalCode`, this parameter is mandatory."
           }
         ],
         "tags": [
@@ -6038,6 +6187,665 @@
           },
           {
             "USER_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/card-systems/{cardSystemId}": {
+      "get": {
+        "x-internal": false,
+        "summary": "Retrieve card system",
+        "responses": {
+          "200": {
+            "description": "Details of the requested card system.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSystem"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": 1,
+                      "name": "UiTPAS Dender",
+                      "branding": {
+                        "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                        "primaryColor": "rgba(0,0,0,1.0)",
+                        "secondaryColor": "rgba(97,166,14,1.0)"
+                      },
+                      "links": {
+                        "website": "https://www.uitpas.be"
+                      },
+                      "cities": [
+                        {
+                          "postalCode": "9300",
+                          "name": "Aalst"
+                        },
+                        {
+                          "postalCode": "9400",
+                          "name": "Ninove"
+                        }
+                      ],
+                      "permanent": true,
+                      "cardlessRegistrationType": "NONE"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cardsystems-cardsystemid",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve card system by ID.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "tags": [
+          "Card Systems"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the requested card system"
+        }
+      ]
+    },
+    "/card-systems/{cardSystemId}/membership-prices": {
+      "get": {
+        "summary": "Retrieve membership prices for a card system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MembershipPrice"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "price": 3,
+                        "label": "UiTPAS inwoners +18 jaar",
+                        "description": "Volwassenen die binnen de regio wonen, betalen 3 euro voor hun UiTPAS"
+                      },
+                      {
+                        "price": 0,
+                        "label": "UiTPAS inwoners -18 jaar",
+                        "description": "Kinderen die binnen de regio wonen krijgen een gratis UiTPAS"
+                      },
+                      {
+                        "price": 5,
+                        "label": "UiTPAS niet-inwoners +18 jaar",
+                        "description": "Volwassenen die buiten de regio wonen, betalen 5 euro voor hun UiTPAS"
+                      },
+                      {
+                        "price": 2,
+                        "label": "UiTPAS niet-inwoners -18 jaar",
+                        "description": "Kinderen die buiten de regio wonen, betalen 2 euro voor hun UiTPAS"
+                      },
+                      {
+                        "price": 1,
+                        "label": "UiTPAS Kansenpas",
+                        "description": "Kansenpashouders betalen 1 euro voor hun UiTPAS"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-card-systems-cardsystemid-membership-prices",
+        "description": "Retrieve all membership prices by card type for a card system. The result will contain all prices for the cardsystem, which is primarily useful to display to a an anonymous user. To retrieve the price for an individual passholder, you can use [GET /passholders/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1membership-prices~1{cardSystemId}/get) (more details like social tariff, date of birth and residence are required) or [GET /passholders/{passholderId}/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1membership-prices~1{cardSystemId}/get) (if the passholder already exists).\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DIGITAL",
+                "NFC_CARD"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "Type of the card",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Card Systems"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the card system"
+        }
+      ]
+    },
+    "/orders": {
+      "post": {
+        "summary": "Create online order",
+        "operationId": "post-orders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "examples": {
+                  "Example pending payment": {
+                    "value": {
+                      "id": "123456789",
+                      "status": "PENDING_PAYMENT",
+                      "paymentUrl": "https://payment-url.com",
+                      "email": "example@example.org",
+                      "totalPrice": 10,
+                      "customToken": "U742hZr^FkBQfxqQtz7Y%tt@q%SpoEkR52Q$2heET#G*S&N88CM64&E&H$%Sonop%adVxybPziNYm$NL%%fkKhQwQKpkoSmb8vWVmZ58VPd@87Xa@@a%hPQP&8",
+                      "mainPassholderRegistration": {
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "email": "marc.peeters@example.com",
+                        "dateOfBirth": "2000-01-01",
+                        "registrationOrganizer": {
+                          "id": "abc12345"
+                        },
+                        "address": {
+                          "street": "Grote markt 12",
+                          "postalCode": "9300",
+                          "city": "Aalst",
+                          "country": "be"
+                        },
+                        "optInPreferences": {
+                          "serviceMails": true,
+                          "infoMails": true,
+                          "milestoneMails": true,
+                          "sms": false,
+                          "post": true
+                        },
+                        "nationality": "Belg",
+                        "legalTermsPaper": false,
+                        "legalTermsDigital": true,
+                        "parentalConsent": false,
+                        "registrationCardSystemId": 1
+                      }
+                    }
+                  },
+                  "Example pending uitid connect": {
+                    "value": {
+                      "id": "123456789",
+                      "status": "PENDING_UITID_CONNECT",
+                      "uitidAuthUrl": "https://uitid.be/auth",
+                      "email": "example@example.org",
+                      "totalPrice": 10,
+                      "registrationToken": "123456789",
+                      "mainPassholderRegistration": {
+                        "name": "Peeters",
+                        "firstName": "Marc",
+                        "inszNumber": "00000009007",
+                        "email": "marc.peeters@example.com",
+                        "dateOfBirth": "2000-01-01",
+                        "registrationOrganizer": {
+                          "id": "abc12345"
+                        },
+                        "address": {
+                          "street": "Grote markt 12",
+                          "postalCode": "9300",
+                          "city": "Aalst",
+                          "country": "be"
+                        },
+                        "optInPreferences": {
+                          "serviceMails": true,
+                          "infoMails": true,
+                          "milestoneMails": true,
+                          "sms": false,
+                          "post": true
+                        },
+                        "nationality": "Belg",
+                        "legalTermsPaper": false,
+                        "legalTermsDigital": true,
+                        "parentalConsent": false,
+                        "registrationCardSystemId": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/email-already-used\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
+          }
+        ],
+        "description": "Create an online order for one or more passholders.\n\nThis caller of this method, identified by client identification, client access token or user access token, must have ORDERS_CREATE permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "mainPassholderRegistration": {
+                      "name": "Peeters",
+                      "firstName": "Marc",
+                      "inszNumber": "00000009007",
+                      "email": "marc.peeters@example.com",
+                      "dateOfBirth": "2000-01-01",
+                      "registrationOrganizer": {
+                        "id": "abc12345"
+                      },
+                      "address": {
+                        "street": "Grote markt 12",
+                        "postalCode": "9300",
+                        "city": "Aalst",
+                        "country": "be"
+                      },
+                      "optInPreferences": {
+                        "serviceMails": true,
+                        "infoMails": true,
+                        "milestoneMails": true,
+                        "sms": false,
+                        "post": true
+                      },
+                      "nationality": "Belg",
+                      "legalTermsPaper": false,
+                      "legalTermsDigital": true,
+                      "parentalConsent": false,
+                      "registrationCardSystemId": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "Details of the new order to create."
+        },
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "summary": "Retrieve order",
+        "operationId": "get-orders-orderid",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited"
+          }
+        },
+        "description": "Retrieve order by ID.\n\nThe caller of this method, identified by client identification, client access token or user access token, must have ORDERS_READ permission.\n\nIn case this order is retrieved using client identification, `mainPassholder` and `extraPassholders` are left out of the response.\n\nThis endpoint is rate limited.",
+        "tags": [
+          "Orders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CUSTOM_TOKEN": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the order"
+        }
+      ]
+    },
+    "/passholders/status/insz-numbers/{inszNumber}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "inszNumber",
+          "in": "path",
+          "required": true,
+          "description": "the INSZ number to check"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve the status of a passholder based on INSZ number",
+        "operationId": "passholders-status-insz-numbers-insznumber",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Status response",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "rqttsls3qw5rx"
+                      },
+                      "enum": [
+                        "USED",
+                        "UNUSED"
+                      ],
+                      "description": "State of the given INSZ number"
+                    }
+                  },
+                  "required": [
+                    "state"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "state": "UNUSED"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/rate-limited\n\nThe detail property might include more information for the client developer.\n"
+          }
+        },
+        "description": "Retrieve the status of a passholder based on INSZ number.\n\nThis endpoint is rate limited.\n",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
+    "/cards": {
+      "get": {
+        "summary": "Retrieve card status",
+        "tags": [
+          "Cards"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                },
+                "examples": {
+                  "Active card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "chipNumber": "042F51B2712380",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "ACTIVE",
+                      "socialTariff": false
+                    }
+                  },
+                  "Provisioned card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "PROVISIONED",
+                      "socialTariff": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/invalid-uitpas-number",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cards",
+        "description": "Retrieve card status for a given `uitpasNumber` or `chipNumber`.\n\nThe caller of this request must have `CARDS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "description": "The UiTPAS number of the card to search"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chipNumber",
+            "description": "The chip number of the card to search"
           }
         ]
       }
@@ -6095,29 +6903,8 @@
         "x-internal": false,
         "example": {
           "price": 5,
-          "cardSystem": {
-            "id": 1,
-            "name": "UiTPAS Dender",
-            "branding": {
-              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-              "primaryColor": "rgba(0,0,0,1.0)",
-              "secondaryColor": "rgba(97,166,14,1.0)"
-            },
-            "links": {
-              "website": "https://www.uitpas.be"
-            },
-            "cities": [
-              {
-                "postalCode": "9300",
-                "name": "Aalst"
-              },
-              {
-                "postalCode": "9400",
-                "name": "Ninove"
-              }
-            ],
-            "permanent": true
-          }
+          "label": "UiTPAS +18 jaar",
+          "description": "Volwassenen die binnen de regio wonen, betalen 5 euro voor hun UiTPAS"
         },
         "x-tags": [
           "Models"
@@ -6127,13 +6914,25 @@
             "description": "Price for the card system membership, in euro.",
             "type": "number"
           },
-          "cardSystem": {
-            "$ref": "#/components/schemas/CardSystem"
+          "label": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pw5cjsq3l7ory"
+            },
+            "description": "Label of the price that can be displayed to the end-user."
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "10d0zi5ldphwj"
+            },
+            "description": "Description of the price that can be displayed to the end-user."
           }
         },
         "required": [
           "price",
-          "cardSystem"
+          "label",
+          "description"
         ]
       },
       "TicketSale": {
@@ -6292,6 +7091,7 @@
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
+          "PASSHOLDERS_PICTURE_READ",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -6312,8 +7112,11 @@
           "PASSHOLDERS_REGISTER_UITID",
           "PASSHOLDERS_TRANSACTION_HISTORY",
           "PASSHOLDERS_FAMILY_MEMBERS",
+          "ORDERS_READ",
+          "ORDERS_CREATE",
           "PERMISSIONS_READ",
-          "PERMISSIONS_WRITE"
+          "PERMISSIONS_WRITE",
+          "CARDS_READ"
         ]
       },
       "PermissionDetail": {
@@ -6335,6 +7138,7 @@
               "CHECKINS_WRITE",
               "ORGANIZERS_SEARCH",
               "ORGANIZERS_REPORTS",
+              "PASSHOLDERS_PICTURE_READ",
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
               "PASSHOLDERS_SEARCH_BY_ID",
@@ -6356,7 +7160,8 @@
               "PASSHOLDERS_TRANSACTION_HISTORY",
               "PASSHOLDERS_FAMILY_MEMBERS",
               "PERMISSIONS_READ",
-              "PERMISSIONS_WRITE"
+              "PERMISSIONS_WRITE",
+              "CARDS_READ"
             ],
             "x-stoplight": {
               "id": "tm10mhvqf21i7"
@@ -6554,61 +7359,7 @@
           "Models"
         ],
         "description": "Person who holds an UiTPAS, the end-user of an UiTPAS. \n\nA `Passholder` can be identified by its `id`. However, there are cases where the passholder identifies using one of its UiTPAS numbers. That number is CardSystem specific, so it can be found under `cardSystemMemberships`. Every passholder should have at least one cardsystem membership.",
-        "example": {
-          "id": "1be0fb53-0695-405b-ac09-deafead650af",
-          "name": "Peeters",
-          "firstName": "Marc",
-          "inszNumber": "00000009007",
-          "dateOfBirth": "2000-01-01",
-          "postalCode": "9300",
-          "address": {
-            "postalCode": "9300",
-            "city": "Aalst"
-          },
-          "creationDate": "2012-08-24T14:15:22Z",
-          "registrationOrganizer": {
-            "id": "1234",
-            "name": "Example UiTPAS Organizer"
-          },
-          "points": 10,
-          "uitidStatus": "UNREGISTERED",
-          "uitpasNumber": "0930012345615",
-          "cardSystemMemberships": [
-            {
-              "cardSystem": {
-                "id": 1,
-                "name": "UiTPAS Dender",
-                "branding": {
-                  "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
-                  "primaryColor": "rgba(0,0,0,1.0)",
-                  "secondaryColor": "rgba(97,166,14,1.0)"
-                },
-                "links": {
-                  "website": "https://www.uitpas.be"
-                },
-                "cities": [
-                  {
-                    "postalCode": "9300",
-                    "name": "Aalst"
-                  },
-                  {
-                    "postalCode": "9400",
-                    "name": "Ninove"
-                  }
-                ],
-                "permanent": true
-              },
-              "uitpasNumber": "0930012345615",
-              "status": "ACTIVE",
-              "socialTariff": {
-                "status": "ACTIVE",
-                "endDate": "2022-08-24T14:15:22Z",
-                "inGracePeriod": false,
-                "expired": false
-              }
-            }
-          ]
-        },
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "string",
@@ -6690,15 +7441,17 @@
             "properties": {
               "street": {
                 "type": "string",
-                "description": "Street name of the address."
+                "description": "Street name, number and optional box number of the address."
               },
               "number": {
                 "type": "string",
-                "description": "House number."
+                "description": "House number. This field is deprecated and will be empty. The house number is part of the `street` property.",
+                "deprecated": true
               },
               "box": {
                 "type": "string",
-                "description": "Postal box number."
+                "description": "Postal box number. This field is deprecated and will be empty. The box number is part of the `street` property.",
+                "deprecated": true
               },
               "postalCode": {
                 "type": "string",
@@ -6723,8 +7476,8 @@
           "city": {
             "type": "string",
             "deprecated": true,
-            "readOnly": true,
-            "description": "Name of the municipality that the passholder lives in. Deprecated in favor of `address.city`."
+            "description": "Name of the municipality that the passholder lives in. Deprecated in favor of `address.city`.",
+            "readOnly": true
           },
           "phoneNumber": {
             "type": "string",
@@ -6757,10 +7510,10 @@
             },
             "required": [
               "serviceMails",
+              "milestoneMails",
               "infoMails",
               "sms",
-              "post",
-              "milestoneMails"
+              "post"
             ]
           },
           "nationality": {
@@ -6786,6 +7539,180 @@
             "type": "integer",
             "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
+          },
+          "registrationVoucher": {
+            "type": "string",
+            "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "writeOnly": true
+          },
+          "registrationCardType": {
+            "type": "string",
+            "description": "Only used and mandatory in passholder registration.",
+            "enum": [
+              "DIGITAL",
+              "NFC_CARD"
+            ],
+            "writeOnly": true
+          },
+          "registrationUitpasNumber": {
+            "type": "string",
+            "description": "Only used in passholder registration using a physical card.",
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "name",
+          "firstName",
+          "dateOfBirth",
+          "registrationOrganizer",
+          "address"
+        ]
+      },
+      "PassholderRegistration": {
+        "title": "PassholderRegistration",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Registration request of a passholder, mainly used in the online order flow.\n\nA `PassholderRegistration` is not yet `Passholder` but one can be created (e.g. when the order is paid) using the information from the `PassholderRegistration`.",
+        "x-examples": {},
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the PassholderRegistation. **Note:** This is not same as the later `Passholder` id. This field is always available in responses.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Last name of the passholder to register."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the passholder to register."
+          },
+          "inszNumber": {
+            "type": "string",
+            "description": "Unique national (Belgian) INSZ number of an individual passholder."
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email address of the passholder to register"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "This field is always available in responses.",
+            "readOnly": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date that the passholder to register was born."
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE",
+              "X"
+            ],
+            "description": "Gender of the passholder to register."
+          },
+          "registrationOrganizer": {
+            "$ref": "#/components/schemas/Organizer"
+          },
+          "address": {
+            "type": "object",
+            "description": "Address that the passholder to register lives at. Always present in responses. Passholders living outside of Belgium (usually near the border) will only have a `postalCode` and `city` in their address.",
+            "required": [
+              "postalCode",
+              "city"
+            ],
+            "properties": {
+              "street": {
+                "type": "string",
+                "description": "Street name, number and optional box number of the address."
+              },
+              "number": {
+                "type": "string",
+                "description": "House number. This field is deprecated and will be empty. The house number is part of the `street` property.",
+                "deprecated": true
+              },
+              "box": {
+                "type": "string",
+                "description": "Postal box number. This field is deprecated and will be empty. The box number is part of the `street` property.",
+                "deprecated": true
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "Postal code of the municipality."
+              },
+              "city": {
+                "type": "string",
+                "description": "Human-readable name of the municipality."
+              },
+              "country": {
+                "type": "string",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            }
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the passholder to register, for example for SMS alerts."
+          },
+          "optInPreferences": {
+            "type": "object",
+            "description": "Permissions that the passholder has given to be contacted.",
+            "properties": {
+              "serviceMails": {
+                "type": "boolean",
+                "description": "Important information about the functionality of UiTPAS."
+              },
+              "milestoneMails": {
+                "type": "boolean",
+                "description": "Notification when you reach an important UiTPAS milestone, for example a specific amount of points or an exclusive reward becomes available to you."
+              },
+              "infoMails": {
+                "type": "boolean",
+                "description": "Rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "sms": {
+                "type": "boolean",
+                "description": "Free (sporadic) SMS messages with rewards, actions and events selected specifically for the passholder based on their UiTPAS history."
+              },
+              "post": {
+                "type": "boolean",
+                "description": "Sporadic post mail with information about UiTPAS. Will be sent to the passholder's postal address."
+              }
+            },
+            "required": [
+              "serviceMails",
+              "milestoneMails",
+              "infoMails",
+              "sms",
+              "post"
+            ]
+          },
+          "parentalConsent": {
+            "type": "boolean",
+            "description": "Set to true for under-aged passholder that have parental consent."
+          },
+          "legalTermsPaper": {
+            "type": "boolean",
+            "description": "Set to true for passholders that received legal terms on paper."
+          },
+          "legalTermsDigital": {
+            "type": "boolean",
+            "description": "Set to true for passholders that received legal terms digitally."
+          },
+          "registrationCardSystemId": {
+            "type": "integer",
+            "description": "Set to the id of the card system of which the passholder has to become a member."
+          },
+          "registrationVoucher": {
+            "type": "string",
+            "description": "Price reduction voucher."
           }
         },
         "required": [
@@ -7164,7 +8091,21 @@
           },
           "allowsCardlessRegistration": {
             "type": "boolean",
-            "description": "Indicates whether this cardsystem allows online cardless registrations."
+            "description": "Indicates if cardless registration is enabled"
+          },
+          "cardlessRegistrationType": {
+            "type": "string",
+            "description": "Indicates the types of online cardless registrations this cardsystem supports.",
+            "enum": [
+              "ALL",
+              "REGULAR",
+              "SOCIALTARIFF",
+              "NONE"
+            ]
+          },
+          "socialTariffInfo": {
+            "type": "string",
+            "description": "Optional information about social tariff entitlement in this card system."
           }
         },
         "required": [
@@ -7793,6 +8734,207 @@
         "required": [
           "postalCode",
           "name"
+        ]
+      },
+      "Order": {
+        "type": "object",
+        "title": "Order",
+        "description": "Order object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "n9hihx4x3wa17"
+            },
+            "description": "ID of the order. This property is always present in responses.",
+            "readOnly": true
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6t5j0p21gcxwj"
+            },
+            "enum": [
+              "PENDING_PAYMENT",
+              "PENDING_UITID_CONNECT",
+              "COMPLETED",
+              "CANCELLED"
+            ],
+            "description": "Status of the order. This property is always present in responses.",
+            "readOnly": true
+          },
+          "paymentUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "bmo5ep7z3wbn2"
+            },
+            "description": "Payment URL (only when status is `PENDING_PAYMENT`)",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9heoomg0mq75m"
+            },
+            "description": "Email of the orderer. This property is always present in responses.",
+            "readOnly": true
+          },
+          "totalPrice": {
+            "type": "number",
+            "x-stoplight": {
+              "id": "f198xd50mpxmg"
+            },
+            "description": "Total price of the order. This property is always present in responses.",
+            "readOnly": true
+          },
+          "registrationToken": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "q1oexa53dyky7"
+            },
+            "description": "Optional registration token. If this order is `PENDING_UITID_CONNECT` this field is present to allow for easy UiTiD account linking.",
+            "readOnly": true
+          },
+          "customToken": {
+            "type": "string",
+            "description": "Custom token that can be used for a limited number of time to request this order using `GET /orders/id` without any further authentication.",
+            "readOnly": true
+          },
+          "mainPassholderRegistration": {
+            "$ref": "#/components/schemas/PassholderRegistration"
+          },
+          "extraPassholderRegistrations": {
+            "type": "array",
+            "description": "Optional list of extra passholders in the order",
+            "items": {
+              "$ref": "#/components/schemas/PassholderRegistration"
+            }
+          },
+          "redirectUrlAfterPayment": {
+            "type": "string",
+            "description": "Where to redirect after payment. Extra query params `orderId` and `customToken` are added to this URL when used to redirect the user, so the receiving client can `GET` the latest status of the order.",
+            "writeOnly": true
+          },
+          "redirectUrlAfterCancelPayment": {
+            "type": "string",
+            "description": "Where to redirect after payment is cancelled. Extra query params `orderId` and `customToken` are added to this URL when used to redirect the user, so the receiving client can `GET` the latest status of the order.",
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "mainPassholderRegistration"
+        ]
+      },
+      "Card": {
+        "title": "Card",
+        "x-stoplight": {
+          "id": "zqvfbrdvemv9g"
+        },
+        "type": "object",
+        "description": "Representation of an UiTPAS card.",
+        "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wt5795os9zlly"
+            },
+            "description": "UiTPAS number of this card."
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
+          },
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0wg00e7ok83tp"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of this card."
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ic0htdaaq5wmr"
+            },
+            "description": "Status of this card.",
+            "enum": [
+              "PROVISIONED",
+              "LOCAL_STOCK",
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          },
+          "socialTariff": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "k6sdxxpe9zvpe"
+            },
+            "description": "Indicated the social tariff status of this card."
+          }
+        },
+        "required": [
+          "uitpasNumber",
+          "cardSystem",
+          "status",
+          "socialTariff"
+        ]
+      },
+      "CheckinStatus": {
+        "title": "CheckinStatus",
+        "type": "object",
+        "properties": {
+          "allowed": {
+            "type": "boolean",
+            "description": "Indicates whether a checkin is currently possible."
+          },
+          "endUserMessage": {
+            "type": "object",
+            "description": "Optional property that, if provided, contains information for the end-user about why the checkin is currently not allowed.",
+            "properties": {
+              "nl": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+              },
+              "fr": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+              },
+              "de": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+              },
+              "en": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+              }
+            },
+            "required": [
+              "nl"
+            ]
+          }
+        }
+      },
+      "PassholderPicture": {
+        "title": "PassholderPicture",
+        "x-stoplight": {
+          "id": "3ipzpxwesu2dv"
+        },
+        "type": "object",
+        "properties": {
+          "pictureUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "je23zfyodev7c"
+            },
+            "description": "URL of the picture of the passholder."
+          }
+        },
+        "required": [
+          "pictureUrl"
         ]
       }
     },
