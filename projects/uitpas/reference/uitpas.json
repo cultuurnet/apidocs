@@ -25,6 +25,9 @@
       "name": "Card Systems"
     },
     {
+      "name": "Cards"
+    },
+    {
       "name": "Checkins"
     },
     {
@@ -960,6 +963,88 @@
         ]
       }
     },
+    "/checkin-status": {
+      "parameters": [],
+      "get": {
+        "summary": "Get checkin status",
+        "operationId": "get-checkin-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckinStatus"
+                },
+                "examples": {
+                  "Example allowed": {
+                    "value": {
+                      "allowed": true
+                    }
+                  },
+                  "Example not allowed": {
+                    "value": {
+                      "allowed": false,
+                      "endUserMessage": {
+                        "nl": "Deze activiteit is afgelopen, je kan op deze activiteit geen punt meer sparen."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the current checkin status for a passholder and a given event.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "required": true,
+            "description": "UiTPAS number of the passholder who wants to checkin"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventId",
+            "required": true,
+            "description": "Id of the event where the passholder wants to checkin"
+          }
+        ],
+        "tags": [
+          "Checkins"
+        ]
+      }
+    },
     "/ticket-sales/{ticketSaleId}": {
       "parameters": [
         {
@@ -1866,7 +1951,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1892,7 +1977,7 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
+        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -1936,7 +2021,8 @@
                     "legalTermsPaper": false,
                     "legalTermsDigital": true,
                     "parentalConsent": false,
-                    "registrationCardSystemId": 1
+                    "registrationCardSystemId": 1,
+                    "registrationCardType": "DIGITAL"
                   }
                 }
               }
@@ -1989,6 +2075,70 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/picture": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get picture of passholder",
+        "operationId": "get-passholders-passholderId-picture",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassholderPicture"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "pictureUrl": "https://api-test.uitpas.be/passholders/481f8595-97cb-45c5-8a04-7fe3df860e0b/picture.png?token=b0f08488-f1f2-4709-8748-c529de66fdc5"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve picture of the given passholder.\n\nThis endpoint allows you to obtain a short-lived link to the picture of the passholder. After generation, this link remains active for a limited time, enabling you to include it in HTML pages displayed to your users.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_READ` permission for the given passholder.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
         ]
       }
     },
@@ -6561,6 +6711,145 @@
           "Passholders"
         ]
       }
+    },
+    "/cards": {
+      "get": {
+        "summary": "Retrieve card status",
+        "tags": [
+          "Cards"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                },
+                "examples": {
+                  "Active card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "chipNumber": "042F51B2712380",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "ACTIVE",
+                      "socialTariff": false
+                    }
+                  },
+                  "Provisioned card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "PROVISIONED",
+                      "socialTariff": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/invalid-uitpas-number",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cards",
+        "description": "Retrieve card status for a given `uitpasNumber` or `chipNumber`.\n\nThe caller of this request must have `CARDS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "description": "The UiTPAS number of the card to search"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chipNumber",
+            "description": "The chip number of the card to search"
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -6803,6 +7092,7 @@
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
+          "PASSHOLDERS_PICTURE_READ",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -6826,7 +7116,8 @@
           "ORDERS_READ",
           "ORDERS_CREATE",
           "PERMISSIONS_READ",
-          "PERMISSIONS_WRITE"
+          "PERMISSIONS_WRITE",
+          "CARDS_READ"
         ]
       },
       "PermissionDetail": {
@@ -6848,6 +7139,7 @@
               "CHECKINS_WRITE",
               "ORGANIZERS_SEARCH",
               "ORGANIZERS_REPORTS",
+              "PASSHOLDERS_PICTURE_READ",
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
               "PASSHOLDERS_SEARCH_BY_ID",
@@ -6869,7 +7161,8 @@
               "PASSHOLDERS_TRANSACTION_HISTORY",
               "PASSHOLDERS_FAMILY_MEMBERS",
               "PERMISSIONS_READ",
-              "PERMISSIONS_WRITE"
+              "PERMISSIONS_WRITE",
+              "CARDS_READ"
             ],
             "x-stoplight": {
               "id": "tm10mhvqf21i7"
@@ -7251,6 +7544,20 @@
           "registrationVoucher": {
             "type": "string",
             "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "writeOnly": true
+          },
+          "registrationCardType": {
+            "type": "string",
+            "description": "Only used and mandatory in passholder registration.",
+            "enum": [
+              "DIGITAL",
+              "NFC_CARD"
+            ],
+            "writeOnly": true
+          },
+          "registrationUitpasNumber": {
+            "type": "string",
+            "description": "Only used in passholder registration using a physical card.",
             "writeOnly": true
           }
         },
@@ -8517,6 +8824,118 @@
         },
         "required": [
           "mainPassholderRegistration"
+        ]
+      },
+      "Card": {
+        "title": "Card",
+        "x-stoplight": {
+          "id": "zqvfbrdvemv9g"
+        },
+        "type": "object",
+        "description": "Representation of an UiTPAS card.",
+        "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wt5795os9zlly"
+            },
+            "description": "UiTPAS number of this card."
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
+          },
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0wg00e7ok83tp"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of this card."
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ic0htdaaq5wmr"
+            },
+            "description": "Status of this card.",
+            "enum": [
+              "PROVISIONED",
+              "LOCAL_STOCK",
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          },
+          "socialTariff": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "k6sdxxpe9zvpe"
+            },
+            "description": "Indicated the social tariff status of this card."
+          }
+        },
+        "required": [
+          "uitpasNumber",
+          "cardSystem",
+          "status",
+          "socialTariff"
+        ]
+      },
+      "CheckinStatus": {
+        "title": "CheckinStatus",
+        "type": "object",
+        "properties": {
+          "allowed": {
+            "type": "boolean",
+            "description": "Indicates whether a checkin is currently possible."
+          },
+          "endUserMessage": {
+            "type": "object",
+            "description": "Optional property that, if provided, contains information for the end-user about why the checkin is currently not allowed.",
+            "properties": {
+              "nl": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+              },
+              "fr": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+              },
+              "de": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+              },
+              "en": {
+                "type": "string",
+                "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+              }
+            },
+            "required": [
+              "nl"
+            ]
+          }
+        }
+      },
+      "PassholderPicture": {
+        "title": "PassholderPicture",
+        "x-stoplight": {
+          "id": "3ipzpxwesu2dv"
+        },
+        "type": "object",
+        "properties": {
+          "pictureUrl": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "je23zfyodev7c"
+            },
+            "description": "URL of the picture of the passholder."
+          }
+        },
+        "required": [
+          "pictureUrl"
         ]
       }
     },
