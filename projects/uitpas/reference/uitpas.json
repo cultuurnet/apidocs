@@ -1951,7 +1951,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1977,7 +1977,7 @@
             }
           }
         },
-        "description": "<!-- theme: warning -->\n\n> WARNING\n>\n> Experimental API. Breaking changes might be introduced in future updates.\n\nRegister a passholder\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
+        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -2021,7 +2021,8 @@
                     "legalTermsPaper": false,
                     "legalTermsDigital": true,
                     "parentalConsent": false,
-                    "registrationCardSystemId": 1
+                    "registrationCardSystemId": 1,
+                    "registrationCardType": "DIGITAL"
                   }
                 }
               }
@@ -7539,6 +7540,20 @@
           "registrationVoucher": {
             "type": "string",
             "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "writeOnly": true
+          },
+          "registrationCardType": {
+            "type": "string",
+            "description": "Only used and mandatory in passholder registration.",
+            "enum": [
+              "DIGITAL",
+              "NFC_CARD"
+            ],
+            "writeOnly": true
+          },
+          "registrationUitpasNumber": {
+            "type": "string",
+            "description": "Only used in passholder registration using a physical card.",
             "writeOnly": true
           }
         },
