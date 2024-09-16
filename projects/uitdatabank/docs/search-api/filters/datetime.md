@@ -2,7 +2,7 @@
 
 The Search API allows you to filter results using calendar information or metadata, such as creation and modification timestamps. This guide provides a comprehensive overview of the available filtering options.
 
-## Filtering on availabilty date
+## Filtering on availability date
 
 You can filter results from Search API based on the date(range) that the items are available, using the following parameters:
 
@@ -77,7 +77,7 @@ UiTdatabank keeps track of the creation dates of each document. This metadata fo
 * `createdTo`: returns only results that created up until the given date-time. 
 
 **Advanced query fields**
-* `created`: returns results that are created in a gived date range.
+* `created`: returns results that are created in a given date range.
 
 **Applicable on endpoints**
 
@@ -108,11 +108,11 @@ GET /places/?createdTo=2024-01-01T00\:00\:00%2B01\:00
 You can filter on the date that an event is happening or place is open for visits.
 
 **URL-parameters**
-* `dateFrom`: returns only results that are happening / openafter the given date-time. 
+* `dateFrom`: returns only results that are happening / open after the given date-time. 
 * `dateTo`: returns only results that are happening / open up until the given date-time. 
 
 **Advanced query fields**
-* `dateRange`: returns results that are happening / open in a gived date range.
+* `dateRange`: returns results that are happening / open in a given date range.
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for availability. You can reset this default as described in the [default filters guide](https://docs.publiq.be/docs/uitdatabank/search-api/filters/default-filters).
 
@@ -140,7 +140,7 @@ Retrieve all events that take place in the summer of 2025:
 GET /events/?dateFrom=2025-07-01T00:00:00+02:00&dateTo=2025-08-31T23:59:59+02:00&availableTo=*&availableFrom=*
 ```
 
-Since any overlap is a match with range queries, you can explicitely exclude anything that falls outside of your range using advanced queries. The query below will look for events that take place in the summer of 2025 but don't start before or finish after the summer months (July, August):
+Since any overlap is a match with range queries, you can explicitly exclude anything that falls outside of your range using advanced queries. The query below will look for events that take place in the summer of 2025 but don't start before or finish after the summer months (July, August):
 
 ```
 GET /events/?q=dateRange:[2025-07-01T00\:00\:00%2B02\:00 TO 2025-08-31T23\:59\:59%2B02\:00] NOT dateRange:[* TO 2025-06-30T23\:59\:59%2B02\:00] NOT dateRange:[2025-09-01T00\:00\:00%2B02\:0 TO *]&availableTo=*&availableFrom=*
@@ -156,7 +156,7 @@ UiTdatabank keeps track of the modified dates of each document. This metadata ca
 * `modifiedTo`: returns only results that created up until the given date-time. 
 
 **Advanced query fields**
-* `modified`: returns results that are created in a gived date range.
+* `modified`: returns results that are created in a given date range.
 
 **Applicable on endpoints**
 
@@ -199,7 +199,7 @@ However, these parts of the day are not pre-defined. Using an integer between 0 
 * `localTimeTo`: returns only results that created up until the given date-time. 
 
 **Advanced query fields**
-* `localTimeRange`: returns results that are created in a gived date range.
+* `localTimeRange`: returns results that are created in a given date range.
 
 **Applicable on endpoints**
 
@@ -240,7 +240,7 @@ Get all events happening after 18:00
 GET /events/localTimeFrom=1800
 ```
 
-Since any overlap is a match with range queries, you can explicitely exclude anything that falls outside of your range using advanced queries. The query below will search for events happening in the morning, but that won't start earlier:
+Since any overlap is a match with range queries, you can explicitly exclude anything that falls outside of your range using advanced queries. The query below will search for events happening in the morning, but that won't start earlier:
 
 ```
 GET /events/?q=localTimeRange:[0600 TO 1159] NOT localTimeRange:[0000 TO 0559]
