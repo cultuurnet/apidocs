@@ -114,7 +114,7 @@ You can filter on the date that an event is happening or place is open for visit
 **Advanced query fields**
 * `dateRange`: returns results that are happening / open in a gived date range.
 
->  By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for availability. You can reset this default as described in the [default filters guide](https://docs.publiq.be/docs/uitdatabank/search-api/filters/default-filters).
+> By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for availability. You can reset this default as described in the [default filters guide](https://docs.publiq.be/docs/uitdatabank/search-api/filters/default-filters).
 
 **Applicable on endpoints**
 
