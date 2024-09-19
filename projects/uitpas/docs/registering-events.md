@@ -55,7 +55,7 @@ Click on the `Prijzen` tab in step 6, and provide a *Basistarief* that is not 0 
 
 ### 3. Linking an UiTPAS organizer
 
-Click the `Organisatie toevoegen` tab. You can now either
+Click the `Organisatie toevoegen` tab. You can now either:
 
 * select an organizer you have used in the past for creating events
 * select a new organizer

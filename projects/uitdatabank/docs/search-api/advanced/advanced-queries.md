@@ -24,13 +24,13 @@ The value for this field must always be an [ISO 3166-1 alpha-2](https://en.wikip
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below. The query above will look for specific matches in the `nl` address:
+Because a document can have address translations, you can search by a specific language, as in the example below.
 
 ```
 GET /places/?q=address.nl.addressCountry:BE 
 ```
 
-The following example looks for matches in any language:
+Use a wildcard instead of specifying a language:
 
 ```
 GET /places/?q=address.\*.addressCountry:BE
@@ -54,13 +54,13 @@ The value for `addressLocality` can be any municipality in a supported language.
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below. The query above will look for specific matches in the `fr` address:
+Because a document can have address translations, you can search by a specific language. The query below will look for specific matches in the `fr` address:
 
 ```
 GET /places/?q=address.fr.addressLocality:Bruxelles
 ```
 
-The following example looks for matches in any language:
+Use a wildcard instead of specifying a language:
 
 ```
 GET /places/?q=address.\*.addressLocality:Bruxelles
@@ -846,7 +846,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see [our guide](../filters/location.md).
+Any valid region. For an overview of all shapes, see [this list](https://search.uitdatabank.be/autocomplete.json).
 
 **Example**
 
