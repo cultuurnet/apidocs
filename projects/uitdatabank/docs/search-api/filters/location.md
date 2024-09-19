@@ -187,7 +187,7 @@ You can achieve the same result with the URL parameter:
 GET /events/?locationId=787d7420-c06f-4935-b3c5-5cd5a1276796
 ```
 
-Retrieve all events happening in an an online / virtual location:
+Retrieve all events happening in an online / virtual location:
 
 ```
 GET /events/?locationId=00000000-0000-0000-0000-000000000000
