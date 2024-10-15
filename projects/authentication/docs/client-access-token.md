@@ -104,21 +104,13 @@ See [authorization server URLs](./environments.md).
 
 ## Try it out!
 
-You can use the request form below to request a client access token using your client id and secret for the **test environment**. You can then use the `access_token` from the response body to authorize other example requests to the test environment in the documentation.
+You can use the curl request below to request a client access token using your client id and secret for the **test environment**. You can then use the `access_token` from the response body to authorize other example requests to the test environment in the documentation.
 
 Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own **client id** and **secret**!
 
-```json http
-{
-  url: 'https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token',
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: "grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
-}
-```
-
-<!-- theme: warning -->
-
-> If you get a "network error" using the form above, most likely your client id is not correct. Please double check that you are using your client id for the test environment. Alternatively copy the request sample as a curl request from the form above and check the response from the authorization server by sending the request from a command-line interface or another tool.
+```shell
+curl --request POST \
+  --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
+  --header 'Content-Type: application/json' \
+  --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
+  ```
