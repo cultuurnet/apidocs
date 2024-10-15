@@ -110,9 +110,9 @@ Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own
 
 ```json http
 {
-  url: 'https://account-test.uitid.be/oauth/token',
+  url: 'https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token',
   method: "POST",
-  "headers": {
+  headers: {
     "Content-Type": "application/x-www-form-urlencoded"
   },
   body: "grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
