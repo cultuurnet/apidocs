@@ -24,7 +24,7 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
 sequenceDiagram
     autonumber
-    Client->>Auth server: POST /oauth/token with client id and secret
+    Client->>Auth server: POST /token with client id and secret
     Auth server-->>Client: 200 OK with access token
     Client->>Client: Cache token internally
     loop
@@ -40,23 +40,23 @@ sequenceDiagram
 4. Your application uses the access token to make authenticated requests to the API.
 5. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
 
-To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
+To obtain a client access token, send a `POST` request to the `/realms/uitid/protocol/openid-connect/token` endpoint of the authentication server with a form-urlencoded body like this:
 
 ```http
-POST /oauth/token HTTP/1.1
+POST /realms/uitid/protocol/openid-connect/token HTTP/1.1
 Host: https://account-test.uitid.be
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
+grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
+
+client{
   "client_id": "YOUR_CLIENT_ID",
   "client_secret": "YOUR_CLIENT_SECRET",
-  "audience": "https://api.publiq.be",
   "grant_type": "client_credentials"
 }
 ```
 
 * The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
-* The `audience` property **must** always be set to `https://api.publiq.be`.
 * The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
 
 After sending your request you will get a response with a JSON body like this:
@@ -81,7 +81,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 #### More info
 
-publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client\_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
+publiq currently uses [Keycloak](https://www.keycloak.org/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [OAuth 2.0 specification for the client\_credentials flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
 
 ## Decoding tokens
 
@@ -112,12 +112,10 @@ Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own
 {
   url: 'https://account-test.uitid.be/oauth/token',
   method: "POST",
-  body: {
-    "client_id": "YOUR_CLIENT_ID",
-    "client_secret": "YOUR_CLIENT_SECRET",
-    "audience": "https://api.publiq.be",
-    "grant_type":"client_credentials"    
-  }
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: "grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
 }
 ```
 
