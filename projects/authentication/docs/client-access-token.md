@@ -10,6 +10,14 @@ If your browser or native application cannot work with user logins via publiq's 
 
 > Not sure if client access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
+## Backward compatibility with Auth0
+
+In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+
+However, the token path has changed in the new implementation and this page documents the _new_ behavior. The old path forwards requests to the new path:
+
+- `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
+
 ## Requirements
 
 * A client id
@@ -48,12 +56,6 @@ Host: https://account-test.uitid.be
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
-
-client{
-  "client_id": "YOUR_CLIENT_ID",
-  "client_secret": "YOUR_CLIENT_SECRET",
-  "grant_type": "client_credentials"
-}
 ```
 
 * The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
