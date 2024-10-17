@@ -2,7 +2,7 @@
 
 This page contains an overview of all possible error types related to authentication and authorization that can be returned by publiq's APIs.
 
-This does not include errors that may occur on the authorization server when letting a user login and/or when requesting tokens (which are both handled by Auth0).
+This does not include errors that may occur on the authorization server when letting a user login and/or when requesting tokens.
 
 > For more info about error handling on our APIs in general, see the dedicated [Errors](https://publiq.stoplight.io/docs/errors/d6a8ba3f3c186-introduction) space.
 
