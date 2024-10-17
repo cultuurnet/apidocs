@@ -2,7 +2,7 @@
   "title": "uri",
   "type": "string",
   "format": "uri",
-  "pattern": "^http(s?):([/|.|\\w|\\s|-])*\\.(?:jpeg|jpeg|gif|png)$",
+  "pattern": "^http(s?):([/|.|\\w|\\s|-])*\\.(?:jpeg|jpg|gif|png)$",
   "examples": [
     "https://www.example.com/sample.jpeg"
   ],
