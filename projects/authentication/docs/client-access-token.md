@@ -14,9 +14,9 @@ If your browser or native application cannot work with user logins via publiq's 
 
 In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
 
-However, the token path has changed in the new implementation and this page documents the _new_ behavior. The old path forwards requests to the new path:
+However, the token path has changed in the new implementation and this page documents the *new* behavior. The old path forwards requests to the new path:
 
-- `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
+* `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
 
 ## Requirements
 

@@ -11,13 +11,13 @@ Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely th
 
 In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
 
-However, some paths have changed in the new implementation and this page documents the _new_ behavior. All of the old paths forward or redirect the client to the _new_ path:
+However, some paths have changed in the new implementation and this page documents the *new* behavior. All of the old paths forward or redirect the client to the *new* path:
 
-- `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
-- `/authorize` to `/realms/uitid/protocol/openid-connect/auth`
-- `/userinfo` to `/realms/uitid/protocol/openid-connect/userinfo`
+* `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
+* `/authorize` to `/realms/uitid/protocol/openid-connect/auth`
+* `/userinfo` to `/realms/uitid/protocol/openid-connect/userinfo`
 
-When making changes to your client, it is recommended to start making use of the new paths in this document. A full list of the _new_ configuration can be retrieved from `https://account-test.uitid.be/.well-known/openid-configuration`.
+When making changes to your client, it is recommended to start making use of the new paths in this document. A full list of the *new* configuration can be retrieved from `https://account-test.uitid.be/.well-known/openid-configuration`.
 
 ## Requirements
 
