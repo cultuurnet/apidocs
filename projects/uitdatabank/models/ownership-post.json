@@ -25,18 +25,29 @@
       "minLength": 1,
       "pattern": "\\S",
       "readOnly": true
+    },
+    "ownerEmail": {
+      "type": "string",
+      "description": "The email of the owner",
+      "format": "email",
+      "example": "info@example.com",
+      "readOnly": true
     }
   },
   "required": [
     "itemId",
-    "itemType",
-    "ownerId"
+    "itemType"
   ],
   "examples": [
     {
       "itemId": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
       "itemType": "organizer",
       "ownerId": "7a583ed3-cbc1-481d-93b1-d80fff0174dd"
+    },
+    {
+      "itemId": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
+      "itemType": "organizer",
+      "ownerEmail": "foo@bar.com"
     }
   ]
 }
