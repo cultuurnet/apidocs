@@ -34,9 +34,21 @@
       "readOnly": true
     }
   },
-  "required": [
-    "itemId",
-    "itemType"
+  "oneOf": [
+    {
+      "required": [
+        "itemId",
+        "itemType",
+        "ownerId"
+      ]
+    },
+    {
+      "required": [
+        "itemId",
+        "itemType",
+        "ownerEmail"
+      ]
+    }
   ],
   "examples": [
     {
