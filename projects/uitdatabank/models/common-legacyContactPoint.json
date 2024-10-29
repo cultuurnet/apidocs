@@ -30,10 +30,8 @@
       "description": "List of email addresses for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "type": "string",
-        "description": "Email address for contact purposes.",
-        "format": "email",
-        "example": "info@example.com"
+        "$ref": "./common-string-email-legacy.json",
+        "description": "Email address for contact purposes."
       }
     },
     "url": {
