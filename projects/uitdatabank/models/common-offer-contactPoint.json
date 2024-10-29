@@ -30,8 +30,9 @@
       "description": "List of email addresses for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "$ref": "./common-string-offer-email.json",
-        "description": "Email address for contact purposes."
+        "description": "Email address for contact purposes.",
+        "type": "string",
+        "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,})$"
       }
     },
     "url": {
@@ -39,8 +40,9 @@
       "description": "List of URLs for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "$ref": "./common-string-offer-uri.json",
-        "description": "URL to a website for contact purposes."
+        "description": "URL to a website for contact purposes.",
+        "type": "string",
+        "pattern": "^http[s]?:\\\\/\\\\/\\\\w|^$"
       }
     }
   },
