@@ -1,8 +1,5 @@
 {
   "title": "contactPoint",
-  "x-stoplight": {
-    "id": "1f397ebdb62c3"
-  },
   "type": "object",
   "description": "Contact info containing one or more phone numbers, email addresses and/or website URLs.",
   "examples": [
@@ -23,45 +20,27 @@
       "type": "array",
       "description": "List of phone numbers for contact purposes (can be empty)",
       "minItems": 0,
-      "x-stoplight": {
-        "id": "07gkx8y0rkvwj"
-      },
       "items": {
         "type": "string",
-        "description": "Phone number for contact purposes.",
-        "x-stoplight": {
-          "id": "w8pezpqql1l53"
-        }
+        "description": "Phone number for contact purposes."
       }
     },
     "email": {
       "type": "array",
       "description": "List of email addresses for contact purposes (can be empty)",
       "minItems": 0,
-      "x-stoplight": {
-        "id": "b22melmqokkui"
-      },
       "items": {
         "$ref": "./common-string-offer-email.json",
-        "description": "Email address for contact purposes.",
-        "x-stoplight": {
-          "id": "bwpej4r5kolq1"
-        }
+        "description": "Email address for contact purposes."
       }
     },
     "url": {
       "type": "array",
       "description": "List of URLs for contact purposes (can be empty)",
       "minItems": 0,
-      "x-stoplight": {
-        "id": "pf73yu5u00uxr"
-      },
       "items": {
         "$ref": "./common-string-offer-uri.json",
-        "description": "URL to a website for contact purposes.",
-        "x-stoplight": {
-          "id": "4zzc1efbsuoep"
-        }
+        "description": "URL to a website for contact purposes."
       }
     }
   },

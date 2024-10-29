@@ -1,8 +1,5 @@
 {
   "title": "e-mail",
-  "x-stoplight": {
-    "id": "mcoyygoas1u7k"
-  },
   "description": "An email format",
   "type": "string",
   "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$",
