@@ -32,7 +32,7 @@
       "items": {
         "description": "Email address for contact purposes. Can be an empty string, if no e-mails are avaialble",
         "type": "string",
-        "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,})$"
+        "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$"
       }
     },
     "url": {
@@ -42,7 +42,7 @@
       "items": {
         "description": "URL to a website for contact purposes. Can be an empty string, if no urls are avaialble",
         "type": "string",
-        "pattern": "^http[s]?:\\\\/\\\\/\\\\w|^$"
+        "pattern": "^http[s]?:\\/\\/\\w|^$"
       }
     }
   },
