@@ -47,5 +47,10 @@
         "description": "URL to a website for contact purposes."
       }
     }
-  }
+  },
+  "required": [
+    "phone",
+    "email",
+    "url"
+  ]
 }
