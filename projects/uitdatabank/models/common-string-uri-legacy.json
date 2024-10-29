@@ -6,7 +6,7 @@
   "description": "A URI with the HTTP or HTTPS protocol.",
   "type": "string",
   "format": "uri",
-  "pattern": "(^http[s]?:\\/\\/\\w|^$)",
+  "pattern": "^http[s]?:\\/\\/\\w|^$",
   "examples": [
     "https://www.example.com"
   ]
