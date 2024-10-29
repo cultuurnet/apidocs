@@ -22,9 +22,7 @@
       "minItems": 0,
       "items": {
         "type": "string",
-        "description": "Phone number for contact purposes.",
-        "pattern": "\\S",
-        "minLength": 0
+        "description": "Phone number for contact purposes."
       }
     },
     "email": {
