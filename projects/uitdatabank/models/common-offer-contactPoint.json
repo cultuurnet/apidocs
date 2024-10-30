@@ -22,7 +22,7 @@
       "minItems": 0,
       "items": {
         "type": "string",
-        "description": "Phone number for contact purposes. Can be an empty string, if no phone numbers are avaialble"
+        "description": "Phone number for contact purposes. This can be an empty string if you wish to clear the list of phone numbers."
       }
     },
     "email": {
@@ -30,7 +30,7 @@
       "description": "List of email addresses for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "description": "Email address for contact purposes. Can be an empty string, if no e-mails are avaialble",
+        "description": "Email address for contact purposes. This can be an empty string if you wish to clear the list of email addresses.",
         "type": "string",
         "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$"
       }
@@ -40,7 +40,7 @@
       "description": "List of URLs for contact purposes (can be empty)",
       "minItems": 0,
       "items": {
-        "description": "URL to a website for contact purposes. Can be an empty string, if no urls are avaialble",
+        "description": "URL to a website for contact purposes. This can be an empty string if you wish to clear the list of urls.",
         "type": "string",
         "pattern": "^http[s]?:\\/\\/\\w|^$"
       }
