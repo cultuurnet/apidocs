@@ -1,0 +1,54 @@
+{
+  "title": "contactPoint",
+  "type": "object",
+  "description": "Contact info containing one or more phone numbers, email addresses and/or website URLs.",
+  "examples": [
+    {
+      "phone": [
+        "+32/1234567890"
+      ],
+      "email": [
+        "info@example.com"
+      ],
+      "url": [
+        "https://www.example.com"
+      ]
+    }
+  ],
+  "properties": {
+    "phone": {
+      "type": "array",
+      "description": "List of phone numbers for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "description": "Phone number for contact purposes. This can be an empty string if you wish to clear the list of phone numbers."
+      }
+    },
+    "email": {
+      "type": "array",
+      "description": "List of email addresses for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "description": "Email address for contact purposes. This can be an empty string if you wish to clear the list of email addresses.",
+        "type": "string",
+        "pattern": "^(|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$"
+      }
+    },
+    "url": {
+      "type": "array",
+      "description": "List of URLs for contact purposes (can be empty)",
+      "minItems": 0,
+      "items": {
+        "description": "URL to a website for contact purposes. This can be an empty string if you wish to clear the list of urls.",
+        "type": "string",
+        "pattern": "^http[s]?:\\/\\/\\w|^$"
+      }
+    }
+  },
+  "required": [
+    "phone",
+    "email",
+    "url"
+  ]
+}
