@@ -30,7 +30,7 @@ Additionally, we will need to configure the following settings for your client o
 
 * **Login URL**: In some cases the authorization server will need to redirect the user back to a login URL on your application. This URL should point to a route in your application that ends up redirecting to the `/realms/uitid/protocol/openid-connect/auth` endpoint on publiq's authorization server, e.g. `https://example.com/login`. Note that it requires `https` and it cannot point to `localhost`. It can include query parameters and a URI fragment.
 * **Callback URL(s)**: The absolute URL(s) of the page(s) where your users can be redirected back to after they log in. You can specify any callback URL whenever you redirect a user to the authorization server to log in, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com/authorize` for your production application, and/or `https://localhost:8080/authorize` for local development.
-* **Logout URL(s)**: The absolute URL(s) of the page(s) where you users can be redirected back to after they log out. You can specify any logout URL whenever you redirect a user to the authorization server to log out, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com` if you want to redirect the user back to the homepage of your application after logging out, or `https://example.com/logged-out` if you want to redirect them to a page with a confirmation message like "You're logged out!" after logging out. Like callback URL(s), logout URL(s) may use `https://localhost` for local development.
+* **Logout URL(s)**: The absolute URL(s) of the page(s) where you users can be redirected back to after they log out. You can specify any logout URL whenever you redirect a user to the authorization server to log out, but it needs to be registered on our end first to prevent phishing attacks. For example `https://example.com` if you want to redirect the user back to the homepage of your application after logging out, or `https://example.com/logged-out` if you want to redirect them to a page with a confirmation message like "You're logged out!" after logging out. Like callback URL(s), logout URL(s) may use `https://localhost` for local development. Please note these URLs are very stricly interpreted, so `https://example.com` is not the same as `https://example.com/`
 
 <!-- theme: warning -->
 
@@ -419,7 +419,13 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 
 When the user of your application wants to log out, clear any session data in your application including the user's access token and refresh token. If you have cached the [user's info](#user-info), make sure to also clear that.
 
-Afterward, you should **redirect** the user to the `/realms/uitid/protocol/openid-connect/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on a `?post_logout_redirect_uris=...` URL parameter that you can specify. Note that you can only use an allowed "logout URL" as value for the `post_logout_redirect_uris` URL parameter. (See [Requirements](#requirements))
+Afterward, you should **redirect** the user to the `/realms/uitid/protocol/openid-connect/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on the `?post_logout_redirect_uri=...` URL parameter that you can specify. 
+
+* Ideally you provide the ID token of the user in the `id_token_hint` parameter. This ensures the best logout experience.
+* If providing the ID token is impossible, you should provide the `client_id` parameter. 
+* If you don't specify `client_id` or `id_token_hint` the user cannot be redirected to your `post_logout_redirect_uri` and will be shown a logout confirmation page instead.
+* If you don't specify `post_logout_redirect_uri` the user will not be redirected, but will also be shown a logout confirmation page.
+* Note that you can only use an allowed "logout URL" as value for the `post_logout_redirect_uri` URL parameter. (See [Requirements](#requirements))
 
 You can find more documentation about the `/realms/uitid/protocol/openid-connect/logout` endpoint in [OpenID Connect RP-Initiated Logout](https://openid.net/specs/openid-connect-rpinitiated-1_0.html#RPLogout).
 
