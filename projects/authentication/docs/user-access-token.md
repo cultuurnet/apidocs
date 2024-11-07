@@ -6,7 +6,6 @@ Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely th
 
 > Not sure if user access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
-
 ## Backward compatibility with Auth0
 
 In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
@@ -38,7 +37,6 @@ Additionally, we will need to configure the following settings for your client o
 >
 > Without these URLs configured for your application **on our authorization server**, the login flow will not work for your client due to security reasons!
 
-
 ## How it works
 
 ### Regular web applications
@@ -55,7 +53,7 @@ sequenceDiagram
     Auth server-->>User: Show login page
     User-->>Auth server: Login and give consent
     Auth server-->>Client: Redirect back to callback URL with authorization code
-    Client->>Auth server: POST /token with authorization code<br /> and client credentials
+    Client->>Auth server: POST /realms/uitid/protocol/openid-connect/token with authorization code<br /> and client credentials
     Auth server-->>Client: 200 OK with access token<br /> and optionally refresh token
     loop
         User-->>Client: Performs an action
@@ -70,7 +68,7 @@ sequenceDiagram
 3. The authorization server shows the login form.
 4. The user logs in, and if it is the first time that they log in on your application give consent to share their user info with you.
 5. The authorization server redirects the user back to the callback URL (see [requirements](#requirements)) on your application and includes an authorization code, valid for one use, in the callback URL.
-6. Your application makes a request to `POST /token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret.
+6. Your application makes a request to `POST /realms/uitid/protocol/openid-connect/token` on the authorization server to exchange the authorization code for an access token, together with your client id and client secret.
 7. The authorization server responds with an access token, and optionally a refresh token if the `offline_access` scope was requested in step #2 (see [example](#example) below).
 8. The user performs an action in your application which requires an API call.
 9. Your application uses the access token to make one or more authenticated requests to the API.
@@ -166,7 +164,7 @@ sequenceDiagram
     Auth server-->>User: Show login page
     User-->>Auth server: Login and give consent
     Auth server-->>Client: Redirect back to callback URL with authorization code
-    Client->>Auth server: POST /token with authorization code,<br /> client id and code_verifier
+    Client->>Auth server: POST /realms/uitid/protocol/openid-connect/token with authorization code,<br /> client id and code_verifier
     Auth server-->>Client: 200 OK with access token<br /> and optionally refresh token
     loop
         User-->>Client: Performs an action
@@ -283,7 +281,6 @@ publiq uses [Keycloak](https://www.keycloak.org/) as its authentication and auth
 >
 > It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `https://account-test.uitid.be/.well-known/openid-configuration`.
 
-
 ## Login parameters
 
 When you redirect your user to the `GET /realms/uitid/protocol/openid-connect/auth` endpoint on the authorization server to login, you must provide some required URL parameters and may also use some optional ones for customization.
@@ -301,7 +298,7 @@ The following table gives an overview of all the required/optional parameters:
 | `prompt`                | `login` or omitted (default)                                                                                                                                                                         | Optional                                                              | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server.                                                                                                                                 |
 | `referrer`              | `museumpas`, `udb` (for UiTdatabank), `uit` (for UiTinVlaanderen), `uitpas`, or `cultuurkuur`                                                                                                        | Optional                                                              | A publiq brand, which is used to set the background image of the login page accordingly.                                                                                                                                                                         |
 | `screen`                | `login` (default) or `register`                                                                                                                                                                      | Optional                                                              | Determines whether the login or register form is shown. The user may always switch to the other screen themselves.                                                                                                                                               |
-| `ui_locales`                | `nl` (default), `fr`, or `de`                                                                                                                                                                        | Optional                                                              | Determines the language used in the login/register screens.                                                                                                                                                                                                      |
+| `ui_locales`            | `nl` (default), `fr`, or `de`                                                                                                                                                                        | Optional                                                              | Determines the language used in the login/register screens.                                                                                                                                                                                                      |
 | `email`                 | A valid email address                                                                                                                                                                                | Optional                                                              | Used to prefill the email field on the login screen.                                                                                                                                                                                                             |
 | `fixed_email`           | A valid email address                                                                                                                                                                                | Optional                                                              | Used to prefill the email field on the login and register screens, and disables the email field so the user cannot edit it. The user **must** login or register with this email address.                                                                         |
 | `first_name`            |                                                                                                                                                                                                      | Optional                                                              | Used to prefill the first name field on the register screen.                                                                                                                                                                                                     |
@@ -419,10 +416,10 @@ The best way to check if a refresh token is expired is to exchange it for an acc
 
 When the user of your application wants to log out, clear any session data in your application including the user's access token and refresh token. If you have cached the [user's info](#user-info), make sure to also clear that.
 
-Afterward, you should **redirect** the user to the `/realms/uitid/protocol/openid-connect/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on the `?post_logout_redirect_uri=...` URL parameter that you can specify. 
+Afterward, you should **redirect** the user to the `/realms/uitid/protocol/openid-connect/logout` URL on the authorization server so the user's session is also cleared there. This redirect will be invisible to the end user, as the authorization server will simply clear the user's session and then redirect back to your application based on the `?post_logout_redirect_uri=...` URL parameter that you can specify.
 
 * Ideally you provide the ID token of the user in the `id_token_hint` parameter. This ensures the best logout experience.
-* If providing the ID token is impossible, you should provide the `client_id` parameter. 
+* If providing the ID token is impossible, you should provide the `client_id` parameter.
 * If you don't specify `client_id` or `id_token_hint` the user cannot be redirected to your `post_logout_redirect_uri` and will be shown a logout confirmation page instead.
 * If you don't specify `post_logout_redirect_uri` the user will not be redirected, but will also be shown a logout confirmation page.
 * Note that you can only use an allowed "logout URL" as value for the `post_logout_redirect_uri` URL parameter. (See [Requirements](#requirements))
