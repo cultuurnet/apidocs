@@ -32,7 +32,7 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
 sequenceDiagram
     autonumber
-    Client->>Auth server: POST /token with client id and secret
+    Client->>Auth server: POST /realms/uitid/protocol/openid-connect/token with client id and secret
     Auth server-->>Client: 200 OK with access token
     Client->>Client: Cache token internally
     loop
