@@ -8,7 +8,7 @@ Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely th
 
 ## Backward compatibility with Auth0
 
-In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
 
 However, some paths have changed in the new implementation and this page documents the *new* behavior. All of the old paths forward or redirect the client to the *new* path:
 
@@ -134,8 +134,7 @@ Authorization: Bearer eyJz93a...k4laUWw
 ```
 
 #### More info
-
-publiq uses [Keycloak](https://www.keycloak.org/) as its authentication and authorization server, which implements the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html). To learn more about the Authorization Code Flow, see the [Authentication using the Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) section of the OpenID Connect specification.
+publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. To learn more about the Authorization Code Flow, see the [Authentication using the Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) section of the OpenID Connect specification.
 
 <!-- theme: success -->
 
@@ -273,7 +272,7 @@ Authorization: Bearer eyJz93a...k4laUWw
 
 #### More info
 
-publiq uses [Keycloak](https://www.keycloak.org/) as its authentication and authorization server. To learn more about the Authorization Code Flow with PKCE, see [RFC 7636: Proof Key for Code Exchange](https://oauth.net/2/pkce/).
+publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. To learn more about the Authorization Code Flow with PKCE, see [RFC 7636: Proof Key for Code Exchange](https://oauth.net/2/pkce/).
 
 <!-- theme: success -->
 

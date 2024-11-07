@@ -12,7 +12,7 @@ If your browser or native application cannot work with user logins via publiq's 
 
 ## Backward compatibility with Auth0
 
-In November 2024, publiq switched identity provider implementation from Auth0 to Keycloak. Both implementations are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
 
 However, the token path has changed in the new implementation and this page documents the *new* behavior. The old path forwards requests to the new path:
 
@@ -83,7 +83,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 #### More info
 
-publiq currently uses [Keycloak](https://www.keycloak.org/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [OAuth 2.0 specification for the client\_credentials flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
+publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. For more in-depth information about requesting client access tokens, see the [OAuth 2.0 specification for the client\_credentials flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
 
 ## Decoding tokens
 
@@ -115,4 +115,4 @@ curl --request POST \
   --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
   --header 'Content-Type: application/json' \
   --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
-  ```
+```
