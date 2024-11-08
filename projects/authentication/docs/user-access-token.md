@@ -140,8 +140,7 @@ publiq uses an [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://op
 
 > ##### SDK
 >
-> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs
-](./environments.md) for the base URL).
+> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs](./environments.md) for the base URL).
 
 ### Single-page (SPA) and native applications
 
@@ -279,8 +278,7 @@ publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openi
 
 > ##### SDK
 >
-> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs
-](./environments.md) for the base URL).
+> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs](./environments.md) for the base URL).
 
 ## Login parameters
 
