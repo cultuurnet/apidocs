@@ -2,13 +2,13 @@
 
 User access tokens are used to communicate with a publiq API in the name of a user **logged in through UiTiD**, and can be requested through one of two ways depending on the type of application that you're building.
 
-Both flows are standard [OAuth2](https://oauth.net/2/) flows and work largely the same. In both cases you will redirect the user to the authorization server where they can login. Afterward, the user will be redirected back to your application and you will receive an authorization code. With this code you can request a user access token on the authorization server.
+Both flows are standard [OAuth 2.0](https://oauth.net/2/) flows and work largely the same. In both cases you will redirect the user to the authorization server where they can login. Afterward, the user will be redirected back to your application and you will receive an authorization code. With this code you can request a user access token on the authorization server.
 
 > Not sure if user access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
 ## Backward compatibility with Auth0
 
-In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
 
 However, some paths have changed in the new implementation and this page documents the *new* behavior. All of the old paths forward or redirect the client to the *new* path:
 
@@ -16,7 +16,7 @@ However, some paths have changed in the new implementation and this page documen
 * `/authorize` to `/realms/uitid/protocol/openid-connect/auth`
 * `/userinfo` to `/realms/uitid/protocol/openid-connect/userinfo`
 
-When making changes to your client, it is recommended to start making use of the new paths in this document. A full list of the *new* configuration can be retrieved from `https://account-test.uitid.be/.well-known/openid-configuration`.
+When making changes to your client, it is recommended to start making use of the new paths in this document. A full list of the *new* configuration can be retrieved from `/.well-known/openid-configuration`.
 
 ## Requirements
 
@@ -134,13 +134,13 @@ Authorization: Bearer eyJz93a...k4laUWw
 ```
 
 #### More info
-publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. To learn more about the Authorization Code Flow, see the [Authentication using the Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) section of the OpenID Connect specification.
+publiq uses an [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. To learn more about the Authorization Code Flow, see the [Authentication using the Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) section of the OpenID Connect specification.
 
 <!-- theme: success -->
 
 > ##### SDK
 >
-> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `https://account-test.uitid.be/.well-known/openid-configuration`.
+> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs](./environments.md) for the base URL).
 
 ### Single-page (SPA) and native applications
 
@@ -278,7 +278,7 @@ publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openi
 
 > ##### SDK
 >
-> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `https://account-test.uitid.be/.well-known/openid-configuration`.
+> It is a good practice to use an OpenID Connect compliant client SDK. SDKs exist in different languages and flavors, so the best choice greatly depends on your specific application. The OpenID.net website contains a list of [certicied](https://openid.net/developers/certified-openid-connect-implementations/) and [uncertified](https://openid.net/developers/uncertified-openid-connect-implementations/) SDKs. To configure your SDK you might need this configuration: `base_url/.well-known/openid-configuration` (see [Authorization server URLs](./environments.md) for the base URL).
 
 ## Login parameters
 
