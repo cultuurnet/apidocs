@@ -8303,6 +8303,35 @@
       },
       "parameters": []
     },
+    "/ownerships/{ownershipId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "delete": {
+        "summary": "ownership - delete",
+        "operationId": "delete-ownerships-ownershipId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "Delete a specific ownership",
+        "x-internal": true,
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/news-articles": {
       "post": {
         "summary": "news article - create",
@@ -9293,6 +9322,17 @@
           "example": "365f99a4-5490-4313-8ee9-adebea2dceb0"
         },
         "description": "The unique uuid of an already uploaded image."
+      },
+      "ownershipId": {
+        "name": "ownershipId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
+        },
+        "description": "Unique id of an ownership, in the format of a UUID"
       }
     },
     "responses": {
