@@ -13,18 +13,15 @@
       "$ref": "./ownership-itemType.json"
     },
     "ownerId": {
-      "type": "string",
+      "$ref": "./common-string-uuid.json",
       "description": "The id of the owner",
-      "example": "7a583ed3-cbc1-481d-93b1-d80fff0174dd",
       "minLength": 1,
       "pattern": "\\S",
       "readOnly": true
     },
     "ownerEmail": {
-      "type": "string",
+      "$ref": "./common-string-email.json",
       "description": "The email of the owner",
-      "format": "email",
-      "example": "info@example.com",
       "readOnly": true
     }
   },

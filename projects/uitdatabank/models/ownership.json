@@ -16,31 +16,36 @@
       "$ref": "./common-string-uuid.json"
     },
     "ownerEmail": {
-      "type": "string",
-      "description": "Email address of the owner.",
-      "format": "email",
-      "example": "info@example.com"
+      "$ref": "./common-string-email.json",
+      "description": "Email address of the owner."
     },
     "requesterId": {
       "$ref": "./common-string-uuid.json"
     },
     "requesterEmail": {
-      "type": "string",
-      "description": "Email address of the requester.",
-      "format": "email",
-      "example": "info@example.com"
+      "$ref": "./common-string-email.json",
+      "description": "Email address of the requester."
     },
     "state": {
       "$ref": "./ownership-state.json"
     },
     "created": {
-      "$ref": "./event-created.json"
+      "$ref": "./common-string-datetime-readOnly.json"
     },
     "modified": {
-      "$ref": "./event-modified.json"
+      "$ref": "./common-string-datetime-readOnly.json"
     }
   },
   "required": [
-    "id"
+    "id",
+    "itemId",
+    "itemType",
+    "ownerId",
+    "ownerEmail",
+    "requesterId",
+    "requesterEmail",
+    "state",
+    "created",
+    "modified"
   ]
 }

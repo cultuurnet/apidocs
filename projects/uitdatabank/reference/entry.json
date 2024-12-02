@@ -8301,7 +8301,93 @@
         ],
         "x-internal": true
       },
-      "parameters": []
+      "parameters": [],
+      "get": {
+        "summary": "ownership - get",
+        "operationId": "get-ownerships",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated).",
+                      "items": {
+                        "$ref": "../models/ownership.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "description": "Get pending ownership requests or requests for a specific organizer",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "query",
+            "name": "itemId",
+            "description": "The UUID of the item to get the ownerships from"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "requested",
+                "approved",
+                "rejected",
+                "deleted"
+              ],
+              "example": "requested"
+            },
+            "in": "query",
+            "name": "state",
+            "description": "Filter ownership requests by a given state"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/start"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/limit"
+          }
+        ],
+        "x-internal": true
+      }
     },
     "/ownerships/{ownershipId}": {
       "parameters": [
