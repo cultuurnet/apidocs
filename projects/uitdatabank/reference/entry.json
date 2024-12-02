@@ -8353,7 +8353,7 @@
         "tags": [
           "Ownerships"
         ],
-        "description": "Get all or one specific ownership requests of the current user",
+        "description": "Get one or more ownership requests based on parameters",
         "parameters": [
           {
             "schema": {
