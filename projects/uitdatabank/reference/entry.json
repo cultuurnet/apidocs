@@ -8307,7 +8307,7 @@
         "operationId": "get-ownerships",
         "responses": {
           "200": {
-            "description": "",
+            "description": "A list of ownership requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -8353,7 +8353,7 @@
         "tags": [
           "Ownerships"
         ],
-        "description": "Get pending ownership requests or requests for a specific organizer",
+        "description": "Get all or one specific ownership requests of the current user",
         "parameters": [
           {
             "schema": {
@@ -8366,14 +8366,7 @@
           },
           {
             "schema": {
-              "type": "string",
-              "enum": [
-                "requested",
-                "approved",
-                "rejected",
-                "deleted"
-              ],
-              "example": "requested"
+              "$ref": "../models/ownership-state.json"
             },
             "in": "query",
             "name": "state",

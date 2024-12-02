@@ -6,5 +6,6 @@
     "rejected",
     "deleted"
   ],
+  "description": "The state of an ownership request",
   "example": "requested"
 }
