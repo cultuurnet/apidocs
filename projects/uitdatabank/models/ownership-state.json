@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "enum": [
+    "requested",
+    "approved",
+    "rejected",
+    "deleted"
+  ],
+  "example": "requested"
+}

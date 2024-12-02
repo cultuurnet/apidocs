@@ -10,13 +10,7 @@
       "readOnly": true
     },
     "itemType": {
-      "type": "string",
-      "example": "organizer",
-      "description": "The type of the item",
-      "enum": [
-        "organizer"
-      ],
-      "readOnly": true
+      "$ref": "./ownership-itemType.json"
     },
     "ownerId": {
       "type": "string",
