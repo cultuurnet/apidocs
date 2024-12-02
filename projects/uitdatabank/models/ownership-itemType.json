@@ -1,6 +1,6 @@
 {
   "type": "string",
-  "description": "The resource an ownership is about",
+  "description": "The type of a resource an ownership is about",
   "enum": [
     "event",
     "place",
