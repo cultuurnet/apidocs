@@ -1,0 +1,51 @@
+{
+  "title": "ownership",
+  "type": "object",
+  "description": "An ownership request between an owner and an item",
+  "properties": {
+    "id": {
+      "$ref": "./common-string-uuid.json"
+    },
+    "itemId": {
+      "$ref": "./common-string-uuid.json"
+    },
+    "itemType": {
+      "$ref": "./ownership-itemType.json"
+    },
+    "ownerId": {
+      "$ref": "./common-string-uuid.json"
+    },
+    "ownerEmail": {
+      "$ref": "./common-string-email.json",
+      "description": "Email address of the owner."
+    },
+    "requesterId": {
+      "$ref": "./common-string-uuid.json"
+    },
+    "requesterEmail": {
+      "$ref": "./common-string-email.json",
+      "description": "Email address of the requester."
+    },
+    "state": {
+      "$ref": "./ownership-state.json"
+    },
+    "created": {
+      "$ref": "./common-string-datetime-readOnly.json"
+    },
+    "modified": {
+      "$ref": "./common-string-datetime-readOnly.json"
+    }
+  },
+  "required": [
+    "id",
+    "itemId",
+    "itemType",
+    "ownerId",
+    "ownerEmail",
+    "requesterId",
+    "requesterEmail",
+    "state",
+    "created",
+    "modified"
+  ]
+}

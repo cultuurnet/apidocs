@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "description": "An email address",
+  "format": "email",
+  "example": "info@example.com",
+  "readOnly": true
+}

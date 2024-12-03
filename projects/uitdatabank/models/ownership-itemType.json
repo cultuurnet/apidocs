@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "description": "The type of a resource an ownership is about",
+  "enum": [
+    "event",
+    "place",
+    "organizer"
+  ],
+  "example": "organizer",
+  "readOnly": true
+}
