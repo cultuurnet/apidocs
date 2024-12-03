@@ -8420,6 +8420,82 @@
         ]
       }
     },
+    "/ownerships/{ownershipId}/approve": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - approve",
+        "operationId": "post-ownership-approve",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Approve a given ownership",
+        "x-internal": true
+      }
+    },
+    "/ownerships/{ownershipId}/reject": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - reject",
+        "operationId": "post-ownership-reject",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Reject a given ownership",
+        "x-internal": true
+      }
+    },
     "/news-articles": {
       "post": {
         "summary": "news article - create",
