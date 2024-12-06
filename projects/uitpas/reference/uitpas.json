@@ -7380,7 +7380,8 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card.",
+            "readOnly": true
           },
           "cardSystemMemberships": {
             "type": "array",
