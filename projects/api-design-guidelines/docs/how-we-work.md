@@ -4,7 +4,7 @@
 
 A common trend when building APIs is to start coding the functionality first, and then test and document it when it is considered to be ready. This makes the API a byproduct of the development process, instead of a product that was intentionally designed.
 
-Event with design guidelines that can help by providing a high-level set of rules, a code-first approach can still cause several problems:
+Even with design guidelines that can help by providing a high-level set of rules, a code-first approach can still cause several problems:
 
 * Documentation and tests are an afterthought and often forgotten, incomplete, or incorrect.
 * The functionality is often influenced by how the underlying system already works and may be too limited to achieve the intended goals. This also makes the API less flexible to work with for unforeseen use-cases in the long run.

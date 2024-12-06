@@ -2,7 +2,11 @@
 
 ## Requesting credentials
 
-See the [requesting client credentials](https://docs.publiq.be/docs/authentication/requesting-credentials) page in the general authentication documentation.
+You can easily get free test credentials in publiq platform, our self-service portal:
+
+[![Add your entry API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
+
+After registering your integration on publiq platform you'll immediately get client credentials that grant you access to our test environment.
 
 ## Tokens
 
@@ -59,7 +63,7 @@ More info about client identification can be found [in the general authenticatio
 
 ## API key
 
-Alternatively, if you registered your integration with publiq before or in the beginning of 2023 you will have received an API key instead of a client id.
+Alternatively, if you registered your integration with publiq before 2024 you will have received an API key instead of a client id.
 
 You can use your API key by adding an `x-api-key` header to your requests, for example:
 
@@ -92,7 +96,7 @@ Host: https://search-test.uitdatabank.be
 
 API key authentication will be supported for the foreseeable future on Search API. However, if you already want to make your integration as future-proof as possible you can easily switch from API key authentication to client identification.
 
-In the near future you will be able to request a client id for your existing integration on our self-service portal.
+On our [self-service portal](https://platform.publiq.be) you are able to request a client id for your existing integration.
 
 When you receive your new client id, you can update your application to include the client id in your API requests as described above using an `x-client-id` header instead of an `x-api-key` header, or a `clientId` query parameter instead of an `apiKey` query parameter.
 

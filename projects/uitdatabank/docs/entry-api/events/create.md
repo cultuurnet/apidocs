@@ -332,7 +332,7 @@ Read our guide about [calendar info](../shared/calendar-info.md) to learn more.
 
 While you can create a new event using just the properties described above, an event can have a lot more properties like a [description](../shared/description.md), [booking- and contact info](../shared/booking-and-contact-info.md), [images](../shared/images.md), [price info](../shared/price-info.md) and so on. These are useful to make your event more attractive to potential audiences and may be included in the same request when creating a new event.
 
-Note that most integrations will also need to provide these properties to successfully [pass the content quality check](../requirements-before-going-live.md) and obtain credentials for the Entry API production environment.
+Note that most integrations will also need to provide these properties to successfully [pass the content quality check](../getting-started.md) and obtain credentials for the Entry API production environment.
 
 You can learn more about these properties under the "Shared properties" section in the menu, or by browsing the complete [event model](../../../models/event-with-read-example.json).
 

@@ -3849,10 +3849,84 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "409": {
+            "description": "Status conflict\n\nTo ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address. You get this error when (multiple) matches already exist in the system.\nYou can use the attached query to get existing place(s).\nSubsequently, appropriate actions, such as updates to an existing Place, can be done to maintain uniqueness and coherence in UDB.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/uitdatabank/duplicate-place",
+                      "title": "Duplicate place",
+                      "status": 409,
+                      "detail": "This place already exists. Use the attached query to get existing place(s) for the place you tried to create."
+                    }
+                  },
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "When multiple duplicated places are round, this provides a URI to existing places"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "https://api.publiq.be/probs/uitdatabank/duplicate-place"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Duplicate place"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "409"
+                    },
+                    "detail": {
+                      "type": "string",
+                      "description": "Detailed description of the error"
+                    },
+                    "duplicatePlaceUri": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "625qzdfcsviv2"
+                      },
+                      "description": "When a single duplicated place is found, this is the URI of the original place"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status",
+                    "detail"
+                  ]
+                },
+                "examples": {
+                  "Multi duplicated places found": {
+                    "value": {
+                      "query": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/uitdatabank/duplicate-place",
+                      "title": "Duplicate place",
+                      "status": 409,
+                      "detail": "This place already exists. Use the attached query to get existing place(s) for the place you tried to create."
+                    }
+                  },
+                  "Single duplicated place found": {
+                    "value": {
+                      "duplicatePlaceUri": "/place/581314d4-637e-407b-ba35-8b60847012d0",
+                      "type": "https://api.publiq.be/probs/uitdatabank/duplicate-place",
+                      "title": "Duplicate place",
+                      "status": 409,
+                      "detail": "A place with this address / name combination already exists. Please use the existing place for your purposes."
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "operationId": "place-post",
-        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.",
+        "description": "Creates a new place with the required properties and any additional optional properties.\n\nBy default, the new place will be editable and removable by the user or client that the access token used to perform this request belongs to. If you use a user access token, the user for which the token was obtained will see the new place in their dashboard in UiTdatabank and will be able to edit or remove it. If you use a client access token, only API requests with a token for the same client will be able to edit or remove it.\n\nTo ensure data integrity and avoid duplication within the system, each place must have a unique combination of the main language title and address.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -8154,6 +8228,274 @@
         ]
       }
     },
+    "/ownerships": {
+      "post": {
+        "summary": "ownership - request",
+        "description": "Request the ownership of a given item\n",
+        "operationId": "ownership-request",
+        "tags": [
+          "Ownerships"
+        ],
+        "responses": {
+          "201": {
+            "description": "The ownership has been requested",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The id of newly created ownership."
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "6b476d79-c404-425f-8b1c-357e39a60410"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/duplicate-url",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "requestBody": {
+          "description": "The details of an ownership to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/ownership-post.json"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "parameters": [],
+      "get": {
+        "summary": "ownership - get",
+        "operationId": "get-ownerships",
+        "responses": {
+          "200": {
+            "description": "A list of ownership requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated).",
+                      "items": {
+                        "$ref": "../models/ownership.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "description": "Get one or more ownership requests based on parameters",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "query",
+            "name": "itemId",
+            "description": "The UUID of the item to get the ownerships from"
+          },
+          {
+            "schema": {
+              "$ref": "../models/ownership-state.json"
+            },
+            "in": "query",
+            "name": "state",
+            "description": "Filter ownership requests by a given state"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/start"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/limit"
+          }
+        ],
+        "x-internal": true
+      }
+    },
+    "/ownerships/{ownershipId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "delete": {
+        "summary": "ownership - delete",
+        "operationId": "delete-ownerships-ownershipId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Delete a specific ownership",
+        "x-internal": true,
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/ownerships/{ownershipId}/approve": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - approve",
+        "operationId": "post-ownership-approve",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Approve a given ownership",
+        "x-internal": true
+      }
+    },
+    "/ownerships/{ownershipId}/reject": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - reject",
+        "operationId": "post-ownership-reject",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Reject a given ownership",
+        "x-internal": true
+      }
+    },
     "/news-articles": {
       "post": {
         "summary": "news article - create",
@@ -8876,6 +9218,119 @@
           }
         ]
       }
+    },
+    "/mailing-list/{mailinglistId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "mailinglistId",
+          "in": "path",
+          "required": true,
+          "description": "The mailing list id"
+        }
+      ],
+      "put": {
+        "summary": "Subscribe to mailing list",
+        "operationId": "put-mailing-list",
+        "tags": [
+          "Mailing"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "The given request body could not be parsed as json": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as json."
+                    }
+                  },
+                  "The property email is required": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "The property 'email' is required."
+                        }
+                      ]
+                    }
+                  },
+                  "The given request body could not be parsed as json.": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-syntax",
+                      "title": "Invalid body syntax",
+                      "status": 400,
+                      "detail": "The given request body could not be parsed as json."
+                    }
+                  },
+                  "Failed to subscribe to newsletter": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/failed-subscription-to-newsletter",
+                      "title": "Failed to subscribe to newsletter",
+                      "status": 400,
+                      "detail": "Details of the mailservice error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "Example 1": {
+                    "email": "koen@test.be"
+                  }
+                },
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "description": "Must be a valid e-mail address"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "email": "john.doe@publiq.be"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Send the email to subscribe."
+        },
+        "parameters": [],
+        "description": "This endpoint allows users to subscribe an email address to a specified mailing list.",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -9031,6 +9486,17 @@
           "example": "365f99a4-5490-4313-8ee9-adebea2dceb0"
         },
         "description": "The unique uuid of an already uploaded image."
+      },
+      "ownershipId": {
+        "name": "ownershipId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
+        },
+        "description": "Unique id of an ownership, in the format of a UUID"
       }
     },
     "responses": {
@@ -9103,10 +9569,16 @@
       "name": "Images"
     },
     {
+      "name": "Mailing"
+    },
+    {
       "name": "News articles"
     },
     {
       "name": "Organizers"
+    },
+    {
+      "name": "Ownerships"
     },
     {
       "name": "Places"

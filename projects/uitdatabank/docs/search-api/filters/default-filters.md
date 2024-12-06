@@ -66,7 +66,7 @@ GET /offers/?workflowStatus=*&addressCountry=*&audienceType=*
 
 ## Disable all filters at once
 
-In order to disable all filters at once you can set the `disbableDefaultFilters` parameter to `true`.
+In order to disable all filters at once you can set the `disableDefaultFilters` parameter to `true`.
 
 ```
 GET /offers/?disableDefaultFilters=true

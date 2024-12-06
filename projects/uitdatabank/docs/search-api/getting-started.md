@@ -2,7 +2,11 @@
 
 Search API makes it easy to query the events, places and organizers stored in UiTdatabank.
 
-You can use Search API to build your own online calendar with current events, or for example gain insights in historical events.
+You can use Search API to build your own online calendar with current events, or for example gain insights in historical events. Click on the button below to register your Search API integration and obtain credentials:
+
+<!-- focus: false -->
+
+[![Add your search API integration](https://raw.githubusercontent.com/cultuurnet/apidocs/main/assets/add-your-integration.svg)](https://platform.publiq.be)
 
 Search API is also used to [find existing places](../entry-api/places/finding-and-reusing-places.md) and [organizers](../entry-api/organizers/finding-and-reusing-organizers.md) to reuse when [creating new events](../entry-api/events/create.md) with Entry API.
 

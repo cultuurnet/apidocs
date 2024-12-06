@@ -31,6 +31,8 @@ To learn how to create UiTPAS events programmatically, check out the guide about
 
 You can manually enter events in UiTdatabank by browsing to <https://www.uitdatabank.be>. This is helpful when you just need an event for testing purposes.
 
+<https://www.youtube.com/watch?v=hIZef9ObMVs>
+
 Registering an UiTPAS event in UiTdatabank's user interface takes just 3 steps!
 
 ### 1. Creating a new event
@@ -43,19 +45,32 @@ After you have created an event, **you need to specify some additional info to t
 
 ### 2. Specifying a price
 
-Edit the *Prijs* field of your event, and provide a *Basistarief* that is not 0 EUR. For example:
+Click on the `Prijzen` tab in step 6, and provide a *Basistarief* that is not 0 EUR. For example:
 
 <!-- focus: false -->
 
-![](../assets/images/uitdatabank-event-price.png)
+![](../assets/images/uitdatabank-uitpas-event-price.png)
+
+> You do not need to enter the UiTPAS price yourself. The applicable UiTPAS prices are automatically calculated by UiTdatabank based on the base tariff, the applicable cardsystems and their distribution keys.
 
 ### 3. Linking an UiTPAS organizer
 
-Click the *Organisatie toevoegen* button. You can now look for the organizer of the event by typing its name in the input field that has appeared, and then select it from the list of possible options that appears. If multiple options appear, make sure to select the one that has a grey *UiTPAS* badge next to it.
+Click the `Organisatie toevoegen` tab. You can now either:
+
+* select an organizer you have used in the past for creating events
+* select a new organizer
+
+UiTPAS organizers always have a grey `UiTPAS` badge next to them.
 
 <!-- focus: false -->
 
-![](../assets/images/uitdatabank-event-organizer.png)
+![](../assets/images/uitdatabank-uitpas-event-organizer.png)
+
+Once you have added your UiTPAS organizer, the applicable UiTPAS prices are automatically calculated by UiTdatabank:
+
+<!-- focus: false -->
+
+![](../assets/images/uitdatabank-uitpas-event-price-calculated.png)
 
 ### 4. Done!
 
@@ -63,7 +78,7 @@ Shortly after you have selected an UiTPAS organizer, you should see a new *UiTPA
 
 <!-- focus: false -->
 
-![](../assets/images/uitdatabank-event-uitpas.png)
+![image.png](../assets/images/uitdatabank-uitpas-event-cardsystems.png)
 
 **If you see this field, your event is now registered as an UiTPAS event**, and you can optionally change the possible card systems that it belongs to if the UiTPAS organizer is active in multiple card systems.
 
@@ -71,4 +86,4 @@ You can now **use its id in UiTPAS API requests** that require an event id, for 
 
 <!-- focus: false -->
 
-![](../assets/images/uitdatabank-event-id.png)
+![](../assets/images/uitdatabank-uitpas-event-id.png)

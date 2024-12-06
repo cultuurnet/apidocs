@@ -24,13 +24,13 @@ The value for this field must always be an [ISO 3166-1 alpha-2](https://en.wikip
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below. The query above will look for specific matches in the `nl` address:
+Because a document can have address translations, you can search by a specific language, as in the example below.
 
 ```
 GET /places/?q=address.nl.addressCountry:BE 
 ```
 
-The following example looks for matches in any language:
+Use a wildcard instead of specifying a language:
 
 ```
 GET /places/?q=address.\*.addressCountry:BE
@@ -54,13 +54,13 @@ The value for `addressLocality` can be any municipality in a supported language.
 
 **Examples**
 
-Because a document can have address translations, you can search by a specific language or alternatively use a wildcard instead of specifying a language, as in the example below. The query above will look for specific matches in the `fr` address:
+Because a document can have address translations, you can search by a specific language. The query below will look for specific matches in the `fr` address:
 
 ```
 GET /places/?q=address.fr.addressLocality:Bruxelles
 ```
 
-The following example looks for matches in any language:
+Use a wildcard instead of specifying a language:
 
 ```
 GET /places/?q=address.\*.addressLocality:Bruxelles
@@ -190,7 +190,7 @@ Using the `availableRange` field, you can get all events and places that were av
 
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for `availability`. You can reset this default as described in the [default filters guide](../filters/default-filters.md).
 
-Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series).
+Most events in UiTdatabank have a limited availability, from the time they are published (or their scheduled publication date has been reached) until the end date of the event. Specific types of events are only available until the start date of an event (e.g. a course series or Camping).
 
 Places are considered to be permanently available, starting when they are published (or, again, when their scheduled publication date has been reached). A small portion of the events is permanent as well, depending on their calendar information.
 
@@ -263,26 +263,6 @@ Retrieve all permanent events and places:
 GET /offers/?q=calendarType:permanent
 ```
 
-### contributors
-
-Use the `contributors` field to search for documents for which a particular user / email address is a [contributor](https://docs.publiq.be/docs/uitdatabank/entry-api/shared/contributors).
-
-**Applicable on endpoints**
-
-`/events` `/places` `/offers` `/organizers`
-
-**Possible values**
-
-Any email address.
-
-**Example**
-
-Retrieve all events for which `technical-support@publiq.be` is a contributor:
-
-```
-GET /events/?q=contributors:technical-support@publiq.be
-```
-
 ### completedLanguages
 
 All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch, content editors can use UiTdatabank to translate the name and description of their documents in French (FR), German (DE) and English (EN). The API supports translations in every [two-letter language ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
@@ -305,6 +285,51 @@ Retrieve all organizers that are fully translated in English:
 
 ```
 GET /organizers/?q=completedLanguages:en
+```
+
+### completeness
+
+<!-- theme: info -->
+
+> #### New functionality 🚧
+>
+> `completeness` is a new parameter that is still under construction. At the moment the completeness is only calculated for events, places and organizers created after February 15, 2024.
+
+With the `completeness` field you can filter events, places and organizers by their completeness score. The completeness score is a number between 0 and 100 that indicates how complete the information of an event, place or organizer is.
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers` `/organizers`
+
+**Possible values**
+
+* an integer, e.g. `50`
+* a range, consisting of two integers (lower and upper bound), e.g. `[50 TO *]`
+
+**Examples**
+
+Retrieve all events and places that have at least a completeness score of 50:
+
+```
+GET /offers/?q=completeness:>=50
+```
+
+Retrieve all events and places that have completeness score of exactly 65:
+
+```
+GET /offers/?q=completeness:65
+```
+
+Retrieve all organizers that have a completeness score less than 50:
+
+```
+GET /organizers/?q=completeness:<50
+```
+
+Retrieve all events and places that have a completeness score between 50 and 75:
+
+```
+GET /offers/?q=completeness:[50 TO 75]
 ```
 
 ### created
@@ -821,7 +846,7 @@ With the `regions` field you can filter on either one region or a combination of
 
 **Possible values**
 
-Any valid region. For a list of all shapes, see [our guide](../filters/location.md).
+Any valid region. For an overview of all shapes, see [this list](https://search.uitdatabank.be/autocomplete.json).
 
 **Example**
 
