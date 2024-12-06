@@ -10,6 +10,14 @@ If your browser or native application cannot work with user logins via publiq's 
 
 > Not sure if client access tokens are the right authentication method for you, or which APIs support it? See our [overview of authentication methods](./methods.md) to get a brief summary of every method and a list of support APIs.
 
+## Backward compatibility with Auth0
+
+In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are OAuth 2.0 and OpenID Connect compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+
+However, the token path has changed in the new implementation and this page documents the *new* behavior. The old path forwards requests to the new path:
+
+* `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
+
 ## Requirements
 
 * A client id
@@ -24,7 +32,7 @@ See [requesting client credentials](./requesting-credentials.md) how to obtain a
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#f0f0f0', 'fontFamily': 'Helvetica' }, 'sequence': { 'actorFontFamily': 'Helvetica', 'noteFontFamily': 'Helvetica', 'messageFontFamily': 'Helvetica' } }}%%
 sequenceDiagram
     autonumber
-    Client->>Auth server: POST /oauth/token with client id and secret
+    Client->>Auth server: POST /realms/uitid/protocol/openid-connect/token with client id and secret
     Auth server-->>Client: 200 OK with access token
     Client->>Client: Cache token internally
     loop
@@ -40,23 +48,17 @@ sequenceDiagram
 4. Your application uses the access token to make authenticated requests to the API.
 5. The API responds to the requests. If a `401 Unauthorized` is returned, the token has expired and a new one should be requested before re-trying the request.
 
-To obtain a client access token, send a `POST` request to the `/oauth/token` endpoint of the authentication server with a JSON body like this:
+To obtain a client access token, send a `POST` request to the `/realms/uitid/protocol/openid-connect/token` endpoint of the authentication server with a form-urlencoded body like this:
 
 ```http
-POST /oauth/token HTTP/1.1
+POST /realms/uitid/protocol/openid-connect/token HTTP/1.1
 Host: https://account-test.uitid.be
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-  "client_id": "YOUR_CLIENT_ID",
-  "client_secret": "YOUR_CLIENT_SECRET",
-  "audience": "https://api.publiq.be",
-  "grant_type": "client_credentials"
-}
+grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
 ```
 
 * The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
-* The `audience` property **must** always be set to `https://api.publiq.be`.
 * The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
 
 After sending your request you will get a response with a JSON body like this:
@@ -81,7 +83,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 #### More info
 
-publiq currently uses [Auth0](https://auth0.com/) as the implementation of its authentication and authorization service. For more in-depth information about requesting client access tokens, see the [Auth0 documentation for the client\_credentials flow](https://auth0.com/docs/flows#client-credentials-flow).
+publiq uses an [OAuth2](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. For more in-depth information about requesting client access tokens, see the [OAuth 2.0 specification for the client\_credentials flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4).
 
 ## Decoding tokens
 
@@ -104,23 +106,13 @@ See [authorization server URLs](./environments.md).
 
 ## Try it out!
 
-You can use the request form below to request a client access token using your client id and secret for the **test environment**. You can then use the `access_token` from the response body to authorize other example requests to the test environment in the documentation.
+You can use the curl request below to request a client access token using your client id and secret for the **test environment**. You can then use the `access_token` from the response body to authorize other example requests to the test environment in the documentation.
 
 Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own **client id** and **secret**!
 
-```json http
-{
-  url: 'https://account-test.uitid.be/oauth/token',
-  method: "POST",
-  body: {
-    "client_id": "YOUR_CLIENT_ID",
-    "client_secret": "YOUR_CLIENT_SECRET",
-    "audience": "https://api.publiq.be",
-    "grant_type":"client_credentials"    
-  }
-}
+```shell
+curl --request POST \
+  --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
+  --header 'Content-Type: application/json' \
+  --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
 ```
-
-<!-- theme: warning -->
-
-> If you get a "network error" using the form above, most likely your client id is not correct. Please double check that you are using your client id for the test environment. Alternatively copy the request sample as a curl request from the form above and check the response from the authorization server by sending the request from a command-line interface or another tool.

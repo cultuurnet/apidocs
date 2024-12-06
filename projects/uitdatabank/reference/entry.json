@@ -8301,7 +8301,200 @@
         ],
         "x-internal": true
       },
-      "parameters": []
+      "parameters": [],
+      "get": {
+        "summary": "ownership - get",
+        "operationId": "get-ownerships",
+        "responses": {
+          "200": {
+            "description": "A list of ownership requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated).",
+                      "items": {
+                        "$ref": "../models/ownership.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "description": "Get one or more ownership requests based on parameters",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "in": "query",
+            "name": "itemId",
+            "description": "The UUID of the item to get the ownerships from"
+          },
+          {
+            "schema": {
+              "$ref": "../models/ownership-state.json"
+            },
+            "in": "query",
+            "name": "state",
+            "description": "Filter ownership requests by a given state"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/start"
+          },
+          {
+            "$ref": "../../uitpas/reference/uitpas.json#/components/parameters/limit"
+          }
+        ],
+        "x-internal": true
+      }
+    },
+    "/ownerships/{ownershipId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "delete": {
+        "summary": "ownership - delete",
+        "operationId": "delete-ownerships-ownershipId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "description": "Delete a specific ownership",
+        "x-internal": true,
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+    "/ownerships/{ownershipId}/approve": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - approve",
+        "operationId": "post-ownership-approve",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Approve a given ownership",
+        "x-internal": true
+      }
+    },
+    "/ownerships/{ownershipId}/reject": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/ownershipId"
+        }
+      ],
+      "post": {
+        "summary": "ownership - reject",
+        "operationId": "post-ownership-reject",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Ownerships"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Reject a given ownership",
+        "x-internal": true
+      }
     },
     "/news-articles": {
       "post": {
@@ -9293,6 +9486,17 @@
           "example": "365f99a4-5490-4313-8ee9-adebea2dceb0"
         },
         "description": "The unique uuid of an already uploaded image."
+      },
+      "ownershipId": {
+        "name": "ownershipId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "F2D5D20C-CC98-4979-9CD2-453ABAD979B5"
+        },
+        "description": "Unique id of an ownership, in the format of a UUID"
       }
     },
     "responses": {
