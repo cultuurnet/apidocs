@@ -2136,7 +2136,7 @@
             },
             "in": "query",
             "name": "uitpasNumber",
-            "description": "Unique UiTPAS number of an individual passholder to look up."
+            "description": "Unique UiTPAS number of the grouppass to look up."
           },
           {
             "schema": {
@@ -2144,7 +2144,7 @@
             },
             "in": "query",
             "name": "chipNumber",
-            "description": "Hexadecimal notation of the chip number of an individual UiTPAS card."
+            "description": "Hexadecimal notation of the chip number of a grouppass UiTPAS card."
           },
           {
             "schema": {
@@ -2152,7 +2152,7 @@
             },
             "in": "query",
             "name": "name",
-            "description": "Complete or partial last name of a passholder to look up."
+            "description": "Complete or partial name of a grouppass to look up."
           },
           {
             "$ref": "#/components/parameters/start"
@@ -2170,7 +2170,7 @@
             },
             "in": "query",
             "name": "sort[name]",
-            "description": "Sorts the passholders by their last name in ascending or descending order. By default passholders are sorted by name, ascending order."
+            "description": "Sorts the grouppasses by its name in ascending or descending order. By default passholders are sorted by name, ascending order."
           }
         ]
       },
