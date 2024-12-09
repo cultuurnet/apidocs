@@ -2034,6 +2034,140 @@
         ]
       }
     },
+    "/grouppasses": {
+      "get": {
+        "summary": "Search grouppasses",
+        "tags": [
+          "Passholders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrouppassesPaginatedResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+                          "name": "Test groep",
+                          "uitpasNumber": "0900000045410",
+                          "email": "testgrouppass@example.com",
+                          "creationDate": "2019-08-24T14:15:22Z",
+                          "socialTariff": {
+                            "status": "ACTIVE",
+                            "endDate": "2024-12-31T01:00:00Z",
+                            "totalTicketsPerYear": 20,
+                            "availableTickets": 9
+                          },
+                          "cardSystem": {
+                            "id": 1,
+                            "name": "UiTPAS Dender",
+                            "branding": {
+                              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                              "primaryColor": "rgba(0,0,0,1.0)",
+                              "secondaryColor": "rgba(97,166,14,1.0)"
+                            },
+                            "links": {
+                              "website": "https://www.uitpas.be"
+                            },
+                            "cities": [
+                              {
+                                "postalCode": "9300",
+                                "name": "Aalst"
+                              },
+                              {
+                                "postalCode": "9400",
+                                "name": "Ninove"
+                              }
+                            ],
+                            "permanent": true
+                          },
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst",
+                            "country": "be"
+                          },
+                          "telephone": "012/456789"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-grouppasses",
+        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uitpasNumber",
+            "description": "Unique UiTPAS number of the grouppass to look up. Required unless `chipNumber` is used."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "chipNumber",
+            "description": "Hexadecimal notation of the chip number of a grouppass UiTPAS card. Required unless`uitpasNumber` is used."
+          },
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "in": "query",
+            "name": "sort[name]",
+            "description": "Sorts the grouppasses by ti name in ascending or descending order. By default passholders are sorted by name, ascending order."
+          }
+        ]
+      },
+      "parameters": []
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
@@ -7095,6 +7229,7 @@
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
+          "GROUPPASSES_SEARCH",
           "PASSHOLDERS_WRITE",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
@@ -7142,6 +7277,7 @@
               "PASSHOLDERS_SEARCH",
               "PASSHOLDERS_SEARCH_ALL",
               "PASSHOLDERS_SEARCH_BY_ID",
+              "GROUPPASSES_SEARCH",
               "PASSHOLDERS_WRITE",
               "PASSHOLDERS_UPDATE",
               "PASSHOLDERS_DELETE",
@@ -7237,6 +7373,30 @@
             "description": "List of passholder results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Passholder"
+            }
+          }
+        }
+      },
+      "GrouppassesPaginatedResponse": {
+        "title": "GrouppassesPaginatedResponse",
+        "x-stoplight": {
+          "id": "jd1p42sik46m7"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for grouppasses",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total amount of passholder results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of passholder results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Grouppass"
             }
           }
         }
@@ -7720,6 +7880,172 @@
           "firstName",
           "dateOfBirth",
           "registrationOrganizer",
+          "address"
+        ]
+      },
+      "Grouppass": {
+        "title": "Grouppass",
+        "x-stoplight": {
+          "id": "upy28l7gpkmzw"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Grouppass is a special kind of UiTPAS concept: it has an `uitpasNumber` like regular passholders, but it can only participate in ticket sale flows (either social tariff or using coupons). \n\nThe social tariff for grouppasses is a little bit different from regular passholders, because a grouppass is entitled to buy a certain amount of `totalTicketsPerYear`, of which the remaining amount is indicated by `availableTickets`.\n\nA grouppass cannot check-in at events, or redeem rewards.\n\nA `Grouppass` can be identified by its `id`. However, there are cases where the grouppass is identified using its UiTPAS number. Every grouppass has one (and only one) uitpas number.",
+        "x-examples": {
+          "Example": {
+            "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+            "name": "Test groep",
+            "uitpasNumber": "0900000045410",
+            "email": "testgrouppass@example.com",
+            "creationDate": "2019-08-24T14:15:22Z",
+            "socialTariff": {
+              "status": "ACTIVE",
+              "endDate": "2024-12-31T01:00:00Z",
+              "totalTicketsPerYear": 20,
+              "availableTickets": 9
+            },
+            "cardSystem": {
+              "id": 1,
+              "name": "UiTPAS Dender",
+              "branding": {
+                "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                "primaryColor": "rgba(0,0,0,1.0)",
+                "secondaryColor": "rgba(97,166,14,1.0)"
+              },
+              "links": {
+                "website": "https://www.uitpas.be"
+              },
+              "cities": [
+                {
+                  "postalCode": "9300",
+                  "name": "Aalst"
+                },
+                {
+                  "postalCode": "9400",
+                  "name": "Ninove"
+                }
+              ],
+              "permanent": true
+            },
+            "address": {
+              "postalCode": "9300",
+              "city": "Aalst",
+              "country": "be"
+            },
+            "telephone": "012/456789"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "This field is always available in responses.",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the grouppass."
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "The UiTPAS number of this grouppass. This field is always available in responses."
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact email address of the grouppass."
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "This field is always available in responses.",
+            "readOnly": true
+          },
+          "socialTariff": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "59mykno6i5b0b"
+            },
+            "description": "Social tariff of the grouppass (if applicable)",
+            "properties": {
+              "status": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "f035pqngnrdtf"
+                },
+                "enum": [
+                  "ACTIVE",
+                  "EXPIRED"
+                ],
+                "description": "Status of the social tariff:\n- `ACTIVE`: the grouppass is entitled to social tariff\n- `EXPIRED`: the grouppass is NOT entitled to social tariff anymore\n"
+              },
+              "endDate": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "mtikoui6mpcn5"
+                },
+                "description": "Exact moment the grouppass's right to a social tariff expires.",
+                "format": "date-time"
+              },
+              "totalTicketsPerYear": {
+                "type": "integer",
+                "x-stoplight": {
+                  "id": "93mtfqrw53djc"
+                },
+                "description": "Total number of tickets this grouppass can buy per year."
+              },
+              "availableTickets": {
+                "type": "integer",
+                "x-stoplight": {
+                  "id": "qytz7wdi7sqg4"
+                },
+                "description": "Number of available ticketsales"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
+          },
+          "address": {
+            "type": "object",
+            "description": "Address of the grouppass. Always present in responses.",
+            "required": [
+              "postalCode",
+              "city"
+            ],
+            "properties": {
+              "street": {
+                "type": "string",
+                "description": "Full street name, number and box of the grouppass"
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "Postal code of the municipality."
+              },
+              "city": {
+                "type": "string",
+                "description": "Human-readable name of the municipality."
+              },
+              "country": {
+                "type": "string",
+                "description": "ISO 3166-1 alpha-2 country code."
+              }
+            }
+          },
+          "telephone": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "46g76ybvflcsd"
+            },
+            "description": "Telephone contact number of this grouppass"
+          }
+        },
+        "required": [
+          "name",
+          "cardSystem",
           "address"
         ]
       },
