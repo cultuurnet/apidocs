@@ -7984,7 +7984,8 @@
                 "x-stoplight": {
                   "id": "mtikoui6mpcn5"
                 },
-                "description": "Exact moment the grouppass's right to a social tariff expires."
+                "description": "Exact moment the grouppass's right to a social tariff expires.",
+                "format": "date-time"
               },
               "totalTicketsPerYear": {
                 "type": "integer",
