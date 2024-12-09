@@ -2103,7 +2103,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
