@@ -40,6 +40,9 @@
       "name": "Financial reports"
     },
     {
+      "name": "Grouppasses"
+    },
+    {
       "name": "Orders"
     },
     {
@@ -2037,9 +2040,6 @@
     "/grouppasses": {
       "get": {
         "summary": "Search grouppasses",
-        "tags": [
-          "Passholders"
-        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2164,6 +2164,9 @@
             "name": "sort[name]",
             "description": "Sorts the grouppasses by ti name in ascending or descending order. By default passholders are sorted by name, ascending order."
           }
+        ],
+        "tags": [
+          "Grouppasses"
         ]
       },
       "parameters": []
