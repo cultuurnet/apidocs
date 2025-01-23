@@ -1581,6 +1581,86 @@
         ]
       }
     },
+    "/events/{eventId}/qr-checkincodes/download-link": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "eventId",
+          "in": "path",
+          "required": true,
+          "description": "The id of the event"
+        }
+      ],
+      "get": {
+        "summary": "Get event QR checkin code as download link",
+        "operationId": "get-events-qr-checkincdes-downloadlink",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "downloadLink": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "g8c5z7be3lp76"
+                      },
+                      "description": "Download link for the QR checkin code"
+                    }
+                  },
+                  "required": [
+                    "downloadLink"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "downloadLink": "https://api-test.uitpas.be/some/path/to/qr.zip?ts=202310231357&hash=1b5413636b41e9f774d416358060e613398b3ab017da13f3815c771a988b2d84"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a temporary download link to the QR checkin code of the given event.\n\nThis endpoint allows you to obtain a short-lived, hassle-free download link for your QR checkin code. After generation, this link remains active for a limited time, enabling direct QR downloads without the need for additional authentication. This is in particular convenient for applications that need to offer this link to users to start the download.\n \nThe caller of this request must have `EVENTS_QR_CHECKINCODE` permission for the organizer of this event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      }
+    },
     "/organizers": {
       "get": {
         "summary": "Get organizers",
