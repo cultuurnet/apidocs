@@ -117,7 +117,7 @@ The `PATCH` method is used to do partial updates of existing resources on an API
 
 This contrasts with `PUT` which does updates using a complete representation of the resource, and must always be idempotent.
 
-The `PATCH` method should be avoided on APIs built by/for publiq, until we have agreed on a standardized approach like using [JSON PATCH](http://jsonpatch.com/) or [Merge PATCH](https://datatracker.ietf.org/doc/rfc7396/).
+The `PATCH` method should be avoided on APIs built by/for publiq, until we have agreed on a standardized approach like [Merge PATCH](https://datatracker.ietf.org/doc/rfc7396/).
 
 **DELETE**
 
