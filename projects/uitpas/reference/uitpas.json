@@ -1595,7 +1595,7 @@
       ],
       "get": {
         "summary": "Get event QR checkin code as download link",
-        "operationId": "get-events-qr-checkincdes-downloadlink",
+        "operationId": "get-events-qr-checkincodes-downloadlink",
         "responses": {
           "200": {
             "description": "OK",
@@ -7293,6 +7293,7 @@
           "TICKETSALES_REGISTER",
           "EVENTS_UPDATE",
           "EVENTS_READ",
+          "EVENTS_QR_CHECKINCODE",
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
@@ -7341,6 +7342,7 @@
               "TICKETSALES_REGISTER",
               "EVENTS_UPDATE",
               "EVENTS_READ",
+              "EVENTS_QR_CHECKINCODE",
               "CHECKINS_WRITE",
               "ORGANIZERS_SEARCH",
               "ORGANIZERS_REPORTS",
