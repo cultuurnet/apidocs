@@ -7324,7 +7324,8 @@
           "PERMISSIONS_READ",
           "PERMISSIONS_WRITE",
           "CARDS_READ"
-        ]
+        ],
+        "description": "ID of the permission"
       },
       "PermissionDetail": {
         "type": "object",
@@ -7335,47 +7336,7 @@
         "description": "Permission details",
         "properties": {
           "id": {
-            "type": "string",
-            "enum": [
-              "TARIFFS_READ",
-              "TICKETSALES_SEARCH",
-              "TICKETSALES_REGISTER",
-              "EVENTS_UPDATE",
-              "EVENTS_READ",
-              "EVENTS_QR_CHECKINCODE",
-              "CHECKINS_WRITE",
-              "ORGANIZERS_SEARCH",
-              "ORGANIZERS_REPORTS",
-              "PASSHOLDERS_PICTURE_READ",
-              "PASSHOLDERS_SEARCH",
-              "PASSHOLDERS_SEARCH_ALL",
-              "PASSHOLDERS_SEARCH_BY_ID",
-              "GROUPPASSES_SEARCH",
-              "PASSHOLDERS_WRITE",
-              "PASSHOLDERS_UPDATE",
-              "PASSHOLDERS_DELETE",
-              "MEMBERSHIP_PRICES_READ",
-              "PASSES_READ",
-              "PASSES_INSZNUMBERS_READ",
-              "PASSES_CHIPNUMBERS_READ",
-              "REWARDS_WRITE",
-              "REWARDS_READ",
-              "REWARDS_REDEEM",
-              "REWARDS_PASSHOLDERS_READ",
-              "PASSHOLDERS_SELF_REGISTRATION",
-              "PASSHOLDERS_SELF_CHECKIN",
-              "PASSHOLDERS_SELF_READ",
-              "PASSHOLDERS_REGISTER_UITID",
-              "PASSHOLDERS_TRANSACTION_HISTORY",
-              "PASSHOLDERS_FAMILY_MEMBERS",
-              "PERMISSIONS_READ",
-              "PERMISSIONS_WRITE",
-              "CARDS_READ"
-            ],
-            "x-stoplight": {
-              "id": "tm10mhvqf21i7"
-            },
-            "description": "ID of the permission"
+            "$ref": "#/components/schemas/Permission"
           },
           "label": {
             "type": "object",
