@@ -1602,19 +1602,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "downloadLink": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "g8c5z7be3lp76"
-                      },
-                      "description": "Download link for the QR checkin code"
-                    }
-                  },
-                  "required": [
-                    "downloadLink"
-                  ]
+                  "$ref": "#/components/schemas/DownloadLinkResponse"
                 },
                 "examples": {
                   "Example": {
@@ -9344,6 +9332,25 @@
         },
         "required": [
           "pictureUrl"
+        ]
+      },
+      "DownloadLinkResponse": {
+        "title": "DownloadLinkResponse",
+        "x-stoplight": {
+          "id": "a922luo99cksx"
+        },
+        "type": "object",
+        "properties": {
+          "downloadLink": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "3opxrhpcw3s6u"
+            },
+            "description": "Download link for the requested file"
+          }
+        },
+        "required": [
+          "downloadLink"
         ]
       }
     },
