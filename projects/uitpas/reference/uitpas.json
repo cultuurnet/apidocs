@@ -2125,6 +2125,7 @@
                           "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
                           "name": "Test groep",
                           "uitpasNumber": "0900000045410",
+                          "cardStatus": "ACTIVE",
                           "email": "testgrouppass@example.com",
                           "creationDate": "2019-08-24T14:15:22Z",
                           "socialTariff": {
@@ -2188,7 +2189,7 @@
           }
         },
         "operationId": "get-grouppasses",
-        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
+        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:** This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -7985,6 +7986,20 @@
             "type": "string",
             "description": "The UiTPAS number of this grouppass. This field is always available in responses."
           },
+          "cardStatus": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "nnzfui82in9z5"
+            },
+            "description": "Status of the card linked to this grouppass.",
+            "enum": [
+              "PROVISIONED",
+              "LOCAL_STOCK",
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          },
           "email": {
             "type": "string",
             "description": "Contact email address of the grouppass."
@@ -8079,6 +8094,7 @@
         },
         "required": [
           "name",
+          "cardStatus",
           "cardSystem",
           "address"
         ]
