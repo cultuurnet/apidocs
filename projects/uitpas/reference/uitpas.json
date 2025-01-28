@@ -1656,6 +1656,21 @@
         ],
         "tags": [
           "Events"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "pdf",
+                "zip"
+              ],
+              "default": "pdf"
+            },
+            "in": "query",
+            "name": "format",
+            "description": "format of the result file."
+          }
         ]
       }
     },
