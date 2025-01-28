@@ -775,6 +775,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -1668,7 +1678,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/group-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/group-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1822,7 +1832,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2171,7 +2181,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3330,7 +3340,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -5089,7 +5099,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -6178,7 +6188,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -6286,7 +6296,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/postal-code-required\nhttps://api.publiq.be/probs/uitpas/invalid-postal-code",
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/postal-code-required\nhttps://api.publiq.be/probs/uitpas/invalid-postal-code\n* https://api.publiq.be/probs/url/query-limit-exceeded",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -6328,14 +6338,7 @@
             "$ref": "#/components/parameters/start"
           },
           {
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "default": 100,
-              "minimum": 0
-            },
-            "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination.",
-            "name": "limit"
+            "$ref": "#/components/parameters/limit"
           },
           {
             "schema": {
@@ -9412,7 +9415,7 @@
         },
         "in": "query",
         "name": "limit",
-        "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination."
+        "description": "Maximum amount of results to return. Can be used in combination with `start` for pagination. **Important**: the maximum value for `limit` is `500`. Exceeding this value will result in an error."
       }
     },
     "responses": {
