@@ -7091,7 +7091,21 @@
                 "schema": {
                   "$ref": "#/components/schemas/Kiosk"
                 },
-                "examples": {}
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "db385941-ece7-493d-8c4b-4320c4849646",
+                      "name": "CID-PPT-001",
+                      "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
+                      "organizers": [
+                        {
+                          "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
+                          "name": "CC De Schakel"
+                        }
+                      ]
+                    }
+                  }
+                }
               }
             }
           },
@@ -7138,6 +7152,21 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Kiosk"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "db385941-ece7-493d-8c4b-4320c4849646",
+                      "name": "CID-PPT-001",
+                      "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
+                      "organizers": [
+                        {
+                          "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
+                          "name": "CC De Schakel"
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -7201,7 +7230,18 @@
               "schema": {
                 "$ref": "#/components/schemas/Kiosk"
               },
-              "examples": {}
+              "examples": {
+                "Example": {
+                  "value": {
+                    "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
+                    "organizers": [
+                      {
+                        "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35"
+                      }
+                    ]
+                  }
+                }
+              }
             }
           },
           "description": "Kiosk model"
@@ -7233,6 +7273,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/KioskEvent"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "checkinStatus": {
+                        "allowed": false,
+                        "endUserMessage": {
+                          "nl": "Deze activiteit is afgelopen, je kan op deze activiteit geen punt meer sparen."
+                        }
+                      },
+                      "checkinPeriod": {
+                        "begin": "2019-08-24T14:15:22Z",
+                        "end": "2019-08-24T15:15:22Z"
+                      },
+                      "checkinPoints": 1,
+                      "event": {
+                        "id": "c7cf303a-8d92-4427-84e3-0cb508f7e4b6",
+                        "title": "Jeugdcentrum De Kouter",
+                        "organizer": {
+                          "id": "618a27be-8a42-4a9f-a866-57bdfbd404dd",
+                          "name": "Jeugddienst Haaltert"
+                        }
+                      },
+                      "autodetetected": true
+                    }
+                  }
                 }
               }
             }
@@ -7309,6 +7375,13 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/KioskEventRequest"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "id": "c7cf303a-8d92-4427-84e3-0cb508f7e4b6"
+                  }
+                }
               }
             }
           },
@@ -7338,6 +7411,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/KioskCheckinResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "newPoints": 1,
+                      "totalPoints": 23
+                    }
+                  }
                 }
               }
             }
@@ -9763,7 +9844,7 @@
         "x-examples": {
           "Example": {
             "id": "db385941-ece7-493d-8c4b-4320c4849646",
-            "name": "CID-PPT-1",
+            "name": "CID-PPT-001",
             "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
             "organizers": [
               {
@@ -9776,7 +9857,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "ID of the CID",
+            "description": "ID of the kiosk. This field is always available in responses.",
             "readOnly": true
           },
           "name": {
@@ -9784,10 +9865,15 @@
             "x-stoplight": {
               "id": "g2vr54zw4cq7o"
             },
-            "description": "Name of the CID"
+            "description": "Name of the kiosk. This field is always available in responses.",
+            "readOnly": true
           },
           "organizers": {
-            "$ref": "#/components/schemas/Organizer"
+            "type": "array",
+            "description": "Organizers linked to this kiosk",
+            "items": {
+              "$ref": "#/components/schemas/Organizer"
+            }
           },
           "deviceId": {
             "type": "string",
@@ -9796,11 +9882,7 @@
             },
             "description": "Device ID linked to this kiosk."
           }
-        },
-        "required": [
-          "id",
-          "name"
-        ]
+        }
       },
       "KioskEventRequest": {
         "title": "KioskEventRequest",
@@ -9849,10 +9931,7 @@
           },
           "totalPoints": {
             "type": "integer",
-            "description": "Total points of the passholder after this checkin",
-            "x-stoplight": {
-              "id": "9xh8ib4eacnsd"
-            }
+            "description": "Total points of the passholder after this checkin"
           }
         },
         "required": [
