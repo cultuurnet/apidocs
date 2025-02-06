@@ -2190,8 +2190,7 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
-        ],
-        "parameters": []
+        ]
       },
       "delete": {
         "summary": "labels - delete",
@@ -8363,7 +8362,6 @@
         ],
         "x-internal": true
       },
-      "parameters": [],
       "get": {
         "summary": "ownership - get",
         "operationId": "get-ownerships",
@@ -9384,7 +9382,6 @@
           },
           "description": "Send the email to subscribe."
         },
-        "parameters": [],
         "description": "This endpoint allows users to subscribe an email address to a specified mailing list.",
         "x-internal": true,
         "security": [
