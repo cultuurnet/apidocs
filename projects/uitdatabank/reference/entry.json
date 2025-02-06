@@ -2770,6 +2770,7 @@
                   "properties": {
                     "permissions": {
                       "type": "array",
+                      "description": "The permissions granted to the user for the event.",
                       "items": {
                         "$ref": "../models/permission.json"
                       }
@@ -6089,6 +6090,7 @@
                   "properties": {
                     "permissions": {
                       "type": "array",
+                      "description": "The permissions granted to the user for the place.",
                       "items": {
                         "$ref": "../models/permission.json"
                       }
