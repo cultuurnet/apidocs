@@ -2770,14 +2770,8 @@
                   "properties": {
                     "permissions": {
                       "type": "array",
-                      "x-stoplight": {
-                        "id": "x9e4wtkng91vp"
-                      },
                       "items": {
-                        "$ref": "../models/permission.json",
-                        "x-stoplight": {
-                          "id": "50zovf4huuals"
-                        }
+                        "$ref": "../models/permission.json"
                       }
                     }
                   },
@@ -3949,9 +3943,6 @@
                     },
                     "duplicatePlaceUri": {
                       "type": "string",
-                      "x-stoplight": {
-                        "id": "625qzdfcsviv2"
-                      },
                       "description": "When a single duplicated place is found, this is the URI of the original place"
                     }
                   },
