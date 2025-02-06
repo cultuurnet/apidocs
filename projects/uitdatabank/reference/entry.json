@@ -8259,6 +8259,63 @@
         "deprecated": true
       }
     },
+    "/organizers/{organizerId}/permissions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "get": {
+        "summary": "organizers - permissions",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "permissions": {
+                      "type": "array",
+                      "description": "The permissions granted to the user for the organizer.",
+                      "items": {
+                        "$ref": "../models/permission.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "permissions"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-organizers-organizerId-permissions",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Get user permissions relating to an organizer."
+      }
+    },
     "/organizers/{organizerId}/url": {
       "parameters": [
         {
