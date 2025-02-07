@@ -2756,7 +2756,7 @@
         }
       ],
       "get": {
-        "summary": "events - permissions",
+        "summary": "permissions - get",
         "tags": [
           "Events"
         ],
@@ -6076,7 +6076,7 @@
         }
       ],
       "get": {
-        "summary": "places - permissions",
+        "summary": "permissions - get",
         "tags": [
           "Places"
         ],
@@ -8266,7 +8266,7 @@
         }
       ],
       "get": {
-        "summary": "organizers - permissions",
+        "summary": "permissions - get",
         "tags": [
           "Events"
         ],
