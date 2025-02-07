@@ -1,0 +1,17 @@
+{
+  "type": "string",
+  "description": "A permission that can be granted to a user",
+  "enum": [
+    "Aanbod bewerken",
+    "Aanbod modereren",
+    "Aanbod verwijderen",
+    "Aanbod historiek",
+    "Organisaties beheren",
+    "Organisaties bewerken",
+    "Gebruikers beheren",
+    "Labels beheren",
+    "Voorzieningen bewerken",
+    "Producties aanmaken",
+    "Films aanmaken"
+  ]
+}
