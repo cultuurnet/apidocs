@@ -7077,9 +7077,9 @@
         ]
       }
     },
-    "/kiosks": {
+    "/kiosks/setup": {
       "get": {
-        "summary": "Find kiosk based on name or device ID",
+        "summary": "Find kiosk by name and PIN code",
         "tags": [
           "Kiosks"
         ],
@@ -7109,6 +7109,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -7117,13 +7127,10 @@
           }
         },
         "operationId": "get-cids-config",
-        "description": "Find kiosk based on its name or device ID.\n\nThe caller of this request must have `KIOSK` permission.",
+        "description": "Find a new (not previously setup) kiosk based on its name and PIN code. This allows setup of a new kiosk.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
         "security": [
           {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
+            "CUSTOM_TOKEN": []
           }
         ],
         "parameters": [
@@ -7132,14 +7139,59 @@
               "type": "string"
             },
             "in": "query",
-            "name": "q",
-            "description": "name or device id of the kiosk"
+            "name": "name",
+            "description": "name of the kiosk",
+            "required": true
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "put": {
+        "summary": "Setup new kiosk device",
+        "operationId": "put-kiosks-setup",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Configure new kiosk device.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KioskSetup"
+              }
+            }
+          },
+          "description": "Kiosk Setup"
+        },
+        "tags": [
+          "Kiosks"
+        ]
+      }
     },
-    "/kiosks/{id}": {
+    "/kiosks": {
       "get": {
         "summary": "Retrieve kiosk",
         "tags": [
@@ -7178,89 +7230,17 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "get-kiosks-id",
-        "description": "Retrieve kiosk by ID.\n\nThe caller of this request must have `KIOSK` permission.",
+        "operationId": "get-kiosks",
+        "description": "Retrieve current kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
         "security": [
           {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
+            "CUSTOM_TOKEN": []
           }
         ]
       },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "description": "ID of the kiosk"
-        }
-      ],
-      "put": {
-        "summary": "Update kiosk",
-        "operationId": "put-kiosks-id",
-        "responses": {
-          "204": {
-            "description": "Kiosk updated. No Content"
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Kiosk"
-              },
-              "examples": {
-                "Example": {
-                  "value": {
-                    "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
-                    "organizers": [
-                      {
-                        "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "description": "Kiosk model"
-        },
-        "tags": [
-          "Kiosks"
-        ],
-        "description": "Update kiosk.\n\nThe caller of this request must have `KIOSK` permission.",
-        "security": [
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
-          }
-        ]
-      }
+      "parameters": []
     },
-    "/kiosks/{id}/events": {
+    "/kiosks/events": {
       "get": {
         "summary": "Retrieve current event of kiosk",
         "tags": [
@@ -7277,26 +7257,12 @@
                 "examples": {
                   "Example": {
                     "value": {
-                      "checkinStatus": {
-                        "allowed": false,
-                        "endUserMessage": {
-                          "nl": "Deze activiteit is afgelopen, je kan op deze activiteit geen punt meer sparen."
-                        }
-                      },
-                      "checkinPeriod": {
-                        "begin": "2019-08-24T14:15:22Z",
-                        "end": "2019-08-24T15:15:22Z"
-                      },
                       "checkinPoints": 1,
                       "event": {
                         "id": "c7cf303a-8d92-4427-84e3-0cb508f7e4b6",
-                        "title": "Jeugdcentrum De Kouter",
-                        "organizer": {
-                          "id": "618a27be-8a42-4a9f-a866-57bdfbd404dd",
-                          "name": "Jeugddienst Haaltert"
-                        }
+                        "title": "Jeugdcentrum De Kouter"
                       },
-                      "autodetetected": true
+                      "checkinCode": "LGIWNWB"
                     }
                   }
                 }
@@ -7321,30 +7287,17 @@
           }
         },
         "operationId": "get-kiosks-event",
-        "description": "Retrieve the current event of the given kiosk.\n\nThe caller of this request must have `KIOSK` permission.",
+        "description": "Retrieve the current event of the kiosk. When returned, checkin on this event is allowed.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
         "security": [
           {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
+            "CUSTOM_TOKEN": []
           }
         ]
       },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "description": "ID of the kiosk"
-        }
-      ],
+      "parameters": [],
       "put": {
         "summary": "Configure event for kiosk",
-        "operationId": "put-kiosks-id-events",
+        "operationId": "put-kiosks-events",
         "responses": {
           "204": {
             "description": "Updated. No Content"
@@ -7366,7 +7319,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Update the current event of the given kiosk.\n\nThe caller of this request must have `KIOSK` permission.",
+        "description": "Update the current event of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
         "tags": [
           "Kiosks"
         ],
@@ -7386,24 +7339,19 @@
             }
           },
           "description": "Event"
-        }
+        },
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
+        ]
       }
     },
-    "/kiosks/{id}/checkins": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "description": "ID of the kiosk"
-        }
-      ],
+    "/kiosks/checkins": {
+      "parameters": [],
       "post": {
         "summary": "Checkin passholder via kiosk",
-        "operationId": "post-kiosks-id-checkin",
+        "operationId": "post-kiosks-checkin",
         "responses": {
           "200": {
             "description": "OK",
@@ -7443,13 +7391,10 @@
         "tags": [
           "Kiosks"
         ],
-        "description": "Checkin a passholder with the given NFC chipnumber at the given kiosk.\n\nThe caller of this request must have `KIOSK` permission.",
+        "description": "Checkin a passholder with the given NFC chipnumber at the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
         "security": [
           {
-            "CLIENT_ACCESS_TOKEN": []
-          },
-          {
-            "USER_ACCESS_TOKEN": []
+            "CUSTOM_TOKEN": []
           }
         ],
         "requestBody": {
@@ -9756,12 +9701,6 @@
         "type": "object",
         "description": "Event model used in Kiosk APIs",
         "properties": {
-          "checkinStatus": {
-            "$ref": "#/components/schemas/CheckinStatus"
-          },
-          "checkinPeriod": {
-            "$ref": "#/components/schemas/Period"
-          },
           "checkinPoints": {
             "type": "integer",
             "x-stoplight": {
@@ -9774,12 +9713,11 @@
             "x-stoplight": {
               "id": "345z9zuzxe547"
             },
+            "description": "Current event of the kiosk.",
             "required": [
               "id",
-              "title",
-              "organizer"
+              "title"
             ],
-            "description": "Current event of the kiosk.",
             "properties": {
               "id": {
                 "type": "string",
@@ -9794,44 +9732,21 @@
                   "id": "dxavbqgc8aysl"
                 },
                 "description": "Title of the event"
-              },
-              "organizer": {
-                "$ref": "#/components/schemas/Organizer"
-              },
-              "location": {
-                "type": "object",
-                "x-stoplight": {
-                  "id": "j7mywsqbsrryl"
-                },
-                "description": "TODO: is this needed?",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "bu30xm92abgmn"
-                    },
-                    "description": "ID of the location"
-                  }
-                },
-                "required": [
-                  "id"
-                ]
               }
             }
           },
-          "autodetetected": {
-            "type": "boolean",
+          "checkinCode": {
+            "type": "string",
             "x-stoplight": {
-              "id": "wal0jrflxedko"
+              "id": "orc9gdhisu1ya"
             },
-            "description": "TODO is this needed?"
+            "description": "Checkin code for the event"
           }
         },
         "required": [
-          "checkinStatus",
           "checkinPoints",
           "event",
-          "autodetetected"
+          "checkinCode"
         ]
       },
       "Kiosk": {
@@ -9875,12 +9790,25 @@
               "$ref": "#/components/schemas/Organizer"
             }
           },
+          "locations": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "m988ozti2dcka"
+            },
+            "description": "Locations linked to this kiosk",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            }
+          },
           "deviceId": {
             "type": "string",
             "x-stoplight": {
               "id": "7q3dpudb6iaay"
             },
             "description": "Device ID linked to this kiosk."
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
           }
         }
       },
@@ -9937,6 +9865,58 @@
         "required": [
           "newPoints",
           "totalPoints"
+        ]
+      },
+      "KioskSetup": {
+        "title": "KioskSetup",
+        "x-stoplight": {
+          "id": "ylj4q1p2eeisl"
+        },
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xs87oo7o9eqfy"
+            },
+            "description": "Name of the KIOSK"
+          },
+          "deviceId": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "phadvfcafaeuc"
+            },
+            "description": "Device ID of the kiosk"
+          }
+        },
+        "required": [
+          "name",
+          "deviceId"
+        ]
+      },
+      "Location": {
+        "title": "Location",
+        "x-stoplight": {
+          "id": "jsek0i5fkc5ai"
+        },
+        "type": "object",
+        "description": "Location model",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the location"
+          },
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "xqbdyntqozql8"
+            },
+            "description": "Name of the location"
+          }
+        },
+        "required": [
+          "id",
+          "name"
         ]
       }
     },
