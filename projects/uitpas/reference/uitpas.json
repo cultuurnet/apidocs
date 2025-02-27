@@ -7078,73 +7078,6 @@
       }
     },
     "/kiosks/setup": {
-      "get": {
-        "summary": "Find kiosk by name and PIN code",
-        "tags": [
-          "Kiosks"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Kiosk"
-                },
-                "examples": {
-                  "Example": {
-                    "value": {
-                      "id": "db385941-ece7-493d-8c4b-4320c4849646",
-                      "name": "CID-PPT-001",
-                      "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
-                      "organizers": [
-                        {
-                          "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
-                          "name": "CC De Schakel"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          }
-        },
-        "operationId": "get-cids-config",
-        "description": "Find a new (not previously setup) kiosk based on its name and PIN code. This allows setup of a new kiosk.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
-        "security": [
-          {
-            "CUSTOM_TOKEN": []
-          }
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "name",
-            "description": "name of the kiosk",
-            "required": true
-          }
-        ]
-      },
       "parameters": [],
       "put": {
         "summary": "Setup new kiosk device",
@@ -7170,7 +7103,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Configure new kiosk device.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
+        "description": "Configure new kiosk device by looking it up by name and storing the provided device id. After this endpoint has been invoked, the other kiosk APIs can be used with the newly configured device id as `x-custom-token`.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7242,7 +7175,7 @@
     },
     "/kiosks/events": {
       "get": {
-        "summary": "Retrieve current event of kiosk",
+        "summary": "Retrieve configured event",
         "tags": [
           "Kiosks"
         ],
@@ -7287,7 +7220,7 @@
           }
         },
         "operationId": "get-kiosks-event",
-        "description": "Retrieve the current event of the kiosk. When returned, checkin on this event is allowed.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Retrieve the configured event of the kiosk.\n\nThis is a configuration endpoint, if you need to retrieve the **current** event, please use `GET /kiosks/checkins`\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7296,7 +7229,7 @@
       },
       "parameters": [],
       "put": {
-        "summary": "Configure event for kiosk",
+        "summary": "Configure event",
         "operationId": "put-kiosks-events",
         "responses": {
           "204": {
@@ -7344,6 +7277,25 @@
           {
             "CUSTOM_TOKEN": []
           }
+        ]
+      },
+      "delete": {
+        "summary": "Delete configured event",
+        "operationId": "delete-kiosks-events",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Delete configured event\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "tags": [
+          "Kiosks"
         ]
       }
     },
@@ -7414,6 +7366,42 @@
           },
           "description": "Kiosk checkin request"
         }
+      },
+      "get": {
+        "summary": "Retrieve the current checkin event",
+        "operationId": "get-kiosks-checkins",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KioskEvent"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve the current event of the kiosk. When returned, checkin on this kiosk and event is allowed.\n\nThe following logic is being used to determine the current checkin event:\n* is the event configured and is checkin currently allowed for that event? then use this event.\n* otherwise, the most suitable event is autodetected based on the organizers and locations of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "tags": [
+          "Kiosks"
+        ]
       }
     }
   },
