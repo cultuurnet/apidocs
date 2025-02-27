@@ -7124,7 +7124,8 @@
                           }
                         ],
                         "permanent": true
-                      }
+                      },
+                      "releaseTrack": "stable"
                     }
                   }
                 }
@@ -7148,7 +7149,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Configure new kiosk device by looking it up by name and storing the provided device id. After this endpoint has been invoked, the other kiosk APIs can be used with the newly configured device id as `x-custom-token`.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe PIN code of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
+        "description": "Configure new kiosk device by looking it up by name and storing the provided device id. After this endpoint has been invoked, the other kiosk APIs can be used with the newly configured device id as `x-custom-token`.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe **configiration code** of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7225,7 +7226,8 @@
                           }
                         ],
                         "permanent": true
-                      }
+                      },
+                      "releaseTrack": "stable"
                     }
                   }
                 }
@@ -9830,7 +9832,31 @@
                 "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
                 "name": "CC De Schakel"
               }
-            ]
+            ],
+            "cardSystem": {
+              "id": 1,
+              "name": "UiTPAS Dender",
+              "branding": {
+                "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                "primaryColor": "rgba(0,0,0,1.0)",
+                "secondaryColor": "rgba(97,166,14,1.0)"
+              },
+              "links": {
+                "website": "https://www.uitpas.be"
+              },
+              "cities": [
+                {
+                  "postalCode": "9300",
+                  "name": "Aalst"
+                },
+                {
+                  "postalCode": "9400",
+                  "name": "Ninove"
+                }
+              ],
+              "permanent": true
+            },
+            "releaseTrack": "stable"
           }
         },
         "properties": {
@@ -9873,13 +9899,25 @@
           },
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
+          },
+          "releaseTrack": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "af2qu41h1ry0m"
+            },
+            "description": "Release track of this kiosk",
+            "enum": [
+              "beta",
+              "stable"
+            ]
           }
         },
         "required": [
           "id",
           "name",
           "deviceId",
-          "cardSystem"
+          "cardSystem",
+          "releaseTrack"
         ]
       },
       "KioskEventRequest": {
