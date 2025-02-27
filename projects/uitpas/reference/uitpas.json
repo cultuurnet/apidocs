@@ -7084,7 +7084,52 @@
         "operationId": "put-kiosks-setup",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kiosk"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "db385941-ece7-493d-8c4b-4320c4849646",
+                      "name": "CID-PPT-001",
+                      "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
+                      "organizers": [
+                        {
+                          "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
+                          "name": "CC De Schakel"
+                        }
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured",
@@ -7114,6 +7159,14 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/KioskSetup"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "name": "CID-PPT-001",
+                    "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75"
+                  }
+                }
               }
             }
           },
@@ -7149,7 +7202,30 @@
                           "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
                           "name": "CC De Schakel"
                         }
-                      ]
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
                     }
                   }
                 }
@@ -9798,7 +9874,13 @@
           "cardSystem": {
             "$ref": "#/components/schemas/CardSystem"
           }
-        }
+        },
+        "required": [
+          "id",
+          "name",
+          "deviceId",
+          "cardSystem"
+        ]
       },
       "KioskEventRequest": {
         "title": "KioskEventRequest",
@@ -9812,7 +9894,10 @@
             "type": "string",
             "description": "ID of the event"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "KioskCheckinRequest": {
         "title": "KioskCheckinRequest",
