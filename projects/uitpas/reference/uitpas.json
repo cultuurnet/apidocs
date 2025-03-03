@@ -43,7 +43,7 @@
       "name": "Grouppasses"
     },
     {
-      "name": "Kiosks"
+      "name": "Kiosk devices"
     },
     {
       "name": "Orders"
@@ -7077,7 +7077,7 @@
         ]
       }
     },
-    "/kiosks/setup": {
+    "/kiosk-devices/setup": {
       "parameters": [],
       "put": {
         "summary": "Setup new kiosk device",
@@ -7149,7 +7149,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Configure new kiosk device by looking it up by name and storing the provided device id. After this endpoint has been invoked, the other kiosk APIs can be used with the newly configured device id as `x-custom-token`.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe **configiration code** of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.",
+        "description": "Configure new kiosk device by looking it up by name and storing the provided device id. After this endpoint has been invoked, the other kiosk APIs can be used with the newly configured device id as `x-custom-token`.\n\nIn case no kiosk is found or the kiosk was already setup an error is returned:\n\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n\nThe **configuration code** of the device must be specicied in the `x-custom-token` header. This endpoint is rate limited to prevent abuse.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7174,15 +7174,15 @@
           "description": "Kiosk Setup"
         },
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ]
       }
     },
-    "/kiosks": {
+    "/kiosk-devices": {
       "get": {
         "summary": "Retrieve kiosk",
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ],
         "responses": {
           "200": {
@@ -7242,7 +7242,7 @@
           }
         },
         "operationId": "get-kiosks",
-        "description": "Retrieve current kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Retrieve current kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7251,11 +7251,11 @@
       },
       "parameters": []
     },
-    "/kiosks/events": {
+    "/kiosk-devices/events": {
       "get": {
         "summary": "Retrieve configured event",
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ],
         "responses": {
           "200": {
@@ -7298,7 +7298,7 @@
           }
         },
         "operationId": "get-kiosks-event",
-        "description": "Retrieve the configured event of the kiosk.\n\nThis is a configuration endpoint, if you need to retrieve the **current** event, please use `GET /kiosks/checkins`\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Retrieve the configured event of the kiosk.\n\nThis is a configuration endpoint, if you need to retrieve the **current** event, please use `GET /kiosk-devices/checkins`\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7330,9 +7330,9 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Update the current event of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Update the current event of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ],
         "requestBody": {
           "content": {
@@ -7371,13 +7371,13 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Delete configured event\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Delete configured event\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ]
       }
     },
-    "/kiosks/checkins": {
+    "/kiosk-devices/checkins": {
       "parameters": [],
       "post": {
         "summary": "Checkin passholder via kiosk",
@@ -7419,9 +7419,9 @@
           }
         },
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ],
-        "description": "Checkin a passholder with the given NFC chipnumber at the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Checkin a passholder with the given NFC chipnumber at the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "security": [
           {
             "CUSTOM_TOKEN": []
@@ -7476,9 +7476,9 @@
             }
           }
         },
-        "description": "Retrieve the current event of the kiosk. When returned, checkin on this kiosk and event is allowed.\n\nThe following logic is being used to determine the current checkin event:\n* is the event configured and is checkin currently allowed for that event? then use this event.\n* otherwise, the most suitable event is autodetected based on the organizers and locations of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.",
+        "description": "Retrieve the current event of the kiosk. When returned, checkin on this kiosk and event is allowed.\n\nThe following logic is being used to determine the current checkin event:\n* is the event configured and is checkin currently allowed for that event? then use this event.\n* otherwise, the most suitable event is autodetected based on the organizers and locations of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "tags": [
-          "Kiosks"
+          "Kiosk devices"
         ]
       }
     }
