@@ -7088,7 +7088,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kiosk"
+                  "$ref": "#/components/schemas/KioskDevice"
                 },
                 "examples": {
                   "Example": {
@@ -7133,7 +7133,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/kiosk-not-found\n* https://api.publiq.be/probs/uitpas/kiosk-already-configured\n* https://api.publiq.be/probs/uitpas/kiosk-device-already-in-use",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -7159,7 +7159,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/KioskSetup"
+                "$ref": "#/components/schemas/KioskDeviceSetup"
               },
               "examples": {
                 "Example": {
@@ -7190,7 +7190,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kiosk"
+                  "$ref": "#/components/schemas/KioskDevice"
                 },
                 "examples": {
                   "Example": {
@@ -7263,7 +7263,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/KioskEvent"
+                  "$ref": "#/components/schemas/KioskDeviceEvent"
                 },
                 "examples": {
                   "Example": {
@@ -7314,7 +7314,7 @@
             "description": "Updated. No Content"
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/event-not-acceptable",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -7338,7 +7338,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/KioskEventRequest"
+                "$ref": "#/components/schemas/KioskDeviceEventRequest"
               },
               "examples": {
                 "Example": {
@@ -7374,6 +7374,11 @@
         "description": "Delete configured event\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "tags": [
           "Kiosk devices"
+        ],
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
         ]
       }
     },
@@ -7388,7 +7393,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/KioskCheckinResponse"
+                  "$ref": "#/components/schemas/KioskDeviceCheckinResponse"
                 },
                 "examples": {
                   "Example": {
@@ -7402,7 +7407,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/maximum-reached",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/card-blocked\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/maximum-reached",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -7431,7 +7436,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/KioskCheckinRequest"
+                "$ref": "#/components/schemas/KioskDeviceCheckinRequest"
               },
               "examples": {
                 "Example": {
@@ -7454,7 +7459,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/KioskEvent"
+                  "$ref": "#/components/schemas/KioskDeviceEvent"
                 }
               }
             }
@@ -7479,6 +7484,11 @@
         "description": "Retrieve the current event of the kiosk. When returned, checkin on this kiosk and event is allowed.\n\nThe following logic is being used to determine the current checkin event:\n* is the event configured and is checkin currently allowed for that event? then use this event.\n* otherwise, the most suitable event is autodetected based on the organizers and locations of the kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "tags": [
           "Kiosk devices"
+        ],
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
         ]
       }
     }
@@ -9759,8 +9769,8 @@
           "downloadLink"
         ]
       },
-      "KioskEvent": {
-        "title": "KioskEvent",
+      "KioskDeviceEvent": {
+        "title": "KioskDeviceEvent",
         "x-stoplight": {
           "id": "y5atjfuzrvep1"
         },
@@ -9815,8 +9825,8 @@
           "checkinCode"
         ]
       },
-      "Kiosk": {
-        "title": "Kiosk",
+      "KioskDevice": {
+        "title": "KioskDevice",
         "x-stoplight": {
           "id": "hh3kfd7lxxds9"
         },
@@ -9920,8 +9930,8 @@
           "releaseTrack"
         ]
       },
-      "KioskEventRequest": {
-        "title": "KioskEventRequest",
+      "KioskDeviceEventRequest": {
+        "title": "KioskDeviceEventRequest",
         "x-stoplight": {
           "id": "2bfdjhsqwwxj1"
         },
@@ -9937,8 +9947,8 @@
           "id"
         ]
       },
-      "KioskCheckinRequest": {
-        "title": "KioskCheckinRequest",
+      "KioskDeviceCheckinRequest": {
+        "title": "KioskDeviceCheckinRequest",
         "x-stoplight": {
           "id": "p017ejlluigiv"
         },
@@ -9956,8 +9966,11 @@
           "chipNumber"
         ]
       },
-      "KioskCheckinResponse": {
-        "title": "KioskCheckinResponse",
+      "KioskDeviceCheckinResponse": {
+        "title": "KioskDeviceCheckinResponse",
+        "x-stoplight": {
+          "id": "a0b3354689f18"
+        },
         "type": "object",
         "description": "Checkin via kiosk response",
         "properties": {
@@ -9978,8 +9991,8 @@
           "totalPoints"
         ]
       },
-      "KioskSetup": {
-        "title": "KioskSetup",
+      "KioskDeviceSetup": {
+        "title": "KioskDeviceSetup",
         "x-stoplight": {
           "id": "ylj4q1p2eeisl"
         },
