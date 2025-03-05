@@ -72,4 +72,4 @@ GET /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
 
 ## Read more
 
-You can learn more about boosting in Lucene queries [in the Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/master/query-dsl-query-string-query.html#_boosting).
+You can learn more about boosting in Lucene queries [in the Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_boosting).
