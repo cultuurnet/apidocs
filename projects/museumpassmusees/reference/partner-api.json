@@ -60,7 +60,8 @@
         "required": [
           "id",
           "vouchers"
-        ]
+        ],
+        "x-internal": true
       },
       "Pass": {
         "title": "Pass",

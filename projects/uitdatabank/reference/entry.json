@@ -2190,8 +2190,7 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
-        ],
-        "parameters": []
+        ]
       },
       "delete": {
         "summary": "labels - delete",
@@ -2748,6 +2747,63 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      }
+    },
+    "/events/{eventId}/permissions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "get": {
+        "summary": "permissions - get",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "permissions": {
+                      "type": "array",
+                      "description": "The permissions granted to the user for the event.",
+                      "items": {
+                        "$ref": "../models/permission.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "permissions"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-events-eventId-permissions",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Get user permissions relating to an event."
       }
     },
     "/events/{eventId}/price-info": {
@@ -3888,9 +3944,6 @@
                     },
                     "duplicatePlaceUri": {
                       "type": "string",
-                      "x-stoplight": {
-                        "id": "625qzdfcsviv2"
-                      },
                       "description": "When a single duplicated place is found, this is the URI of the original place"
                     }
                   },
@@ -6014,6 +6067,63 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      }
+    },
+    "/places/{placeId}/permissions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/placeId"
+        }
+      ],
+      "get": {
+        "summary": "permissions - get",
+        "tags": [
+          "Places"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "permissions": {
+                      "type": "array",
+                      "description": "The permissions granted to the user for the place.",
+                      "items": {
+                        "$ref": "../models/permission.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "permissions"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-places-placeId-permissions",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Get user permissions relating to a place."
       }
     },
     "/places/{placeId}/price-info": {
@@ -8149,6 +8259,63 @@
         "deprecated": true
       }
     },
+    "/organizers/{organizerId}/permissions": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "get": {
+        "summary": "permissions - get",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "permissions": {
+                      "type": "array",
+                      "description": "The permissions granted to the user for the organizer.",
+                      "items": {
+                        "$ref": "../models/permission.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "permissions"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "get-organizers-organizerId-permissions",
+        "x-internal": true,
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Get user permissions relating to an organizer."
+      }
+    },
     "/organizers/{organizerId}/url": {
       "parameters": [
         {
@@ -8301,7 +8468,6 @@
         ],
         "x-internal": true
       },
-      "parameters": [],
       "get": {
         "summary": "ownership - get",
         "operationId": "get-ownerships",
@@ -9322,7 +9488,6 @@
           },
           "description": "Send the email to subscribe."
         },
-        "parameters": [],
         "description": "This endpoint allows users to subscribe an email address to a specified mailing list.",
         "x-internal": true,
         "security": [
