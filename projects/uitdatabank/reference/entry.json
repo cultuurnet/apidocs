@@ -8268,7 +8268,7 @@
       "get": {
         "summary": "permissions - get",
         "tags": [
-          "Events"
+          "Organizers"
         ],
         "responses": {
           "200": {
