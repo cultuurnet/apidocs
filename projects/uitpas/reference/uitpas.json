@@ -1594,6 +1594,176 @@
         ]
       }
     },
+    "/events/{eventId}/settings": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "eventId",
+          "in": "path",
+          "required": true,
+          "description": "The id of the event"
+        }
+      ],
+      "put": {
+        "summary": "Update event settings",
+        "operationId": "put-events-settings",
+        "responses": {
+          "204": {
+            "description": "EventCardSytems updated. No content."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventSettings"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "checkinPoints": 1,
+                    "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
+                    "ticketSaleConstraint": {
+                      "volume": 1,
+                      "periodType": "ABSOLUTE"
+                    },
+                    "checkinConstraint": {
+                      "volume": 1,
+                      "periodType": "WEEK"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "description": "Complete settings object of the given event. "
+        },
+        "description": "Update the event settings of the given event.\n\nMake sure to perform a `GET events/{eventId}/settings` first, apply your changes and PUT the complete object using this request.\n\nThe caller of this request must have `EVENT_SETTINGS_UPDATE` permission for the organizer of this event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      },
+      "get": {
+        "summary": "Get event settings",
+        "operationId": "get-events-settings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventSettings"
+                },
+                "examples": {
+                  "Example with both constraints": {
+                    "value": {
+                      "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
+                      "checkinPoints": 1,
+                      "ticketSaleConstraint": {
+                        "volume": 1,
+                        "periodType": "ABSOLUTE"
+                      },
+                      "checkinConstraint": {
+                        "volume": 1,
+                        "periodType": "WEEK"
+                      }
+                    }
+                  },
+                  "Example without constraints": {
+                    "value": {
+                      "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
+                      "checkinPoints": 1
+                    }
+                  },
+                  "Example with checkin constraints": {
+                    "value": {
+                      "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
+                      "checkinPoints": 1,
+                      "checkinConstraint": {
+                        "volume": 1,
+                        "periodType": "MONTH"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get event settings of the given event.\n\nThe caller of this request must have `EVENT_SETTINGS_UPDATE` permission for the organizer of this event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      }
+    },
     "/events/{eventId}/qr-checkincodes/download-link": {
       "parameters": [
         {
@@ -10042,6 +10212,64 @@
           "id",
           "name"
         ]
+      },
+      "EventSettings": {
+        "title": "EventSettings",
+        "x-stoplight": {
+          "id": "vn36pgcxzw6l7"
+        },
+        "type": "object",
+        "description": "Event setting within UiTPAS",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the event"
+          },
+          "ticketSaleConstraint": {
+            "$ref": "#/components/schemas/PeriodConstraint"
+          },
+          "checkinConstraint": {
+            "$ref": "#/components/schemas/PeriodConstraint"
+          },
+          "checkinPoints": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "2w5lssksar2hk"
+            },
+            "description": "Points earned after a checkin for this event"
+          }
+        },
+        "required": [
+          "id",
+          "checkinPoints"
+        ]
+      },
+      "PeriodConstraint": {
+        "title": "PeriodConstraint",
+        "type": "object",
+        "properties": {
+          "volume": {
+            "type": "integer",
+            "description": "Volume of this constraint"
+          },
+          "periodType": {
+            "type": "string",
+            "enum": [
+              "ABSOLUTE",
+              "DAY",
+              "WEEK",
+              "MONTH",
+              "QUARTER",
+              "YEAR"
+            ],
+            "description": "Period type of the constraint"
+          }
+        },
+        "required": [
+          "volume",
+          "periodType"
+        ],
+        "description": "Period contraint settings"
       }
     },
     "securitySchemes": {
