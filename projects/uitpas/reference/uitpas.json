@@ -1746,7 +1746,7 @@
             }
           }
         },
-        "description": "Get event settings of the given event.\n\nThe caller of this request must have `EVENT_SETTINGS_UPDATE` permission for the organizer of this event.\n",
+        "description": "Get event settings of the given event.\n\nThe caller of this request must have `EVENT_SETTINGS_READ` permission for the organizer of this event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -7900,6 +7900,8 @@
           "TICKETSALES_REGISTER",
           "EVENTS_UPDATE",
           "EVENTS_READ",
+          "EVENT_SETTINGS_READ",
+          "EVENT_SETTINGS_UPDATE",
           "EVENTS_QR_CHECKINCODE",
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
