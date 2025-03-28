@@ -1651,11 +1651,11 @@
                   "value": {
                     "checkinPoints": 1,
                     "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
-                    "ticketSaleConstraint": {
+                    "passholderTicketLimit": {
                       "volume": 1,
                       "periodType": "ABSOLUTE"
                     },
-                    "checkinConstraint": {
+                    "checkinLimit": {
                       "volume": 1,
                       "periodType": "WEEK"
                     }
@@ -1699,11 +1699,11 @@
                     "value": {
                       "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
                       "checkinPoints": 1,
-                      "ticketSaleConstraint": {
+                      "passholderTicketLimit": {
                         "volume": 1,
                         "periodType": "ABSOLUTE"
                       },
-                      "checkinConstraint": {
+                      "checkinLimit": {
                         "volume": 1,
                         "periodType": "WEEK"
                       }
@@ -1719,7 +1719,7 @@
                     "value": {
                       "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
                       "checkinPoints": 1,
-                      "checkinConstraint": {
+                      "checkinLimit": {
                         "volume": 1,
                         "periodType": "MONTH"
                       }
@@ -10298,10 +10298,10 @@
             "type": "string",
             "description": "ID of the event"
           },
-          "ticketSaleConstraint": {
+          "passholderTicketConstraint": {
             "$ref": "#/components/schemas/PeriodConstraint"
           },
-          "checkinConstraint": {
+          "checkinLimit": {
             "$ref": "#/components/schemas/PeriodConstraint"
           },
           "checkinPoints": {
