@@ -7661,6 +7661,77 @@
           }
         ]
       }
+    },
+    "/kiosk-devices/chip-numbers/{chipNumber}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "chipNumber",
+          "in": "path",
+          "required": true,
+          "description": "Hexadecimal notation of the chip number of an individual UiTPAS card."
+        }
+      ],
+      "get": {
+        "summary": "Retrieve total points of a passholder by chip number",
+        "operationId": "get-kiosks-chip-numbers-chipNumber",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KioskPass"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "totalPoints": 20
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/card-blocked\n* https://api.publiq.be/probs/uitpas/social-tariff-expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve total points of a passholder by chip number.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
+        "tags": [
+          "Kiosk devices"
+        ],
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -10272,6 +10343,26 @@
           "periodType"
         ],
         "description": "Period contraint settings"
+      },
+      "KioskPass": {
+        "title": "KioskPass",
+        "x-stoplight": {
+          "id": "pia2mamgrb6kc"
+        },
+        "type": "object",
+        "description": "Pass information",
+        "properties": {
+          "totalPoints": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "g914t3kiofl8f"
+            },
+            "description": "Total points of the passholder"
+          }
+        },
+        "required": [
+          "totalPoints"
+        ]
       }
     },
     "securitySchemes": {
