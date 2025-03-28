@@ -1695,7 +1695,7 @@
                   "$ref": "#/components/schemas/EventSettings"
                 },
                 "examples": {
-                  "Example with both constraints": {
+                  "Example with both limits": {
                     "value": {
                       "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
                       "checkinPoints": 1,
@@ -1709,13 +1709,13 @@
                       }
                     }
                   },
-                  "Example without constraints": {
+                  "Example without limits": {
                     "value": {
                       "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
                       "checkinPoints": 1
                     }
                   },
-                  "Example with checkin constraints": {
+                  "Example with checkin limits": {
                     "value": {
                       "id": "188dbbde-5ab1-497a-9083-8e56b5a33a1b",
                       "checkinPoints": 1,
@@ -10299,10 +10299,10 @@
             "description": "ID of the event"
           },
           "passholderTicketLimit": {
-            "$ref": "#/components/schemas/PeriodConstraint"
+            "$ref": "#/components/schemas/PeriodLimit"
           },
           "checkinLimit": {
-            "$ref": "#/components/schemas/PeriodConstraint"
+            "$ref": "#/components/schemas/PeriodLimit"
           },
           "checkinPoints": {
             "type": "integer",
@@ -10317,13 +10317,14 @@
           "checkinPoints"
         ]
       },
-      "PeriodConstraint": {
-        "title": "PeriodConstraint",
+      "PeriodLimit": {
+        "title": "PeriodLimit",
         "type": "object",
+        "description": "Period limit settings",
         "properties": {
           "volume": {
             "type": "integer",
-            "description": "Volume of this constraint"
+            "description": "Volume of this limit"
           },
           "periodType": {
             "type": "string",
@@ -10335,14 +10336,13 @@
               "QUARTER",
               "YEAR"
             ],
-            "description": "Period type of the constraint"
+            "description": "Period type of the limit"
           }
         },
         "required": [
           "volume",
           "periodType"
-        ],
-        "description": "Period contraint settings"
+        ]
       },
       "KioskPass": {
         "title": "KioskPass",
