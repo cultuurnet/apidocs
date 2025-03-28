@@ -12,7 +12,7 @@
 
 When using client identification, APIs should support both the `x-client-id` header and `clientId` URL query parameter. If both are provided, preference should be given to the header.
 
-The client id should be validated by [fetching the client from the Auth0 management API](https://auth0.com/docs/api/management/v2#!/Clients/get_clients_by_id).
+The client id should be validated by fetching the client from the Keycloak management API.
 
 You should also validate that the client has a metadata property indicating that it has access to your API.
 
