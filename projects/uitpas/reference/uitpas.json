@@ -7851,7 +7851,7 @@
                     },
                     "description": "code from step 2 in the authentication process"
                   },
-                  "code_verifier": {
+                  "codeVerifier": {
                     "type": "string",
                     "x-stoplight": {
                       "id": "d1fhjhdubdtdf"
@@ -7861,14 +7861,14 @@
                 },
                 "required": [
                   "code",
-                  "code_verifier"
+                  "codeVerifier"
                 ]
               },
               "examples": {
                 "Example": {
                   "value": {
                     "code": "RBEpdV6myHxNb9WnHUrPxFv2yr3bJWmZRX4kgzH6grzfr46GrDd2RNsxkkj4PfYr",
-                    "code_verifier": "RtU3foq99AKbGzwbKPE8pfHei47pzvHhQd53iJ6DWBtCrK8a7pKCnBY8MiZX2TYc"
+                    "codeVerifier": "RtU3foq99AKbGzwbKPE8pfHei47pzvHhQd53iJ6DWBtCrK8a7pKCnBY8MiZX2TYc"
                   }
                 }
               }
