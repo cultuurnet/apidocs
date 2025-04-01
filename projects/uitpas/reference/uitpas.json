@@ -7884,19 +7884,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "socialTariffValidationToken": {
-                      "type": "string",
-                      "x-stoplight": {
-                        "id": "1qdsttuci728a"
-                      },
-                      "description": "Social Tariff Validation Token"
+                  "$ref": "#/components/schemas/SocialTariffValidationTokenResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "code": "wjf6pAzDbh5u5tjeomJ6RG6snJnKdRgLarQCB4xPZVxDfJwNZ7YFHrzj6SZZrpin.xmNUh4xE4r3k5oipwFNi9rvs7PrBFin6sqSVpVMoBgAuiH762sTdnGWtsTFHjyUf.mUkcBjW8nweyieZ7CnhkY2jsd6c2LrGopYV2Qg5pKFd6zYMLqERHRmbVNoacGw4t"
                     }
-                  },
-                  "required": [
-                    "socialTariffValidationToken"
-                  ]
+                  }
                 }
               }
             }
@@ -7922,27 +7917,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "code": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "r93ng2s1cpgx9"
-                    },
-                    "description": "code from step 2 in the authentication process"
-                  },
-                  "codeVerifier": {
-                    "type": "string",
-                    "x-stoplight": {
-                      "id": "d1fhjhdubdtdf"
-                    },
-                    "description": "code_verifier from step 1 in the authentication process"
-                  }
-                },
-                "required": [
-                  "code",
-                  "codeVerifier"
-                ]
+                "$ref": "#/components/schemas/SocialTariffValidationTokenRequest"
               },
               "examples": {
                 "Example": {
@@ -10806,6 +10781,51 @@
         "required": [
           "postalCode",
           "allowsCardlessRegistration"
+        ]
+      },
+      "SocialTariffValidationTokenRequest": {
+        "title": "SocialTariffValidationTokenRequest",
+        "x-stoplight": {
+          "id": "h9f7buv9bbqp3"
+        },
+        "type": "object",
+        "description": "SocialTariffValidationTokenRequest",
+        "properties": {
+          "code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "aj11gec4d2o3p"
+            },
+            "description": "code from step 2 in the authentication process"
+          },
+          "codeVerifier": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9ov8etk9jcnq4"
+            },
+            "description": "code_verifier from step 1 in the authentication process"
+          }
+        },
+        "required": [
+          "code",
+          "codeVerifier"
+        ]
+      },
+      "SocialTariffValidationTokenResponse": {
+        "title": "SocialTariffValidationTokenResponse",
+        "type": "object",
+        "description": "SocialTariffValidationTokenRequest",
+        "properties": {
+          "code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "aj11gec4d2o3p"
+            },
+            "description": "code from step 2 in the authentication process"
+          }
+        },
+        "required": [
+          "code"
         ]
       }
     },
