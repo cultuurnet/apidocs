@@ -6680,6 +6680,86 @@
         }
       ]
     },
+    "/card-systems/{cardSystemId}/social-tariff-settings": {
+      "get": {
+        "x-internal": false,
+        "summary": "Retrieve social tariff settings for card system",
+        "responses": {
+          "200": {
+            "description": "Social tariff settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSystemSocialTariffSettings"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "postalCode": "9000",
+                      "allowsCardlessRegistration": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cardsystems-cardsystemid-social-tariff-settings",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve social tariff settings specific for this card system and the given postal code.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "tags": [
+          "Card Systems"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postalCode",
+            "description": "Postal code of the passholder who is being registered. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
+            "required": true
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the requested card system"
+        }
+      ]
+    },
     "/card-systems/{cardSystemId}/membership-prices": {
       "get": {
         "summary": "Retrieve membership prices for a card system",
@@ -10698,6 +10778,34 @@
         },
         "required": [
           "user"
+        ]
+      },
+      "CardSystemSocialTariffSettings": {
+        "title": "CardSystemSocialTariffSettings",
+        "x-stoplight": {
+          "id": "gr3fmeyv787ao"
+        },
+        "type": "object",
+        "description": "CardSystemSocialTariffSettings",
+        "properties": {
+          "postalCode": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0xm0rbvq3kdcb"
+            },
+            "description": "Postal code"
+          },
+          "allowsCardlessRegistration": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "9q12nus6hxclk"
+            },
+            "description": "true if social tariff registration is allowed for passholder with `postalCode`."
+          }
+        },
+        "required": [
+          "postalCode",
+          "allowsCardlessRegistration"
         ]
       }
     },
