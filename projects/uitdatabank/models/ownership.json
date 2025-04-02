@@ -7,7 +7,7 @@
       "$ref": "./common-string-uuid.json"
     },
     "itemId": {
-      "type": "string",
+      "$ref": "./common-string-legacy-uuid.json",
       "description": "The id of the item where an ownership was requested."
     },
     "itemType": {
