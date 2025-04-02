@@ -1,6 +1,6 @@
 {
   "title": "itemType",
-  "description": "The possible itemTypes used in UiTdatabank.",
+  "description": "The possible resource types used in UiTdatabank.",
   "type": "string",
   "example": "event",
   "enum": [
