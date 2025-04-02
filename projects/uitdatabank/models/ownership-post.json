@@ -38,7 +38,8 @@
         "id": "cqfs7wwcj3wdd"
       },
       "type": "string",
-      "format": "email"
+      "format": "email",
+      "description": "The e-mail adress of the Owner."
     }
   },
   "required": [
