@@ -1,41 +1,5 @@
 {
-  "type": "object",
   "x-internal": true,
-  "properties": {
-    "itemId": {
-      "type": "string",
-      "description": "The id of the item",
-      "example": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
-      "pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12}"
-    },
-    "itemType": {
-      "$ref": "./ownership-itemType.json"
-    },
-    "ownerId": {
-      "$ref": "./common-string-uuid.json",
-      "description": "The id of the owner"
-    },
-    "ownerEmail": {
-      "$ref": "./common-string-email.json",
-      "description": "The email of the owner"
-    }
-  },
-  "oneOf": [
-    {
-      "required": [
-        "itemId",
-        "itemType",
-        "ownerId"
-      ]
-    },
-    {
-      "required": [
-        "itemId",
-        "itemType",
-        "ownerEmail"
-      ]
-    }
-  ],
   "examples": [
     {
       "itemId": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
@@ -47,5 +11,26 @@
       "itemType": "organizer",
       "ownerEmail": "foo@bar.com"
     }
-  ]
+  ],
+  "type": "object",
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "5zhh7adp7ig7k"
+      }
+    },
+    "itemType": {
+      "$ref": "./common-itemType.json",
+      "x-stoplight": {
+        "id": "l50hjk6vjz0rh"
+      }
+    },
+    "ownerId": {
+      "$ref": "./common-creator.json",
+      "x-stoplight": {
+        "id": "w95ecjs1uw7c2"
+      }
+    }
+  }
 }

@@ -10,7 +10,7 @@
       "$ref": "./common-string-uuid.json"
     },
     "itemType": {
-      "$ref": "./ownership-itemType.json"
+      "$ref": "./common-itemType.json"
     },
     "ownerId": {
       "$ref": "./common-creator.json"
