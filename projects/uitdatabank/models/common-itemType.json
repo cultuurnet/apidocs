@@ -1,0 +1,11 @@
+{
+  "title": "itemType",
+  "description": "The possible itemTypes used in UiTdatabank.",
+  "type": "string",
+  "example": "event",
+  "enum": [
+    "event",
+    "place",
+    "organizer"
+  ]
+}
