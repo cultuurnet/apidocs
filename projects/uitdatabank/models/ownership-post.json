@@ -46,9 +46,5 @@
       "itemType": "organizer",
       "ownerEmail": "foo@bar.com"
     }
-  ],
-  "required": [
-    "itemId",
-    "itemType"
   ]
 }
