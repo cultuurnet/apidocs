@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "x-internal": true,
   "properties": {
     "itemId": {
@@ -8,16 +9,10 @@
       "pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12}"
     },
     "itemType": {
-      "$ref": "./common-itemType.json",
-      "x-stoplight": {
-        "id": "l50hjk6vjz0rh"
-      }
+      "$ref": "./common-itemType.json"
     },
     "ownerId": {
-      "$ref": "./common-creator.json",
-      "x-stoplight": {
-        "id": "w95ecjs1uw7c2"
-      }
+      "$ref": "./common-creator.json"
     },
     "ownerEmail": {
       "x-stoplight": {
@@ -56,7 +51,6 @@
       "ownerEmail": "foo@bar.com"
     }
   ],
-  "type": "object",
   "required": [
     "itemId",
     "itemType"
