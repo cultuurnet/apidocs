@@ -32,11 +32,17 @@
       "x-stoplight": {
         "id": "w95ecjs1uw7c2"
       }
+    },
+    "ownerEmail": {
+      "x-stoplight": {
+        "id": "cqfs7wwcj3wdd"
+      },
+      "type": "string",
+      "format": "email"
     }
   },
   "required": [
     "itemId",
-    "itemType",
-    "ownerId"
+    "itemType"
   ]
 }
