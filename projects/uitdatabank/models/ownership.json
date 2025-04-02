@@ -14,14 +14,14 @@
       "$ref": "./common-itemType.json"
     },
     "ownerId": {
-      "$ref": "./common-creator.json"
+      "$ref": "./common-user-id.json"
     },
     "ownerEmail": {
       "$ref": "./common-string-email.json",
       "description": "Email address of the owner."
     },
     "requesterId": {
-      "$ref": "./common-creator.json"
+      "$ref": "./common-user-id.json"
     },
     "requesterEmail": {
       "$ref": "./common-string-email.json",
