@@ -33,5 +33,10 @@
         "id": "w95ecjs1uw7c2"
       }
     }
-  }
+  },
+  "required": [
+    "itemId",
+    "itemType",
+    "ownerId"
+  ]
 }
