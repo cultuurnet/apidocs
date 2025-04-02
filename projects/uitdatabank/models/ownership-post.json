@@ -18,7 +18,8 @@
       "type": "string",
       "x-stoplight": {
         "id": "5zhh7adp7ig7k"
-      }
+      },
+      "description": "The id of item of which you request ownership."
     },
     "itemType": {
       "$ref": "./common-itemType.json",
