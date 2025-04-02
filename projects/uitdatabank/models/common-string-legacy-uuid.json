@@ -1,0 +1,11 @@
+{
+  "title": "legacy.uuid",
+  "type": "string",
+  "format": "string",
+  "description": "The unique id of a resource. For historical reasons, the last hyphen is sometimes missing.",
+  "pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12}",
+  "examples": [
+    "11fe97ba-060f-4859-ad35-f202ea9d2e72",
+    "692CC7D8-AAA7-4CC7-B8C02840528CA2E1"
+  ]
+}
