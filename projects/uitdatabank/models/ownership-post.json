@@ -9,11 +9,10 @@
       "pattern": "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-?[0-9A-Fa-f]{12}"
     },
     "itemType": {
-      "$ref": "./ownership-itemType.json"
+      "$ref": "./common-itemType.json"
     },
     "ownerId": {
-      "$ref": "./common-string-uuid.json",
-      "description": "The id of the owner"
+      "$ref": "./common-creator.json"
     },
     "ownerEmail": {
       "$ref": "./common-string-email.json",
