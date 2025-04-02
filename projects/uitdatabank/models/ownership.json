@@ -7,7 +7,7 @@
       "$ref": "./common-string-uuid.json"
     },
     "itemId": {
-      "$ref": "./common-string-uuid.json"
+      "type": "string"
     },
     "itemType": {
       "$ref": "./common-itemType.json"
