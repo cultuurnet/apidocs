@@ -86,9 +86,6 @@
           },
           "groupPrice": {
             "type": "boolean",
-            "x-stoplight": {
-              "id": "kch2wsytpbrj1"
-            },
             "description": "Specifies whether the price is per participant or a total cost for all participants."
           }
         },
