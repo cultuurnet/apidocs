@@ -12,44 +12,6 @@
   },
   "minContains": 1,
   "maxContains": 1,
-  "examples": [
-    [
-      {
-        "category": "base",
-        "price": 10.5,
-        "priceCurrency": "EUR",
-        "groupPrice": true,
-        "name": {
-          "nl": "Basistarief",
-          "fr": "Tarif de base",
-          "en": "Base tariff",
-          "de": "Basisrate"
-        }
-      }
-    ],
-    [
-      {
-        "category": "base",
-        "price": 10.5,
-        "priceCurrency": "EUR",
-        "name": {
-          "nl": "Basistarief",
-          "fr": "Tarif de base",
-          "en": "Base tariff",
-          "de": "Basisrate"
-        }
-      },
-      {
-        "category": "tariff",
-        "price": 8,
-        "priceCurrency": "EUR",
-        "name": {
-          "nl": "Jongeren (<18j)",
-          "en": "Youth (<18yo)"
-        }
-      }
-    ]
-  ],
   "items": {
     "allOf": [
       {
@@ -108,5 +70,43 @@
         }
       }
     ]
-  }
+  },
+  "examples": [
+    [
+      {
+        "category": "base",
+        "price": 10.5,
+        "priceCurrency": "EUR",
+        "groupPrice": true,
+        "name": {
+          "nl": "Basistarief",
+          "fr": "Tarif de base",
+          "en": "Base tariff",
+          "de": "Basisrate"
+        }
+      }
+    ],
+    [
+      {
+        "category": "base",
+        "price": 10.5,
+        "priceCurrency": "EUR",
+        "name": {
+          "nl": "Basistarief",
+          "fr": "Tarif de base",
+          "en": "Base tariff",
+          "de": "Basisrate"
+        }
+      },
+      {
+        "category": "tariff",
+        "price": 8,
+        "priceCurrency": "EUR",
+        "name": {
+          "nl": "Jongeren (<18j)",
+          "en": "Youth (<18yo)"
+        }
+      }
+    ]
+  ]
 }
