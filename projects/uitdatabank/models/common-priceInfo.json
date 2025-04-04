@@ -48,7 +48,7 @@
           },
           "groupPrice": {
             "type": "boolean",
-            "description": "Specifies whether the price is per participant or a total cost for all participants."
+            "description": "Specifies whether the price is per participant or a total cost for all participants. This field is only relevant for educational events."
           }
         },
         "required": [
