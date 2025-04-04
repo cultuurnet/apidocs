@@ -48,7 +48,7 @@
           },
           "groupPrice": {
             "type": "boolean",
-            "description": "Specifies whether the price is per participant or a total cost for all participants."
+            "description": "Indicates whether the price applies per participant (false) or as a total cost for all participants (true). Relevant only for educational events(see https://docs.publiq.be/docs/uitdatabank/entry-api/events/creating-a-school-event)."
           }
         },
         "required": [
