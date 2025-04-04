@@ -67,6 +67,9 @@
       "name": "Schools"
     },
     {
+      "name": "SocialTariffValidation"
+    },
+    {
       "name": "Ticket sales"
     },
     {
@@ -6677,6 +6680,86 @@
         }
       ]
     },
+    "/card-systems/{cardSystemId}/social-tariff-settings": {
+      "get": {
+        "x-internal": false,
+        "summary": "Retrieve social tariff settings for card system",
+        "responses": {
+          "200": {
+            "description": "Social tariff settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSystemSocialTariffSettings"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "postalCode": "9000",
+                      "allowsCardlessRegistration": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cardsystems-cardsystemid-social-tariff-settings",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve social tariff settings specific for this card system and the given postal code.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "tags": [
+          "Card Systems"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postalCode",
+            "description": "Postal code of the passholder who is being registered. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
+            "required": true
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the requested card system"
+        }
+      ]
+    },
     "/card-systems/{cardSystemId}/membership-prices": {
       "get": {
         "summary": "Retrieve membership prices for a card system",
@@ -6880,7 +6963,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/email-already-used\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/invalid-city\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/email-already-used\n* https://api.publiq.be/probs/uitpas/invalid-social-tariff-validation-token\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -7732,6 +7815,189 @@
           }
         ]
       }
+    },
+    "/social-tariff-validation/start": {
+      "get": {
+        "summary": "Start Social Tariff Validation (auth)",
+        "tags": [
+          "SocialTariffValidation"
+        ],
+        "responses": {
+          "303": {
+            "description": "See Other\n\nThe user is redirected to the authentication flow.",
+            "content": {}
+          }
+        },
+        "operationId": "get-social-tariff-validation-start",
+        "x-internal": true,
+        "description": "Start the authentication for social tariff validation.\n\n<!-- theme: warning -->\n\n> **This endpoints authenticates users via the government service** `My Digital Keys`. This is independent of UiTiD authentication.<br><br>Only specific clients like uitpas.be are allowed to use this endpoint.\n\nClients that want to validate social tariff for a user have to follow this procedure, which is similar to the OAuth2 `authorization_code` flow with proof key for code exchange (PKCE):\n\n1. Redirect the user to `/social-tariff-validation/start` (this operation) to start authentication\n2. Handle the callback specified in step 1.\n3. Using the code from the callback, request a `SocialTariffValidationToken` from [POST /social-tariff-validation/token](/reference/uitpas.json/paths/~1social-tariff-validation~1token/post).\n4. Using that token, request information about the user using `GET /social-tariff-validation/info`\n\nBefore redirecting the user in step 1, the client has to:\n- generate a random `state` string to be specified in the redirect and store this `state` value in local/session storage\n- generate a random `code_verifier` string and store this in local/session storage. This `code_verifier` is used to generate a `code_challenge` and again in step 3 to request the token.\n- to generate the `code_challenge` the client must hash the `code_verifier` using `SHA-256` and then base64 encode the result.\n\n\nWhen authentication is finished or an error occurred, the user is redirected to the specified `redirect_uri`. \nIn case of successful authentication, the query params include:\n- `code`: the authorization code\n- `state`: the original state as specified in step 1\n\nBefore continuing the client must validate the specified `state` matches the locally stored `state`. If not, the authentication flow must be terminated with an error. (and may be retried from the start).\n\nIf the state matches, the client can continue requesting the token using [POST /social-tariff-validation/token](/reference/uitpas.json/paths/~1social-tariff-validation~1token/post).\n\nIn case of an error, the query params include:\n- `error` containing a message to show to the user.\n",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "login"
+              ]
+            },
+            "in": "query",
+            "name": "prompt",
+            "description": "Whether to prompt the user to login, even if they have a session."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "state",
+            "required": true,
+            "description": "Randomly generated state param. This value must be checked in the redirect_uri"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "code_challenge",
+            "description": "Base64 encoded SHA-256 hash of a random `code_verified` string.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "redirect_uri",
+            "required": true,
+            "description": "The URL where the client can receive the redirect back. This URL must be explicitly allowed by the UiTPAS backend."
+          }
+        ]
+      }
+    },
+    "/social-tariff-validation/token": {
+      "parameters": [],
+      "post": {
+        "summary": "Retrieve Social Tariff Validation Token",
+        "operationId": "post-social-tariff-validation-token",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SocialTariffValidationTokenResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "token": "wjf6pAzDbh5u5tjeomJ6RG6snJnKdRgLarQCB4xPZVxDfJwNZ7YFHrzj6SZZrpin.xmNUh4xE4r3k5oipwFNi9rvs7PrBFin6sqSVpVMoBgAuiH762sTdnGWtsTFHjyUf.mUkcBjW8nweyieZ7CnhkY2jsd6c2LrGopYV2Qg5pKFd6zYMLqERHRmbVNoacGw4t"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "x-internal": true,
+        "description": "Retrieve Social Tariff Validation Token based on these values, obtained in step 1 and 2 of [GET /social-tariff-validation/start](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get).\n\n- code\n- code_verifier\n\n\n<!-- theme: warning -->\n\n> **This endpoint provides a special kind of SocialTariffValidation Token**. This is independent of UiTiD authentication.\n\nThis endpoint is rate limited.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SocialTariffValidationTokenRequest"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "code": "RBEpdV6myHxNb9WnHUrPxFv2yr3bJWmZRX4kgzH6grzfr46GrDd2RNsxkkj4PfYr",
+                    "codeVerifier": "RtU3foq99AKbGzwbKPE8pfHei47pzvHhQd53iJ6DWBtCrK8a7pKCnBY8MiZX2TYc"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Form"
+        },
+        "tags": [
+          "SocialTariffValidation"
+        ]
+      }
+    },
+    "/social-tariff-validation": {
+      "get": {
+        "summary": "Retrieve Social Tariff Validation information",
+        "tags": [
+          "SocialTariffValidation"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SocialTariffValidation"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "user": {
+                        "inszNumber": "30071511319",
+                        "familyName": "User name",
+                        "givenName": "User firstname",
+                        "hasSocialTariff": true,
+                        "postalCode": "1000",
+                        "idToken": "Cg6TFeFVev532XVTmZ8ywPhxGKCQfMCh.ePq3A572bCnMU8WoSfremjK6M8g2Cojp.U4unWkSZZdF5dwswwXZvXG662E9LXdda",
+                        "idTokenExpiresAt": "2025-04-02T14:15:22Z"
+                      },
+                      "children": [
+                        {
+                          "inszNumber": "30071511220",
+                          "familyName": "Child familyname",
+                          "givenName": "Child firstname",
+                          "hasSocialTariff": true,
+                          "uitpasNumber": "0930012345615",
+                          "postalCode": "1000",
+                          "idToken": "4J8Vv7LBz6McoCVeUB4SeoD75NActfij.TJkFwJqS8uYdKVDjRzdkYypxMjjZNCJB.zsgsbjZUu9o48PGs9LJYHvxDgyevF4xs",
+                          "idTokenExpiresAt": "2025-04-02T14:15:22Z"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-social-tariff-validation",
+        "x-internal": true,
+        "description": "Retrieve Social Tariff Validation information using a `SocialTariffValidationToken` obtained from [this flow](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get).\n\nThe `SocialTariffValidationToken` must be specified in the `x-custom-token` header.\n\nThis endpoint is rate limited.",
+        "parameters": [],
+        "security": [
+          {
+            "CUSTOM_TOKEN": []
+          }
+        ]
+      },
+      "parameters": []
     }
   },
   "components": {
@@ -8587,6 +8853,26 @@
           "registrationVoucher": {
             "type": "string",
             "description": "Price reduction voucher."
+          },
+          "registrationSocialTariff": {
+            "type": "object",
+            "description": "Optional request for social tariff",
+            "properties": {
+              "requested": {
+                "type": "boolean",
+                "description": "`true` if social tariff is requested for this registration.",
+                "readOnly": true
+              },
+              "idToken": {
+                "type": "string",
+                "description": "The Social Tariff Validation ID token of the user. Use the [social tariff validation flow](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get) to obtain such ID tokens. If specified, this token must be valid, contain `hasSocialTariff:true` and the identity fields must match the fields in this registration. In all other cases an error is returned.",
+                "writeOnly": true
+              }
+            },
+            "required": [
+              "requested",
+              "idToken"
+            ]
           }
         },
         "required": [
@@ -10362,6 +10648,224 @@
         },
         "required": [
           "totalPoints"
+        ]
+      },
+      "SocialTariffValidation": {
+        "title": "SocialTariffValidation",
+        "x-stoplight": {
+          "id": "gryzsngewgyjv"
+        },
+        "type": "object",
+        "description": "SocialTariffValidation information",
+        "properties": {
+          "user": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "ieddj2esoq3wb"
+            },
+            "description": "Main user of the authentication",
+            "required": [
+              "inszNumber",
+              "familyName",
+              "givenName",
+              "hasSocialTariff",
+              "postalCode",
+              "idToken",
+              "idTokenExpiresAt"
+            ],
+            "properties": {
+              "inszNumber": {
+                "type": "string",
+                "description": "INSZ number of the user"
+              },
+              "familyName": {
+                "type": "string",
+                "description": "Family name of the user"
+              },
+              "givenName": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ygf2qppu51an1"
+                },
+                "description": "Given name of the user"
+              },
+              "hasSocialTariff": {
+                "type": "boolean",
+                "x-stoplight": {
+                  "id": "kepx3udmwh9pe"
+                },
+                "description": "True if the user is entitled to social tariff"
+              },
+              "uitpasNumber": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "u8zyuu1qn6hyy"
+                },
+                "description": "Optional `uitpasNumber` if the user with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder."
+              },
+              "postalCode": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "dm5gyjxmum78i"
+                },
+                "description": "Postal code of the user"
+              },
+              "idToken": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "qlxtc22k3i4n1"
+                },
+                "description": "Social Tariff Validation ID token of the user used in /`POST orders` request."
+              },
+              "idTokenExpiresAt": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "apnfc1ieh9ezd"
+                },
+                "format": "date-time",
+                "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
+              }
+            }
+          },
+          "children": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "v4hqc9e86c8kh"
+            },
+            "description": "Optional list of children of the main user.",
+            "items": {
+              "x-stoplight": {
+                "id": "oi6xh362so7vy"
+              },
+              "type": "object",
+              "properties": {
+                "inszNumber": {
+                  "type": "string",
+                  "description": "INSZ number of the child"
+                },
+                "familyName": {
+                  "type": "string",
+                  "description": "Familyname of the child"
+                },
+                "givenName": {
+                  "type": "string",
+                  "description": "Given name of the child"
+                },
+                "hasSocialTariff": {
+                  "type": "boolean",
+                  "description": "True if the child is entitled to social tariff"
+                },
+                "uitpasNumber": {
+                  "type": "string",
+                  "description": "Optional `uitpasNumber` if the user with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder.",
+                  "x-stoplight": {
+                    "id": "2zwrxotcpopp4"
+                  }
+                },
+                "postalCode": {
+                  "type": "string",
+                  "description": "Postal code of the child"
+                },
+                "idToken": {
+                  "type": "string",
+                  "description": "Social Tariff Validation ID token of the child used in /`POST orders` request."
+                },
+                "idTokenExpiresAt": {
+                  "type": "string",
+                  "x-stoplight": {
+                    "id": "0zb8atu3slpzv"
+                  },
+                  "format": "date-time",
+                  "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
+                }
+              },
+              "required": [
+                "inszNumber",
+                "familyName",
+                "givenName",
+                "hasSocialTariff",
+                "postalCode",
+                "idToken",
+                "idTokenExpiresAt"
+              ]
+            }
+          }
+        },
+        "required": [
+          "user"
+        ]
+      },
+      "CardSystemSocialTariffSettings": {
+        "title": "CardSystemSocialTariffSettings",
+        "x-stoplight": {
+          "id": "gr3fmeyv787ao"
+        },
+        "type": "object",
+        "description": "CardSystemSocialTariffSettings",
+        "properties": {
+          "postalCode": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0xm0rbvq3kdcb"
+            },
+            "description": "Postal code"
+          },
+          "allowsCardlessRegistration": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "9q12nus6hxclk"
+            },
+            "description": "true if social tariff registration is allowed for passholder with `postalCode`."
+          }
+        },
+        "required": [
+          "postalCode",
+          "allowsCardlessRegistration"
+        ]
+      },
+      "SocialTariffValidationTokenRequest": {
+        "title": "SocialTariffValidationTokenRequest",
+        "x-stoplight": {
+          "id": "h9f7buv9bbqp3"
+        },
+        "type": "object",
+        "description": "SocialTariffValidationTokenRequest",
+        "properties": {
+          "code": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "aj11gec4d2o3p"
+            },
+            "description": "code from step 2 in the authentication process"
+          },
+          "codeVerifier": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "9ov8etk9jcnq4"
+            },
+            "description": "code_verifier from step 1 in the authentication process"
+          }
+        },
+        "required": [
+          "code",
+          "codeVerifier"
+        ]
+      },
+      "SocialTariffValidationTokenResponse": {
+        "title": "SocialTariffValidationTokenResponse",
+        "type": "object",
+        "description": "SocialTariffValidationTokenRequest",
+        "properties": {
+          "token": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "aj11gec4d2o3p"
+            },
+            "description": "code from step 2 in the authentication process"
+          }
+        },
+        "required": [
+          "token"
         ]
       }
     },
