@@ -134,6 +134,7 @@ Authorization: Bearer eyJz93a...k4laUWw
 ```
 
 #### More info
+
 publiq uses an [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant identity provider solution. To learn more about the Authorization Code Flow, see the [Authentication using the Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) section of the OpenID Connect specification.
 
 <!-- theme: success -->
