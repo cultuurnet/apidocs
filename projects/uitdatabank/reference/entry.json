@@ -9507,7 +9507,8 @@
             "headers": {
               "content-type": {
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "application/json"
                 },
                 "description": "application/json"
               }
@@ -9529,6 +9530,7 @@
                       },
                       "children": {
                         "type": "array",
+                        "description": "Divisions of this region",
                         "items": {
                           "type": "object",
                           "properties": {
@@ -9542,6 +9544,7 @@
                             },
                             "children": {
                               "type": "array",
+                              "description": "Divisions of this region",
                               "items": {
                                 "type": "object",
                                 "properties": {
@@ -9670,9 +9673,6 @@
         },
         "operationId": "get-regions",
         "x-internal": true,
-        "requestBody": {
-          "content": {}
-        },
         "parameters": [],
         "description": "Returns a hierarchical list of the regions in Flanders and Brussel. Each level includes a label, value with the NIS-code, and optional nested children, allowing integrators to display lists of all regions and municipalities."
       }
@@ -9687,7 +9687,8 @@
             "headers": {
               "content-type": {
                 "schema": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "application/json"
                 },
                 "description": "application/json"
               }
@@ -9709,6 +9710,7 @@
                       },
                       "children": {
                         "type": "array",
+                        "description": "Divisions of this education level",
                         "items": {
                           "type": "object",
                           "properties": {
@@ -9722,6 +9724,7 @@
                             },
                             "children": {
                               "type": "array",
+                              "description": "Divisions of this education level",
                               "items": {
                                 "type": "object",
                                 "properties": {
@@ -9804,9 +9807,6 @@
         },
         "operationId": "get-education-levels",
         "x-internal": true,
-        "requestBody": {
-          "content": {}
-        },
         "parameters": [],
         "description": "Returns a hierarchical list of education levels used on Cultuurkuur. Each level includes a label, value, and optional nested children, allowing integrators to display or process education structures ranging from early childhood to higher education."
       }
@@ -10066,10 +10066,10 @@
       "name": "Productions"
     },
     {
-      "name": "Users"
+      "name": "Taxonomy"
     },
     {
-      "name": "Taxonomy"
+      "name": "Users"
     }
   ]
 }
