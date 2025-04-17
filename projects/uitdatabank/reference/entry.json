@@ -9496,6 +9496,308 @@
           }
         ]
       }
+    },
+    "/regions": {
+      "get": {
+        "summary": "/regions",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "content-type": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "application/json"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      },
+                      "children": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            },
+                            "children": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": [
+                      {
+                        "label": "Brussels Hoofdstedelijk Gewest",
+                        "value": "nis-01000",
+                        "children": [
+                          {
+                            "label": "Regio Brussel",
+                            "value": "reg-brussel",
+                            "children": [
+                              {
+                                "label": "Anderlecht + deelgemeenten",
+                                "value": "nis-21001"
+                              },
+                              {
+                                "label": "Brussel + deelgemeenten",
+                                "value": "nis-21004"
+                              },
+                              {
+                                "label": "Elsene + deelgemeenten",
+                                "value": "nis-21009"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "label": "Brussels Hoofdstedelijk Gewest",
+                        "value": "nis-01000",
+                        "children": [
+                          {
+                            "label": "Regio Brussel",
+                            "value": "reg-brussel",
+                            "children": [
+                              {
+                                "label": "Anderlecht + deelgemeenten",
+                                "value": "nis-21001"
+                              },
+                              {
+                                "label": "Brussel + deelgemeenten",
+                                "value": "nis-21004"
+                              },
+                              {
+                                "label": "Elsene + deelgemeenten",
+                                "value": "nis-21009"
+                              },
+                              {
+                                "label": "Etterbeek + deelgemeenten",
+                                "value": "nis-21005"
+                              },
+                              {
+                                "label": "Evere + deelgemeenten",
+                                "value": "nis-21006"
+                              },
+                              {
+                                "label": "Ganshoren + deelgemeenten",
+                                "value": "nis-21008"
+                              },
+                              {
+                                "label": "Jette + deelgemeenten",
+                                "value": "nis-21010"
+                              },
+                              {
+                                "label": "Koekelberg + deelgemeenten",
+                                "value": "nis-21011"
+                              },
+                              {
+                                "label": "Oudergem + deelgemeenten",
+                                "value": "nis-21002"
+                              },
+                              {
+                                "label": "Schaarbeek + deelgemeenten",
+                                "value": "nis-21015"
+                              },
+                              {
+                                "label": "Sint-Agatha-Berchem + deelgemeenten",
+                                "value": "nis-21003"
+                              },
+                              {
+                                "label": "Sint-Gillis + deelgemeenten",
+                                "value": "nis-21013"
+                              },
+                              {
+                                "label": "Sint-Jans-Molenbeek + deelgemeenten",
+                                "value": "nis-21012"
+                              },
+                              {
+                                "label": "Sint-Joost-ten-Node + deelgemeenten",
+                                "value": "nis-21014"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-regions",
+        "x-internal": true,
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [],
+        "description": "Returns a hierarchical list of the regions in Flanders and Brussel. Each level includes a label, value with the NIS-code, and optional nested children, allowing integrators to display lists of all regions and municipalities."
+      }
+    },
+    "/education-levels": {
+      "get": {
+        "summary": "/education-levels",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "content-type": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "application/json"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      },
+                      "children": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            },
+                            "children": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": [
+                      {
+                        "label": "Brussels Hoofdstedelijk Gewest",
+                        "value": "nis-01000",
+                        "children": [
+                          {
+                            "label": "Regio Brussel",
+                            "value": "reg-brussel",
+                            "children": [
+                              {
+                                "label": "Anderlecht + deelgemeenten",
+                                "value": "nis-21001"
+                              },
+                              {
+                                "label": "Brussel + deelgemeenten",
+                                "value": "nis-21004"
+                              },
+                              {
+                                "label": "Elsene + deelgemeenten",
+                                "value": "nis-21009"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "label": "Basisonderwijs",
+                        "value": "cultuurkuur_basisonderwijs",
+                        "children": [
+                          {
+                            "label": "Gewoon basisonderwijs",
+                            "value": "cultuurkuur_Gewoon-basisonderwijs",
+                            "children": [
+                              {
+                                "label": "Gewoon kleuteronderwijs",
+                                "value": "cultuurkuur_Gewoon-kleuteronderwijs",
+                                "children": [
+                                  {
+                                    "label": "Kleuter (2-3 jaar)",
+                                    "value": "cultuurkuur_Kleuter-2-3-jaar"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-education-levels",
+        "x-internal": true,
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [],
+        "description": "Returns a hierarchical list of education levels used on Cultuurkuur. Each level includes a label, value, and optional nested children, allowing integrators to display or process education structures ranging from early childhood to higher education."
+      }
     }
   },
   "components": {
