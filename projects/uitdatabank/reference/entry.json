@@ -9500,7 +9500,7 @@
     "/regions": {
       "get": {
         "summary": "/regions",
-        "tags": [],
+        "tags": ["Taxonomy"],
         "responses": {
           "200": {
             "description": "OK",
@@ -9520,10 +9520,12 @@
                     "type": "object",
                     "properties": {
                       "label": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name region"
                       },
                       "value": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "NIS code"
                       },
                       "children": {
                         "type": "array",
@@ -9531,10 +9533,12 @@
                           "type": "object",
                           "properties": {
                             "label": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "Name region"
                             },
                             "value": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "NIS code"
                             },
                             "children": {
                               "type": "array",
@@ -9542,10 +9546,12 @@
                                 "type": "object",
                                 "properties": {
                                   "label": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Name region"
                                   },
                                   "value": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "NIS code"
                                   }
                                 }
                               }
@@ -9674,7 +9680,7 @@
     "/education-levels": {
       "get": {
         "summary": "/education-levels",
-        "tags": [],
+        "tags": ["Taxonomy"],
         "responses": {
           "200": {
             "description": "OK",
@@ -9694,10 +9700,12 @@
                     "type": "object",
                     "properties": {
                       "label": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Educational level"
                       },
                       "value": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Slugified internal name"
                       },
                       "children": {
                         "type": "array",
@@ -9705,10 +9713,12 @@
                           "type": "object",
                           "properties": {
                             "label": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "Educational level"
                             },
                             "value": {
-                              "type": "string"
+                              "type": "string",
+                              "description": "Slugified internal name"
                             },
                             "children": {
                               "type": "array",
@@ -9716,10 +9726,12 @@
                                 "type": "object",
                                 "properties": {
                                   "label": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Educational level"
                                   },
                                   "value": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Slugified internal name"
                                   }
                                 }
                               }
@@ -10055,6 +10067,9 @@
     },
     {
       "name": "Users"
+    },
+    {
+      "name": "Taxonomy"
     }
   ]
 }
