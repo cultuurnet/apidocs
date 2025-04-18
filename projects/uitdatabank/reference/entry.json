@@ -9497,10 +9497,10 @@
         ]
       }
     },
-    "/regions": {
+    "/cultuurkuur/regions": {
       "get": {
-        "summary": "/regions",
-        "tags": ["Taxonomy"],
+        "summary": "/cultuurkuur/regions",
+        "tags": ["Cultuurkuur"],
         "responses": {
           "200": {
             "description": "OK",
@@ -9677,10 +9677,10 @@
         "description": "Returns a hierarchical list of the regions in Flanders and Brussel. Each level includes a label, value with the NIS-code, and optional nested children, allowing integrators to display lists of all regions and municipalities."
       }
     },
-    "/education-levels": {
+    "/cultuurkuur/education-levels": {
       "get": {
-        "summary": "/education-levels",
-        "tags": ["Taxonomy"],
+        "summary": "/cultuurkuur/education-levels",
+        "tags": ["Cultuurkuur"],
         "responses": {
           "200": {
             "description": "OK",
@@ -10042,6 +10042,9 @@
   },
   "tags": [
     {
+      "name": "Cultuurkuur"
+    },
+    {
       "name": "Events"
     },
     {
@@ -10064,9 +10067,6 @@
     },
     {
       "name": "Productions"
-    },
-    {
-      "name": "Taxonomy"
     },
     {
       "name": "Users"
