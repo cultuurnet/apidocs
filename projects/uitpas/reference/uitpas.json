@@ -10650,151 +10650,6 @@
           "totalPoints"
         ]
       },
-      "SocialTariffValidation": {
-        "title": "SocialTariffValidation",
-        "x-stoplight": {
-          "id": "gryzsngewgyjv"
-        },
-        "type": "object",
-        "description": "SocialTariffValidation information",
-        "properties": {
-          "user": {
-            "type": "object",
-            "x-stoplight": {
-              "id": "ieddj2esoq3wb"
-            },
-            "description": "Main user of the authentication",
-            "required": [
-              "inszNumber",
-              "familyName",
-              "givenName",
-              "hasSocialTariff",
-              "postalCode",
-              "idToken",
-              "idTokenExpiresAt"
-            ],
-            "properties": {
-              "inszNumber": {
-                "type": "string",
-                "description": "INSZ number of the user"
-              },
-              "familyName": {
-                "type": "string",
-                "description": "Family name of the user"
-              },
-              "givenName": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "ygf2qppu51an1"
-                },
-                "description": "Given name of the user"
-              },
-              "hasSocialTariff": {
-                "type": "boolean",
-                "x-stoplight": {
-                  "id": "kepx3udmwh9pe"
-                },
-                "description": "True if the user is entitled to social tariff"
-              },
-              "uitpasNumber": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "u8zyuu1qn6hyy"
-                },
-                "description": "Optional `uitpasNumber` if the user with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder."
-              },
-              "postalCode": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "dm5gyjxmum78i"
-                },
-                "description": "Postal code of the user"
-              },
-              "idToken": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "qlxtc22k3i4n1"
-                },
-                "description": "Social Tariff Validation ID token of the user used in /`POST orders` request."
-              },
-              "idTokenExpiresAt": {
-                "type": "string",
-                "x-stoplight": {
-                  "id": "apnfc1ieh9ezd"
-                },
-                "format": "date-time",
-                "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
-              }
-            }
-          },
-          "children": {
-            "type": "array",
-            "x-stoplight": {
-              "id": "v4hqc9e86c8kh"
-            },
-            "description": "Optional list of children of the main user.",
-            "items": {
-              "x-stoplight": {
-                "id": "oi6xh362so7vy"
-              },
-              "type": "object",
-              "properties": {
-                "inszNumber": {
-                  "type": "string",
-                  "description": "INSZ number of the child"
-                },
-                "familyName": {
-                  "type": "string",
-                  "description": "Familyname of the child"
-                },
-                "givenName": {
-                  "type": "string",
-                  "description": "Given name of the child"
-                },
-                "hasSocialTariff": {
-                  "type": "boolean",
-                  "description": "True if the child is entitled to social tariff"
-                },
-                "uitpasNumber": {
-                  "type": "string",
-                  "description": "Optional `uitpasNumber` if the user with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder.",
-                  "x-stoplight": {
-                    "id": "2zwrxotcpopp4"
-                  }
-                },
-                "postalCode": {
-                  "type": "string",
-                  "description": "Postal code of the child"
-                },
-                "idToken": {
-                  "type": "string",
-                  "description": "Social Tariff Validation ID token of the child used in /`POST orders` request."
-                },
-                "idTokenExpiresAt": {
-                  "type": "string",
-                  "x-stoplight": {
-                    "id": "0zb8atu3slpzv"
-                  },
-                  "format": "date-time",
-                  "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
-                }
-              },
-              "required": [
-                "inszNumber",
-                "familyName",
-                "givenName",
-                "hasSocialTariff",
-                "postalCode",
-                "idToken",
-                "idTokenExpiresAt"
-              ]
-            }
-          }
-        },
-        "required": [
-          "user"
-        ]
-      },
       "CardSystemSocialTariffSettings": {
         "title": "CardSystemSocialTariffSettings",
         "x-stoplight": {
@@ -10821,6 +10676,32 @@
         "required": [
           "postalCode",
           "allowsCardlessRegistration"
+        ]
+      },
+      "SocialTariffValidation": {
+        "title": "SocialTariffValidation",
+        "x-stoplight": {
+          "id": "gryzsngewgyjv"
+        },
+        "type": "object",
+        "description": "SocialTariffValidation information",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/SocialTariffValidationPerson"
+          },
+          "children": {
+            "type": "array",
+            "x-stoplight": {
+              "id": "f6pyicmviravx"
+            },
+            "description": "Optional list of children of the identified persion.",
+            "items": {
+              "$ref": "#/components/schemas/SocialTariffValidationPerson"
+            }
+          }
+        },
+        "required": [
+          "user"
         ]
       },
       "SocialTariffValidationTokenRequest": {
@@ -10867,6 +10748,54 @@
         "required": [
           "token"
         ]
+      },
+      "SocialTariffValidationPerson": {
+        "type": "object",
+        "description": "SocialTariffValidationPerson",
+        "required": [
+          "inszNumber",
+          "familyName",
+          "givenName",
+          "hasSocialTariff",
+          "postalCode",
+          "idToken",
+          "idTokenExpiresAt"
+        ],
+        "properties": {
+          "inszNumber": {
+            "type": "string",
+            "description": "INSZ number of the identified person"
+          },
+          "familyName": {
+            "type": "string",
+            "description": "Family name of the identified person"
+          },
+          "givenName": {
+            "type": "string",
+            "description": "Given name of the identified person"
+          },
+          "hasSocialTariff": {
+            "type": "boolean",
+            "description": "True if the person is entitled to social tariff"
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "Optional `uitpasNumber` if the person with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder."
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal code of the user"
+          },
+          "idToken": {
+            "type": "string",
+            "description": "Social Tariff Validation ID token of the user used in /`POST orders` request."
+          },
+          "idTokenExpiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
+          }
+        }
       }
     },
     "securitySchemes": {
