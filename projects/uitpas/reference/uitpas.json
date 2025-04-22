@@ -10752,15 +10752,6 @@
       "SocialTariffValidationPerson": {
         "type": "object",
         "description": "SocialTariffValidationPerson",
-        "required": [
-          "inszNumber",
-          "familyName",
-          "givenName",
-          "hasSocialTariff",
-          "postalCode",
-          "idToken",
-          "idTokenExpiresAt"
-        ],
         "properties": {
           "inszNumber": {
             "type": "string",
@@ -10782,9 +10773,17 @@
             "type": "string",
             "description": "Optional `uitpasNumber` if the person with the given `inszNumber` already has an UiTPAS. If this property is not null, the user cannot proceed registration of a new passholder."
           },
+          "street": {
+            "type": "string",
+            "description": "Street and house number of the user if known."
+          },
           "postalCode": {
             "type": "string",
-            "description": "Postal code of the user"
+            "description": "Postal code of the user if known."
+          },
+          "city": {
+            "type": "string",
+            "description": "City of the user if known."
           },
           "idToken": {
             "type": "string",
@@ -10795,7 +10794,16 @@
             "format": "date-time",
             "description": "Date and time until the ID token is valid. If the ID token is expired it can't be used in `POST /orders`. The client must repeat the social tariff validation flow to obtain a new ID token."
           }
-        }
+        },
+        "required": [
+          "inszNumber",
+          "familyName",
+          "givenName",
+          "hasSocialTariff",
+          "idToken",
+          "idTokenExpiresAt"
+        ],
+        "title": "SocialTariffValidationPerson"
       }
     },
     "securitySchemes": {
