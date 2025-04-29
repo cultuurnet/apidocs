@@ -8708,6 +8708,12 @@
             "type": "string",
             "description": "Only used in passholder registration using a physical card.",
             "writeOnly": true
+          },
+          "registrationSocialTariffEndDate": {
+            "type": "string",
+            "description": "Only used in passholder registration using a `registrationUitpasNumber` with social tariff. If no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
+            "format": "date-time",
+            "writeOnly": true
           }
         },
         "required": [
