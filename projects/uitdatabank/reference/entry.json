@@ -5855,7 +5855,7 @@
     "/places/{placeId}/labels": {
       "parameters": [
         {
-          "$ref": "#/components/parameters/eventId"
+          "$ref": "#/components/parameters/placeId"
         }
       ],
       "put": {
@@ -5924,7 +5924,6 @@
         ]
       }
     },
-
     "/places/{placeId}/major-info": {
       "parameters": [
         {
