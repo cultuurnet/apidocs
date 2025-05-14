@@ -2240,13 +2240,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "labels": {
-                    "$ref": "../models/event-labels-put.json"
-                  }
-                },
-                "required": ["labels"]
+                "$ref": "../models/event-labels-put.json"
               }
             }
           },
@@ -5869,13 +5863,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "labels": {
-                    "$ref": "../models/place-labels-put.json"
-                  }
-                },
-                "required": ["labels"]
+                "$ref": "../models/place-labels-put.json"
               }
             }
           },
