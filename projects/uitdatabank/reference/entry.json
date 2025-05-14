@@ -2165,7 +2165,7 @@
       "put": {
         "summary": "labels - add",
         "description": "Adds the given label to the event with the given `eventId`.\n\nIf the specified label does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the event.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "events-labels-add",
+        "operationId": "event-labels-add",
         "tags": [
           "Events"
         ],
@@ -5852,6 +5852,79 @@
         ]
       }
     },
+    "/places/{placeId}/labels": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "labels - update",
+        "description": "Updates the given labels on the place with the given `placeId`.\n\nIf one of the specified labels does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the event.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
+        "operationId": "place-labels-update",
+        "tags": [
+          "Places"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "labels": {
+                    "$ref": "../models/place-labels-put.json"
+                  }
+                },
+                "required": ["labels"]
+              }
+            }
+          },
+          "description": "The labels to add to the place."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The labels have been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
+
     "/places/{placeId}/major-info": {
       "parameters": [
         {
