@@ -1,0 +1,5 @@
+{
+  "$ref": "./common-labels.json",
+  "title": "event.labels",
+  "description": "A list of labels that can be used to categorize the [event](./models/event.json)."
+}
