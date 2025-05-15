@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "title": "place.labels",
+  "description": "A list of labels that can be used to categorize the [place](./models/place.json).",
+  "properties": {
+    "labels": {
+      "$ref": "./common-labels.json"
+    }
+  },
+  "required": ["labels"]
+}
