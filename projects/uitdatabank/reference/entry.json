@@ -2232,7 +2232,7 @@
       "put": {
         "summary": "labels - update",
         "description": "Updates the given labels on the event with the given `eventId`.\n\nIf one of the specified labels does not exist yet in UiTdatabank a new label will be created with default visibility and public permissions (usable by anyone), and linked to the event.\n\nThe label must be longer than 1 character and shorter than 255 characters. The label can also not contain the semicolon character. It should match the regex `^(?=.{2,255}$)(?=.*\\S.*\\S.*)[^;]*$`",
-        "operationId": "events-labels-update",
+        "operationId": "event-labels-update",
         "tags": [
           "Events"
         ],
