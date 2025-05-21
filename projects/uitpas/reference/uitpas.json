@@ -2697,7 +2697,7 @@
             }
           }
         },
-        "description": "Retrieve association memberships of the given passholder. Only memberships are returned for assocations that are visible to the specified organizer.\n\nThe caller of this method must have `ASSOCIATION` permission for the given organizer.",
+        "description": "Retrieve association memberships of the given passholder. Only memberships are returned for assocations that are visible to the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -8452,7 +8452,8 @@
           "ORDERS_CREATE",
           "PERMISSIONS_READ",
           "PERMISSIONS_WRITE",
-          "CARDS_READ"
+          "CARDS_READ",
+          "ASSOCIATIONS"
         ],
         "description": "ID of the permission"
       },
