@@ -1,0 +1,17 @@
+{
+  "title": "labels",
+  "description": "A list of multiple labels, can be left empty.",
+  "type": "array",
+  "items": {
+    "$ref": "./common-label.json"
+  },
+  "uniqueItems": true,
+  "minItems": 0,
+  "examples": [
+    [
+      "example label with spaces",
+      "underscores_are_valid",
+      "dashes-are-valid"
+    ]
+  ]
+}
