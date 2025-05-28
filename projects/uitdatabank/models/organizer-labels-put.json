@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "title": "organizer.labels",
+  "description": "A list of labels that can be used to categorize the [organizer](./models/organizer.json).",
+  "properties": {
+    "labels": {
+      "$ref": "./common-labels-optional.json"
+    }
+  },
+  "required": [
+    "labels"
+  ]
+}
