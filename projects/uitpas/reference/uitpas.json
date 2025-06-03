@@ -8876,7 +8876,7 @@
             "properties": {
               "requested": {
                 "type": "boolean",
-                "description": "`true` if social tariff is requested for this registration.",
+                "description": "`true` if social tariff is requested for this registration. Always available in responses if `registrationSocialTariff` exists.",
                 "readOnly": true
               },
               "idToken": {
@@ -8884,11 +8884,7 @@
                 "description": "The Social Tariff Validation ID token of the user. Use the [social tariff validation flow](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get) to obtain such ID tokens. If specified, this token must be valid, contain `hasSocialTariff:true` and the identity fields must match the fields in this registration. In all other cases an error is returned.",
                 "writeOnly": true
               }
-            },
-            "required": [
-              "requested",
-              "idToken"
-            ]
+            }
           }
         },
         "required": [
