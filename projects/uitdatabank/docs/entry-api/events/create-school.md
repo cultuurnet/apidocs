@@ -97,7 +97,7 @@ Prefix this value with the host url of the according environment and use this as
 }
 ```
 
-> Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on Cultuurkuur](https://www.cultuurkuur.be/faq/hoe-voeg-ik-mijn-organisatie-toe-op-cultuurkuur).
+> Only in the case the organizer of your event does not already have its own page on Cultuurkuur yet, you can [create a new organizer on UiTdatabank](../organizers/school-organizer.md).
 
 ### calendarType
 
