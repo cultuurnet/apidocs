@@ -1,5 +1,6 @@
-# Organizers who organize school events 
+# School Organizers
 
-Organizers who organize [events for schools](../events/create-school.md) have to get the label cultuurkuur_organizer. This is needed regardless whether their events are exclusively for schools or they also organize events targeted to the general public apart from events for schools.
+School Organizers are organizers who have [events for schools](../events/create-school.md). School organizers do not have to work exclusivly for schools.
+Apart from their events targeted to schools, they might also organize events targeted to the general public.
 
-Unlike general organizers some extra properties are required(address)
+## Required properties
