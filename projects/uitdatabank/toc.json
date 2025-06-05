@@ -159,8 +159,8 @@
             {
               "type": "item",
               "title": "Creating a new school organizer",
-              "uri": "/docs/entry-api/organizers/create-school.md",
-              "slug": "entry-api/organizers/creating-a-new-school-organizer"
+              "uri": "/docs/entry-api/organizers/school-organizer.md",
+              "slug": "entry-api/organizers/school-organizer"
             },
             {
               "type": "item",
