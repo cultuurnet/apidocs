@@ -141,7 +141,7 @@ If you are bookable in an entire province, you only have to add the correspondin
 
 The complete list of the working region labels is available on the following endpoint: `https://io.uitdatabank.be/cultuurkuur/regions`
 
-### labels
+### Education levels
 
 For school events, specific Cultuurkuur-related labels are mandatory.
 
@@ -163,6 +163,31 @@ There is a hierarchical relationship between the different education level label
 * If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
 
 The complete list of Cultuurkuur labels can be found at the following endpoint: `https://io.uitdatabank.be/cultuurkuur/education-levels`
+
+### Price
+
+While non-educational events can multiple prices, Educational events can only have one price.
+This can either be an individual price per pupil or one price per group. The default is price per pupil.
+See [priceInfo](../shared/price-info.md) for more info.
+
+### Eventtypes
+
+For educational events only a limited subset of our [taxonomy](https://taxonomy.uitdatabank.be/terms) is allowed:
+| id          | name                             |
+| ----------- | -------------------------------- |
+| 0.7.0.0.0   | Begeleide uitstap of rondleiding |
+| 0.50.4.0.0  | Concert                          |
+| 0.3.1.0.1   | Cursus met open sessies          |
+| 0.54.0.0.0  | Dansvoorstelling                 |
+| 0.5.0.0.0   | Festival                         |
+| 0.17.0.0.0  | Fiets- of wandelroute            |
+| 0.50.6.0.0  | Film                             |
+| 0.3.2.0.0   | Lezing of congres                |
+| 0.50.21.0.0 | Spel of quiz                     |
+| 0.0.0.0.0   | Tentoonstelling                  |
+| 0.55.0.0.0  | Theatervoorstelling              |
+For corresponding themes, you can check the child nodes `otherSuggestedTerms` for the previous eventtypes 
+on our [taxonomy](https://taxonomy.uitdatabank.be/terms).
 
 ## Request body examples
 
