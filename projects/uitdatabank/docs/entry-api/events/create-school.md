@@ -153,7 +153,7 @@ There is a hierarchical relationship between the different education level label
 * If a level 3 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 2) and `cultuurkuur_Gewoon-basisonderwijs` (level 1)
 * If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
 
-The complete list of Cultuurkuur labels can be found at the following endpoint: https://io.uitdatabank.be/cultuurkuur/education-levels
+The complete list of Cultuurkuur labels can be found at the following endpoint: `https://io.uitdatabank.be/cultuurkuur/education-levels`
 
 ## Request body examples
 
