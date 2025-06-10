@@ -133,6 +133,7 @@ On the other hand, [school performances](#school-performances) and [guided tours
 ```
 
 **Working Region labels**
+
 If you have created an event with a "location in consultation with school", you must add one or more labels
 with the workingregion(s). There is a hierarchical relationship between the different working region labels, and this hierarchy must be followed.
 e.g., If you add `cultuurkuur_werkingsregio_nis-44083` (Deinze), you must also add `cultuurkuur_werkingsregio_nis-40000` (Provincie Oost-Vlaanderen).
