@@ -173,6 +173,7 @@ See [priceInfo](../shared/price-info.md) for more info.
 ### Eventtypes
 
 For educational events only a limited subset of our [taxonomy](https://taxonomy.uitdatabank.be/terms) is allowed:
+
 | id          | name                             |
 | ----------- | -------------------------------- |
 | 0.7.0.0.0   | Begeleide uitstap of rondleiding |
@@ -186,6 +187,7 @@ For educational events only a limited subset of our [taxonomy](https://taxonomy.
 | 0.50.21.0.0 | Spel of quiz                     |
 | 0.0.0.0.0   | Tentoonstelling                  |
 | 0.55.0.0.0  | Theatervoorstelling              |
+
 For corresponding themes, you can check the child nodes `otherSuggestedTerms` for the previous eventtypes 
 on our [taxonomy](https://taxonomy.uitdatabank.be/terms).
 
