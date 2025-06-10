@@ -132,6 +132,14 @@ On the other hand, [school performances](#school-performances) and [guided tours
 }
 ```
 
+**Working Region labels**
+If you have created an event with a "location in consultation with school", you must add one or more labels
+with the workingregion(s). There is a hierarchical relationship between the different working region labels, and this hierarchy must be followed.
+e.g., If you add `cultuurkuur_werkingsregio_nis-44083` (Deinze), you must also add `cultuurkuur_werkingsregio_nis-40000` (Provincie Oost-Vlaanderen).
+If you are bookable in an entire province, you only have to add the corresponding label for the province e.g, `cultuurkuur_werkingsregio_nis-70000` (Provincie Limburg).
+
+The complete list of the working region labels is available on the following endpoint: `https://io.uitdatabank.be/cultuurkuur/regions`
+
 ### labels
 
 For school events, specific Cultuurkuur-related labels are mandatory.
