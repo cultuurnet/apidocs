@@ -140,6 +140,14 @@ Each school event must have **at least one** education level label. Education le
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
+<!-- theme: warning -->
+
+> **In 2025** we changed the labels for `Secundair onderwijs`
+
+<!-- theme: warning -->
+
+> **In 2025** we changed the hierarchy depth from 4 to 3 levels.
+
 **Examples**:
 
 * If a level 4 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 3, level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 3), `cultuurkuur_Gewoon-basisonderwijs` (level 2) and `cultuurkuur_basisonderwijs` (level 1)
