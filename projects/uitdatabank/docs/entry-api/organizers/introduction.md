@@ -11,3 +11,8 @@ Every organizer is required to have at least a name, and a unique website URL to
 ## What are UiTPAS organizers?
 
 UiTPAS organizers are the same as other organizers in UiTdatabank, except that they are also registered in [UiTPAS](https://docs.publiq.be/docs/uitpas/introduction) because they provide UiTPAS discounts, rewards and/or points on their events. UiTPAS organizers are used to [create UiTPAS events](../events/create-uitpas.md).
+
+## What are school organizers?
+
+[School organizers](school-organizer.md) are the same als other  organizers in UiTdatabank, except that they are also published on [Cultuurkuur](https://www.cultuurkuur.be).
+School organizers can create [school events](../events/create-school.md), as well as regular events.
