@@ -54,8 +54,8 @@ Creating a school event is the same as [creating a regular event](./create.md), 
 1. The `audience.audienceType` property must be set to `education`
 2. The event must be linked to an `organizer` that has the `cultuurkuur_organizer` label
 3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events), the `calendarType` must be set to `permanent`
-4. In case of a [bookable event](#bookable-events), the *"Location in consultation with the school"* place must be used for the location, and at least one label that indicates the [working region](TODO) must be added.
-5. The event must have at least one label that indicates the [education level](TODO) of the target audience
+4. In case of a [bookable event](#bookable-events), the *"Location in consultation with the school"* place must be used for the location, and at least one label that indicates the [working region](#working-region-labels) must be added.
+5. The event must have at least one label that indicates the [education level](#education-levels) of the target audience
 
 We will go over these required properties in more detail below, followed by some examples.
 
@@ -129,7 +129,7 @@ In case of a [bookable event](#bookable-events) you must use the url of the *"Lo
 }
 ```
 
-**Working Region labels**
+### Working Region labels
 
 If you have created an event with a "location in consultation with school", you must add one or more labels
 with the workingregion(s) to indicate in which region(s) it is bookable. There is a hierarchical relationship between the different working region labels, and this hierarchy must be followed.
