@@ -4,10 +4,7 @@ stoplight-id: c7be5835e744b
 
 # School events
 
-School events are events that are specifically organized and intended for:
-
-* students (e.g. a school performance)
-* teachers (e.g. an after-school training)
+School events are events with cultural & educational value that are organized for schools.
 
 School events are published on [Cultuurkuur](https://www.cultuurkuur.be), but not on UiTinVlaanderen.
 
@@ -52,13 +49,13 @@ For example, as a school you can book Stijn Meuris for a school performance at y
 
 ## Creating a school event
 
-Creating a school event is the same as [creating a regular event](./create.md), but with some extra required properties:
+Creating a school event is the same as [creating a regular event](./create.md), but with some additional required properties:
 
 1. The `audience.audienceType` property must be set to `education`
-2. The event must be linked to an `organizer` that has the `Cultuurkuur` label
+2. The event must be linked to an `organizer` that has the `cultuurkuur_organizer` label
 3. In case of a [guided tour](#guided-tours) or a [bookable event](#bookable-events), the `calendarType` must be set to `permanent`
-4. In case of a [bookable event](#bookable-events), the *"Location in consultation with the school"* place must be used for the location
-5. The event must have at least one label that indicates the education level of the target audience
+4. In case of a [bookable event](#bookable-events), the *"Location in consultation with the school"* place must be used for the location, and at least one label that indicates the [working region](TODO) must be added.
+5. The event must have at least one label that indicates the [education level](TODO) of the target audience
 
 We will go over these required properties in more detail below, followed by some examples.
 
@@ -115,9 +112,9 @@ See the [guide about calendar info](../shared/calendar-info.md) for more details
 
 ### location
 
-In case of a [bookable event](#bookable-events) you must use the url of the *"Location in consultation with the school"* place as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
+[school performances](#school-performances) and [guided tours](#guided-tours) must be linked to the place that they are happening at.
 
-On the other hand, [school performances](#school-performances) and [guided tours](#guided-tours) must be linked to the place that they are happening at.
+In case of a [bookable event](#bookable-events) you must use the url of the *"Location in consultation with the school"* place as the value for the `location.@id` property in the `POST /events` request of the event(s) that you want to create.
 
 **URLs for "location in consultation with school" places**:
 
@@ -135,17 +132,15 @@ On the other hand, [school performances](#school-performances) and [guided tours
 **Working Region labels**
 
 If you have created an event with a "location in consultation with school", you must add one or more labels
-with the workingregion(s). There is a hierarchical relationship between the different working region labels, and this hierarchy must be followed.
+with the workingregion(s) to indicate in which region(s) it is bookable. There is a hierarchical relationship between the different working region labels, and this hierarchy must be followed.
 e.g., If you add `cultuurkuur_werkingsregio_nis-44083` (Deinze), you must also add `cultuurkuur_werkingsregio_nis-40000` (Provincie Oost-Vlaanderen).
-If you are bookable in an entire province, you only have to add the corresponding label for the province e.g, `cultuurkuur_werkingsregio_nis-70000` (Provincie Limburg).
+If you are bookable in an entire province, you only have to add the corresponding label for the province e.g, `cultuurkuur_werkingsregio_nis-70000` (Provincie Limburg). In both cases, also add label 'cultuurkuur_op_verplaatsing'.
 
 The complete list of the working region labels is available on the following endpoint: `https://io.uitdatabank.be/cultuurkuur/regions`
 
 ### Education levels
 
-For school events, specific Cultuurkuur-related labels are mandatory.
-
-Each school event must have **at least one** education level label. Education level labels indicate to which education levels (grades) the school event is aimed at.
+Education level labels indicate to which [education levels (grades)](https://www.cultuurkuur.be/inspiratie/aanbod-voor-scholen-kies-het-juiste-onderwijsniveau) the school event is aimed at.
 
 There is a hierarchical relationship between the different education level labels, and this hierarchy must be followed.
 
@@ -155,20 +150,20 @@ There is a hierarchical relationship between the different education level label
 
 <!-- theme: warning -->
 
-> **In 2025** we changed the hierarchy depth from 4 to 3 levels.
+> **In 2025** we simplified the hierarchy depth from 4 to 3 levels.
 
 **Examples**:
 
-* If a level 3 label (e.g. `cultuurkuur_Kleuter-2-3-jaar`) is applicable on an event, the corresponding level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 2) and `cultuurkuur_Gewoon-basisonderwijs` (level 1)
-* If only level 1 label is applicable (e.g. `cultuurkuur_Volwassenenonderwijs`), then it suffices to add only the level 1 label
+* If a level 3 label (e.g. `cultuurkuur_Kleuter-3-4-jaar`) is applicable on an event, the corresponding level 2 and level 1 label must also be added to the event: `cultuurkuur_Gewoon-kleuteronderwijs` (level 2) and `cultuurkuur_Gewoon-basisonderwijs` (level 1)
+* If only level 1 label is applicable (e.g. `cultuurkuur_Hoger-onderwijs`), then it suffices to add only the level 1 label
 
 The complete list of Cultuurkuur labels can be found at the following endpoint: `https://io.uitdatabank.be/cultuurkuur/education-levels`
 
 ### Price
 
-While non-educational events can multiple prices, Educational events can only have one price.
+While non-educational events can have multiple prices, Educational events can only have one price.
 This can either be an individual price per pupil or one price per group. The default is price per pupil.
-See [priceInfo](../shared/price-info.md) for more info.
+See [priceInfo](../shared/price-info.md) for the appropriate parameters.
 
 ### Eventtypes
 
@@ -188,14 +183,13 @@ For educational events only a limited subset of our [taxonomy](https://taxonomy.
 | 0.0.0.0.0   | Tentoonstelling                  |
 | 0.55.0.0.0  | Theatervoorstelling              |
 
-For corresponding themes, you can check the child nodes `otherSuggestedTerms` for the previous eventtypes 
-on our [taxonomy](https://taxonomy.uitdatabank.be/terms).
+For corresponding themes, you can refer to the otherSuggestedTerms child nodes of the previous event types in our [taxonomy](https://taxonomy.uitdatabank.be/terms).
 
 ## Request body examples
 
 ### School performance
 
-Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2023, from 14:30 to 16:00.
+Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2026, from 14:30 to 16:00.
 
 ```json
 {
@@ -212,22 +206,19 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
       }
    ],
    "calendarType":"single",
-   "startDate":"2023-05-23T13:00:00+00:00",
-   "endDate":"2023-05-23T14:30:00+00:00",
+   "startDate":"2026-05-23T13:00:00+00:00",
+   "endDate":"2026-05-23T14:30:00+00:00",
    "subEvent":[
       {
          "@type":"Event",
-         "startDate":"2023-05-14T14:30:00+02:00",
-         "endDate":"2023-05-14T16:00:00+02:00"
+         "startDate":"2026-05-14T14:30:00+02:00",
+         "endDate":"2026-05-14T16:00:00+02:00"
       }
    ],
    "audience":{
       "audienceType":"education"
    },
    "labels":[
-      "cultuurkuur_Leerlingen",
-      "cultuurkuur_dans",
-      "cultuurkuur_basisonderwijs",
       "cultuurkuur_Gewoon-basisonderwijs",
       "cultuurkuur_Gewoon-kleuteronderwijs",
       "cultuurkuur_Kleuter-3-4-jaar"
@@ -258,8 +249,6 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
       "audienceType":"education"
    },
    "labels":[
-      "cultuurkuur_Leerlingen",
-      "cultuurkuur_kunst-en-cultuur",
       "cultuurkuur_Hoger-onderwijs"
    ]
 }
@@ -267,7 +256,7 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
 
 ### Bookable event
 
-Example of a bookable school event aimed at students of "derde graad BSO". Note that the location points to the *"Locatie in overleg met de school"* place on the test environment in this case.
+Example of a bookable school event aimed at students of "derde graad finaliteit arbeidsmarkt", in the region of Leuven. Note that the location points to the *"Locatie in overleg met de school"* place on the test environment in this case.
 
 ```json
 {
@@ -288,12 +277,10 @@ Example of a bookable school event aimed at students of "derde graad BSO". Note 
       "audienceType":"education"
    },
    "labels":[
-      "cultuurkuur_Leerlingen",
-      "cultuurkuur_kunst-en-cultuur",
       "cultuurkuur_Secundair-onderwijs",
       "cultuurkuur_Voltijds-gewoon-secundair-onderwijs",
       "cultuurkuur_derde-graad",
-      "cultuurkuur_derde-graad-BSO"
+      "cultuurkuur_derde-graad-finaliteit-arbeidsmarkt"
    ]
 }
 ```
