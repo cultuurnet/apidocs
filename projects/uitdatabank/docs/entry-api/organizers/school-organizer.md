@@ -1,7 +1,10 @@
 # School Organizers
 
-School Organizers are organizers who have [events for schools](../events/create-school.md). School organizers do not have to work exclusivly for schools.
-Apart from their events targeted to schools, they might also organize events targeted to the general public.
+School Organizers are organizers who have (also) [events for schools](../events/create-school.md).
+School organizers (link) are the same als other  organizers in UiTdatabank, except that they are also published on [Cultuurkuur](https://www.cultuurkuur.be).
+School organizers can create [school events](../events/create-school.md), as well as regular events.
+
+If you already have your organization in UiTdatabank, just update with below properties to turn it into a school organizer. Read our guide on finding and re-using existing organizers (link)
 
 ## Required properties
 
