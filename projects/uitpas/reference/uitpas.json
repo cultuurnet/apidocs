@@ -8581,11 +8581,6 @@
             "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
             "readOnly": true
           },
-          "uitidId": {
-            "type": "string",
-            "description": "The ID of the linked UiTiD. Only available in responses when there is an UiTiD linked.",
-            "readOnly": true
-          },
           "address": {
             "type": "object",
             "description": "Address that the passholder lives at. Always present in responses. Passholders living outside of Belgium (usually near the border) will only have a `postalCode` and `city` in their address.",
