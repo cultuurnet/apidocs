@@ -40,7 +40,7 @@ In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API 
 
 **Indiestyle**
 
-De meest volledige agenda voor alternatieve concerten is te vinden op de website van [Indiestyle](https://www.indiestyle.be/agenda). Met de aangepaste filters die ze gemaakt hebben kan je de zoekresultaten in de agenda fitleren zodat je enkel nog evenementen van een bepaalde concertorganisator (zoals Ancienne Belgique) te zien krijgt.
+De meest volledige agenda voor alternatieve concerten is te vinden op de website van [Indiestyle](https://www.indiestyle.be/agenda). Met de aangepaste filters die ze gemaakt hebben kan je de zoekresultaten in de agenda filteren zodat je enkel nog evenementen van een bepaalde concertorganisator (zoals Ancienne Belgique) te zien krijgt.
 
 **Inter - Toegankelijk Vlaanderen**
 
