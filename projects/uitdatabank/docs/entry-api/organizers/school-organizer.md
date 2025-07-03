@@ -17,10 +17,10 @@ Every organizer has a set of [properties that are required](create.md#required-p
 
 ## More properties
 
-Tailored offering
+### Tailored offering
 School organizers can also indicate whether they can tailor their offering to the specific needs of a school. 
 
-On school grounds
+### On school grounds
 School organizers that are willing to organize their offering on school grounds, can indicate so, and can specify in which regions. 
 
 This is done by adding the label `cultuurkuur_op_verplaatsing` and adding the right working region labels.
