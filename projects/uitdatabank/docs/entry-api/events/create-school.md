@@ -212,7 +212,7 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
       {
          "@type":"Event",
          "startDate":"2026-05-23T14:30:00+02:00",
-         "endDate":"2026-05-2316:00:00+02:00"
+         "endDate":"2026-05-23T16:00:00+02:00"
       }
    ],
    "audience":{
