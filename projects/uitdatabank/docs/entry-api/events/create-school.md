@@ -26,7 +26,7 @@ We distinguish 3 different types of school events.
 
 ### School performances
 
-School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in "hetpaleis" on 14/05/2023, from 14:30 to 16:00.
+School performances are events of which both the date and the location is known in advance. For example, a theater performance aimed at a toddler of 3-4 years old in "hetpaleis" on 23/05/2026, from 14:30 to 16:00.
 
 * ✅ date is known in advance
 * ✅ location is known in advance
@@ -189,7 +189,7 @@ We strongly recommend to also specify an event theme. You can refer to the other
 
 ### School performance
 
-Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 14/05/2026, from 14:30 to 16:00.
+Example of a theater performance aimed at toddlers of 3-4 years old in "hetpaleis" on 23/05/2026, from 14:30 to 16:00.
 
 ```json
 {
@@ -206,13 +206,13 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
       }
    ],
    "calendarType":"single",
-   "startDate":"2026-05-23T13:00:00+00:00",
-   "endDate":"2026-05-23T14:30:00+00:00",
+   "startDate":"2026-05-23T14:30:00+00:00",
+   "endDate":"2026-05-23T16:00:00+00:00",
    "subEvent":[
       {
          "@type":"Event",
-         "startDate":"2026-05-14T14:30:00+02:00",
-         "endDate":"2026-05-14T16:00:00+02:00"
+         "startDate":"2026-05-23T14:30:00+02:00",
+         "endDate":"2026-05-2316:00:00+02:00"
       }
    ],
    "audience":{
