@@ -4,8 +4,10 @@
   "description": "A list of labels that can be used to categorize the [event](./models/event.json).",
   "properties": {
     "labels": {
-      "$ref": "./common-labels.json"
+      "$ref": "./common-labels-optional.json"
     }
   },
-  "required": ["labels"]
+  "required": [
+    "labels"
+  ]
 }

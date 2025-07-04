@@ -158,6 +158,12 @@
             },
             {
               "type": "item",
+              "title": "School organizer",
+              "uri": "/docs/entry-api/organizers/school-organizer.md",
+              "slug": "entry-api/organizers/school-organizer"
+            },
+            {
+              "type": "item",
               "title": "Updating an organizer",
               "uri": "/docs/entry-api/organizers/update.md",
               "slug": "entry-api/organizers/updating-an-organizer"

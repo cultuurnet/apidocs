@@ -1,7 +1,7 @@
 {
   "type": "object",
-  "title": "place.labels",
-  "description": "A list of labels that can be used to categorize the [place](./models/place.json).",
+  "title": "organizer.labels",
+  "description": "A list of labels that can be used to categorize the [organizer](./models/organizer.json).",
   "properties": {
     "labels": {
       "$ref": "./common-labels-optional.json"

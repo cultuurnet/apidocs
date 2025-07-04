@@ -8,6 +8,8 @@ Before diving in, make sure you have read the following guides first:
 * [What are organizers?](introduction.md)
 * [Finding and reusing organizers](finding-and-reusing-organizers.md)
 
+If your organizer also, or exclusivly organizes [events for schools](../events/create-school.md), you should also read the guide about [school organizers](./school-organizer.md)
+
 <!-- theme: warning -->
 
 > When sending event content to UiTdatabank through the Entry API you **must** reuse existing organizer IDs when available, see [finding and reusing organizers](./finding-and-reusing-organizers.md). The creation of a new organizer is only allowed if the organizer does not exist yet in UiTdatabank. Otherwise, your integration can be blocked because of the creation of duplicates.

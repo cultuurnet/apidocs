@@ -8779,6 +8779,11 @@
             "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
             "readOnly": true
           },
+          "uitidId": {
+            "type": "string",
+            "description": "The ID of the linked UiTiD. Only available in responses when there is an UiTiD linked.",
+            "readOnly": true
+          },
           "address": {
             "type": "object",
             "description": "Address that the passholder lives at. Always present in responses. Passholders living outside of Belgium (usually near the border) will only have a `postalCode` and `city` in their address.",
@@ -9074,7 +9079,7 @@
             "properties": {
               "requested": {
                 "type": "boolean",
-                "description": "`true` if social tariff is requested for this registration.",
+                "description": "`true` if social tariff is requested for this registration. Always available in responses if `registrationSocialTariff` exists.",
                 "readOnly": true
               },
               "idToken": {
@@ -9082,11 +9087,7 @@
                 "description": "The Social Tariff Validation ID token of the user. Use the [social tariff validation flow](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get) to obtain such ID tokens. If specified, this token must be valid, contain `hasSocialTariff:true` and the identity fields must match the fields in this registration. In all other cases an error is returned.",
                 "writeOnly": true
               }
-            },
-            "required": [
-              "requested",
-              "idToken"
-            ]
+            }
           }
         },
         "required": [

@@ -23,10 +23,6 @@ Widgets zijn een zeer toegankelijke en veelzijdige tool die een groot aantal par
 * ✅ niet de technische kennis hebben om zelf een agenda te ontwikkelen
 * ✅ een oplossing willen die voortdurend up-to-date wordt gehouden met nieuwe ontwikkelingen binnen het publiq ecosysteem. Nieuwe velden of functies worden automatisch geactiveerd binnen een widget agenda
 
-> publiq kan helpen bij de configuratie van widgets of je begeleiden bij bepaalde aspecten (het bepalen van je scope, de configuratie, stijling, enz.) zodat je snel een agenda hebt die is afgestemd op de doelgroep van je organisatie.
->
-> Op <partnerships@publiq.be> kan je ons bereiken voor vragen over hulp bij het opzetten van een widget.
-
 ### Voor wie zijn widgets niet?
 
 In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API van UiTdatabank](https://docs.publiq.be/docs/uitdatabank/87dec20235b44-search-api) in plaats van met Widgets. Widgets zijn minder geschikt als:
@@ -44,7 +40,7 @@ In sommige gevallen kan het aangewezen zijn om te integreren met de [Search API 
 
 **Indiestyle**
 
-De meest volledige agenda voor alternatieve concerten is te vinden op de website van [Indiestyle](https://www.indiestyle.be/agenda). Met de aangepaste filters die ze gemaakt hebben kan je de zoekresultaten in de agenda fitleren zodat je enkel nog evenementen van een bepaalde concertorganisator (zoals Ancienne Belgique) te zien krijgt.
+De meest volledige agenda voor alternatieve concerten is te vinden op de website van [Indiestyle](https://www.indiestyle.be/agenda). Met de aangepaste filters die ze gemaakt hebben kan je de zoekresultaten in de agenda filteren zodat je enkel nog evenementen van een bepaalde concertorganisator (zoals Ancienne Belgique) te zien krijgt.
 
 **Inter - Toegankelijk Vlaanderen**
 
