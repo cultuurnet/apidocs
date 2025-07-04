@@ -22,6 +22,9 @@
   ],
   "tags": [
     {
+      "name": "Associations"
+    },
+    {
       "name": "Card Systems"
     },
     {
@@ -2028,7 +2031,7 @@
           }
         ],
         "tags": [
-          "Passholders"
+          "Associations"
         ]
       },
       "parameters": []
