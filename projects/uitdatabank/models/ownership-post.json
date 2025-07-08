@@ -27,13 +27,6 @@
       "required": [
         "itemId",
         "itemType",
-        "ownerId"
-      ]
-    },
-    {
-      "required": [
-        "itemId",
-        "itemType",
         "ownerEmail"
       ]
     }
