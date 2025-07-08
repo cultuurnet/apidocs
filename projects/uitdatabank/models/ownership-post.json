@@ -20,6 +20,12 @@
     {
       "required": [
         "itemId",
+        "itemType"
+      ]
+    },
+    {
+      "required": [
+        "itemId",
         "itemType",
         "ownerId"
       ]
