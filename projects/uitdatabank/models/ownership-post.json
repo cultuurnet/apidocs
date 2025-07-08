@@ -16,20 +16,9 @@
       "description": "The email of the owner"
     }
   },
-  "oneOf": [
-    {
-      "required": [
-        "itemId",
-        "itemType"
-      ]
-    },
-    {
-      "required": [
-        "itemId",
-        "itemType",
-        "ownerEmail"
-      ]
-    }
+  "required": [
+    "itemId",
+    "itemType"
   ],
   "examples": [
     {
