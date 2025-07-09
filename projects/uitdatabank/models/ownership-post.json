@@ -16,23 +16,15 @@
       "description": "The email of the owner"
     }
   },
-  "oneOf": [
-    {
-      "required": [
-        "itemId",
-        "itemType",
-        "ownerId"
-      ]
-    },
-    {
-      "required": [
-        "itemId",
-        "itemType",
-        "ownerEmail"
-      ]
-    }
+  "required": [
+    "itemId",
+    "itemType"
   ],
   "examples": [
+    {
+      "itemId": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
+      "itemType": "organizer"
+    },
     {
       "itemId": "e1a58cbd-cd4b-4295-bea0-baf123c77fd4",
       "itemType": "organizer",
