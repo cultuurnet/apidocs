@@ -111,8 +111,9 @@ You can use the curl request below to request a client access token using your c
 Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own **client id** and **secret**!
 
 ```shell
-curl --request POST \
-  --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
-  --header 'Content-Type: application/json' \
-  --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
+curl -X POST https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=CLIENT_ID" \
+  -d "client_secret=CLIENT_SECRET" 
 ```
