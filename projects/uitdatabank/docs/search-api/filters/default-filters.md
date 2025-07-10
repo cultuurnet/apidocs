@@ -14,6 +14,14 @@ You can either disable these filters individually, or disable them all at once.
 
 > If you disable (one of) these filters, you may get results that should not be published in event calendars or are no longer relevant to them.
 
+
+<!-- theme: info -->
+
+> If you search for 1 specific filtered group, the desired results might still be blocked because they are still blocked by another filter.
+> e.g., Offers in `DDRAFT` are always unavailable. So if wish to search for `DRAFT`-offers you must also disable `availableFrom` & `availableTo`
+> GET /offers/?availableFrom=*&availableTo=*&workflowStatus=DRAFT
+
+
 ## Disable individual filters
 
 ### workflowStatus
