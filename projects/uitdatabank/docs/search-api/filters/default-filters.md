@@ -19,9 +19,9 @@ You can either disable these filters individually, or disable them all at once.
 
 > If you search for 1 specific filtered group, the desired results might still be blocked because they are still blocked by another filter.
 > e.g., Offers in `DRAFT` are always unavailable. So if wish to search for `DRAFT`-offers you must also disable `availableFrom` & `availableTo`
-```
+> ```
 > GET /offers/?availableFrom=*&availableTo=*&workflowStatus=DRAFT
-```
+> ```
 
 ## Disable individual filters
 
