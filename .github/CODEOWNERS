@@ -2,6 +2,7 @@
 
 # Default owners (only for PRs that make changes to files not covered below, like GitHub Actions, README, etc)
 * @JonasVHG @willaerk @bertramakers
+
 # Authentication owners
 /projects/authentication @corneelwille @JurgenG @JonasVHG @bertramakers
 
