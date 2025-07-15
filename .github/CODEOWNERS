@@ -1,19 +1,19 @@
 # CODEOWNERS are automatically assigned as possible reviewers to new PRs.
 
 # Default owners (only for PRs that make changes to files not covered below, like GitHub Actions, README, etc)
-* @JonasVHG @willaerk @simon-debruijn
+* @JonasVHG @willaerk @bertramakers
 
 # Authentication owners
-/projects/authentication @corneelwille @JurgenG @JonasVHG
+/projects/authentication @corneelwille @JurgenG @JonasVHG @bertramakers
 
 # museumPASSmusées owners
-/projects/museumpassmusees @DizzyMissLizzy @erwin1
+/projects/museumpassmusees @DizzyMissLizzy @erwin1 @bertramakers
 
 # UiTdatabank owners
-/projects/uitdatabank @JonasVHG @LucWollants @grubolsch
+/projects/uitdatabank @JonasVHG @LucWollants @grubolsch @bertramakers
 
 # UiTPAS owners
-/projects/uitpas @erwin1 @JurgenG @brusselsregular
+/projects/uitpas @erwin1 @JurgenG @brusselsregular @bertramakers
 
 # Widgets owners
-/projects/widgets @JonasVHG @corneelwille
+/projects/widgets @JonasVHG @corneelwille @bertramakers
