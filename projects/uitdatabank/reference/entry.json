@@ -18557,8 +18557,7 @@
   "components": {
     "schemas": {
       "Error": {
-        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
-        "x-internal": true
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json"
       }
     },
     "securitySchemes": {
