@@ -22,6 +22,9 @@
   ],
   "tags": [
     {
+      "name": "Associations"
+    },
+    {
       "name": "Card Systems"
     },
     {
@@ -1945,6 +1948,94 @@
         ]
       }
     },
+    "/associations": {
+      "get": {
+        "summary": "Get associations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssociationsPaginatedResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "e8386a24-2218-4269-8b65-4de46be07991",
+                          "name": "Ledenkaart sport"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-associations",
+        "description": "Retrieve associations based on organizer and its permission on the specific association.\n\nPassholders can have memberships for zero or more associations. However, only selected organizers can see (read permission) or register (write permission) these memberships. Using this endpoint, clients can retrieve which memberships they can [see](/reference/uitpas.json/paths/~1passholders~1passholderId~1association-memberships/get) or register.\n\nThe caller of this request must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "READ",
+                "WRITE"
+              ]
+            },
+            "in": "query",
+            "name": "permission",
+            "required": true,
+            "description": "Type of association permission"
+          }
+        ],
+        "tags": [
+          "Associations"
+        ]
+      },
+      "parameters": []
+    },
     "/passholders": {
       "get": {
         "summary": "Search passholders",
@@ -2546,6 +2637,91 @@
         ],
         "tags": [
           "Passholders"
+        ]
+      }
+    },
+    "/passholders/{passholderId}/association-memberships": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get association memberships of passholder",
+        "operationId": "get-passholders-passholderId-association-memberships",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssociationMembership"
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": [
+                      {
+                        "association": {
+                          "id": "e8386a24-2218-4269-8b65-4de46be07991",
+                          "name": "Ledenkaart sport"
+                        },
+                        "status": "ACTIVE",
+                        "endDate": "2026-08-24T21:59:59Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve association memberships of the given passholder. Only memberships are returned for assocations that are visible to the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organiserId",
+            "description": "ID of the organizer",
+            "required": true
+          }
         ]
       }
     },
@@ -8279,7 +8455,8 @@
           "ORDERS_CREATE",
           "PERMISSIONS_READ",
           "PERMISSIONS_WRITE",
-          "CARDS_READ"
+          "CARDS_READ",
+          "ASSOCIATIONS"
         ],
         "description": "ID of the permission"
       },
@@ -8477,6 +8654,30 @@
             "description": "List of organizer results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Organizer"
+            }
+          }
+        }
+      },
+      "AssociationsPaginatedResponse": {
+        "title": "AssociationsPaginatedResponse",
+        "x-stoplight": {
+          "id": "ytc6u5zzkcfmv"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for associations",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of association results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of association results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Association"
             }
           }
         }
@@ -10816,6 +11017,69 @@
           "idTokenExpiresAt"
         ],
         "title": "SocialTariffValidationPerson"
+      },
+      "Association": {
+        "title": "Association",
+        "x-stoplight": {
+          "id": "0cqmy2cuzwux0"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the association"
+          },
+          "name": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "bl1hgz5y2wooc"
+            },
+            "description": "Name of the association"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "description": "Association",
+        "x-examples": {}
+      },
+      "AssociationMembership": {
+        "title": "AssociationMembership",
+        "x-stoplight": {
+          "id": "mb1bs9upl614a"
+        },
+        "type": "object",
+        "properties": {
+          "association": {
+            "$ref": "#/components/schemas/Association"
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "kdp35yno8ebht"
+            },
+            "enum": [
+              "ACTIVE",
+              "EXPIRED"
+            ],
+            "description": "Status of the membership"
+          },
+          "endDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "eradjp82wpqv0"
+            },
+            "format": "date-time",
+            "description": "End date of the membership"
+          }
+        },
+        "required": [
+          "association",
+          "status",
+          "endDate"
+        ],
+        "x-examples": {}
       }
     },
     "securitySchemes": {
