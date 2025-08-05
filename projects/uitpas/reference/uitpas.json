@@ -7565,7 +7565,7 @@
                           "ADD",
                           "DELETE"
                         ],
-                        "description": "Indicates whether this uitpasNumber was added or removed since  the given `modifiedSince` date. This field is only present if `modifiedSincewas specified."
+                        "description": "Indicates whether this uitpasNumber was added or removed since the given `modifiedSince` date. This field is only present if `modifiedSince` was specified."
                       },
                       "availableTickets": {
                         "type": "integer",
@@ -7641,7 +7641,7 @@
           }
         },
         "operationId": "get-all-cards",
-        "description": "Retrieve all social tariff cards.\n\nThe caller of this request must have `ALLCARDS_READ` permission.",
+        "description": "Retrieve all social tariff cards.\nThis can be used with or without `modifiedSince` parameter. If used without, the response contains all current social tariff cards. If used with `modifiedSince` the response contains only changed (added or deleted) cards since that date.\n\nThe caller of this request must have `ALLCARDS_READ` permission.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -7658,7 +7658,7 @@
             },
             "in": "query",
             "name": "modifiedSince",
-            "description": "Retrieve the changes since this date. If this param is omitted this endpoint returns **ALL** social-tariff cards."
+            "description": "Retrieve the changes since this date. If this param is omitted this endpoint returns **ALL** current social-tariff cards."
           }
         ]
       },
