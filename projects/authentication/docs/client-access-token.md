@@ -112,7 +112,11 @@ Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own
 
 ```shell
 curl --request POST \
-  --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
+  --url https://account-test.uitid.be/oauth/token \
   --header 'Content-Type: application/json' \
-  --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
+  --data '{
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "grant_type": "client_credentials"
+  }'
 ```
