@@ -8313,7 +8313,16 @@
         "operationId": "get-social-tariff-validation",
         "x-internal": true,
         "description": "Retrieve Social Tariff Validation information using a `SocialTariffValidationToken` obtained from [this flow](/reference/uitpas.json/paths/~1social-tariff-validation~1start/get).\n\nThe `SocialTariffValidationToken` must be specified in the `x-custom-token` header.\n\nThis endpoint is rate limited.",
-        "parameters": [],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "cardSystemId",
+            "description": "Optional ID of the CardSystem for which the passholder is retrieving social tariff validation. This is used to determine the correct government service for the first request."
+          }
+        ],
         "security": [
           {
             "CUSTOM_TOKEN": []
