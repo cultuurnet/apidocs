@@ -7556,13 +7556,6 @@
                         "description": "Type of the card",
                         "readOnly": true
                       },
-                      "modifiedState": {
-                        "type": "string",
-                        "x-stoplight": {
-                          "id": "j3qfpr7esnv1g"
-                        },
-                        "description": "Indicates whether this uitpasNumber was added or removed since the given `modifiedSince` date. This field is only present if `modifiedSince` was specified."
-                      },
                       "availableTickets": {
                         "type": "integer",
                         "x-stoplight": {
@@ -7636,8 +7629,8 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "get-all-cards",
-        "description": "Retrieve all valid social tariff cards.\nThis can be used with or without `modifiedSince` parameter. \n\nIf **used without modifiedSince**, the response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. No `modifiedState` property is present. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\n\nIf **used with modifiedSince** the response contains only changed cards since that date. The `modifiedState` property indicates whether the card was `ADDED` or `DELETED`. Please note this `modifiedState` is guarantueed to reflect the current state of the card, but it is possible there are no actual changes on your side. (e.g. when 2 state changes happen within the delta period, e.g. valid -> expired -> renewed: this card will appear as `ADDED` although it was already part of the previous valid cards you requested). \n\nSpecial attention needs to go to `cardType=GROUP` in combination with `modifiedState`. When a group pass `availableTickets` is changed, it will appear as `modifiedState=ADDED`. When a group pass expires or is blocked, it will appear wuth `modifiedState=DELETED`.\n\nThe caller of this request must have `ALLCARDS_READ` permission.",
+        "operationId": "get-cards-social-tariff-cardSystemId-active",
+        "description": "Retrieve all valid social tariff cards at this moment.\n\nThe response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\nThe caller of this request must have `SOCIALTARIFF_EXPORT` permission.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -7646,17 +7639,7 @@
             "USER_ACCESS_TOKEN": []
           }
         ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "in": "query",
-            "name": "modifiedSince",
-            "description": "Retrieve the changes since this date. If this param is omitted this endpoint returns **ALL** current social-tariff cards."
-          }
-        ]
+        "parameters": []
       },
       "parameters": [
         {
@@ -8610,7 +8593,8 @@
           "PERMISSIONS_READ",
           "PERMISSIONS_WRITE",
           "CARDS_READ",
-          "ASSOCIATIONS"
+          "ASSOCIATIONS",
+          "SOCIALTARIFF_EXPORT"
         ],
         "description": "ID of the permission"
       },
