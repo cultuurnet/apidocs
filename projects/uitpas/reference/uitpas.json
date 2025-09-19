@@ -7516,6 +7516,143 @@
         ]
       }
     },
+    "/cards/social-tariff/{cardSystemId}/active": {
+      "get": {
+        "summary": "Retrieve all valid social tariff cards",
+        "tags": [
+          "Cards"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "List of uitpas numbers",
+                  "items": {
+                    "x-stoplight": {
+                      "id": "btzarymlxotng"
+                    },
+                    "type": "object",
+                    "properties": {
+                      "uitpasNumber": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "d5mcgwl29vxgc"
+                        },
+                        "description": "uitpasNumber of the card",
+                        "readOnly": true
+                      },
+                      "cardType": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "nflq0bksci1ny"
+                        },
+                        "enum": [
+                          "REGULAR",
+                          "GROUP"
+                        ],
+                        "description": "Type of the card",
+                        "readOnly": true
+                      },
+                      "availableTickets": {
+                        "type": "integer",
+                        "x-stoplight": {
+                          "id": "rtlhxr5sy8tva"
+                        },
+                        "description": "Available tickets. Only present for cards of type `GROUP`."
+                      }
+                    },
+                    "required": [
+                      "uitpasNumber",
+                      "cardType"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Full example": {
+                    "value": [
+                      {
+                        "uitpasNumber": "0900000095902",
+                        "cardType": "REGULAR"
+                      },
+                      {
+                        "uitpasNumber": "0900000067513",
+                        "cardType": "REGULAR"
+                      },
+                      {
+                        "uitpasNumber": "0900000045410",
+                        "cardType": "GROUP",
+                        "availableTickets": 10
+                      }
+                    ]
+                  },
+                  "Delta Example": {
+                    "value": [
+                      {
+                        "uitpasNumber": "0900000095902",
+                        "deltaOperation": "ADD",
+                        "cardType": "REGULAR"
+                      },
+                      {
+                        "uitpasNumber": "0900000067513",
+                        "deltaOperation": "DELETE",
+                        "cardType": "REGULAR"
+                      },
+                      {
+                        "uitpasNumber": "0900000045410",
+                        "cardType": "GROUP",
+                        "deltaOperation": "ADD",
+                        "availableTickets": 10
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/invalid-uitpas-number",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-cards-social-tariff-cardSystemId-active",
+        "description": "Retrieve all valid social tariff cards at this moment.\n\nThe response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\nThe caller of this request must have `SOCIALTARIFF_EXPORT` permission.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": []
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the card system"
+        }
+      ]
+    },
     "/kiosk-devices/setup": {
       "parameters": [],
       "put": {
@@ -8456,7 +8593,8 @@
           "PERMISSIONS_READ",
           "PERMISSIONS_WRITE",
           "CARDS_READ",
-          "ASSOCIATIONS"
+          "ASSOCIATIONS",
+          "SOCIALTARIFF_EXPORT"
         ],
         "description": "ID of the permission"
       },
