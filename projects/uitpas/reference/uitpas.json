@@ -2340,7 +2340,7 @@
             }
           }
         },
-        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.",
+        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`.\nOn top of that `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission is required for callers that register a passholder with social tariff. And on top of that `PASSHOLDERS_WRITE_SOCIALTARIFF_FULL_CARDSYSTEM` permission is required to register passholders with social tariff in another city than the `registrationOrganizer`.\n\n`PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission is needed when registering any passholder with a country other than `be`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -8581,6 +8581,9 @@
           "PASSHOLDERS_SEARCH_BY_ID",
           "GROUPPASSES_SEARCH",
           "PASSHOLDERS_WRITE",
+          "PASSHOLDERS_WRITE_SOCIALTARIFF_FULL_CARDSYSTEM",
+          "PASSHOLDERS_WRITE_FOREIGN_COUNTRY",
+          "PASSHOLDERS_WRITE_SOCIALTARIFF",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
           "MEMBERSHIP_PRICES_READ",
