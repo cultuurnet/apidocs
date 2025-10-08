@@ -21,6 +21,77 @@
     }
   ],
   "paths": {
+    "/addresses/streets": {
+      "get": {
+        "summary": "streets - get",
+        "tags": [
+          "Addresses"
+        ],
+        "responses": {
+          "200": {
+            "description": "An array with the streetnames which match the query in the requested minicipality.\ne.g.,\n[\n    \"Koningin Elisabethlaan\",\n    \"Koningin Astridlaan\",\n    \"Koningin Fabiolalaan\",\n    \"Koningin Maria Hendrikaplein\"\n]"
+          }
+        },
+        "operationId": "get-addresses-streets",
+        "description": "An endpoint, to get a list of existing streets for a given municipality",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "required": true,
+            "description": "The CountryCode of the country in which the locality is located."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postalCode",
+            "required": true,
+            "description": "The postalCode of the locality."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "city",
+            "required": true,
+            "description": "The name of the locality."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "description": "Any part of a street name."
+          },
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "limit",
+            "description": "The number of items you which to get."
+          }
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "parameters": []
+    },
     "/events": {
       "post": {
         "summary": "event - create",
@@ -18782,6 +18853,9 @@
     }
   },
   "tags": [
+    {
+      "name": "Addresses"
+    },
     {
       "name": "Events"
     },
