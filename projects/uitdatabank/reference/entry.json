@@ -9586,6 +9586,184 @@
         ]
       }
     },
+    "/user/{userId}": {
+      "get": {
+        "summary": "user - userid - get",
+        "operationId": "user-userId-get",
+        "description": "Returns the details of the user with the corresponding userId.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid",
+                      "description": "UUID of the user."
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "info@publiq.be",
+                      "description": "The email address of the user."
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
+                    }
+                  },
+                  "required": [
+                    "uuid",
+                    "email",
+                    "username"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "email": "info@publiq.be",
+                      "username": "username"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userId",
+          "in": "path",
+          "description": "The ID of the user you",
+          "required": true
+        }
+      ]
+    },
+    "/users/emails/{email}": {
+      "get": {
+        "summary": "user - email - get",
+        "operationId": "user-email-get",
+        "description": "Returns the details of the user with the corresponding e-mail.",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "The user details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uuid": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "format": "uuid",
+                      "description": "UUID of the user."
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "info@publiq.be",
+                      "description": "The email address of the user."
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "The username of the user."
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "description": "Deprecated, use `uuid` instead.",
+                      "deprecated": true
+                    },
+                    "nick": {
+                      "type": "string",
+                      "example": "username",
+                      "description": "Deprecated, use `username` instead.",
+                      "deprecated": true
+                    }
+                  },
+                  "required": [
+                    "uuid",
+                    "email",
+                    "username"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "uuid": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
+                      "email": "info@publiq.be",
+                      "username": "username"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "email",
+          "in": "path",
+          "required": true,
+          "description": "The e-mail of the user you wish to search"
+        }
+      ]
+    },
     "/mailing-list/{mailinglistId}": {
       "parameters": [
         {
