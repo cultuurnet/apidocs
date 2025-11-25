@@ -4,7 +4,7 @@ Every publiq API must follow the [Representational State Transfer (REST)](https:
 
 This architecture is more than just a styleguide. It also dictates how the API should behave in certain scenarios.
 
-The term REST was introduced by Roy Fielding [in his doctoral dissertation](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) in 2000.
+The term REST was introduced by Roy Fielding [in his doctoral dissertation](https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm) in 2000.
 
 This page includes a brief summary of the most important points of the REST architecture, as well as some conventions that must be followed in REST APIs built by/for publiq.
 
