@@ -9586,10 +9586,10 @@
         ]
       }
     },
-    "/user/{userId}": {
+    "/users/{userId}": {
       "get": {
-        "summary": "user - userid - get",
-        "operationId": "user-userId-get",
+        "summary": "users - userid - get",
+        "operationId": "users-userId-get",
         "description": "Returns the details of the user with the corresponding userId.",
         "tags": [
           "Users"
@@ -9677,8 +9677,8 @@
     },
     "/users/emails/{email}": {
       "get": {
-        "summary": "user - email - get",
-        "operationId": "user-email-get",
+        "summary": "users - email - get",
+        "operationId": "users-email-get",
         "description": "Returns the details of the user with the corresponding e-mail.",
         "tags": [
           "Users"
