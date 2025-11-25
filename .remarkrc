@@ -27,7 +27,8 @@
             "https://github.com/cultuurnet/udb3-acceptance-tests",
             "https://github.com/cultuurnet/apidocs/settings/secrets/actions",
             "https://www.uitinvlaanderen.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe",
-            "https://api.publiq.be"
+            "https://api.publiq.be",
+            "https://www.indiestyle.be/agenda"
         ]
     },
     "remark-validate-links": null,
