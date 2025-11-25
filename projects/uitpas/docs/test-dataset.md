@@ -44,9 +44,9 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 | UitpasNumber    |    Chip Number   |     Social tariff     | Postal code |          Coupons         |  Card status |  INSZ-number  |              Comment             |
 | --------------- | :--------------: | :-------------------: | :---------: | :----------------------: | :----------: | :-----------: | :------------------------------: |
 | `0900000095902` | `04784CDAEE3880` |           no          |     9000    |            no            |    active    | `83030201540` | Use this pass for points rewards |
-| `0900000067513` | `04363CDAEE3880` |       yes (Gent)      |     9090    |            no            |    active    | `36051380284` | Use this pass for points rewards |
+| `0900011354819` | `` |       yes (Gent)      |     9090    |            no            |    active    | `36051380284` | Use this pass for points rewards |
 | `0900000031618` | `04CEE7528E6180` |        expired        |     9000    |      1 coupon (Gent)     |    active    | `66010101785` |                 -                |
-| `0900000036112` | `04DF396AF85C80` |       yes (Gent)      |     9090    |            no            |    active    | `08091860684` |                 -                |
+| `0900010959113` | `` |       yes (Gent)      |     9090    |            no            |    active    | `08091860684` |                 -                |
 | `0900000002312` | `04B00412F15284` |       yes (Gent)      |     9000    |            no            |    blocked   | `71030360442` |                 -                |
 | `0900000058918` | `045157B2B63780` |        expired        |     1000    |            no            |    active    | `17010180147` |                 -                |
 | `1000000520006` | `045A4832633680` |           no          |     9000    |            no            |    active    | `80010101392` |                 -                |
