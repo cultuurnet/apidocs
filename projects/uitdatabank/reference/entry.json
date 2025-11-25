@@ -9670,7 +9670,7 @@
           },
           "name": "userId",
           "in": "path",
-          "description": "The ID of the user you",
+          "description": "The ID of the user you wish to search",
           "required": true
         }
       ]
