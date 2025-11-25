@@ -9602,12 +9602,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "uuid": {
-                      "type": "string",
-                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "format": "uuid",
-                      "description": "UUID of the user."
-                    },
                     "email": {
                       "type": "string",
                       "example": "info@publiq.be",
@@ -9618,23 +9612,17 @@
                       "example": "username",
                       "description": "The username of the user."
                     },
-                    "id": {
+                    "uuid": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "description": "Deprecated, use `uuid` instead.",
-                      "deprecated": true
-                    },
-                    "nick": {
-                      "type": "string",
-                      "example": "username",
-                      "description": "Deprecated, use `username` instead.",
-                      "deprecated": true
+                      "format": "uuid",
+                      "description": "UUID of the user."
                     }
                   },
                   "required": [
-                    "uuid",
                     "email",
-                    "username"
+                    "username",
+                    "uuid"
                   ]
                 },
                 "examples": {
@@ -9691,12 +9679,6 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "uuid": {
-                      "type": "string",
-                      "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "format": "uuid",
-                      "description": "UUID of the user."
-                    },
                     "email": {
                       "type": "string",
                       "example": "info@publiq.be",
@@ -9707,23 +9689,17 @@
                       "example": "username",
                       "description": "The username of the user."
                     },
-                    "id": {
+                    "uuid": {
                       "type": "string",
                       "example": "c8e6ff82-8b30-4295-b937-ab2f4f6ab4bf",
-                      "description": "Deprecated, use `uuid` instead.",
-                      "deprecated": true
-                    },
-                    "nick": {
-                      "type": "string",
-                      "example": "username",
-                      "description": "Deprecated, use `username` instead.",
-                      "deprecated": true
+                      "format": "uuid",
+                      "description": "UUID of the user."
                     }
                   },
                   "required": [
-                    "uuid",
                     "email",
-                    "username"
+                    "username",
+                    "uuid"
                   ]
                 },
                 "examples": {
