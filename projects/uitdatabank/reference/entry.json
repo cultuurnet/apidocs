@@ -8596,6 +8596,252 @@
         ]
       }
     },
+    "/organizers/{organizerId}/verenigingsloket": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organizerId"
+        }
+      ],
+      "get": {
+        "summary": "verenigingsloket - get",
+        "description": "Gets the verenigingsloket information for the organizer with the given `organizerId`. This endpoint returns the vcode, URL and status from the verenigingsloket registry.\n\nThe status can either be \"confirmed\" or \"cancelled\".",
+        "operationId": "organizer-verenigingsloket-get",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Verenigingsloket information for the organizer.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "vcode": {
+                      "type": "string",
+                      "description": "The verenigingsloket vcode identifier.",
+                      "example": "V0019001"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "The URL to the organization page on verenigingsloket.be",
+                      "example": "https://www.verenigingsloket.be/nl/verenigingen/V0019001"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "confirmed",
+                        "pending",
+                        "rejected"
+                      ],
+                      "example": "confirmed",
+                      "description": "The status can either be \"confirmed\" or \"cancelled\"."
+                    }
+                  },
+                  "required": [
+                    "vcode",
+                    "url",
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "Confirmed organization": {
+                    "value": {
+                      "vcode": "V0019001",
+                      "url": "https://www.verenigingsloket.be/nl/verenigingen/V0019001",
+                      "status": "confirmed"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "description": "Organizer not found in verenigingsloket.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "type": "https://api.publiq.be/probs/url/not-found",
+                      "title": "Organizer a7527e85-7d03-465f-b169-f9dab1c812cc not found in verenigingsloket.",
+                      "status": 404
+                    }
+                  },
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "https://api.publiq.be/probs/url/not-found\n"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Description of error"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "http code: 404"
+                    },
+                    "detail": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "v4517t1mds4p1"
+                      },
+                      "description": "Details of error"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/not-found",
+                      "title": "Organizer a7527e85-7d03-465f-b169-f9dab1c812cc not found in verenigingsloket.",
+                      "status": 404
+                    }
+                  },
+                  "Example 2": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/not-found",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "The Organizer with id \"a7527e85-7d03-465f-b169-f9dab1c812cc!\" was not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Failed to connect to verenigingsloket",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "type": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure",
+                      "title": "Failed to connect to verenigingsloket",
+                      "status": 503
+                    }
+                  },
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Description of error"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP code 503"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "type": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure",
+                      "title": "Failed to connect to verenigingsloket",
+                      "status": 503
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      },
+      "delete": {
+        "summary": "",
+        "tags": [
+          "Organizers"
+        ],
+        "operationId": "delete-organizers-organizerId-verenigingsloket",
+        "responses": {
+          "201": {
+            "description": "Connection created with Verenigingsloket"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "503": {
+            "description": "Failed to connect to verenigingsloket.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "type": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure",
+                      "title": "Failed to connect to verenigingsloket",
+                      "status": 503
+                    }
+                  },
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Failed to connect to verenigingsloket"
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "Http status code 503"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "title",
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "type": "https://api.publiq.be/uitdatabank/verenigingsloket-api-failure",
+                      "title": "Failed to connect to verenigingsloket",
+                      "status": 503
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Disconnect an organizer from the Verenigingsloket. The organizer’s status in Verenigingsloket will be updated to “cancelled.”\nOnly owners (and godusers) are authorized to perform this action.",
+        "x-internal": true
+      }
+    },
     "/ownerships": {
       "post": {
         "summary": "ownership - request",
