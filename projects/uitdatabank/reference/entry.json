@@ -3787,6 +3787,11 @@
                   }
                 }
               }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "../models/image.json"
+              }
             }
           }
         },
