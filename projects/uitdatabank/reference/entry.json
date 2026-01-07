@@ -3790,7 +3790,7 @@
             },
             "application/json": {
               "schema": {
-                "$ref": "../models/image.json"
+                "$ref": "../models/image-post.json"
               }
             }
           }
