@@ -9661,7 +9661,10 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of the card that is linked to this card system membership. It is possible to have a CardSystemMembership without a card. However, a passholder always has at least one CardSystemMembership with a card."
+            "description": "This is a convenience propery that contains the uitpasNumber of the `currentCard` if there is a current card."
+          },
+          "currentCard": {
+            "$ref": "#/components/schemas/Card"
           },
           "status": {
             "type": "string",
