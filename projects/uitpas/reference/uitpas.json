@@ -2723,6 +2723,123 @@
             "required": true
           }
         ]
+      },
+      "post": {
+        "summary": "Create/update association membership of passholder",
+        "operationId": "post-passholders-passholderId-association-memberships",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Creates a new or updates an existing membership of the passholder for the given association.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssociationMembership"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "association": {
+                      "id": "e8386a24-2218-4269-8b65-4de46be07991"
+                    },
+                    "endDate": "2026-08-24T21:59:59Z"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Association membership request"
+        },
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
+    "/passholders/{passholderId}/association-memberships/{associationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "associationId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the association."
+        }
+      ],
+      "delete": {
+        "summary": "Delete association membership of passholder",
+        "operationId": "delete-passholders-passholderId-association-memberships-associationId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Delete an existing membership of the passholder for the given association.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
       }
     },
     "/passholders/me/uitid/registration-token": {
@@ -11177,6 +11294,8 @@
           "id": "0cqmy2cuzwux0"
         },
         "type": "object",
+        "description": "Association",
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "string",
@@ -11187,15 +11306,24 @@
             "x-stoplight": {
               "id": "bl1hgz5y2wooc"
             },
-            "description": "Name of the association"
+            "description": "Name of the association. This field is always available in responses"
+          },
+          "endDateType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "siqftnrb8ax7e"
+            },
+            "description": "Indicates how end dates are set for memberships of this association. This field is always available in responses.",
+            "enum": [
+              "CUSTOM",
+              "BASED_ON_DATE_OF_BIRTH",
+              "BASED_ON_REGISTRATION_DATE"
+            ]
           }
         },
         "required": [
-          "id",
-          "name"
-        ],
-        "description": "Association",
-        "x-examples": {}
+          "id"
+        ]
       },
       "AssociationMembership": {
         "title": "AssociationMembership",
@@ -11203,6 +11331,7 @@
           "id": "mb1bs9upl614a"
         },
         "type": "object",
+        "x-examples": {},
         "properties": {
           "association": {
             "$ref": "#/components/schemas/Association"
@@ -11216,7 +11345,7 @@
               "ACTIVE",
               "EXPIRED"
             ],
-            "description": "Status of the membership"
+            "description": "Status of the membership. This field is always available in responses."
           },
           "endDate": {
             "type": "string",
@@ -11224,15 +11353,12 @@
               "id": "eradjp82wpqv0"
             },
             "format": "date-time",
-            "description": "End date of the membership"
+            "description": "End date of the membership. This field is always available in responses. This field is required in requests for association with a `CUSTOM` endDateType."
           }
         },
         "required": [
-          "association",
-          "status",
-          "endDate"
-        ],
-        "x-examples": {}
+          "association"
+        ]
       }
     },
     "securitySchemes": {
