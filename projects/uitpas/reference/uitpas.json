@@ -802,7 +802,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the given organizer or the organizer of the given eventId.\n\nIf this request is used without `eventId` or `organizerId` parameter, `TICKETSALES_SEARCH_ALL` permission is required.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some ca  ses, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -822,14 +822,29 @@
             },
             "in": "query",
             "name": "eventId",
-            "description": "The ID of the UiTdatabank event.",
-            "required": true
+            "description": "Filter ticket sales on this UiTdatabank event."
           },
           {
             "$ref": "#/components/parameters/start"
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter ticket sales on events of this organizer."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "Filter ticket sales on this passholder."
           }
         ]
       }
