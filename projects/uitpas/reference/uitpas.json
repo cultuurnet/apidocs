@@ -6876,6 +6876,28 @@
         ]
       }
     },
+    "/rewards/redeemed/redeemedAwardId}": {
+      "parameters": [],
+      "delete": {
+        "summary": "Cancel a redeemed award",
+        "operationId": "delete-rewards-redeemed-redeemedAwardId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Rewards"
+        ],
+        "description": "Cancel a previously redeemed reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the organizer of the given reward."
+      }
+    },
     "/card-systems": {
       "get": {
         "x-internal": false,
