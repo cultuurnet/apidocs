@@ -1963,6 +1963,234 @@
         ]
       }
     },
+    "/organizers/{organizerId}/admins": {
+      "get": {
+        "summary": "Retrieve admin users for organizer",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizerAdminsPaginatedCollection"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "9306c939-04c9-4585-ad71-000fa01ded6f",
+                          "userId": "d50e6c3c-8aff-430a-86ce-b125fdc3b998",
+                          "email": "admin1@example.com",
+                          "type": "ADMIN"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/group-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-organizers-organizerId-admins",
+        "description": "Retrieve all admin users of the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_READ` permission for the given organizer or the caller must be an organizer admin user (any type) of the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the organizer."
+        }
+      ],
+      "post": {
+        "summary": "Add admin user for organizer",
+        "operationId": "post-organizers-organizerId-admins",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizerAdmin"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "9306c939-04c9-4585-ad71-000fa01ded6f",
+                      "userId": "d50e6c3c-8aff-430a-86ce-b125fdc3b998",
+                      "email": "newadmin@example.com",
+                      "type": "ADMIN"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Add a new admin user for the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizerAdmin"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "email": "newadmin@example.com",
+                    "type": "ADMIN"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Request body with the email of the new organizer admin."
+        }
+      }
+    },
+    "/organizers/{organizerId}/admins/{adminUserId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "organizerId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the organizer."
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "adminUserId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the organizer admin user."
+        }
+      ],
+      "delete": {
+        "summary": "Remove admin user from organizer",
+        "operationId": "delete-organizers-organizerId-admins-adminId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {},
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Organizers"
+        ],
+        "description": "Remove an existing admin user from the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/associations": {
       "get": {
         "summary": "Get associations",
@@ -8966,6 +9194,52 @@
           "id"
         ]
       },
+      "OrganizerAdmin": {
+        "title": "OrganizerAdmin",
+        "x-stoplight": {
+          "id": "6or68aa5gscq9"
+        },
+        "type": "object",
+        "description": "An admin user for an organizer.",
+        "x-tags": [
+          "Models"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique ID of the Organizer admin for a given organizer. This field is always available in responses."
+          },
+          "userId": {
+            "type": "string",
+            "description": "UiTiD user ID of this organizer admin. This field is always available in responses.",
+            "x-stoplight": {
+              "id": "xrz0hu56plasy"
+            }
+          },
+          "email": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "as12vt0gw8i9i"
+            },
+            "description": "Email of the organizer admin. "
+          },
+          "type": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "a804wfrysxttx"
+            },
+            "description": "Type of the organizer admin.",
+            "enum": [
+              "MEMBER",
+              "ADMIN"
+            ]
+          }
+        },
+        "required": [
+          "email",
+          "type"
+        ]
+      },
       "PassholdersPaginatedResponse": {
         "title": "PassholdersPaginatedResponse",
         "type": "object",
@@ -9097,6 +9371,30 @@
             "description": "List of organizer results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Organizer"
+            }
+          }
+        }
+      },
+      "OrganizerAdminsPaginatedCollection": {
+        "title": "OrganizerAdminsPaginatedCollection",
+        "x-stoplight": {
+          "id": "ixcgvbnnh23z2"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for organizer admins.",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of organizer results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of organizer results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/OrganizerAdmin"
             }
           }
         }
