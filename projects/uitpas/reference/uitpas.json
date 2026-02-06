@@ -2240,6 +2240,14 @@
             "in": "query",
             "name": "uitidId",
             "description": "Unique ID of the UiTiD user linked to an individual passholder to look up."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "associationId",
+            "description": "A specific association ID to only return passholders that currently have an active member of this association."
           }
         ]
       },
