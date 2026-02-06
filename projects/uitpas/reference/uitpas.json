@@ -6876,8 +6876,18 @@
         ]
       }
     },
-    "/rewards/redeemed/redeemedAwardId}": {
-      "parameters": [],
+    "/rewards/redeemed/{redeemedAwardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "redeemedAwardId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the redeemed reward"
+        }
+      ],
       "delete": {
         "summary": "Cancel a redeemed award",
         "operationId": "delete-rewards-redeemed-redeemedAwardId",
