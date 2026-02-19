@@ -9449,11 +9449,14 @@
           "name": {
             "type": "string",
             "description": "Human-readable name of an UiTPAS organizer."
+          },
+          "cardSystems": {
+            "$ref": "#/components/schemas/SimpleCardSystem"
           }
         },
         "required": [
           "id"
-        ]
+        ]    
       },
       "OrganizerAdmin": {
         "title": "OrganizerAdmin",
@@ -10686,6 +10689,27 @@
           "socialTariffInfo": {
             "type": "string",
             "description": "Optional information about social tariff entitlement in this card system."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "SimpleCardSystem": {
+        "title": "SimpleCardSystem",
+        "description": "A simple representation of a CardSystem",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the card system"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the card system. This field is always available in responses."
           }
         },
         "required": [
