@@ -85,6 +85,9 @@
         "required": [
           "type"
         ]
+      },
+      "bookingInfo": {
+        "$ref": "./common-bookingInfo.json"
       }
     },
     "required": [
