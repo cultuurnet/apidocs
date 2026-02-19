@@ -1187,6 +1187,25 @@
                               "nl": "Ticketsales zoeken"
                             }
                           }
+                        ],
+                        "linkedOrganizers": [
+                          {
+                            "organizer": {
+                              "id": "347e6177-4add-4fa8-a7fe-6e60127bfb12",
+                              "name": "Sportdienst"
+                            },
+                            "permissions": [
+                              "CHECKINS_WRITE"
+                            ],
+                            "permissionDetails": [
+                              {
+                                "id": "CHECKINS_WRITE",
+                                "label": {
+                                  "nl": "Punten sparen"
+                                }
+                              }
+                            ]
+                          }
                         ]
                       },
                       {
