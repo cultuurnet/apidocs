@@ -2,20 +2,6 @@
   "title": "event.audience",
   "type": "object",
   "description": "Indicates the intended audience of the [event](./models/event.json).",
-  "properties": {
-    "audienceType": {
-      "type": "string",
-      "enum": [
-        "everyone",
-        "members",
-        "education"
-      ],
-      "description": "Indicates whether the event or place is accessible to `everyone`, `members` only, or `education` only."
-    }
-  },
-  "required": [
-    "audienceType"
-  ],
   "examples": [
     {
       "audienceType": "everyone"
@@ -26,5 +12,20 @@
     {
       "audienceType": "education"
     }
+  ],
+  "properties": {
+    "audienceType": {
+      "type": "string",
+      "enum": [
+        "everyone",
+        "members",
+        "education",
+        "childrenOnly"
+      ],
+      "description": "Indicates whether the event or place is accessible to `everyone`, `members` only, or `education` only."
+    }
+  },
+  "required": [
+    "audienceType"
   ]
 }
