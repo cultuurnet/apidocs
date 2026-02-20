@@ -87,7 +87,7 @@
         ]
       },
       "bookingInfo": {
-        "$ref": "./common-bookingInfo.json"
+        "$ref": "./event-bookingInfo.json"
       }
     },
     "required": [
