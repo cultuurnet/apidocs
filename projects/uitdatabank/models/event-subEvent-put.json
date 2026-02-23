@@ -53,6 +53,9 @@
       },
       "bookingAvailability": {
         "$ref": "./event-bookingAvailability.json"
+      },
+      "bookingInfo": {
+        "$ref": "./event-bookingInfo.json"
       }
     },
     "required": [

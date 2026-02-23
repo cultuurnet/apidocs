@@ -85,6 +85,9 @@
         "required": [
           "type"
         ]
+      },
+      "bookingInfo": {
+        "$ref": "./event-bookingInfo.json"
       }
     },
     "required": [
