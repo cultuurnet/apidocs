@@ -1,23 +1,26 @@
 {
   "title": "event.bookingAvailability",
-  "description": "Indicates whether the event still has tickets or reservations available. Contains a `type` that can be `Available` or `Unavailable`, also includes the optional capacity and remaining availability counts.",
-  "allOf": [
-    {
-      "$ref": "./common-bookingAvailability.json"
+  "type": "object",
+  "description": "Indicates whether the event still has tickets or reservations available. Exactly one of type or availability must be provided (mutually exclusive). An optional capacity may also be included.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["Available", "Unavailable"],
+      "description": "One of two possible types.\n\n- `Available`: Tickets or reservations available\n- `Unavailable`: No more tickets or reservations available."
     },
-    {
-      "properties": {
-        "capacity": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Total number of seats or tickets."
-        },
-        "availability": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Number of remaining seats or tickets. Cannot exceed `capacity` when both are provided."
-        }
-      }
+    "capacity": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of seats or tickets."
+    },
+    "availability": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of remaining seats or tickets."
     }
+  },
+  "oneOf": [
+    { "required": ["type"], "not": { "required": ["availability"] } },
+    { "required": ["availability"], "not": { "required": ["type"] } }
   ]
 }
