@@ -1,0 +1,141 @@
+{
+  "title": "event-faq",
+  "type": "object",
+  "description": "A single FAQ item with translations in one or more languages.",
+  "properties": {
+      "nl": {
+        "type": "object",
+        "description": "The Dutch translation of the FAQ item.",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The question in Dutch.",
+            "minLength": 1,
+            "maxLength": 255,
+            "example": "Hoe geraak ik er?"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer in Dutch.",
+            "minLength": 1,
+            "maxLength": 5000,
+            "example": "Met de bus."
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      },
+      "fr": {
+        "type": "object",
+        "description": "The French translation of the FAQ item.",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The question in French.",
+            "minLength": 1,
+            "maxLength": 255,
+            "example": "Comment puis-je y accéder?"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer in French.",
+            "minLength": 1,
+            "maxLength": 5000,
+            "example": "En bus."
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      },
+      "de": {
+        "type": "object",
+        "description": "The German translation of the FAQ item.",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The question in German.",
+            "minLength": 1,
+            "maxLength": 255,
+            "example": "Wie komme ich dorthin?"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer in German.",
+            "minLength": 1,
+            "maxLength": 5000,
+            "example": "Mit dem Bus."
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      },
+      "en": {
+        "type": "object",
+        "description": "The English translation of the FAQ item.",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The question in English.",
+            "minLength": 1,
+            "maxLength": 255,
+            "example": "How do I get there?"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer in English.",
+            "minLength": 1,
+            "maxLength": 5000,
+            "example": "By bus."
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      }
+    },
+    "anyOf": [
+      {
+        "required": [
+          "nl"
+        ]
+      },
+      {
+        "required": [
+          "fr"
+        ]
+      },
+      {
+        "required": [
+          "de"
+        ]
+      },
+      {
+        "required": [
+          "en"
+        ]
+      }
+    ],
+  "examples": [
+    {
+      "nl": {
+        "question": "Hoe geraak ik er?",
+        "answer": "Met de bus."
+      },
+      "fr": {
+        "question": "Comment puis-je y accéder?",
+        "answer": "En bus."
+      },
+      "en": {
+        "question": "How do I get there?",
+        "answer": "By bus."
+      }
+    }
+  ]
+}
