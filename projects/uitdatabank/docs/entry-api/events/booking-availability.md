@@ -47,8 +47,8 @@ For subEvents specifically, `bookingAvailability` also supports two optional num
 
 When `availability` is provided, `type` is derived automatically and must **not** be included in the same request:
 
-- `availability == 0` → `type` is set to `Unavailable`
-- `availability > 0` → `type` is set to `Available`
+*`availability == 0` → `type` is set to `Unavailable`
+*`availability > 0` → `type` is set to `Available`
 
 When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property.
 
