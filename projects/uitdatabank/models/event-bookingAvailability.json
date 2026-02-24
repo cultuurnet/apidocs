@@ -1,5 +1,23 @@
 {
-  "$ref": "./common-bookingAvailability.json",
   "title": "event.bookingAvailability",
-  "description": "Indicates whether the event still has tickets or reservations available. Currently only contains a `type` that can be `Available` or `Unavailable`, but can later be expanded with more detailed info."
+  "description": "Indicates whether the event still has tickets or reservations available. Contains a `type` that can be `Available` or `Unavailable`, also includes the optional capacity and remaining availability counts.",
+  "allOf": [
+    {
+      "$ref": "./common-bookingAvailability.json"
+    },
+    {
+      "properties": {
+        "capacity": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of seats or tickets."
+        },
+        "availability": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of remaining seats or tickets. Cannot exceed `capacity` when both are provided."
+        }
+      }
+    }
+  ]
 }

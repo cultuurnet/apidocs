@@ -74,16 +74,33 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "Required if `bookingAvailability` is included.\nOne of two possible status types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
+            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.\n\nCannot be combined with `availability`. Required when `availability` is not provided.",
             "example": "Available",
             "enum": [
               "Available",
               "Unavailable"
             ]
+          },
+          "capacity": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total number of seats or tickets for this subEvent. Can be set independently of `availability`."
+          },
+          "availability": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of remaining seats or tickets for this subEvent. Cannot exceed `capacity` when both are provided. When supplied, `type` is derived automatically: `0` → `Unavailable`, `> 0` → `Available`. Cannot be combined with `type`."
           }
         },
-        "required": [
-          "type"
+        "oneOf": [
+          {
+            "required": ["type"],
+            "not": { "required": ["availability"] }
+          },
+          {
+            "required": ["availability"],
+            "not": { "required": ["type"] }
+          }
         ]
       },
       "bookingInfo": {
