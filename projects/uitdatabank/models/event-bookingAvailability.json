@@ -1,7 +1,7 @@
 {
   "title": "event.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the event still has tickets or reservations available. Exactly one of type or availability must be provided (mutually exclusive). An optional capacity may also be included.",
+  "description": "Indicates whether the event still has tickets or reservations available. Exactly one of type or remainingCapacity must be provided (mutually exclusive). An optional capacity may also be included.",
   "properties": {
     "type": {
       "type": "string",
@@ -13,14 +13,14 @@
       "minimum": 0,
       "description": "Total number of seats or tickets."
     },
-    "availability": {
+    "remainingCapacity": {
       "type": "integer",
       "minimum": 0,
       "description": "Number of remaining seats or tickets."
     }
   },
   "oneOf": [
-    { "required": ["type"], "not": { "required": ["availability"] } },
-    { "required": ["availability"], "not": { "required": ["type"] } }
+    { "required": ["type"], "not": { "required": ["remainingCapacity"] } },
+    { "required": ["remainingCapacity"], "not": { "required": ["type"] } }
   ]
 }

@@ -74,7 +74,7 @@
         "properties": {
           "type": {
             "type": "string",
-            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.\n\nCannot be combined with `availability`. Required when `availability` is not provided.",
+            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.\n\nCannot be combined with `remainingCapacity`. Required when `remainingCapacity` is not provided.",
             "example": "Available",
             "enum": [
               "Available",
@@ -84,9 +84,9 @@
           "capacity": {
             "type": "integer",
             "minimum": 0,
-            "description": "Total number of seats or tickets for this subEvent. Can be set independently of `availability`."
+            "description": "Total number of seats or tickets for this subEvent. Can be set independently of `remainingCapacity`."
           },
-          "availability": {
+          "remainingCapacity": {
             "type": "integer",
             "minimum": 0,
             "description": "Number of remaining seats or tickets for this subEvent. Cannot exceed `capacity` when both are provided. When supplied, `type` is derived automatically: `0` → `Unavailable`, `> 0` → `Available`. Cannot be combined with `type`."
@@ -95,10 +95,10 @@
         "oneOf": [
           {
             "required": ["type"],
-            "not": { "required": ["availability"] }
+            "not": { "required": ["remainingCapacity"] }
           },
           {
-            "required": ["availability"],
+            "required": ["remainingCapacity"],
             "not": { "required": ["type"] }
           }
         ]

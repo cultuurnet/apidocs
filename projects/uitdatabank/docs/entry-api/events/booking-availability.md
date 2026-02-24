@@ -43,12 +43,12 @@ For subEvents specifically, `bookingAvailability` also supports two optional num
 | Field | Type | Description |
 |---|---|---|
 | `capacity` | integer ≥ 0 | Total number of seats or tickets for this date |
-| `availability` | integer ≥ 0 | Number of remaining seats or tickets for this date |
+| `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
 
-When `availability` is provided, `type` is derived automatically and must **not** be included in the same request:
+When `remainingCapacity` is provided, `type` is derived automatically and must **not** be included in the same request:
 
-*`availability == 0` → `type` is set to `Unavailable`
-*`availability > 0` → `type` is set to `Available`
+*`remainingCapacity == 0` → `type` is set to `Unavailable`
+*`remainingCapacity > 0` → `type` is set to `Available`
 
 When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property.
 
@@ -85,9 +85,9 @@ For example on an event with multiple dates:
 
 If your event has calendarType `single` or `multiple` and one of its dates has no more bookings available, you can change that specific subEvent's `bookingAvailability.type` to `Unavailable`.
 
-#### Capacity and availability
+#### Capacity and remaining capacity
 
-You can also report the concrete number of remaining seats or tickets per subEvent by including `capacity` and/or `availability` in `bookingAvailability`. Use the [`PATCH /events/{eventId}/subEvents`](/reference/entry.json/paths/~1events~1{eventId}~1subEvents/patch) endpoint:
+You can also report the concrete number of remaining seats or tickets per subEvent by including `capacity` and/or `remainingCapacity` in `bookingAvailability`. Use the [`PATCH /events/{eventId}/subEvents`](/reference/entry.json/paths/~1events~1{eventId}~1subEvents/patch) endpoint:
 
 ```json
 [
@@ -95,13 +95,13 @@ You can also report the concrete number of remaining seats or tickets per subEve
     "id": 0,
     "bookingAvailability": {
       "capacity": 100,
-      "availability": 42
+      "remainingCapacity": 42
     }
   }
 ]
 ```
 
-You may also include `capacity` alone, without `availability`:
+You may also include `capacity` alone, without `remainingCapacity`:
 
 ```json
 [
@@ -118,12 +118,12 @@ You may also include `capacity` alone, without `availability`:
 
 | Rule | Details |
 |---|---|
-| `type` **or** `availability`, not both | Providing both `type` and `availability` in the same request returns HTTP 400. When `availability` is present, `type` is derived automatically and must be omitted. |
-| `availability` auto-derives `type` | `availability == 0` → `type` becomes `Unavailable`. `availability > 0` → `type` becomes `Available`. |
-| `availability` ≤ `capacity` | When both fields are present, `availability` must not exceed `capacity`. Violating this returns HTTP 400. |
-| Non-negative integers | Both `capacity` and `availability` must be integers ≥ 0. |
-| `status` and `availability` are mutually exclusive | A single subEvent patch entry cannot contain both a top-level `status` field and `bookingAvailability.availability`. Violating this returns HTTP 400. |
-| `capacity` without `availability` | Valid. `capacity` can be set independently without providing `availability`. |
+| `type` **or** `remainingCapacity`, not both | Providing both `type` and `remainingCapacity` in the same request returns HTTP 400. When `remainingCapacity` is present, `type` is derived automatically and must be omitted. |
+| `remainingCapacity` auto-derives `type` | `remainingCapacity == 0` → `type` becomes `Unavailable`. `remainingCapacity > 0` → `type` becomes `Available`. |
+| `remainingCapacity` ≤ `capacity` | When both fields are present, `remainingCapacity` must not exceed `capacity`. Violating this returns HTTP 400. |
+| Non-negative integers | Both `capacity` and `remainingCapacity` must be integers ≥ 0. |
+| `status` and `remainingCapacity` are mutually exclusive | A single subEvent patch entry cannot contain both a top-level `status` field and `bookingAvailability.remainingCapacity`. Violating this returns HTTP 400. |
+| `capacity` without `remainingCapacity` | Valid. `capacity` can be set independently without providing `remainingCapacity`. |
 
 
 For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
