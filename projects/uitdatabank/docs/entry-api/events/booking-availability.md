@@ -38,17 +38,19 @@ By default, it looks like this:
 
 The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
-For subEvents specifically, `bookingAvailability` also supports two optional numeric fields:
+For subEvents specifically, `bookingAvailability` also supports an additional optional numeric field:
 
 | Field | Type | Description |
 |---|---|---|
-| `capacity` | integer ≥ 0 | Total number of seats or tickets for this date |
 | `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
 
-When `remainingCapacity` is provided, `type` is derived automatically and must **not** be included in the same request:
+Additionally, top-level events and subEvents can both include an optional `capacity` field:
 
-*`remainingCapacity == 0` → `type` is set to `Unavailable`
-*`remainingCapacity > 0` → `type` is set to `Available`
+| Field | Type | Description |
+|---|---|---|
+| `capacity` | integer ≥ 0 | Total number of seats or tickets |
+
+All fields (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
 
 When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property.
 
@@ -117,13 +119,10 @@ You may also include `capacity` alone, without `remainingCapacity`:
 #### Validation rules
 
 | Rule | Details |
-|---|---|
-| `type` **or** `remainingCapacity`, not both | Providing both `type` and `remainingCapacity` in the same request returns HTTP 400. When `remainingCapacity` is present, `type` is derived automatically and must be omitted. |
-| `remainingCapacity` auto-derives `type` | `remainingCapacity == 0` → `type` becomes `Unavailable`. `remainingCapacity > 0` → `type` becomes `Available`. |
+| --- | --- |
 | `remainingCapacity` ≤ `capacity` | When both fields are present, `remainingCapacity` must not exceed `capacity`. Violating this returns HTTP 400. |
 | Non-negative integers | Both `capacity` and `remainingCapacity` must be integers ≥ 0. |
-| `status` and `remainingCapacity` are mutually exclusive | A single subEvent patch entry cannot contain both a top-level `status` field and `bookingAvailability.remainingCapacity`. Violating this returns HTTP 400. |
-| `capacity` without `remainingCapacity` | Valid. `capacity` can be set independently without providing `remainingCapacity`. |
+| Any combination of fields | `type`, `capacity`, and `remainingCapacity` are all optional and can be combined in any way. |
 
 
 For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
