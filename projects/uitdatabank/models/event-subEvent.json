@@ -60,7 +60,7 @@
         "$ref": "./event-status.json"
       },
       "bookingAvailability": {
-        "$ref": "./event-bookingAvailability.json"
+        "$ref": "./event-subEvent-bookingAvailability.json"
       },
       "bookingInfo": {
         "$ref": "./event-bookingInfo.json"
