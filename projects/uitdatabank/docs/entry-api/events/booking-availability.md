@@ -40,19 +40,19 @@ The nested `type` property can either be `Available` (tickets/reservations/seats
 
 For subEvents specifically, `bookingAvailability` also supports an additional optional numeric property:
 
-| property | Type | Description |
-|---|---|---|
+| Property            | Type | Description |
+|---------------------|---|---|
 | `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
 
 Additionally, top-level events and subEvents can both include an optional `capacity` property:
 
-| property | Type | Description |
-|---|---|---|
+| Property   | Type | Description |
+|------------|---|---|
 | `capacity` | integer ≥ 0 | Total number of seats or tickets |
 
-All propertys (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
+All properties (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
 
-When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property.
+When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property, except when sending `remainingCapacity`, in which case this field will overwrite the availibility type on each `subEvent`..
 
 For example on an event with multiple dates:
 

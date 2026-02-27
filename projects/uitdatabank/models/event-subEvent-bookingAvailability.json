@@ -12,7 +12,8 @@
           "minimum": 0,
           "description": "Number of remaining seats or tickets."
         }
-      }
+      },
+      "required": []
     }
   ]
 }
