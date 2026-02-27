@@ -38,19 +38,19 @@ By default, it looks like this:
 
 The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
-For subEvents specifically, `bookingAvailability` also supports an additional optional numeric field:
+For subEvents specifically, `bookingAvailability` also supports an additional optional numeric property:
 
-| Field | Type | Description |
+| property | Type | Description |
 |---|---|---|
 | `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
 
-Additionally, top-level events and subEvents can both include an optional `capacity` field:
+Additionally, top-level events and subEvents can both include an optional `capacity` property:
 
-| Field | Type | Description |
+| property | Type | Description |
 |---|---|---|
 | `capacity` | integer ≥ 0 | Total number of seats or tickets |
 
-All fields (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
+All propertys (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
 
 When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property.
 
@@ -118,11 +118,11 @@ You may also include `capacity` alone, without `remainingCapacity`:
 
 #### Validation rules
 
-| Rule | Details |
-| --- | --- |
-| `remainingCapacity` ≤ `capacity` | When both fields are present, `remainingCapacity` must not exceed `capacity`. Violating this returns HTTP 400. |
-| Non-negative integers | Both `capacity` and `remainingCapacity` must be integers ≥ 0. |
-| Any combination of fields | `type`, `capacity`, and `remainingCapacity` are all optional and can be combined in any way. |
+| Rule | Details                                                                                                            |
+| --- |--------------------------------------------------------------------------------------------------------------------|
+| `remainingCapacity` ≤ `capacity` | When both properties are present, `remainingCapacity` must not exceed `capacity`. Violating this returns HTTP 400. |
+| Non-negative integers | Both `capacity` and `remainingCapacity` must be integers ≥ 0.                                                      |
+| Any combination of fields | `type`, `capacity`, and `remainingCapacity` are all optional and can be combined in any way.                       |
 
 
 For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
