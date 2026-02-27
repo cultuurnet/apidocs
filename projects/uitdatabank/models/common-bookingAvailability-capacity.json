@@ -1,0 +1,5 @@
+{
+  "type": "integer",
+  "minimum": 0,
+  "description": "Total number of seats or tickets."
+}

@@ -1,0 +1,5 @@
+{
+  "type": "string",
+  "enum": ["Available", "Unavailable"],
+  "description": "One of two possible types.\n\n- `Available`: Tickets or reservations available\n- `Unavailable`: No more tickets or reservations available."
+}

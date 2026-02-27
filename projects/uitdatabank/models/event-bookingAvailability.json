@@ -4,14 +4,10 @@
   "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`, and can optionally include capacity information.",
   "properties": {
     "type": {
-      "type": "string",
-      "enum": ["Available", "Unavailable"],
-      "description": "One of two possible types.\n\n- `Available`: Tickets or reservations available\n- `Unavailable`: No more tickets or reservations available."
+      "$ref": "./common-bookingAvailability-type.json"
     },
     "capacity": {
-      "type": "integer",
-      "minimum": 0,
-      "description": "Total number of seats or tickets."
+      "$ref": "./common-bookingAvailability-capacity.json"
     }
   },
   "required": [
