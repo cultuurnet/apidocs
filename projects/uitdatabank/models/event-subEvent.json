@@ -12,7 +12,9 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available"
+          "type": "Available",
+          "capacity": 100,
+          "remainingCapacity": 25
         }
       }
     ],
@@ -25,7 +27,9 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available"
+          "type": "Available",
+          "capacity": 100,
+          "remainingCapacity": 50
         }
       },
       {
@@ -36,7 +40,9 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available"
+          "type": "Unavailable",
+          "capacity": 200,
+          "remainingCapacity": 0
         }
       }
     ]
