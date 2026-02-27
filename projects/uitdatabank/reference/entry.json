@@ -1825,7 +1825,7 @@
         }
       }
     },
-    "/events/{eventId}/faq": {
+    "/events/{eventId}/faqs": {
       "parameters": [
         {
           "$ref": "#/components/parameters/eventId"
@@ -1851,7 +1851,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/event-faq-put.json"
+                "$ref": "../models/event-faqs-put.json"
               },
               "examples": {
                 "Example": {
