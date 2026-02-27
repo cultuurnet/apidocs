@@ -1,7 +1,7 @@
 {
   "title": "event.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the event still has tickets or reservations available.",
+  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`, and can optionally include capacity information.",
   "properties": {
     "type": {
       "type": "string",
@@ -13,5 +13,8 @@
       "minimum": 0,
       "description": "Total number of seats or tickets."
     }
-  }
+  },
+  "required": [
+    "type"
+  ]
 }
