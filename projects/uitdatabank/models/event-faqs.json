@@ -1,5 +1,5 @@
 {
-  "title": "event-faq",
+  "title": "event.faqs",
   "type": "object",
   "description": "A single FAQ item with translations in one or more languages.",
   "properties": {
