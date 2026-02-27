@@ -44,7 +44,7 @@ For subEvents specifically, `bookingAvailability` also supports an additional op
 |---------------------|---|---|
 | `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
 
-Additionally, top-level events and subEvents can both include an optional `capacity` property:
+The booking availability of an event can include an optional `capacity` property. Sub-events can also define their own optional `capacity`.
 
 | Property   | Type | Description |
 |------------|---|---|
