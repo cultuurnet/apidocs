@@ -1833,7 +1833,7 @@
       ],
       "put": {
         "summary": "faq - update",
-        "operationId": "event-faq-put",
+        "operationId": "event-faqs-put",
         "tags": [
           "Events"
         ],
