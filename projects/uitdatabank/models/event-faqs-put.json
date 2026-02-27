@@ -1,11 +1,11 @@
 {
-  "title": "event.faq.put",
+  "title": "event.faqs.put",
   "type": "array",
   "description": "A list of frequently asked questions for an event.",
   "minItems": 0,
   "maxItems": 30,
   "items": {
-    "$ref": "./event-faq.json"
+    "$ref": "./event-faqs.json"
   },
   "examples": [
     [
