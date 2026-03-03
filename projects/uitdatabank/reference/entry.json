@@ -1832,8 +1832,8 @@
         }
       ],
       "put": {
-        "summary": "faq - update",
-        "operationId": "event-faq-put",
+        "summary": "faqs - update",
+        "operationId": "event-faqs-put",
         "tags": [
           "Events"
         ],
