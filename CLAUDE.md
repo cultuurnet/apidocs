@@ -21,7 +21,6 @@
 10. [Sorting](#sorting)
 11. [Documentation File Conventions](#documentation-file-conventions)
 12. [Keeping Examples Up to Date](#keeping-examples-up-to-date)
-13. [Reference Examples](#reference-examples)
 
 ---
 
@@ -224,22 +223,3 @@ Files to check when adding a property to a schema:
 - The schema file itself (e.g., `event-subEvent-patch.json`)
 - Any `*-put.json` or `*-post.json` counterparts (e.g., `event-subEvent-put.json`)
 - The read model if one exists (e.g., `event-subEvent.json`)
-
----
-
-## Reference Examples
-
-### Booking Availability Schemas
-
-| Context | File | Properties | Validation |
-|---|---|---|---|
-| Event | `event-bookingAvailability.json` | `type`, `capacity` | `type` required |
-| Subevent | `event-subEvent-bookingAvailability.json` | `type`, `capacity`, `remainingCapacity` | `type` OR `remainingCapacity` required (or both) — uses `anyOf` |
-| Place | `place-bookingAvailability.json` | `type` | `type` required |
-
-### Files to Check
-- `projects/uitdatabank/models/event-bookingAvailability.json`
-- `projects/uitdatabank/models/event-subEvent-bookingAvailability.json`
-- `projects/uitdatabank/models/place-bookingAvailability.json`
-- `projects/uitdatabank/models/event-subEvent-patch.json`
-- `projects/uitdatabank/models/event-subEvent.json`
