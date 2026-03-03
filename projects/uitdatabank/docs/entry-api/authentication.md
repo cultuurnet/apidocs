@@ -22,7 +22,7 @@ For a more detailed comparison between the two, see the [overview between authen
 
 <!-- theme: warning -->
 
-> Note that if you decide to use client access tokens, the events, places and organizers you create will be owned by your client instead of a specific user. So when your end users log in on <https://www.uitdatabank.be> they will not see those entities in their dashboard and won't be able to edit them by default. However, you can make them visible and editable for your end users if needed by [making them a contributor](shared/contributors.md).
+> Note that if you decide to use client access tokens, the events, places and organizers you create will be owned by your client instead of a specific user. So when your end users log in on <https://www.uitdatabank.be> they will not see those entities in their dashboard and won't be able to edit them by default. However, you can make them visible and editable for your end users if needed by making them a contributor.
 
 ### Making a request to Entry API
 

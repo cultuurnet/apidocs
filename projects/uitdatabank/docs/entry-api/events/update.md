@@ -14,7 +14,7 @@ These two methods will be explained in more detail below, including recommendati
 Regardless of whether you update the event in its entirety, or use a specific endpoint to update just one property, you can only update an event if one of the following checks applies to you:
 
 * You are the `creator` of the event. This means that if you use a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token), the user has to be the initial creator of the event. If you use a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), the event must have previously been created with a client access token for the same client.
-* The user that your [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) belongs to was [added as a contributor](../shared/contributors.md) on the event.
+* The user that your [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) belongs to was added as a contributor on the event.
 * The user or client that your access token belongs to has been given extra permissions to make changes to all events or a subset of events in UiTdatabank. For example, to make edits to events in a specific postal code or events linked to a specific organizer. [Contact us](https://docs.publiq.be/#contact-us) for more info if you believe that your client or user(s) qualify for such extra permissions. Note that this solution is not possible when you have a very large and/or dynamic list of users that require this permission (when using user access tokens).
 
 ## Updating multiple properties at once

@@ -22,7 +22,7 @@ An event always has exactly one workflow status with one of the following values
 
 The default initial state of an event. As long as an event has this workflow status, it is not visible on UiTinVlaanderen, other online calendars, or the search page on [UiTdatabank](https://www.uitdatabank.be).
 
-The creator of the event can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)), and publish it once ready. [Contributors](../shared/contributors.md) added to the event can also view it in their dashboard and publish it when ready. When publishing the event, an optional publication date can be set so that the event only becomes visible at a specific moment in the future.
+The creator of the event can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)), and publish it once ready. Contributors added to the event can also view it in their dashboard and publish it when ready. When publishing the event, an optional publication date can be set so that the event only becomes visible at a specific moment in the future.
 
 An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the event](./update.md). Like users, API clients can also specify an optional publication date so the event only becomes visible at a specific later moment. The different ways of publishing an event as an API integrator are [described in more detail below](#publishing-an-event-as-an-api-integrator).
 
