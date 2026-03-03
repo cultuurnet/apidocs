@@ -1,5 +1,5 @@
 {
-  "title": "event-faq",
+  "title": "event-faqs",
   "type": "array",
   "description": "A list of several FAQ items in various languages",
   "maxItems": 30,
