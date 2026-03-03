@@ -1,5 +1,5 @@
 {
-  "title": "faq-item",
+  "title": "faq",
   "type": "object",
   "description": "A single FAQ item with translations in one or more languages.",
   "properties": {
