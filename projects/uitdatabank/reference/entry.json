@@ -1837,7 +1837,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the FAQ of an event. FAQ items previously set on the event but not included in this list will be removed.",
+        "description": "Updates the FAQ of an event. FAQ items previously set on the event but not included in this list will be removed. If you do not provide an id on a faq a new one will be created. Existing items in a faq can be updated by providing the ID. Using an unkown ID will result in a 400",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
