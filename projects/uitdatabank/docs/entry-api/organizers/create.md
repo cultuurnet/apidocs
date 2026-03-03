@@ -24,7 +24,7 @@ The user or client that created the organizer will become the `creator` of the o
 
 > When you use a client access token to create organizers, your users will not be able to see those organizers in their dashboard or edit them when logging in on the [UiTdatabank web application](https://uitdatabank.be), because your client will be the creator of the organizer and there is no other link between the organizer and the UiTiD users logging in on UiTdatabank.
 >
-> To fix this, you can add your users as contributors on your organizer after creating it.
+> To fix this, you can add your users as owners with the [ownership system](../../../models/ownership.json) instead. For more information on how to manage your organization and its users, see [this helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren).
 
 ## Overview
 

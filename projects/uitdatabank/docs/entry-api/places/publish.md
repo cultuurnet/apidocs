@@ -22,7 +22,7 @@ A place always has exactly one workflow status with one of the following values.
 
 The default initial state of a place. As long as a place has this workflow status, it is not visible on UiTinVlaanderen, other online calendars, or the search page on [UiTdatabank](https://www.uitdatabank.be).
 
-The creator of the place can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)), and publish it once ready. Contributors added to the place can also view it in their dashboard and publish it when ready. When publishing the place, an optional publication date can be set so that the place only becomes visible at a specific moment in the future.
+The creator of the place can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)), and publish it once ready. When publishing the place, an optional publication date can be set so that the place only becomes visible at a specific moment in the future.
 
 An API client can also publish it by transitioning it to the `READY_FOR_VALIDATION` status, given that it has the necessary permission to [update the place](./update.md). Like users, API clients can also specify an optional publication date so the place only becomes visible at a specific later moment. The different ways of publishing a place as an API integrator are [described in more detail below](#publishing-a-place-as-an-api-integrator).
 
