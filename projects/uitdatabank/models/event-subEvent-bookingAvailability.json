@@ -1,0 +1,20 @@
+{
+  "title": "event.subEvent.bookingAvailability",
+  "type": "object",
+  "description": "Indicates whether the subevent still has tickets or reservations available. Can contain either a `type` or `remainingCapacity` (or both), and can optionally include capacity information.",
+  "properties": {
+    "type": {
+      "$ref": "./common-bookingAvailability-type.json"
+    },
+    "capacity": {
+      "$ref": "./common-bookingAvailability-capacity.json"
+    },
+    "remainingCapacity": {
+      "$ref": "./common-bookingAvailability-remainingCapacity.json"
+    }
+  },
+  "anyOf": [
+    { "required": ["type"] },
+    { "required": ["remainingCapacity"] }
+  ]
+}
