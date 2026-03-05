@@ -1,0 +1,34 @@
+{
+  "title": "event.faqs.put",
+  "type": "array",
+  "description": "A list of frequently asked questions for an event.",
+  "minItems": 0,
+  "maxItems": 30,
+  "items": {
+    "$ref": "./faq.json"
+  },
+  "examples": [
+    [
+      {
+        "nl": {
+          "question": "Hoe geraak ik er?",
+          "answer": "Met de bus."
+        },
+        "en": {
+          "question": "How do I get there?",
+          "answer": "By bus."
+        }
+      },
+      {
+        "nl": {
+          "question": "Is er eten voorzien?",
+          "answer": "Ja, we hebben verschillend opties, inclusief vegetarisch."
+        },
+        "en": {
+          "question": "Will food be provided?",
+          "answer": "Yes, we have various options, including vegetarian."
+        }
+      }
+    ]
+  ]
+}

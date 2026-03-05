@@ -1825,6 +1825,88 @@
         }
       }
     },
+    "/events/{eventId}/faqs": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "faqs - update",
+        "operationId": "event-faqs-put",
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the FAQs of an event. FAQs previously set on the event but not included in this list will be removed. If you do not provide an id on a FAQ a new one will be created. Existing items in the FAQs can be updated by providing the ID. Using an unkown ID will result in a 400.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "description": "New list of FAQ items to set on the event.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-faqs-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    {
+                      "nl": {
+                        "question": "Hoe geraak ik er?",
+                        "answer": "Met de bus."
+                      },
+                      "en": {
+                        "question": "How do I get there?",
+                        "answer": "By bus."
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The event's FAQ was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/events/{eventId}/history": {
       "parameters": [
         {
