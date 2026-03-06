@@ -22,7 +22,7 @@ The user or client that created the place will become the `creator` of the place
 
 > When you use a client access token to create place, your users will not be able to see those places in their dashboard or edit them when logging in on the [UiTdatabank web application](https://uitdatabank.be), because your client will be the creator of the place and there is no other link between the place and the UiTiD users logging in on UiTdatabank.
 >
-> To fix this, you can [add your users as contributors](../shared/contributors.md) on your place after creating it.
+> To fix this, you can add your users as owners instead. For more information on how to manage your organization and its owners, see [this helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren).
 
 ## Overview
 

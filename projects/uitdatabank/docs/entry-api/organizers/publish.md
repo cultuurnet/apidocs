@@ -21,7 +21,7 @@ An organizer always has exactly one workflow status with one of the following va
 
 The default initial state of an organizer. It will be visible on the search page on [UiTdatabank](https://www.uitdatabank.be).
 
-The creator of the organizer can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)). [Contributors](../shared/contributors.md) added to the organizer can also view it in their dashboard.
+The creator of the organizer can view it in their UiTdatabank dashboard (if it was created using a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token)). [Owners](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren) added to the organizer can also view it in their dashboard.
 
 ### DELETED
 

@@ -14,7 +14,8 @@ These two methods will be explained in more detail below, including recommendati
 Regardless of whether you update the organizer in its entirety, or use a specific endpoint to update just one property, you can only update an organizer if one of the following checks applies to you:
 
 * You are the `creator` of the organizer. This means that if you use a [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token), the user has to be the initial creator of the organizer. If you use a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), the organizer must have previously been created with a client access token for the same client.
-* The user that your [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) belongs to was [added as a contributor](../shared/contributors.md) on the organizer.
+* The user that your [user access token](https://docs.publiq.be/docs/authentication/methods/user-access-token) belongs to was added as a contributor on the organizer. *(deprecated system)*
+* You have been added as an owner of the organisation. For more information on how to manage your organisation and its users, see [this helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren).
 * The user or client that your access token belongs to has been given extra permissions to make changes to all organizers or a subset of organizers in UiTdatabank. For example, to make edits to organizers in a specific postal code. [Contact us](https://docs.publiq.be/#contact-us) for more info if you believe that your client or user(s) qualify for such extra permissions. Note that this solution is not possible when you have a very large and/or dynamic list of users that require this permission (when using user access tokens).
 
 ## Updating multiple properties at once
