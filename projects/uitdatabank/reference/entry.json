@@ -1040,7 +1040,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe bookingAvailability of any subEvents that the event has will also be updated to match the general bookingAvailability.\n\n<!-- theme: warning -->\n\n> Note that you cannot update the bookingAvailability of an event with [calendar type](/models/event-calendarType.json) `periodic` or `permanent`. For now, they can only have \"Available\" as bookingAvailability.",
+        "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe type of any subEvents that the event has will also be updated to match the general type in bookingAvailability, unless these subEvents have remainingAvailability set.\n\n<!-- theme: warning -->\n\n> Note that you cannot update the bookingAvailability of an event with [calendar type](/models/event-calendarType.json) `periodic` or `permanent`. For now, they can only have \"Available\" as bookingAvailability.",
         "requestBody": {
           "content": {
             "application/json": {
