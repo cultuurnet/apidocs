@@ -2,7 +2,7 @@
 
 <!-- theme: warning -->
 
-> **Deprecated.** The contributors system is deprecated and will be removed in the future. Avoid building new integrations on top of it. Use the [ownership system](../../../models/ownership.json) instead. For more information on how to manage your organization and its users, see [this helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren).
+> **Deprecated.** The contributors system is deprecated and will be removed in the future. Avoid building new integrations on top of it. Use the ownership system instead. For more information on how to manage your organization and its users, see [this helpdesk article](https://helpdesk.publiq.be/hc/nl/articles/26125476448018-Hoe-kan-ik-mijn-organisatie-beheren).
 
 When you create a new [event](../events/create.md), [place](../places/create.md) or [organizer](../organizers/create.md) via Entry API using a [client access token](https://docs.publiq.be/docs/authentication/methods/client-access-token), that client will become the `creator` of the event/place/organizer. This means that it will only be editable afterward with a client access token for the same client.
 
