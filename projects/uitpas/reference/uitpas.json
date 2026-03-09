@@ -1433,7 +1433,7 @@
             }
           }
         },
-        "description": "Get all (enabled and disabled) `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nEvery `EventCardSystem` or `ManualDistributionKey` has an `enabled` property that can be altered using `PUT /events/{eventId}/card-systems`.\n \n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n",
+        "description": "Retrieve social tariff settings specific for this card system and the given postal code.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -7458,7 +7458,7 @@
             "USER_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve social tariff settings specific for this card system and the given postal code.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "description": "<!-- theme: warning -->\n\n> **Deprecated:** use [GET /cardsystems/{cardSystemId}/city-settings](/reference/uitpas.json/paths/~1cardssytems~1{cardSystemId}~1city-settings/get) instead.\n\nRetrieve social tariff settings specific for this card system and the given postal code.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
         "tags": [
           "Card Systems"
         ],
@@ -7471,6 +7471,110 @@
             "name": "postalCode",
             "description": "Postal code of the passholder who is being registered. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city",
             "required": true
+          }
+        ],
+        "deprecated": true
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the requested card system"
+        }
+      ]
+    },
+    "/card-systems/{cardSystemId}/city-settings": {
+      "get": {
+        "x-internal": false,
+        "summary": "Retrieve city settings for card system",
+        "responses": {
+          "200": {
+            "description": "City specific settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CardSystemCitySettings"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "city": "GENT",
+                        "allowsCardlessRegistration": true,
+                        "contactEmail": "uitpas-gent@example.com"
+                      },
+                      {
+                        "city": "MERELBEKE-MELLE",
+                        "allowsCardlessRegistration": true,
+                        "contactEmail": "uitpas-merelbeke-melle@example.com"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-postal-code\n* https://api.publiq.be/probs/uitpas/postal-code-not-in-card-system",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-cardsystems-cardsystemid-city-settings",
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve city specific settings for this card system.\n\nThis caller of this method, identified by client identification, client access token or user access token, does not require any permissions.",
+        "tags": [
+          "Card Systems"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "postalCode",
+            "description": "Filter city setting to the city of this postal code. Can be included more than once to allow multiple values. Valid values can found in https://taxonomy.uitdatabank.be/api/city"
           }
         ]
       },
@@ -11928,6 +12032,42 @@
         "required": [
           "postalCode",
           "allowsCardlessRegistration"
+        ]
+      },
+      "CardSystemCitySettings": {
+        "title": "CardSystemCitySettings",
+        "x-stoplight": {
+          "id": "opeie5n4zc8p3"
+        },
+        "type": "object",
+        "description": "CardSystemCitySettings",
+        "properties": {
+          "city": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0xm0rbvq3kdcb"
+            },
+            "description": "These settings apply to this city."
+          },
+          "allowsCardlessRegistration": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "9q12nus6hxclk"
+            },
+            "description": "true if social tariff registration is allowed for passholder with `postalCode`."
+          },
+          "contactEmail": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jhikn8amk44e6"
+            },
+            "description": "Contact email of this card system in the given city."
+          }
+        },
+        "required": [
+          "city",
+          "allowsCardlessRegistration",
+          "contactEmail"
         ]
       },
       "SocialTariffValidation": {
