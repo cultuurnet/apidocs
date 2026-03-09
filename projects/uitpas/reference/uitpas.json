@@ -1194,9 +1194,6 @@
                               "id": "347e6177-4add-4fa8-a7fe-6e60127bfb12",
                               "name": "Sportdienst"
                             },
-                            "permissions": [
-                              "CHECKINS_WRITE"
-                            ],
                             "permissionDetails": [
                               {
                                 "id": "CHECKINS_WRITE",
@@ -9309,6 +9306,7 @@
         "x-tags": [
           "Models"
         ],
+        "description": "Combination of organizer and its permissions",
         "properties": {
           "organizer": {
             "$ref": "#/components/schemas/Organizer"
@@ -9322,9 +9320,6 @@
             }
           },
           "permissionDetails": {
-            "x-stoplight": {
-              "id": "lgsc4nn0l16m6"
-            },
             "description": "Permissions of the calling client for this organizer.",
             "type": "array",
             "items": {
@@ -9332,12 +9327,39 @@
             }
           },
           "linkedOrganizers": {
-            "$ref": "#/components/schemas/OrganizerPermissions"
+            "type": "array",
+            "description": "Organizers linked to this organizer.",
+            "items": {
+              "$ref": "#/components/schemas/LinkedOrganizerPermissions"
+            }
           }
         },
         "required": [
           "organizer"
         ]
+      },
+      "LinkedOrganizerPermissions": {
+        "title": "LinkedOrganizerPermissions",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "properties": {
+          "organizer": {
+            "$ref": "#/components/schemas/Organizer"
+          },
+          "permissionDetails": {
+            "description": "Permissions of the calling client for this organizer.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionDetail"
+            }
+          }
+        },
+        "required": [
+          "organizer"
+        ],
+        "description": "Combination of organizer and its permissions, specifically targetted to be used when linked to another organizer."
       },
       "Permission": {
         "title": "Permission",
@@ -9394,9 +9416,6 @@
       },
       "PermissionDetail": {
         "type": "object",
-        "x-stoplight": {
-          "id": "c5794f747a78b"
-        },
         "title": "PermissionDetail",
         "description": "Permission details",
         "properties": {
@@ -9405,23 +9424,14 @@
           },
           "label": {
             "type": "object",
-            "x-stoplight": {
-              "id": "as7mh3yk45vow"
-            },
             "description": "Human-readable label of the permission",
             "properties": {
               "nl": {
                 "type": "string",
-                "x-stoplight": {
-                  "id": "rrvu7pjsljjiu"
-                },
                 "description": "Human-readable label of the permission in Dutch"
               },
               "en": {
                 "type": "string",
-                "x-stoplight": {
-                  "id": "n6md8dvbaqbz9"
-                },
                 "description": "Human-readable label of the permission in English"
               }
             },
@@ -9451,12 +9461,12 @@
             "description": "Human-readable name of an UiTPAS organizer."
           },
           "cardSystems": {
-            "$ref": "#/components/schemas/SimpleCardSystem"
+            "$ref": "#/components/schemas/CardSystem"
           }
         },
         "required": [
           "id"
-        ]    
+        ]
       },
       "OrganizerAdmin": {
         "title": "OrganizerAdmin",
@@ -10689,27 +10699,6 @@
           "socialTariffInfo": {
             "type": "string",
             "description": "Optional information about social tariff entitlement in this card system."
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "SimpleCardSystem": {
-        "title": "SimpleCardSystem",
-        "description": "A simple representation of a CardSystem",
-        "type": "object",
-        "x-tags": [
-          "Models"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "ID of the card system"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the card system. This field is always available in responses."
           }
         },
         "required": [
