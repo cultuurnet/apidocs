@@ -1279,6 +1279,178 @@
       },
       "parameters": []
     },
+    "/events/{eventId}/card-systems": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "eventId",
+          "in": "path",
+          "required": true,
+          "description": "The id of the event"
+        }
+      ],
+      "put": {
+        "summary": "Update event card systems",
+        "operationId": "put-events-card-systems",
+        "responses": {
+          "204": {
+            "description": "EventCardSytems updated. No content."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card-system\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/distributionkey-not-found\n* https://api.publiq.be/probs/uitpas/invalid-distributionkey\n* https://api.publiq.be/probs/uitpas/event-already-has-ticketsales\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "List of all possible (enabled and disabled) EventCardSystem objects",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EventCardSystem"
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    {
+                      "id": 1,
+                      "enabled": true,
+                      "manualDistributionKeys": [
+                        {
+                          "id": 123,
+                          "enabled": true
+                        }
+                      ]
+                    },
+                    {
+                      "id": 8,
+                      "enabled": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of card systems that an event is related to. Will overwrite the old list."
+        },
+        "description": "Update the `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nThis update is used to toggle the `enabled` state for specific card systems or distribution keys.\n\nTo update the `enabled` state for card systems or distribution keys, you typically retrieve the possible `EventCardSystem` objects first using  `GET /events/{eventId}/card-systems`. You can then reuse the response from the `GET` request, \naltering the `enabled` state. Note that you can also omit the name properties. \nOnly the required fields are used in this update request.\n\nHowever, in case you know the card system(s) and distribution key(s) in advance, you might also make this `PUT` request without prior `GET` e.g. in case you need to disable all card systems for an event, you can simply put an empty array `[]` to indicate that (missing card systems in the array will be treated the same way as card systems with `enabled: \"false\"`).\nAlso note the implementation of this `PUT` endpoint is robust enough to allow updating card systems before the event is known in UiTPAS. (so even before the `GET` returns a valid HTTP 200 response).\n\n\n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_UPDATE` permission for the organizer of this event or the caller of this request must have \"Aanbod bewerken\" permission in the UiTdatabank for the given event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      },
+      "get": {
+        "summary": "Get event card systems",
+        "operationId": "get-events-card-systems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventCardSystem"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "enabled": true,
+                        "manualDistributionKeys": [
+                          {
+                            "id": 123,
+                            "name": "3 euro per dag",
+                            "enabled": true
+                          }
+                        ]
+                      },
+                      {
+                        "id": 8,
+                        "name": "UiTPAS Gent",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all (enabled and disabled) `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nEvery `EventCardSystem` or `ManualDistributionKey` has an `enabled` property that can be altered using `PUT /events/{eventId}/card-systems`.\n \n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": [
+              "https://api.publiq.be/auth/uitpas"
+            ]
+          }
+        ],
+        "tags": [
+          "Events"
+        ]
+      }
+    },
     "/permissions/{clientId}": {
       "get": {
         "summary": "Get permissions for a client",
@@ -1459,178 +1631,6 @@
         },
         "tags": [
           "Permissions"
-        ]
-      }
-    },
-    "/events/{eventId}/card-systems": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "eventId",
-          "in": "path",
-          "required": true,
-          "description": "The id of the event"
-        }
-      ],
-      "put": {
-        "summary": "Update event card systems",
-        "operationId": "put-events-card-systems",
-        "responses": {
-          "204": {
-            "description": "EventCardSytems updated. No content."
-          },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card-system\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/distributionkey-not-found\n* https://api.publiq.be/probs/uitpas/invalid-distributionkey\n* https://api.publiq.be/probs/uitpas/event-already-has-ticketsales\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "List of all possible (enabled and disabled) EventCardSystem objects",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EventCardSystem"
-                }
-              },
-              "examples": {
-                "Example": {
-                  "value": [
-                    {
-                      "id": 1,
-                      "enabled": true,
-                      "manualDistributionKeys": [
-                        {
-                          "id": 123,
-                          "enabled": true
-                        }
-                      ]
-                    },
-                    {
-                      "id": 8,
-                      "enabled": false
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "description": "New list of card systems that an event is related to. Will overwrite the old list."
-        },
-        "description": "Update the `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nThis update is used to toggle the `enabled` state for specific card systems or distribution keys.\n\nTo update the `enabled` state for card systems or distribution keys, you typically retrieve the possible `EventCardSystem` objects first using  `GET /events/{eventId}/card-systems`. You can then reuse the response from the `GET` request, \naltering the `enabled` state. Note that you can also omit the name properties. \nOnly the required fields are used in this update request.\n\nHowever, in case you know the card system(s) and distribution key(s) in advance, you might also make this `PUT` request without prior `GET` e.g. in case you need to disable all card systems for an event, you can simply put an empty array `[]` to indicate that (missing card systems in the array will be treated the same way as card systems with `enabled: \"false\"`).\nAlso note the implementation of this `PUT` endpoint is robust enough to allow updating card systems before the event is known in UiTPAS. (so even before the `GET` returns a valid HTTP 200 response).\n\n\n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_UPDATE` permission for the organizer of this event or the caller of this request must have \"Aanbod bewerken\" permission in the UiTdatabank for the given event.\n",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": [
-              "https://api.publiq.be/auth/uitpas"
-            ]
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": [
-              "https://api.publiq.be/auth/uitpas"
-            ]
-          }
-        ],
-        "tags": [
-          "Events"
-        ]
-      },
-      "get": {
-        "summary": "Get event card systems",
-        "operationId": "get-events-card-systems",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/EventCardSystem"
-                  }
-                },
-                "examples": {
-                  "Example": {
-                    "value": [
-                      {
-                        "id": 1,
-                        "name": "UiTPAS Dender",
-                        "enabled": true,
-                        "manualDistributionKeys": [
-                          {
-                            "id": 123,
-                            "name": "3 euro per dag",
-                            "enabled": true
-                          }
-                        ]
-                      },
-                      {
-                        "id": 8,
-                        "name": "UiTPAS Gent",
-                        "enabled": true
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n\nThe detail property might include more information for the client developer.\n",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "description": "Get all (enabled and disabled) `EventCardSystem` objects of the given event.\n\nThe `EventCardSystem` object specifies that the event is available in\nthis specific card system and optionally what manual distribution keys are enabled.\n\nEvery `EventCardSystem` or `ManualDistributionKey` has an `enabled` property that can be altered using `PUT /events/{eventId}/card-systems`.\n \n<!-- theme: warning -->\n\n> **This endpoint is only needed for exceptional cases.** In most cases card systems and distribution keys are set automatically on events, so you don't need to retrieve or change them.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n",
-        "security": [
-          {
-            "USER_ACCESS_TOKEN": [
-              "https://api.publiq.be/auth/uitpas"
-            ]
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": [
-              "https://api.publiq.be/auth/uitpas"
-            ]
-          }
-        ],
-        "tags": [
-          "Events"
         ]
       }
     },
