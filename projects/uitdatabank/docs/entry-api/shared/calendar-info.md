@@ -123,7 +123,7 @@ Events with calendarType `single` or `multiple` can optionally include `childcar
 }
 ```
 
-To remove a childcare time that was previously set, omit the property from the request body.
+To remove a childcare time that was previously set, omit the property from the request body. Note that this also applies when patching a subEvent via `PATCH /events/{eventId}/subEvents`: omitting `childcareStartTime` or `childcareEndTime` clears the value rather than leaving it unchanged.
 
 **Validation rules:**
 
