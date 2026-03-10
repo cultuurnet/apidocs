@@ -3,6 +3,39 @@
   "type": "array",
   "minItems": 1,
   "uniqueItems": true,
+  "examples": [
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "childcareStartTime": "15:00",
+        "childcareEndTime": "23:00"
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "childcareStartTime": "15:00",
+        "childcareEndTime": "23:00",
+        "status": {
+          "type": "Available"
+        },
+        "bookingAvailability": {
+          "type": "Available",
+          "capacity": 100
+        }
+      },
+      {
+        "id": 1,
+        "status": {
+          "type": "Unavailable"
+        }
+      }
+    ]
+  ],
   "items": {
     "type": "object",
     "properties": {
