@@ -8701,7 +8701,11 @@
             "description": "Human-readable name of an UiTPAS organizer."
           },
           "cardSystems": {
-            "$ref": "#/components/schemas/CardSystem"
+            "type": "array",
+            "description": "Card systems linked to this organizer",
+            "items": {
+              "$ref": "#/components/schemas/CardSystem"
+            }
           }
         },
         "required": [
