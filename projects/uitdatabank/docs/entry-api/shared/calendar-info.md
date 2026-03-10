@@ -105,6 +105,31 @@ For example, in case of calendarType `multiple`:
 
 In case of calendarType `single`, the same logic is applied but in reality the `startDate`, `endDate`, `status` and `bookingAvailability` will be exactly the same on the top level as in the subEvent because there is only 1 subEvent to base them on.
 
+### Childcare times (events only)
+
+Events with calendarType `single` or `multiple` can optionally include `childcareStartTime` and `childcareEndTime` on each `subEvent` to indicate when childcare is provided during that event. Both properties use `HH:MM` format.
+
+```json
+{
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2023-01-12T10:00:00+01:00",
+      "endDate": "2023-01-12T12:00:00+01:00",
+      "childcareStartTime": "09:30",
+      "childcareEndTime": "12:30"
+    }
+  ]
+}
+```
+
+To remove a childcare time that was previously set, omit the property from the request body.
+
+**Validation rules:**
+
+* `childcareStartTime` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcareStartTime` must be before `10:00`.
+* `childcareEndTime` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcareEndTime` must be after `12:00`.
+
 ### periodic/permanent
 
 When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.
