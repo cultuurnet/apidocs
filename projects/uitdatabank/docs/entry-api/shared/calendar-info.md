@@ -107,7 +107,7 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 ### Childcare times (events only)
 
-Events with calendarType `single` or `multiple` can optionally include `childcareStartTime` and `childcareEndTime` on each `subEvent` to indicate when childcare is provided during that event. Both properties use `HH:MM` format.
+Events with calendarType `single` or `multiple` can optionally include `childcareStartTime` and `childcareEndTime` on each `subEvent` to indicate when childcare is provided during that event. Both properties use `HH:MM` format in 24-hour notation (as per ISO 8601).
 
 ```json
 {
