@@ -1,0 +1,9 @@
+{
+  "allOf": [
+    { "$ref": "./common-string-time.json" },
+    {
+      "description": "The time at which childcare ends for this occurrence, in HH:MM format. Must be later than the time portion of `endDate`.\n\nTo remove a previously set value, omit this property from the request body.",
+      "examples": ["23:00"]
+    }
+  ]
+}

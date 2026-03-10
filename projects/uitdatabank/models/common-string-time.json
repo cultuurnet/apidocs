@@ -1,0 +1,7 @@
+{
+  "title": "time",
+  "description": "Time in HH:MM format.",
+  "type": "string",
+  "pattern": "^\\d?\\d:\\d\\d$",
+  "examples": ["09:00"]
+}
