@@ -16,7 +16,7 @@
         { "$ref": "./common-string-time.json" },
         {
           "description": "The time at which childcare ends, in HH:MM format (24-hour notation). Must be later than the time portion of `endDate`.",
-          "examples": ["18:00"]
+          "examples": ["23:00"]
         }
       ]
     }
