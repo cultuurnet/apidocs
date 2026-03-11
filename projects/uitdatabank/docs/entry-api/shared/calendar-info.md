@@ -107,7 +107,7 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 ### Childcare times (events only)
 
-Events with calendarType `single` or `multiple` can optionally include `childcareStartTime` and `childcareEndTime` on each `subEvent` to indicate when childcare is provided during that event. Both properties use `HH:MM` format in 24-hour notation (as per ISO 8601).
+Events with calendarType `single` or `multiple` can optionally include a `childcare` object on each `subEvent` to indicate when childcare is provided during that event. The object has two properties, `start` and `end`, both using `HH:MM` format in 24-hour notation (as per ISO 8601). Both must be provided together.
 
 ```json
 {
@@ -116,19 +116,27 @@ Events with calendarType `single` or `multiple` can optionally include `childcar
     {
       "startDate": "2023-01-12T10:00:00+01:00",
       "endDate": "2023-01-12T12:00:00+01:00",
-      "childcareStartTime": "09:30",
-      "childcareEndTime": "12:30"
+      "childcare": {
+        "start": "09:30",
+        "end": "12:30"
+      }
     }
   ]
 }
 ```
 
-To remove a childcare time that was previously set, omit the property from the request body. Note that this also applies when patching a subEvent via `PATCH /events/{eventId}/subEvents`: omitting `childcareStartTime` or `childcareEndTime` clears the value rather than leaving it unchanged.
+**Clearing childcare via PATCH:**
+
+When patching a subEvent via `PATCH /events/{eventId}/subEvents`, the `childcare` property follows these rules:
+
+* **Omit `childcare`** entirely → existing childcare data is left unchanged.
+* **Send `"childcare": {}`** (empty object) → any previously set childcare values are cleared.
+* **Send `"childcare": { "start": "...", "end": "..." }`** → sets or replaces the childcare times.
 
 **Validation rules:**
 
-* `childcareStartTime` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcareStartTime` must be before `10:00`.
-* `childcareEndTime` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcareEndTime` must be after `12:00`.
+* `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
+* `childcare.end` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcare.end` must be after `12:00`.
 
 ### periodic/permanent
 
