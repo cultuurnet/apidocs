@@ -107,7 +107,7 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 ### Childcare times (events only)
 
-Events with calendarType `single` or `multiple` can optionally include a `childcare` object on each `subEvent` to indicate when childcare is provided during that event. The object has two properties, `start` and `end`, both using `HH:MM` format in 24-hour notation (as per ISO 8601). Both must be provided together.
+Events with calendarType `single` or `multiple` can optionally include a `childcare` object on each `subEvent` to indicate when childcare is provided during that event. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
 
 ```json
 {
@@ -130,8 +130,10 @@ Events with calendarType `single` or `multiple` can optionally include a `childc
 When patching a subEvent via `PATCH /events/{eventId}/subEvents`, the `childcare` property follows these rules:
 
 * **Omit `childcare`** entirely → existing childcare data is left unchanged.
-* **Send `"childcare": {}`** (empty object) → any previously set childcare values are cleared.
-* **Send `"childcare": { "start": "...", "end": "..." }`** → sets or replaces the childcare times.
+* **Send `"childcare": {}`** (empty object) → clears both `start` and `end`.
+* **Send `"childcare": { "start": "..." }`** → sets `start`, clears `end`.
+* **Send `"childcare": { "end": "..." }`** → clears `start`, sets `end`.
+* **Send `"childcare": { "start": "...", "end": "..." }`** → sets both.
 
 **Validation rules:**
 

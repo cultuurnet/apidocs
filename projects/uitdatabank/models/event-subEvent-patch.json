@@ -64,7 +64,7 @@
         "allOf": [
           { "$ref": "./event-subEvent-childcare.json" },
           {
-            "description": "Childcare information for this sub event. To clear a previously set childcare, send an empty object (`{}`). If this property is omitted entirely, the existing childcare data will not be altered."
+            "description": "Childcare information for this sub event. If this property is omitted entirely, the existing childcare data will not be altered. If included, each property present is set and each property omitted is cleared. Send an empty object (`{}`) to clear both `start` and `end`."
           }
         ]
       },
