@@ -138,6 +138,33 @@ For example, an event or place that is available for attendees/visitors from Jan
 }
 ```
 
+When creating or updating an event or place with calendarType `permanent` you do not need to include a `startDate` or `endDate` since it is supposed to be scheduled permanently, but you may also include the same optional `openingHours` property to define the moments that it is accessible (if not 24/7).
+
+```json
+{
+  "calendarType": "permanent",
+  "openingHours": [ // Optional, but recommended unless 24/7
+    {
+      "opens": "09:00",
+      "closes": "12:00",
+      "dayOfWeek": [
+        "saturday",
+        "sunday"
+      ]
+    },
+    {
+      "opens": "13:00",
+      "closes": "17:00",
+      "dayOfWeek": [
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    }
+  ]
+}
+```
+
 ### Childcare times on openingHours (events only)
 
 Events with calendarType `periodic` or `permanent` can optionally include a `childcare` object on each `openingHours` item to indicate when childcare is provided on that weekday. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601). Both must be provided together.
@@ -174,33 +201,6 @@ To remove previously set childcare, omit the `childcare` property from the `open
 * `childcare.start` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcare.start` must be before `09:00`.
 * `childcare.end` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcare.end` must be after `17:00`.
 * These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
-
-When creating or updating an event or place with calendarType `permanent` you do not need to include a `startDate` or `endDate` since it is supposed to be scheduled permanently, but you may also include the same optional `openingHours` property to define the moments that it is accessible (if not 24/7).
-
-```json
-{
-  "calendarType": "permanent",
-  "openingHours": [ // Optional, but recommended unless 24/7
-    {
-      "opens": "09:00",
-      "closes": "12:00",
-      "dayOfWeek": [
-        "saturday",
-        "sunday"
-      ]
-    },
-    {
-      "opens": "13:00",
-      "closes": "17:00",
-      "dayOfWeek": [
-        "friday",
-        "saturday",
-        "sunday"
-      ]
-    }
-  ] 
-}
-```
 
 ## Read more
 
