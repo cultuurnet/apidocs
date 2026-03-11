@@ -1,5 +1,96 @@
 {
-  "$ref": "./common-openingHours.json",
   "title": "event.openingHours",
-  "description": "A list of multiple open/closed times and weekdays indicating when the [event](./models/event.json) is happening when using the `periodic` [calendarType](./models/event-calendarType.json)."
+  "description": "A list of multiple open/closed times and weekdays indicating when the event is happening when using the `periodic` calendarType. Each item can optionally specify childcare availability times.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "examples": [
+      {
+        "opens": "09:00",
+        "closes": "17:00",
+        "childcareStartTime": "08:00",
+        "childcareEndTime": "18:00",
+        "dayOfWeek": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday"
+        ]
+      }
+    ],
+    "properties": {
+      "opens": {
+        "type": "string",
+        "description": "Opening time on the related weekdays, in HH:MM format (24-hour notation).",
+        "examples": [
+          "09:00"
+        ],
+        "pattern": "^\\d?\\d:\\d\\d$"
+      },
+      "closes": {
+        "type": "string",
+        "description": "Closing time on the related weekdays, in HH:MM format (24-hour notation).",
+        "examples": [
+          "17:00"
+        ],
+        "pattern": "^\\d?\\d:\\d\\d$"
+      },
+      "childcareStartTime": {
+        "$ref": "./event-openingHours-childcareStartTime.json"
+      },
+      "childcareEndTime": {
+        "$ref": "./event-openingHours-childcareEndTime.json"
+      },
+      "dayOfWeek": {
+        "type": "array",
+        "uniqueItems": true,
+        "minItems": 1,
+        "description": "One or more weekdays that the open/closing times are applicable for.",
+        "items": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "description": "A single weekday."
+        }
+      }
+    },
+    "required": [
+      "opens",
+      "closes",
+      "dayOfWeek"
+    ]
+  },
+  "examples": [
+    [
+      {
+        "opens": "13:00",
+        "closes": "17:00",
+        "dayOfWeek": [
+          "monday"
+        ]
+      },
+      {
+        "opens": "09:00",
+        "closes": "17:00",
+        "childcareStartTime": "08:00",
+        "childcareEndTime": "18:00",
+        "dayOfWeek": [
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ]
+      }
+    ]
+  ]
 }

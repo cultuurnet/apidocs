@@ -16,6 +16,46 @@
         "de": "Deutscher Name",
         "en": "English name"
       },
+      "calendarType": "periodic",
+      "startDate": "2023-01-12T09:00:00+01:00",
+      "endDate": "2023-06-12T17:00:00+01:00",
+      "openingHours": [
+        {
+          "opens": "09:00",
+          "closes": "17:00",
+          "childcareStartTime": "08:00",
+          "childcareEndTime": "18:00",
+          "dayOfWeek": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ]
+        }
+      ],
+      "location": {
+        "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
+      },
+      "organizer": {
+        "@id": "https://io-test.uitdatabank.be/organizers/c76db023-ef6d-49d9-8d15-5ddc3e6eb0a9"
+      },
+      "terms": [
+        {
+          "id": "0.50.4.0.0",
+          "label": "Concert",
+          "domain": "eventtype"
+        }
+      ]
+    },
+    {
+      "mainLanguage": "nl",
+      "name": {
+        "nl": "Nederlandse naam",
+        "fr": "Nom français",
+        "de": "Deutscher Name",
+        "en": "English name"
+      },
       "calendarType": "single",
       "subEvent": [
         {
