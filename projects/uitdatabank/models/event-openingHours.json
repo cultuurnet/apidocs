@@ -1,72 +1,18 @@
 {
   "title": "event.openingHours",
   "description": "A list of multiple open/closed times and weekdays indicating when the event is happening when using the `periodic` calendarType. Each item can optionally specify childcare availability times.",
-  "type": "array",
-  "items": {
-    "type": "object",
-    "examples": [
-      {
-        "opens": "09:00",
-        "closes": "17:00",
-        "childcare": {
-          "start": "08:00",
-          "end": "18:00"
-        },
-        "dayOfWeek": [
-          "monday",
-          "tuesday",
-          "wednesday",
-          "thursday",
-          "friday"
-        ]
-      }
-    ],
-    "properties": {
-      "opens": {
-        "type": "string",
-        "description": "Opening time on the related weekdays, in HH:MM format (24-hour notation).",
-        "examples": [
-          "09:00"
-        ],
-        "pattern": "^\\d?\\d:\\d\\d$"
-      },
-      "closes": {
-        "type": "string",
-        "description": "Closing time on the related weekdays, in HH:MM format (24-hour notation).",
-        "examples": [
-          "17:00"
-        ],
-        "pattern": "^\\d?\\d:\\d\\d$"
-      },
-      "childcare": {
-        "$ref": "./event-openingHours-childcare.json"
-      },
-      "dayOfWeek": {
-        "type": "array",
-        "uniqueItems": true,
-        "minItems": 1,
-        "description": "One or more weekdays that the open/closing times are applicable for.",
-        "items": {
-          "type": "string",
-          "enum": [
-            "monday",
-            "tuesday",
-            "wednesday",
-            "thursday",
-            "friday",
-            "saturday",
-            "sunday"
-          ],
-          "description": "A single weekday."
+  "allOf": [
+    { "$ref": "./common-openingHours.json" },
+    {
+      "items": {
+        "properties": {
+          "childcare": {
+            "$ref": "./event-openingHours-childcare.json"
+          }
         }
       }
-    },
-    "required": [
-      "opens",
-      "closes",
-      "dayOfWeek"
-    ]
-  },
+    }
+  ],
   "examples": [
     [
       {
