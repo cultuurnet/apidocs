@@ -6,6 +6,12 @@
     {
       "items": {
         "properties": {
+          "opens": {
+            "description": "Opening time on the related weekdays, in H:MM or HH:MM format (24-hour notation)."
+          },
+          "closes": {
+            "description": "Closing time on the related weekdays, in H:MM or HH:MM format (24-hour notation)."
+          },
           "childcare": {
             "$ref": "./event-openingHours-childcare.json"
           }
