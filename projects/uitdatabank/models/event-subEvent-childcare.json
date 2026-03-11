@@ -6,7 +6,7 @@
       "allOf": [
         { "$ref": "./common-string-time.json" },
         {
-          "description": "The time at which childcare becomes available, in HH:MM format (24-hour notation). Must be earlier than the time portion of `startDate`.",
+          "description": "The time at which childcare becomes available, in H:MM or HH:MM format (24-hour notation). Must be earlier than the time portion of `startDate`.",
           "examples": ["08:00"]
         }
       ]
@@ -15,7 +15,7 @@
       "allOf": [
         { "$ref": "./common-string-time.json" },
         {
-          "description": "The time at which childcare ends, in HH:MM format (24-hour notation). Must be later than the time portion of `endDate`.",
+          "description": "The time at which childcare ends, in H:MM or HH:MM format (24-hour notation). Must be later than the time portion of `endDate`.",
           "examples": ["23:00"]
         }
       ]
