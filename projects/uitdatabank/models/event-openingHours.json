@@ -8,8 +8,10 @@
       {
         "opens": "09:00",
         "closes": "17:00",
-        "childcareStartTime": "08:00",
-        "childcareEndTime": "18:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "18:00"
+        },
         "dayOfWeek": [
           "monday",
           "tuesday",
@@ -36,11 +38,8 @@
         ],
         "pattern": "^\\d?\\d:\\d\\d$"
       },
-      "childcareStartTime": {
-        "$ref": "./event-openingHours-childcareStartTime.json"
-      },
-      "childcareEndTime": {
-        "$ref": "./event-openingHours-childcareEndTime.json"
+      "childcare": {
+        "$ref": "./event-openingHours-childcare.json"
       },
       "dayOfWeek": {
         "type": "array",
@@ -80,8 +79,10 @@
       {
         "opens": "09:00",
         "closes": "17:00",
-        "childcareStartTime": "08:00",
-        "childcareEndTime": "18:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "18:00"
+        },
         "dayOfWeek": [
           "tuesday",
           "wednesday",
