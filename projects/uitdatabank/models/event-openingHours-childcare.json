@@ -1,6 +1,7 @@
 {
   "type": "object",
   "description": "Indicates when childcare is available on this weekday. Both `start` and `end` must be provided together.",
+  "required": ["start", "end"],
   "properties": {
     "start": {
       "allOf": [
