@@ -167,7 +167,7 @@ When creating or updating an event or place with calendarType `permanent` you do
 
 ### Childcare times on openingHours (events only)
 
-Events with calendarType `periodic` or `permanent` can optionally include a `childcare` object on each `openingHours` item to indicate when childcare is provided on that weekday. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601). Both must be provided together.
+Events with calendarType `periodic` or `permanent` can optionally include a `childcare` object on each `openingHours` item to indicate when childcare is provided on that weekday. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
 
 ```json
 {
@@ -194,7 +194,7 @@ Events with calendarType `periodic` or `permanent` can optionally include a `chi
 }
 ```
 
-To remove previously set childcare, omit the `childcare` property from the `openingHours` item in the request body.
+Each property within `childcare` is independent: omitting a property clears any previously set value for it. To remove all childcare from an `openingHours` item, omit the `childcare` property entirely from that item.
 
 **Validation rules:**
 
