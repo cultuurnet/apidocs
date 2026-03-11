@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "description": "Indicates when childcare is available on this weekday. Both `start` and `end` must be provided together.",
+  "properties": {
+    "start": {
+      "allOf": [
+        { "$ref": "./common-string-time.json" },
+        {
+          "description": "The time at which childcare becomes available on this weekday, in H:MM or HH:MM format (24-hour notation). Must be earlier than `opens`.",
+          "examples": ["08:00"]
+        }
+      ]
+    },
+    "end": {
+      "allOf": [
+        { "$ref": "./common-string-time.json" },
+        {
+          "description": "The time at which childcare ends on this weekday, in H:MM or HH:MM format (24-hour notation). Must be later than `closes`.",
+          "examples": ["18:00"]
+        }
+      ]
+    }
+  }
+}

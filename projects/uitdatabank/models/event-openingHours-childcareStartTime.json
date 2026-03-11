@@ -1,9 +1,0 @@
-{
-  "allOf": [
-    { "$ref": "./common-string-time.json" },
-    {
-      "description": "The time at which childcare becomes available on this weekday, in HH:MM format (24-hour notation). Must be earlier than `opens`.\n\nTo remove a previously set value, omit this property from the request body.",
-      "examples": ["08:00"]
-    }
-  ]
-}
