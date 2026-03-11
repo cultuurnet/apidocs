@@ -20,7 +20,7 @@
     "properties": {
       "opens": {
         "type": "string",
-        "description": "Opening time on the related weekdays, in H:MM or HH:MM format (24-hour notation).",
+        "description": "Opening time on the related weekDays.",
         "examples": [
           "17:00"
         ],
@@ -28,7 +28,7 @@
       },
       "closes": {
         "type": "string",
-        "description": "Closing time on the related weekdays, in H:MM or HH:MM format (24-hour notation).",
+        "description": "Closing time on the related weekdays.",
         "examples": [
           "17:00"
         ],
