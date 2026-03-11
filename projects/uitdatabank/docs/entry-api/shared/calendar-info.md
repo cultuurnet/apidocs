@@ -138,6 +138,41 @@ For example, an event or place that is available for attendees/visitors from Jan
 }
 ```
 
+### Childcare times on openingHours (events only)
+
+Events with calendarType `periodic` or `permanent` can optionally include `childcareStartTime` and `childcareEndTime` on each `openingHours` item to indicate when childcare is provided on that weekday. Both properties use `HH:MM` format in 24-hour notation (as per ISO 8601).
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2023-01-12T09:00:00+01:00",
+  "endDate": "2023-06-12T17:00:00+01:00",
+  "openingHours": [
+    {
+      "opens": "09:00",
+      "closes": "17:00",
+      "childcareStartTime": "08:00",
+      "childcareEndTime": "18:00",
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ]
+}
+```
+
+To remove a childcare time that was previously set, omit the property from the request body.
+
+**Validation rules:**
+
+* `childcareStartTime` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcareStartTime` must be before `09:00`.
+* `childcareEndTime` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcareEndTime` must be after `17:00`.
+* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
+
 When creating or updating an event or place with calendarType `permanent` you do not need to include a `startDate` or `endDate` since it is supposed to be scheduled permanently, but you may also include the same optional `openingHours` property to define the moments that it is accessible (if not 24/7).
 
 ```json
