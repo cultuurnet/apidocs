@@ -173,6 +173,7 @@ Each property within `childcare` is independent: omitting a property clears any 
 For single/multiple calendar types:
 * `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
 * `childcare.end` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcare.end` must be after `12:00`.
+* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
 
 For periodic/permanent calendar types:
 * `childcare.start` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcare.start` must be before `09:00`.
