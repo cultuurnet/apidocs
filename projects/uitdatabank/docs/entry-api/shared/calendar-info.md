@@ -105,6 +105,41 @@ For example, in case of calendarType `multiple`:
 
 In case of calendarType `single`, the same logic is applied but in reality the `startDate`, `endDate`, `status` and `bookingAvailability` will be exactly the same on the top level as in the subEvent because there is only 1 subEvent to base them on.
 
+### Childcare times (events only)
+
+Events with calendarType `single` or `multiple` can optionally include a `childcare` object on each `subEvent` to indicate when childcare is provided during that event. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
+
+```json
+{
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2023-01-12T10:00:00+01:00",
+      "endDate": "2023-01-12T12:00:00+01:00",
+      "childcare": {
+        "start": "09:30",
+        "end": "12:30"
+      }
+    }
+  ]
+}
+```
+
+**Clearing childcare via PATCH:**
+
+When patching a subEvent via `PATCH /events/{eventId}/subEvents`, the `childcare` property follows these rules:
+
+* **Omit `childcare`** entirely → existing childcare data is left unchanged.
+* **Send `"childcare": {}`** (empty object) → clears both `start` and `end`.
+* **Send `"childcare": { "start": "..." }`** → sets `start`, clears `end`.
+* **Send `"childcare": { "end": "..." }`** → clears `start`, sets `end`.
+* **Send `"childcare": { "start": "...", "end": "..." }`** → sets both.
+
+**Validation rules:**
+
+* `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
+* `childcare.end` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcare.end` must be after `12:00`.
+
 ### periodic/permanent
 
 When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.

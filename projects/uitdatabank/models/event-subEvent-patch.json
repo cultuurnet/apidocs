@@ -3,6 +3,43 @@
   "type": "array",
   "minItems": 1,
   "uniqueItems": true,
+  "examples": [
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        }
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "startDate": "2021-05-17T16:00:00+00:00",
+        "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        },
+        "status": {
+          "type": "Available"
+        },
+        "bookingAvailability": {
+          "type": "Available",
+          "capacity": 100
+        }
+      },
+      {
+        "id": 1,
+        "status": {
+          "type": "Unavailable"
+        }
+      }
+    ]
+  ],
   "items": {
     "type": "object",
     "properties": {
@@ -22,6 +59,10 @@
         "format": "date-time",
         "example": "2021-05-17T22:00:00+00:00",
         "description": "The date & time that the subEvent ends."
+      },
+      "childcare": {
+          "$ref": "./event-subEvent-childcare.json" ,
+           "description": "Childcare information for this sub event. If this property is omitted entirely, the existing childcare data will not be altered. If included, each property present is set and each property omitted is cleared. Send an empty object (`{}`) to clear both `start` and `end`."
       },
       "status": {
         "type": "object",

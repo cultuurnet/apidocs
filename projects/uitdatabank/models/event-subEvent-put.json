@@ -7,6 +7,10 @@
       {
         "startDate": "2021-05-17T16:00:00+00:00",
         "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        },
         "status": {
           "type": "Available"
         },
@@ -20,6 +24,10 @@
       {
         "startDate": "2021-05-17T16:00:00+00:00",
         "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        },
         "status": {
           "type": "Available"
         },
@@ -52,6 +60,9 @@
       },
       "endDate": {
         "$ref": "./event-endDate.json"
+      },
+      "childcare": {
+        "$ref": "./event-subEvent-childcare.json"
       },
       "status": {
         "$ref": "./event-status.json"

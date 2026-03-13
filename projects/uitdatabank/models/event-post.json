@@ -61,8 +61,12 @@
       "calendarType": "single",
       "subEvent": [
         {
-          "startDate": "2021-05-17T22:00:00+00:00",
-          "endDate": "2021-05-17T22:00:00+00:00"
+          "startDate": "2021-05-17T16:00:00+00:00",
+          "endDate": "2021-05-17T22:00:00+00:00",
+          "childcare": {
+            "start": "08:00",
+            "end": "23:00"
+          }
         }
       ],
       "availableFrom": "2021-05-17T22:00:00+00:00",
