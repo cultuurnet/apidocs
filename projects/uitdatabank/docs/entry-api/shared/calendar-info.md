@@ -196,9 +196,46 @@ When creating or updating an event or place with calendarType `permanent` you do
         "sunday"
       ]
     }
-  ] 
+  ]
 }
 ```
+
+### Childcare times on openingHours (events only)
+
+Events with calendarType `periodic` or `permanent` can optionally include a `childcare` object on each `openingHours` item to indicate when childcare is provided on that weekday. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2023-01-12T09:00:00+01:00",
+  "endDate": "2023-06-12T17:00:00+01:00",
+  "openingHours": [
+    {
+      "opens": "09:00",
+      "closes": "17:00",
+      "childcare": {
+        "start": "08:00",
+        "end": "18:00"
+      },
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ]
+}
+```
+
+Each property within `childcare` is independent: omitting a property clears any previously set value for it. To remove all childcare from an `openingHours` item, omit the `childcare` property entirely from that item.
+
+**Validation rules:**
+
+* `childcare.start` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcare.start` must be before `09:00`.
+* `childcare.end` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcare.end` must be after `17:00`.
+* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
 
 ## Read more
 
