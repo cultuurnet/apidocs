@@ -8553,7 +8553,7 @@
           },
           "permissions": {
             "type": "array",
-            "description": "Permissions of the calling client for this organizer. This field is deprecated. Please use `permissionsDetail`, which includes a user-readable label, instead.",
+            "description": "Permissions of the calling client for this organizer. This field is deprecated. Please use `permissionDetails`, which includes a user-readable label, instead.",
             "deprecated": true,
             "items": {
               "$ref": "#/components/schemas/Permission"
