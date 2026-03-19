@@ -2548,6 +2548,116 @@
       },
       "parameters": []
     },
+    "/grouppasses/{passholderId}": {
+      "get": {
+        "summary": "Retrieve grouppass by ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrouppassesPaginatedResponse"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+                          "name": "Test groep",
+                          "uitpasNumber": "0900000045410",
+                          "cardStatus": "ACTIVE",
+                          "email": "testgrouppass@example.com",
+                          "creationDate": "2019-08-24T14:15:22Z",
+                          "socialTariff": {
+                            "status": "ACTIVE",
+                            "endDate": "2024-12-31T01:00:00Z",
+                            "totalTicketsPerYear": 20,
+                            "availableTickets": 9
+                          },
+                          "cardSystem": {
+                            "id": 1,
+                            "name": "UiTPAS Dender",
+                            "branding": {
+                              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                              "primaryColor": "rgba(0,0,0,1.0)",
+                              "secondaryColor": "rgba(97,166,14,1.0)"
+                            },
+                            "links": {
+                              "website": "https://www.uitpas.be"
+                            },
+                            "cities": [
+                              {
+                                "postalCode": "9300",
+                                "name": "Aalst"
+                              },
+                              {
+                                "postalCode": "9400",
+                                "name": "Ninove"
+                              }
+                            ],
+                            "permanent": true
+                          },
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst",
+                            "country": "be"
+                          },
+                          "telephone": "012/456789"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-grouppasses-passholderId",
+        "description": "Retrieve a grouppass by ID.\n\nThe caller of this request must have `GROUPPASSES_READ` permission.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Grouppasses"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the Grouppass"
+        }
+      ]
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
