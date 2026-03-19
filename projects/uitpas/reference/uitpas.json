@@ -5347,7 +5347,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the cardStatus, passholderId and/or groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
+        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, INSZ barcode, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the cardStatus, passholderId and/or groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
         "parameters": [
           {
             "schema": {
@@ -5355,7 +5355,7 @@
             },
             "in": "query",
             "name": "identifier",
-            "description": "Find pass using identifier of type UiTPAS number, INSZ number or card chipnumber.",
+            "description": "Find pass using identifier of type UiTPAS number, INSZ number, INSZ barcode or card chipnumber.",
             "required": true
           }
         ]
