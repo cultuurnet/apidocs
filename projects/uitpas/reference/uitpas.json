@@ -5195,6 +5195,7 @@
                   "Example with expired social tariff and warning message": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
@@ -5214,6 +5215,7 @@
                   "Example without social tariff or messages": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
@@ -5226,6 +5228,7 @@
                   "Example with social tariff": {
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
                       "points": 12,
@@ -5240,7 +5243,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
-                      "groupPass": true,
+                      "passType": "GROUP",
                       "firstName": "Groep 1",
                       "points": 0,
                       "postalCode": "9300",
@@ -5312,9 +5315,16 @@
                       "type": "string",
                       "description": "If `cardStatus` is `BLOCKED` or `DELETED`, this property cosntain the passholderId of this pass."
                     },
-                    "groupPass": {
+                    "passType": {
                       "type": "string",
-                      "description": "`true` if passholderId is available in this error and this pass is a GroupPass"
+                      "description": "Indicates whether this pass belongs to an individual passholder or a group (Grouppas)",
+                      "x-stoplight": {
+                        "id": "jaco6ci93gonj"
+                      },
+                      "enum": [
+                        "INDIVIDUAL",
+                        "GROUP"
+                      ]
                     }
                   }
                 }
@@ -5385,6 +5395,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5404,6 +5415,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5416,6 +5428,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5493,6 +5506,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5512,6 +5526,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5524,6 +5539,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5601,6 +5617,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5620,6 +5637,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5633,6 +5651,7 @@
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
+                      "passType": "INDIVIDUAL",
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
@@ -9969,7 +9988,8 @@
         "example": {
           "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
           "uitpasNumber": "0560002524314",
-          "firstName": "Jan",
+          "passType": "INDIVIDUAL",
+          "firstName": "Jan",          
           "points": 12,
           "postalCode": "1000",
           "socialTariff": {
@@ -9989,12 +10009,16 @@
             "description": "ID of the passholder associated with this pass",
             "readOnly": true
           },
-          "groupPass": {
-            "type": "boolean",
+          "passType": {
+            "type": "string",
             "x-stoplight": {
               "id": "5l6ksrclyqezu"
             },
-            "description": "`true` only if this Pass belongs to a `Grouppass` instead of a regular `Passholder`",
+            "description": "Indicates whether this pass belongs to an individual passholder or a group (Grouppas)",
+            "enum": [
+              "INDIVIDUAL",
+              "GROUP"
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
@@ -10071,6 +10095,7 @@
         },
         "required": [
           "passholderId",
+          "passType",
           "uitpasNumber",
           "firstName",
           "points",
