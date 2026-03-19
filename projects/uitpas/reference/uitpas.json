@@ -5254,7 +5254,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-blocked\n* https://api.publiq.be/probs/uitpas/card-blocked\n* https://api.publiq.be/probs/uitpas/card-provisioned\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-blocked\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -5301,13 +5301,20 @@
                         "nl"
                       ]
                     },
+                    "cardStatus": {
+                      "type": "string",
+                      "description": "If type is `invalid-card-status` this property contains the actual status of the card.",
+                      "x-stoplight": {
+                        "id": "1fsyhte36c7q9"
+                      }
+                    },
                     "passholderId": {
                       "type": "string",
-                      "description": "If applicable (e.g, on card-blocked errors), the passholderId of this pass"
+                      "description": "If `cardStatus` is `BLOCKED` or `DELETED`, this property cosntain the passholderId of this pass."
                     },
                     "groupPass": {
                       "type": "string",
-                      "description": "If applicable, true if the passholderId of this pass is a GroupPass"
+                      "description": "`true` if passholderId is available in this error and this pass is a GroupPass"
                     }
                   }
                 }
@@ -5340,7 +5347,7 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the passholderId and groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
+        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the cardStatus, passholderId and/or groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
         "parameters": [
           {
             "schema": {
