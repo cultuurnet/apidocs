@@ -122,6 +122,17 @@ The request you are trying to perform cannot complete because the given card is 
 * **Title**: `Invalid card status`
 * **Status**: `400`
 
+When applicable, the actual card status and even passholderId and groupPass boolean may be returned as an indication for the client.
+
+```
+  "type": "https://api.publiq.be/probs/uitpas/invalid-card-status",
+  "title": "Invalid card status",
+  "status": 400,
+  "cardStatus": "BLOCKED",
+  "passholderId": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+  "groupPass": true
+```
+
 The request you are trying to perform cannot complete because the given card is not in the expected state.
 
 ## invalid-card-system
