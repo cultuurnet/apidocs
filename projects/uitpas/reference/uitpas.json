@@ -5036,7 +5036,182 @@
       }
     },
     "/passes": {
-      "parameters": []
+      "parameters": [],
+      "get": {
+        "summary": "Retrieve pass by identifier",
+        "tags": [
+          "Passholders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pass"
+                },
+                "examples": {
+                  "Example with expired social tariff and warning message": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
+                      "messages": [
+                        {
+                          "level": "WARN",
+                          "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
+                        }
+                      ]
+                    }
+                  },
+                  "Example without social tariff or messages": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
+                    }
+                  },
+                  "Example with group pass": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "groupPass": true,
+                      "firstName": "Groep 1",
+                      "points": 0,
+                      "postalCode": "9300",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-blocked\n* https://api.publiq.be/probs/uitpas/card-blocked\n* https://api.publiq.be/probs/uitpas/card-provisioned\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "A URI reference that identifies the problem type. Can be used to recognize specific errors in your application code by comparing the complete URI."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "A short, human-readable summary of the problem type (for developers)."
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "The HTTP status code."
+                    },
+                    "detail": {
+                      "type": "string",
+                      "description": "A human-readable explanation specific to this occurrence of the problem (for developers). "
+                    },
+                    "endUserMessage": {
+                      "type": "object",
+                      "description": "A human-readable explanation of the problem, specifically for end-users, in one or more languages. Typically available for domain errors, but not for errors caused by a technical issue in the integration (for example invalid JSON syntax in a request body). An `nl` value is always provided, other languages may be provided depending on the API and its intended audience. When this property is included, it is strongly encouraged to show this to the end-user.",
+                      "properties": {
+                        "nl": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+                        },
+                        "fr": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+                        },
+                        "de": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+                        },
+                        "en": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+                        }
+                      },
+                      "required": [
+                        "nl"
+                      ]
+                    },
+                    "passholderId": {
+                      "type": "string",
+                      "description": "If applicable (e.g, on card-blocked errors), the passholderId of this pass"
+                    },
+                    "groupPass": {
+                      "type": "string",
+                      "description": "If applicable, true if the passholderId of this pass is a GroupPass"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/pass-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-passes",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the passholderId and groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "identifier",
+            "description": "Find pass using identifier of type UiTPAS number, INSZ number or card chipnumber.",
+            "required": true
+          }
+        ]
+      }
     },
     "/passes/{uitpasNumber}": {
       "parameters": [
@@ -9661,6 +9836,14 @@
           "passholderId": {
             "type": "string",
             "description": "ID of the passholder associated with this pass",
+            "readOnly": true
+          },
+          "groupPass": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "5l6ksrclyqezu"
+            },
+            "description": "`true` only if this Pass belongs to a `Grouppass` instead of a regular `Passholder`",
             "readOnly": true
           },
           "uitpasNumber": {
