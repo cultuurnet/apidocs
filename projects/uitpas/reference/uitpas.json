@@ -2554,6 +2554,42 @@
           "$ref": "#/components/parameters/passholderId"
         }
       ],
+      "get": {
+        "summary": "Retrieve passholder by ID",
+        "operationId": "get-passholders-passholderId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Passholder"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a passholder by ID.\n\nThe caller of this request must have `PASSHOLDERS_READ` permission.",
+        "tags": [
+          "Passholders"
+        ]
+      },
       "delete": {
         "summary": "Remove passholder",
         "operationId": "delete-passholders-passholderId",
