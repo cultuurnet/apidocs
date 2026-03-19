@@ -5317,7 +5317,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
+        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/insz-numbers/{inszNumber}": {
@@ -5424,7 +5425,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -5531,7 +5533,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/rewards": {
