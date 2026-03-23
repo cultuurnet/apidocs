@@ -382,6 +382,51 @@
         "info@publiq.be",
         "vragen@uitdatabank.be"
       ]
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/event/92c04395-579d-51g6-c4ee-570efb5398c4",
+      "mainLanguage": "nl",
+      "name": {
+        "nl": "Wekelijkse yogales",
+        "en": "Weekly yoga class"
+      },
+      "calendarType": "periodic",
+      "startDate": "2026-01-01T00:00:00+01:00",
+      "endDate": "2026-12-31T23:59:59+01:00",
+      "openingHours": [
+        {
+          "opens": "18:00",
+          "closes": "19:00",
+          "dayOfWeek": [
+            "monday",
+            "wednesday",
+            "friday"
+          ]
+        }
+      ],
+      "openingHoursClosedDays": [
+        {
+          "startDate": "2026-04-06",
+          "endDate": "2026-04-06",
+          "description": {
+            "nl": "Paasmaandag",
+            "en": "Easter Monday"
+          }
+        }
+      ],
+      "location": {
+        "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
+      },
+      "organizer": {
+        "@id": "https://io-test.uitdatabank.be/organizers/c76db023-ef6d-49d9-8d15-5ddc3e6eb0a9"
+      },
+      "terms": [
+        {
+          "id": "0.54.0.0.0",
+          "label": "Yoga",
+          "domain": "eventtype"
+        }
+      ]
     }
   ]
 }

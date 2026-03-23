@@ -20,6 +20,7 @@
       "description": {
         "description": "Optional human-readable description of the closed period, as localized text. Maximum 1000 characters per language.",
         "type": "object",
+        "minProperties": 1,
         "properties": {
           "nl": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "Dutch description." },
           "fr": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "French description." },
