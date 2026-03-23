@@ -1,6 +1,6 @@
 {
   "title": "event.openingHoursClosedDays",
-  "description": "List of specific date ranges during which the event or place is considered closed, overriding the default opening hours. Only applicable for calendarType `periodic` and `permanent`. Sorted by startDate in GET responses. An empty array clears all previously set closed days.",
+  "description": "List of specific date ranges during when the event is considered closed, overriding the default opening hours. Only applicable for calendarType `periodic` and `permanent`. An empty array clears all previously set closed days.",
   "type": "array",
   "items": {
     "type": "object",
