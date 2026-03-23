@@ -270,6 +270,14 @@ Each entry defines a date range during which the event is considered closed. The
 * For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
 
+**Overwriting or clearing closed days:**
+
+Each `openingHoursClosedDays` array is independent: omitting the property preserves existing data. When updating:
+
+* **Omit `openingHoursClosedDays`** entirely → existing closed days are left unchanged.
+* **Send `"openingHoursClosedDays": []`** (empty array) → clears all previously set closed days.
+* **Send `"openingHoursClosedDays": [...]`** with values → replaces all closed days with the new list.
+
 **API behavior:**
 
 GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
