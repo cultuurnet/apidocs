@@ -17,8 +17,8 @@
         "en": "English name"
       },
       "calendarType": "periodic",
-      "startDate": "2023-01-12T09:00:00+01:00",
-      "endDate": "2023-06-12T17:00:00+01:00",
+      "startDate": "2026-01-01T00:00:00+01:00",
+      "endDate": "2026-12-31T23:59:59+01:00",
       "openingHours": [
         {
           "opens": "09:00",

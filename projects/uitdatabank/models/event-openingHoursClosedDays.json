@@ -1,6 +1,6 @@
 {
   "title": "event.openingHoursClosedDays",
-  "description": "List of specific date ranges during when the event is considered closed, overriding the default opening hours. Only applicable for calendarType `periodic` and `permanent`. An empty array clears all previously set closed days.",
+  "description": "List of specific date ranges during which the event is considered closed, overriding the default opening hours. Only applicable for calendarType `periodic` and `permanent`. An empty array clears all previously set closed days.",
   "type": "array",
   "items": {
     "type": "object",
@@ -21,6 +21,7 @@
         "description": "Optional human-readable description of the closed period, as localized text. Maximum 1000 characters per language.",
         "type": "object",
         "minProperties": 1,
+        "additionalProperties": false,
         "properties": {
           "nl": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "Dutch description." },
           "fr": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "French description." },
