@@ -8,13 +8,13 @@
       "startDate": {
         "type": "string",
         "format": "date",
-        "description": "Start of the closed date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). Must fall within the main startDate/endDate of the event or place.",
+        "description": "Start of the closed date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). For periodic events, must fall within the main startDate/endDate of the event.",
         "examples": ["2026-04-06"]
       },
       "endDate": {
         "type": "string",
         "format": "date",
-        "description": "End of the closed date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). Must be on or after startDate, and within the main startDate/endDate.",
+        "description": "End of the closed date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). For periodic events, this must be on or after startDate, and within the main startDate/endDate.",
         "examples": ["2026-04-06"]
       },
       "description": {
