@@ -240,9 +240,9 @@ When creating or updating an event or place with calendarType `permanent` you do
 }
 ```
 
-## Adjusted closed days (periodic/permanent only)
+## Adjusted closed days (events only, periodic/permanent)
 
-Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates.
+Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates. This property is not available for places.
 
 ```json
 {
@@ -267,7 +267,7 @@ Each entry defines a date range during which the event is considered closed. The
 
 **Validation rules:**
 
-* All exception dates must fall within the main `startDate` and `endDate` of the event.
+* For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
 * In case of overlap between `openingHoursClosedDays` and `openingHoursAdjusted`, `openingHoursClosedDays` always takes precedence.
 
