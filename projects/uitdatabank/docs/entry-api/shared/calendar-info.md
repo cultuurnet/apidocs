@@ -269,7 +269,6 @@ Each entry defines a date range during which the event is considered closed. The
 
 * For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
-* In case of overlap between `openingHoursClosedDays` and `openingHoursAdjusted`, `openingHoursClosedDays` always takes precedence.
 
 **API behavior:**
 
