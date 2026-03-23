@@ -36,6 +36,16 @@
           ]
         }
       ],
+      "openingHoursClosedDays": [
+        {
+          "startDate": "2026-04-06",
+          "endDate": "2026-04-06",
+          "description": {
+            "nl": "Paasmaandag",
+            "fr": "Lundi de Pâques"
+          }
+        }
+      ],
       "location": {
         "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
       },
