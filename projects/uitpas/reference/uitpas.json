@@ -2693,6 +2693,14 @@
         "description": "Retrieve a passholder by ID.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL`  permission.",
         "tags": [
           "Passholders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       },
       "delete": {
