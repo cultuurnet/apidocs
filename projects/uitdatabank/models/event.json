@@ -44,6 +44,9 @@
         "openingHours": {
           "$ref": "./event-openingHours.json"
         },
+        "openingHoursClosedDays": {
+          "$ref": "./event-openingHoursClosedDays.json"
+        },
         "availableFrom": {
           "$ref": "./event-availableFrom.json"
         },
