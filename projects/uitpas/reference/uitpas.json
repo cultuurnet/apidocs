@@ -2548,12 +2548,161 @@
       },
       "parameters": []
     },
+    "/grouppasses/{passholderId}": {
+      "get": {
+        "summary": "Retrieve grouppass by ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Grouppass"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+                      "name": "Test groep",
+                      "uitpasNumber": "0900000045410",
+                      "cardStatus": "ACTIVE",
+                      "email": "testgrouppass@example.com",
+                      "creationDate": "2019-08-24T14:15:22Z",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-12-31T01:00:00Z",
+                        "totalTicketsPerYear": 20,
+                        "availableTickets": 9
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "address": {
+                        "postalCode": "9300",
+                        "city": "Aalst",
+                        "country": "be"
+                      },
+                      "telephone": "012/456789"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-grouppasses-passholderId",
+        "description": "Retrieve a grouppass by ID.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Grouppasses"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the Grouppass"
+        }
+      ]
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/passholderId"
         }
       ],
+      "get": {
+        "summary": "Retrieve passholder by ID",
+        "operationId": "get-passholders-passholderId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Passholder"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a passholder by ID.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL`  permission.",
+        "tags": [
+          "Passholders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
       "delete": {
         "summary": "Remove passholder",
         "operationId": "delete-passholders-passholderId",
@@ -5036,7 +5185,221 @@
       }
     },
     "/passes": {
-      "parameters": []
+      "parameters": [],
+      "get": {
+        "summary": "Retrieve pass by identifier",
+        "tags": [
+          "Passholders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pass"
+                },
+                "examples": {
+                  "Example with expired social tariff and warning message": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "EXPIRED",
+                        "endDate": "2024-04-30T21:59:00"
+                      },
+                      "messages": [
+                        {
+                          "level": "WARN",
+                          "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
+                        }
+                      ]
+                    }
+                  },
+                  "Example without social tariff or messages": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  },
+                  "Example with social tariff": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "passType": "INDIVIDUAL",
+                      "uitpasNumber": "0560002524314",
+                      "firstName": "Jan",
+                      "points": 12,
+                      "postalCode": "1000",
+                      "socialTariff": {
+                        "status": "ACTIVE",
+                        "endDate": "2024-04-30T21:59:00"
+                      }
+                    }
+                  },
+                  "Example with group pass": {
+                    "value": {
+                      "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
+                      "uitpasNumber": "0560002524314",
+                      "passType": "GROUP",
+                      "firstName": "Groep 1",
+                      "points": 0,
+                      "postalCode": "9300",
+                      "socialTariff": {
+                        "status": "NONE"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-blocked\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "A URI reference that identifies the problem type. Can be used to recognize specific errors in your application code by comparing the complete URI."
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "A short, human-readable summary of the problem type (for developers)."
+                    },
+                    "status": {
+                      "type": "integer",
+                      "description": "The HTTP status code."
+                    },
+                    "detail": {
+                      "type": "string",
+                      "description": "A human-readable explanation specific to this occurrence of the problem (for developers). "
+                    },
+                    "endUserMessage": {
+                      "type": "object",
+                      "description": "A human-readable explanation of the problem, specifically for end-users, in one or more languages. Typically available for domain errors, but not for errors caused by a technical issue in the integration (for example invalid JSON syntax in a request body). An `nl` value is always provided, other languages may be provided depending on the API and its intended audience. When this property is included, it is strongly encouraged to show this to the end-user.",
+                      "properties": {
+                        "nl": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in Dutch."
+                        },
+                        "fr": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in French."
+                        },
+                        "de": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in German."
+                        },
+                        "en": {
+                          "type": "string",
+                          "description": "A human-readable explanation of the problem, specifically for end-users, localized in English."
+                        }
+                      },
+                      "required": [
+                        "nl"
+                      ]
+                    },
+                    "schemaErrors": {
+                      "type": "array",
+                      "description": "A list of one or more schema validation errors (usually used for error type https://api.publiq.be/probs/body/invalid-data).",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "jsonPointer": {
+                            "type": "string",
+                            "format": "json-pointer",
+                            "description": "RFC6901 compliant pointer that indicates what property/value was invalid."
+                          },
+                          "error": {
+                            "type": "string",
+                            "description": "A human-readable (but often technical) reason why the property was invalid."
+                          }
+                        },
+                        "required": [
+                          "jsonPointer",
+                          "error"
+                        ]
+                      }
+                    },                    
+                    "cardStatus": {
+                      "type": "string",
+                      "description": "If type is `invalid-card-status` this property contains the actual status of the card.",
+                      "x-stoplight": {
+                        "id": "1fsyhte36c7q9"
+                      }
+                    },
+                    "passholderId": {
+                      "type": "string",
+                      "description": "If `cardStatus` is `BLOCKED` or `DELETED`, this property cosntain the passholderId of this pass."
+                    },
+                    "passType": {
+                      "type": "string",
+                      "description": "Indicates whether this pass belongs to an individual passholder or a group (Grouppas)",
+                      "x-stoplight": {
+                        "id": "jaco6ci93gonj"
+                      },
+                      "enum": [
+                        "INDIVIDUAL",
+                        "GROUP"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/pass-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-passes",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "description": "Retrieve pass information by one of its identifiers: UiTPAS number, INSZ number, INSZ barcode, or card chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\n<!-- theme: warning -->\n    \n> ##### Important\n> If the queried `identifier` is a card that is not in ACTIVE state, an error is returned. Where applicable, however, the `Passholder` or `Grouppass` may still be retrievable by ID, provided your client has the necessary permissions. For this reason, the cardStatus, passholderId and/or groupPass properties are included in the error response.\n\nThe caller of this request must have `PASSES_READ` permission.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "identifier",
+            "description": "Find pass using identifier of type UiTPAS number, INSZ number, INSZ barcode or card chipnumber.",
+            "required": true
+          }
+        ]
+      }
     },
     "/passes/{uitpasNumber}": {
       "parameters": [
@@ -5062,6 +5425,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5081,6 +5445,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5093,6 +5458,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5142,7 +5508,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission."
+        "description": "Retrieve information related to a pass, searched by UiTPAS number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/insz-numbers/{inszNumber}": {
@@ -5169,6 +5536,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5188,6 +5556,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5200,6 +5569,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5249,7 +5619,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by INSZ number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_INSZNUMBERS_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/chip-numbers/{chipNumber}": {
@@ -5276,6 +5647,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5295,6 +5667,7 @@
                     "value": {
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
+                      "passType": "INDIVIDUAL",
                       "firstName": "Jan",
                       "points": 12,
                       "postalCode": "1000",
@@ -5308,6 +5681,7 @@
                       "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
                       "uitpasNumber": "0560002524314",
                       "firstName": "Jan",
+                      "passType": "INDIVIDUAL",
                       "points": 12,
                       "postalCode": "1000",
                       "socialTariff": {
@@ -5356,7 +5730,8 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ],
-        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission."
+        "description": "Retrieve information related to a pass, searched by chip number.\n\nIf the response contains `messages`, they MUST be displayed to the end-user.\n\nThe caller of this request must have `PASSES_CHIPNUMBERS_READ` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /passes](/reference/uitpas.json/paths/~1passes/get) with `identification` query param instead.",
+        "deprecated": true
       }
     },
     "/rewards": {
@@ -9643,7 +10018,8 @@
         "example": {
           "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
           "uitpasNumber": "0560002524314",
-          "firstName": "Jan",
+          "passType": "INDIVIDUAL",
+          "firstName": "Jan",          
           "points": 12,
           "postalCode": "1000",
           "socialTariff": {
@@ -9661,6 +10037,18 @@
           "passholderId": {
             "type": "string",
             "description": "ID of the passholder associated with this pass",
+            "readOnly": true
+          },
+          "passType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "5l6ksrclyqezu"
+            },
+            "description": "Indicates whether this pass belongs to an individual passholder or a group (Grouppas)",
+            "enum": [
+              "INDIVIDUAL",
+              "GROUP"
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
@@ -9737,6 +10125,7 @@
         },
         "required": [
           "passholderId",
+          "passType",
           "uitpasNumber",
           "firstName",
           "points",
