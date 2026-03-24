@@ -2627,7 +2627,7 @@
           }
         },
         "operationId": "get-grouppasses-passholderId",
-        "description": "Retrieve a grouppass by ID.\n\nThe caller of this request must have `GROUPPASSES_READ` permission.\n",
+        "description": "Retrieve a grouppass by ID.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2690,7 +2690,7 @@
             }
           }
         },
-        "description": "Retrieve a passholder by ID.\n\nThe caller of this request must have `PASSHOLDERS_READ` permission.",
+        "description": "Retrieve a passholder by ID.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL`  permission.",
         "tags": [
           "Passholders"
         ]
