@@ -5304,6 +5304,28 @@
                         "nl"
                       ]
                     },
+                    "schemaErrors": {
+                      "type": "array",
+                      "description": "A list of one or more schema validation errors (usually used for error type https://api.publiq.be/probs/body/invalid-data).",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "jsonPointer": {
+                            "type": "string",
+                            "format": "json-pointer",
+                            "description": "RFC6901 compliant pointer that indicates what property/value was invalid."
+                          },
+                          "error": {
+                            "type": "string",
+                            "description": "A human-readable (but often technical) reason why the property was invalid."
+                          }
+                        },
+                        "required": [
+                          "jsonPointer",
+                          "error"
+                        ]
+                      }
+                    },                    
                     "cardStatus": {
                       "type": "string",
                       "description": "If type is `invalid-card-status` this property contains the actual status of the card.",
