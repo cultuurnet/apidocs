@@ -37,7 +37,7 @@
     "examples": [
       {
         "startDate": "2026-12-21",
-        "endDate": "2027-01-03",
+        "endDate": "2026-12-30",
         "description": {
           "nl": "Kerstvakantie",
           "fr": "fêtes de Noël"
@@ -60,7 +60,7 @@
     [
       {
         "startDate": "2026-12-21",
-        "endDate": "2027-01-03",
+        "endDate": "2026-12-30",
         "description": {
           "nl": "Kerstvakantie",
           "fr": "fêtes de Noël"

@@ -306,7 +306,7 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
   "openingHoursAdjusted": [
     {
       "startDate": "2026-12-21",
-      "endDate": "2027-01-03",
+      "endDate": "2026-12-30",
       "description": {
         "nl": "Kerstvakantie",
         "fr": "fêtes de Noël"
