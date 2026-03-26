@@ -30,7 +30,10 @@
         }
       },
       "openingHours": {
-        "$ref": "./event-openingHours.json"
+        "allOf": [
+          { "$ref": "./event-openingHours.json" },
+          { "minItems": 1 }
+        ]
       }
     },
     "required": ["startDate", "endDate", "openingHours"],
