@@ -329,12 +329,40 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
 
 Each entry defines a date range during which the specified `openingHours` replace the default schedule. The `description` property is optional and translatable.
 
+Like regular opening hours, each opening hours item in `openingHoursAdjusted` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
+
+```json
+{
+  "startDate": "2026-12-21",
+  "endDate": "2026-12-30",
+  "description": {
+    "nl": "Kerstvakantie"
+  },
+  "openingHours": [
+    {
+      "opens": "13:00",
+      "closes": "15:00",
+      "childcare": {
+        "start": "12:30",
+        "end": "15:30"
+      },
+      "dayOfWeek": [
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    }
+  ]
+}
+```
+
 **Validation rules:**
 
 * For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
 * No overlaps are allowed between entries in `openingHoursAdjusted`.
 * Description has a maximum length of 1000 characters per language.
+* Childcare validation rules apply to adjusted opening hours: `childcare.start` must be earlier than `opens`, and `childcare.end` must be later than `closes` on each opening hours item.
 
 **Interaction with closed days:**
 
