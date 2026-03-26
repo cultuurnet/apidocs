@@ -281,6 +281,80 @@ Each `openingHoursClosedDays` array is independent: omitting the property preser
 
 GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
 
+## Adjusted opening hours (events only, periodic/permanent)
+
+Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjusted` array to define temporary custom opening hours that override the default schedule for specific date ranges. This property is not available for places.
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2026-01-01T00:00:00+01:00",
+  "endDate": "2026-12-31T23:59:59+01:00",
+  "openingHours": [
+    {
+      "opens": "09:00",
+      "closes": "17:00",
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ],
+  "openingHoursAdjusted": [
+    {
+      "startDate": "2026-12-21",
+      "endDate": "2027-01-03",
+      "description": {
+        "nl": "Kerstvakantie",
+        "fr": "fêtes de Noël"
+      },
+      "openingHours": [
+        {
+          "opens": "13:00",
+          "closes": "15:00",
+          "dayOfWeek": [
+            "friday",
+            "saturday",
+            "sunday"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Each entry defines a date range during which the specified `openingHours` replace the default schedule. The `description` property is optional and translatable.
+
+**Validation rules:**
+
+* For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
+* `startDate` must be on or before `endDate`.
+* No overlaps are allowed between entries in `openingHoursAdjusted`.
+* Description has a maximum length of 1000 characters per language.
+
+**Interaction with closed days:**
+
+When `openingHoursClosedDays` and `openingHoursAdjusted` overlap, `openingHoursClosedDays` always take precedence. This means:
+* If a date is marked as closed in `openingHoursClosedDays`, the event is closed for that entire date, regardless of what `openingHoursAdjusted` specifies.
+* Use `openingHoursClosedDays` for holidays and closures.
+* Use `openingHoursAdjusted` for periods with modified (but non-zero) opening hours.
+
+**Overwriting or clearing adjusted hours:**
+
+Each `openingHoursAdjusted` array is independent: omitting the property preserves existing data. When updating:
+
+* **Omit `openingHoursAdjusted`** entirely → existing adjusted hours are left unchanged.
+* **Send `"openingHoursAdjusted": []`** (empty array) → clears all previously set adjusted hours.
+* **Send `"openingHoursAdjusted": [...]`** with values → replaces all adjusted hours with the new list.
+
+**API behavior:**
+
+GET endpoints return `openingHoursAdjusted` sorted by `startDate`.
+
 ## Read more
 
 * The [event model](../../../models/event-with-read-example.json) and [place model](../../../models/place-with-read-example.json) for detailed schemas of the `subEvent`, `startDate`, `endDate`, and `openingHours` properties (among others)
