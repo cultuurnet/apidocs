@@ -336,6 +336,53 @@ Note that most integrations will also need to provide these properties to succes
 
 You can learn more about these properties under the "Shared properties" section in the menu, or by browsing the complete [event model](../../../models/event-with-read-example.json).
 
+### departurePlaces
+
+This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
+
+Departure places can only be set on events where `audienceType` is `childrenOnly`. Each URI must reference an existing place in UiTdatabank.
+
+Example for a childrenOnly event with departure places:
+
+```json
+{
+  "mainLanguage": "nl",
+  "name": {
+    "nl": "Acrobatie & Trampoline"
+  },
+  "location": {
+    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+  },
+  "terms": [
+    {
+      "id": "0.52.0.0.0"
+    }
+  ],
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2026-06-15T09:00:00+02:00",
+      "endDate": "2026-06-15T12:00:00+02:00"
+    }
+  ],
+  "audience": {
+    "audienceType": "childrenOnly"
+  },
+  "departurePlaces": [
+    "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+    "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  ]
+}
+```
+
+To find the right place URI, read our guide about [finding and reusing existing places](../places/finding-and-reusing-places.md). If the place does not exist yet, you can [create a new place](../places/create.md).
+
+You can also update departure places later using the dedicated [`PUT /events/{eventId}/departurePlaces`](/reference/entry.json/paths/~1events~1{eventId}~1departurePlaces/put) endpoint. Passing an empty array `[]` removes all departure places.
+
+<!-- theme: info -->
+
+> Changing the `audienceType` away from `childrenOnly` does not produce an error and does not remove existing departure places. They are silently preserved.
+
 ## Next steps
 
 * Go over the [calendar info](../shared/calendar-info.md) guide to learn the right calendar type for your events and how to specify different kinds of date & time info.
