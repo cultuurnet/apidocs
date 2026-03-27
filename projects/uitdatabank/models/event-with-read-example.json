@@ -458,6 +458,11 @@
       },
       "terms": [
         {
+          "id": "0.3.1.0.0",
+          "label": "Lessenreeks",
+          "domain": "eventtype"
+        },
+        {
           "id": "0.52.0.0.0",
           "label": "Circus",
           "domain": "theme"
