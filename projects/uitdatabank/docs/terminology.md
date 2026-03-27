@@ -60,8 +60,8 @@ A [place](#place) that a specific [event](#event) is happening at. The place wil
 
 A location for events that have no [physical location](#physical-location), like [online events](#online-event), to maintain compatibility with older integrations that expect every [event](#event) to have a location.
 
-* Test: <https://io-test.uitdatabank.be/place/00000000-0000-0000-0000-000000000000>
-* Production: <https://io.uitdatabank.be/place/00000000-0000-0000-0000-000000000000>
+* Test: <https://io-test.uitdatabank.be/places/00000000-0000-0000-0000-000000000000>
+* Production: <https://io.uitdatabank.be/places/00000000-0000-0000-0000-000000000000>
 
 Online events will automatically become related to the nil location. Offline or mixed events have to be located at a [physical location](#physical-location) and cannot be located at the nil location.
 
@@ -73,8 +73,8 @@ A location of an event that has a real geographical address (all locations not m
 
 A location reserved for events that do not have a fixed location, but are bookable by schools for educational purposes.
 
-* Test: <https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2>
-* Production: <https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f>
+* Test: <https://io-test.uitdatabank.be/places/3b92c85b-a923-4895-85f5-ed056dae11e2>
+* Production: <https://io.uitdatabank.be/places/c3f9278e-228b-4199-8f9a-b9716a17e58f>
 
 ### Dummy location
 

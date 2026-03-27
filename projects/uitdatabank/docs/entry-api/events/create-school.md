@@ -118,13 +118,13 @@ In case of a [bookable event](#bookable-events) you must use the url of the *"Lo
 
 **URLs for "location in consultation with school" places**:
 
-* Test environment: `https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2`
-* Production environment: `https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f`
+* Test environment: `https://io-test.uitdatabank.be/places/3b92c85b-a923-4895-85f5-ed056dae11e2`
+* Production environment: `https://io.uitdatabank.be/places/c3f9278e-228b-4199-8f9a-b9716a17e58f`
 
 ```json
 {
   "location": {
-    "@id": "https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f"
+    "@id": "https://io.uitdatabank.be/places/c3f9278e-228b-4199-8f9a-b9716a17e58f"
   }
 }
 ```
@@ -198,7 +198,7 @@ Example of a theater performance aimed at toddlers of 3-4 years old in "hetpalei
       "nl":"Example of a school performance"
    },
    "location":{
-      "@id":"https://io-test.uitdatabank.be/place/be6673e8-8149-4470-bb79-14293f412a39"
+      "@id":"https://io-test.uitdatabank.be/places/be6673e8-8149-4470-bb79-14293f412a39"
    },
    "terms":[
       {
@@ -237,7 +237,7 @@ Example of a guided tour at the Royal Museum of Fine Arts Antwerp aimed at unive
       "nl":"Example of a guided tour"
    },
    "location":{
-      "@id":"https://io-test.uitdatabank.be/place/f4f69e51-ac3f-4790-9861-5c881df7aad8"
+      "@id":"https://io-test.uitdatabank.be/places/f4f69e51-ac3f-4790-9861-5c881df7aad8"
    },
    "terms":[
       {
@@ -265,7 +265,7 @@ Example of a bookable school event aimed at students of "derde graad finaliteit 
       "nl":"Example of a bookable school event"
    },
    "location":{
-      "@id":"https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2"
+      "@id":"https://io-test.uitdatabank.be/places/3b92c85b-a923-4895-85f5-ed056dae11e2"
    },
    "terms":[
       {

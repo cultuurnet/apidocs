@@ -65,7 +65,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
     }
   ],
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7"
+    "@id": "https://io-test.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7"
   },
   "terms": [
     {
@@ -116,7 +116,7 @@ Try it now by replacing the `YOUR_ACCESS_TOKEN` below with your access token for
       }
     ],
     "location": {
-      "@id": "https://io-test.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7"
+      "@id": "https://io-test.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7"
     },
     "terms": [
       {

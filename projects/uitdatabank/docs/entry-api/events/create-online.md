@@ -71,7 +71,7 @@ An example of an online event after it's been created:
   "attendanceMode": "online",
   "location": {
     "@type": "Place",
-    "@id": "https://io-test.uitdatabank.be/place/00000000-0000-0000-0000-000000000000",
+    "@id": "https://io-test.uitdatabank.be/places/00000000-0000-0000-0000-000000000000",
     "mainLanguage": "nl",
     "name": {
       "nl": "Online"
@@ -158,7 +158,7 @@ Content-Type: application/json
   },
   "attendanceMode": "mixed",
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {

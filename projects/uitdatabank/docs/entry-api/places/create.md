@@ -69,7 +69,7 @@ Content-Type: application/json
 {
     "id": "8af0f2cc-38b3-4d7c-9bf5-ed26f6cdf904",
     "placeId": "8af0f2cc-38b3-4d7c-9bf5-ed26f6cdf904",
-    "url": "https://io-test.uitdatabank.be/place/8af0f2cc-38b3-4d7c-9bf5-ed26f6cdf904",
+    "url": "https://io-test.uitdatabank.be/places/8af0f2cc-38b3-4d7c-9bf5-ed26f6cdf904",
     "commandId": "00000000-0000-0000-0000-000000000000"
 }
 ```
