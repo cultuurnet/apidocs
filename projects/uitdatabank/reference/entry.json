@@ -1825,6 +1825,80 @@
         }
       }
     },
+    "/events/{eventId}/departurePlaces": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "departurePlaces - update",
+        "operationId": "event-departurePlaces-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The departure places have been successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Replaces the list of departure places on the event.\n\nDeparture places are schools or other locations from which transport is arranged to bring children to the event (e.g. a walk, a bus, or a bicycle taxi).\n\nPassing an empty array `[]` removes all departure places from the event.\n\n**Validation rules:**\n\n* The event's `audienceType` must be `childrenOnly`. Returns a `400` error if the audience type does not match.\n* Each URI must reference an existing place in UiTdatabank. Returns a `400` error listing the non-existent places.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-departurePlaces-put.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": [
+                    "https://io.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3",
+                    "https://io.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+                  ]
+                }
+              }
+            }
+          },
+          "description": "New list of departure places to set on the event. Departure places previously set on the event but not included in this list will be removed."
+        }
+      }
+    },
     "/events/{eventId}/faqs": {
       "parameters": [
         {
