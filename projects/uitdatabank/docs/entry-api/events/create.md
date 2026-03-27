@@ -379,10 +379,6 @@ To find the right place URI, read our guide about [finding and reusing existing 
 
 You can also update departure places later using the dedicated [`PUT /events/{eventId}/departurePlaces`](/reference/entry.json/paths/~1events~1{eventId}~1departurePlaces/put) endpoint. Passing an empty array `[]` removes all departure places.
 
-<!-- theme: info -->
-
-> Changing the `audienceType` away from `childrenOnly` does not produce an error and does not remove existing departure places. They are silently preserved.
-
 ## Next steps
 
 * Go over the [calendar info](../shared/calendar-info.md) guide to learn the right calendar type for your events and how to specify different kinds of date & time info.
