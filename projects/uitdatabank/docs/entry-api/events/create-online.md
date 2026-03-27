@@ -62,7 +62,7 @@ An example of an online event after it's been created:
 
 ```json
 {
-  "@id": "https://io-test.uitdatabank.be/event/db8253cb-988b-46b0-b8ce-01f2fe319281",
+  "@id": "https://io-test.uitdatabank.be/events/db8253cb-988b-46b0-b8ce-01f2fe319281",
   "@context": "/contexts/event",
   "mainLanguage": "nl",
   "name": {

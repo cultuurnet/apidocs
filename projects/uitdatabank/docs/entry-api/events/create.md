@@ -65,7 +65,7 @@ Content-Type: application/json
 {
     "id": "16d2d729-c199-4ccf-a70f-c11c32575992",
     "eventId": "16d2d729-c199-4ccf-a70f-c11c32575992",
-    "url": "https://io-test.uitdatabank.be/event/16d2d729-c199-4ccf-a70f-c11c32575992",
+    "url": "https://io-test.uitdatabank.be/events/16d2d729-c199-4ccf-a70f-c11c32575992",
     "commandId": "00000000-0000-0000-0000-000000000000"
 }
 ```

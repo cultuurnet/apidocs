@@ -87,15 +87,15 @@
                       "totalItems": 3,
                       "member": [
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@id": "https://io-test.uitdatabank.be/events/7dc08012-488b-4e2b-b318-625d9bce03d7",
                           "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@id": "https://io-test.uitdatabank.be/events/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
                           "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@id": "https://io-test.uitdatabank.be/events/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
                           "@type": "Event"
                         }
                       ]
@@ -374,15 +374,15 @@
                       "totalItems": 3,
                       "member": [
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@id": "https://io-test.uitdatabank.be/events/7dc08012-488b-4e2b-b318-625d9bce03d7",
                           "@type": "Event"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/place/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@id": "https://io-test.uitdatabank.be/places/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
                           "@type": "Place"
                         },
                         {
-                          "@id": "https://io-test.uitdatabank.be/event/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@id": "https://io-test.uitdatabank.be/events/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
                           "@type": "Event"
                         }
                       ]
@@ -1489,7 +1489,7 @@
         },
         "in": "query",
         "name": "id",
-        "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+        "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/events/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
       },
       "locationId": {
         "schema": {

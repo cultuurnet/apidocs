@@ -414,7 +414,7 @@ A specific id can be found by
 
 ```json
 {
-   "@id": "https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f"
+   "@id": "https://io.uitdatabank.be/events/75573a64-ddc8-4fd0-8b07-d258939dd74f"
 }
 ```
 
@@ -426,7 +426,7 @@ or
 {
     "id": "75573a64-ddc8-4fd0-8b07-d258939dd74f",
     "eventId": "75573a64-ddc8-4fd0-8b07-d258939dd74f",
-    "url": "https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f",
+    "url": "https://io.uitdatabank.be/events/75573a64-ddc8-4fd0-8b07-d258939dd74f",
     "commandId": "00000000-0000-0000-0000-000000000000"
 }
 ```

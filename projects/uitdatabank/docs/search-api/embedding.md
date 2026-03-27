@@ -12,7 +12,7 @@ For example:
    "totalItems": 86978,
    "member": [
       {
-         "@id": "https://io.uitdatabank.be/event/d9a71b53-1756-4126-9926-a83f5dd84f45",
+         "@id": "https://io.uitdatabank.be/events/d9a71b53-1756-4126-9926-a83f5dd84f45",
          "@type": "Event"
       },
       {
@@ -72,7 +72,7 @@ The response contains a list of links to the individual search results:
    "totalItems":86978,
    "member":[
       {
-         "@id":"https://io.uitdatabank.be/event/d9a71b53-1756-4126-9926-a83f5dd84f45",
+         "@id":"https://io.uitdatabank.be/events/d9a71b53-1756-4126-9926-a83f5dd84f45",
          "@type":"Event"
       },
       {

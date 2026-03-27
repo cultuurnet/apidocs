@@ -217,7 +217,7 @@ Try it now:
 
 ```json http
 {
-  "url": "https://io.uitdatabank.be/event/a4425f9a-bc3a-4a45-ab20-a23b58e8259c",
+  "url": "https://io.uitdatabank.be/events/a4425f9a-bc3a-4a45-ab20-a23b58e8259c",
   "method": "get",
   "query": {
     "embedUitpasPrices": "true"

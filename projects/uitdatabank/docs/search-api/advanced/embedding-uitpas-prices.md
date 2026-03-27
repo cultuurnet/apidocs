@@ -52,7 +52,7 @@ No UiTPAS prices are included in the JSON response:
 
 ```json
 {
-  "@id": "https://io-test.uitdatabank.be/event/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
+  "@id": "https://io-test.uitdatabank.be/events/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
   "@type": "Event",
   "...": "...",
   "priceInfo": [
@@ -87,7 +87,7 @@ The indicative UiTPAS price(s) for the applicable card system(s) related to each
 
 ```json
 {
-  "@id": "https://io-test.uitdatabank.be/event/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
+  "@id": "https://io-test.uitdatabank.be/events/5330a84f-7496-46a1-b60d-fa7d62ec5fb8",
   "@type": "Event",
   "...": "...",
   "priceInfo": [

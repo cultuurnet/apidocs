@@ -30,11 +30,11 @@ GET /offers/?start=10&limit=5
   "totalItems": 12,
   "member": [
     {
-      "@id": "https://io-test.uitdatabank.be/event/441a5831-a65e-44fa-81ef-5c47e9c57a05",
+      "@id": "https://io-test.uitdatabank.be/events/441a5831-a65e-44fa-81ef-5c47e9c57a05",
       "@type": "Place"
     },
     {
-      "@id": "https://io-test.uitdatabank.be/event/d8cac5d6-c2b5-4c8d-b730-d9801a920c89",
+      "@id": "https://io-test.uitdatabank.be/events/d8cac5d6-c2b5-4c8d-b730-d9801a920c89",
       "@type": "Event"
     }
   ]
