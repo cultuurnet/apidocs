@@ -333,8 +333,8 @@ Like regular opening hours, each opening hours item in `openingHoursAdjusted` ca
 
 ```json
 {
-  "startDate": "2026-12-21",
-  "endDate": "2026-12-30",
+  "startDate": "2026-12-21T00:00:00+01:00",
+  "endDate": "2026-12-30T23:00:00+01:00",
   "description": {
     "nl": "Kerstvakantie"
   },
@@ -358,7 +358,7 @@ Like regular opening hours, each opening hours item in `openingHoursAdjusted` ca
 
 **Validation rules:**
 
-* For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
+* For `periodic` events: all adjusted dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
 * No overlaps are allowed between entries in `openingHoursAdjusted`.
 * Description has a maximum length of 1000 characters per language.
