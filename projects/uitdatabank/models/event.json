@@ -127,6 +127,9 @@
         },
         "faqs": {
           "$ref": "./event-faqs.json"
+        },
+        "departurePlaces": {
+          "$ref": "./event-departurePlaces.json"
         }
       },
       "required": [
