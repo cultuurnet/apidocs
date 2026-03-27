@@ -427,6 +427,65 @@
           "domain": "eventtype"
         }
       ]
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/event/a3f4c827-6d9e-42ab-b1f0-e34567890abc",
+      "mainLanguage": "nl",
+      "name": {
+        "nl": "Acrobatie & Trampoline"
+      },
+      "calendarType": "single",
+      "startDate": "2026-06-15T09:00:00+02:00",
+      "endDate": "2026-06-15T12:00:00+02:00",
+      "subEvent": [
+        {
+          "id": 0,
+          "startDate": "2026-06-15T09:00:00+02:00",
+          "endDate": "2026-06-15T12:00:00+02:00",
+          "status": {
+            "type": "Available"
+          },
+          "bookingAvailability": {
+            "type": "Available"
+          }
+        }
+      ],
+      "location": {
+        "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
+      },
+      "organizer": {
+        "@id": "https://io-test.uitdatabank.be/organizers/c76db023-ef6d-49d9-8d15-5ddc3e6eb0a9"
+      },
+      "terms": [
+        {
+          "id": "0.52.0.0.0",
+          "label": "Circus",
+          "domain": "theme"
+        }
+      ],
+      "audience": {
+        "audienceType": "childrenOnly"
+      },
+      "departurePlaces": [
+        "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+        "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      ],
+      "status": {
+        "type": "Available"
+      },
+      "bookingAvailability": {
+        "type": "Available"
+      },
+      "created": "2026-06-01T10:00:00+02:00",
+      "modified": "2026-06-01T10:00:00+02:00",
+      "creator": "auth0|45c0d021-c78f-445f-adef-be3355b23e4f",
+      "workflowStatus": "DRAFT",
+      "languages": [
+        "nl"
+      ],
+      "completedLanguages": [
+        "nl"
+      ]
     }
   ]
 }
