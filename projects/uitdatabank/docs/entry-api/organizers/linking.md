@@ -43,7 +43,7 @@ You can link an organizer to your event of by adding the property in the JSON bo
     "nl": "Voorbeeld @ VIERNULVIER"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/d8debf97-9b09-4c1d-8ac0-c3e32650a001"
+    "@id": "https://io-test.uitdatabank.be/places/d8debf97-9b09-4c1d-8ac0-c3e32650a001"
   },
   "organizer": {
     "@id": "https://io-test.uitdatabank.be/organizers/ac1adc43-410b-48bd-b79a-ca417788652f",

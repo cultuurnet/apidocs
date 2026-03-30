@@ -44,14 +44,14 @@ The response now contains the URL of "Het Depot" as an `@id` property:
    "totalItems":1,
    "member":[
       {
-         "@id":"https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7",
+         "@id":"https://io.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7",
          "@type":"Place"
       }
    ]
 }
 ```
 
-You can now store the URL of the place "Het Depot" (`https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as `location.@id` in the `POST /events` request of the event(s) that you want to create.
+You can now store the URL of the place "Het Depot" (`https://io.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7`) in your application to reuse it as `location.@id` in the `POST /events` request of the event(s) that you want to create.
 
 ## Searching existing locations within your entry form
 
@@ -85,7 +85,7 @@ The response now contains the URL of "Het Depot" as an `@id` property:
    "totalItems":1,
    "member":[
       {
-         "@id":"https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7",
+         "@id":"https://io.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7",
          "@type":"Place"
       }
    ]
@@ -146,13 +146,13 @@ GET /places/?postalCode=3000&q=name.nl:"Het Depot" AND address.nl.streetAddress:
   "totalItems": 1,
   "member": [
     {
-      "@id": "https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7",
+      "@id": "https://io.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7",
       "@type": "Place"
     }
   ]
 }
 ```
 
-If the place already exists (like in the example above), the URL of that place (`https://io.uitdatabank.be/place/8248e289-c986-4006-902f-b0616dcbcde7` in this case) must be used as `location.@id` in the `POST /events` request of the event.
+If the place already exists (like in the example above), the URL of that place (`https://io.uitdatabank.be/places/8248e289-c986-4006-902f-b0616dcbcde7` in this case) must be used as `location.@id` in the `POST /events` request of the event.
 
 Only when no results are found a new place can be created in UiTdatabank. When doing so, the UiTdatabank API will return a response containing the URL of the place. This place URL must be used then in the `POST /events` request of the event.

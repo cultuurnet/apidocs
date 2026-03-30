@@ -80,7 +80,7 @@ For example:
     "nl": "Voorbeeld @ Het Depot"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {
@@ -107,7 +107,7 @@ You may also include the optional `availableFrom` property and set it to a futur
     "nl": "Voorbeeld @ Het Depot"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {

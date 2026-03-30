@@ -60,8 +60,8 @@ A [place](#place) that a specific [event](#event) is happening at. The place wil
 
 A location for events that have no [physical location](#physical-location), like [online events](#online-event), to maintain compatibility with older integrations that expect every [event](#event) to have a location.
 
-* Test: <https://io-test.uitdatabank.be/place/00000000-0000-0000-0000-000000000000>
-* Production: <https://io.uitdatabank.be/place/00000000-0000-0000-0000-000000000000>
+* Test: <https://io-test.uitdatabank.be/places/00000000-0000-0000-0000-000000000000>
+* Production: <https://io.uitdatabank.be/places/00000000-0000-0000-0000-000000000000>
 
 Online events will automatically become related to the nil location. Offline or mixed events have to be located at a [physical location](#physical-location) and cannot be located at the nil location.
 
@@ -73,14 +73,14 @@ A location of an event that has a real geographical address (all locations not m
 
 A location reserved for events that do not have a fixed location, but are bookable by schools for educational purposes.
 
-* Test: <https://io-test.uitdatabank.be/place/3b92c85b-a923-4895-85f5-ed056dae11e2>
-* Production: <https://io.uitdatabank.be/place/c3f9278e-228b-4199-8f9a-b9716a17e58f>
+* Test: <https://io-test.uitdatabank.be/places/3b92c85b-a923-4895-85f5-ed056dae11e2>
+* Production: <https://io.uitdatabank.be/places/c3f9278e-228b-4199-8f9a-b9716a17e58f>
 
 ### Dummy location
 
 Events with a dummy location do not have a location `@id`, only an embedded location with a name and address.
 
-An example of an event with a dummy location: <https://io.uitdatabank.be/event/e160f0f3-89a8-45d7-94a6-34fda89fd69c>
+An example of an event with a dummy location: <https://io.uitdatabank.be/events/e160f0f3-89a8-45d7-94a6-34fda89fd69c>
 
 ```json
 {
@@ -133,7 +133,7 @@ Find out more about organizers in the [What are organizers?](entry-api/organizer
 
 Events and places with a dummy organizer do not have an organizer `@id`, only an embedded organizer with a name and sometimes contact information.
 
-An example of an event with a dummy organizer: <https://io.uitdatabank.be/event/206b6d13-5739-4b44-800a-6056bc34ce92>
+An example of an event with a dummy organizer: <https://io.uitdatabank.be/events/206b6d13-5739-4b44-800a-6056bc34ce92>
 
 ```json
 {
@@ -197,10 +197,10 @@ Some events in UiTdatabank are linked to a production. These events have an extr
    "id":"a9a75b95-0f6c-4a78-8092-243be295995c",
    "title":"Portland - Departures",
    "otherEvents":[
-      "https://io.uitdatabank.be/event/1b23c716-fd28-4e93-99b3-53c6c5338730",
-      "https://io.uitdatabank.be/event/1cee1a32-3ba4-4172-9d5b-1207cc6f1d93",
-      "https://io.uitdatabank.be/event/9ffd6bf0-3ea1-4c71-8e96-6f1d2da6a975",
-      "https://io.uitdatabank.be/event/e9221e36-854a-4b9e-aa16-4966f873c284"
+      "https://io.uitdatabank.be/events/1b23c716-fd28-4e93-99b3-53c6c5338730",
+      "https://io.uitdatabank.be/events/1cee1a32-3ba4-4172-9d5b-1207cc6f1d93",
+      "https://io.uitdatabank.be/events/9ffd6bf0-3ea1-4c71-8e96-6f1d2da6a975",
+      "https://io.uitdatabank.be/events/e9221e36-854a-4b9e-aa16-4966f873c284"
    ]
 }
 ```

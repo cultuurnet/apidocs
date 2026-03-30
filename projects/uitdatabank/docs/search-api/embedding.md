@@ -12,11 +12,11 @@ For example:
    "totalItems": 86978,
    "member": [
       {
-         "@id": "https://io.uitdatabank.be/event/d9a71b53-1756-4126-9926-a83f5dd84f45",
+         "@id": "https://io.uitdatabank.be/events/d9a71b53-1756-4126-9926-a83f5dd84f45",
          "@type": "Event"
       },
       {
-         "@id": "https://io.uitdatabank.be/place/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
+         "@id": "https://io.uitdatabank.be/places/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
          "@type": "Place"
       },
       "..."
@@ -72,11 +72,11 @@ The response contains a list of links to the individual search results:
    "totalItems":86978,
    "member":[
       {
-         "@id":"https://io.uitdatabank.be/event/d9a71b53-1756-4126-9926-a83f5dd84f45",
+         "@id":"https://io.uitdatabank.be/events/d9a71b53-1756-4126-9926-a83f5dd84f45",
          "@type":"Event"
       },
       {
-         "@id":"https://io.uitdatabank.be/place/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
+         "@id":"https://io.uitdatabank.be/places/557d0ddc-efc9-42b3-934b-9f88b0945ab1",
          "@type":"Place"
       },
       "..."
@@ -104,7 +104,7 @@ The response contains actual JSON-LD documents:
   "totalItems": 12,
   "member": [
     {
-      "@id": "https://io.uitdatabank.be/place/39e6d5ee-c3d6-453a-bcb5-4e6e0eaf7054",
+      "@id": "https://io.uitdatabank.be/places/39e6d5ee-c3d6-453a-bcb5-4e6e0eaf7054",
       "@type": "Place",
       "@context": "/contexts/place",
       "name": {

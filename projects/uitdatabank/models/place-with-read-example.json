@@ -3,7 +3,7 @@
   "$ref": "./place.json",
   "examples": [
     {
-      "@id": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3",
+      "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3",
       "mainLanguage": "nl",
       "name": {
         "nl": "Nederlandse naam",

@@ -37,7 +37,7 @@ Content-Type: application/json
     "nl": "Voorbeeld @ Ancienne Belgique"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {
@@ -65,7 +65,7 @@ Content-Type: application/json
 {
     "id": "16d2d729-c199-4ccf-a70f-c11c32575992",
     "eventId": "16d2d729-c199-4ccf-a70f-c11c32575992",
-    "url": "https://io-test.uitdatabank.be/event/16d2d729-c199-4ccf-a70f-c11c32575992",
+    "url": "https://io-test.uitdatabank.be/events/16d2d729-c199-4ccf-a70f-c11c32575992",
     "commandId": "00000000-0000-0000-0000-000000000000"
 }
 ```
@@ -93,7 +93,7 @@ Enter your access token for the Entry API test environment below and click the "
       "nl": "Voorbeeld @ Het Depot"
     },
     "location": {
-      "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+      "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
     },
     "terms": [
       {
@@ -187,7 +187,7 @@ Example for an event happening at the Ancienne Belgique (id `787d7420-c06f-4935-
     "name": "Mijn voorbeeld evenement"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   }
 }
 ```
@@ -232,7 +232,7 @@ Example for a concert at the Ancienne Belgique:
     "name": "Mijn voorbeeld concert"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {
@@ -291,7 +291,7 @@ Example for a dance music concert at the Ancienne Belgique:
     "name": "Mijn voorbeeld concert"
   },
   "location": {
-    "@id": "https://io-test.uitdatabank.be/place/787d7420-c06f-4935-b3c5-5cd5a1276796"
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {
