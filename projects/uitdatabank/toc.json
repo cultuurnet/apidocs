@@ -104,6 +104,12 @@
             },
             {
               "type": "item",
+              "title": "Creating an event for children only",
+              "uri": "/docs/entry-api/events/create-children-only.md",
+              "slug": "entry-api/events/creating-an-event-for-children-only"
+            },
+            {
+              "type": "item",
               "title": "Updating an event",
               "uri": "/docs/entry-api/events/update.md",
               "slug": "entry-api/events/updating-an-event"
