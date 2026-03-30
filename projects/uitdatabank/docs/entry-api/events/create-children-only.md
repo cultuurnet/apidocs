@@ -1,4 +1,4 @@
-# Creating an event for children only
+# Creating an activity for children only
 
 This guide explains how to create an activity in UiTdatabank that is specifically targeted at children.
 
