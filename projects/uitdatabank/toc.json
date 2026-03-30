@@ -92,6 +92,12 @@
             },
             {
               "type": "item",
+              "title": "Creating an event for children only",
+              "uri": "/docs/entry-api/events/create-children-only.md",
+              "slug": "entry-api/events/creating-an-event-for-children-only"
+            },
+            {
+              "type": "item",
               "title": "Creating an UiTPAS event",
               "uri": "/docs/entry-api/events/create-uitpas.md",
               "slug": "entry-api/events/creating-an-uitpas-event"
