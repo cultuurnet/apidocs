@@ -3,6 +3,7 @@
   "title": "departurePlaces",
   "description": "A list of URIs representing departure places for events with audienceType childrenOnly. Each URI must reference an existing place in UiTdatabank.",
   "uniqueItems": true,
+  "maxItems": 20,
   "items": {
     "$ref": "./place-@id.json"
   },
