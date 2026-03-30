@@ -104,9 +104,9 @@
             },
             {
               "type": "item",
-              "title": "Creating an activity for children only",
+              "title": "Creating an event for children only",
               "uri": "/docs/entry-api/events/create-children-only.md",
-              "slug": "entry-api/events/creating-an-activity-for-children-only"
+              "slug": "entry-api/events/creating-an-event-for-children-only"
             },
             {
               "type": "item",

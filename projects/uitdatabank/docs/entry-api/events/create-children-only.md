@@ -1,12 +1,12 @@
-# Creating an activity for children only
+# Creating an event for children only
 
-This guide explains how to create an activity in UiTdatabank that is specifically targeted at children.
+This guide explains how to create an event in UiTdatabank that is specifically targeted at children.
 
-Creating an activity for children only is very similar to [creating a regular new event](./create.md), so it is recommended to read that guide first.
+Creating an event for children only is very similar to [creating a regular new event](./create.md), so it is recommended to read that guide first.
 
 ## audienceType
 
-To indicate that an activity is only for children, you must include an extra property `audienceType` and set the value to `childrenOnly`.
+To indicate that an event is only for children, you must include an extra property `audienceType` and set the value to `childrenOnly`.
 
 ```json
 {
@@ -18,7 +18,7 @@ To indicate that an activity is only for children, you must include an extra pro
 
 ## departurePlaces
 
-This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the activity. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the activity's location.
+This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
 
 Departure places can only be set on events where `audienceType` is `childrenOnly`. Each URI must reference an existing place in UiTdatabank.
 
