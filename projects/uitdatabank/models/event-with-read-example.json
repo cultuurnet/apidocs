@@ -384,7 +384,7 @@
       ]
     },
     {
-      "@id": "https://io-test.uitdatabank.be/event/92c04395-579d-51g6-c4ee-570efb5398c4",
+      "@id": "https://io-test.uitdatabank.be/event/92c04395-579d-51f6-c4ee-570efb5398c4",
       "mainLanguage": "nl",
       "name": {
         "nl": "Wekelijkse yogales",
@@ -412,6 +412,27 @@
             "nl": "Paasmaandag",
             "en": "Easter Monday"
           }
+        }
+      ],
+      "openingHoursAdjusted": [
+        {
+          "startDate": "2026-12-21",
+          "endDate": "2026-12-30",
+          "description": {
+            "nl": "Kerstvakantie",
+            "en": "Christmas holiday"
+          },
+          "openingHours": [
+            {
+              "opens": "13:00",
+              "closes": "15:00",
+              "dayOfWeek": [
+                "friday",
+                "saturday",
+                "sunday"
+              ]
+            }
+          ]
         }
       ],
       "location": {

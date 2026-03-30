@@ -1,0 +1,85 @@
+{
+  "title": "event.openingHoursAdjusted",
+  "description": "List of specific date ranges during which custom opening hours override the default schedule. Only applicable for calendarType `periodic` and `permanent`. An empty array clears all previously set adjusted opening hours.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "startDate": {
+        "type": "string",
+        "format": "date",
+        "description": "Start of the adjusted opening hours date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). For periodic events, must fall within the main startDate/endDate of the event.",
+        "examples": ["2026-12-21"]
+      },
+      "endDate": {
+        "type": "string",
+        "format": "date",
+        "description": "End of the adjusted opening hours date range (inclusive), in ISO 8601 date format (YYYY-MM-DD). For periodic events, this must be on or after startDate, and within the main startDate/endDate. When openingHoursClosedDays overlap with this range, the closed days take precedence.",
+        "examples": ["2027-01-03"]
+      },
+      "description": {
+        "description": "Optional human-readable description of the adjusted opening hours period, as localized text. Maximum 1000 characters per language.",
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+          "nl": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "Dutch description." },
+          "fr": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "French description." },
+          "de": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "German description." },
+          "en": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "English description." }
+        }
+      },
+      "openingHours": {
+        "allOf": [
+          { "$ref": "./event-openingHours.json" },
+          { "minItems": 1 }
+        ]
+      }
+    },
+    "required": ["startDate", "endDate", "openingHours"],
+    "examples": [
+      {
+        "startDate": "2026-12-21",
+        "endDate": "2026-12-30",
+        "description": {
+          "nl": "Kerstvakantie",
+          "fr": "fêtes de Noël"
+        },
+        "openingHours": [
+          {
+            "opens": "13:00",
+            "closes": "15:00",
+            "dayOfWeek": [
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    [
+      {
+        "startDate": "2026-12-21",
+        "endDate": "2026-12-30",
+        "description": {
+          "nl": "Kerstvakantie",
+          "fr": "fêtes de Noël"
+        },
+        "openingHours": [
+          {
+            "opens": "13:00",
+            "closes": "15:00",
+            "dayOfWeek": [
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          }
+        ]
+      }
+    ]
+  ]
+}
