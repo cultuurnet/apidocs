@@ -1489,7 +1489,7 @@
         },
         "in": "query",
         "name": "id",
-        "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+        "description": "Returns only results that have the exact same id. An id can be extracted from an event, place, or organizer URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/event/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
       },
       "locationId": {
         "schema": {
@@ -1498,7 +1498,7 @@
         },
         "in": "query",
         "name": "locationId",
-        "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/place/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+        "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/place/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
       },
       "organizerId": {
         "schema": {
@@ -1507,7 +1507,7 @@
         },
         "in": "query",
         "name": "organizerId",
-        "description": "Returns only results that are related to the given organizer id. An organizer's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io.uitdatabank.be/organizer/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+        "description": "Returns only results that are related to the given organizer id. An organizer's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/organizer/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
       },
       "labels": {
         "schema": {

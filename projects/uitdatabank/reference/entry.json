@@ -1888,8 +1888,8 @@
               "examples": {
                 "Example": {
                   "value": [
-                    "https://io.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3",
-                    "https://io.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+                    "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3",
+                    "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
                   ]
                 }
               }
