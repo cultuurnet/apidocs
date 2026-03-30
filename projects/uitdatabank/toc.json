@@ -92,12 +92,6 @@
             },
             {
               "type": "item",
-              "title": "Creating an event for children only",
-              "uri": "/docs/entry-api/events/create-children-only.md",
-              "slug": "entry-api/events/creating-an-event-for-children-only"
-            },
-            {
-              "type": "item",
               "title": "Creating an UiTPAS event",
               "uri": "/docs/entry-api/events/create-uitpas.md",
               "slug": "entry-api/events/creating-an-uitpas-event"
@@ -107,6 +101,12 @@
               "title": "Creating a school event",
               "uri": "/docs/entry-api/events/create-school.md",
               "slug": "entry-api/events/creating-a-school-event"
+            },
+            {
+              "type": "item",
+              "title": "Creating an activity for children only",
+              "uri": "/docs/entry-api/events/create-children-only.md",
+              "slug": "entry-api/events/creating-an-activity-for-children-only"
             },
             {
               "type": "item",
