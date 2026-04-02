@@ -2014,7 +2014,7 @@
           }
         },
         "operationId": "get-organizers-organizerId-admins",
-        "description": "Retrieve all admin users of the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_READ` permission for the given organizer or the caller must be an organizer admin user (any type) of the given organizer.",
+        "description": "Retrieve all admin users of the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMINS_READ` permission for the given organizer or the caller must be an organizer admin user (any type) of the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -2103,7 +2103,7 @@
         "tags": [
           "Organizers"
         ],
-        "description": "Add a new admin user for the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
+        "description": "Add a new admin user for the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMINS_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2181,7 +2181,7 @@
         "tags": [
           "Organizers"
         ],
-        "description": "Remove an existing admin user from the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMIN_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
+        "description": "Remove an existing admin user from the given organizer.\n\nThe caller of this request must have `ORGANIZERS_ADMINS_WRITE` permission for the given organizer or the caller must be an organizer admin user of type `ADMIN` of the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -9326,6 +9326,8 @@
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
+          "ORGANIZERS_ADMINS_READ",
+          "ORGANIZERS_ADMINS_WRITE",
           "PASSHOLDERS_PICTURE_READ",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
