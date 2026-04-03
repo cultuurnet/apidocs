@@ -1984,7 +1984,6 @@
                       "totalItems": 1,
                       "member": [
                         {
-                          "id": "9306c939-04c9-4585-ad71-000fa01ded6f",
                           "userId": "d50e6c3c-8aff-430a-86ce-b125fdc3b998",
                           "email": "admin1@example.com",
                           "type": "ADMIN"
@@ -1996,8 +1995,14 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/group-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2005,12 +2010,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
           }
         },
         "operationId": "get-organizers-organizerId-admins",
@@ -5561,7 +5560,7 @@
                           "error"
                         ]
                       }
-                    },                    
+                    },
                     "cardStatus": {
                       "type": "string",
                       "description": "If type is `invalid-card-status` this property contains the actual status of the card.",
@@ -9432,10 +9431,6 @@
           "Models"
         ],
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique ID of the Organizer admin for a given organizer. This field is always available in responses."
-          },
           "userId": {
             "type": "string",
             "description": "UiTiD user ID of this organizer admin. This field is always available in responses.",
@@ -10319,7 +10314,7 @@
           "passholderId": "b34c19fc-bcf9-4d10-aeb2-6bc9efd38b68",
           "uitpasNumber": "0560002524314",
           "passType": "INDIVIDUAL",
-          "firstName": "Jan",          
+          "firstName": "Jan",
           "points": 12,
           "postalCode": "1000",
           "socialTariff": {
