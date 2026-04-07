@@ -186,6 +186,13 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 ```json
 {
+  "terms": [
+    {
+      "id": "0.57.0.0.0",
+      "label": "Kamp of vakantie",
+      "domain": "eventtype"
+    }
+  ],
   "calendarType": "multiple",
   "subEvent": [
     {
@@ -203,7 +210,7 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 **Validation rules:**
 
-* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. Matching is done on the term id, not the label, because labels can be translated.
+* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. 
 * `overnight` is optional and defaults to `false` when omitted.
 * When the term `0.57.0.0.0` is removed from the event, `overnight` is automatically reset to `false` on all subEvents.
 
