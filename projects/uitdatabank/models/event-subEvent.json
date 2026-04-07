@@ -19,7 +19,8 @@
           "type": "Available",
           "capacity": 100,
           "remainingCapacity": 25
-        }
+        },
+        "overnight": true
       }
     ],
     [
@@ -81,6 +82,11 @@
       },
       "bookingInfo": {
         "$ref": "./event-bookingInfo.json"
+      },
+      "overnight": {
+        "type": "boolean",
+        "description": "Indicates whether this occurrence involves an overnight stay. Only present in the response when `true`. Only applicable when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\").",
+        "example": true
       }
     },
     "required": [
