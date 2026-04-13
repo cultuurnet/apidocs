@@ -7233,6 +7233,38 @@
         ]
       }
     },
+    "/rewards/redeemed/{redeemedRewardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "redeemedRewardId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the redeemed reward"
+        }
+      ],
+      "delete": {
+        "summary": "Cancel a redeemed reward",
+        "operationId": "delete-rewards-redeemed-redeemedRewardId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Rewards"
+        ],
+        "description": "Cancel a previously redeemed reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the organizer of the given reward."
+      }
+    },
     "/card-systems": {
       "get": {
         "x-internal": false,
