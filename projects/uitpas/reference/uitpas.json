@@ -10491,7 +10491,7 @@
             "description": "This is a convenience propery that contains the uitpasNumber of the `currentCard` if there is a current card."
           },
           "currentCard": {
-            "$ref": "#/components/schemas/Card"
+            "$ref": "#/components/schemas/CardSystemMembershipCard"
           },
           "status": {
             "type": "string",
@@ -10543,6 +10543,50 @@
         },
         "required": [
           "cardSystem"
+        ]
+      },
+      "CardSystemMembershipCard": {
+        "title": "CardSystemMembershipCard",
+        "x-stoplight": {
+          "id": "c61r94oays9ih"
+        },
+        "type": "object",
+        "description": "Representation of an UiTPAS card embedded in a CardSystemMembership.",
+        "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wt5795os9zlly"
+            },
+            "description": "UiTPAS number of this card."
+          },
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0wg00e7ok83tp"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of this card."
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ic0htdaaq5wmr"
+            },
+            "description": "Status of this card.",
+            "enum": [
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          }
+        },
+        "required": [
+          "uitpasNumber",
+          "status"
         ]
       },
       "CardSystem": {
