@@ -702,6 +702,10 @@
                                   "permanent": true
                                 },
                                 "uitpasNumber": "0930012345615",
+                                "currentCard": {
+                                  "uitpasNumber": "0930012345615",
+                                  "status": "ACTIVE"
+                                },
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
@@ -766,6 +770,10 @@
                                   "permanent": true
                                 },
                                 "uitpasNumber": "0930012345615",
+                                "currentCard": {
+                                  "uitpasNumber": "0930012345615",
+                                  "status": "ACTIVE"
+                                },
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
@@ -899,6 +907,10 @@
                               "permanent": true
                             },
                             "uitpasNumber": "0560002524314",
+                            "currentCard": {
+                              "uitpasNumber": "0560002524314",
+                              "status": "ACTIVE"
+                            },
                             "status": "ACTIVE",
                             "socialTariff": {
                               "status": "ACTIVE",
@@ -2339,6 +2351,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },                              
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -2541,6 +2557,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0930012345615",
+                          "currentCard": {
+                            "uitpasNumber": "0930012345615",
+                            "status": "ACTIVE"
+                          },                             
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3763,6 +3783,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0930012345615",
+                          "currentCard": {
+                            "uitpasNumber": "0930012345615",
+                            "status": "ACTIVE"
+                          },                             
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3852,6 +3876,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0999100000002",
+                          "currentCard": {
+                            "uitpasNumber": "0999100000002",
+                            "status": "ACTIVE"
+                          },                              
                           "status": "ACTIVE"
                         }
                       ],
@@ -4211,6 +4239,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },                                
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4273,6 +4305,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0900000067513",
+                              "currentCard": {
+                                "uitpasNumber": "0900000067513",
+                                "status": "ACTIVE"
+                              },                                 
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4334,6 +4370,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0900000036112",
+                              "currentCard": {
+                                "uitpasNumber": "0900000036112",
+                                "status": "ACTIVE"
+                              },                                
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4400,6 +4440,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },                                  
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
