@@ -39,6 +39,20 @@ These three endpoints all support the same URL parameters to perform queries and
 
 Additionally, Search API also has a [`GET /organizers`](/reference/search.json/paths/~1organizers/get) endpoint to query organizers. This endpoint supports different URL parameters than the ones for events and places, because organizers do not share the exact same properties as events and places.
 
+### POST alternative
+
+Every search endpoint is also available as a `POST` request:
+
+* [`POST /events`](/reference/search.json/paths/~1events/post)
+* [`POST /places`](/reference/search.json/paths/~1places/post)
+* [`POST /offers`](/reference/search.json/paths/~1offers/post)
+* [`POST /organizers`](/reference/search.json/paths/~1organizers/post)
+
+The `POST` endpoints accept the exact same parameters as `GET`, but in the request body instead of as URL query parameters. 
+The body should be formatted as a query string with content type `text/plain`.
+When using a `POST` request, url parameters are not allowed.
+This is useful when your query has many parameters and would otherwise exceed URL length limits.
+
 ## Your first request
 
 Thanks to its sensible [default filters](./filters/default-filters.md) for the most common use cases, getting a paginated list of current events in Belgium is as easy as sending this HTTP request:
@@ -88,7 +102,18 @@ Try it out now by replacing `YOUR_CLIENT_ID` below with your own client id for t
 }
 ```
 
-> You can find more info about the possible filters in the "Common filters" section in the sidebar, or on the different endpoint pages under "API reference".
+The same request can also be sent as a `POST` with the filters in the request body:
+
+```http
+POST /events HTTP/1.1
+Host: https://search-test.uitdatabank.be
+X-Client-Id: YOUR_CLIENT_ID
+Content-Type: text/plain
+
+postalCode=9000
+```
+
+> You can find more info about the possible filters in the "Common filters" section in the sidebar, or on the different endpoint pages under "API reference". All `GET` examples in the documentation can equivalently be sent as `POST` with the query string in the request body.
 
 ## Next steps
 

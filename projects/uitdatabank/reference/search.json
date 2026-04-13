@@ -299,7 +299,149 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "Search events",
+        "tags": [
+          "Events & places"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/event.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "types": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "themes": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "facilities": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "labels": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/events/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Event"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/events/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Event"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/events/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Event"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Bad Request",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "post-events",
+        "description": "Returns a paginated list of events that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "description": "All search parameters formatted as a query string, for example: `postalCode=9000&labels[]=uitpas`. Supports the same parameters as the `GET` variant of this endpoint.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     },
     "/offers": {
       "get": {
@@ -589,7 +731,156 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "Search events & places (offers)",
+        "tags": [
+          "Events & places"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` and `@type` will be returned.",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "$ref": "../models/event.json"
+                          },
+                          {
+                            "$ref": "../models/place.json"
+                          }
+                        ]
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "types": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "themes": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "facilities": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "labels": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/events/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Event"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/places/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Place"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/events/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Event"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Bad Request",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "post-offers",
+        "description": "Returns a paginated list of both events and places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "description": "All search parameters formatted as a query string, for example: `postalCode=9000&labels[]=uitpas`. Supports the same parameters as the `GET` variant of this endpoint.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     },
     "/organizers": {
       "get": {
@@ -755,7 +1046,137 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "Search organizers",
+        "tags": [
+          "Organizers"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/organizer.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizers/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Organizer"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizers/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Organizer"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/organizers/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Organizer"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Bad Request",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "post-organizers",
+        "description": "Returns a paginated list of organizers that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "description": "All search parameters formatted as a query string, for example: `postalCode=9000&labels[]=uitpas`. Supports the same parameters as the `GET` variant of this endpoint.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     },
     "/places": {
       "get": {
@@ -1035,7 +1456,149 @@
           }
         ]
       },
-      "parameters": []
+      "parameters": [],
+      "post": {
+        "summary": "Search places",
+        "tags": [
+          "Events & places"
+        ],
+        "responses": {
+          "200": {
+            "description": "A single page of search results. If `?embed=true` is used, the search results will contain the complete JSON details. Otherwise only `@id` and `@type` will be returned.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "itemsPerPage": {
+                      "type": "integer",
+                      "example": 30,
+                      "description": "The amount of results that is being returned per page."
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "example": 2345,
+                      "description": "Total amount of results for the given query parameters."
+                    },
+                    "member": {
+                      "type": "array",
+                      "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
+                      "items": {
+                        "$ref": "../models/place.json"
+                      }
+                    },
+                    "facet": {
+                      "type": "object",
+                      "description": "Facet counts per possible filter & value.",
+                      "properties": {
+                        "regions": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "types": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "themes": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "facilities": {
+                          "$ref": "../models/common-facets.json"
+                        },
+                        "labels": {
+                          "$ref": "../models/common-facets.json"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "itemsPerPage",
+                    "totalItems",
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "itemsPerPage": 20,
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/places/7dc08012-488b-4e2b-b318-625d9bce03d7",
+                          "@type": "Place"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/places/c683ddfe-4ff9-4b4b-a198-b9f553cfc479",
+                          "@type": "Place"
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/places/15d5de07-57e6-4015-84c6-e9c94ccfd9ef",
+                          "@type": "Place"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Bad Request",
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "operationId": "post-places",
+        "description": "Returns a paginated list of places that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "description": "All search parameters formatted as a query string, for example: `postalCode=9000&labels[]=uitpas`. Supports the same parameters as the `GET` variant of this endpoint.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "tags": [
