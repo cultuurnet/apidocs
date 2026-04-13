@@ -91,7 +91,8 @@
             "properties": {
               "application/json": {},
               "application/ld+json": {},
-              "multipart/form-data": {}
+              "multipart/form-data": {},
+              "text/plain": {}
             }
           }
         }
