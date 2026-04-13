@@ -410,6 +410,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
         "operationId": "post-events",
@@ -849,6 +852,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
         "operationId": "post-offers",
@@ -1145,6 +1151,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+           "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
         "operationId": "post-organizers",
@@ -1567,6 +1576,9 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
         "operationId": "post-places",
@@ -2411,6 +2423,26 @@
                   "title": "URL not found",
                   "status": 404,
                   "detail": "The resource with id \"76C6AC08-763C-492E-A68C-CBC43A857229\" was not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "UnsupportedMediaType": {
+        "description": "The request does not work with the provided content-type. Check the detail to know which content-type you should use for this request. The `type` will always be `https://api.publiq.be/probs/body/unsupported-media-type`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/body/unsupported-media-type",
+                  "title": "Unsupported Media Type",
+                  "status": 415,
+                  "detail": "POST requests require Content-Type text/plain."
                 }
               }
             }
