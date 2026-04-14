@@ -2354,7 +2354,7 @@
                               "currentCard": {
                                 "uitpasNumber": "0930012345615",
                                 "status": "ACTIVE"
-                              },                              
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -2560,7 +2560,7 @@
                           "currentCard": {
                             "uitpasNumber": "0930012345615",
                             "status": "ACTIVE"
-                          },                             
+                          },
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3786,7 +3786,7 @@
                           "currentCard": {
                             "uitpasNumber": "0930012345615",
                             "status": "ACTIVE"
-                          },                             
+                          },
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3879,7 +3879,7 @@
                           "currentCard": {
                             "uitpasNumber": "0999100000002",
                             "status": "ACTIVE"
-                          },                              
+                          },
                           "status": "ACTIVE"
                         }
                       ],
@@ -4242,7 +4242,7 @@
                               "currentCard": {
                                 "uitpasNumber": "0930012345615",
                                 "status": "ACTIVE"
-                              },                                
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4308,7 +4308,7 @@
                               "currentCard": {
                                 "uitpasNumber": "0900000067513",
                                 "status": "ACTIVE"
-                              },                                 
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4373,7 +4373,7 @@
                               "currentCard": {
                                 "uitpasNumber": "0900000036112",
                                 "status": "ACTIVE"
-                              },                                
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4443,7 +4443,7 @@
                               "currentCard": {
                                 "uitpasNumber": "0930012345615",
                                 "status": "ACTIVE"
-                              },                                  
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -10532,7 +10532,7 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "This is a convenience propery that contains the uitpasNumber of the `currentCard` if there is a current card."
+            "description": "This is a convenience propery that contains the uitpasNumber of the `currentCard` if there is a current card and that card is `ACTIVE`."
           },
           "currentCard": {
             "$ref": "#/components/schemas/CardSystemMembershipCard"
