@@ -8558,6 +8558,12 @@
             "in": "query",
             "name": "organizerId",
             "description": "Filter the kiosk results on this organizer"
+          },
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
           }
         ],
         "tags": [
@@ -8588,7 +8594,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found",
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found (in case kiosk is not found)\n* https://api.publiq.be/probs/uitpas/event-not-found (in case no event was configured)",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -8695,7 +8701,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found",
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found (in case kiosk is not found)\n* https://api.publiq.be/probs/uitpas/event-not-found (in case no event was configured)",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -9694,7 +9700,9 @@
           "PERMISSIONS_WRITE",
           "CARDS_READ",
           "ASSOCIATIONS",
-          "SOCIALTARIFF_EXPORT"
+          "SOCIALTARIFF_EXPORT",
+          "KIOSKS_READ",
+          "KIOSKS_WRITE"
         ],
         "description": "ID of the permission"
       },
