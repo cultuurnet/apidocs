@@ -6354,12 +6354,15 @@
               "default": "ENDUSERS",
               "enum": [
                 "ALL",
-                "ENDUSERS"
+                "ENDUSERS",
+                "REDEEMABLE",
+                "REDEEMABLE-FUTURE",
+                "ENDUSER-FUTURE"
               ]
             },
             "in": "query",
             "name": "subset",
-            "description": "Include only rewards of a specific subset. Defaults to `ENDUSERS`, which means all active rewards, that are currently published and in its redeem period and are part of a permanent cardsystem. Set this field to `ALL` to include all rewards.",
+            "description": "Include only rewards of a specific subset. Defaults to `ENDUSERS`, which means all active rewards, that are currently published and in its redeem period and are part of a permanent cardsystem. `REDEEMABLE` is the same as `ENDUSER` except filtering on publication date. `ENDUSER-FUTURE` and `REDEEMABLE-FUTURE` is the similar to their respective subset, but filters on a redeem date in the future. Set this field to `ALL` to include all rewards.",
             "style": "form"
           },
           {
