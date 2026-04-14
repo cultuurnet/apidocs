@@ -8572,9 +8572,9 @@
       },
       "parameters": []
     },
-    "/kiosks/{kioskId}/events": {
+    "/kiosks/{kioskId}/fixed-event": {
       "get": {
-        "summary": "Retrieve configured event of kiosk",
+        "summary": "Retrieve fixed event of kiosk",
         "responses": {
           "200": {
             "description": "OK",
@@ -8604,7 +8604,7 @@
             }
           }
         },
-        "operationId": "get-kiosks-kioskId-events",
+        "operationId": "get-kiosks-kioskId-fixed-event",
         "description": "Retrieve configured event of this kiosk.\n\nThis request returns `404 NOT FOUND` when no event is configured. In that case the kiosk will auto-detect its event.\n\nThe caller of this request must have `KIOSKS_READ` permission for the organizer of the kiosk or the caller must be an organizer admin user (any type) of the organizer of the kiosk.",
         "security": [
           {
@@ -8631,8 +8631,8 @@
         }
       ],
       "put": {
-        "summary": "Configure event for kiosk",
-        "operationId": "put-kiosks-kioskId-events",
+        "summary": "Configure fixed event for kiosk",
+        "operationId": "put-kiosks-kioskId-fixed-event",
         "responses": {
           "204": {
             "description": "Updated. No Content"
@@ -8688,7 +8688,7 @@
         ]
       },
       "delete": {
-        "summary": "Remove configured event for kiosk",
+        "summary": "Remove fixed event for kiosk",
         "operationId": "delete-kiosks-kioskId-events",
         "responses": {
           "204": {
