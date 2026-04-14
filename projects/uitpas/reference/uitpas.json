@@ -705,6 +705,10 @@
                                   "permanent": true
                                 },
                                 "uitpasNumber": "0930012345615",
+                                "currentCard": {
+                                  "uitpasNumber": "0930012345615",
+                                  "status": "ACTIVE"
+                                },
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
@@ -769,6 +773,10 @@
                                   "permanent": true
                                 },
                                 "uitpasNumber": "0930012345615",
+                                "currentCard": {
+                                  "uitpasNumber": "0930012345615",
+                                  "status": "ACTIVE"
+                                },
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
@@ -902,6 +910,10 @@
                               "permanent": true
                             },
                             "uitpasNumber": "0560002524314",
+                            "currentCard": {
+                              "uitpasNumber": "0560002524314",
+                              "status": "ACTIVE"
+                            },
                             "status": "ACTIVE",
                             "socialTariff": {
                               "status": "ACTIVE",
@@ -2342,6 +2354,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -2544,6 +2560,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0930012345615",
+                          "currentCard": {
+                            "uitpasNumber": "0930012345615",
+                            "status": "ACTIVE"
+                          },
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3766,6 +3786,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0930012345615",
+                          "currentCard": {
+                            "uitpasNumber": "0930012345615",
+                            "status": "ACTIVE"
+                          },
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
@@ -3855,6 +3879,10 @@
                             "permanent": true
                           },
                           "uitpasNumber": "0999100000002",
+                          "currentCard": {
+                            "uitpasNumber": "0999100000002",
+                            "status": "ACTIVE"
+                          },
                           "status": "ACTIVE"
                         }
                       ],
@@ -4214,6 +4242,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4276,6 +4308,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0900000067513",
+                              "currentCard": {
+                                "uitpasNumber": "0900000067513",
+                                "status": "ACTIVE"
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4337,6 +4373,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0900000036112",
+                              "currentCard": {
+                                "uitpasNumber": "0900000036112",
+                                "status": "ACTIVE"
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -4403,6 +4443,10 @@
                                 "permanent": true
                               },
                               "uitpasNumber": "0930012345615",
+                              "currentCard": {
+                                "uitpasNumber": "0930012345615",
+                                "status": "ACTIVE"
+                              },
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
@@ -6357,12 +6401,15 @@
               "default": "ENDUSERS",
               "enum": [
                 "ALL",
-                "ENDUSERS"
+                "ENDUSERS",
+                "REDEEMABLE",
+                "REDEEMABLE-FUTURE",
+                "ENDUSER-FUTURE"
               ]
             },
             "in": "query",
             "name": "subset",
-            "description": "Include only rewards of a specific subset. Defaults to `ENDUSERS`, which means all active rewards, that are currently published and in its redeem period and are part of a permanent cardsystem. Set this field to `ALL` to include all rewards.",
+            "description": "Include only rewards of a specific subset. Defaults to `ENDUSERS`, which means all active rewards, that are currently published and in its redeem period and are part of a permanent cardsystem. `REDEEMABLE` is the same as `ENDUSER` except filtering on publication date. `ENDUSER-FUTURE` and `REDEEMABLE-FUTURE` is similar to their respective subset, but filters on a redeem date in the future. Set this field to `ALL` to include all rewards.",
             "style": "form"
           },
           {
@@ -7232,6 +7279,56 @@
           },
           {
             "$ref": "#/components/parameters/limit"
+          }
+        ]
+      }
+    },
+    "/rewards/redeemed/{redeemedRewardId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "redeemedRewardId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the redeemed reward"
+        }
+      ],
+      "delete": {
+        "summary": "Cancel a redeemed reward",
+        "operationId": "delete-rewards-redeemed-redeemedRewardId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Rewards"
+        ],
+        "description": "Cancel a previously redeemed reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the organizer of the given reward.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
           }
         ]
       }
@@ -10748,7 +10845,10 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of the card that is linked to this card system membership. It is possible to have a CardSystemMembership without a card. However, a passholder always has at least one CardSystemMembership with a card."
+            "description": "This is a convenience propery that contains the uitpasNumber of the `currentCard` if there is a current card and that card is `ACTIVE`."
+          },
+          "currentCard": {
+            "$ref": "#/components/schemas/CardSystemMembershipCard"
           },
           "status": {
             "type": "string",
@@ -10800,6 +10900,50 @@
         },
         "required": [
           "cardSystem"
+        ]
+      },
+      "CardSystemMembershipCard": {
+        "title": "CardSystemMembershipCard",
+        "x-stoplight": {
+          "id": "c61r94oays9ih"
+        },
+        "type": "object",
+        "description": "Representation of an UiTPAS card embedded in a CardSystemMembership.",
+        "properties": {
+          "uitpasNumber": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wt5795os9zlly"
+            },
+            "description": "UiTPAS number of this card."
+          },
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "0wg00e7ok83tp"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of this card."
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ic0htdaaq5wmr"
+            },
+            "description": "Status of this card.",
+            "enum": [
+              "ACTIVE",
+              "BLOCKED",
+              "DELETED"
+            ]
+          }
+        },
+        "required": [
+          "uitpasNumber",
+          "status"
         ]
       },
       "CardSystem": {
