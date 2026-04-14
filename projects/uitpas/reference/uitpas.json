@@ -7257,12 +7257,23 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
         },
         "tags": [
           "Rewards"
         ],
-        "description": "Cancel a previously redeemed reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the organizer of the given reward."
+        "description": "Cancel a previously redeemed reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the organizer of the given reward.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/card-systems": {
