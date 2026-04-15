@@ -8541,7 +8541,7 @@
           }
         },
         "operationId": "get-kiosks",
-        "description": "Retrieve kiosk devices.\n\nThe caller of this request must have `KIOSKS_READ` permission or the caller must be an organizer admin user (any type) of the given organizer. In that case, `organizerId` is mandatory and must match the organizer of the admin user.",
+        "description": "Retrieve active kiosk devices.\n\nThe caller of this request must have `KIOSKS_READ` permission or the caller must be an organizer admin user (any type) of the given organizer. In that case, `organizerId` is mandatory and must match the organizer of the admin user.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -8689,7 +8689,7 @@
       },
       "delete": {
         "summary": "Remove fixed event for kiosk",
-        "operationId": "delete-kiosks-kioskId-events",
+        "operationId": "delete-kiosks-kioskId-fixed-event",
         "responses": {
           "204": {
             "description": "No Content"
@@ -8714,6 +8714,14 @@
         "description": "Remove the configured event for this kiosk.\n\nThe caller of this request must have `KIOSKS_WRITE` permission for the organizer of the kiosk or the caller must be an organizer admin user (any type) of the organizer of the kiosk.",
         "tags": [
           "Kiosks"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       }
     },
