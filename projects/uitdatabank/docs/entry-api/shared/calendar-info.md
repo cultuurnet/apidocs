@@ -283,7 +283,7 @@ GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
 
 ## Adjusted opening hours (events only, periodic/permanent)
 
-Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjusted` array to define temporary custom opening hours that override the default schedule for specific date ranges. This property is not available for places.
+Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjustedDays` array to define temporary custom opening hours that override the default schedule for specific date ranges. This property is not available for places.
 
 ```json
 {
@@ -303,7 +303,7 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
       ]
     }
   ],
-  "openingHoursAdjusted": [
+  "openingHoursAdjustedDays": [
     {
       "startDate": "2026-12-21",
       "endDate": "2026-12-30",
@@ -329,7 +329,7 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
 
 Each entry defines a date range during which the specified `openingHours` replace the default schedule. The `description` property is optional and translatable.
 
-Like regular opening hours, each opening hours item in `openingHoursAdjusted` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
+Like regular opening hours, each opening hours item in `openingHoursAdjustedDays` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
 
 ```json
 {
@@ -360,28 +360,28 @@ Like regular opening hours, each opening hours item in `openingHoursAdjusted` ca
 
 * For `periodic` events: all adjusted dates must fall within the main `startDate` and `endDate` of the event.
 * `startDate` must be on or before `endDate`.
-* No overlaps are allowed between entries in `openingHoursAdjusted`.
+* No overlaps are allowed between entries in `openingHoursAdjustedDays`.
 * Description has a maximum length of 1000 characters per language.
 * Childcare validation rules apply to adjusted opening hours: `childcare.start` must be earlier than `opens`, and `childcare.end` must be later than `closes` on each opening hours item.
 
 **Interaction with closed days:**
 
-When `openingHoursClosedDays` and `openingHoursAdjusted` overlap, `openingHoursClosedDays` always take precedence. This means:
-* If a date is marked as closed in `openingHoursClosedDays`, the event is closed for that entire date, regardless of what `openingHoursAdjusted` specifies.
+When `openingHoursClosedDays` and `openingHoursAdjustedDays` overlap, `openingHoursClosedDays` always take precedence. This means:
+* If a date is marked as closed in `openingHoursClosedDays`, the event is closed for that entire date, regardless of what `openingHoursAdjustedDays` specifies.
 * Use `openingHoursClosedDays` for holidays and closures.
-* Use `openingHoursAdjusted` for periods with modified (but non-zero) opening hours.
+* Use `openingHoursAdjustedDays` for periods with modified (but non-zero) opening hours.
 
 **Overwriting or clearing adjusted hours:**
 
-Each `openingHoursAdjusted` array is independent: omitting the property preserves existing data. When updating:
+Each `openingHoursAdjustedDays` array is independent: omitting the property preserves existing data. When updating:
 
-* **Omit `openingHoursAdjusted`** entirely → existing adjusted hours are left unchanged.
-* **Send `"openingHoursAdjusted": []`** (empty array) → clears all previously set adjusted hours.
-* **Send `"openingHoursAdjusted": [...]`** with values → replaces all adjusted hours with the new list.
+* **Omit `openingHoursAdjustedDays`** entirely → existing adjusted hours are left unchanged.
+* **Send `"openingHoursAdjustedDays": []`** (empty array) → clears all previously set adjusted hours.
+* **Send `"openingHoursAdjustedDays": [...]`** with values → replaces all adjusted hours with the new list.
 
 **API behavior:**
 
-GET endpoints return `openingHoursAdjusted` sorted by `startDate`.
+GET endpoints return `openingHoursAdjustedDays` sorted by `startDate`.
 
 ## Read more
 

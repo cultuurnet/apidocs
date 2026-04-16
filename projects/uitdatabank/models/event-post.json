@@ -46,7 +46,7 @@
           }
         }
       ],
-      "openingHoursAdjusted": [
+      "openingHoursAdjustedDays": [
         {
           "startDate": "2026-12-21",
           "endDate": "2026-12-30",
