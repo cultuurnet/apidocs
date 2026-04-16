@@ -1,5 +1,5 @@
 {
-  "title": "event.openingHoursAdjusted",
+  "title": "event.openingHoursAdjustedDays",
   "description": "List of specific date ranges during which custom opening hours override the default schedule. Only applicable for calendarType `periodic` and `permanent`. An empty array clears all previously set adjusted opening hours.",
   "type": "array",
   "items": {
