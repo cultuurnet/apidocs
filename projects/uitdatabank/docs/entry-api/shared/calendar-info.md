@@ -180,6 +180,44 @@ For periodic/permanent calendar types:
 * `childcare.end` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcare.end` must be after `17:00`.
 * These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
 
+### Overnight (events only, single/multiple)
+
+Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include an `overnight` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay.
+
+```json
+{
+  "terms": [
+    {
+      "id": "0.57.0.0.0",
+      "label": "Kamp of vakantie",
+      "domain": "eventtype"
+    }
+  ],
+  "calendarType": "multiple",
+  "subEvent": [
+    {
+      "startDate": "2026-07-01T09:00:00+02:00",
+      "endDate": "2026-07-05T17:00:00+02:00",
+      "overnight": true
+    },
+    {
+      "startDate": "2026-07-08T09:00:00+02:00",
+      "endDate": "2026-07-12T17:00:00+02:00"
+    }
+  ]
+}
+```
+
+**Validation rules:**
+
+* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. 
+* `overnight` is optional and defaults to `false` when omitted.
+* When the term `0.57.0.0.0` is removed from the event, `overnight` is automatically reset to `false` on all subEvents.
+
+**API behavior:**
+
+In the read model (GET), `overnight` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
+
 ### periodic/permanent
 
 When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.
