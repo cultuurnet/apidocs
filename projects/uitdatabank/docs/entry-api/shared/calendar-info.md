@@ -371,8 +371,8 @@ For events, each opening hours item in `openingHoursAdjustedDays` can optionally
 
 ```json
 {
-  "startDate": "2026-12-21T00:00:00+01:00",
-  "endDate": "2026-12-30T23:00:00+01:00",
+  "startDate": "2026-12-21",
+  "endDate": "2026-12-30",
   "description": {
     "nl": "Kerstvakantie"
   },
