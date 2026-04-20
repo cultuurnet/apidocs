@@ -512,6 +512,73 @@
       "completedLanguages": [
         "nl"
       ]
+    },
+    {
+      "@id": "https://io-test.uitdatabank.be/events/b7d5e938-8f0a-53bc-c2g1-f45678901bcd",
+      "mainLanguage": "nl",
+      "name": {
+        "nl": "Zomerkamp 2026"
+      },
+      "calendarType": "multiple",
+      "startDate": "2026-07-01T09:00:00+02:00",
+      "endDate": "2026-07-12T17:00:00+02:00",
+      "subEvent": [
+        {
+          "id": 0,
+          "startDate": "2026-07-01T09:00:00+02:00",
+          "endDate": "2026-07-05T17:00:00+02:00",
+          "status": {
+            "type": "Available"
+          },
+          "bookingAvailability": {
+            "type": "Available"
+          },
+          "overnight": true
+        },
+        {
+          "id": 1,
+          "startDate": "2026-07-08T09:00:00+02:00",
+          "endDate": "2026-07-12T17:00:00+02:00",
+          "status": {
+            "type": "Available"
+          },
+          "bookingAvailability": {
+            "type": "Available"
+          }
+        }
+      ],
+      "location": {
+        "@id": "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
+      },
+      "organizer": {
+        "@id": "https://io-test.uitdatabank.be/organizers/c76db023-ef6d-49d9-8d15-5ddc3e6eb0a9"
+      },
+      "terms": [
+        {
+          "id": "0.57.0.0.0",
+          "label": "Kamp of vakantie",
+          "domain": "eventtype"
+        }
+      ],
+      "audience": {
+        "audienceType": "childrenOnly"
+      },
+      "status": {
+        "type": "Available"
+      },
+      "bookingAvailability": {
+        "type": "Available"
+      },
+      "created": "2026-06-01T10:00:00+02:00",
+      "modified": "2026-06-01T10:00:00+02:00",
+      "creator": "auth0|45c0d021-c78f-445f-adef-be3355b23e4f",
+      "workflowStatus": "DRAFT",
+      "languages": [
+        "nl"
+      ],
+      "completedLanguages": [
+        "nl"
+      ]
     }
   ]
 }
