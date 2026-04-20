@@ -453,16 +453,28 @@
       "@id": "https://io-test.uitdatabank.be/events/a3f4c827-6d9e-42ab-b1f0-e34567890abc",
       "mainLanguage": "nl",
       "name": {
-        "nl": "Acrobatie & Trampoline"
+        "nl": "Zomerkamp 2026"
       },
-      "calendarType": "single",
-      "startDate": "2026-06-15T09:00:00+02:00",
-      "endDate": "2026-06-15T12:00:00+02:00",
+      "calendarType": "multiple",
+      "startDate": "2026-07-01T09:00:00+02:00",
+      "endDate": "2026-07-12T17:00:00+02:00",
       "subEvent": [
         {
           "id": 0,
-          "startDate": "2026-06-15T09:00:00+02:00",
-          "endDate": "2026-06-15T12:00:00+02:00",
+          "startDate": "2026-07-01T09:00:00+02:00",
+          "endDate": "2026-07-05T17:00:00+02:00",
+          "status": {
+            "type": "Available"
+          },
+          "bookingAvailability": {
+            "type": "Available"
+          },
+          "overnight": true
+        },
+        {
+          "id": 1,
+          "startDate": "2026-07-08T09:00:00+02:00",
+          "endDate": "2026-07-12T17:00:00+02:00",
           "status": {
             "type": "Available"
           },
@@ -479,14 +491,9 @@
       },
       "terms": [
         {
-          "id": "0.3.1.0.0",
-          "label": "Lessenreeks",
+          "id": "0.57.0.0.0",
+          "label": "Kamp of vakantie",
           "domain": "eventtype"
-        },
-        {
-          "id": "0.52.0.0.0",
-          "label": "Circus",
-          "domain": "theme"
         }
       ],
       "audience": {
