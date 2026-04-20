@@ -62,6 +62,37 @@
           ]
         }
       ],
+      "openingHoursClosedDays": [
+        {
+          "startDate": "2026-04-06",
+          "endDate": "2026-04-06",
+          "description": {
+            "nl": "Paasmaandag",
+            "fr": "Lundi de Pâques"
+          }
+        }
+      ],
+      "openingHoursAdjustedDays": [
+        {
+          "startDate": "2026-12-21",
+          "endDate": "2026-12-30",
+          "description": {
+            "nl": "Kerstvakantie",
+            "fr": "fêtes de Noël"
+          },
+          "openingHours": [
+            {
+              "opens": "13:00",
+              "closes": "15:00",
+              "dayOfWeek": [
+                "friday",
+                "saturday",
+                "sunday"
+              ]
+            }
+          ]
+        }
+      ],
       "availableFrom": "2021-05-17T22:00:00+00:00",
       "availableTo": "2021-05-17T22:00:00+00:00",
       "sameAs": [
