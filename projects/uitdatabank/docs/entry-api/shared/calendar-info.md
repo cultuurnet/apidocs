@@ -182,12 +182,7 @@ For periodic/permanent calendar types:
 
 ### Overnight (events only, single/multiple)
 
-Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include an `overnight` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay.
-
-The `overnight` property is accepted on subEvents in:
-
-* `PUT /events/{eventId}/calendar`
-* `PATCH /events/{eventId}/subEvents`
+Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include an `overnight` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay. In the read model (GET), `overnight` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response entirely.
 
 For example, when creating or replacing the calendar via `PUT /events/{eventId}/calendar`:
 
@@ -228,14 +223,9 @@ To update `overnight` on an individual subEvent without replacing the full calen
 
 **Validation rules:**
 
-* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. The match is done on the term `id`, not the `label`, because labels can be translated. Sending `overnight: true` on an event without this term returns a `400` error.
+* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`.  Sending `overnight: true` on an event without this term returns a `400` error.
 * `overnight` is optional and defaults to `false` when omitted.
 * `overnight` is only valid for `calendarType: single` or `calendarType: multiple`. Sending it for `periodic` or `permanent` events (which have no subEvents) returns a `400` error.
-* When the term `0.57.0.0.0` is removed from the event via `PUT` or `PATCH` on the `terms` property, `overnight` is automatically reset to `false` on all subEvents.
-
-**API behavior:**
-
-In the read model (GET), `overnight` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response entirely.
 
 ### periodic/permanent
 
