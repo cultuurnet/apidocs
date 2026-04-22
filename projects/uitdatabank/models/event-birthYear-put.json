@@ -1,0 +1,22 @@
+{
+  "title": "event.birthYear.put",
+  "type": "object",
+  "description": "Describes the request body to set the typical birth year or birth year range of an [event](./models/event.json).",
+  "examples": [
+    {
+      "birthYear": "2020"
+    },
+    {
+      "birthYear": "2021-2023"
+    }
+  ],
+  "properties": {
+    "typicalAgeRange": {
+      "$ref": "./event-birthYear.json",
+      "description": "The birth year or birth year range set on the event."
+    }
+  },
+  "required": [
+    "birthYear"
+  ]
+}
