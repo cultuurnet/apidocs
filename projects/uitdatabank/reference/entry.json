@@ -1054,7 +1054,7 @@
                 },
                 "A birthYear Range": {
                   "value": {
-                    "typicalAgeRange": "2021-2023"
+                    "birthYear": "2021-2023"
                   }
                 }
               }

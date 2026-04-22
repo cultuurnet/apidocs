@@ -11,7 +11,7 @@
     }
   ],
   "properties": {
-    "typicalAgeRange": {
+    "birthYear": {
       "$ref": "./event-birthYear.json",
       "description": "The birth year or birth year range set on the event."
     }
