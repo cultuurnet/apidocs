@@ -1,0 +1,11 @@
+{
+  "title": "event.birthYear",
+  "type": "object",
+  "description": "Indicates the birth year & optionally a birth year range to attend the [event](./models/event.json). For example `2020` OR `2021-2023`",
+  "properties": {
+    "birthYear": {
+      "type": "string",
+      "pattern": "^\\d{4}(-\\d{4})?$"
+    }
+  }
+}
