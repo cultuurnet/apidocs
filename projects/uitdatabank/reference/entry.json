@@ -1044,7 +1044,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "../models/event-birthdate-range-put.json"
+                "$ref": "../models/event-birthdateRange-put.json"
               },
               "examples": {
                 "A birthdate range": {
@@ -1058,11 +1058,11 @@
               }
             }
           },
-          "description": "The birth year to set on the event."
+          "description": "The birthdate range to set on the event."
         },
         "responses": {
           "204": {
-            "description": "The birth year was successfully updated."
+            "description": "The birthdate range was successfully updated."
           },
           "400": {
             "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
