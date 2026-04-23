@@ -1,0 +1,19 @@
+{
+  "title": "event.birthdateRange.put",
+  "type": "object",
+  "description": "Describes the request body to set the birthdate range for the attendees of the [event](./models/event.json).",
+  "examples": [
+    {
+      "birthdateRange": "2020-01-20"
+    }
+  ],
+  "properties": {
+    "birthdateRange": {
+      "$ref": "./event-birthdateRange.json",
+      "description": "The birthdate range for the attendees of the event."
+    }
+  },
+  "required": [
+    "birthdateRange"
+  ]
+}

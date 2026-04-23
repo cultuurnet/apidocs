@@ -77,8 +77,8 @@
         "typicalAgeRange": {
           "$ref": "./event-typicalAgeRange.json"
         },
-        "birthYear": {
-          "$ref": "./event-birthYear.json"
+        "birthdateRange": {
+          "$ref": "./event-birthdateRange.json"
         },
         "description": {
           "$ref": "./event-description.json"

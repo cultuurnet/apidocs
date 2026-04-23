@@ -1,0 +1,10 @@
+{
+  "title": "event.birthdateRange",
+  "type": "string",
+  "pattern": "^[12]\\d{3}(-[12]\\d{3})?$",
+  "description": "The birthdate range to attend the [event](./models/event.json). For example `2020` OR `2021-2023`. If you provide a range, the start year should be put first.",
+  "examples": [
+    "2020",
+    "2021-2023"
+  ]
+}
