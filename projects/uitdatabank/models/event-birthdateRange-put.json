@@ -4,7 +4,10 @@
   "description": "Describes the request body to set the birthdate range for the attendees of the [event](./models/event.json).",
   "examples": [
     {
-      "birthdateRange": "2020-01-20"
+      "birthdateRange": {
+        "from": "2021-01-31",
+        "to": "2021-12-31"
+      }
     }
   ],
   "properties": {

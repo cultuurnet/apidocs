@@ -59,7 +59,10 @@
         "audienceType": "everyone"
       },
       "typicalAgeRange": "6-12",
-      "birthdateRange": "2020",
+      "birthdateRange": {
+        "from": "2021-01-31",
+        "to": "2021-12-31"
+      },
       "description": {
         "nl": "Nederlandse beschrijving",
         "fr": "Description français",
