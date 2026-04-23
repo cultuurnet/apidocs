@@ -1,10 +1,27 @@
 {
   "title": "event.birthdateRange",
-  "type": "string",
-  "pattern": "^[12]\\d{3}(-[12]\\d{3})?$",
-  "description": "The birthdate range to attend the [event](./models/event.json). For example `2020` OR `2021-2023`. If you provide a range, the start year should be put first.",
+  "type": "object",
+  "description": "The birthdate range of the attendees of the [event](./models/event.json).",
+  "properties": {
+    "from": {
+      "type": "string",
+      "format": "date",
+      "description": "The earliest birthdate in the range, as an ISO-8601 date. For example `2021-01-31`."
+    },
+    "to": {
+      "type": "string",
+      "format": "date",
+      "description": "The latest birthdate in the range, as an ISO-8601 date. For example `2021-12-31`."
+    }
+  },
+  "required": [
+    "from",
+    "to"
+  ],
   "examples": [
-    "2020",
-    "2021-2023"
+    {
+      "from": "2021-01-31",
+      "to": "2021-12-31"
+    }
   ]
 }
