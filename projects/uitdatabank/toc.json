@@ -137,6 +137,12 @@
               "title": "Deleting an event",
               "uri": "/docs/entry-api/events/delete.md",
               "slug": "entry-api/events/deleting-an-event"
+            },
+            {
+              "type": "item",
+              "title": "BOA - Relevant fields",
+              "uri": "/docs/entry-api/events/boa-relevant-fields.md",
+              "slug": "entry-api/events/boa-relevant-fields"
             }
           ]
         },
