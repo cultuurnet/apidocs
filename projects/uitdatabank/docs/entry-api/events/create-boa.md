@@ -1,12 +1,11 @@
-# BOA - Relevant fields
+# Introduction to BOA
 
-The BOA Decree (Decreet Buitenschoolse Opvang en Activiteiten) aims to ensure that every child aged 3 to 12 has access to high-quality care and leisure opportunities before and after school, as well as during holidays. It emphasizes relaxation, play, and personal development in a warm, inclusive environment close to home.
+The BOA decree aims to create a comprehensive and integrated offering of out-of-school care and leisure activities for school-aged children in Flanders. Local governments act as the central directors, coordinating with partners across education, youth work, sports, and culture.
+To properly capture this specific offering in UiTdatabank, several features and fields have been added to the API. This guide provides an overview of all BOA-specific data models and endpoints.
 
-Local governments are responsible for organizing out-of-school care within their municipalities. They coordinate and collaborate with partners across education, childcare, youth work, sports, and culture to provide a comprehensive and integrated offering.
+For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
-For more information, visit [the boa page on vlaanderen.be](https://www.vlaanderen.be/cjm/nl/cultuur/cultuureducatie/cultuur-en-boa/wat-boa). 
-
-This guide covers all BOA-specific fields, how they apply per calendar type, and what endpoints to use.
+> This guide covers all BOA-specific fields, how they apply per calendar type, and what endpoints to use.
 
 | Field | Calendar type | Notes |
 |---|---|---|
@@ -25,3 +24,4 @@ This guide covers all BOA-specific fields, how they apply per calendar type, and
 * [Creating a new event](./create.md)
 * [Updating an event](./update.md)
 * [Calendar info](../shared/calendar-info.md)
+* [Creating an event for children only](./create-children-only.md)

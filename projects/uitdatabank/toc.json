@@ -141,8 +141,8 @@
             {
               "type": "item",
               "title": "BOA - Relevant fields",
-              "uri": "/docs/entry-api/events/boa-relevant-fields.md",
-              "slug": "entry-api/events/boa-relevant-fields"
+              "uri": "/docs/entry-api/events/create-boa.md",
+              "slug": "entry-api/events/create-boa"
             }
           ]
         },
