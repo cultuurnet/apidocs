@@ -28,6 +28,12 @@
           "de": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "German description." },
           "en": { "type": "string", "maxLength": 1000, "minLength": 1, "description": "English description." }
         }
+      },
+      "openingHours": {
+        "allOf": [
+          { "$ref": "./common-openingHours.json" },
+          { "minItems": 1 }
+        ]
       }
     },
     "required": ["startDate", "endDate", "openingHours"],
