@@ -140,7 +140,7 @@
             },
             {
               "type": "item",
-              "title": "BOA - Relevant fields",
+              "title": "Introduction to BOA",
               "uri": "/docs/entry-api/events/create-boa.md",
               "slug": "entry-api/events/create-boa"
             }
