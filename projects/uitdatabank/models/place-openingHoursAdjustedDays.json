@@ -1,0 +1,18 @@
+{
+  "title": "place.openingHoursAdjustedDays",
+  "allOf": [
+    { "$ref": "./common-openingHoursAdjustedDays.json" },
+    {
+      "items": {
+        "properties": {
+          "openingHours": {
+            "allOf": [
+              { "$ref": "./place-openingHours.json" },
+              { "minItems": 1 }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

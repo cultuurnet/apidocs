@@ -42,8 +42,8 @@
         "longitude": 4.7137986
       },
       "calendarType": "periodic",
-      "startDate": "2021-05-17T22:00:00+00:00",
-      "endDate": "2021-05-17T22:00:00+00:00",
+      "startDate": "2026-01-01T00:00:00+01:00",
+      "endDate": "2026-12-31T23:59:59+01:00",
       "status": {
         "type": "Available",
         "reason": {
@@ -62,8 +62,39 @@
           ]
         }
       ],
-      "availableFrom": "2021-05-17T22:00:00+00:00",
-      "availableTo": "2021-05-17T22:00:00+00:00",
+      "openingHoursClosedDays": [
+        {
+          "startDate": "2026-04-06",
+          "endDate": "2026-04-06",
+          "description": {
+            "nl": "Paasmaandag",
+            "fr": "Lundi de Pâques"
+          }
+        }
+      ],
+      "openingHoursAdjustedDays": [
+        {
+          "startDate": "2026-12-21",
+          "endDate": "2026-12-30",
+          "description": {
+            "nl": "Kerstvakantie",
+            "fr": "fêtes de Noël"
+          },
+          "openingHours": [
+            {
+              "opens": "13:00",
+              "closes": "15:00",
+              "dayOfWeek": [
+                "friday",
+                "saturday",
+                "sunday"
+              ]
+            }
+          ]
+        }
+      ],
+      "availableFrom": "2026-01-01T00:00:00+01:00",
+      "availableTo": "2026-12-31T23:59:59+01:00",
       "sameAs": [
         "http://www.uitinvlaanderen.be/agenda/e/test-place/85b04295-479c-40f5-b3dd-469dfb4387b3"
       ],
