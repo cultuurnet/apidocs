@@ -140,7 +140,7 @@
             },
             {
               "type": "item",
-              "title": "Introduction to BOA",
+              "title": "Updates in support of BOA",
               "uri": "/docs/entry-api/events/create-boa.md",
               "slug": "entry-api/events/create-boa"
             }
