@@ -13,11 +13,11 @@ For more general information about publiq's role in the BOA decree, visit [publi
 | [`faq`](/docs/uitdatabank/event-faqs) | all | Up to 30 items; dedicated `PUT /events/{eventId}/faqs` endpoint |
 | [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-events-only-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
 | [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-events-only-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
-| [`audience.audienceType: childrenOnly`](/entry-api/events/creating-an-event-for-children-only) | all | Unlocks `departurePlaces` |
+| [`audience.audienceType: childrenOnly`](./create-children-only.md) | all | Unlocks `departurePlaces` |
 | [`bookingInfo` on subEvents](../shared/booking-and-contact-info.md#bookinginfo) | single, multiple | Per-date booking contacts |
 | [`bookingAvailability` capacity/remainingCapacity](./booking-availability.md) | single, multiple | See also [booking availability guide](./booking-availability.md) |
 | [`childcare`](../shared/calendar-info.md#childcare-times-events-only) | single/multiple (subEvent), periodic (openingHours) | Different placement per calendar type |
-| [`departurePlaces`](/entry-api/events/creating-an-event-for-children-only#departureplaces) | all (requires `childrenOnly`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
+| [`departurePlaces`](./create-children-only.md#departureplaces) | all (requires `childrenOnly`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
 
 ### Related guides
 
