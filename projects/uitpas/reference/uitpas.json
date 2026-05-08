@@ -1000,6 +1000,56 @@
         ]
       }
     },
+    "/checkins/{checkinId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "checkinId",
+          "in": "path",
+          "required": true,
+          "description": "Id of the checkin"
+        }
+      ],
+      "delete": {
+        "summary": "Delete a check-in",
+        "operationId": "delete-checkins-checkinId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Checkins"
+        ],
+        "description": "Delete a checkin.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/checkin-status": {
       "parameters": [],
       "get": {
