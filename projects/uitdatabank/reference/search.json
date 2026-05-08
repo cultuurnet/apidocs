@@ -239,6 +239,9 @@
             "$ref": "#/components/parameters/organizerLabels"
           },
           {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
             "$ref": "#/components/parameters/mainLanguage"
           },
           {
@@ -2121,6 +2124,19 @@
         "name": "organizerLabels[]",
         "style": "form",
         "description": "Returns only results that have the given label(s) in their organizer's `labels` or `hiddenLabels` properties. May be repeated to only return results with an organizer that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
+      "departurePlaces": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "departurePlaces[]",
+        "style": "form",
+        "description": "Returns only events that have the given place(s) as a departure place. The value must be a place UUID. May be repeated to only return events that have all the given departure places (AND logic). For OR logic, use the `q` parameter with the `departurePlaces` field instead. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "mainLanguage": {
