@@ -2903,6 +2903,90 @@
         }
       ]
     },
+    "/grouppasses/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an grouppass.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of grouppass",
+        "operationId": "get-grouppasses-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_13",
+                          "name": "Gratis naar de film in groep",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 100,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given grouppass.\n\nThe caller of this method must have `GROUPPASS_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ],
+        "parameters": []
+      }
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
@@ -2989,6 +3073,73 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "put": {
+        "summary": "Update a passholder",
+        "operationId": "put-passholders-passholderId",
+        "responses": {
+          "204": {
+            "description": "Passholder updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the registrationSocialTariffEndDate field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Passholder"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Peeters",
+                    "firstName": "Marc",
+                    "inszNumber": "00000009007",
+                    "email": "marc.peeters@example.com",
+                    "dateOfBirth": "2000-01-01",
+                    "address": {
+                      "street": "Grote markt 12",
+                      "postalCode": "9300",
+                      "city": "Aalst"
+                    },
+                    "optInPreferences": {
+                      "serviceMails": true,
+                      "infoMails": true,
+                      "milestoneMails": true,
+                      "sms": false,
+                      "post": true
+                    },
+                    "nationality": "Belg",
+                    "legalTermsPaper": false,
+                    "legalTermsDigital": true,
+                    "parentalConsent": false,
+                    "registrationSocialTariffEndDate": "2027-04-30"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Updated Passholder"
+        }
       }
     },
     "/passholders/{passholderId}/picture": {
@@ -3042,6 +3193,100 @@
           }
         },
         "description": "Retrieve picture of the given passholder.\n\nThis endpoint allows you to obtain a short-lived link to the picture of the passholder. After generation, this link remains active for a limited time, enabling you to include it in HTML pages displayed to your users.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_READ` permission for the given passholder.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      },
+      "put": {
+        "summary": "Update picture of passholder",
+        "operationId": "put-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.  ",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Update the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.",
+        "tags": [
+          "Passholders"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The picture to upload."
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "bytes"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The picture of the passholder in a multipart request body."
+        }
+      },
+      "delete": {
+        "summary": "Delete picture of passholder",
+        "operationId": "delete-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3138,6 +3383,90 @@
             "required": true
           }
         ]
+      }
+    },
+    "/passholders/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of passholder",
+        "operationId": "get-passholders-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_12",
+                          "name": "Gratis naar de film",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 1,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given passholder.\n\nThe caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ],
+        "parameters": []
       }
     },
     "/passholders/me/uitid/registration-token": {
@@ -10050,7 +10379,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "name": {
@@ -10067,11 +10396,11 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card. This field is always available in responses and ignored in create and update operations."
           },
           "cardSystemMemberships": {
             "type": "array",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "items": {
               "$ref": "#/components/schemas/CardSystemMembership"
             },
@@ -10084,7 +10413,7 @@
           "creationDate": {
             "type": "string",
             "format": "date-time",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "dateOfBirth": {
@@ -10106,7 +10435,7 @@
           },
           "points": {
             "type": "integer",
-            "description": "Amount of points the passholder has currently saved (and not used). This field is always available in responses.",
+            "description": "Amount of points the passholder has currently saved (and not used).This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "uitidStatus": {
@@ -10115,7 +10444,7 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "address": {
@@ -10209,32 +10538,32 @@
           },
           "parentalConsent": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for under-aged passholder that have parental consent.",
+            "description": "Only used in passholder creation and updates. Set to true for under-aged passholder that have parental consent.",
             "writeOnly": true
           },
           "legalTermsPaper": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms on paper.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms on paper.",
             "writeOnly": true
           },
           "legalTermsDigital": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms digitally.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms digitally.",
             "writeOnly": true
           },
           "registrationCardSystemId": {
             "type": "integer",
-            "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
+            "description": "Only used in passholder creation. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
           },
           "registrationVoucher": {
             "type": "string",
-            "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "description": "Only used in passholder creation when the ser has a price reduction voucher.",
             "writeOnly": true
           },
           "registrationCardType": {
             "type": "string",
-            "description": "Only used and mandatory in passholder registration.",
+            "description": "Only used and mandatory in passholder c",
             "enum": [
               "DIGITAL",
               "NFC_CARD"
@@ -10243,13 +10572,13 @@
           },
           "registrationUitpasNumber": {
             "type": "string",
-            "description": "Only used in passholder registration using a physical card.",
+            "description": "Only used in passholder creation using a physical card.",
             "writeOnly": true
           },
           "registrationSocialTariffEndDate": {
             "type": "string",
-            "description": "Only used in passholder registration using a `registrationUitpasNumber` with social tariff. If no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
-            "format": "date-time",
+            "description": "Only used in passholder creation using a `registrationUitpasNumber` with social tariff. Or when updating a passholder with social tariff. During registration, if no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
+            "format": "date",
             "writeOnly": true
           }
         },
@@ -10257,7 +10586,6 @@
           "name",
           "firstName",
           "dateOfBirth",
-          "registrationOrganizer",
           "address"
         ]
       },
@@ -12513,6 +12841,135 @@
           "endDate"
         ],
         "x-examples": {}
+      },
+      "GrantedCoupon": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "6952809026004"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "gy3cnzbjsos7m"
+            },
+            "description": "ID of this granted coupon"
+          },
+          "coupon": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "7uhshingout9h"
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "description": "The coupon of this granted coupon",
+            "properties": {
+              "id": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "9lc2aar0ke5mt"
+                },
+                "description": "ID of the coupon"
+              },
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ju827c3hyobo6"
+                },
+                "description": "Name of the coupon"
+              },
+              "description": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "0m1k758km1di4"
+                },
+                "description": "Description of the coupon"
+              }
+            }
+          },
+          "validityPeriod": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "d7x4iwrrak9tm"
+            },
+            "description": "Validatity period of this coupon",
+            "properties": {
+              "begin": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "hzer6iazpfcpd"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid from this date"
+              },
+              "end": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "p62zqlsppr3gg"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid until this date. After this date, this coupon will appear as status `EXPIRED`"
+              }
+            },
+            "required": [
+              "begin"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pua8h5vd8410c"
+            },
+            "enum": [
+              "ACTIVE",
+              "EXPIRED"
+            ],
+            "description": "Status of this granted coupon"
+          },
+          "remaining": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "wp3luo60wgz57"
+            },
+            "description": "Remaining ticket sales for this granted coupon (is applicable)",
+            "properties": {
+              "volume": {
+                "type": "integer",
+                "x-stoplight": {
+                  "id": "tmfnerf0ntoor"
+                },
+                "description": "Volume of the remaining ticketsales"
+              },
+              "period": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "a0yelgv8k0gy1"
+                },
+                "enum": [
+                  "ABSOLUTE",
+                  "DAY",
+                  "WEEK",
+                  "MONTH",
+                  "QUARTER",
+                  "YEAR"
+                ],
+                "description": "Period of the remaining ticketsales"
+              }
+            },
+            "required": [
+              "volume",
+              "period"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "coupon",
+          "status"
+        ],
+        "title": "GrantedCoupon"
       }
     },
     "securitySchemes": {
