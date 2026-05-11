@@ -3142,13 +3142,21 @@
             },
             "in": "query",
             "name": "organiserId",
-            "description": "ID of the organizer",
-            "required": true
+            "description": "ID of the organizer. This parameter is deprecated. Use organizerId instead.",
+            "deprecated": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer. This parameter is mandatory."
           }
         ]
       },
       "post": {
-        "summary": "Create/update association membership of passholder",
+        "summary": "Create or renew association membership of passholder",
         "operationId": "post-passholders-passholderId-association-memberships",
         "responses": {
           "201": {
@@ -3172,7 +3180,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Creates a new or updates an existing membership of the passholder for the given association.",
+        "description": "Creates a new or renew an existing membership of the passholder for the given association. Membership creation and renewal are restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3203,6 +3211,17 @@
         },
         "tags": [
           "Passholders"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer used to make this request",
+            "required": true
+          }
         ]
       }
     },
@@ -3251,7 +3270,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Delete an existing membership of the passholder for the given association.",
+        "description": "Delete an existing membership of the passholder for the given association. Membership deletion is restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3262,6 +3281,17 @@
         ],
         "tags": [
           "Passholders"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer.",
+            "required": true
+          }
         ]
       }
     },
