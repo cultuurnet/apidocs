@@ -43,13 +43,70 @@ You can also update departure places later using the dedicated [`PUT /events/{ev
 
 ## Request body example
 
-Example for an event for children only, with departure places:
+Example for a BOA event (calendarType `single`) with `childrenOnly` audience, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `overnight`:
 
 ```json
 {
   "mainLanguage": "nl",
   "name": {
-    "nl": "Acrobatie & Trampoline"
+    "nl": "Acrobatie & Trampoline kamp"
+  },
+  "location": {
+    "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
+  },
+  "terms": [
+    {
+      "id": "0.57.0.0.0"
+    }
+  ],
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2026-06-15T09:00:00+02:00",
+      "endDate": "2026-06-15T12:00:00+02:00",
+      "overnight": true,
+      "childcare": {
+        "start": "08:30",
+        "end": "12:30"
+      },
+      "bookingAvailability": {
+        "capacity": 30,
+        "remainingCapacity": 12
+      },
+      "bookingInfo": {
+        "url": "https://example.com/inschrijven",
+        "urlLabel": {
+          "nl": "Schrijf je in"
+        },
+        "email": "info@example.be"
+      }
+    }
+  ],
+  "audience": {
+    "audienceType": "childrenOnly"
+  },
+  "faq": [
+    {
+      "nl": {
+        "question": "Wat moet mijn kind meebrengen?",
+        "answer": "Sportieve kledij en een lunchpakket."
+      }
+    }
+  ],
+  "departurePlaces": [
+    "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+    "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  ]
+}
+```
+
+Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDays`, `openingHoursAdjustedDays`, and `childcare` on opening hours:
+
+```json
+{
+  "mainLanguage": "nl",
+  "name": {
+    "nl": "Naschoolse opvang De Beuk"
   },
   "location": {
     "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
@@ -59,19 +116,79 @@ Example for an event for children only, with departure places:
       "id": "0.52.0.0.0"
     }
   ],
-  "calendarType": "single",
-  "subEvent": [
+  "calendarType": "periodic",
+  "startDate": "2026-09-01T07:00:00+02:00",
+  "endDate": "2027-06-30T18:00:00+02:00",
+  "openingHours": [
     {
-      "startDate": "2026-06-15T09:00:00+02:00",
-      "endDate": "2026-06-15T12:00:00+02:00"
+      "opens": "15:30",
+      "closes": "18:00",
+      "childcare": {
+        "start": "15:00",
+        "end": "18:30"
+      },
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ],
+  "openingHoursClosedDays": [
+    {
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-13",
+      "description": {
+        "nl": "Herfstvakantie"
+      }
+    },
+    {
+      "startDate": "2026-12-21",
+      "endDate": "2027-01-02",
+      "description": {
+        "nl": "Kerstvakantie"
+      }
+    }
+  ],
+  "openingHoursAdjustedDays": [
+    {
+      "startDate": "2026-12-18",
+      "endDate": "2026-12-20",
+      "description": {
+        "nl": "Verkorte week voor kerstvakantie"
+      },
+      "openingHours": [
+        {
+          "opens": "15:00",
+          "closes": "17:00",
+          "childcare": {
+            "start": "14:30",
+            "end": "17:30"
+          },
+          "dayOfWeek": [
+            "monday",
+            "tuesday",
+            "thursday"
+          ]
+        }
+      ]
     }
   ],
   "audience": {
     "audienceType": "childrenOnly"
   },
+  "faq": [
+    {
+      "nl": {
+        "question": "Hoe schrijf ik mijn kind in?",
+        "answer": "Inschrijven kan via de schooldirectie of rechtstreeks bij de coördinator."
+      }
+    }
+  ],
   "departurePlaces": [
-    "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
-    "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
   ]
 }
 ```
