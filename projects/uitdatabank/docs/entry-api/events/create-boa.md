@@ -193,7 +193,7 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
 }
 ```
 
-### Related guides
+## Related guides
 
 * [Creating a new event](./create.md)
 * [Updating an event](./update.md)
