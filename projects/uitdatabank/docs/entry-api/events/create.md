@@ -341,4 +341,4 @@ You can learn more about these properties under the "Shared properties" section 
 * Go over the [calendar info](../shared/calendar-info.md) guide to learn the right calendar type for your events and how to specify different kinds of date & time info.
 * Check out the guide about [updating events](update.md) to learn how to add, edit or remove properties on your event at a later moment after creating it.
 * Learn how to [publish an event](publish.md) to make it visible on UiTinVlaanderen and other calendars.
-* Read more about creating [online events](create-online.md), [school events](create-school.md), [events for children only](create-children-only.md) and [UiTPAS events](create-uitpas.md).
+* Read more about creating [online events](create-online.md), [school events](create-school.md), [BOA activities and events for children only](create-boa.md) and [UiTPAS events](create-uitpas.md).
