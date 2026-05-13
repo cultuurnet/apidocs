@@ -11,8 +11,8 @@ For more general information about publiq's role in the BOA decree, visit [publi
 |---|---|---|
 | [`overnight`](../shared/calendar-info.md#overnight-events-only-singlemultiple) | single, multiple | Only for term `0.57.0.0.0`; hidden in response when `false` |
 | [`faq`](/docs/uitdatabank/event-faqs) | all | Up to 30 items; dedicated `PUT /events/{eventId}/faqs` endpoint |
-| [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-events-only-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
-| [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-events-only-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
+| [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
+| [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
 | [`audience.audienceType: childrenOnly`](#audiencetype) | all | Unlocks `departurePlaces` |
 | [`bookingInfo` on subEvents](../shared/booking-and-contact-info.md#bookinginfo) | single, multiple | Per-date booking contacts |
 | [`bookingAvailability` capacity/remainingCapacity](./booking-availability.md) | single, multiple | See also [booking availability guide](./booking-availability.md) |
