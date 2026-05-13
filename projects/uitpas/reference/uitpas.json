@@ -3002,7 +3002,7 @@
                   }
                 },
                 "examples": {
-                  "Example 1": {
+                  "Example": {
                     "value": [
                       {
                         "association": {
@@ -3010,7 +3010,25 @@
                           "name": "Ledenkaart sport"
                         },
                         "status": "ACTIVE",
-                        "endDate": "2026-08-24T21:59:59Z"
+                        "endDate": "2026-08-24T21:59:59Z",
+                        "renewable": true
+                      },
+                      {
+                        "association": {
+                          "id": "61746fed-63ba-45b7-805e-c78555007420",
+                          "name": "Medewerker ABC"
+                        },
+                        "status": "NONE",
+                        "renewable": false
+                      },
+                      {
+                        "association": {
+                          "id": "3e33c4ec-8f87-4eef-8101-0c27e79136ea",
+                          "name": "Medewerker XYZ"
+                        },
+                        "status": "EXPIRED",
+                        "endDate": "2024-08-24T21:59:59Z",
+                        "renewable": true
                       }
                     ]
                   }
@@ -3092,7 +3110,14 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "description": "Creates a new membership or renews an existing one for the given passholder and association. Membership creation and renewal are restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
@@ -10064,30 +10089,6 @@
           }
         }
       },
-      "AssociationsPaginatedResponse": {
-        "title": "AssociationsPaginatedResponse",
-        "x-stoplight": {
-          "id": "ytc6u5zzkcfmv"
-        },
-        "type": "object",
-        "x-tags": [
-          "Models"
-        ],
-        "description": "Paginated response object for associations",
-        "properties": {
-          "totalItems": {
-            "type": "integer",
-            "description": "Total number of association results (can be more than the amount of results in the response)."
-          },
-          "member": {
-            "type": "array",
-            "description": "List of association results for this specific (paginated) request.",
-            "items": {
-              "$ref": "#/components/schemas/Association"
-            }
-          }
-        }
-      },
       "TicketSalesPaginatedResponse": {
         "title": "TicketSalesPaginatedResponse",
         "type": "object",
@@ -12588,7 +12589,7 @@
               "id": "eradjp82wpqv0"
             },
             "format": "date-time",
-            "description": "End date of the membership. This field is always available in responses. This field is required in requests for association with a `CUSTOM` endDateType."
+            "description": "End date of the membership. This field is available in responses if status is `ACTIVE` or `EXPIRED`. This field is required in requests for association with a `CUSTOM` endDateType."
           },
           "renewable": {
             "type": "boolean",
