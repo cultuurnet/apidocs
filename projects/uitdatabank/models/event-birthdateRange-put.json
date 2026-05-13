@@ -8,10 +8,22 @@
       "to": "2021-12-31"
     }
   ],
-  "properties": {                                                                                                                                                             
-    "from": { "$ref": "./event-birthdateRange.json#/properties/from" },                                                                                                       
-    "to":   { "$ref": "./event-birthdateRange.json#/properties/to" }                                                                                                          
-  }, 
+  "properties": {
+    "from": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "yshlbtaid6dz6"
+      },
+      "format": "date"
+    },
+    "to": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "sgiij1kj5mi18"
+      },
+      "format": "date"
+    }
+  },
   "required": [
     "from",
     "to"
