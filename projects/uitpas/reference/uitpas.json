@@ -3193,8 +3193,14 @@
           "204": {
             "description": "No Content"
           },
-          "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3202,12 +3208,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
           }
         },
         "description": "Delete an existing membership of the passholder for the given association. Membership deletion is restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
