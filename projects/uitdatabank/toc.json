@@ -402,6 +402,12 @@
             },
             {
               "type": "item",
+              "title": "Filtering by departure places",
+              "uri": "/docs/search-api/filters/departure-places.md",
+              "slug": "search-api/filters/filtering-by-departure-places"
+            },
+            {
+              "type": "item",
               "title": "Filtering by labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"
