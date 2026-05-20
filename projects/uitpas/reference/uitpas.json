@@ -3099,11 +3099,7 @@
                         },
                         "status": "ACTIVE",
                         "endDate": "2026-08-24T21:59:59Z",
-                        "renewable": true,
-                        "permissions": [
-                          "READ",
-                          "WRITE"
-                        ]
+                        "renewable": true
                       },
                       {
                         "association": {
@@ -3120,11 +3116,7 @@
                         },
                         "status": "EXPIRED",
                         "endDate": "2024-08-24T21:59:59Z",
-                        "renewable": true,
-                        "permissions": [
-                          "READ",
-                          "WRITE"
-                        ]
+                        "renewable": true
                       }
                     ]
                   }
@@ -12720,25 +12712,6 @@
             },
             "description": "True if this membership can currently be renewed. This fields is always available in responses.",
             "readOnly": true
-          },
-          "permissions": {
-            "type": "array",
-            "x-stoplight": {
-              "id": "6tlvyn0b2r3kv"
-            },
-            "readOnly": true,
-            "description": "Indication whether the current organizer has READ and/or WRITE permission for this association.",
-            "items": {
-              "x-stoplight": {
-                "id": "sx87cxhi23w4j"
-              },
-              "type": "string",
-              "enum": [
-                "READ",
-                "WRITE"
-              ],
-              "readOnly": true
-            }
           }
         },
         "required": [
