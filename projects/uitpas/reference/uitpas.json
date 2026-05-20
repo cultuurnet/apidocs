@@ -2502,6 +2502,14 @@
             "in": "query",
             "name": "uitidId",
             "description": "Unique ID of the UiTiD user linked to an individual passholder to look up."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "associationId",
+            "description": "A specific association ID to only return passholders that currently have an active member of this association."
           }
         ]
       },
@@ -3082,7 +3090,7 @@
                   }
                 },
                 "examples": {
-                  "Example 1": {
+                  "Example": {
                     "value": [
                       {
                         "association": {
@@ -3090,7 +3098,25 @@
                           "name": "Ledenkaart sport"
                         },
                         "status": "ACTIVE",
-                        "endDate": "2026-08-24T21:59:59Z"
+                        "endDate": "2026-08-24T21:59:59Z",
+                        "renewable": true
+                      },
+                      {
+                        "association": {
+                          "id": "61746fed-63ba-45b7-805e-c78555007420",
+                          "name": "Medewerker ABC"
+                        },
+                        "status": "NONE",
+                        "renewable": false
+                      },
+                      {
+                        "association": {
+                          "id": "3e33c4ec-8f87-4eef-8101-0c27e79136ea",
+                          "name": "Medewerker XYZ"
+                        },
+                        "status": "EXPIRED",
+                        "endDate": "2024-08-24T21:59:59Z",
+                        "renewable": true
                       }
                     ]
                   }
@@ -3115,7 +3141,7 @@
             }
           }
         },
-        "description": "Retrieve association memberships of the given passholder. Only memberships are returned for assocations that are visible to the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "description": "Retrieves existing and potential association memberships for a given passholder. Only memberships for associations visible to the specified organizer are returned. If the organizer has permission to register the passholder for a new association, a potential membership for that association is included in the response with the status `NONE`.\n\nMemberships with an `ACTIVE` or `EXPIRED` status are eligible for renewal if their `renewable` field is set to `true`.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3125,7 +3151,7 @@
           }
         ],
         "tags": [
-          "Passholders"
+          "Associations"
         ],
         "parameters": [
           {
@@ -3134,7 +3160,164 @@
             },
             "in": "query",
             "name": "organiserId",
-            "description": "ID of the organizer",
+            "description": "ID of the organizer. This parameter is deprecated. Use organizerId instead.",
+            "deprecated": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer. This parameter is mandatory."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create or renew association membership of passholder",
+        "operationId": "post-passholders-passholderId-association-memberships",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/association-not-found\n* https://api.publiq.be/probs/uitpas/association-membership-renew-not-possible\n* https://api.publiq.be/probs/uitpas/association-passholder-cardsystem-mismatch",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a new membership or renews an existing one for the given passholder and association. Membership creation and renewal are restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssociationMembership"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "association": {
+                      "id": "e8386a24-2218-4269-8b65-4de46be07991"
+                    },
+                    "endDate": "2026-08-24T21:59:59Z"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Association membership request"
+        },
+        "tags": [
+          "Associations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer used to make this request",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/association-memberships/{associationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "associationId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the association."
+        }
+      ],
+      "delete": {
+        "summary": "Delete association membership of passholder",
+        "operationId": "delete-passholders-passholderId-association-memberships-associationId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an existing membership of the passholder for the given association. Membership deletion is restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Associations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer.",
             "required": true
           }
         ]
@@ -12457,6 +12640,8 @@
           "id": "0cqmy2cuzwux0"
         },
         "type": "object",
+        "description": "Association",
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "string",
@@ -12467,15 +12652,26 @@
             "x-stoplight": {
               "id": "bl1hgz5y2wooc"
             },
-            "description": "Name of the association"
+            "description": "Name of the association. This field is always available in responses",
+            "readOnly": true
+          },
+          "endDateType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "siqftnrb8ax7e"
+            },
+            "description": "Indicates how end dates are set for memberships of this association. This field is always available in responses.",
+            "enum": [
+              "CUSTOM",
+              "BASED_ON_DATE_OF_BIRTH",
+              "BASED_ON_REGISTRATION_DATE"
+            ],
+            "readOnly": true
           }
         },
         "required": [
-          "id",
-          "name"
-        ],
-        "description": "Association",
-        "x-examples": {}
+          "id"
+        ]
       },
       "AssociationMembership": {
         "title": "AssociationMembership",
@@ -12483,6 +12679,7 @@
           "id": "mb1bs9upl614a"
         },
         "type": "object",
+        "x-examples": {},
         "properties": {
           "association": {
             "$ref": "#/components/schemas/Association"
@@ -12494,9 +12691,11 @@
             },
             "enum": [
               "ACTIVE",
-              "EXPIRED"
+              "EXPIRED",
+              "NONE"
             ],
-            "description": "Status of the membership"
+            "description": "Status of the membership. This field is always available in responses.",
+            "readOnly": true
           },
           "endDate": {
             "type": "string",
@@ -12504,15 +12703,20 @@
               "id": "eradjp82wpqv0"
             },
             "format": "date-time",
-            "description": "End date of the membership"
+            "description": "End date of the membership. This field is available in responses if status is `ACTIVE` or `EXPIRED`. This field is required in requests for association with a `CUSTOM` endDateType."
+          },
+          "renewable": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "ahns1w7wy66mj"
+            },
+            "description": "True if this membership can currently be renewed. This fields is always available in responses.",
+            "readOnly": true
           }
         },
         "required": [
-          "association",
-          "status",
-          "endDate"
-        ],
-        "x-examples": {}
+          "association"
+        ]
       }
     },
     "securitySchemes": {
