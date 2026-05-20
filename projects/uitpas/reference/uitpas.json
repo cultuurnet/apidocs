@@ -2509,7 +2509,7 @@
             },
             "in": "query",
             "name": "associationId",
-            "description": "A specific association ID to only return passholders that currently have a membership of this association. By default only active memberships are returned. Use `associationStatus` to change this behavior."
+            "description": "Filters results to passholders with a membership in the specified association. Defaults to active memberships only; use associationMembershipStatus to change this behavior."
           },
           {
             "schema": {
@@ -2521,8 +2521,8 @@
               ]
             },
             "in": "query",
-            "name": "associationStatus",
-            "description": "Filter passholders based on the status of their association membership. This parameter can only be used in combination with `associationId`. By default only `ACTIVE` memberships are returned."
+            "name": "associationMembershipStatus",
+            "description": "Filters passholders by their association membership status. Requires associationId to be specified. Defaults to ACTIVE."
           }
         ]
       },
