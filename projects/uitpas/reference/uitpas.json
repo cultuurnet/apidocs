@@ -10177,6 +10177,30 @@
           }
         }
       },
+      "AssociationsPaginatedResponse": {
+        "title": "AssociationsPaginatedResponse",
+        "x-stoplight": {
+          "id": "ytc6u5zzkcfmv"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for associations",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of association results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of association results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Association"
+            }
+          }
+        }
+      },
       "TicketSalesPaginatedResponse": {
         "title": "TicketSalesPaginatedResponse",
         "type": "object",
