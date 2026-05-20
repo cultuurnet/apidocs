@@ -12726,10 +12726,11 @@
             "x-stoplight": {
               "id": "6tlvyn0b2r3kv"
             },
+            "readOnly": true,
             "description": "Indication whether the current organizer has READ and/or WRITE permission for this association.",
             "items": {
               "x-stoplight": {
-                "id": "4z88ti11e820p"
+                "id": "sx87cxhi23w4j"
               },
               "type": "string",
               "enum": [
