@@ -2509,7 +2509,20 @@
             },
             "in": "query",
             "name": "associationId",
-            "description": "A specific association ID to only return passholders that currently have an active member of this association."
+            "description": "A specific association ID to only return passholders that currently have a membership of this association. By default only active memberships are returned. Use `associationStatus` to change this behavior."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ]
+            },
+            "in": "query",
+            "name": "associationStatus",
+            "description": "Filter passholders based on the status of their association membership. This parameter can only be used in combination with `associationId`. By default only `ACTIVE` memberships are returned."
           }
         ]
       },
