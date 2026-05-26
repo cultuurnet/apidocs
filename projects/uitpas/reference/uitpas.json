@@ -3017,7 +3017,7 @@
         "tags": [
           "Passholders"
         ],
-        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the registrationSocialTariffEndDate field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
+        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the registrationSocialTariffEndDate field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n> * Updating a passholder to a city outside Belgium requires the additional `PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
         "requestBody": {
           "content": {
             "application/json": {
