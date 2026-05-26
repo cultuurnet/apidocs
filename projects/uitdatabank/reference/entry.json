@@ -997,7 +997,7 @@
         }
       }
     },
-    "/events/{eventId}/birthdate-range": {
+    "/events/{eventId}/birthdateRange": {
       "parameters": [
         {
           "$ref": "#/components/parameters/eventId"
