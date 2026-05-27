@@ -219,7 +219,7 @@ If an event has a `typicalAgeRange` that falls within the birthdateRange, the ev
 
 **Possible values**
 
-A range, consisting of two datetimes (lower & upper bound), e.g. (2020-01-01..2020-12-31)
+A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. `[2020-01-01 TO 2020-12-31]`.
 
 **Example**
 
