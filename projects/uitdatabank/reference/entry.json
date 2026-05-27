@@ -1920,7 +1920,7 @@
         }
       }
     },
-    "/events/{eventId}/departurePlaces": {
+    "/events/{eventId}/departure-places": {
       "parameters": [
         {
           "$ref": "#/components/parameters/eventId"
@@ -1928,7 +1928,7 @@
       ],
       "put": {
         "summary": "departurePlaces - update",
-        "operationId": "event-departurePlaces-put",
+        "operationId": "event-departure-places-put",
         "responses": {
           "204": {
             "description": "No Content. The departure places have been successfully updated."
