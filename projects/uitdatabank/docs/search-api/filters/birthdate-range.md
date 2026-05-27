@@ -1,6 +1,7 @@
 # Birthdate Range
 
-The `birtdateRange` is used to filter out results based on targeted birthdate range of the event.
+The `birthdateRange` URL parameter narrows the result set to events targeted at people born within the given range.
+If an event has a `typicalAgeRange` that (combined with the current date) falls within the supplied `birthdateRange`, that event will also be included.
 If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
 
 **Applicable on endpoints**
