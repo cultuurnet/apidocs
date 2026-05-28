@@ -208,6 +208,27 @@ Any dateFrom and dateTo date in ISO-8601.
 GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:59\:59%2B01\:00]&availableFrom=*&availableTo=*
 ```
 
+### birthdateRange
+
+The `birthdateRange` is used to filter results based on the targeted birthdate range of the event.
+If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
+
+**Applicable on endpoints**
+
+`/events`
+
+**Possible values**
+
+A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. `[2020-01-01 TO 2020-12-31]`.
+
+**Example**
+
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
+
+```
+GET /events/?q=birthdateRange:2020-01-01..2020-12-31
+```
+
 ### bookingAvailability
 
 The `bookingAvailability` indicates whether there are still tickets or seats left for an event or not.
