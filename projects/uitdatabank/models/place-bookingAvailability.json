@@ -1,10 +1,13 @@
 {
   "title": "place.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the place still has tickets or reservations available. Currently only contains a `type` which can only be `Available` for places (as opposed to events that can also have `Unavailable` when sold out), as a place can never be completely sold out forever. Can later be expanded with more detailed info.",
+  "description": "Indicates whether the place still has tickets or reservations available. The `type` can only be `Available` for places (as opposed to events that can also have `Unavailable` when sold out), as a place can never be completely sold out forever. Optionally includes `capacity` to indicate the total number of seats or tickets.",
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
+    },
+    "capacity": {
+      "$ref": "./common-bookingAvailability-capacity.json"
     }
   },
   "required": [
