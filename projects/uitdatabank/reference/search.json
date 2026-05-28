@@ -1798,7 +1798,7 @@
         },
         "in": "query",
         "name": "birthdateRange",
-        "description": "Returns only events targeted at people born within the given range. Formatted as two ISO 8601 dates (lower & upper bound) separated by `..`, e.g. `2020-01-01..2020-12-31`. Events whose `typicalAgeRange` (combined with the current date) overlaps the supplied birthdate range are also included."
+        "description": "Returns only events targeted at people born within the given range. Formatted as two ISO 8601 dates (lower & upper bound) separated by `..`, e.g. `2020-01-01..2020-12-31`. Supports commas for  Events whose `typicalAgeRange` (combined with the current date) overlaps the supplied birthdate range are also included. Accepts multiple comma-separated values to return results that have one of the given birthdate ranges."
       },
       "audienceType": {
         "schema": {
