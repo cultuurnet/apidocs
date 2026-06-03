@@ -21,13 +21,4 @@ However, you can optionally report the total capacity of a place using the `capa
 
 ## Updating bookingAvailability
 
-Use the [`PUT /places/{placeId}/booking-availability`](/reference/entry.json/paths/~1places~1{placeId}~1booking-availability/put) endpoint to update the `bookingAvailability` of a place:
-
-```json
-{
-  "type": "Available",
-  "capacity": 200
-}
-```
-
-Omitting `capacity` leaves any previously set value unchanged. To clear a previously set capacity, send `null`.
+`bookingAvailability` (including `capacity`) is set as part of the place itself — either via [`PUT /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/put) when replacing the full place, or via [`PUT /places/{placeId}/calendar`](/reference/entry.json/paths/~1places~1{placeId}~1calendar/put) when updating the calendar information.
