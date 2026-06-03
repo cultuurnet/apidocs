@@ -3010,6 +3010,81 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "put": {
+        "summary": "Update a passholder",
+        "operationId": "put-passholders-passholderId",
+        "responses": {
+          "204": {
+            "description": "Passholder updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\nPlease note that this is a PUT endpoint, which performs a full replacement of the resource. You must include the complete resource payload in the request body, including all unchanged fields. Omitting optional fields may clear their existing values or cause validation errors.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the `registrationSocialTariffEndDate` field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n> * Updating a passholder to a city outside Belgium requires the additional `PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Passholder"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Peeters",
+                    "firstName": "Marc",
+                    "inszNumber": "00000009007",
+                    "email": "marc.peeters@example.com",
+                    "dateOfBirth": "2000-01-01",
+                    "address": {
+                      "street": "Grote markt 12",
+                      "postalCode": "9300",
+                      "city": "Aalst"
+                    },
+                    "optInPreferences": {
+                      "serviceMails": true,
+                      "infoMails": true,
+                      "milestoneMails": true,
+                      "sms": false,
+                      "post": true
+                    },
+                    "nationality": "Belg",
+                    "legalTermsPaper": false,
+                    "legalTermsDigital": true,
+                    "parentalConsent": false,
+                    "registrationSocialTariffEndDate": "2027-04-30"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Updated Passholder"
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/passholders/{passholderId}/picture": {
@@ -3063,6 +3138,100 @@
           }
         },
         "description": "Retrieve picture of the given passholder.\n\nThis endpoint allows you to obtain a short-lived link to the picture of the passholder. After generation, this link remains active for a limited time, enabling you to include it in HTML pages displayed to your users.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_READ` permission for the given passholder.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      },
+      "put": {
+        "summary": "Update picture of passholder",
+        "operationId": "put-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.  ",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Update the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.",
+        "tags": [
+          "Passholders"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The picture to upload."
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "bytes"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The picture of the passholder in a multipart request body."
+        }
+      },
+      "delete": {
+        "summary": "Delete picture of passholder",
+        "operationId": "delete-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -9874,6 +10043,7 @@
           "ORGANIZERS_ADMINS_READ",
           "ORGANIZERS_ADMINS_WRITE",
           "PASSHOLDERS_PICTURE_READ",
+          "PASSHOLDERS_PICTURE_WRITE",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -10246,7 +10416,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "name": {
@@ -10263,11 +10433,11 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card. This field is always available in responses and ignored in create and update operations."
           },
           "cardSystemMemberships": {
             "type": "array",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "items": {
               "$ref": "#/components/schemas/CardSystemMembership"
             },
@@ -10280,7 +10450,7 @@
           "creationDate": {
             "type": "string",
             "format": "date-time",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "dateOfBirth": {
@@ -10302,7 +10472,7 @@
           },
           "points": {
             "type": "integer",
-            "description": "Amount of points the passholder has currently saved (and not used). This field is always available in responses.",
+            "description": "Amount of points the passholder has currently saved (and not used).This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "uitidStatus": {
@@ -10311,7 +10481,7 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "address": {
@@ -10405,32 +10575,32 @@
           },
           "parentalConsent": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for under-aged passholder that have parental consent.",
+            "description": "Only used in passholder creation and updates. Set to true for under-aged passholder that have parental consent.",
             "writeOnly": true
           },
           "legalTermsPaper": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms on paper.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms on paper.",
             "writeOnly": true
           },
           "legalTermsDigital": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms digitally.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms digitally.",
             "writeOnly": true
           },
           "registrationCardSystemId": {
             "type": "integer",
-            "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
+            "description": "Only used in passholder creation. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
           },
           "registrationVoucher": {
             "type": "string",
-            "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "description": "Only used in passholder creation when the ser has a price reduction voucher.",
             "writeOnly": true
           },
           "registrationCardType": {
             "type": "string",
-            "description": "Only used and mandatory in passholder registration.",
+            "description": "Only used and mandatory in passholder c",
             "enum": [
               "DIGITAL",
               "NFC_CARD"
@@ -10439,13 +10609,13 @@
           },
           "registrationUitpasNumber": {
             "type": "string",
-            "description": "Only used in passholder registration using a physical card.",
+            "description": "Only used in passholder creation using a physical card.",
             "writeOnly": true
           },
           "registrationSocialTariffEndDate": {
             "type": "string",
-            "description": "Only used in passholder registration using a `registrationUitpasNumber` with social tariff. If no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
-            "format": "date-time",
+            "description": "Only used in passholder creation using a `registrationUitpasNumber` with social tariff. Or when updating a passholder with social tariff. During registration, if no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
+            "format": "date",
             "writeOnly": true
           }
         },
@@ -10453,7 +10623,6 @@
           "name",
           "firstName",
           "dateOfBirth",
-          "registrationOrganizer",
           "address"
         ]
       },
