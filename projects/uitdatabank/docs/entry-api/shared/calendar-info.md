@@ -278,9 +278,9 @@ When creating or updating an event or place with calendarType `permanent` you do
 }
 ```
 
-## Adjusted closed days (events only, periodic/permanent)
+## Adjusted closed days (periodic/permanent)
 
-Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates. This property is not available for places.
+Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates.
 
 ```json
 {
@@ -300,11 +300,11 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
 }
 ```
 
-Each entry defines a date range during which the event is considered closed. The `description` property is optional and translatable.
+Each entry defines a date range during which the event or place is considered closed. The `description` property is optional and translatable.
 
 **Validation rules:**
 
-* For `periodic` events: all exception dates must fall within the main `startDate` and `endDate` of the event.
+* For `periodic` events and places: all exception dates must fall within the main `startDate` and `endDate`.
 * `startDate` must be on or before `endDate`.
 
 **Overwriting or clearing closed days:**
@@ -319,9 +319,9 @@ Each `openingHoursClosedDays` array is independent: omitting the property preser
 
 GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
 
-## Adjusted opening hours (events only, periodic/permanent)
+## Adjusted opening hours (periodic/permanent)
 
-Events with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjustedDays` array to define temporary custom opening hours that override the default schedule for specific date ranges. This property is not available for places.
+Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjustedDays` array to define temporary custom opening hours that override the default schedule for specific date ranges.
 
 ```json
 {
@@ -367,12 +367,12 @@ Events with calendarType `periodic` or `permanent` can optionally include an `op
 
 Each entry defines a date range during which the specified `openingHours` replace the default schedule. The `description` property is optional and translatable.
 
-Like regular opening hours, each opening hours item in `openingHoursAdjustedDays` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
+For events, each opening hours item in `openingHoursAdjustedDays` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
 
 ```json
 {
-  "startDate": "2026-12-21T00:00:00+01:00",
-  "endDate": "2026-12-30T23:00:00+01:00",
+  "startDate": "2026-12-21",
+  "endDate": "2026-12-30",
   "description": {
     "nl": "Kerstvakantie"
   },
@@ -396,16 +396,16 @@ Like regular opening hours, each opening hours item in `openingHoursAdjustedDays
 
 **Validation rules:**
 
-* For `periodic` events: all adjusted dates must fall within the main `startDate` and `endDate` of the event.
+* For `periodic` events and places: all adjusted dates must fall within the main `startDate` and `endDate`.
 * `startDate` must be on or before `endDate`.
 * No overlaps are allowed between entries in `openingHoursAdjustedDays`.
 * Description has a maximum length of 1000 characters per language.
-* Childcare validation rules apply to adjusted opening hours: `childcare.start` must be earlier than `opens`, and `childcare.end` must be later than `closes` on each opening hours item.
+* For events: childcare validation rules apply to adjusted opening hours: `childcare.start` must be earlier than `opens`, and `childcare.end` must be later than `closes` on each opening hours item.
 
 **Interaction with closed days:**
 
 When `openingHoursClosedDays` and `openingHoursAdjustedDays` overlap, `openingHoursClosedDays` always take precedence. This means:
-* If a date is marked as closed in `openingHoursClosedDays`, the event is closed for that entire date, regardless of what `openingHoursAdjustedDays` specifies.
+* If a date is marked as closed in `openingHoursClosedDays`, the event or place is closed for that entire date, regardless of what `openingHoursAdjustedDays` specifies.
 * Use `openingHoursClosedDays` for holidays and closures.
 * Use `openingHoursAdjustedDays` for periods with modified (but non-zero) opening hours.
 

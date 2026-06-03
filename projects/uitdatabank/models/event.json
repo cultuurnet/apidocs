@@ -45,7 +45,7 @@
           "$ref": "./event-openingHours.json"
         },
         "openingHoursClosedDays": {
-          "$ref": "./event-openingHoursClosedDays.json"
+          "$ref": "./common-openingHoursClosedDays.json"
         },
         "openingHoursAdjustedDays": {
           "$ref": "./event-openingHoursAdjustedDays.json"
@@ -76,6 +76,9 @@
         },
         "typicalAgeRange": {
           "$ref": "./event-typicalAgeRange.json"
+        },
+        "birthdateRange": {
+          "$ref": "./event-birthdateRange.json"
         },
         "description": {
           "$ref": "./event-description.json"

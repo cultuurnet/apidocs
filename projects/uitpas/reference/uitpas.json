@@ -49,6 +49,9 @@
       "name": "Kiosk devices"
     },
     {
+      "name": "Kiosks"
+    },
+    {
       "name": "Orders"
     },
     {
@@ -2373,7 +2376,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n\nThe detail property might include more information for the client developer.\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-insz-number\n* https://api.publiq.be/probs/uitpas/school-not-found\n* https://api.publiq.be/probs/url/query-limit-exceeded\n* https://api.publiq.be/probs/uitpas/association-not-found\n\nThe detail property might include more information for the client developer.\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -2499,6 +2502,27 @@
             "in": "query",
             "name": "uitidId",
             "description": "Unique ID of the UiTiD user linked to an individual passholder to look up."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "associationId",
+            "description": "Filters results to passholders with a membership in the specified association. Defaults to active memberships only; use associationMembershipStatus to change this behavior. Requires association READ permission on the specified association for the provided organizerId (or for any of the caller's organizer IDs if omitted)"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ]
+            },
+            "in": "query",
+            "name": "associationMembershipStatus",
+            "description": "Filters passholders by their association membership status. Requires associationId to be specified. Defaults to ACTIVE."
           }
         ]
       },
@@ -2986,6 +3010,81 @@
             "CLIENT_ACCESS_TOKEN": []
           }
         ]
+      },
+      "put": {
+        "summary": "Update a passholder",
+        "operationId": "put-passholders-passholderId",
+        "responses": {
+          "204": {
+            "description": "Passholder updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\nPlease note that this is a PUT endpoint, which performs a full replacement of the resource. You must include the complete resource payload in the request body, including all unchanged fields. Omitting optional fields may clear their existing values or cause validation errors.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the `registrationSocialTariffEndDate` field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n> * Updating a passholder to a city outside Belgium requires the additional `PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Passholder"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "name": "Peeters",
+                    "firstName": "Marc",
+                    "inszNumber": "00000009007",
+                    "email": "marc.peeters@example.com",
+                    "dateOfBirth": "2000-01-01",
+                    "address": {
+                      "street": "Grote markt 12",
+                      "postalCode": "9300",
+                      "city": "Aalst"
+                    },
+                    "optInPreferences": {
+                      "serviceMails": true,
+                      "infoMails": true,
+                      "milestoneMails": true,
+                      "sms": false,
+                      "post": true
+                    },
+                    "nationality": "Belg",
+                    "legalTermsPaper": false,
+                    "legalTermsDigital": true,
+                    "parentalConsent": false,
+                    "registrationSocialTariffEndDate": "2027-04-30"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Updated Passholder"
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       }
     },
     "/passholders/{passholderId}/picture": {
@@ -3050,6 +3149,100 @@
         "tags": [
           "Passholders"
         ]
+      },
+      "put": {
+        "summary": "Update picture of passholder",
+        "operationId": "put-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.  ",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Update the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.",
+        "tags": [
+          "Passholders"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The picture to upload."
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "file": "bytes"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The picture of the passholder in a multipart request body."
+        }
+      },
+      "delete": {
+        "summary": "Delete picture of passholder",
+        "operationId": "delete-passholders-passholderId-picture",
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {}
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the picture of a passholder.\n\nThe caller of this method must have `PASSHOLDERS_PICTURE_WRITE` permission for the given passholder.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
       }
     },
     "/passholders/{passholderId}/association-memberships": {
@@ -3079,7 +3272,7 @@
                   }
                 },
                 "examples": {
-                  "Example 1": {
+                  "Example": {
                     "value": [
                       {
                         "association": {
@@ -3087,7 +3280,25 @@
                           "name": "Ledenkaart sport"
                         },
                         "status": "ACTIVE",
-                        "endDate": "2026-08-24T21:59:59Z"
+                        "endDate": "2026-08-24T21:59:59Z",
+                        "renewable": true
+                      },
+                      {
+                        "association": {
+                          "id": "61746fed-63ba-45b7-805e-c78555007420",
+                          "name": "Medewerker ABC"
+                        },
+                        "status": "NONE",
+                        "renewable": false
+                      },
+                      {
+                        "association": {
+                          "id": "3e33c4ec-8f87-4eef-8101-0c27e79136ea",
+                          "name": "Medewerker XYZ"
+                        },
+                        "status": "EXPIRED",
+                        "endDate": "2024-08-24T21:59:59Z",
+                        "renewable": true
                       }
                     ]
                   }
@@ -3112,7 +3323,7 @@
             }
           }
         },
-        "description": "Retrieve association memberships of the given passholder. Only memberships are returned for assocations that are visible to the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "description": "Retrieves existing and potential association memberships for a given passholder. Only memberships for associations visible to the specified organizer are returned. If the organizer has permission to register the passholder for a new association, a potential membership for that association is included in the response with the status `NONE`.\n\nMemberships with an `ACTIVE` or `EXPIRED` status are eligible for renewal if their `renewable` field is set to `true`.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3122,7 +3333,7 @@
           }
         ],
         "tags": [
-          "Passholders"
+          "Associations"
         ],
         "parameters": [
           {
@@ -3131,7 +3342,164 @@
             },
             "in": "query",
             "name": "organiserId",
-            "description": "ID of the organizer",
+            "description": "ID of the organizer. This parameter is deprecated. Use organizerId instead.",
+            "deprecated": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer. This parameter is mandatory."
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create or renew association membership of passholder",
+        "operationId": "post-passholders-passholderId-association-memberships",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/association-not-found\n* https://api.publiq.be/probs/uitpas/association-membership-renew-not-possible\n* https://api.publiq.be/probs/uitpas/association-passholder-cardsystem-mismatch",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a new membership or renews an existing one for the given passholder and association. Membership creation and renewal are restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssociationMembership"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "association": {
+                      "id": "e8386a24-2218-4269-8b65-4de46be07991"
+                    },
+                    "endDate": "2026-08-24T21:59:59Z"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Association membership request"
+        },
+        "tags": [
+          "Associations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer used to make this request",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/association-memberships/{associationId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "associationId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the association."
+        }
+      ],
+      "delete": {
+        "summary": "Delete association membership of passholder",
+        "operationId": "delete-passholders-passholderId-association-memberships-associationId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an existing membership of the passholder for the given association. Membership deletion is restricted to associations visible and editable by the specified organizer.\n\nThe caller of this method must have `ASSOCIATIONS` permission for the given organizer.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Associations"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer.",
             "required": true
           }
         ]
@@ -8472,6 +8840,256 @@
         }
       ]
     },
+    "/kiosks": {
+      "get": {
+        "summary": "Retrieve kiosks",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KiosksPaginatedCollection"
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "db385941-ece7-493d-8c4b-4320c4849646",
+                          "name": "CID-PPT-001",
+                          "deviceId": "ebee0a27-2dba-4231-aaae-15077884fa75",
+                          "organizers": [
+                            {
+                              "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
+                              "name": "CC De Schakel"
+                            }
+                          ],
+                          "cardSystem": {
+                            "id": 1,
+                            "name": "UiTPAS Dender",
+                            "branding": {
+                              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                              "primaryColor": "rgba(0,0,0,1.0)",
+                              "secondaryColor": "rgba(97,166,14,1.0)"
+                            },
+                            "links": {
+                              "website": "https://www.uitpas.be"
+                            },
+                            "cities": [
+                              {
+                                "postalCode": "9300",
+                                "name": "Aalst"
+                              },
+                              {
+                                "postalCode": "9400",
+                                "name": "Ninove"
+                              }
+                            ],
+                            "permanent": true
+                          },
+                          "releaseTrack": "stable"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-kiosks",
+        "description": "Retrieve active kiosk devices.\n\nThe caller of this request must have `KIOSKS_READ` permission or the caller must be an organizer admin user (any type) of the given organizer. In that case, `organizerId` is mandatory and must match the organizer of the admin user.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter the kiosk results on this organizer"
+          },
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "tags": [
+          "Kiosks"
+        ]
+      },
+      "parameters": []
+    },
+    "/kiosks/{kioskId}/fixed-event": {
+      "get": {
+        "summary": "Retrieve fixed event of kiosk",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KioskDeviceEvent"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found (in case kiosk is not found)\n* https://api.publiq.be/probs/uitpas/event-not-found (in case no event was configured)",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-kiosks-kioskId-fixed-event",
+        "description": "Retrieve configured event of this kiosk.\n\nThis request returns `404 NOT FOUND` when no event is configured. In that case the kiosk will auto-detect its event.\n\nThe caller of this request must have `KIOSKS_READ` permission for the organizer of the kiosk or the caller must be an organizer admin user (any type) of the organizer of the kiosk.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [],
+        "tags": [
+          "Kiosks"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "kioskId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the kiosk"
+        }
+      ],
+      "put": {
+        "summary": "Configure fixed event for kiosk",
+        "operationId": "put-kiosks-kioskId-fixed-event",
+        "responses": {
+          "204": {
+            "description": "Updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/event-not-acceptable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Kiosks"
+        ],
+        "description": "Configured event for this kiosk.\n\nThe caller of this request must have `KIOSKS_WRITE` permission for the organizer of the kiosk or the caller must be an organizer admin user (any type) of the organizer of the kiosk.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KioskDeviceEventRequest"
+              }
+            }
+          },
+          "description": "Kiosk event request body"
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Remove fixed event for kiosk",
+        "operationId": "delete-kiosks-kioskId-fixed-event",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Possible error types:\n\n* https://api.publiq.be/probs/url/not-found (in case kiosk is not found)\n* https://api.publiq.be/probs/uitpas/event-not-found (in case no event was configured)",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Remove the configured event for this kiosk.\n\nThe caller of this request must have `KIOSKS_WRITE` permission for the organizer of the kiosk or the caller must be an organizer admin user (any type) of the organizer of the kiosk.",
+        "tags": [
+          "Kiosks"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/kiosk-devices/setup": {
       "parameters": [],
       "put": {
@@ -8636,7 +9254,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "operationId": "get-kiosks",
+        "operationId": "get-kiosk-devices",
         "description": "Retrieve current kiosk.\n\nThe device id of the kiosk must be specicied in the `x-custom-token` header.\n\n<!-- theme: warning -->\n\n> **This endpoint is exclusively for use by Kiosk devices themselves**. It cannot be used by other applications to manage the device.",
         "security": [
           {
@@ -9425,6 +10043,7 @@
           "ORGANIZERS_ADMINS_READ",
           "ORGANIZERS_ADMINS_WRITE",
           "PASSHOLDERS_PICTURE_READ",
+          "PASSHOLDERS_PICTURE_WRITE",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -9455,7 +10074,9 @@
           "PERMISSIONS_WRITE",
           "CARDS_READ",
           "ASSOCIATIONS",
-          "SOCIALTARIFF_EXPORT"
+          "SOCIALTARIFF_EXPORT",
+          "KIOSKS_READ",
+          "KIOSKS_WRITE"
         ],
         "description": "ID of the permission"
       },
@@ -9718,6 +10339,27 @@
           }
         }
       },
+      "KiosksPaginatedCollection": {
+        "title": "KiosksPaginatedCollection",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated response object for kiosks.",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of kiosk results (can be more than the amount of results in the response)."
+          },
+          "member": {
+            "type": "array",
+            "description": "List of kiosk results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/KioskDevice"
+            }
+          }
+        }
+      },
       "AssociationsPaginatedResponse": {
         "title": "AssociationsPaginatedResponse",
         "x-stoplight": {
@@ -9774,7 +10416,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "name": {
@@ -9791,11 +10433,11 @@
           },
           "uitpasNumber": {
             "type": "string",
-            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card."
+            "description": "The UiTPAS number of this passholder. This field contains the UiTPAS number of the oldest, still active cardsystem membership, that has an active card. This field is always available in responses and ignored in create and update operations."
           },
           "cardSystemMemberships": {
             "type": "array",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "items": {
               "$ref": "#/components/schemas/CardSystemMembership"
             },
@@ -9808,7 +10450,7 @@
           "creationDate": {
             "type": "string",
             "format": "date-time",
-            "description": "This field is always available in responses.",
+            "description": "This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "dateOfBirth": {
@@ -9830,7 +10472,7 @@
           },
           "points": {
             "type": "integer",
-            "description": "Amount of points the passholder has currently saved (and not used). This field is always available in responses.",
+            "description": "Amount of points the passholder has currently saved (and not used).This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "uitidStatus": {
@@ -9839,7 +10481,7 @@
               "REGISTERED",
               "UNREGISTERED"
             ],
-            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses.",
+            "description": "Whether or not the passholder has a an UiTiD registered. This field is always available in responses and ignored in create and update operations.",
             "readOnly": true
           },
           "address": {
@@ -9933,32 +10575,32 @@
           },
           "parentalConsent": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for under-aged passholder that have parental consent.",
+            "description": "Only used in passholder creation and updates. Set to true for under-aged passholder that have parental consent.",
             "writeOnly": true
           },
           "legalTermsPaper": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms on paper.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms on paper.",
             "writeOnly": true
           },
           "legalTermsDigital": {
             "type": "boolean",
-            "description": "Only used in passholder registration. Set to true for passholders that received legal terms digitally.",
+            "description": "Only used in passholder creation and updates. Set to true for passholders that received legal terms digitally.",
             "writeOnly": true
           },
           "registrationCardSystemId": {
             "type": "integer",
-            "description": "Only used in passholder registration. Set to the id of the card system of which the passholder has to become a member.",
+            "description": "Only used in passholder creation. Set to the id of the card system of which the passholder has to become a member.",
             "writeOnly": true
           },
           "registrationVoucher": {
             "type": "string",
-            "description": "Only used in passholder registration when the ser has a price reduction voucher.",
+            "description": "Only used in passholder creation when the ser has a price reduction voucher.",
             "writeOnly": true
           },
           "registrationCardType": {
             "type": "string",
-            "description": "Only used and mandatory in passholder registration.",
+            "description": "Only used and mandatory in passholder c",
             "enum": [
               "DIGITAL",
               "NFC_CARD"
@@ -9967,13 +10609,13 @@
           },
           "registrationUitpasNumber": {
             "type": "string",
-            "description": "Only used in passholder registration using a physical card.",
+            "description": "Only used in passholder creation using a physical card.",
             "writeOnly": true
           },
           "registrationSocialTariffEndDate": {
             "type": "string",
-            "description": "Only used in passholder registration using a `registrationUitpasNumber` with social tariff. If no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
-            "format": "date-time",
+            "description": "Only used in passholder creation using a `registrationUitpasNumber` with social tariff. Or when updating a passholder with social tariff. During registration, if no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
+            "format": "date",
             "writeOnly": true
           }
         },
@@ -9981,7 +10623,6 @@
           "name",
           "firstName",
           "dateOfBirth",
-          "registrationOrganizer",
           "address"
         ]
       },
@@ -12181,6 +12822,8 @@
           "id": "0cqmy2cuzwux0"
         },
         "type": "object",
+        "description": "Association",
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "string",
@@ -12191,15 +12834,26 @@
             "x-stoplight": {
               "id": "bl1hgz5y2wooc"
             },
-            "description": "Name of the association"
+            "description": "Name of the association. This field is always available in responses",
+            "readOnly": true
+          },
+          "endDateType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "siqftnrb8ax7e"
+            },
+            "description": "Indicates how end dates are set for memberships of this association. This field is always available in responses.",
+            "enum": [
+              "CUSTOM",
+              "BASED_ON_DATE_OF_BIRTH",
+              "BASED_ON_REGISTRATION_DATE"
+            ],
+            "readOnly": true
           }
         },
         "required": [
-          "id",
-          "name"
-        ],
-        "description": "Association",
-        "x-examples": {}
+          "id"
+        ]
       },
       "AssociationMembership": {
         "title": "AssociationMembership",
@@ -12207,6 +12861,7 @@
           "id": "mb1bs9upl614a"
         },
         "type": "object",
+        "x-examples": {},
         "properties": {
           "association": {
             "$ref": "#/components/schemas/Association"
@@ -12218,9 +12873,11 @@
             },
             "enum": [
               "ACTIVE",
-              "EXPIRED"
+              "EXPIRED",
+              "NONE"
             ],
-            "description": "Status of the membership"
+            "description": "Status of the membership. This field is always available in responses.",
+            "readOnly": true
           },
           "endDate": {
             "type": "string",
@@ -12228,15 +12885,20 @@
               "id": "eradjp82wpqv0"
             },
             "format": "date-time",
-            "description": "End date of the membership"
+            "description": "End date of the membership. This field is available in responses if status is `ACTIVE` or `EXPIRED`. This field is required in requests for association with a `CUSTOM` endDateType."
+          },
+          "renewable": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "ahns1w7wy66mj"
+            },
+            "description": "True if this membership can currently be renewed. This fields is always available in responses.",
+            "readOnly": true
           }
         },
         "required": [
-          "association",
-          "status",
-          "endDate"
-        ],
-        "x-examples": {}
+          "association"
+        ]
       }
     },
     "securitySchemes": {
