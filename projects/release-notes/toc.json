@@ -10,6 +10,12 @@
          "type":"divider",
          "title":"UiTdatabank"
       },
+     {
+             "type":"item",
+             "title":"2025",
+             "uri":"docs/uitdatabank/2025.md",
+             "slug":"udb-2025"
+     },
       {
               "type":"item",
               "title":"2024",
