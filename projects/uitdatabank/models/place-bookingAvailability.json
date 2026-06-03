@@ -7,7 +7,10 @@
       "$ref": "./common-bookingAvailability-type.json"
     },
     "capacity": {
-      "$ref": "./common-bookingAvailability-capacity.json"
+      "allOf": [
+        { "$ref": "./common-bookingAvailability-capacity.json" },
+        { "description": "Total number of seats or tickets available at this place." }
+      ]
     }
   },
   "required": [
