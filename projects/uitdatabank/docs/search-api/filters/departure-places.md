@@ -18,13 +18,13 @@ Passing multiple `departurePlaces[]` values applies AND logic: only events that 
 
 Filter events that depart from a specific place:
 
-```
+```http
 GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e
 ```
 
 Filter events that have both of these departure places:
 
-```
+```http
 GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e&departurePlaces[]=f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
