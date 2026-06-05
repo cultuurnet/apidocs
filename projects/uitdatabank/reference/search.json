@@ -227,6 +227,9 @@
             "$ref": "#/components/parameters/locationId"
           },
           {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
@@ -237,9 +240,6 @@
           },
           {
             "$ref": "#/components/parameters/organizerLabels"
-          },
-          {
-            "$ref": "#/components/parameters/departurePlaces"
           },
           {
             "$ref": "#/components/parameters/mainLanguage"
