@@ -2078,6 +2078,19 @@
         "name": "locationId",
         "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/places/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
       },
+      "departurePlaces": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "departurePlaces[]",
+        "style": "form",
+        "description": "Returns only events that have the given place(s) as a departure place. The value must be a place UUID. May be repeated to only return events that have all the given departure places (AND logic). For OR logic, use the `q` parameter with the `departurePlaces` field instead. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
+      },
       "organizerId": {
         "schema": {
           "type": "string",
@@ -2124,19 +2137,6 @@
         "name": "organizerLabels[]",
         "style": "form",
         "description": "Returns only results that have the given label(s) in their organizer's `labels` or `hiddenLabels` properties. May be repeated to only return results with an organizer that has all the given labels. See the operation's description above for more info on how to repeat parameters.",
-        "explode": true
-      },
-      "departurePlaces": {
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "in": "query",
-        "name": "departurePlaces[]",
-        "style": "form",
-        "description": "Returns only events that have the given place(s) as a departure place. The value must be a place UUID. May be repeated to only return events that have all the given departure places (AND logic). For OR logic, use the `q` parameter with the `departurePlaces` field instead. See the operation's description above for more info on how to repeat parameters.",
         "explode": true
       },
       "mainLanguage": {
