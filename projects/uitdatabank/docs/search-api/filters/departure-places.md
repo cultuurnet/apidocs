@@ -1,6 +1,8 @@
 # Filtering on departure places
 
-## URL parameter
+## departurePlaces
+
+Use the `departurePlaces[]` URL parameter or the `departurePlaces` advanced query field to find events that depart from one or more specific places.
 
 **Applicable on endpoints**
 
@@ -10,10 +12,6 @@
 
 Any UUID of a place in UiTdatabank.
 
-**Behavior with multiple values**
-
-Passing multiple `departurePlaces[]` values applies AND logic: only events that have **all** specified departure places are returned. To filter on events that have **either** of two departure places (OR logic), use the `q` parameter instead. See [Advanced queries](../advanced/advanced-queries.md#departureplaces).
-
 **Examples**
 
 Filter events that depart from a specific place:
@@ -22,15 +20,15 @@ Filter events that depart from a specific place:
 GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e
 ```
 
-Filter events that have both of these departure places:
+Repeating the parameter applies AND logic — only events with **all** given departure places are returned:
 
 ```http
 GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e&departurePlaces[]=f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
-## Embedded results
+For OR logic, use the `q` parameter with the `departurePlaces` field instead. See [Advanced queries](../advanced/advanced-queries.md#departureplaces).
 
-When searching with `embed=true`, events that have departure places include a `departurePlaces` property — an array of full place URLs:
+When searching with `embed=true`, events with departure places include a `departurePlaces` property — an array of full place URLs:
 
 ```json
 {
@@ -41,7 +39,3 @@ When searching with `embed=true`, events that have departure places include a `d
 ```
 
 The property is absent on events that have no departure places set.
-
-## Advanced query field
-
-See [`departurePlaces`](../advanced/advanced-queries.md#departureplaces) in the advanced queries guide for OR-based filtering.
