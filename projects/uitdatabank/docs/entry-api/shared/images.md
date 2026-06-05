@@ -240,6 +240,8 @@ When the image is already available online, you can import it by providing its U
 * `copyrightHolder`: The name of the person or entity that holds the copyright on the image. Will be used for attribution.
 * `inLanguage`: The language of the image and its description.
 
+> **Note:** This method uses `inLanguage`, whereas the `multipart/form-data` method above uses `language`. These field names differ due to the underlying API implementation; aligning them would be a breaking change.
+
 #### HTTP example
 
 ```http
