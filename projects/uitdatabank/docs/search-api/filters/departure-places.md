@@ -25,7 +25,7 @@ GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e
 Filter events that have both of these departure places:
 
 ```
-GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e&departurePlaces[]=c1234567-abcd-efgh-ijkl-9876543210ab
+GET /events/?departurePlaces[]=a0368d10-ded0-4925-b94a-2835f73e255e&departurePlaces[]=f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
 ## Embedded results

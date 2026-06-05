@@ -427,7 +427,7 @@ GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e
 Use `OR` to find events that depart from either of two places. This is not possible with the `departurePlaces[]` URL parameter, which only supports AND logic:
 
 ```
-GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:c1234567-abcd-efgh-ijkl-9876543210ab
+GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
 ### id
