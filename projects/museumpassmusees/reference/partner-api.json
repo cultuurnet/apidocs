@@ -238,6 +238,7 @@
   "paths": {
     "/voucher-lists": {
       "post": {
+        "x-internal": true,
         "summary": "Generate a list of vouchers",
         "operationId": "post-voucher-lists",
         "responses": {
