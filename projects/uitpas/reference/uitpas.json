@@ -3693,7 +3693,7 @@
             }
           }
         },
-        "description": "Retrieve coupons of given passholder.\n\nThe caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
+        "description": "Retrieve coupons of given passholder.\n\n  The caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -10272,6 +10272,8 @@
           "PASSHOLDERS_WRITE_SOCIALTARIFF",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
+          "PASSHOLDER_COUPONS_READ",
+          "GROUPPASS_COUPONS_READ",
           "MEMBERSHIP_PRICES_READ",
           "PASSES_READ",
           "PASSES_INSZNUMBERS_READ",
