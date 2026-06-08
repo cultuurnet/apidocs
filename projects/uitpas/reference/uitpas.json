@@ -2976,6 +2976,16 @@
               }
             }
           },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
@@ -3652,6 +3662,16 @@
                       }
                     ]
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
