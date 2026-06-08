@@ -13095,11 +13095,8 @@
           }
         },
         "required": [
-          "association",
-          "status",
-          "endDate"
-        ],
-        "x-examples": {}
+          "association"
+        ]
       },
       "GrantedCoupon": {
         "type": "object",
