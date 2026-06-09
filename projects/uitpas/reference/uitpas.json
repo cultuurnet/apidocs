@@ -2977,7 +2977,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3029,6 +3029,14 @@
             "in": "query",
             "name": "status",
             "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter coupons that are applicable in card systems of this organizer"
           }
         ]
       }
@@ -3667,7 +3675,7 @@
             }
           },
           "400": {
-            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -3693,7 +3701,7 @@
             }
           }
         },
-        "description": "Retrieve coupons of given passholder.\n\n  The caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
+        "description": "Retrieve coupons of given passholder.\n\nThe caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3719,6 +3727,14 @@
             "in": "query",
             "name": "status",
             "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "Filter coupons that are applicable in card systems of this organizer",
+            "name": "organizerId"
           }
         ]
       }
