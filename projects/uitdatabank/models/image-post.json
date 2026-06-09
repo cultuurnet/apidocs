@@ -2,8 +2,8 @@
   "type": "object",
   "properties": {
     "contentUrl": {
-      "$ref": "./common-string-uri-readOnly.json",
-      "description": "URL of the image file."
+      "$ref": "./common-string-uri.json",
+      "description": "The URL of an existing online image to import."
     },
     "description": {
       "type": "string",

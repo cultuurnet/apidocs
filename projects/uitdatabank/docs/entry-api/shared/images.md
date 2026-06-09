@@ -26,7 +26,12 @@ When updating an existing [event](../events/update.md), [place](../places/update
 
 Before you can link an image to an event, place or organizer you must first upload it via the [`POST /images`](/reference/entry.json/paths/~1images/post) endpoint.
 
-This endpoint expects data in the `multipart/form-data` content-type, to enable the file being uploaded as binary data.
+Two upload methods are supported:
+
+* **Binary file upload** (`multipart/form-data`): upload an image file directly as binary data.
+* **URL import** (`application/json`): provide a URL pointing to an existing online image that UiTdatabank will import.
+
+### Binary file upload (multipart/form-data)
 
 The following fields are required:
 
@@ -35,7 +40,7 @@ The following fields are required:
 * `copyrightHolder`: The name of the person or entity that holds the copyright on the image. Will be used for attribution.
 * `language`: The language of the image and its description. For example, an image can have some text on it in a specific language.
 
-### HTTP example
+#### HTTP example
 
 The snippet below is an example of how a `multipart/form-data` request with the binary file data and other required fields should look like when sent to Entry API:
 
@@ -71,7 +76,7 @@ The `boundary` can be any string, but it is usually set automatically by the HTT
 
 Read on for some examples in specific programming languages.
 
-### Javascript example
+#### Javascript example
 
 First, use the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications) to read the data of one or more files from the local filesystem. Then, use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to send a POST request with a [FormData object](https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects) to Entry API including the file data.
 
@@ -111,9 +116,9 @@ fetch('https://io-test.uitdatabank.be/images', {
 
 Note how the `content-type` and `content-length` headers are **not** set explicitly, as these must be set automatically by the Fetch API. If you do set either of them explicitly, you will receive an error from the `POST /images` endpoint because they will override the values normally set by the Fetch API based on the `boundary` that it generates randomly, and the server won't know how to parse the request correctly.
 
-### PHP example
+#### PHP example
 
-#### cURL
+##### cURL
 
 You can use PHP's built-in cURL functions to implement a file upload to Entry API.
 
@@ -176,7 +181,7 @@ file_put_contents($imageFilePath, file_get_contents($imageUrl));
 $file = new CURLFile($imageFilePath);
 ```
 
-#### Guzzle
+##### Guzzle
 
 Alternatively, you can use the [Guzzle library](https://docs.guzzlephp.org/en/stable/index.html) to send file upload requests.
 
@@ -225,6 +230,33 @@ var_dump($response);
 ```
 
 Note that just as when using cURL, the file name passed to `Psr7\Utils::tryFopen()` **MUST** be a local file path on the server. See [the cURL example above](#curl) for a solution to upload remote files with an HTTP(S) URL instead.
+
+### URL import (application/json)
+
+When the image is already available online, you can import it by providing its URL instead of uploading binary data. Send the request with `Content-Type: application/json` and the following required fields:
+
+* `contentUrl`: The URL of the existing online image to import.
+* `description`: A description of the image.
+* `copyrightHolder`: The name of the person or entity that holds the copyright on the image. Will be used for attribution.
+* `inLanguage`: The language of the image and its description.
+
+> **Note:** This method uses `inLanguage`, whereas the `multipart/form-data` method above uses `language`. These field names differ due to the underlying API implementation; aligning them would be a breaking change.
+
+#### HTTP example
+
+```http
+POST /images HTTP/1.1
+Host: io-test.uitdatabank.be
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+  "contentUrl": "https://example.com/some_image.jpeg",
+  "description": "Example description",
+  "copyrightHolder": "Example copyrightHolder",
+  "inLanguage": "nl"
+}
+```
 
 ### Response example
 
