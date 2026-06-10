@@ -813,7 +813,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters. At least one of the following query paramaters is required: `eventId`, `passholderId`.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1247,7 +1247,8 @@
             },
             "in": "query",
             "name": "passholderId",
-            "description": "Filter on check-ins of this passholder"
+            "description": "Filter on check-ins of this passholder",
+            "required": true
           },
           {
             "$ref": "#/components/parameters/start"
@@ -7866,7 +7867,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve redeemed rewards for a passholder.\n\nThe caller of this request must have `REWARDS_READ` permission.",
+        "description": "Retrieve redeemed rewards for a passholder.\n\nExactly one of query parameters `uitpasNumber` or `passholderId` is required. If both are specified an error is returned.\n\nThe caller of this request must have `REWARDS_READ` permission.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -7884,7 +7885,6 @@
               "type": "string"
             },
             "in": "query",
-            "required": true,
             "name": "uitpasNumber",
             "description": "UiTPAS number identifying the passholder."
           },
@@ -7905,6 +7905,14 @@
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "ID identifying the passholder."
           }
         ]
       }
