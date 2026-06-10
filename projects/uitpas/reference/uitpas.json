@@ -1231,7 +1231,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve check-ins based on search parameters.\n\nThe order of check-ins is always newest first.\n\nThe caller of this method must have `CHECKINS_READ` permission.",
+        "description": "Retrieve check-ins based on search parameters.\n\nThe order of check-ins is always newest first.\n\nThe `passholder` property is never included in the response.\n\nThe caller of this method must have `CHECKINS_READ` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
