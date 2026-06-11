@@ -4,7 +4,7 @@
       "$ref": "./common-departurePlaces.json"
     },
     {
-      "description": "A list of URIs representing departure places for this event. Each URI must reference an existing place in UiTdatabank. Only applicable when the event's audienceType is childrenOnly."
+      "description": "A list of URIs representing departure places for this event. Each URI must reference an existing place in UiTdatabank. Only applicable when the event's `childrenOnly` flag is `true`."
     }
   ],
   "title": "event.departurePlaces"

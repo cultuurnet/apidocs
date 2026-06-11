@@ -918,6 +918,90 @@
         }
       }
     },
+    "/events/{eventId}/children-only": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "put": {
+        "summary": "childrenOnly - update",
+        "operationId": "event-childrenOnly-put",
+        "responses": {
+          "204": {
+            "description": "No Content. The event's childrenOnly flag was successfully updated."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/childrenOnly",
+                          "error": "The data (string) should match the type: boolean"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "tags": [
+          "Events"
+        ],
+        "description": "Updates the `childrenOnly` flag on the event.\n\nSet to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event.\n\nWhen `childrenOnly` is `false`, it is omitted from the event GET response.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-childrenOnly-put.json"
+              },
+              "examples": {
+                "Enable": {
+                  "value": {
+                    "childrenOnly": true
+                  }
+                },
+                "Disable": {
+                  "value": {
+                    "childrenOnly": false
+                  }
+                }
+              }
+            }
+          },
+          "description": "New value for the `childrenOnly` flag on the event."
+        }
+      }
+    },
     "/events/{eventId}/available-from": {
       "parameters": [
         {
@@ -1965,7 +2049,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Replaces the list of departure places on the event.\n\nDeparture places are schools or other locations from which transport is arranged to bring children to the event (e.g. a walk, a bus, or a bicycle taxi).\n\nPassing an empty array `[]` removes all departure places from the event.\n\n**Validation rules:**\n\n* The event's `audienceType` must be `childrenOnly`. Returns a `400` error if the audience type does not match.\n* Each URI must reference an existing place in UiTdatabank. Returns a `400` error listing the non-existent places.",
+        "description": "Replaces the list of departure places on the event.\n\nDeparture places are schools or other locations from which transport is arranged to bring children to the event (e.g. a walk, a bus, or a bicycle taxi).\n\nPassing an empty array `[]` removes all departure places from the event.\n\n**Validation rules:**\n\n* The event's `childrenOnly` flag must be `true`. Returns a `400` error if `childrenOnly` is not set to `true`.\n* Each URI must reference an existing place in UiTdatabank. Returns a `400` error listing the non-existent places.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -3995,7 +4079,7 @@
         "tags": [
           "Images"
         ],
-        "description": "Uploads an image, which you can later link to one or more events, places, and organizers. Only images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
+        "description": "Uploads an image, which you can later link to one or more events, places, and organizers. Two upload methods are supported:\n\n* `multipart/form-data`: upload a binary image file directly.\n* `application/json`: provide a `contentUrl` pointing to an existing online image.\n\nOnly images up to 21 million bytes (~ 20 MB) are allowed. The expected image format is `.png`, `.jpeg` or `.gif`.",
         "requestBody": {
           "description": "The image to upload and its metadata to store with it.",
           "content": {
@@ -4042,6 +4126,16 @@
             "application/json": {
               "schema": {
                 "$ref": "../models/image-post.json"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "contentUrl": "https://example.com/some_image.jpeg",
+                    "description": "Example description",
+                    "copyrightHolder": "Example copyrightHolder",
+                    "inLanguage": "nl"
+                  }
+                }
               }
             }
           }
@@ -9540,9 +9634,7 @@
           },
           {
             "schema": {
-              "type": "string",
-              "pattern": "^http[s]?:\\/\\/",
-              "format": "uri"
+              "$ref": "../models/common-string-uri.json"
             },
             "in": "query",
             "name": "url",

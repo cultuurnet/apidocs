@@ -404,6 +404,32 @@ Retrieve all events that took place in the year 2020:
 GET /events/?q=dateRange:[2020-01-01T00\:00\:00%2B01\:00 TO 2021-12-31T23\:59\:59%2B01\:00]&availableTo=*&availableFrom=*
 ```
 
+### departurePlaces
+
+Using the `departurePlaces` field, you can find events that have a specific place as a departure place. Departure places are indexed as UUIDs (not full place URLs).
+
+**Applicable on endpoints**
+
+`/events`
+
+**Possible values**
+
+Any UUID of a place in UiTdatabank.
+
+**Examples**
+
+Find events that depart from a specific place:
+
+```
+GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e
+```
+
+Use `OR` to find events that depart from either of two places. This is not possible with the `departurePlaces[]` URL parameter, which only supports AND logic:
+
+```
+GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
+```
+
 ### id
 
 Retrieve events that match a specific id with the `id` field. It is possible to search by an event id, place id or organizer id.
