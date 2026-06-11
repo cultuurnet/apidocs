@@ -23,7 +23,7 @@ For more general information about publiq's role in the BOA decree, visit [publi
 
 ## childrenOnly
 
-To indicate that an event is only for children (without parents or guardians), set the optional `childrenOnly` boolean property on the event to `true`. The property defaults to `false` and is not required when creating an event.
+To indicate that an event is only for children (without parents or guardians), set the `childrenOnly` boolean property on the event to `true`. 
 
 ```json
 {
