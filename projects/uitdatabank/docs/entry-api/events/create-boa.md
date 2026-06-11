@@ -33,6 +33,8 @@ To indicate that an event is only for children (without parents or guardians), s
 
 You can also update this flag later using the dedicated [`PUT /events/{eventId}/childrenOnly`](/reference/entry.json/paths/~1events~1{eventId}~1children-only/put) endpoint. If an update request does not include `childrenOnly`, the value is not changed.
 
+When `childrenOnly` is `false`, it is omitted from the event GET response.
+
 ## departurePlaces
 
 This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
