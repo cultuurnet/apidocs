@@ -2,6 +2,6 @@
   "title": "event.childrenOnly",
   "type": "boolean",
   "default": false,
-  "description": "Indicates whether the event is intended for children only, without parents or guardians. Defaults to `false`. Must be `true` to set `departurePlaces`.",
+  "description": "Indicates whether the event is intended for children only, without parents or guardians. Defaults to `false`. Must be `true` to set `departurePlaces`. When not sent in a later update, value remains unchanged.",
   "example": true
 }
