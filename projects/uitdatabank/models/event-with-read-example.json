@@ -494,8 +494,9 @@
         }
       ],
       "audience": {
-        "audienceType": "childrenOnly"
+        "audienceType": "everyone"
       },
+      "childrenOnly": true,
       "departurePlaces": [
         "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
         "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
