@@ -15,29 +15,29 @@ For more general information about publiq's role in the BOA decree, visit [publi
 | [`faq`](/docs/uitdatabank/event-faqs) | all | Up to 30 items; dedicated `PUT /events/{eventId}/faqs` endpoint |
 | [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
 | [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
-| [`audience.audienceType: childrenOnly`](#audiencetype) | all | Unlocks `departurePlaces` |
+| [`childrenOnly`](#childrenonly) | all | Boolean flag; unlocks `departurePlaces` when `true` |
 | [`bookingInfo` on subEvents](../shared/booking-and-contact-info.md#bookinginfo) | single, multiple | Per-date booking contacts |
 | [`bookingAvailability` capacity/remainingCapacity](./booking-availability.md) | single, multiple | See also [booking availability guide](./booking-availability.md) |
 | [`childcare`](../shared/calendar-info.md#childcare-times-events-only) | single/multiple (subEvent), periodic (openingHours) | Different placement per calendar type |
-| [`departurePlaces`](#departureplaces) | all (requires `childrenOnly`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
+| [`departurePlaces`](#departureplaces) | all (requires `childrenOnly: true`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
 
-## audienceType
+## childrenOnly
 
-To indicate that an event is only for children, you must include an extra property `audienceType` and set the value to `childrenOnly`.
+To indicate that an event is only for children (without parents or guardians), set the optional `childrenOnly` boolean property on the event to `true`. The property defaults to `false` and is not required when creating an event.
 
 ```json
 {
-  "audience": {
-    "audienceType": "childrenOnly"
-  }
+  "childrenOnly": true
 }
 ```
+
+You can also update this flag later using the dedicated [`PUT /events/{eventId}/childrenOnly`](/reference/entry.json/paths/~1events~1{eventId}~1children-only/put) endpoint. If an update request does not include `childrenOnly`, the value is not changed.
 
 ## departurePlaces
 
 This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
 
-Departure places can only be set on events where `audienceType` is `childrenOnly`. Each URI must reference an existing place in UiTdatabank. A maximum of 20 departure places can be added to an event.
+Departure places can only be set on events where `childrenOnly` is `true`. Each URI must reference an existing place in UiTdatabank. A maximum of 20 departure places can be added to an event.
 
 To find the right place URI, read our guide about [finding and reusing existing places](../places/finding-and-reusing-places.md). If the place does not exist yet, you can [create a new place](../places/create.md).
 
@@ -45,7 +45,7 @@ You can also update departure places later using the dedicated [`PUT /events/{ev
 
 ## Request body example
 
-Example for a BOA event (calendarType `single`) with `childrenOnly` audience, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `overnight`:
+Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `overnight`:
 
 ```json
 {
@@ -84,9 +84,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` audience, us
       }
     }
   ],
-  "audience": {
-    "audienceType": "childrenOnly"
-  },
+  "childrenOnly": true,
   "faq": [
     {
       "nl": {
@@ -178,9 +176,7 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
       ]
     }
   ],
-  "audience": {
-    "audienceType": "childrenOnly"
-  },
+  "childrenOnly": true,
   "faq": [
     {
       "nl": {
