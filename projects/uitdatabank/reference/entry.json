@@ -9550,9 +9550,7 @@
           },
           {
             "schema": {
-              "type": "string",
-              "pattern": "^http[s]?:\\/\\/",
-              "format": "uri"
+              "$ref": "../models/common-string-uri.json"
             },
             "in": "query",
             "name": "url",
