@@ -2049,7 +2049,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Replaces the list of departure places on the event.\n\nDeparture places are schools or other locations from which transport is arranged to bring children to the event (e.g. a walk, a bus, or a bicycle taxi).\n\nPassing an empty array `[]` removes all departure places from the event.\n\n**Validation rules:**\n\n* The event's `audienceType` must be `childrenOnly`. Returns a `400` error if the audience type does not match.\n* Each URI must reference an existing place in UiTdatabank. Returns a `400` error listing the non-existent places.",
+        "description": "Replaces the list of departure places on the event.\n\nDeparture places are schools or other locations from which transport is arranged to bring children to the event (e.g. a walk, a bus, or a bicycle taxi).\n\nPassing an empty array `[]` removes all departure places from the event.\n\n**Validation rules:**\n\n* The event's `childrenOnly` flag must be `true`. Returns a `400` error if `childrenOnly` is not set to `true`.\n* Each URI must reference an existing place in UiTdatabank. Returns a `400` error listing the non-existent places.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
