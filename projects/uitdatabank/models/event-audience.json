@@ -19,10 +19,9 @@
       "enum": [
         "everyone",
         "members",
-        "education",
-        "childrenOnly"
+        "education"
       ],
-      "description": "Indicates whether the event or place is accessible to `everyone`, `members` only, `education` only or `childrenOnly` without parents or guardians."
+      "description": "Indicates whether the event or place is accessible to `everyone`, `members` only or `education` only."
     }
   },
   "required": [
