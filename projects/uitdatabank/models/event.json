@@ -136,6 +136,9 @@
         },
         "departurePlaces": {
           "$ref": "./event-departurePlaces.json"
+        },
+        "childrenOnly": {
+          "$ref": "./event-childrenOnly.json"
         }
       },
       "required": [
