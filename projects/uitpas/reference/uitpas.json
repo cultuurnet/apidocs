@@ -3245,6 +3245,287 @@
         ]
       }
     },
+    "/passholders/{passholderId}/memberships/{cardSystemId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the card system for the new membership"
+        }
+      ],
+      "post": {
+        "summary": "Create or replace card system membership of passholder",
+        "operationId": "post-passholders-passholderId-memberships-cardSystemId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "h6tt06b5fz3d8"
+                      },
+                      "enum": [
+                        "NEW_MEMBERSHIP",
+                        "REPLACE_MEMBERSHIP"
+                      ],
+                      "description": "Indicates whether this action will only create a new membership or also replaces another membership."
+                    },
+                    "addressChange": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "zj4kisrzfvjaa"
+                      },
+                      "description": "Indicates the status of the address change.",
+                      "required": [
+                        "required",
+                        "valid"
+                      ],
+                      "properties": {
+                        "endUserMessage": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "p3wk0taayx9xi"
+                          },
+                          "description": "End user message that, if available, must be shown to the user."
+                        },
+                        "required": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "bwuam1c6o54zo"
+                          },
+                          "description": "Indicates whether an address change is required for the new membership. This is the case when a social tariff is assigned and the passholder's current address is outside the card system."
+                        },
+                        "valid": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "x5bgu1xtpjev7"
+                          },
+                          "description": "Indicates whether the given address is valid for the new membership."
+                        },
+                        "address": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "sq5zn1kf8i67h"
+                          },
+                          "description": "New address of the passholder as specified in the request.",
+                          "properties": {
+                            "street": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "l23ocin19xno7"
+                              },
+                              "description": "Street name, number and optional box number of the address."
+                            },
+                            "postalCode": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "wp32wn829d2vm"
+                              },
+                              "description": "Postal code of the municipality."
+                            },
+                            "city": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "xdsfrg5xqzdov"
+                              },
+                              "description": "Human-readable name of the municipality."
+                            }
+                          },
+                          "required": [
+                            "street",
+                            "postalCode",
+                            "city"
+                          ]
+                        }
+                      }
+                    },
+                    "newMembership": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "jcxxufsmtiqws"
+                      },
+                      "required": [
+                        "cardSystem"
+                      ],
+                      "description": "Representation of the new membership",
+                      "properties": {
+                        "socialTariff": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "t7f2cp9jej5xo"
+                          },
+                          "description": "Indicates if the new membership will have social tariff",
+                          "properties": {
+                            "socialTariffEndDate": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "2vpn5pt9xlr1p"
+                              },
+                              "format": "date",
+                              "description": "End date of the social tariff as specified in the request or the system default if no end date was specified."
+                            }
+                          },
+                          "required": [
+                            "socialTariffEndDate"
+                          ]
+                        },
+                        "cardSystem": {
+                          "$ref": "#/components/schemas/CardSystem"
+                        },
+                        "cardType": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "zokzho18770jt"
+                          },
+                          "enum": [
+                            "NFC_CARD",
+                            "DIGITAL"
+                          ],
+                          "description": "Type of card in the new membership."
+                        },
+                        "uitpasNumber": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "g037cgwigxb66"
+                          },
+                          "description": "Uitpas number of new phycical card. Only when cardType is NFC_CARD."
+                        },
+                        "endUserMessage": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "80z5l7d3hu31t"
+                          },
+                          "description": "End user message that, if available, must be shown to the user."
+                        },
+                        "valid": {
+                          "type": "boolean",
+                          "x-stoplight": {
+                            "id": "a4xwn9kowmffm"
+                          },
+                          "description": "Indicates whether this new membership is valid or not. Reasons why it isn't valid: no cardType is set, an uitpasNumber is specified that is not available for a new membership, an invalid socialTariffEndDate is specified."
+                        }
+                      }
+                    },
+                    "replacedMembership": {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "uhrsknnwwtcrl"
+                      },
+                      "description": "Membership that will be replaced by the new membership. This will be the case when a new social tariff membership is created and another social tariff membership exists, or the passholder is moved outside the card system of his current social tariff membership.",
+                      "properties": {
+                        "cardSystem": {
+                          "$ref": "#/components/schemas/CardSystem"
+                        },
+                        "card": {
+                          "$ref": "#/components/schemas/Card"
+                        },
+                        "endUserMessage": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "m2by5k8m9ip9d"
+                          },
+                          "description": "End user message that, if available, must be shown to the user."
+                        }
+                      },
+                      "required": [
+                        "cardSystem",
+                        "card"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "addressChange",
+                    "newMembership"
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a new or updates an existing membership for the given passholder in the specified card system.\n\nReasons to use this endpoint:\n* Create membership in a new card system for an existing passholder (with or without social tariff)\n* Replace membership in existing card system to grant social tariff\n* Replace membership in existing card system to revoke social tariff\n\nIf you want to extend the social tariff period of an existing passholder, use `PUT /passholders/{id}`\n\nCreating a membership might incur costs which can be checked with `/passholders/id/membership-prices/cardsystemid` \n\nWhen `validateOnly` is set to `true` this endpoint will only validate (partial) input and return HTTP 200 with an overview of the consequences of this action when performed.\n\nWhen `validateOnly` is set to `false` this endpoint will perform the action and return HTTP 202 when successful or HTTP 400 with an endUserMessage when failed.\n\nThe caller of this method must have `PASSHOLDERS_WRITE` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MembershipRequest"
+              },
+              "examples": {}
+            }
+          },
+          "description": "Association membership request"
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "validateOnly",
+            "description": "Indicates this action is not to be performed yet, simply validated. This is meant to be used in a UI client that uses a multi-step approach and wants to validate user input early on. Futhermore it allows for showing an overview step before actually committing."
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ]
+      }
+    },
     "/passholders/{passholderId}/association-memberships": {
       "parameters": [
         {
@@ -12899,6 +13180,93 @@
         "required": [
           "association"
         ]
+      },
+      "MembershipRequest": {
+        "title": "MembershipRequest",
+        "x-stoplight": {
+          "id": "ffmqhyqswhm6o"
+        },
+        "type": "object",
+        "description": "Membership request model",
+        "properties": {
+          "cardType": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "qof4ex52e0ae5"
+            },
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of the card in the new membership"
+          },
+          "uitpasNumber": {
+            "x-stoplight": {
+              "id": "di5zmsweur7xj"
+            },
+            "type": "string",
+            "description": "Uitpas number of the physical card. Only required when cardType is NFC_CARD."
+          },
+          "address": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "ugw7b7xei7cbz"
+            },
+            "description": "New address of the passholder. Required when the passholder receives a social tariff membership and his current address is outside the card system.",
+            "properties": {
+              "street": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "nejol4a8vhq7r"
+                },
+                "description": "Street name, number and optional box number of the address."
+              },
+              "postalCode": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "csz5bpz4u8z8m"
+                },
+                "description": "Postal code of the municipality."
+              },
+              "city": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "vpmiuu2h7ju7c"
+                },
+                "description": "Human-readable name of the municipality."
+              }
+            },
+            "required": [
+              "street",
+              "postalCode",
+              "city"
+            ]
+          },
+          "socialTariff": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "jkw53cz3xe5tf"
+            },
+            "description": "Indicates whether the new membership should receive social tariff",
+            "properties": {
+              "socialTariffEndDate": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "njwmjsvu77qg1"
+                },
+                "format": "date",
+                "description": "End date of the social tariff. If not specified, the response when validateOnly=true will contain the system default for social tariff end dates."
+              }
+            }
+          },
+          "voucher": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "rhuyzfbchz0n4"
+            },
+            "description": "Voucher for price reduction of the new membership."
+          }
+        }
       }
     },
     "securitySchemes": {
