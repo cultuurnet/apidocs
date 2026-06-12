@@ -4,6 +4,27 @@
   "description": "Request body to update the calendar information of an event.",
   "allOf": [
     {
+      "if": {
+        "required": ["calendarType"],
+        "properties": {
+          "calendarType": {
+            "enum": ["permanent", "periodic"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "bookingAvailability": {
+            "properties": {
+              "type": {
+                "not": { "const": "Unavailable" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "properties": {
         "calendarType": {
           "$ref": "./event-calendarType.json"

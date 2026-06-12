@@ -34,6 +34,27 @@
   "allOf": [
     {
       "if": {
+        "required": ["calendarType"],
+        "properties": {
+          "calendarType": {
+            "enum": ["permanent", "periodic"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "bookingAvailability": {
+            "properties": {
+              "type": {
+                "not": { "const": "Unavailable" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
         "required": [
           "calendarType"
         ],
