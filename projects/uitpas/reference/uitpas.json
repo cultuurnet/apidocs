@@ -2924,6 +2924,123 @@
         }
       ]
     },
+    "/grouppasses/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an grouppass.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of grouppass",
+        "operationId": "get-grouppasses-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_13",
+                          "name": "Gratis naar de film in groep",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 100,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given grouppass.\n\nThe caller of this method must have `GROUPPASS_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Grouppasses"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ],
+              "default": "ACTIVE"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter coupons that are applicable in card systems of this organizer"
+          }
+        ]
+      }
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
@@ -3501,6 +3618,123 @@
             "name": "organizerId",
             "description": "ID of the organizer.",
             "required": true
+          }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of passholder",
+        "operationId": "get-passholders-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_12",
+                          "name": "Gratis naar de film",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 1,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given passholder.\n\nThe caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ],
+              "default": "ACTIVE"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "Filter coupons that are applicable in card systems of this organizer",
+            "name": "organizerId"
           }
         ]
       }
@@ -10054,6 +10288,8 @@
           "PASSHOLDERS_WRITE_SOCIALTARIFF",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
+          "PASSHOLDER_COUPONS_READ",
+          "GROUPPASS_COUPONS_READ",
           "MEMBERSHIP_PRICES_READ",
           "PASSES_READ",
           "PASSES_INSZNUMBERS_READ",
@@ -12899,6 +13135,135 @@
         "required": [
           "association"
         ]
+      },
+      "GrantedCoupon": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "6952809026004"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "gy3cnzbjsos7m"
+            },
+            "description": "ID of this granted coupon"
+          },
+          "coupon": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "7uhshingout9h"
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "description": "The coupon of this granted coupon",
+            "properties": {
+              "id": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "9lc2aar0ke5mt"
+                },
+                "description": "ID of the coupon"
+              },
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ju827c3hyobo6"
+                },
+                "description": "Name of the coupon"
+              },
+              "description": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "0m1k758km1di4"
+                },
+                "description": "Description of the coupon"
+              }
+            }
+          },
+          "validityPeriod": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "d7x4iwrrak9tm"
+            },
+            "description": "Validatity period of this coupon",
+            "properties": {
+              "begin": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "hzer6iazpfcpd"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid from this date"
+              },
+              "end": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "p62zqlsppr3gg"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid until this date. After this date, this coupon will appear as status `EXPIRED`"
+              }
+            },
+            "required": [
+              "begin"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pua8h5vd8410c"
+            },
+            "enum": [
+              "ACTIVE",
+              "EXPIRED"
+            ],
+            "description": "Status of this granted coupon"
+          },
+          "remaining": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "wp3luo60wgz57"
+            },
+            "description": "Remaining ticket sales for this granted coupon (is applicable)",
+            "properties": {
+              "volume": {
+                "type": "integer",
+                "x-stoplight": {
+                  "id": "tmfnerf0ntoor"
+                },
+                "description": "Volume of the remaining ticketsales"
+              },
+              "period": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "a0yelgv8k0gy1"
+                },
+                "enum": [
+                  "ABSOLUTE",
+                  "DAY",
+                  "WEEK",
+                  "MONTH",
+                  "QUARTER",
+                  "YEAR"
+                ],
+                "description": "Period of the remaining ticketsales"
+              }
+            },
+            "required": [
+              "volume",
+              "period"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "coupon",
+          "status"
+        ],
+        "title": "GrantedCoupon"
       }
     },
     "securitySchemes": {
