@@ -1176,13 +1176,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ],
                         "linkedOrganizers": [
@@ -1196,7 +1202,10 @@
                                 "id": "CHECKINS_WRITE",
                                 "label": {
                                   "nl": "Punten sparen"
-                                }
+                                },
+                                "cardSystemIds": [
+                                  1
+                                ]
                               }
                             ]
                           }
@@ -1215,7 +1224,10 @@
                             "id": "ORGANIZERS_SEARCH",
                             "label": {
                               "nl": "Organisators zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -1237,13 +1249,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -1475,13 +1493,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       },
@@ -1495,7 +1519,10 @@
                             "id": "ORGANIZERS_SEARCH",
                             "label": {
                               "nl": "Organisators zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -10340,6 +10367,14 @@
             "required": [
               "nl"
             ]
+          },
+          "cardSystemIds": {
+            "type": "array",
+            "description": "IDs of the card systems to which this permission applies",
+            "items": {
+              "type": "integer",
+              "readOnly": true
+            }
           }
         },
         "required": [
