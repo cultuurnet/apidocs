@@ -10306,6 +10306,7 @@
           "EVENT_SETTINGS_READ",
           "EVENT_SETTINGS_UPDATE",
           "EVENTS_QR_CHECKINCODE",
+          "CHECKINS_READ",
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
