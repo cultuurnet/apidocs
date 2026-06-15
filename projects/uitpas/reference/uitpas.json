@@ -7886,7 +7886,7 @@
             },
             "in": "query",
             "name": "uitpasNumber",
-            "description": "UiTPAS number identifying the passholder."
+            "description": "UiTPAS number identifying the passholder. Cannot be used in combination with `passholderId`"
           },
           {
             "schema": {
@@ -7912,7 +7912,7 @@
             },
             "in": "query",
             "name": "passholderId",
-            "description": "ID identifying the passholder."
+            "description": "ID of the passholder. Cannot be used in combination with `uitpasNumber`."
           }
         ]
       }
