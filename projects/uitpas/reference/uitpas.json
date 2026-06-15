@@ -3466,7 +3466,15 @@
             }
           },
           "description": "The picture of the passholder in a multipart request body."
-        }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       },
       "delete": {
         "summary": "Delete picture of passholder",
