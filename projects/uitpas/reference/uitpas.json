@@ -13467,6 +13467,15 @@
             },
             "description": "True if this membership can currently be renewed. This fields is always available in responses.",
             "readOnly": true
+          },
+          "newEndDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "lxwcvxz2cbqrz"
+            },
+            "format": "date-time",
+            "description": "New end date of the membership in case it is renewed or created. This field can be used to pre-fill the endDate field in a front-end UI. It is only available when: `endDateCalculation` of the association is `CUSTOM`, and the status is `NONE` (new membership) or `renewable` is true (renew membership).",
+            "readOnly": true
           }
         },
         "required": [
