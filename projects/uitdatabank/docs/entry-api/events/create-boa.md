@@ -10,28 +10,17 @@ For more general information about Publiq's role in the BOA decree, visit [publi
 ## Best Practices: Optimizing your reach
 To ensure parents and children easily find the right activities, data quality is crucial. When publishing BOA-related events, we highly recommend sending the following information:
 
-| Type | Endpoint                                                                          | Description | BOA specific |
-|---|-----------------------------------------------------------------------------------|---|---|
-| Target audience | `PUT /events/{eventId}/childrenOnly`                                              | Always explicitly indicate if an activity is meant for "children only" (without parents). This helps our publication channels distinguish BOA activities from general family events. | ✅ |
-| Age range | `PUT /events/{eventId}/typicalAgeRange` or `PUT /events/{eventId}/birthdateRange` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`). | ✅ |
-| Pricing | `PUT /events/{eventId}/priceInfo`                                                 | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | ❌ |
-| Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/subEvents`           | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining capacity per subEvent. Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | ✅ |
-| FAQ | `PUT /events/{eventId}/faq`                                                       | Use the FAQ fields to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | ✅ |
-| Full schedule | `PUT /events/{eventId}/calendar`                                                  | Parents plan full days. Explicitly pass before- and after-school care hours (`childcare`), adjusted opening hours, and specific holiday closures (`openingHoursAdjustedDays`). | ✅ |
-| Overnight stays | `PATCH /events/{eventId}/subEvents`                                               | For camps, clearly specify if the activity includes an overnight stay (`overnight`). | ✅ |
-| Departure places | `PUT /events/{eventId}/departurePlaces`                                           | If guided transport is provided from a school or another care location to the activity, link these locations. | ✅ |
-
-| Field | Calendar type | Notes |
-|---|---|---|
-| [`overnight`](../shared/calendar-info.md#overnight-events-only-singlemultiple) | single, multiple | Only for term `0.57.0.0.0`; hidden in response when `false` |
-| [`faq`](/docs/uitdatabank/event-faqs) | all | Up to 30 items; dedicated `PUT /events/{eventId}/faqs` endpoint |
-| [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
-| [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
-| [`childrenOnly`](#childrenonly) | all | Boolean flag; unlocks `departurePlaces` when `true` |
-| [`bookingInfo` on subEvents](../shared/booking-and-contact-info.md#bookinginfo) | single, multiple | Per-date booking contacts |
-| [`bookingAvailability` capacity/remainingCapacity](./booking-availability.md) | single, multiple | See also [booking availability guide](./booking-availability.md) |
-| [`childcare`](../shared/calendar-info.md#childcare-times-events-only) | single/multiple (subEvent), periodic (openingHours) | Different placement per calendar type |
-| [`departurePlaces`](#departureplaces) | all (requires `childrenOnly: true`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
+| Type | Endpoint | Description | Calendar type | BOA specific |
+|---|---|---|---|---|
+| Target audience | `PUT /events/{eventId}/childrenOnly` | Always explicitly indicate if an activity is meant for [children only](#childrenonly) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
+| Age range | `PUT /events/{eventId}/typicalAgeRange` or `PUT /events/{eventId}/birthdateRange` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`). | all | ✅ |
+| Pricing | `PUT /events/{eventId}/priceInfo` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
+| Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/subEvents` | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining [capacity per subEvent](./booking-availability.md). Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | single, multiple | ✅ |
+| FAQ | `PUT /events/{eventId}/faq` | Use the [FAQ fields](/docs/uitdatabank/event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
+| Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
+| Overnight stays | `PATCH /events/{eventId}/subEvents` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
+| Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](#departureplaces). | all (requires `childrenOnly: true`) | ✅ |
+| Booking info | `PATCH /events/{eventId}/subEvents` | Provide [per-date booking contacts](../shared/booking-and-contact-info.md#bookinginfo) on subEvents so parents know where to register for each occurrence. | single, multiple | ❌ |
 
 ## childrenOnly
 
