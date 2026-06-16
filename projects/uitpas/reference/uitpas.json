@@ -851,7 +851,10 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "in": "query",
             "name": "organizerId",
@@ -1266,7 +1269,10 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "in": "query",
             "name": "organizerId",
@@ -8252,7 +8258,10 @@
           },
           {
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "in": "query",
             "name": "organizerId",
