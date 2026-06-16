@@ -3,11 +3,23 @@
 > ⚠️ **Warning:** IN DEVELOPMENT! The BOA endpoints are still in development and subject to change. Do not rely on them in production integrations yet.
 
 The BOA decree aims to create a comprehensive and integrated offering of out-of-school care and leisure activities for school-aged children in Flanders. Local governments act as the central directors, coordinating with partners across education, youth work, sports, and culture.
-To properly capture this specific offering in UiTdatabank, several features and fields have been added to the API. This guide provides an overview of all BOA-specific data models and endpoints.
+To properly capture this specific offering in UiTdatabank, several new features and fields have been added to the Entry API. This guide provides an overview of the best practices and the technical endpoints required to submit BOA data correctly.
 
-For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
+For more general information about Publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
-> This guide covers all BOA-specific fields, how they apply per calendar type, and what endpoints to use.
+## Best Practices: Optimizing your reach
+To ensure parents and children easily find the right activities, data quality is crucial. When publishing BOA-related events, we highly recommend sending the following information:
+
+| Type | Endpoint                                                                          | Description | BOA specific |
+|---|-----------------------------------------------------------------------------------|---|---|
+| Target audience | `PUT /events/{eventId}/childrenOnly`                                              | Always explicitly indicate if an activity is meant for "children only" (without parents). This helps our publication channels distinguish BOA activities from general family events. | ✅ |
+| Age range | `PUT /events/{eventId}/typicalAgeRange` or `PUT /events/{eventId}/birthdateRange` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`). | ✅ |
+| Pricing | `PUT /events/{eventId}/priceInfo`                                                 | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | ❌ |
+| Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/subEvents`           | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining capacity per subEvent. Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | ✅ |
+| FAQ | `PUT /events/{eventId}/faq`                                                       | Use the FAQ fields to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | ✅ |
+| Full schedule | `PUT /events/{eventId}/calendar`                                                  | Parents plan full days. Explicitly pass before- and after-school care hours (`childcare`), adjusted opening hours, and specific holiday closures (`openingHoursAdjustedDays`). | ✅ |
+| Overnight stays | `PATCH /events/{eventId}/subEvents`                                               | For camps, clearly specify if the activity includes an overnight stay (`overnight`). | ✅ |
+| Departure places | `PUT /events/{eventId}/departurePlaces`                                           | If guided transport is provided from a school or another care location to the activity, link these locations. | ✅ |
 
 | Field | Calendar type | Notes |
 |---|---|---|
