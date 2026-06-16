@@ -12,7 +12,7 @@ To ensure parents and children easily find the right activities, data quality is
 
 | Type | Endpoint | Description | Calendar type | BOA specific |
 |---|---|---|---|---|
-| Target audience | `PUT /events/{eventId}/childrenOnly` | Always explicitly indicate if an activity is meant for [children only](#childrenonly) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
+| Target audience | `PUT /events/{eventId}/childrenOnly` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
 | Age range | `PUT /events/{eventId}/typicalAgeRange` or `PUT /events/{eventId}/birthdateRange` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`). | all | ✅ |
 | Pricing | `PUT /events/{eventId}/priceInfo` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
 | Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/subEvents` | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining [capacity per subEvent](./booking-availability.md). Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | single, multiple | ✅ |
@@ -21,20 +21,6 @@ To ensure parents and children easily find the right activities, data quality is
 | Overnight stays | `PATCH /events/{eventId}/subEvents` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
 | Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](#departureplaces). | all (requires `childrenOnly: true`) | ✅ |
 | Booking info | `PATCH /events/{eventId}/subEvents` | Provide [per-date booking contacts](../shared/booking-and-contact-info.md#bookinginfo) on subEvents so parents know where to register for each occurrence. | single, multiple | ❌ |
-
-## childrenOnly
-
-To indicate that an event is only for children (without parents or guardians), set the `childrenOnly` boolean property on the event to `true`. 
-
-```json
-{
-  "childrenOnly": true
-}
-```
-
-You can also update this flag later using the dedicated [`PUT /events/{eventId}/childrenOnly`](/reference/entry.json/paths/~1events~1{eventId}~1children-only/put) endpoint. If an update request does not include `childrenOnly`, the value is not changed.
-
-When `childrenOnly` is `false`, it is omitted from the event GET response.
 
 ## departurePlaces
 

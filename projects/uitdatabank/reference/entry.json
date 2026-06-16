@@ -969,7 +969,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the `childrenOnly` flag on the event.\n\nSet to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event.\n\nWhen `childrenOnly` is `false`, it is omitted from the event GET response.\n",
+        "description": "Updates the `childrenOnly` flag on the event.\n\nSet `childrenOnly` to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`. When `childrenOnly` is `false`, it is omitted from the event GET response.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
