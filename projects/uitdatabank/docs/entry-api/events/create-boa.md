@@ -19,18 +19,8 @@ To ensure parents and children easily find the right activities, data quality is
 | FAQ | `PUT /events/{eventId}/faq` | Use the [FAQ fields](/docs/uitdatabank/event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
 | Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
 | Overnight stays | `PATCH /events/{eventId}/subEvents` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
-| Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](#departureplaces). | all (requires `childrenOnly: true`) | ✅ |
+| Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
 | Booking info | `PATCH /events/{eventId}/subEvents` | Provide [per-date booking contacts](../shared/booking-and-contact-info.md#bookinginfo) on subEvents so parents know where to register for each occurrence. | single, multiple | ❌ |
-
-## departurePlaces
-
-This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
-
-Departure places can only be set on events where `childrenOnly` is `true`. Each URI must reference an existing place in UiTdatabank. A maximum of 20 departure places can be added to an event.
-
-To find the right place URI, read our guide about [finding and reusing existing places](../places/finding-and-reusing-places.md). If the place does not exist yet, you can [create a new place](../places/create.md).
-
-You can also update departure places later using the dedicated [`PUT /events/{eventId}/departurePlaces`](/reference/entry.json/paths/~1events~1{eventId}~1departurePlaces/put) endpoint. Passing an empty array `[]` removes all departure places.
 
 ## Request body example
 
