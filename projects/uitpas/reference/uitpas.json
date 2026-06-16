@@ -813,7 +813,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters. At least one of the following query paramaters is required: `eventId`, `passholderId`.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -833,14 +833,21 @@
             },
             "in": "query",
             "name": "eventId",
-            "description": "The ID of the UiTdatabank event.",
-            "required": true
+            "description": "Filter ticket sales on this UiTdatabank event."
           },
           {
             "$ref": "#/components/parameters/start"
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "Filter ticket sales on this passholder"
           }
         ]
       }
@@ -995,6 +1002,261 @@
           },
           "description": "Check-in request body"
         },
+        "tags": [
+          "Checkins"
+        ]
+      },
+      "get": {
+        "summary": "Search check-ins",
+        "operationId": "get-checkins",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckinsPaginatedCollection"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Retrieve check-ins based on search parameters.\n\nThe order of check-ins is always newest first.\n\nThe `passholder` property is never included in the response.\n\nThe caller of this method must have `CHECKINS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "Filter on check-ins of this passholder",
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
         "tags": [
           "Checkins"
         ]
@@ -3348,7 +3610,15 @@
             }
           },
           "description": "The picture of the passholder in a multipart request body."
-        }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       },
       "delete": {
         "summary": "Delete picture of passholder",
@@ -7866,7 +8136,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve redeemed rewards for a passholder.\n\nThe caller of this request must have `REWARDS_READ` permission.",
+        "description": "Retrieve redeemed rewards for a passholder.\n\nExactly one of query parameters `uitpasNumber` or `passholderId` is required. If both are specified an error is returned.\n\nThe caller of this request must have `REWARDS_READ` permission.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -7884,9 +8154,8 @@
               "type": "string"
             },
             "in": "query",
-            "required": true,
             "name": "uitpasNumber",
-            "description": "UiTPAS number identifying the passholder."
+            "description": "UiTPAS number identifying the passholder. Cannot be used in combination with `passholderId`"
           },
           {
             "schema": {
@@ -7905,6 +8174,14 @@
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "ID of the passholder. Cannot be used in combination with `uitpasNumber`."
           }
         ]
       }
@@ -10298,6 +10575,7 @@
           "EVENT_SETTINGS_READ",
           "EVENT_SETTINGS_UPDATE",
           "EVENTS_QR_CHECKINCODE",
+          "CHECKINS_READ",
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
@@ -10651,6 +10929,30 @@
             "description": "List of association results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Association"
+            }
+          }
+        }
+      },
+      "CheckinsPaginatedCollection": {
+        "title": "CheckinsPaginatedCollection",
+        "x-stoplight": {
+          "id": "bczavdoj5gjvq"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated collection object for checkins",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of checkin results"
+          },
+          "member": {
+            "type": "array",
+            "description": "List of checkin results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Checkin"
             }
           }
         }
