@@ -163,6 +163,25 @@ Alternatively, you can set the top-level `bookingAvailability` by using the sepa
 
 Events with calendarType `periodic` and `permanent` span a larger period and have a schedule based on recurring `openingHours`.
 
-Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
+Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates.
 
-It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
+Their top-level `bookingAvailability.type` is always coerced to `Available`, since it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events). You can however set `capacity` to indicate the total number of seats or tickets via the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint:
+
+```json
+{
+  "type": "Available",
+  "capacity": 200
+}
+```
+
+For `periodic` events, you may additionally include `remainingCapacity`:
+
+```json
+{
+  "type": "Available",
+  "capacity": 200,
+  "remainingCapacity": 80
+}
+```
+
+For `permanent` events, `remainingCapacity` is silently ignored.

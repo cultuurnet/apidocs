@@ -1219,7 +1219,7 @@
             "$ref": "#/components/responses/NotFound"
           }
         },
-        "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe type of any subEvents that the event has will also be updated to match the general type in bookingAvailability, unless these subEvents have [remainingCapacity](../docs/entry-api/events/booking-availability.md#the-bookingavailability-property) set.\n\n<!-- theme: warning -->\n\n> Note that you cannot update the bookingAvailability of an event with [calendar type](/models/event-calendarType.json) `periodic` or `permanent`. For now, they can only have \"Available\" as bookingAvailability.",
+        "description": "Updates the general bookingAvailability info on the top level of the event with the given `eventId`.\n\nThe accepted properties and their behavior depend on the event's [calendarType](/models/event-calendarType.json):\n\n* `single` / `multiple`: updates the top-level `type` and `capacity`. The `type` of every subEvent is also updated to match, unless that subEvent already has [remainingCapacity](../docs/entry-api/events/booking-availability.md#the-bookingavailability-property) set. Top-level `remainingCapacity` is not meaningful and is rejected.\n* `periodic`: updates `capacity` and `remainingCapacity`. `type` is always coerced to `Available`.\n* `permanent`: updates `capacity`. `type` is always coerced to `Available`, and `remainingCapacity` is silently dropped.",
         "requestBody": {
           "content": {
             "application/json": {
