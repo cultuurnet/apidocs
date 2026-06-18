@@ -1,13 +1,16 @@
 {
   "title": "event.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`, and can optionally include capacity information.",
+  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`, and can optionally include `capacity` and `remainingCapacity`. Note: `remainingCapacity` is accepted for all calendar types but is only honored for events with calendarType `periodic`; for other calendar types it is ignored by the backend.",
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
     },
     "capacity": {
       "$ref": "./common-bookingAvailability-capacity.json"
+    },
+    "remainingCapacity": {
+      "$ref": "./common-bookingAvailability-remainingCapacity.json"
     }
   },
   "required": [
