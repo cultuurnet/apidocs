@@ -184,4 +184,4 @@ For `periodic` events, you may additionally include `remainingCapacity`:
 }
 ```
 
-For `permanent` events, sending `remainingCapacity` returns HTTP 400 with error type `https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported`.
+For `permanent` events, sending `remainingCapacity` returns HTTP 400 with error type `https://api.publiq.be/probs/uitdatabank/remaining-capacity-not-supported`.
