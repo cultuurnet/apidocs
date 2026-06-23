@@ -3,47 +3,24 @@
 > ⚠️ **Warning:** IN DEVELOPMENT! The BOA endpoints are still in development and subject to change. Do not rely on them in production integrations yet.
 
 The BOA decree aims to create a comprehensive and integrated offering of out-of-school care and leisure activities for school-aged children in Flanders. Local governments act as the central directors, coordinating with partners across education, youth work, sports, and culture.
-To properly capture this specific offering in UiTdatabank, several features and fields have been added to the API. This guide provides an overview of all BOA-specific data models and endpoints.
+To properly capture this specific offering in UiTdatabank, several new features and fields have been added to the Entry API. This guide provides an overview of the best practices and the technical endpoints required to submit BOA data correctly.
 
-For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
+For more general information about Publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
-> This guide covers all BOA-specific fields, how they apply per calendar type, and what endpoints to use.
+## Best Practices: Optimizing your reach
+To ensure parents and children easily find the right activities, data quality is crucial. When publishing BOA-related events, we highly recommend sending the following information:
 
-| Field | Calendar type | Notes |
-|---|---|---|
-| [`overnight`](../shared/calendar-info.md#overnight-events-only-singlemultiple) | single, multiple | Only for term `0.57.0.0.0`; hidden in response when `false` |
-| [`faq`](/docs/uitdatabank/event-faqs) | all | Up to 30 items; dedicated `PUT /events/{eventId}/faqs` endpoint |
-| [`openingHoursClosedDays`](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent) | periodic, permanent | Date ranges with optional localized description |
-| [`openingHoursAdjustedDays`](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent) | periodic, permanent | Date ranges with custom schedule |
-| [`childrenOnly`](#childrenonly) | all | Boolean flag; unlocks `departurePlaces` when `true` |
-| [`bookingInfo` on subEvents](../shared/booking-and-contact-info.md#bookinginfo) | single, multiple | Per-date booking contacts |
-| [`bookingAvailability` capacity/remainingCapacity](./booking-availability.md) | single, multiple | See also [booking availability guide](./booking-availability.md) |
-| [`childcare`](../shared/calendar-info.md#childcare-times-events-only) | single/multiple (subEvent), periodic (openingHours) | Different placement per calendar type |
-| [`departurePlaces`](#departureplaces) | all (requires `childrenOnly: true`) | Dedicated `PUT /events/{eventId}/departurePlaces` endpoint |
-
-## childrenOnly
-
-To indicate that an event is only for children (without parents or guardians), set the `childrenOnly` boolean property on the event to `true`. 
-
-```json
-{
-  "childrenOnly": true
-}
-```
-
-You can also update this flag later using the dedicated [`PUT /events/{eventId}/childrenOnly`](/reference/entry.json/paths/~1events~1{eventId}~1children-only/put) endpoint. If an update request does not include `childrenOnly`, the value is not changed.
-
-When `childrenOnly` is `false`, it is omitted from the event GET response.
-
-## departurePlaces
-
-This optional property contains a list of URIs referencing schools or other locations from which transport is arranged to bring children to the event. This can be a walk, a bus, or a bicycle taxi that takes children from a school or childcare location to the event's location.
-
-Departure places can only be set on events where `childrenOnly` is `true`. Each URI must reference an existing place in UiTdatabank. A maximum of 20 departure places can be added to an event.
-
-To find the right place URI, read our guide about [finding and reusing existing places](../places/finding-and-reusing-places.md). If the place does not exist yet, you can [create a new place](../places/create.md).
-
-You can also update departure places later using the dedicated [`PUT /events/{eventId}/departurePlaces`](/reference/entry.json/paths/~1events~1{eventId}~1departurePlaces/put) endpoint. Passing an empty array `[]` removes all departure places.
+| Type | Endpoint | Description | Calendar type | BOA specific |
+|---|---|---|---|---|
+| Target audience | `PUT /events/{eventId}/childrenOnly` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
+| Age range | `PUT /events/{eventId}/typicalAgeRange` or `PUT /events/{eventId}/birthdateRange` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`). | all | ✅ |
+| Pricing | `PUT /events/{eventId}/priceInfo` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
+| Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/subEvents` | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining [capacity per subEvent](./booking-availability.md). Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | single, multiple | ✅ |
+| FAQ | `PUT /events/{eventId}/faq` | Use the [FAQ fields](/docs/uitdatabank/event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
+| Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
+| Overnight stays | `PATCH /events/{eventId}/subEvents` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
+| Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
+| Booking info | `PATCH /events/{eventId}/subEvents` | Provide [per-date booking contacts](../shared/booking-and-contact-info.md#bookinginfo) on subEvents so parents know where to register for each occurrence. | single, multiple | ❌ |
 
 ## Request body example
 
