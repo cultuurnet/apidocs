@@ -866,7 +866,7 @@
             },
             "in": "query",
             "name": "eventTitle",
-            "description": "Filter ticket sales on this UiTdatabank event title."
+            "description": "Filter ticket sales on this (partial) UiTdatabank event title."
           }
         ]
       }
@@ -1293,7 +1293,7 @@
             },
             "in": "query",
             "name": "eventTitle",
-            "description": "Filter checkins on this UiTdatabank event title."
+            "description": "Filter checkins on this (partial) UiTdatabank event title."
           }
         ],
         "tags": [
@@ -8289,7 +8289,7 @@
             },
             "in": "query",
             "name": "rewardTitle",
-            "description": "Filter redeemed rewards with this reward title."
+            "description": "Filter redeemed rewards with this (partial) reward title."
           }
         ]
       }
