@@ -226,7 +226,7 @@ A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. 
 Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
 
 ```
-GET /events/?q=birthdateRange:2020-01-01..2020-12-31
+GET /events/?q=birthdateRange:2020-01-01 TO 2020-12-31
 ```
 
 ### bookingAvailability
