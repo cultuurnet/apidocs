@@ -210,7 +210,8 @@ GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:
 
 ### birthdateRange
 
-The `birthdateRange` is used to filter results based on the targeted birthdate range of the event.
+The `birthdateRange` field is used to filter events by the birthdate range of their target audience.
+If an event has a `typicalAgeRange` that (combined with the current date) overlaps the requested range, the event will also be included in the result set.
 If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
 
 **Applicable on endpoints**
