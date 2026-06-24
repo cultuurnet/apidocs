@@ -858,7 +858,8 @@
             },
             "in": "query",
             "name": "organizerId",
-            "description": "Filter ticket sales for events of this organizer, or events taking place on the location of this organizer."
+            "description": "Filter ticket sales for events of this organizer, or events taking place on the location of this organizer.",
+            "explode": true
           },
           {
             "schema": {
@@ -1285,7 +1286,8 @@
             "in": "query",
             "name": "organizerId",
             "description": "ID of the organizer of the event of the check-in.",
-            "required": true
+            "required": true,
+            "explode": true
           },
           {
             "schema": {
@@ -8281,7 +8283,8 @@
             },
             "in": "query",
             "name": "organizerId",
-            "description": "ID of the organizer where the reward was redeemed."
+            "description": "ID of the organizer where the reward was redeemed.",
+            "explode": true
           },
           {
             "schema": {
