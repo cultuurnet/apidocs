@@ -13,5 +13,5 @@ Retrieve all the events where the birthdateRange falls within 1st of January 202
 or the `typicalAgeRange` falls within the birthdateRange at the moment the query is executed.
 
 ```http
-GET /events/?birthdateRange=2020-01-01 TO 2020-12-31
+GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-12-31
 ```
