@@ -1790,15 +1790,25 @@
         "name": "allAges",
         "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
       },
-      "birthdateRange": {
+      "birthdateRangeFrom": {
         "schema": {
           "type": "string",
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}\\.\\.\\d{4}-\\d{2}-\\d{2}$",
-          "example": "2020-01-01..2020-12-31"
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2020-01-01"
         },
         "in": "query",
-        "name": "birthdateRange",
-        "description": "Returns only events targeted at people born within the given range. Formatted as two ISO 8601 dates (lower & upper bound) separated by `..`, e.g. `2020-01-01..2020-12-31`. Supports commas for  Events whose `typicalAgeRange` (combined with the current date) overlaps the supplied birthdate range are also included. Accepts multiple comma-separated values to return results that have one of the given birthdate ranges."
+        "name": "birthdateRangeFrom",
+        "description": "Returns only events targeted at people born on or after the given date. Formatted as one ISO 8601 date."
+      },
+      "birthdateRangeTo": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2020-12-31"
+        },
+        "in": "query",
+        "name": "birthdateRangeTo",
+        "description": "Returns only events targeted at people born before the given date. Formatted as one ISO 8601 date"
       },
       "audienceType": {
         "schema": {
