@@ -3783,7 +3783,7 @@
                           "name": "Ledenkaart sport"
                         },
                         "status": "ACTIVE",
-                        "endDate": "2026-08-24T21:59:59Z",
+                        "endDate": "2026-08-24",
                         "renewable": true
                       },
                       {
@@ -3800,7 +3800,7 @@
                           "name": "Medewerker XYZ"
                         },
                         "status": "EXPIRED",
-                        "endDate": "2024-08-24T21:59:59Z",
+                        "endDate": "2024-08-24",
                         "renewable": true
                       }
                     ]
@@ -3914,7 +3914,7 @@
                     "association": {
                       "id": "e8386a24-2218-4269-8b65-4de46be07991"
                     },
-                    "endDate": "2026-08-24T21:59:59Z"
+                    "endDate": "2026-08-24"
                   }
                 }
               }
@@ -13581,7 +13581,7 @@
             "x-stoplight": {
               "id": "eradjp82wpqv0"
             },
-            "format": "date-time",
+            "format": "date",
             "description": "End date of the membership. This field is available in responses if status is `ACTIVE` or `EXPIRED`. This field is required in requests for association with a `CUSTOM` endDateType."
           },
           "renewable": {
@@ -13597,7 +13597,7 @@
             "x-stoplight": {
               "id": "lxwcvxz2cbqrz"
             },
-            "format": "date-time",
+            "format": "date",
             "description": "New end date of the membership in case it is renewed or created. This field can be used to pre-fill the endDate field in a front-end UI. It is only available when: `endDateCalculation` of the association is `CUSTOM`, and the status is `NONE` (new membership) or `renewable` is true (renew membership).",
             "readOnly": true
           }
