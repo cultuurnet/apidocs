@@ -10,7 +10,7 @@ If an event has a `typicalAgeRange` that (combined with the current date) falls 
 
 **Examples**
 
-Retrieve all the events where the birthdateRange falls within 1st of January 2020 to the 31st of December 2020 
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020 (including events whose `typicalAgeRange`, combined with the current date, overlaps that range).
 or the `typicalAgeRange` falls within the birthdateRange at the moment the query is executed.
 
 ```http
