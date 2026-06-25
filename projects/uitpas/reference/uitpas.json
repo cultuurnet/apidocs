@@ -3258,7 +3258,7 @@
         },
         {
           "schema": {
-            "type": "string"
+            "type": "integer"
           },
           "name": "cardSystemId",
           "in": "path",
@@ -3316,7 +3316,20 @@
               "schema": {
                 "$ref": "#/components/schemas/MembershipRequest"
               },
-              "examples": {}
+              "examples": {
+                "Example": {
+                  "value": {
+                    "cardType": "NFC_CARD",
+                    "uitpasNumber": "1234567890123",
+                    "socialTariff": {
+                      "socialTariffEndDate": "2027-04-30"
+                    },
+                    "registrationOrganizer": {
+                      "id": "abc12345"
+                    }
+                  }
+                }
+              }
             }
           },
           "description": "Association membership request"
@@ -3372,6 +3385,67 @@
                     "type",
                     "addressChangeRequired"
                   ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "type": "NOT_POSSIBLE",
+                      "addressChangeRequired": false                      
+                    }
+                  },
+                  "Example 2": {
+                    "value": {
+                      "type": "NEW_MEMBERSHIP",
+                      "socialTariffEndDate": "2027-04-30",
+                      "addressChangeRequired": false
+                    }
+                  },
+                  "Example 3": {
+                    "value": {
+                      "type": "REPLACE_MEMBERSHIP",
+                      "socialTariffEndDate": "2027-04-30",
+                      "addressChangeRequired": true,
+                      "replacedMembership": {
+                        "cardSystem": {
+                          "id": 1,
+                          "name": "UiTPAS Dender",
+                          "branding": {
+                            "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                            "primaryColor": "rgba(0,0,0,1.0)",
+                            "secondaryColor": "rgba(97,166,14,1.0)"
+                          },
+                          "links": {
+                            "website": "https://www.uitpas.be"
+                          },
+                          "cities": [
+                            {
+                              "postalCode": "9300",
+                              "name": "Aalst"
+                            },
+                            {
+                              "postalCode": "9400",
+                              "name": "Ninove"
+                            }
+                          ],
+                          "permanent": true
+                        },
+                        "uitpasNumber": "00000009007",
+                        "currentCard": {
+                          "uitpasNumber": "00000009007",
+                          "cardType": "NFC_CARD",
+                          "status": "ACTIVE"
+                        },
+                        "status": "ACTIVE",
+                        "socialTariff": {
+                          "status": "ACTIVE",
+                          "endDate": "2019-08-24T14:15:22Z",
+                          "inGracePeriod": true,
+                          "suspendedUntilDate": "2019-08-24T14:15:22Z",
+                          "expired": true
+                        }                                              
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -3413,6 +3487,15 @@
             "in": "query",
             "name": "socialTariff",
             "description": "New membership with social tariff",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Organizer that would perform the create membership",
             "required": true
           }
         ]
@@ -13157,8 +13240,15 @@
               "id": "rhuyzfbchz0n4"
             },
             "description": "Voucher for price reduction of the new membership."
+          },
+          "registrationOrganizer": {
+            "$ref": "#/components/schemas/Organizer"
           }
-        }
+        },
+        "required": [
+          "cardType",
+          "registrationOrganizer"
+        ]
       }
     },
     "securitySchemes": {
