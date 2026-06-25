@@ -2828,6 +2828,30 @@
               "type": "string"
             },
             "in": "query",
+            "name": "email",
+            "description": "Email of a passholder to look up. Wildcards * allowed."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address.street",
+            "description": "Street address of a passholder to look up. Wildcards * allowed."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "address.city",
+            "description": "City of a passholder to look up. Wildcards * allowed."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
             "name": "schoolId",
             "description": "Organizer ID of a school, to only return passholders linked to a specific school. Use `*` to return passholders that are linked to any school. Note: Only used in very specific cases for educational integrations."
           },
