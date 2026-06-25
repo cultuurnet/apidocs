@@ -3390,7 +3390,7 @@
                   "Example 1": {
                     "value": {
                       "type": "NOT_POSSIBLE",
-                      "addressChangeRequired": false                      
+                      "addressChangeRequired": false
                     }
                   },
                   "Example 2": {
@@ -3442,13 +3442,16 @@
                           "inGracePeriod": true,
                           "suspendedUntilDate": "2019-08-24T14:15:22Z",
                           "expired": true
-                        }                                              
+                        }
                       }
                     }
                   }
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/passholder-new-membership-error"
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
