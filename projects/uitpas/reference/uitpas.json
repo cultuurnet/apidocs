@@ -675,7 +675,7 @@
                               "postalCode": "9300",
                               "city": "Aalst"
                             },
-                            "creationDate": "2012-08-24T14:15:22Z",
+                            "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
                               "name": "Example UiTPAS Organizer"
@@ -712,7 +712,7 @@
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
-                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "endDate": "2022-08-24T14:15:22+00:00",
                                   "inGracePeriod": false,
                                   "expired": false
                                 }
@@ -743,7 +743,7 @@
                               "postalCode": "9300",
                               "city": "Aalst"
                             },
-                            "creationDate": "2012-08-24T14:15:22Z",
+                            "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
                               "name": "Example UiTPAS Organizer"
@@ -780,7 +780,7 @@
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
-                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "endDate": "2022-08-24T14:15:22+00:00",
                                   "inGracePeriod": false,
                                   "expired": false
                                 }
@@ -903,7 +903,7 @@
                           "postalCode": "9300",
                           "city": "Aalst"
                         },
-                        "creationDate": "2012-08-24T14:15:22Z",
+                        "creationDate": "2012-08-24T14:15:22+00:00",
                         "registrationOrganizer": {
                           "id": "1234",
                           "name": "Example UiTPAS Organizer"
@@ -944,7 +944,7 @@
                             "status": "ACTIVE",
                             "socialTariff": {
                               "status": "ACTIVE",
-                              "endDate": "2022-08-24T14:15:22Z",
+                              "endDate": "2022-08-24T14:15:22+00:00",
                               "inGracePeriod": false,
                               "expired": false
                             }
@@ -1058,7 +1058,7 @@
                               "postalCode": "9300",
                               "city": "Aalst"
                             },
-                            "creationDate": "2012-08-24T14:15:22Z",
+                            "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
                               "name": "Example UiTPAS Organizer"
@@ -1099,7 +1099,7 @@
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
-                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "endDate": "2022-08-24T14:15:22+00:00",
                                   "inGracePeriod": false,
                                   "expired": false
                                 }
@@ -1123,7 +1123,7 @@
                               "postalCode": "9300",
                               "city": "Aalst"
                             },
-                            "creationDate": "2012-08-24T14:15:22Z",
+                            "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
                               "name": "Example UiTPAS Organizer"
@@ -1164,7 +1164,7 @@
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
-                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "endDate": "2022-08-24T14:15:22+00:00",
                                   "inGracePeriod": false,
                                   "expired": false
                                 }
@@ -1188,7 +1188,7 @@
                               "postalCode": "9300",
                               "city": "Aalst"
                             },
-                            "creationDate": "2012-08-24T14:15:22Z",
+                            "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
                               "name": "Example UiTPAS Organizer"
@@ -1229,7 +1229,7 @@
                                 "status": "ACTIVE",
                                 "socialTariff": {
                                   "status": "ACTIVE",
-                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "endDate": "2022-08-24T14:15:22+00:00",
                                   "inGracePeriod": false,
                                   "expired": false
                                 }
@@ -2704,7 +2704,7 @@
                             "postalCode": "9300",
                             "city": "Aalst"
                           },
-                          "creationDate": "2012-08-24T14:15:22Z",
+                          "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
                             "name": "Example UiTPAS Organizer"
@@ -2741,7 +2741,7 @@
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
-                                "endDate": "2022-08-24T14:15:22Z",
+                                "endDate": "2022-08-24T14:15:22+00:00",
                                 "inGracePeriod": false,
                                 "expired": false
                               }
@@ -2931,7 +2931,7 @@
                         "postalCode": "9300",
                         "city": "Aalst"
                       },
-                      "creationDate": "2012-08-24T14:15:22Z",
+                      "creationDate": "2012-08-24T14:15:22+00:00",
                       "registrationOrganizer": {
                         "id": "1234",
                         "name": "Example UiTPAS Organizer"
@@ -2968,7 +2968,7 @@
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
-                            "endDate": "2022-08-24T14:15:22Z",
+                            "endDate": "2022-08-24T14:15:22+00:00",
                             "inGracePeriod": false,
                             "expired": false
                           }
@@ -3086,10 +3086,10 @@
                           "uitpasNumber": "0900000045410",
                           "cardStatus": "ACTIVE",
                           "email": "testgrouppass@example.com",
-                          "creationDate": "2019-08-24T14:15:22Z",
+                          "creationDate": "2019-08-24T14:15:22+00:00",
                           "socialTariff": {
                             "status": "ACTIVE",
-                            "endDate": "2024-12-31T01:00:00Z",
+                            "endDate": "2024-12-31T01:00:00+00:00",
                             "totalTicketsPerYear": 20,
                             "availableTickets": 9
                           },
@@ -3218,10 +3218,10 @@
                       "uitpasNumber": "0900000045410",
                       "cardStatus": "ACTIVE",
                       "email": "testgrouppass@example.com",
-                      "creationDate": "2019-08-24T14:15:22Z",
+                      "creationDate": "2019-08-24T14:15:22+00:00",
                       "socialTariff": {
                         "status": "ACTIVE",
-                        "endDate": "2024-12-31T01:00:00Z",
+                        "endDate": "2024-12-31T01:00:00+00:00",
                         "totalTicketsPerYear": 20,
                         "availableTickets": 9
                       },
@@ -3341,8 +3341,8 @@
                           "description": "Gratis naar de film omschrijving"
                         },
                         "validityPeriod": {
-                          "begin": "2026-01-31T23:00:00Z",
-                          "end": "2026-06-30T22:00:00Z"
+                          "begin": "2026-01-31T23:00:00+00:00",
+                          "end": "2026-06-30T22:00:00+00:00"
                         },
                         "status": "ACTIVE",
                         "remaining": {
@@ -4047,8 +4047,8 @@
                           "description": "Gratis naar de film omschrijving"
                         },
                         "validityPeriod": {
-                          "begin": "2026-01-31T23:00:00Z",
-                          "end": "2026-06-30T22:00:00Z"
+                          "begin": "2026-01-31T23:00:00+00:00",
+                          "end": "2026-06-30T22:00:00+00:00"
                         },
                         "status": "ACTIVE",
                         "remaining": {
@@ -4739,7 +4739,7 @@
                         "postalCode": "9300",
                         "city": "Aalst"
                       },
-                      "creationDate": "2012-08-24T14:15:22Z",
+                      "creationDate": "2012-08-24T14:15:22+00:00",
                       "registrationOrganizer": {
                         "id": "1234",
                         "name": "Example UiTPAS Organizer"
@@ -4780,7 +4780,7 @@
                           "status": "ACTIVE",
                           "socialTariff": {
                             "status": "ACTIVE",
-                            "endDate": "2022-08-24T14:15:22Z",
+                            "endDate": "2022-08-24T14:15:22+00:00",
                             "inGracePeriod": false,
                             "expired": false
                           }
@@ -5095,19 +5095,19 @@
                         {
                           "title": "Gratis koffie",
                           "location": "Bibliotheek Oostende",
-                          "creationDate": "2019-08-24T15:11:00Z",
+                          "creationDate": "2019-08-24T15:11:00+00:00",
                           "points": -4
                         },
                         {
                           "title": "Bezoek aan de bib",
                           "location": "Bibliotheek Oostende",
-                          "creationDate": "2019-08-24T14:17:00Z",
+                          "creationDate": "2019-08-24T14:17:00+00:00",
                           "points": 1
                         },
                         {
                           "title": "Welkom bij UiTPAS",
                           "location": "Bibliotheek Oostende",
-                          "creationDate": "2019-08-24T14:15:00Z",
+                          "creationDate": "2019-08-24T14:15:00+00:00",
                           "points": 3
                         }
                       ]
@@ -5195,7 +5195,7 @@
                             "postalCode": "9300",
                             "city": "Aalst"
                           },
-                          "creationDate": "2012-08-24T14:15:22Z",
+                          "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
                             "name": "Example UiTPAS Organizer"
@@ -5236,20 +5236,20 @@
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
-                                "endDate": "2022-08-24T14:15:22Z",
+                                "endDate": "2022-08-24T14:15:22+00:00",
                                 "inGracePeriod": false,
                                 "expired": false
                               }
                             }
                           ]
                         },
-                        "creationDate": "2019-08-24T14:15:22Z",
+                        "creationDate": "2019-08-24T14:15:22+00:00",
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
                         "mainFamilyMember": true
                       },
                       {
                         "uitpasNumber": "0900000067513",
-                        "creationDate": "2023-08-24T14:15:22Z",
+                        "creationDate": "2023-08-24T14:15:22+00:00",
                         "passholder": {
                           "id": "2be0fb53-0695-405b-ac09-deafead650af",
                           "name": "Peeters",
@@ -5261,7 +5261,7 @@
                             "postalCode": "9300",
                             "city": "Aalst"
                           },
-                          "creationDate": "2012-08-24T14:15:22Z",
+                          "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
                             "name": "Example UiTPAS Organizer"
@@ -5302,7 +5302,7 @@
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
-                                "endDate": "2022-08-24T14:15:22Z",
+                                "endDate": "2022-08-24T14:15:22+00:00",
                                 "inGracePeriod": false,
                                 "expired": false
                               }
@@ -5314,7 +5314,7 @@
                       },
                       {
                         "uitpasNumber": "0900000036112",
-                        "creationDate": "2023-08-24T14:18:22Z",
+                        "creationDate": "2023-08-24T14:18:22+00:00",
                         "passholder": {
                           "id": "3be0fb53-0695-405b-ac09-deafead650af",
                           "name": "Peeters",
@@ -5326,7 +5326,7 @@
                             "postalCode": "9300",
                             "city": "Aalst"
                           },
-                          "creationDate": "2012-08-24T14:15:22Z",
+                          "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
                             "name": "Example UiTPAS Organizer"
@@ -5367,7 +5367,7 @@
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
-                                "endDate": "2022-08-24T14:15:22Z",
+                                "endDate": "2022-08-24T14:15:22+00:00",
                                 "inGracePeriod": false,
                                 "expired": false
                               }
@@ -5396,7 +5396,7 @@
                             "postalCode": "9300",
                             "city": "Aalst"
                           },
-                          "creationDate": "2012-08-24T14:15:22Z",
+                          "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
                             "name": "Example UiTPAS Organizer"
@@ -5437,14 +5437,14 @@
                               "status": "ACTIVE",
                               "socialTariff": {
                                 "status": "ACTIVE",
-                                "endDate": "2022-08-24T14:15:22Z",
+                                "endDate": "2022-08-24T14:15:22+00:00",
                                 "inGracePeriod": false,
                                 "expired": false
                               }
                             }
                           ]
                         },
-                        "creationDate": "2019-08-24T14:15:22Z",
+                        "creationDate": "2019-08-24T14:15:22+00:00",
                         "icon": "https://www.uitpas.be/_nuxt/img/icon1.png",
                         "mainFamilyMember": true
                       }
@@ -5762,7 +5762,7 @@
                         "firstName": "Marc",
                         "passholderId": "55a96a3f-a570-4d4f-8580-fe00caeafcf0",
                         "email": "marc.peeters@uitpas.be",
-                        "memberSince": "2023-08-24T14:15:22Z"
+                        "memberSince": "2023-08-24T14:15:22+00:00"
                       }
                     ]
                   }
@@ -7034,16 +7034,16 @@
                             "https://www.uitpas.be/default-picture-for-ticketsale-rewards.png"
                           ],
                           "publicationPeriod": {
-                            "begin": "2021-08-24T14:15:22Z",
-                            "end": "2022-08-24T14:15:22Z"
+                            "begin": "2021-08-24T14:15:22+00:00",
+                            "end": "2022-08-24T14:15:22+00:00"
                           },
                           "redeemPeriod": {
-                            "begin": "2021-08-24T14:15:22Z",
-                            "end": "2022-08-24T14:15:22Z"
+                            "begin": "2021-08-24T14:15:22+00:00",
+                            "end": "2022-08-24T14:15:22+00:00"
                           },
                           "grantingPeriod": {
-                            "begin": "2021-08-24T14:15:22Z",
-                            "end": "2022-08-24T14:15:22Z"
+                            "begin": "2021-08-24T14:15:22+00:00",
+                            "end": "2022-08-24T14:15:22+00:00"
                           },
                           "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
                           "inSpotlight": false,
@@ -7501,12 +7501,12 @@
                         "https://www.uitpas.be/default-picture-for-points-rewards.png"
                       ],
                       "publicationPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "redeemPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "moreInfoURL": "https://example.org/more-info-about-this-reward",
                       "inSpotlight": false,
@@ -7537,16 +7537,16 @@
                         "https://www.uitpas.be/default-picture-for-welcome-rewards.png"
                       ],
                       "publicationPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "redeemPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "grantingPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "inSpotlight": false,
                       "forKids": false,
@@ -7604,7 +7604,7 @@
                     ],
                     "promotionalDescription": "this is the mandatory description",
                     "publicationPeriod": {
-                      "begin": "2021-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22+00:00"
                     },
                     "moreInfoURL": "https://example.org/more-info-about-this-reward",
                     "points": 10
@@ -7616,7 +7616,7 @@
                     "type": "WELCOME",
                     "promotionalDescription": "this is the mandatory description",
                     "publicationPeriod": {
-                      "begin": "2021-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22+00:00"
                     }
                   }
                 }
@@ -7661,16 +7661,16 @@
                         "https://www.uitpas.be/default-picture-for-ticketsale-rewards.png"
                       ],
                       "publicationPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "redeemPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "grantingPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "moreInfoURL": "https://example.org/more-info-about-this-reward",
                       "inSpotlight": false,
@@ -7758,16 +7758,16 @@
                         "https://www.uitpas.be/default-picture-for-ticketsale-rewards.png"
                       ],
                       "publicationPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "redeemPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "grantingPeriod": {
-                        "begin": "2021-08-24T14:15:22Z",
-                        "end": "2022-08-24T14:15:22Z"
+                        "begin": "2021-08-24T14:15:22+00:00",
+                        "end": "2022-08-24T14:15:22+00:00"
                       },
                       "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
                       "inSpotlight": false,
@@ -7838,16 +7838,16 @@
                     "promotionalDescription": "this is the mandatory description",
                     "practicalInfo": "this is an optional extra description",
                     "publicationPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22+00:00",
+                      "end": "2022-08-24T14:15:22+00:00"
                     },
                     "redeemPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22+00:00",
+                      "end": "2022-08-24T14:15:22+00:00"
                     },
                     "grantingPeriod": {
-                      "begin": "2021-08-24T14:15:22Z",
-                      "end": "2022-08-24T14:15:22Z"
+                      "begin": "2021-08-24T14:15:22+00:00",
+                      "end": "2022-08-24T14:15:22+00:00"
                     },
                     "moreInfoURL": "https://example.org/more-info-about-this-reward",
                     "points": 10
@@ -8008,12 +8008,12 @@
                         "type": "POINTS",
                         "promotionalDescription": "This is a description",
                         "publicationPeriod": {
-                          "begin": "2019-08-24T14:15:22Z",
-                          "end": "2019-08-24T14:15:22Z"
+                          "begin": "2019-08-24T14:15:22+00:00",
+                          "end": "2019-08-24T14:15:22+00:00"
                         },
                         "grantingPeriod": {
-                          "begin": "2019-08-24T14:15:22Z",
-                          "end": "2019-08-24T14:15:22Z"
+                          "begin": "2019-08-24T14:15:22+00:00",
+                          "end": "2019-08-24T14:15:22+00:00"
                         },
                         "points": 0,
                         "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
@@ -8036,8 +8036,8 @@
                           "https://www.uitpas.be/default-picture-for-ticketsale-rewards.png"
                         ],
                         "redeemPeriod": {
-                          "begin": "2019-08-24T14:15:22Z",
-                          "end": "2019-08-24T14:15:22Z"
+                          "begin": "2019-08-24T14:15:22+00:00",
+                          "end": "2019-08-24T14:15:22+00:00"
                         },
                         "categories": [
                           "Eten en drinken"
@@ -8046,7 +8046,7 @@
                         "sport": true,
                         "online": false
                       },
-                      "redeemDate": "2019-08-24T14:15:22Z",
+                      "redeemDate": "2019-08-24T14:15:22+00:00",
                       "redeemInfo": {
                         "text": "Info on how to use the redeem code",
                         "link": "https://example.com/redeem-your-reward-here",
@@ -8156,12 +8156,12 @@
                             "type": "POINTS",
                             "promotionalDescription": "This is a description",
                             "publicationPeriod": {
-                              "begin": "2019-08-24T14:15:22Z",
-                              "end": "2019-08-24T14:15:22Z"
+                              "begin": "2019-08-24T14:15:22+00:00",
+                              "end": "2019-08-24T14:15:22+00:00"
                             },
                             "grantingPeriod": {
-                              "begin": "2019-08-24T14:15:22Z",
-                              "end": "2019-08-24T14:15:22Z"
+                              "begin": "2019-08-24T14:15:22+00:00",
+                              "end": "2019-08-24T14:15:22+00:00"
                             },
                             "points": 0,
                             "moreInfoURL": "https://www.uitpas.be/reward/example-more-info",
@@ -8184,8 +8184,8 @@
                               "https://www.uitpas.be/default-picture-for-ticketsale-rewards.png"
                             ],
                             "redeemPeriod": {
-                              "begin": "2019-08-24T14:15:22Z",
-                              "end": "2019-08-24T14:15:22Z"
+                              "begin": "2019-08-24T14:15:22+00:00",
+                              "end": "2019-08-24T14:15:22+00:00"
                             },
                             "categories": [
                               "Eten en drinken"
@@ -8195,7 +8195,7 @@
                             "online": true,
                             "lastChance": true
                           },
-                          "redeemDate": "2019-08-24T14:15:22Z",
+                          "redeemDate": "2019-08-24T14:15:22+00:00",
                           "redeemInfo": {
                             "text": "Info on how to use the redeem code",
                             "link": "https://example.com/redeem-your-reward-here",
@@ -10369,7 +10369,7 @@
                         "hasSocialTariff": true,
                         "postalCode": "1000",
                         "idToken": "Cg6TFeFVev532XVTmZ8ywPhxGKCQfMCh.ePq3A572bCnMU8WoSfremjK6M8g2Cojp.U4unWkSZZdF5dwswwXZvXG662E9LXdda",
-                        "idTokenExpiresAt": "2025-04-02T14:15:22Z"
+                        "idTokenExpiresAt": "2025-04-02T14:15:22+00:00"
                       },
                       "children": [
                         {
@@ -10380,7 +10380,7 @@
                           "uitpasNumber": "0930012345615",
                           "postalCode": "1000",
                           "idToken": "4J8Vv7LBz6McoCVeUB4SeoD75NActfij.TJkFwJqS8uYdKVDjRzdkYypxMjjZNCJB.zsgsbjZUu9o48PGs9LJYHvxDgyevF4xs",
-                          "idTokenExpiresAt": "2025-04-02T14:15:22Z"
+                          "idTokenExpiresAt": "2025-04-02T14:15:22+00:00"
                         }
                       ]
                     }
@@ -11513,10 +11513,10 @@
             "name": "Test groep",
             "uitpasNumber": "0900000045410",
             "email": "testgrouppass@example.com",
-            "creationDate": "2019-08-24T14:15:22Z",
+            "creationDate": "2019-08-24T14:15:22+00:00",
             "socialTariff": {
               "status": "ACTIVE",
-              "endDate": "2024-12-31T01:00:00Z",
+              "endDate": "2024-12-31T01:00:00+00:00",
               "totalTicketsPerYear": 20,
               "availableTickets": 9
             },
@@ -12346,8 +12346,8 @@
         "title": "Period",
         "type": "object",
         "example": {
-          "begin": "2019-08-24T14:15:22Z",
-          "end": "2019-08-24T14:15:22Z"
+          "begin": "2019-08-24T14:15:22+00:00",
+          "end": "2019-08-24T14:15:22+00:00"
         },
         "x-tags": [
           "Models"
