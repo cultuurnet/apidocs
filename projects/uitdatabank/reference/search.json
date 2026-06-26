@@ -146,6 +146,12 @@
             "$ref": "#/components/parameters/allAges"
           },
           {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
+          },
+          {
             "$ref": "#/components/parameters/audienceType"
           },
           {
@@ -1789,6 +1795,26 @@
         "in": "query",
         "name": "allAges",
         "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
+      },
+      "birthdateRangeFrom": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2020-01-01"
+        },
+        "in": "query",
+        "name": "birthdateRangeFrom",
+        "description": "Returns only events targeted at people born on or after the given date. Formatted as one ISO 8601 date."
+      },
+      "birthdateRangeTo": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2023-01-01"
+        },
+        "in": "query",
+        "name": "birthdateRangeTo",
+        "description": "Returns only events targeted at people born on or before the given date. Formatted as one ISO 8601 date."
       },
       "audienceType": {
         "schema": {

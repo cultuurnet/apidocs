@@ -12,6 +12,12 @@
       },
      {
              "type":"item",
+             "title":"2026",
+             "uri":"docs/uitdatabank/2026.md",
+             "slug":"udb-2026"
+     },
+     {
+             "type":"item",
              "title":"2025",
              "uri":"docs/uitdatabank/2025.md",
              "slug":"udb-2025"

@@ -813,7 +813,7 @@
           }
         },
         "operationId": "get-ticket-sales",
-        "description": "Retrieve ticket sales based on search parameters.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
+        "description": "Retrieve ticket sales based on search parameters. At least one of the following query paramaters is required: `eventId`, `passholderId`. If `passholderId` is specified, then also `organizerId` is required.\n\nThe caller of this request must have `TICKETSALES_SEARCH` permission for the organizer of the given event.\n\nThe `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), and only if the caller of this request has PASSHOLDERS_SEARCH permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -833,14 +833,41 @@
             },
             "in": "query",
             "name": "eventId",
-            "description": "The ID of the UiTdatabank event.",
-            "required": true
+            "description": "Filter ticket sales on this UiTdatabank event."
           },
           {
             "$ref": "#/components/parameters/start"
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "Filter ticket sales on this passholder. Filtering on `organizerId` is required when using this filter."
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter ticket sales for events of this organizer, or events taking place on the location of this organizer.",
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventTitle",
+            "description": "Filter ticket sales on this (partial) UiTdatabank event title."
           }
         ]
       }
@@ -997,6 +1024,332 @@
         },
         "tags": [
           "Checkins"
+        ]
+      },
+      "get": {
+        "summary": "Search check-ins",
+        "operationId": "get-checkins",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckinsPaginatedCollection"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 3,
+                      "member": [
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "uitpasNumber": "0560002524314",
+                          "points": 1,
+                          "passholder": {
+                            "id": "8703fee0-29cc-452c-b1af-94ef494d4196",
+                            "name": "Peeters",
+                            "firstName": "Marc",
+                            "inszNumber": "00000009007",
+                            "dateOfBirth": "2000-01-01",
+                            "postalCode": "9300",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            },
+                            "creationDate": "2012-08-24T14:15:22Z",
+                            "registrationOrganizer": {
+                              "id": "1234",
+                              "name": "Example UiTPAS Organizer"
+                            },
+                            "points": 10,
+                            "uitidStatus": "UNREGISTERED",
+                            "uitpasNumber": "0560002524314",
+                            "cardSystemMemberships": [
+                              {
+                                "cardSystem": {
+                                  "id": 1,
+                                  "name": "UiTPAS Dender",
+                                  "branding": {
+                                    "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                                    "primaryColor": "rgba(0,0,0,1.0)",
+                                    "secondaryColor": "rgba(97,166,14,1.0)"
+                                  },
+                                  "links": {
+                                    "website": "https://www.uitpas.be"
+                                  },
+                                  "cities": [
+                                    {
+                                      "postalCode": "9300",
+                                      "name": "Aalst"
+                                    },
+                                    {
+                                      "postalCode": "9400",
+                                      "name": "Ninove"
+                                    }
+                                  ],
+                                  "permanent": true
+                                },
+                                "uitpasNumber": "0560002524314",
+                                "currentCard": {
+                                  "uitpasNumber": "0560002524314",
+                                  "status": "ACTIVE"
+                                },
+                                "status": "ACTIVE",
+                                "socialTariff": {
+                                  "status": "ACTIVE",
+                                  "endDate": "2022-08-24T14:15:22Z",
+                                  "inGracePeriod": false,
+                                  "expired": false
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "description": "Retrieve check-ins based on search parameters.\n\nThe order of check-ins is always newest first.\n\nThe `passholder` property is never included in the response.\n\nThe caller of this method must have `CHECKINS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "Filter on check-ins of this passholder",
+            "required": true
+          },
+          {
+            "$ref": "#/components/parameters/start"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer of the event of the check-in.",
+            "required": true,
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "eventTitle",
+            "description": "Filter checkins on this (partial) UiTdatabank event title."
+          }
+        ],
+        "tags": [
+          "Checkins"
+        ]
+      }
+    },
+    "/checkins/{checkinId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "checkinId",
+          "in": "path",
+          "required": true,
+          "description": "Id of the checkin"
+        }
+      ],
+      "delete": {
+        "summary": "Delete a check-in",
+        "operationId": "delete-checkins-checkinId",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Checkins"
+        ],
+        "description": "Delete a checkin.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
         ]
       }
     },
@@ -1176,13 +1529,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ],
                         "linkedOrganizers": [
@@ -1196,7 +1555,10 @@
                                 "id": "CHECKINS_WRITE",
                                 "label": {
                                   "nl": "Punten sparen"
-                                }
+                                },
+                                "cardSystemIds": [
+                                  1
+                                ]
                               }
                             ]
                           }
@@ -1215,7 +1577,10 @@
                             "id": "ORGANIZERS_SEARCH",
                             "label": {
                               "nl": "Organisators zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -1237,13 +1602,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -1475,13 +1846,19 @@
                             "id": "TARIFFS_READ",
                             "label": {
                               "nl": "Tarieven opvragen"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           },
                           {
                             "id": "TICKETSALES_SEARCH",
                             "label": {
                               "nl": "Ticketsales zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       },
@@ -1495,7 +1872,10 @@
                             "id": "ORGANIZERS_SEARCH",
                             "label": {
                               "nl": "Organisators zoeken"
-                            }
+                            },
+                            "cardSystemIds": [
+                              1
+                            ]
                           }
                         ]
                       }
@@ -2924,6 +3304,123 @@
         }
       ]
     },
+    "/grouppasses/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an grouppass.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of grouppass",
+        "operationId": "get-grouppasses-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_13",
+                          "name": "Gratis naar de film in groep",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 100,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given grouppass.\n\nThe caller of this method must have `GROUPPASS_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Grouppasses"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ],
+              "default": "ACTIVE"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "Filter coupons that are applicable in card systems of this organizer"
+          }
+        ]
+      }
+    },
     "/passholders/{passholderId}": {
       "parameters": [
         {
@@ -3204,7 +3701,15 @@
             }
           },
           "description": "The picture of the passholder in a multipart request body."
-        }
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
       },
       "delete": {
         "summary": "Delete picture of passholder",
@@ -3546,7 +4051,7 @@
                           "name": "Ledenkaart sport"
                         },
                         "status": "ACTIVE",
-                        "endDate": "2026-08-24T21:59:59Z",
+                        "endDate": "2026-08-24",
                         "renewable": true
                       },
                       {
@@ -3563,7 +4068,7 @@
                           "name": "Medewerker XYZ"
                         },
                         "status": "EXPIRED",
-                        "endDate": "2024-08-24T21:59:59Z",
+                        "endDate": "2024-08-24",
                         "renewable": true
                       }
                     ]
@@ -3677,7 +4182,7 @@
                     "association": {
                       "id": "e8386a24-2218-4269-8b65-4de46be07991"
                     },
-                    "endDate": "2026-08-24T21:59:59Z"
+                    "endDate": "2026-08-24"
                   }
                 }
               }
@@ -3767,6 +4272,123 @@
             "name": "organizerId",
             "description": "ID of the organizer.",
             "required": true
+          }
+        ]
+      }
+    },
+    "/passholders/{passholderId}/coupons": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get coupons of passholder",
+        "operationId": "get-passholders-passholderId-coupons",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GrantedCoupon"
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": [
+                      {
+                        "id": 21343,
+                        "coupon": {
+                          "id": "COUPON_12",
+                          "name": "Gratis naar de film",
+                          "description": "Gratis naar de film omschrijving"
+                        },
+                        "validityPeriod": {
+                          "begin": "2026-01-31T23:00:00Z",
+                          "end": "2026-06-30T22:00:00Z"
+                        },
+                        "status": "ACTIVE",
+                        "remaining": {
+                          "volume": 1,
+                          "period": "ABSOLUTE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve coupons of given passholder.\n\nThe caller of this method must have `PASSHOLDER_COUPONS_READ` permission.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "tags": [
+          "Passholders"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "ALL"
+              ],
+              "default": "ACTIVE"
+            },
+            "in": "query",
+            "name": "status",
+            "description": "Status of the granted coupon"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "Filter coupons that are applicable in card systems of this organizer",
+            "name": "organizerId"
           }
         ]
       }
@@ -7871,7 +8493,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Retrieve redeemed rewards for a passholder.\n\nThe caller of this request must have `REWARDS_READ` permission.",
+        "description": "Retrieve redeemed rewards for a passholder.\n\nExactly one of query parameters `uitpasNumber` or `passholderId` is required. If both are specified an error is returned.\n\nThe caller of this request must have `REWARDS_READ` permission.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -7889,9 +8511,8 @@
               "type": "string"
             },
             "in": "query",
-            "required": true,
             "name": "uitpasNumber",
-            "description": "UiTPAS number identifying the passholder."
+            "description": "UiTPAS number identifying the passholder. Cannot be used in combination with `passholderId`"
           },
           {
             "schema": {
@@ -7910,6 +8531,34 @@
           },
           {
             "$ref": "#/components/parameters/limit"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "passholderId",
+            "description": "ID of the passholder. Cannot be used in combination with `uitpasNumber`. `organizerId` is required when using this filter."
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "organizerId",
+            "description": "ID of the organizer where the reward was redeemed.",
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "rewardTitle",
+            "description": "Filter redeemed rewards with this (partial) reward title."
           }
         ]
       }
@@ -10162,6 +10811,14 @@
             "minLength": 1,
             "description": "Id of the event that the ticket sale was for"
           },
+          "eventTitle": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "werwwukp0fgy1"
+            },
+            "description": "Title of the event that the ticket sale was for",
+            "readOnly": true
+          },
           "uitpasNumber": {
             "type": "string",
             "minLength": 1,
@@ -10199,6 +10856,14 @@
             "minLength": 1,
             "description": "Id of the event where the passholder checked in"
           },
+          "eventTitle": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "wh57n4ld630j5"
+            },
+            "description": "Title of the event where the passholder checked in",
+            "readOnly": true
+          },
           "uitpasNumber": {
             "type": "string",
             "minLength": 1,
@@ -10211,12 +10876,12 @@
           },
           "passholder": {
             "description": "Full passholder object of this check-in.",
-            "readOnly": true,
             "allOf": [
               {
                 "$ref": "#/components/schemas/Passholder"
               }
-            ]
+            ],
+            "readOnly": true
           }
         },
         "required": [
@@ -10303,6 +10968,7 @@
           "EVENT_SETTINGS_READ",
           "EVENT_SETTINGS_UPDATE",
           "EVENTS_QR_CHECKINCODE",
+          "CHECKINS_READ",
           "CHECKINS_WRITE",
           "ORGANIZERS_SEARCH",
           "ORGANIZERS_REPORTS",
@@ -10320,6 +10986,8 @@
           "PASSHOLDERS_WRITE_SOCIALTARIFF",
           "PASSHOLDERS_UPDATE",
           "PASSHOLDERS_DELETE",
+          "PASSHOLDER_COUPONS_READ",
+          "GROUPPASS_COUPONS_READ",
           "MEMBERSHIP_PRICES_READ",
           "PASSES_READ",
           "PASSES_INSZNUMBERS_READ",
@@ -10370,6 +11038,14 @@
             "required": [
               "nl"
             ]
+          },
+          "cardSystemIds": {
+            "type": "array",
+            "description": "IDs of the card systems to which this permission applies",
+            "items": {
+              "type": "integer",
+              "readOnly": true
+            }
           }
         },
         "required": [
@@ -10646,6 +11322,30 @@
             "description": "List of association results for this specific (paginated) request.",
             "items": {
               "$ref": "#/components/schemas/Association"
+            }
+          }
+        }
+      },
+      "CheckinsPaginatedCollection": {
+        "title": "CheckinsPaginatedCollection",
+        "x-stoplight": {
+          "id": "bczavdoj5gjvq"
+        },
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Paginated collection object for checkins",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of checkin results"
+          },
+          "member": {
+            "type": "array",
+            "description": "List of checkin results for this specific (paginated) request.",
+            "items": {
+              "$ref": "#/components/schemas/Checkin"
             }
           }
         }
@@ -13150,7 +13850,7 @@
             "x-stoplight": {
               "id": "eradjp82wpqv0"
             },
-            "format": "date-time",
+            "format": "date",
             "description": "End date of the membership. This field is available in responses if status is `ACTIVE` or `EXPIRED`. This field is required in requests for association with a `CUSTOM` endDateType."
           },
           "renewable": {
@@ -13159,6 +13859,15 @@
               "id": "ahns1w7wy66mj"
             },
             "description": "True if this membership can currently be renewed. This fields is always available in responses.",
+            "readOnly": true
+          },
+          "newEndDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "lxwcvxz2cbqrz"
+            },
+            "format": "date",
+            "description": "New end date of the membership in case it is renewed or created. This field can be used to pre-fill the endDate field in a front-end UI. It is only available when: `endDateCalculation` of the association is `CUSTOM`, and the status is `NONE` (new membership) or `renewable` is true (renew membership).",
             "readOnly": true
           }
         },
@@ -13259,6 +13968,135 @@
           "cardType",
           "registrationOrganizer"
         ]
+      },
+      "GrantedCoupon": {
+        "type": "object",
+        "x-stoplight": {
+          "id": "6952809026004"
+        },
+        "properties": {
+          "id": {
+            "type": "integer",
+            "x-stoplight": {
+              "id": "gy3cnzbjsos7m"
+            },
+            "description": "ID of this granted coupon"
+          },
+          "coupon": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "7uhshingout9h"
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "description": "The coupon of this granted coupon",
+            "properties": {
+              "id": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "9lc2aar0ke5mt"
+                },
+                "description": "ID of the coupon"
+              },
+              "name": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "ju827c3hyobo6"
+                },
+                "description": "Name of the coupon"
+              },
+              "description": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "0m1k758km1di4"
+                },
+                "description": "Description of the coupon"
+              }
+            }
+          },
+          "validityPeriod": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "d7x4iwrrak9tm"
+            },
+            "description": "Validatity period of this coupon",
+            "properties": {
+              "begin": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "hzer6iazpfcpd"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid from this date"
+              },
+              "end": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "p62zqlsppr3gg"
+                },
+                "format": "date-time",
+                "description": "Coupon is valid until this date. After this date, this coupon will appear as status `EXPIRED`"
+              }
+            },
+            "required": [
+              "begin"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "pua8h5vd8410c"
+            },
+            "enum": [
+              "ACTIVE",
+              "EXPIRED"
+            ],
+            "description": "Status of this granted coupon"
+          },
+          "remaining": {
+            "type": "object",
+            "x-stoplight": {
+              "id": "wp3luo60wgz57"
+            },
+            "description": "Remaining ticket sales for this granted coupon (is applicable)",
+            "properties": {
+              "volume": {
+                "type": "integer",
+                "x-stoplight": {
+                  "id": "tmfnerf0ntoor"
+                },
+                "description": "Volume of the remaining ticketsales"
+              },
+              "period": {
+                "type": "string",
+                "x-stoplight": {
+                  "id": "a0yelgv8k0gy1"
+                },
+                "enum": [
+                  "ABSOLUTE",
+                  "DAY",
+                  "WEEK",
+                  "MONTH",
+                  "QUARTER",
+                  "YEAR"
+                ],
+                "description": "Period of the remaining ticketsales"
+              }
+            },
+            "required": [
+              "volume",
+              "period"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "coupon",
+          "status"
+        ],
+        "title": "GrantedCoupon"
       }
     },
     "securitySchemes": {
