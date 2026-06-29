@@ -621,6 +621,7 @@
                       "member": [
                         {
                           "id": "21345",
+                          "creationDate": "2026-08-24T12:57:02Z",
                           "tariff": {
                             "id": "COUPON1234",
                             "name": "Cultuurbon 6 euro",
@@ -634,6 +635,7 @@
                         },
                         {
                           "id": "21346",
+                          "creationDate": "2026-08-24T13:45:59Z",
                           "tariff": {
                             "id": "COUPON1234",
                             "name": "Cultuurbon 6 euro",
@@ -654,6 +656,7 @@
                       "member": [
                         {
                           "id": "21345",
+                          "creationDate": "2026-08-24T12:57:02Z",
                           "tariff": {
                             "id": "COUPON1234",
                             "name": "Cultuurbon 6 euro",
@@ -722,6 +725,7 @@
                         },
                         {
                           "id": "21346",
+                          "creationDate": "2026-08-21T12:12:02Z",
                           "tariff": {
                             "id": "COUPON1234",
                             "name": "Cultuurbon 6 euro",
@@ -1044,6 +1048,7 @@
                       "member": [
                         {
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "creationDate": "2026-08-24T12:57:02Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
                           "uitpasNumber": "0560002524314",
                           "points": 1,
@@ -1109,6 +1114,7 @@
                         },
                         {
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "creationDate": "2026-08-24T12:57:03Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
                           "uitpasNumber": "0560002524314",
                           "points": 1,
@@ -1174,6 +1180,7 @@
                         },
                         {
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
+                          "creationDate": "2026-08-24T12:57:04Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
                           "uitpasNumber": "0560002524314",
                           "points": 1,
@@ -10814,6 +10821,15 @@
             "description": "Unique id of a registered ticket sale. Not required for new ticket sale registrations",
             "readOnly": true
           },
+          "creationDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "jptbuymhglbl0"
+            },
+            "format": "date-time",
+            "description": "Creation date of the ticket sale. Always available in response.",
+            "readOnly": true
+          },
           "regularPrice": {
             "type": "number",
             "description": "Regular price of the ticket before UiTPAS discounts"
@@ -10872,7 +10888,16 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique id of a check-in. Not required for check-in creation.",
+            "description": "Unique id of the check-in. Not required for check-in creation.",
+            "readOnly": true
+          },
+          "creationDate": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "6pvyk6ulvstki"
+            },
+            "description": "Creation date of the check-in. Always available in response.",
+            "format": "date-time",
             "readOnly": true
           },
           "eventId": {
