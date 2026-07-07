@@ -52,6 +52,8 @@ The booking availability of an event can include an optional `capacity` property
 
 All properties (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
 
+> **Capacity is only supported for events with calendarType `single` or `multiple`.** These events have concrete dates (`subEvent`), so a total and remaining number of seats/tickets is meaningful per date. Events with calendarType `periodic` or `permanent` do **not** support `capacity` — see [calendarType periodic/permanent](#calendartype-periodicpermanent) below. (For places, which always have calendarType `periodic` or `permanent`, capacity works differently — see the [place booking availability guide](../places/booking-availability.md).)
+
 When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property, except when sending `remainingCapacity`, in which case this field will overwrite the availibility type on each `subEvent`..
 
 For example on an event with multiple dates:
@@ -166,3 +168,5 @@ Events with calendarType `periodic` and `permanent` span a larger period and hav
 Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
 
 It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
+
+For the same reason, **`capacity` is not supported for events with calendarType `periodic` or `permanent`**. Capacity can only be set on events with calendarType `single` or `multiple` (per `subEvent`, as described above).

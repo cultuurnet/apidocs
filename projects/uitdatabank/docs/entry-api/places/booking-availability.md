@@ -8,6 +8,8 @@ However, you can optionally report the total capacity of a place using the `capa
 |------------|---|---|
 | `capacity` | integer ≥ 0 | Total number of seats or tickets at this place |
 
+Places always have calendarType `periodic` or `permanent` (see [calendar info](../shared/calendar-info.md)), and `capacity` can be set for both. Unlike events, a place has no `subEvent` dates, so `capacity` is reported once at the top level for the place as a whole. (For events, capacity works only for calendarType `single` or `multiple` — see the [event booking availability guide](../events/booking-availability.md).)
+
 ## Example
 
 ```json
