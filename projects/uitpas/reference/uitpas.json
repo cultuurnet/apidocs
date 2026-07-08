@@ -11632,6 +11632,15 @@
             "description": "Only used in passholder creation using a `registrationUitpasNumber` with social tariff. Or when updating a passholder with social tariff. During registration, if no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
             "format": "date",
             "writeOnly": true
+          },
+          "registrationPicture": {
+            "type": "string",
+            "description": "Base64 encoded string of the picture of this passholder. Only used in passholder creation.",
+            "format": "byte",
+            "x-stoplight": {
+              "id": "ikgxjklji2guj"
+            },
+            "writeOnly": true
           }
         },
         "required": [
