@@ -11262,9 +11262,8 @@
           },
           "address": {
             "type": "object",
-            "description": "Address of this organizer",
+            "description": "Address of this organizer. This property is alway available in responses.",
             "required": [
-              "postalCode",
               "city"
             ],
             "properties": {
