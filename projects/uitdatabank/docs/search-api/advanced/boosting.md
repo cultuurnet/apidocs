@@ -8,8 +8,6 @@ You can achieve this by applying a boost factor to specific filters in [advanced
 
 > Boosting does not change which search results you see, but it does change the sorting of these results. By default, search results are sorted by a score that measures the relevance of a search result. A boosting query ensures that certain hits within a result set receive a higher score and therefore rank higher.
 
-## Positive boosting
-
 You can use the boost operator `^` in advanced queries to make specific matches more important than others.
 
 For example, to get all events that have either the `lorem` or `ipsum` labels but show the ones with the `lorem` label first:
@@ -43,26 +41,6 @@ GET /events/?q=[...] AND ((labels:lorem^3 OR (NOT labels:lorem))) OR ((labels:ip
 ```
 
 *This query matches both events that have the `lorem` and `ipsum` label, and events without those labels. It positvely boosts events with the label `lorem` and `ipsum`, but events with the label `lorem` will appear higher.*
-
-## Negative boosting
-
-You can influence the score or results negatively by using a boost value that is between `0` and `1`.
-
-For example:
-
-```http
-GET /events/?q=(labels:lorem^0.5) OR (NOT labels:lorem)
-```
-
-*This query matches both events that have the `lorem` label and boosts those negatively, and events without the `lorem` label. Events without the `lorem` label are not boosted in this case.*
-
-Alternatively, you can positively boost the results that do not match a specific filter. For example, you can boost all events that do not have the label `lorem`:
-
-```http
-GET /events/?q=(labels:lorem) OR (NOT labels:lorem)^10
-```
-
-*This query matches both events that have the `lorem` label, and events without the `lorem` label and positively boosts the latter ones.*
 
 ## Restrictions
 
