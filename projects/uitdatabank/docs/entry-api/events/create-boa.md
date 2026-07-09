@@ -20,7 +20,6 @@ To ensure parents and children easily find the right activities, data quality is
 | Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
 | Overnight stays | `PATCH /events/{eventId}/subEvents` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
 | Departure places | `PUT /events/{eventId}/departurePlaces` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
-| Booking info | `PATCH /events/{eventId}/subEvents` | Provide [per-date booking contacts](../shared/booking-and-contact-info.md#bookinginfo) on subEvents so parents know where to register for each occurrence. | single, multiple | ❌ |
 
 ## Request body example
 
@@ -53,13 +52,6 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
       "bookingAvailability": {
         "capacity": 30,
         "remainingCapacity": 12
-      },
-      "bookingInfo": {
-        "url": "https://example.com/inschrijven",
-        "urlLabel": {
-          "nl": "Schrijf je in"
-        },
-        "email": "info@example.be"
       }
     }
   ],
