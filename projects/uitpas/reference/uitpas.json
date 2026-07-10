@@ -3615,6 +3615,125 @@
         ]
       }
     },
+    "/passholders/{passholderId}/private": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "passholderId",
+          "in": "path",
+          "description": "Unique ID of an UiTPAS passholder.",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Retrieve private properties of a passholder",
+        "operationId": "get-passholders-passholderId-private",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrivateProperties"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "0b46e451-8d6b-4b48-98e0-b44f76a5304c",
+                      "note": "Extra informatie van de baliemedewerker over deze pashouder."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieve a private properties of a passholder by its ID.\n\nThe caller of this request must have `PASSHOLDERS_PRIVATE_READ`.",
+        "tags": [
+          "Passholders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update private properties of a passholder",
+        "operationId": "put-passholders-passholderId-private",
+        "responses": {
+          "204": {
+            "description": "Passholder private properties updated. No Content"
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Update a passholder's private properties.\n\nThe caller of this request must have `PASSHOLDERS_PRIVATE_WRITE` permission.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrivateProperties"
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "note": "Aangepaste informatie"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Updated Passholder"
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/passholders/{passholderId}/picture": {
       "parameters": [
         {
@@ -11025,6 +11144,8 @@
           "ORGANIZERS_ADMINS_WRITE",
           "PASSHOLDERS_PICTURE_READ",
           "PASSHOLDERS_PICTURE_WRITE",
+          "PASSHOLDERS_PRIVATE_READ",
+          "PASSHOLDERS_PRIVATE_WRITE",
           "PASSHOLDERS_SEARCH",
           "PASSHOLDERS_SEARCH_ALL",
           "PASSHOLDERS_SEARCH_BY_ID",
@@ -11631,6 +11752,14 @@
             "type": "string",
             "description": "Only used in passholder creation using a `registrationUitpasNumber` with social tariff. Or when updating a passholder with social tariff. During registration, if no `registrationSocialTariffEndDate` is specified and `registrationUitpasNumber` has social tariff, a default date of April 30 of next year is used.",
             "format": "date",
+            "writeOnly": true
+          },
+          "registrationNote": {
+            "type": "string",
+            "description": "Only used in passholder creation. The admin-private note about this pas",
+            "x-stoplight": {
+              "id": "449kx338dtu1q"
+            },
             "writeOnly": true
           }
         },
@@ -14146,6 +14275,28 @@
           "status"
         ],
         "title": "GrantedCoupon"
+      },
+      "PrivateProperties": {
+        "title": "PrivateProperties",
+        "x-stoplight": {
+          "id": "i5rputxp5m68n"
+        },
+        "type": "object",
+        "description": "Private properties of a passholder",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Passholder ID",
+            "readOnly": true
+          },
+          "note": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "q3n455igitb38"
+            },
+            "description": "Private note about this passholder"
+          }
+        }
       }
     },
     "securitySchemes": {
