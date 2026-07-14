@@ -1805,7 +1805,7 @@
         },
         "in": "query",
         "name": "hasOvernight",
-        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have overnight if at least one of its sub-events has `overnight: true`. Events with a `periodic` or `permanent` calendarType are always indexed as `overnight: false`."
+        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have overnight if at least one of its sub-events has `overnight: true` in the given daterange. Events with a `periodic` or `permanent` calendarType are always indexed as `overnight: false`."
       },
       "birthdateRangeFrom": {
         "schema": {
