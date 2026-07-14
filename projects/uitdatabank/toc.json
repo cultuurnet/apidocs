@@ -420,7 +420,7 @@
             },
             {
               "type": "item",
-              "title": "Filtering by target audience age",
+              "title": "Filtering by target audience",
               "uri": "/docs/search-api/filters/age.md",
               "slug": "search-api/filters/filtering-by-target-audience-age"
             },
