@@ -35,14 +35,14 @@ Retrieve all events that do not offer childcare:
 GET /events/?hasChildcare=false
 ```
 
-## Combining with dateRange
+## Combining with a date filter
 
-When `hasChildcare` is combined with a [`dateRange`](./datetime.md) filter, the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
+When `hasChildcare` is combined with a date filter (`dateFrom`/`dateTo` URL parameters, or the `dateRange` advanced query field), the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
 
-> The `dateRange` filter itself still matches against the actual start and end times of the activity — childcare hours never influence which events are considered to fall within a date range.
+> The date filter itself still matches against the actual start and end times of the activity — childcare hours never influence which events are considered to fall within a date range.
 
 Retrieve all events in May 2025 that offer childcare during that period:
 
 ```http
-GET /events/?hasChildcare=true&dateRange[start]=2025-05-01T00:00:00%2B02:00&dateRange[end]=2025-05-31T23:59:59%2B02:00
+GET /events/?hasChildcare=true&dateFrom=2025-05-01T00:00:00%2B02:00&dateTo=2025-05-31T23:59:59%2B02:00
 ```
