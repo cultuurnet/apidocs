@@ -215,6 +215,20 @@ Images go in `assets/images/` with slug-style filenames.
 
 ---
 
+## Adding a Search API Filter
+
+When adding a new search filter parameter, update **all three** of the following:
+
+1. **Documentation file** — create `projects/uitdatabank/docs/search-api/filters/<name>.md` following the pattern of existing filters (intro, `## Using the <param> parameter`, applicable endpoints, possible values, examples).
+2. **toc.json** — add an entry under the `"Common filters"` group in `projects/uitdatabank/toc.json`.
+3. **OpenAPI spec** — in `projects/uitdatabank/reference/search.json`:
+   - Add a component definition under `components.parameters` (use existing boolean params like `uitpas` or `allAges` as a template).
+   - Add a `$ref` to it in the `parameters` array of each applicable endpoint (`/events`, `/offers`, `/places`).
+
+**Endpoint scope:** Not all parameters apply to all endpoints. Childcare, for example, is events-only and belongs on `/events` and `/offers` but not `/places`. Check the Entry API docs to confirm scope before wiring up refs.
+
+---
+
 ## Keeping Examples Up to Date
 
 Whenever a new property is added to a schema, **all `examples` arrays in related schema files must be updated** to include the new property. This ensures examples stay accurate and useful for integrators.
