@@ -296,6 +296,9 @@
             "$ref": "#/components/parameters/hasChildcare"
           },
           {
+            "$ref": "#/components/parameters/childrenOnly"
+          },
+          {
             "$ref": "#/components/parameters/hasVideos"
           },
           {
@@ -732,6 +735,9 @@
           },
           {
             "$ref": "#/components/parameters/hasChildcare"
+          },
+          {
+            "$ref": "#/components/parameters/childrenOnly"
           },
           {
             "$ref": "#/components/parameters/hasVideos"
@@ -2374,6 +2380,14 @@
         "in": "query",
         "name": "hasChildcare",
         "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo` or the `dateRange` advanced query field, the childcare check is scoped to the matching period."
+      },
+      "childrenOnly": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "childrenOnly",
+        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`."
       },
       "hasVideos": {
         "schema": {
