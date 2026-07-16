@@ -396,6 +396,12 @@
             },
             {
               "type": "item",
+              "title": "Filtering by childcare",
+              "uri": "/docs/search-api/filters/childcare.md",
+              "slug": "search-api/filters/filtering-by-childcare"
+            },
+            {
+              "type": "item",
               "title": "Filtering by labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"

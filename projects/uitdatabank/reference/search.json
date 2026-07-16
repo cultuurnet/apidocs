@@ -293,6 +293,9 @@
             "$ref": "#/components/parameters/uitpas"
           },
           {
+            "$ref": "#/components/parameters/hasChildcare"
+          },
+          {
             "$ref": "#/components/parameters/hasVideos"
           },
           {
@@ -726,6 +729,9 @@
           },
           {
             "$ref": "#/components/parameters/uitpas"
+          },
+          {
+            "$ref": "#/components/parameters/hasChildcare"
           },
           {
             "$ref": "#/components/parameters/hasVideos"
@@ -2360,6 +2366,14 @@
         "in": "query",
         "name": "uitpas",
         "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
+      },
+      "hasChildcare": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasChildcare",
+        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateRange`, the childcare check is scoped to the matching period."
       },
       "hasVideos": {
         "schema": {
