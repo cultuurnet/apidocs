@@ -1,0 +1,42 @@
+{
+  "title": "matchingBirthdateRanges",
+  "description": "Present when the query includes the `birthdateRangeFrom`/`birthdateRangeTo` parameters. Contains one entry for the queried birthdate range, listing the `@id` of every result in the resultset that matches it. Lets an integrator show which queried range (e.g. a specific child's birthdate) each result qualifies for.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "from": {
+        "type": "string",
+        "format": "date",
+        "description": "The `birthdateRangeFrom` value that was queried.",
+        "example": "2020-01-01"
+      },
+      "to": {
+        "type": "string",
+        "format": "date",
+        "description": "The `birthdateRangeTo` value that was queried.",
+        "example": "2022-12-31"
+      },
+      "matches": {
+        "type": "array",
+        "description": "The `@id` of every result in the resultset that matches this birthdate range.",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "required": ["from", "to", "matches"]
+  },
+  "examples": [
+    [
+      {
+        "from": "2020-01-01",
+        "to": "2022-12-31",
+        "matches": [
+          "https://io.uitdatabank.be/events/d9a71b53-1756-4126-9926-a83f5dd84f45"
+        ]
+      }
+    ]
+  ]
+}
