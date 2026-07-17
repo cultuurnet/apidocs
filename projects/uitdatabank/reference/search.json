@@ -116,7 +116,7 @@
           }
         },
         "operationId": "get-events",
-        "description": "Returns a paginated list of events that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.",
+        "description": "Returns a paginated list of events that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -168,6 +168,12 @@
           },
           {
             "$ref": "#/components/parameters/calendarType"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeekArray"
           },
           {
             "$ref": "#/components/parameters/createdFrom"
@@ -428,7 +434,7 @@
           }
         },
         "operationId": "post-events",
-        "description": "Returns a paginated list of events that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.",
+        "description": "Returns a paginated list of events that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -560,7 +566,7 @@
           }
         },
         "operationId": "get-offers",
-        "description": "Returns a paginated list of both events and places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "description": "Returns a paginated list of both events and places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -606,6 +612,12 @@
           },
           {
             "$ref": "#/components/parameters/calendarType"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeekArray"
           },
           {
             "$ref": "#/components/parameters/createdFrom"
@@ -873,7 +885,7 @@
           }
         },
         "operationId": "post-offers",
-        "description": "Returns a paginated list of both events and places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.",
+        "description": "Returns a paginated list of both events and places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -1297,7 +1309,7 @@
           }
         },
         "operationId": "get-places",
-        "description": "Returns a paginated list of places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.\n",
+        "description": "Returns a paginated list of places that match the given filters.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the list of query parameters below can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -1343,6 +1355,12 @@
           },
           {
             "$ref": "#/components/parameters/calendarType"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/dayOfWeekArray"
           },
           {
             "$ref": "#/components/parameters/createdFrom"
@@ -1597,7 +1615,7 @@
           }
         },
         "operationId": "post-places",
-        "description": "Returns a paginated list of places that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.\n",
+        "description": "Returns a paginated list of places that match the given filters.\n\nThis endpoint works the same as `GET` but accepts all parameters in the request body as a query string instead of as URL query parameters. This is useful when the amount of parameters would make the URL too long.\n\nThe request body should use content type `text/plain` and be formatted as a query string (the same format as URL query parameters), for example: `postalCode=9000&labels[]=uitpas`.\n\n### Repeating query parameters\n\nParameters that have the type `array[string]` and `[]` as a suffix in their name in the request body can be repeated to filter on multiple values with an `AND` operator. For example:\n\n*  `?labels[]=uitpas` to only include results that have the label `uitpas`\n*  `?labels[]=uitpas&labels[]=paspartoe` to only include results that have both the labels `uitpas` and `paspartoe`\n\nOther `array[string]` parameters without the `[]` suffix support multiple comma-separated values for `OR` filtering. For example:\n\n*  `?workflowStatus=DRAFT` to return all results with the draft workflow status.\n*  `?workflowStatus=REJECTED,DELETED` to return results with the rejected or deleted workflow status.\n\nAs an exception, `dayOfWeek[]` is `OR`-combined rather than `AND`-combined — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details.\n\nAdd `embedCalendarSummaries` to have an extra property `calendarSummary` in the results that contains one or more formatted human-readable summaries of the date/time info of the result. See <a href=\"search-api/calendar-summaries\">the guide about embedding the calendar summaries</a> for more details.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/x-client-id"
@@ -1905,6 +1923,52 @@
         "in": "query",
         "name": "calendarType",
         "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. [Here is a detailed guide](./entry-api/shared/calendar-info#calendartype) with more information."
+      },
+      "dayOfWeek": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ],
+            "example": "wednesday"
+          }
+        },
+        "style": "form",
+        "explode": false,
+        "in": "query",
+        "name": "dayOfWeek",
+        "description": "Returns only results that occur on the given weekday. Matching is case-insensitive. Accepts multiple comma-separated values to return results that occur on any of the given weekdays (`OR`-combined). Can also be repeated using the `dayOfWeek[]` array syntax instead, which is `OR`-combined as well rather than `AND`-combined as is usual for `[]`-suffixed parameters — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details. Only results with calendarType `periodic` or `permanent` can match, based on the weekdays of their opening hours (ignoring `openingHoursClosedDays`). Results with calendarType `multiple` can also match, based on the weekday(s) covered by each subEvent. Results with calendarType `single` never match. A weekday only counts once it occurs often enough in the result's schedule; see the linked guide for the exact minimum."
+      },
+      "dayOfWeekArray": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ],
+            "example": "wednesday"
+          }
+        },
+        "style": "form",
+        "explode": true,
+        "in": "query",
+        "name": "dayOfWeek[]",
+        "description": "Alternative array syntax for the `dayOfWeek` parameter. May be repeated to return results that occur on any of the given weekdays (`OR`-combined) — unlike most other `[]`-suffixed parameters, this is not `AND`-combined. See [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details."
       },
       "createdFrom": {
         "schema": {
