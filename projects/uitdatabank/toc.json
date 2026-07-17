@@ -438,12 +438,6 @@
             },
             {
               "type": "item",
-              "title": "Filtering by birthdate range",
-              "uri": "/docs/search-api/filters/birthdate-range.md",
-              "slug": "search-api/filters/filtering-by-birthdate-range"
-            },
-            {
-              "type": "item",
               "title": "Filtering by type or theme",
               "uri": "/docs/search-api/filters/terms.md",
               "slug": "search-api/filters/filtering-by-type-or-theme"
