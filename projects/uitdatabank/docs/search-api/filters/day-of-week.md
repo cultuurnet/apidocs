@@ -12,8 +12,6 @@ Events and places with a recurring weekly schedule ([`periodic` or `permanent` c
 
 `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`
 
-Matching is case-insensitive: `wednesday`, `Wednesday` and `WEDNESDAY` are all treated the same.
-
 **Syntax**
 
 You can pass multiple weekdays using either syntax, both combined with `OR`:
@@ -31,9 +29,9 @@ Whether a result can match `dayOfWeek` depends on its `calendarType`:
 
 * **`periodic`/`permanent`** (events and places): matched based on the `dayOfWeek` values in `openingHours`. `openingHoursClosedDays` are ignored, so an event or place scheduled "every Wednesday" still matches `dayOfWeek=wednesday` even if a handful of individual Wednesdays are marked as closed.
 * **`multiple`** (events only): the weekday(s) are computed per `subEvent` from its `startDate`/`endDate`. A single-day `subEvent` contributes one weekday; a multi-day `subEvent` (e.g. Friday through Sunday) contributes every weekday it spans. The weekdays of all `subEvent`s are combined into the set of weekdays the event can match on.
-* **`single`** (events only): out of scope. Single events are never matched by `dayOfWeek`, regardless of which weekday they fall on.
+* **`single`** (events only): Will never be returned, not a recurring activity
 
-For both cases, a weekday only counts if it occurs often enough in the result's schedule — currently a minimum of 4 occurrences. A `periodic` event or place that runs for only two or three occurrences of a given weekday will not match `dayOfWeek` for that weekday, even though it's still returned by other filters.
+For both cases, a weekday only counts if it occurs often enough in the result's schedule, currently a minimum of 4 occurrences. A `periodic` event or place that runs for only two or three occurrences of a given weekday will not match `dayOfWeek` for that weekday, even though it's still returned by other filters.
 
 **Examples**
 
