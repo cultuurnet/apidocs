@@ -72,6 +72,9 @@
                           "$ref": "../models/common-facets.json"
                         }
                       }
+                    },
+                    "matchingBirthdateRanges": {
+                      "$ref": "../models/common-matchingBirthdateRanges.json"
                     }
                   },
                   "required": [
@@ -362,6 +365,9 @@
                           "$ref": "../models/common-facets.json"
                         }
                       }
+                    },
+                    "matchingBirthdateRanges": {
+                      "$ref": "../models/common-matchingBirthdateRanges.json"
                     }
                   },
                   "required": [
