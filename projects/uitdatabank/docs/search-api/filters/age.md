@@ -7,7 +7,7 @@ It is possible to filter the results from Search API based on the age group the 
 There are two ways to filter on the audience an event or place is targeted towards:
 
 * The `minAge`, `maxAge`, `allAges` and `typicalAgeRange` parameters filter on a **fixed age or age range** (in years), regardless of the current date. They are applicable on `/offers`, `/events` and `/places`.
-* The `birthdateRangeFrom` and `birthdateRangeTo` parameters filter on a **range of birth dates**. They are only applicable on `/events`.
+* The `birthdateRangeFrom` and `birthdateRangeTo` parameters filter on a **range of birth dates**. They are only applicable on events.
 
 <!-- theme: info -->
 
@@ -17,7 +17,7 @@ There are two ways to filter on the audience an event or place is targeted towar
 
 * Use the age parameters (`minAge`, `maxAge`, `allAges`, `typicalAgeRange`) when you want events and/or places suitable for a fixed age or age range, for example "events for 6 to 12 year olds".
 * Use the birthdate range parameters (`birthdateRangeFrom`, `birthdateRangeTo`) when you want events targeted at people born within a specific date range, for example when matching against a known audience of birth dates (e.g. a list of registered children). Since this is date-aware, it also returns events whose `typicalAgeRange` currently overlaps with that birthdate range.
-* Combining both is possible (they are independent parameters and will be applied together), but is only useful for `/events`, since the birthdate range parameters aren't supported on `/offers` or `/places`.
+* Combining both is possible (they are independent parameters and will be applied together) but is only useful for events since the birthdate range parameters is not supported for places.
 
 ## Parameters
 
@@ -113,7 +113,7 @@ With the `birthdateRangeFrom` URL parameter you can find events targeted at peop
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Examples**
 
@@ -129,7 +129,7 @@ With the `birthdateRangeTo` URL parameter you can find events targeted at people
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Examples**
 
