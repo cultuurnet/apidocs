@@ -2,6 +2,23 @@
 
 It is possible to filter the results from Search API based on the age group the event or place is targetted towards.
 
+## Age filters vs. birthdate range filters
+
+There are two ways to filter on the audience an event or place is targeted towards:
+
+* The `minAge`, `maxAge`, `allAges` and `typicalAgeRange` parameters filter on a **fixed age or age range** (in years), regardless of the current date. They are applicable on `/offers`, `/events` and `/places`.
+* The `birthdateRangeFrom` and `birthdateRangeTo` parameters filter on a **range of birth dates**. They are only applicable on events.
+
+<!-- theme: info -->
+
+> An event's `typicalAgeRange` is combined with the current date to determine whether it matches a given `birthdateRange`. Because of this, the same query can return different results on different days.
+
+**When to use which**
+
+* Use the age parameters (`minAge`, `maxAge`, `allAges`, `typicalAgeRange`) when you want events and/or places suitable for a fixed age or age range, for example "events for 6 to 12 year olds".
+* Use the birthdate range parameters (`birthdateRangeFrom`, `birthdateRangeTo`) when you want events targeted at people born within a specific date range, for example when matching against a known audience of birth dates (e.g. a list of registered children). Since this is date-aware, it also returns events whose `typicalAgeRange` currently overlaps with that birthdate range.
+* Combining both is possible (they are independent parameters and will be applied together) but is only useful for events since the birthdate range parameters is not supported for places.
+
 ## Parameters
 
 ### minAge
@@ -88,4 +105,36 @@ If you don't want partial matches to be returned you can exclude anything that f
 
 ```http
 GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
+```
+
+### birthdateRangeFrom
+
+With the `birthdateRangeFrom` URL parameter you can find events targeted at people born on or after the given date. Use it on its own, or combined with `birthdateRangeTo` to narrow the result set to a range. If an event's `typicalAgeRange`, combined with the current date, falls within the supplied range, the event will also be included.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Examples**
+
+Retrieve all events targeted at people born on or after 1 January 2020 (including events whose `typicalAgeRange`, combined with the current date, overlaps that range):
+
+```http
+GET /events/?birthdateRangeFrom=2020-01-01
+```
+
+### birthdateRangeTo
+
+With the `birthdateRangeTo` URL parameter you can find events targeted at people born on or before the given date. Use it on its own, or combined with `birthdateRangeFrom` to narrow the result set to a range. If an event's `typicalAgeRange`, combined with the current date, falls within the supplied range, the event will also be included.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Examples**
+
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020 (including events whose `typicalAgeRange`, combined with the current date, overlaps that range):
+
+```http
+GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-12-31
 ```

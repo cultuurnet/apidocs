@@ -402,6 +402,12 @@
             },
             {
               "type": "item",
+              "title": "Filtering by day of week",
+              "uri": "/docs/search-api/filters/day-of-week.md",
+              "slug": "search-api/filters/filtering-by-day-of-week"
+            },
+            {
+              "type": "item",
               "title": "Filtering by labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"
@@ -429,12 +435,6 @@
               "title": "Filtering by target audience age",
               "uri": "/docs/search-api/filters/age.md",
               "slug": "search-api/filters/filtering-by-target-audience-age"
-            },
-            {
-              "type": "item",
-              "title": "Filtering by birthdate range",
-              "uri": "/docs/search-api/filters/birthdate-range.md",
-              "slug": "search-api/filters/filtering-by-birthdate-range"
             },
             {
               "type": "item",
