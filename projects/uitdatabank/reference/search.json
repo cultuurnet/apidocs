@@ -236,6 +236,9 @@
             "$ref": "#/components/parameters/departurePlaces"
           },
           {
+            "$ref": "#/components/parameters/hasOvernight"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
@@ -1801,6 +1804,14 @@
         "in": "query",
         "name": "allAges",
         "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
+      },
+      "hasOvernight": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasOvernight",
+        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have overnight if at least one of its sub-events has `overnight: true` in the given daterange. Events with a `periodic` or `permanent` calendarType are always indexed as `overnight: false`."
       },
       "birthdateRangeFrom": {
         "schema": {
