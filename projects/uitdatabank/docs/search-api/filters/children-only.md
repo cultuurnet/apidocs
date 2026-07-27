@@ -15,7 +15,7 @@ Events in UiTdatabank can optionally be marked as intended for [children only](/
 
 When the parameter is omitted, all your events are returned regardless of whether they are targeted at children only.
 
->  By default, events targeted at children only are only visible if they were created by you; other users `childrenOnly` events remain hidden unless your account has been granted specific privileges by Publiq. If you have a use case that requires broader access, please contact Publiq.
+> By default, events targeted at children only are only visible if they were created by you; other users `childrenOnly` events remain hidden unless your account has been granted specific privileges by Publiq. If you have a use case that requires broader access, please contact Publiq.
 
 **Examples**
 
