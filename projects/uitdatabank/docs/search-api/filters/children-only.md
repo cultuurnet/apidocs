@@ -10,12 +10,13 @@ Events in UiTdatabank can optionally be marked as intended for [children only](/
 
 **Possible values**
 
+* `false`: (default) only return events that have `childrenOnly` set to `false` or not set at all.
 * `true`: only return events that have `childrenOnly` set to `true`.
-* `false`: only return events that have `childrenOnly` set to `false` or not set at all.
+* `*`: returns all events, with `childrenOnly` set to `false` or `true` (see our page about [disabling default filters](../filters/default-filters.md))
 
-When the parameter is omitted, all your events are returned regardless of whether they are targeted at children only.
+When the parameter is omitted, only events that are NOT targeted towards "children only" are returned.
 
-> By default, events targeted at children only are only visible if they were created by you; other users `childrenOnly` events remain hidden unless your account has been granted specific privileges by Publiq. If you have a use case that requires broader access, please contact Publiq.
+> Note that when using `childrenOnly=true` or `childrenOnly=*`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact publiq.
 
 **Examples**
 
@@ -36,3 +37,11 @@ Retrieve all events that are not targeted at children only:
 ```http
 GET /events/?childrenOnly=false
 ```
+
+Retrieve all events that are targeted towards children only, AND other events
+
+```http
+GET /events/?childrenOnly=*
+```
+
+(See also [our page about disabling default filters](../filters/default-filters.md) for more info.)
