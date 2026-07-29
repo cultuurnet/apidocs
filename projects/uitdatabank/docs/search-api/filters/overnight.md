@@ -6,7 +6,7 @@ Use the `hasOvernight` URL parameter to filter events based on whether they invo
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Possible values**
 
