@@ -16,7 +16,7 @@ Events in UiTdatabank can optionally be marked as intended for [children only](/
 
 When the parameter is omitted, only events that are NOT targeted towards "children only" are returned.
 
-> Note that when using `childrenOnly=true` or `childrenOnly=*`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact publiq.
+> Note that when using `childrenOnly=true` or `childrenOnly=*`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
 
 **Examples**
 
