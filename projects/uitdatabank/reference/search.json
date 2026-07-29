@@ -173,9 +173,6 @@
             "$ref": "#/components/parameters/dayOfWeek"
           },
           {
-            "$ref": "#/components/parameters/dayOfWeekArray"
-          },
-          {
             "$ref": "#/components/parameters/createdFrom"
           },
           {
@@ -615,9 +612,6 @@
           },
           {
             "$ref": "#/components/parameters/dayOfWeek"
-          },
-          {
-            "$ref": "#/components/parameters/dayOfWeekArray"
           },
           {
             "$ref": "#/components/parameters/createdFrom"
@@ -1360,9 +1354,6 @@
             "$ref": "#/components/parameters/dayOfWeek"
           },
           {
-            "$ref": "#/components/parameters/dayOfWeekArray"
-          },
-          {
             "$ref": "#/components/parameters/createdFrom"
           },
           {
@@ -1946,29 +1937,6 @@
         "in": "query",
         "name": "dayOfWeek",
         "description": "Returns only results that occur on the given weekday. Matching is case-insensitive. Accepts multiple comma-separated values to return results that occur on any of the given weekdays (`OR`-combined). Can also be repeated using the `dayOfWeek[]` array syntax instead, which is `OR`-combined as well rather than `AND`-combined as is usual for `[]`-suffixed parameters — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details. Only results with calendarType `periodic` or `permanent` can match, based on the weekdays of their opening hours (ignoring `openingHoursClosedDays`). Results with calendarType `multiple` can also match, based on the weekday(s) covered by each subEvent. Results with calendarType `single` never match. A weekday only counts once it occurs often enough in the result's schedule; see the linked guide for the exact minimum."
-      },
-      "dayOfWeekArray": {
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "monday",
-              "tuesday",
-              "wednesday",
-              "thursday",
-              "friday",
-              "saturday",
-              "sunday"
-            ],
-            "example": "wednesday"
-          }
-        },
-        "style": "form",
-        "explode": true,
-        "in": "query",
-        "name": "dayOfWeek[]",
-        "description": "Alternative array syntax for the `dayOfWeek` parameter. May be repeated to return results that occur on any of the given weekdays (`OR`-combined) — unlike most other `[]`-suffixed parameters, this is not `AND`-combined. See [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details."
       },
       "createdFrom": {
         "schema": {
