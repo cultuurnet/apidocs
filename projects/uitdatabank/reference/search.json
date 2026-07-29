@@ -674,6 +674,9 @@
             "$ref": "#/components/parameters/locationId"
           },
           {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
