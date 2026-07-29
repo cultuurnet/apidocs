@@ -14,14 +14,7 @@ With the `dayOfWeek` parameter you can filter events and places based on the wee
 
 **Syntax**
 
-You can pass multiple weekdays using either syntax, both combined with `OR`:
-
-* Comma-separated values on the `dayOfWeek` parameter: `?dayOfWeek=friday,saturday,sunday`
-* The repeated array syntax: `?dayOfWeek[]=friday&dayOfWeek[]=saturday&dayOfWeek[]=sunday`
-
-<!-- theme: warning -->
-
-> Unlike most other `[]`-suffixed parameters in this API (which are `AND`-combined), `dayOfWeek[]` is `OR`-combined, just like the comma-separated syntax. This is because a result can only occur on one weekday at a time, so requiring it to match every given weekday at once would never return anything.
+You can pass multiple weekdays as comma-separated values on the `dayOfWeek` parameter, combined with `OR`: `?dayOfWeek=friday,saturday,sunday`
 
 ## How results are matched
 
@@ -45,12 +38,6 @@ Retrieve all events or places open on Friday, Saturday or Sunday:
 
 ```http
 GET /offers/?dayOfWeek=friday,saturday,sunday
-```
-
-Retrieve all places open on Saturday, using the array syntax:
-
-```http
-GET /places/?dayOfWeek[]=saturday
 ```
 
 An invalid weekday value (e.g. `?dayOfWeek=someday`) is rejected with an error response.
