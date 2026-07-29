@@ -1,6 +1,6 @@
 # Filtering by day of week
 
-Events and places with a recurring weekly schedule ([`periodic` or `permanent` calendarType](../../entry-api/shared/calendar-info.md#periodicpermanent)) declare the weekdays they're open through the `dayOfWeek` property on their `openingHours`. With the `dayOfWeek` parameter you can filter results based on the weekday(s) they occur on.
+With the `dayOfWeek` parameter you can filter events and places based on the weekday(s) they occur on. This works both for results with a recurring weekly schedule ([`periodic` or `permanent` calendarType](../../entry-api/shared/calendar-info.md#periodicpermanent)), which declare the weekdays they're open through the `dayOfWeek` property on their `openingHours`, and for `multiple` events, whose weekdays are derived from the `startDate`/`endDate` of their individual `subEvent`s.
 
 ## Using the dayOfWeek parameter
 
