@@ -14,7 +14,7 @@ With the `dayOfWeek` parameter you can filter events and places based on the wee
 
 **Syntax**
 
-You can pass multiple weekdays as comma-separated values on the `dayOfWeek` parameter, combined with `OR`: `?dayOfWeek=friday,saturday,sunday`
+You can pass multiple weekdays as comma-separated values on the `dayOfWeek` parameter, combined with a comma `,` acting as an `or`: `?dayOfWeek=friday,saturday,sunday`
 
 ## How results are matched
 
@@ -24,7 +24,7 @@ Whether a result can match `dayOfWeek` depends on its `calendarType`:
 * **`multiple`** (events only): the weekday(s) are computed per `subEvent` from its `startDate`/`endDate`. A single-day `subEvent` contributes one weekday; a multi-day `subEvent` (e.g. Friday through Sunday) contributes every weekday it spans. The weekdays of all `subEvent`s are combined into the set of weekdays the event can match on.
 * **`single`** (events only): Will never be returned, not a recurring activity
 
-For both cases, a weekday only counts if it occurs often enough in the result's schedule, currently a minimum of 4 occurrences. A `periodic` event or place that runs for only two or three occurrences of a given weekday will not match `dayOfWeek` for that weekday, even though it's still returned by other filters.
+For both cases, a weekday only counts if it occurs often enough in the result's schedule, currently a minimum of 4 occurrences. A `periodic` event or place that runs for only two or three occurrences of a given weekday will not match `dayOfWeek` for that weekday.
 
 **Examples**
 
