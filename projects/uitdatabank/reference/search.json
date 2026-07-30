@@ -680,6 +680,9 @@
             "$ref": "#/components/parameters/hasOvernight"
           },
           {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
