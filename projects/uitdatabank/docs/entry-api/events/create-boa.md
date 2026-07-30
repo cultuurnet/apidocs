@@ -5,7 +5,7 @@
 The BOA decree aims to create a comprehensive and integrated offering of out-of-school care and leisure activities for school-aged children in Flanders. Local governments act as the central directors, coordinating with partners across education, youth work, sports, and culture.
 To properly capture this specific offering in UiTdatabank, several new features and fields have been added to the Entry API. This guide provides an overview of the best practices and the technical endpoints required to submit BOA data correctly.
 
-For more general information about Publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
+For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
 ## Best Practices: Optimizing your reach
 To ensure parents and children easily find the right activities, data quality is crucial. When publishing BOA-related events, we highly recommend sending the following information:
