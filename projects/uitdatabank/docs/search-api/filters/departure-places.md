@@ -6,7 +6,7 @@ Use the `departurePlaces[]` URL parameter or the `departurePlaces` advanced quer
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Possible values**
 
