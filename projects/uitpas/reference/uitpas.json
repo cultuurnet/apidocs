@@ -11912,6 +11912,15 @@
             "format": "date",
             "writeOnly": true
           },
+          "registrationPicture": {
+            "type": "string",
+            "description": "Base64 encoded string of the picture of this passholder. Only used in passholder creation.",
+            "format": "byte",
+            "x-stoplight": {
+              "id": "ikgxjklji2guj"
+            },
+            "writeOnly": true
+          },
           "registrationNote": {
             "type": "string",
             "description": "Only used in passholder creation. The admin-private note about this pas",
