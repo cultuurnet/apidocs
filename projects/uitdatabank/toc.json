@@ -438,6 +438,12 @@
             },
             {
               "type": "item",
+              "title": "Filtering by overnight",
+              "uri": "/docs/search-api/filters/overnight.md",
+              "slug": "search-api/filters/filtering-by-overnight"
+            },
+            {
+              "type": "item",
               "title": "Filtering by type or theme",
               "uri": "/docs/search-api/filters/terms.md",
               "slug": "search-api/filters/filtering-by-type-or-theme"

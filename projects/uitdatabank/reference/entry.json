@@ -1236,6 +1236,12 @@
                   "value": {
                     "type": "Unavailable"
                   }
+                },
+                "Available with total capacity": {
+                  "value": {
+                    "type": "Available",
+                    "capacity": 200
+                  }
                 }
               }
             }
@@ -3499,6 +3505,17 @@
                       "id": 2,
                       "bookingAvailability": {
                         "type": "Unavailable"
+                      }
+                    }
+                  ]
+                },
+                "Updating the capacity and remaining capacity of a subEvent": {
+                  "value": [
+                    {
+                      "id": 0,
+                      "bookingAvailability": {
+                        "capacity": 100,
+                        "remainingCapacity": 42
                       }
                     }
                   ]
