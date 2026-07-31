@@ -408,6 +408,12 @@
             },
             {
               "type": "item",
+              "title": "Filtering by children only",
+              "uri": "/docs/search-api/filters/children-only.md",
+              "slug": "search-api/filters/filtering-by-children-only"
+            },
+            {
+              "type": "item",
               "title": "Filtering by labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"
@@ -435,6 +441,12 @@
               "title": "Filtering by target audience age",
               "uri": "/docs/search-api/filters/age.md",
               "slug": "search-api/filters/filtering-by-target-audience-age"
+            },
+            {
+              "type": "item",
+              "title": "Filtering by overnight",
+              "uri": "/docs/search-api/filters/overnight.md",
+              "slug": "search-api/filters/filtering-by-overnight"
             },
             {
               "type": "item",

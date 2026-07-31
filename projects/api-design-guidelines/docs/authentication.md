@@ -80,7 +80,7 @@ If the specific client or user cannot perform a requested action, you must retur
 
 <!-- theme: danger -->
 
-> Do not use scopes for determining API access as we did in the past on some APIs. While this was [suggested by Auth0](https://community.auth0.com/t/access-tokens-with-multiple-audiences/9911), this approach is not suited for our APIs because we want to control which client has access to which API ourselves. This decision should not be made by our end-users.
+> Do not use scopes for determining API access. This approach is not suited for our APIs because we want to control which client has access to which API ourselves. This decision should not be made by our end-users.
 
 In OAuth2, scopes indicate what resources can be accessed using a specific token.
 
