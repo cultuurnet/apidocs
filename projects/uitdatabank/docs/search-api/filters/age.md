@@ -140,3 +140,7 @@ Retrieve all events targeted at people born in the first half of 2020:
 ```http
 GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-06-30
 ```
+
+<!-- theme: info -->
+
+> `birthdateRangeFrom` and `birthdateRangeTo` express a single range. To match several birth date ranges at once, use the `birthdateRange` field in [advanced queries](../advanced/advanced-queries.md), for example `q=birthdateRange:([2020-01-01 TO 2020-12-31] OR [2022-01-01 TO 2022-12-31])`.
