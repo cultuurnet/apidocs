@@ -1833,7 +1833,7 @@
         },
         "in": "query",
         "name": "birthdateRangeFrom",
-        "description": "Returns only events targeted at people born on or after the given date. Formatted as one ISO 8601 date."
+        "description": "Sets the earliest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Always has to be combined with `birthdateRangeTo`: supplying only one of the two returns a `400`."
       },
       "birthdateRangeTo": {
         "schema": {
@@ -1843,7 +1843,7 @@
         },
         "in": "query",
         "name": "birthdateRangeTo",
-        "description": "Returns only events targeted at people born on or before the given date. Formatted as one ISO 8601 date."
+        "description": "Sets the latest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Always has to be combined with `birthdateRangeFrom`: supplying only one of the two returns a `400`."
       },
       "audienceType": {
         "schema": {
