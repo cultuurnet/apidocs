@@ -596,6 +596,12 @@
             "$ref": "#/components/parameters/allAges"
           },
           {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
+          },
+          {
             "$ref": "#/components/parameters/audienceType"
           },
           {
