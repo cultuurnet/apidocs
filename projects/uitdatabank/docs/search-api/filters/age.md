@@ -111,6 +111,8 @@ GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO
 
 With the `birthdateRangeFrom` URL parameter you set the earliest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeTo`: supplying only one of the two returns a `400 Bad Request`.
 
+An event matches when its own `birthdateRange` overlaps the requested range. Events without a `birthdateRange` also match when their `typicalAgeRange`, converted to birth dates using the current date, overlaps the requested range. Events marked as `allAges` are excluded from that fallback, because their age range is unbounded and would otherwise match every birthdate query.
+
 **Applicable on endpoints**
 
 `/events` `/offers`
@@ -125,7 +127,7 @@ GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-12-31
 
 ### birthdateRangeTo
 
-With the `birthdateRangeTo` URL parameter you set the latest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeFrom`.
+With the `birthdateRangeTo` URL parameter you set the latest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeFrom`, and matching works exactly as described under [`birthdateRangeFrom`](#birthdaterangefrom).
 
 **Applicable on endpoints**
 
