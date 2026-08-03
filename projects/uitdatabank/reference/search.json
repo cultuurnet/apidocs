@@ -170,9 +170,6 @@
             "$ref": "#/components/parameters/calendarType"
           },
           {
-            "$ref": "#/components/parameters/dayOfWeek"
-          },
-          {
             "$ref": "#/components/parameters/createdFrom"
           },
           {
@@ -615,9 +612,6 @@
           },
           {
             "$ref": "#/components/parameters/calendarType"
-          },
-          {
-            "$ref": "#/components/parameters/dayOfWeek"
           },
           {
             "$ref": "#/components/parameters/createdFrom"
@@ -1366,9 +1360,6 @@
             "$ref": "#/components/parameters/calendarType"
           },
           {
-            "$ref": "#/components/parameters/dayOfWeek"
-          },
-          {
             "$ref": "#/components/parameters/createdFrom"
           },
           {
@@ -1937,29 +1928,6 @@
         "in": "query",
         "name": "calendarType",
         "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. [Here is a detailed guide](./entry-api/shared/calendar-info#calendartype) with more information."
-      },
-      "dayOfWeek": {
-        "schema": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "monday",
-              "tuesday",
-              "wednesday",
-              "thursday",
-              "friday",
-              "saturday",
-              "sunday"
-            ],
-            "example": "wednesday"
-          }
-        },
-        "style": "form",
-        "explode": false,
-        "in": "query",
-        "name": "dayOfWeek",
-        "description": "Returns only results that occur on the given weekday. Matching is case-insensitive. Accepts multiple comma-separated values to return results that occur on any of the given weekdays (`OR`-combined) — see [the guide about filtering by day of week](../docs/search-api/filters/day-of-week.md) for details. Only results with calendarType `periodic` or `permanent` can match, based on the weekdays of their opening hours (ignoring `openingHoursClosedDays`). Results with calendarType `multiple` can also match, based on the weekday(s) covered by each subEvent. Results with calendarType `single` never match. A weekday only counts once it occurs often enough in the result's schedule; see the linked guide for the exact minimum."
       },
       "createdFrom": {
         "schema": {

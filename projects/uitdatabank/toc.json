@@ -402,12 +402,6 @@
             },
             {
               "type": "item",
-              "title": "Filtering by day of week",
-              "uri": "/docs/search-api/filters/day-of-week.md",
-              "slug": "search-api/filters/filtering-by-day-of-week"
-            },
-            {
-              "type": "item",
               "title": "Filtering by children only",
               "uri": "/docs/search-api/filters/children-only.md",
               "slug": "search-api/filters/filtering-by-children-only"
