@@ -7,7 +7,6 @@ When searching for events, places, or offers the search API applies a couple of 
 * `availableTo`: only results that with an availableTo-date equal or bigger then the now-date are returned by default.
 * `addressCountry`: only results that are in Belgium are returned by default.
 * `audienceType`: only results that have an `audienceType` set to `everyone` are returned by default.
-* `childrenOnly`: only results that have `childrenOnly` set to `false` are returned by default.
 
 You can either disable these filters individually, or disable them all at once.
 
@@ -65,14 +64,6 @@ Disabling the default `audienceType` filter will also show results with audience
 
 ```
 GET /offers/?audienceType=*
-```
-
-### childrenOnly
-
-Disabling the default `childrenOnly` filter will also show results with `childrenOnly` set to `true`, as well as results with `childrenOnly` set to `false`.
-
-```
-GET /offers/?childrenOnly=*
 ```
 
 ## Disable multiple filters

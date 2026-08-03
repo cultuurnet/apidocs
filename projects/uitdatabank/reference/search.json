@@ -2400,17 +2400,11 @@
       },
       "childrenOnly": {
         "schema": {
-          "type": "string",
-          "enum": [
-            "true",
-            "false",
-            "*"
-          ],
-          "default": "false"
+          "type": "boolean"
         },
         "in": "query",
         "name": "childrenOnly",
-        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`. Returns either kind of event if set to `*`."
+        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`."
       },
       "hasVideos": {
         "schema": {
