@@ -49,4 +49,4 @@ GET /events/?hasChildcare=true&dateFrom=2025-05-01T00:00:00%2B02:00&dateTo=2025-
 
 <!-- theme: warning -->
 
-> While you can also use on childcare and/or dates in advanced queries, this specific logic of checking whether the event has childcare during the specified date range does NOT work in advanced queries (`q` URL parameter) due to how they are parsed differently.
+> While you can also filter on `childcare` and/or `dateRange` in advanced queries, this specific logic of checking whether the event has childcare during the specified date range does NOT work in advanced queries (`q` URL parameter) due to how they are parsed differently.
