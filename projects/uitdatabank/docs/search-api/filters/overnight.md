@@ -2,7 +2,7 @@
 
 ## hasOvernight
 
-Use the `hasOvernight` URL parameter to filter events based on whether they offer overnight acconodation.
+Use the `hasOvernight` URL parameter to filter events based on whether they offer overnight accomodation.
 
 **Applicable on endpoints**
 
