@@ -19,7 +19,7 @@ There are two ways to filter on the audience an event or place is targeted towar
 * Use the birthdate range parameters (`birthdateRangeFrom`, `birthdateRangeTo`) when you want events targeted at people born within a specific date range, for example when matching against a known audience of birth dates (e.g. a list of registered children). Since this is date-aware, it also returns events whose `typicalAgeRange` currently overlaps with that birthdate range.
 * Combining both is possible (they are independent parameters and will be applied together) but is only useful for events, since the birthdate range parameters are not supported for places.
 
-## Parameters
+## URL parameters
 
 ### minAge
 
@@ -81,32 +81,6 @@ Setting `allAges` to `*` returns both events and places that are suitable for al
 GET /offers/?allAges=*
 ```
 
-### typicalAgeRange
-
-With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group. This `q` parameter allows more advanced queries than by using the `minAge` and/or `maxAge` URL parameter.
-
-**Applicable on endpoints**
-
-`/offers` `/events` `/places`
-
-**Examples**
-
-Retrieve all events that are suitable for the age group 6 - 12 years:
-
-```http
-GET /events/?q=typicalAgeRange:[6 TO 12]
-```
-
-<!-- theme: info -->
-
-> Note that any overlap with the given query is a match. In the example above also events with a typicalAgeRange of 3-99 or 11-14 will be returned.
-
-If you don't want partial matches to be returned you can exclude anything that falls out of the given age range as follows:
-
-```http
-GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
-```
-
 ### birthdateRangeFrom
 
 With the `birthdateRangeFrom` URL parameter you set the earliest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeTo`: supplying only one of the two returns a `404 Not Found`.
@@ -139,6 +113,34 @@ Retrieve all events targeted at people born in the first half of 2020:
 
 ```http
 GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-06-30
+```
+
+## Advanced queries
+
+### typicalAgeRange
+
+With the `typicalAgeRange` advanced query parameter you can filter out events and/or places that are targetted towards a certain age group. This `q` parameter allows more advanced queries than by using the `minAge` and/or `maxAge` URL parameter.
+
+**Applicable on endpoints**
+
+`/offers` `/events` `/places`
+
+**Examples**
+
+Retrieve all events that are suitable for the age group 6 - 12 years:
+
+```http
+GET /events/?q=typicalAgeRange:[6 TO 12]
+```
+
+<!-- theme: info -->
+
+> Note that any overlap with the given query is a match. In the example above also events with a typicalAgeRange of 3-99 or 11-14 will be returned.
+
+If you don't want partial matches to be returned you can exclude anything that falls out of the given age range as follows:
+
+```http
+GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
 ```
 
 <!-- theme: info -->
