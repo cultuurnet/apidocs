@@ -7,7 +7,7 @@ It is possible to filter the results from Search API based on the age group the 
 There are two ways to filter on the audience an event or place is targeted towards:
 
 * **Age filters** match on a **fixed age or age range** (in years), regardless of the current date. They are applicable on `/offers`, `/events` and `/places`.
-* **Birthdate range filters** match on a **range of birth dates**. They are applicable on `/offers` and `/events`, and always have to be used together. Only events can match: a `birthdateRange` is an event-only field, and places are never returned for it.
+* **Birthdate range filters** match on a **range of birth dates**. They are applicable on `/offers` and `/events`, and each bound can be used on its own or together with the other. Only events can match: a `birthdateRange` is an event-only field, and places are never returned for it.
 
 <!-- theme: info -->
 
@@ -83,7 +83,7 @@ GET /offers/?allAges=*
 
 ### birthdateRangeFrom
 
-With the `birthdateRangeFrom` URL parameter you set the earliest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeTo`: supplying only one of the two returns a `404 Not Found`.
+With the `birthdateRangeFrom` URL parameter you set the earliest birth date of the audience you are looking for. You can use it on its own to look for everyone born on or after that date, or combine it with `birthdateRangeTo` to set both ends of the range.
 
 An event matches when its own `birthdateRange` overlaps the requested range. Events without a `birthdateRange` also match when their `typicalAgeRange`, converted to birth dates using the current date, overlaps the requested range. Events marked as `allAges` are excluded from that fallback, because their age range is unbounded and would otherwise match every birthdate query.
 
@@ -101,7 +101,7 @@ GET /events/?birthdateRangeFrom=2020-01-01&birthdateRangeTo=2020-12-31
 
 ### birthdateRangeTo
 
-With the `birthdateRangeTo` URL parameter you set the latest birth date of the audience you are looking for. It always has to be combined with `birthdateRangeFrom`, and matching works exactly as described under [`birthdateRangeFrom`](#birthdaterangefrom).
+With the `birthdateRangeTo` URL parameter you set the latest birth date of the audience you are looking for. You can use it on its own to look for everyone born on or before that date, or combine it with `birthdateRangeFrom` to set both ends of the range. Matching works exactly as described under [`birthdateRangeFrom`](#birthdaterangefrom).
 
 **Applicable on endpoints**
 
