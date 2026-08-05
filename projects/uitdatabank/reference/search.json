@@ -1839,7 +1839,7 @@
         },
         "in": "query",
         "name": "birthdateRangeFrom",
-        "description": "Sets the earliest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeTo`. Events without a `birthdateRange` also match when their `typicalAgeRange`, converted to birth dates using the current date, overlaps the requested range; events marked as `allAges` are excluded from that fallback."
+        "description": "Sets the earliest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeTo`. Events that only specify a `typicalAgeRange` also match when it covers the same audience."
       },
       "birthdateRangeTo": {
         "schema": {

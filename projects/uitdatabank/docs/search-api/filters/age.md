@@ -11,12 +11,12 @@ There are two ways to filter on the audience an event or place is targeted towar
 
 <!-- theme: info -->
 
-> An event's `typicalAgeRange` is combined with the current date to determine whether it matches a given `birthdateRange`. Because of this, the same query can return different results on different days.
+> `typicalAgeRange` and `birthdateRange` describe the same audience in two different ways, so a filter on either one also returns events that only specify the other.
 
 **When to use which**
 
 * Use the **age filters** when you want events and/or places suitable for a fixed age or age range, for example "events for 6 to 12 year olds".
-* Use the birthdate range parameters (`birthdateRangeFrom`, `birthdateRangeTo`) when you want events targeted at people born within a specific date range, for example when matching against a known audience of birth dates (e.g. a list of registered children). Since this is date-aware, it also returns events whose `typicalAgeRange` currently overlaps with that birthdate range.
+* Use the birthdate range parameters (`birthdateRangeFrom`, `birthdateRangeTo`) when you want events targeted at people born within a specific date range, for example when matching against a known audience of birth dates (e.g. a list of registered children). It also returns events that describe their audience with an overlapping age range.
 * Combining both is possible (they are independent parameters and will be applied together) but is only useful for events, since the birthdate range parameters are not supported for places.
 
 ## URL parameters
@@ -85,7 +85,7 @@ GET /offers/?allAges=*
 
 With the `birthdateRangeFrom` URL parameter you set the earliest birth date of the audience you are looking for. You can use it on its own to look for everyone born on or after that date, or combine it with `birthdateRangeTo` to set both ends of the range.
 
-An event matches when its own `birthdateRange` overlaps the requested range. Events without a `birthdateRange` also match when their `typicalAgeRange`, converted to birth dates using the current date, overlaps the requested range. Events marked as `allAges` are excluded from that fallback, because their age range is unbounded and would otherwise match every birthdate query.
+An event matches when its own `birthdateRange` overlaps the requested range, or when it only specifies a `typicalAgeRange` that covers the same audience.
 
 **Applicable on endpoints**
 
