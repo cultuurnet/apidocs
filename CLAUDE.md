@@ -38,6 +38,8 @@ We normally talk about **properties** in this context instead of fields.
 - **Subevent files:** `event-subEvent-` prefix (e.g., `event-subEvent-bookingAvailability.json`)
 - **Composition/Component files:** `[domain]-[fieldname].json` (e.g., `bookingAvailability-type.json`)
 
+For naming of properties and query parameters (including the `is`/`has` convention for booleans), see `REVIEW.md` and the API design guidelines.
+
 ---
 
 ## Schema Composition
