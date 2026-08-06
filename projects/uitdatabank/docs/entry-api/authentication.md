@@ -41,7 +41,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 <!-- theme:warning -->
 
-> Authentication using tokens from our legacy JWT provider and an API key is deprecated and will become unsupported after September 30, 2026. Use OAuth2 tokens as described above instead. For more information, contact technical-support@publiq.be
+> Authentication using tokens from our legacy JWT provider and an API key is deprecated and will become unsupported after September 30, 2026. Use OAuth2 tokens as described above instead. For more information, contact <technical-support@publiq.be>
 
 Alternatively, if you registered your integration with publiq before or in the beginning of 2023 you will have received an API key instead of a client id and secret.
 
