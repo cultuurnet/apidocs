@@ -49,7 +49,7 @@
                       "type": "array",
                       "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "$ref": "../models/event-search.json"
                       }
                     },
                     "facet": {
@@ -345,7 +345,7 @@
                       "type": "array",
                       "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "$ref": "../models/event-search.json"
                       }
                     },
                     "facet": {
@@ -494,7 +494,7 @@
                       "items": {
                         "anyOf": [
                           {
-                            "$ref": "../models/event.json"
+                            "$ref": "../models/event-search.json"
                           },
                           {
                             "$ref": "../models/place.json"
@@ -594,6 +594,12 @@
           },
           {
             "$ref": "#/components/parameters/allAges"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
           },
           {
             "$ref": "#/components/parameters/audienceType"
@@ -794,7 +800,7 @@
                       "items": {
                         "anyOf": [
                           {
-                            "$ref": "../models/event.json"
+                            "$ref": "../models/event-search.json"
                           },
                           {
                             "$ref": "../models/place.json"
@@ -1833,7 +1839,7 @@
         },
         "in": "query",
         "name": "birthdateRangeFrom",
-        "description": "Returns only events targeted at people born on or after the given date. Formatted as one ISO 8601 date."
+        "description": "Sets the earliest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeTo`. Events that only specify a `typicalAgeRange` also match when it covers the same audience."
       },
       "birthdateRangeTo": {
         "schema": {
@@ -1843,7 +1849,7 @@
         },
         "in": "query",
         "name": "birthdateRangeTo",
-        "description": "Returns only events targeted at people born on or before the given date. Formatted as one ISO 8601 date."
+        "description": "Sets the latest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeFrom`. Matching works the same way as for `birthdateRangeFrom`."
       },
       "audienceType": {
         "schema": {
