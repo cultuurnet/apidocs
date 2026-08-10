@@ -65,6 +65,10 @@ While not required by the REST architecture, we have agreed on some additional n
 
 > As mentioned above, URIs may contain internal database IDs. However it is important to keep in mind that while your API may use database IDs internally, **the URI of a resource is always its ID on an API**.
 
+## Naming conventions for properties
+
+A boolean property should read as a yes/no question. Prefix it with `is` or `has`. Use `is` for a state, like `isDuplicate`, and `has` for the presence of something, like `hasMedia`. Apply this to new properties from the start, so any API that later reuses the property inherits a clear name. We do not rename existing properties that predate this convention, because renaming is a breaking change. We aim for consistency per property across APIs instead.
+
 ## HTTP methods
 
 Every resource must support one or more HTTP methods, which indicate the action that should be performed on the resource.
