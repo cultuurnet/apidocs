@@ -13,6 +13,10 @@ There are two ways to filter on the audience an event or place is targeted towar
 
 > `typicalAgeRange` and `birthdateRange` describe the same audience in two different ways, so a filter on either one also returns events that only specify the other.
 
+<!-- theme: warning -->
+
+> An event that is suitable for all ages suits every birth date, so it matches every birthdate range filter. Since `allAges` defaults to `*`, those events are returned next to the ones aimed at a specific audience. Add `allAges=false` when you only want events that target a specific audience. An age range of `0-` counts as all ages here, just like `-`.
+
 **When to use which**
 
 * Use the **age filters** when you want events and/or places suitable for a fixed age or age range, for example "events for 6 to 12 year olds".
@@ -143,6 +147,68 @@ If you don't want partial matches to be returned you can exclude anything that f
 GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
 ```
 
-<!-- theme: info -->
+### birthdateRange
 
-> `birthdateRangeFrom` and `birthdateRangeTo` express a single range. To match several birth date ranges at once, use the `birthdateRange` field in [advanced queries](../advanced/advanced-queries.md), for example `q=birthdateRange:([2020-01-01 TO 2020-12-31] OR [2022-01-01 TO 2022-12-31])`.
+With the `birthdateRange` advanced query parameter you can filter on the birth dates of the audience. The `birthdateRangeFrom` and `birthdateRangeTo` URL parameters express a single range, so use this `q` parameter when you want to match several birth date ranges at once.
+
+**Applicable on endpoints**
+
+`/offers` `/events`
+
+**Examples**
+
+Retrieve all events targeted at people born in 2020:
+
+```http
+GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
+```
+
+Retrieve all events targeted at people born in 2020 or in 2022:
+
+```http
+GET /events/?q=birthdateRange:([2020-01-01 TO 2020-12-31] OR [2022-01-01 TO 2022-12-31])
+```
+
+## Converted ranges in the results
+
+Because a `typicalAgeRange` and a `birthdateRange` describe the same audience, Search API derives the one an event does not have from the one it does. That is why an event is found by both the age and the birthdate filters, no matter which of the two the editor entered.
+
+The derived value is returned under a separate name, so you can tell it apart from a value the editor entered:
+
+* `typicalAgeRangeConverted` is returned when the event was entered with a birthdate range. It holds the matching age range, for example `6-7`.
+* `birthdateRangeConverted` is returned when the event was entered with an age range. It holds the matching birthdate range as a `from` and `to` pair. An unbounded range, such as for an all ages event, has no pair and is left out.
+
+When the editor entered both an age range and a birthdate range, both are returned as they were entered and no converted field is added.
+
+Converting between an age and a birth date needs a date to count from, and that is the start date of the event. The derived value therefore stays the same over time. An event with a `permanent` calendar has no start date, so its derived value is counted from the moment it was indexed and can shift as time passes.
+
+These fields are returned on events only, and only when the full result is requested with `embed=true`. They do not exist in Entry API.
+
+<!-- theme: warning -->
+
+> Every event carries a `typicalAgeRange`, and it falls back to `-` when the editor did not fill it in. So an event that was entered with a birthdate range shows a `typicalAgeRange` of `-` next to a `typicalAgeRangeConverted` that holds a real age range. In that case the `-` only means that no age was entered, not that the event suits all ages. Read `typicalAgeRangeConverted` to know the age the event is really aimed at.
+
+An event entered with a birthdate range therefore looks like this:
+
+```json
+{
+  "typicalAgeRange": "-",
+  "typicalAgeRangeConverted": "6-7",
+  "birthdateRange": {
+    "from": "2010-01-01",
+    "to": "2010-12-31"
+  }
+}
+```
+
+And an event entered with an age range like this:
+
+```json
+{
+  "typicalAgeRange": "6-7",
+  "birthdateRangeConverted": {
+    "from": "2009-04-23",
+    "to": "2011-04-22"
+  }
+}
+```
