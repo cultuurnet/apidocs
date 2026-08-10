@@ -13,6 +13,10 @@ There are two ways to filter on the audience an event or place is targeted towar
 
 > `typicalAgeRange` and `birthdateRange` describe the same audience in two different ways, so a filter on either one also returns events that only specify the other.
 
+<!-- theme: warning -->
+
+> An event that is suitable for all ages suits every birth date, so it matches every birthdate range filter. Since `allAges` defaults to `*`, those events are returned next to the ones aimed at a specific audience. Add `allAges=false` when you only want events that target a specific audience. An age range of `0-` counts as all ages here, just like `-`.
+
 **When to use which**
 
 * Use the **age filters** when you want events and/or places suitable for a fixed age or age range, for example "events for 6 to 12 year olds".
