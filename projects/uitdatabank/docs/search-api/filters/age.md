@@ -180,6 +180,8 @@ The derived value is returned under a separate name, so you can tell it apart fr
 
 When the editor entered both an age range and a birthdate range, both are returned as they were entered and no converted field is added.
 
+Converting between an age and a birth date needs a date to count from, and that is the start date of the event. The derived value therefore stays the same over time. An event with a `permanent` calendar has no start date, so its derived value is counted from the moment it was indexed and can shift as time passes.
+
 These fields are returned on events only, and only when the full result is requested with `embed=true`. They do not exist in Entry API.
 
 <!-- theme: warning -->
