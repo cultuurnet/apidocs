@@ -147,9 +147,27 @@ If you don't want partial matches to be returned you can exclude anything that f
 GET /events/?q=typicalAgeRange:[6 TO 12] NOT typicalAgeRange:([0 TO 5] OR [13 TO *])
 ```
 
-<!-- theme: info -->
+### birthdateRange
 
-> `birthdateRangeFrom` and `birthdateRangeTo` express a single range. To match several birth date ranges at once, use the `birthdateRange` field in [advanced queries](../advanced/advanced-queries.md), for example `q=birthdateRange:([2020-01-01 TO 2020-12-31] OR [2022-01-01 TO 2022-12-31])`.
+With the `birthdateRange` advanced query parameter you can filter on the birth dates of the audience. The `birthdateRangeFrom` and `birthdateRangeTo` URL parameters express a single range, so use this `q` parameter when you want to match several birth date ranges at once.
+
+**Applicable on endpoints**
+
+`/offers` `/events`
+
+**Examples**
+
+Retrieve all events targeted at people born in 2020:
+
+```http
+GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
+```
+
+Retrieve all events targeted at people born in 2020 or in 2022:
+
+```http
+GET /events/?q=birthdateRange:([2020-01-01 TO 2020-12-31] OR [2022-01-01 TO 2022-12-31])
+```
 
 ## Converted ranges in the results
 
