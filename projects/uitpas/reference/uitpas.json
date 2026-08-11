@@ -7025,7 +7025,30 @@
                           "level": "WARN",
                           "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
                         }
-                      ]
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
                     }
                   },
                   "Example without social tariff or messages": {
@@ -7038,6 +7061,29 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   },
@@ -7052,6 +7098,29 @@
                       "socialTariff": {
                         "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   },
@@ -7065,6 +7134,29 @@
                       "postalCode": "9300",
                       "socialTariff": {
                         "status": "NONE"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   }
@@ -7246,7 +7338,30 @@
                           "level": "WARN",
                           "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
                         }
-                      ]
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
                     }
                   },
                   "Example without social tariff or messages": {
@@ -7259,6 +7374,29 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   },
@@ -7273,6 +7411,29 @@
                       "socialTariff": {
                         "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   }
@@ -7357,7 +7518,30 @@
                           "level": "WARN",
                           "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
                         }
-                      ]
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
                     }
                   },
                   "Example without social tariff or messages": {
@@ -7370,6 +7554,29 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   },
@@ -7384,6 +7591,29 @@
                       "socialTariff": {
                         "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   }
@@ -7468,7 +7698,30 @@
                           "level": "WARN",
                           "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
                         }
-                      ]
+                      ],
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      }
                     }
                   },
                   "Example without social tariff or messages": {
@@ -7481,6 +7734,29 @@
                       "postalCode": "1000",
                       "socialTariff": {
                         "status": "NONE"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   },
@@ -7495,6 +7771,29 @@
                       "socialTariff": {
                         "status": "ACTIVE",
                         "endDate": "2024-04-30T21:59:00"
+                      },
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
                       }
                     }
                   }
@@ -12375,7 +12674,30 @@
               "level": "WARN",
               "text": "Je sociaal tarief is verlopen. Contacteer je UiTPAS balie."
             }
-          ]
+          ],
+          "cardSystem": {
+            "id": 1,
+            "name": "UiTPAS Dender",
+            "branding": {
+              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+              "primaryColor": "rgba(0,0,0,1.0)",
+              "secondaryColor": "rgba(97,166,14,1.0)"
+            },
+            "links": {
+              "website": "https://www.uitpas.be"
+            },
+            "cities": [
+              {
+                "postalCode": "9300",
+                "name": "Aalst"
+              },
+              {
+                "postalCode": "9400",
+                "name": "Ninove"
+              }
+            ],
+            "permanent": true
+          }          
         },
         "properties": {
           "passholderId": {
@@ -12413,6 +12735,9 @@
             "type": "string",
             "description": "Postal code of the passholder of this pass",
             "readOnly": true
+          },
+          "cardSystem": {
+            "$ref": "#/components/schemas/CardSystem"
           },
           "socialTariff": {
             "type": "object",
@@ -12474,6 +12799,7 @@
           "firstName",
           "points",
           "postalCode",
+          "cardSystem",
           "socialTariff"
         ],
         "readOnly": true
