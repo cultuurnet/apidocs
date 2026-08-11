@@ -37,12 +37,16 @@ GET /events/?hasChildcare=false
 
 ## Combining with a date filter
 
-When `hasChildcare` is combined with a date filter (`dateFrom`/`dateTo` URL parameters, or the `dateRange` advanced query field), the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
+When `hasChildcare` is combined with a date filter (`dateFrom`/`dateTo` URL parameters), the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
 
 > The date filter itself still matches against the actual start and end times of the activity — childcare hours never influence which events are considered to fall within a date range.
 
-Retrieve all events in May 2025 that offer childcare during that period:
+Retrieve all events in May 2025 that offer childcare during that specific period:
 
 ```http
 GET /events/?hasChildcare=true&dateFrom=2025-05-01T00:00:00%2B02:00&dateTo=2025-05-31T23:59:59%2B02:00
 ```
+
+<!-- theme: warning -->
+
+> While you can also filter on `childcare` and/or `dateRange` in advanced queries, this specific logic of checking whether the event has childcare during the specified date range does NOT work in advanced queries (`q` URL parameter) due to how they are parsed differently.
