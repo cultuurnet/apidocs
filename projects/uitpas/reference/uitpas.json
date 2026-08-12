@@ -3307,6 +3307,16 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "operationId": "get-grouppasses",
@@ -12494,7 +12504,7 @@
           },
           "email": {
             "type": "string",
-            "description": "Contact email address of the grouppass."
+            "description": "Contact email address of the grouppass. Not available when the caller is identified with client identification."
           },
           "creationDate": {
             "type": "string",
@@ -12553,10 +12563,6 @@
           "address": {
             "type": "object",
             "description": "Address of the grouppass. Not available when the caller is identified with client identification.",
-            "required": [
-              "postalCode",
-              "city"
-            ],
             "properties": {
               "street": {
                 "type": "string",
@@ -12574,14 +12580,18 @@
                 "type": "string",
                 "description": "ISO 3166-1 alpha-2 country code."
               }
-            }
+            },
+            "required": [
+              "postalCode",
+              "city"
+            ]
           },
           "telephone": {
             "type": "string",
             "x-stoplight": {
               "id": "46g76ybvflcsd"
             },
-            "description": "Telephone contact number of this grouppass"
+            "description": "Telephone contact number of this grouppass. Not available when the caller is identified with client identification."
           }
         },
         "required": [
