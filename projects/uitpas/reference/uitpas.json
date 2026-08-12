@@ -3310,7 +3310,7 @@
           }
         },
         "operationId": "get-grouppasses",
-        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:** \n> * This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n> * When client identification is used, an extra rate limit is applied and a limited number of Grouppass properties are returned. See property descriptions.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
+        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:**\n> * This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n> * When the caller is identified with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), this endpoint is rate limited (see the `429` response) and only a subset of the `grouppass` properties is returned. See the individual property descriptions.\n\nThe caller of this request, identified by client identification, client access token or user access token, must have `GROUPPASSES_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -12476,7 +12476,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Name of the grouppass. Always available when strong authentication is used."
+            "description": "Name of the grouppass. Not available when the caller is identified with client identification."
           },
           "cardStatus": {
             "type": "string",
@@ -12552,7 +12552,7 @@
           },
           "address": {
             "type": "object",
-            "description": "Address of the grouppass. Always available when strong authentication is used.",
+            "description": "Address of the grouppass. Not available when the caller is identified with client identification.",
             "required": [
               "postalCode",
               "city"
