@@ -3310,13 +3310,16 @@
           }
         },
         "operationId": "get-grouppasses",
-        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:** This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
+        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:** \n> * This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n> * When client identification is used, an extra rate limit is applied and a limited number of Grouppass properties are returned. See property descriptions.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
           },
           {
             "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
           }
         ],
         "parameters": [
@@ -12467,13 +12470,13 @@
             "description": "This field is always available in responses.",
             "readOnly": true
           },
-          "name": {
-            "type": "string",
-            "description": "Name of the grouppass."
-          },
           "uitpasNumber": {
             "type": "string",
             "description": "The UiTPAS number of this grouppass. This field is always available in responses."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the grouppass. Always available when strong authentication is used."
           },
           "cardStatus": {
             "type": "string",
@@ -12549,7 +12552,7 @@
           },
           "address": {
             "type": "object",
-            "description": "Address of the grouppass. Always present in responses.",
+            "description": "Address of the grouppass. Always available when strong authentication is used.",
             "required": [
               "postalCode",
               "city"
@@ -12582,10 +12585,8 @@
           }
         },
         "required": [
-          "name",
           "cardStatus",
-          "cardSystem",
-          "address"
+          "cardSystem"
         ]
       },
       "PassholderSelfRegistration": {
