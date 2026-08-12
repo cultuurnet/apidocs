@@ -3287,6 +3287,48 @@
                         }
                       ]
                     }
+                  },
+                  "Example with client identification": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+                          "uitpasNumber": "0900000045410",
+                          "cardStatus": "ACTIVE",
+                          "creationDate": "2019-08-24T14:15:22+00:00",
+                          "socialTariff": {
+                            "status": "ACTIVE",
+                            "endDate": "2024-12-31T01:00:00+00:00",
+                            "totalTicketsPerYear": 20,
+                            "availableTickets": 9
+                          },
+                          "cardSystem": {
+                            "id": 1,
+                            "name": "UiTPAS Dender",
+                            "branding": {
+                              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                              "primaryColor": "rgba(0,0,0,1.0)",
+                              "secondaryColor": "rgba(97,166,14,1.0)"
+                            },
+                            "links": {
+                              "website": "https://www.uitpas.be"
+                            },
+                            "cities": [
+                              {
+                                "postalCode": "9300",
+                                "name": "Aalst"
+                              },
+                              {
+                                "postalCode": "9400",
+                                "name": "Ninove"
+                              }
+                            ],
+                            "permanent": true
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               }
