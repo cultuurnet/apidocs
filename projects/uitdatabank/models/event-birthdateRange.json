@@ -1,7 +1,7 @@
 {
   "title": "event.birthdateRange",
   "type": "object",
-  "description": "The birthdate range of the attendees of the [event](./models/event.json).",
+  "description": "The birthdate range of the attendees of the [event](./models/event.json). Cannot be combined with a `typicalAgeRange`: an event describes its audience with one or the other.",
   "properties": {
     "from": {
       "type": "string",
