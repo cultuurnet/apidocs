@@ -873,6 +873,34 @@ Retrieve all events with a price equal to or higher than 50 EUR:
 GET /events/?q=priceRange:[50 TO *]
 ```
 
+### recurringOnDayOfWeek
+
+With the `recurringOnDayOfWeek` field you can look for results that recur on a given weekday, for example a market every Wednesday. Events that take place on a single date are never matched.
+
+For an in-depth understanding of the `recurringOnDayOfWeek` field we advise to read [our guide](../filters/recurring-day-of-week.md).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+`monday` `tuesday` `wednesday` `thursday` `friday` `saturday` `sunday`
+
+**Examples**
+
+Search for all events that recur on Wednesdays:
+
+```
+GET /events/?q=recurringOnDayOfWeek:wednesday
+```
+
+Unlike the URL parameter, which always combines multiple weekdays as an OR, advanced queries allow you to combine weekdays with other boolean operators. Search for all events that recur on both Saturday and Sunday:
+
+```
+GET /events/?q=recurringOnDayOfWeek:(saturday AND sunday)
+```
+
 ### regions
 
 publiq has a list of pre-indexed geographical shapes that represent the administrative state of Belgium. The geographical coördinates of events and places are then matched with pre-indexed geographical shapes for:
