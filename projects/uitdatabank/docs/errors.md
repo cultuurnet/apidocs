@@ -136,4 +136,4 @@ An [event](/models/event.json) describes the audience it is aimed at either with
 
 This only happens when both are sent in one event body: `POST /events`, `PUT /events/{eventId}` and their `/imports` variants. On `PUT /events/{eventId}/typical-age-range` and `PUT /events/{eventId}/birthdate-range` the range you send replaces the other one, so there is nothing to reject and no need to delete it first.
 
-Send only the range you want to set, and leave the other out. Search API derives the missing one for you, so filters on either still find the event. See the [age filter](https://docs.publiq.be/docs/uitdatabank/search-api/filters/age) page for the derived `typicalAgeRangeConverted` and `birthdateRangeConverted` values.
+Send only the range you want to set, and leave the other out. Search API derives the missing one for you, so filters on either still find the event. See the [age filter](./search-api/filters/age.md) page for the derived `typicalAgeRangeConverted` and `birthdateRangeConverted` values.
