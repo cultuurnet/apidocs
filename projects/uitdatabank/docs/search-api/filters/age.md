@@ -178,7 +178,7 @@ The derived value is returned under a separate name, so you can tell it apart fr
 * `typicalAgeRangeConverted` is returned when the event was entered with a birthdate range. It holds the matching age range, for example `6-7`.
 * `birthdateRangeConverted` is returned when the event was entered with an age range. It holds the matching birthdate range as a `from` and `to` pair. An unbounded range, such as for an all ages event, has no pair and is left out.
 
-An event has one of the two, never both, so it always carries one entered value and one derived one.
+An event has one of the two, never both, so it carries one entered value and one derived one. Events that were entered with both before this rule can still carry both until either range is updated again, and for those no converted value is added.
 
 Converting between an age and a birth date needs a date to count from, and that is the start date of the event. The derived value therefore stays the same over time. An event with a `permanent` calendar has no start date, so its derived value is counted from the moment it was indexed and can shift as time passes.
 
