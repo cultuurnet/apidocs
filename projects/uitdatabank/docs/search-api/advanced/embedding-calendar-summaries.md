@@ -191,6 +191,43 @@ Every result in the response will have a `calendarSummary` property with a value
 }
 ```
 
+### Calendar summary `xl-text`
+
+**request**
+
+```
+GET /events/?embedCalendarSummaries[]=xl-text
+```
+
+**response**
+
+Every result in the response will have a `calendarSummary` property with a value like:
+
+```json
+{
+   "nl":{
+      "text":{
+         "xl":"Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030\n(maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00)\n(maandag opvang van 8:00 tot 18:00)\n"
+      }
+   },
+   "fr":{
+      "text":{
+         "xl":"Du mardi 25 novembre 2025 à samedi 30 novembre 2030\n(lundi de 9:00 à 12:00 et de 13:00 à 17:00, mardi de 9:00 à 16:00)\n(lundi garderie de 8:00 à 18:00)"
+      }
+   },
+   "de":{
+      "text":{
+         "xl":"Von Dienstag 25 November 2025 bis Samstag 30 November 2030\n(montag von 9:00 bis 12:00 und von 13:00 bis 17:00, dienstag von 9:00 bis 16:00)\n(Montag Kinderbetreuung von 8:00 bis 18:00)"
+      }
+   },
+   "en":{
+      "text":{
+         "xl":"From Tuesday 25 November 2025 to Saturday 30 November 2030\n(monday from 9:00 till 12:00 and from 13:00 till 17:00, tuesday from 9:00 till 16:00)\n(Monday childcare from 8:00 till 18:00)"
+      }
+   }
+}
+```
+
 ### Requesting multiple calendar summaries at once
 
 **request**
