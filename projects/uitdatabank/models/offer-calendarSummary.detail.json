@@ -22,6 +22,10 @@
         "lg": {
           "type": "string",
           "description": "Large date, example: Maandag 28 november 2022 van 20:00 tot 21:00 (Volzet of uitverkocht)"
+        },
+        "xl": {
+          "type": "string",
+          "description": "Extra large date, example: Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030\n(maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00)\n (maandag opvang van 8:00 tot 18:00)"
         }
       }
     },
@@ -44,6 +48,10 @@
         "lg": {
           "type": "string",
           "description": "Large date in HTML"
+        },
+        "xl": {
+          "type": "string",
+          "description": "Extra large date in HTML"
         }
       }
     }
