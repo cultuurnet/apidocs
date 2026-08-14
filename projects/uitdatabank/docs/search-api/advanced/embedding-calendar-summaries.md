@@ -207,7 +207,7 @@ Every result in the response will have a `calendarSummary` property with a value
 {
    "nl":{
       "text":{
-         "xl":"Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030\n(maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00)\n(maandag opvang van 8:00 tot 18:00)\n"
+         "xl":"Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030\n(maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00)\n(maandag opvang van 8:00 tot 18:00)"
       }
    },
    "fr":{
