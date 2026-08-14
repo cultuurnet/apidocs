@@ -10,7 +10,7 @@ Formatting this info into a human-readable overview can be complex. Therefore, w
 
 The calendar summary will be embedded in every result as an additional `calendarSummary` property.
 
-For every event or place a calendar summary is available in different sizes (`xs`, `sm`, `md`, `lg`) and can be retrieved in `text` and/or `html`.
+For every event or place a calendar summary is available in different sizes (`xs`, `sm`, `md`, `lg`, `xl`) and can be retrieved in `text` and/or `html`.
 
 The calendar summary is always provided in `nl`, `fr`, `en` and `de`. It is possible to request multiple sizes and formats at once.
 
@@ -34,10 +34,12 @@ Possible values:
 * `sm-text`: small summary in plain text
 * `md-text`: medium summary in plain text
 * `lg-text`: large summary in plain text
+* `xl-text`: extra large summary in plain text
 * `xs-html`: extra small summary in HTML
 * `sm-html`: small summary in HTML
 * `md-html`: medium summary in HTML
 * `lg-html`: large summary in HTML
+* `xl-html`: extra large summary in HTML
 
 You can request multiple sizes and formats by repeating the parameter with different values. (See examples below.)
 
@@ -46,6 +48,7 @@ You can request multiple sizes and formats by repeating the parameter with diffe
 * We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
 * We recommend to use `lg` for the detailpage
 * In some cases (e.g. mobile apps) calendar summary `xs` can be useful
+* `xl` is mostly suited when you want to show childrenOnly events.
 * You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ## Examples
