@@ -48,7 +48,7 @@ You can request multiple sizes and formats by repeating the parameter with diffe
 * We recommend to use the format `md` for the search results but `lg` for events with calendarType `single` specifically
 * We recommend to use `lg` for the detailpage
 * In some cases (e.g. mobile apps) calendar summary `xs` can be useful
-* `xl` is mostly suited when you want to show childrenOnly events.
+* `xl` is mostly suited for events with detailed opening hours and/or `childcare` times, since it also lists those
 * You can use the `embedCalendarSummaries` parameter with or without `embed=true`
 
 ## Examples
