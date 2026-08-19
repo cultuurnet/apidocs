@@ -200,6 +200,9 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
             "$ref": "#/components/parameters/embed"
           },
           {
@@ -648,6 +651,9 @@
           },
           {
             "$ref": "#/components/parameters/localTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
           },
           {
             "$ref": "#/components/parameters/embed"
@@ -1405,6 +1411,9 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
             "$ref": "#/components/parameters/facets"
           },
           {
@@ -1934,6 +1943,28 @@
         "in": "query",
         "name": "calendarType",
         "description": "Returns only results with the given enum value as their calendarType. Accepts multiple comma-separated values to return results that have one of the given calendar types. [Here is a detailed guide](./entry-api/shared/calendar-info#calendartype) with more information."
+      },
+      "recurringOnDayOfWeek": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          }
+        },
+        "style": "form",
+        "explode": false,
+        "in": "query",
+        "name": "recurringOnDayOfWeek",
+        "description": "Returns only results that recur on the given weekday. For results with a `periodic` or `permanent` calendarType the weekdays are taken from `openingHours[].dayOfWeek`. For events with a `multiple` calendarType the weekdays are derived from the `startDate` and `endDate` of the sub-events. Events with a `single` calendarType are never returned. Accepts multiple comma-separated values to return results that recur on one of the given weekdays."
       },
       "createdFrom": {
         "schema": {
