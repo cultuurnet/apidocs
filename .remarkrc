@@ -33,7 +33,7 @@
         ],
         "gotOptions": {
             "headers": {
-                "user-agent": "apidocs-link-checker (+https://github.com/cultuurnet/apidocs)"
+                "user-agent": "apidocs-link-checker (cultuurnet/apidocs)"
             }
         }
     },
