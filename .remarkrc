@@ -33,7 +33,7 @@
         ],
         "gotOptions": {
             "headers": {
-                "user-agent": "remark-lint-no-dead-urls (apidocs link checker)"
+                "user-agent": "apidocs-link-checker (+https://github.com/cultuurnet/apidocs)"
             }
         }
     },
