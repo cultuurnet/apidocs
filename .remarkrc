@@ -30,7 +30,12 @@
             "https://api.publiq.be",
             "https://www.indiestyle.be/agenda",
             "https://www.w3.org/community/hydra/wiki/Pagination"
-        ]
+        ],
+        "gotOptions": {
+            "headers": {
+                "user-agent": "remark-lint-no-dead-urls (apidocs link checker)"
+            }
+        }
     },
     "remark-validate-links": null,
     "remark-preset-lint-consistent": null,
