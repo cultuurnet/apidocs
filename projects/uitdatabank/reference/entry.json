@@ -1565,7 +1565,7 @@
           }
         },
         "operationId": "event-calendar-summary-get",
-        "description": "Returns a human-readable summary of the calendar information of the event. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/events/{eventId}/calsum` path.",
+        "description": "Returns a human-readable summary of the calendar information of the event. Can be configured to return either plain text or HTML, and to switch between five different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/events/{eventId}/calsum` path.",
         "parameters": [
           {
             "schema": {
@@ -1588,13 +1588,14 @@
                 "xs",
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "xl"
               ],
               "default": "lg"
             },
             "in": "query",
             "name": "size",
-            "description": "Defines the size of the summary. Larger summaries contain more detail for events with multiple dates/hours but will also take up more space when shown in a UI. We recommend to use the format `md` for the search results (and `lg` for events with calendarType single), and to always use `lg` for the detailpage. In some cases (e.g. mobile apps) calendar summary `xs` can be useful."
+            "description": "Defines the size of the summary. Larger summaries contain more detail for events with multiple dates/hours but will also take up more space when shown in a UI. We recommend to use the format `md` for the search results (and `lg` for events with calendarType single), and to always use `lg` for the detailpage. In some cases (e.g. mobile apps) calendar summary `xs` can be useful. The `xl` size adds the `openingHoursAdjustedDays` and the `openingHoursClosedDays` to the `lg` summary, which only mentions that the hours can differ during those periods. It is mostly useful on the detailpage of an event or place with calendarType `periodic` or `permanent`, since only those have opening hours. For calendarType `single` and `multiple` the `xl` summary is the same as the `lg` one."
           },
           {
             "schema": {
@@ -1663,7 +1664,8 @@
                 "xs",
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "xl"
               ]
             },
             "in": "query",
@@ -5371,7 +5373,7 @@
           }
         },
         "operationId": "place-calendar-summary-get",
-        "description": "Returns a human-readable summary of the calendar information of the place. Can be configured to return either plain text or HTML, and to switch between four different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/places/{placeId}/calsum` path.",
+        "description": "Returns a human-readable summary of the calendar information of the place. Can be configured to return either plain text or HTML, and to switch between five different formats depending on the amount of space you have to display it.\n\n> For backward compatibility this endpoint is also accessible at the old abbreviated `/places/{placeId}/calsum` path.",
         "parameters": [
           {
             "schema": {
@@ -5394,13 +5396,14 @@
                 "xs",
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "xl"
               ],
               "default": "lg"
             },
             "in": "query",
             "name": "size",
-            "description": "Defines the size of the summary. Larger summaries contain more detail for events with multiple dates/hours but will also take up more space when shown in a UI. We recommend to use the format `md` for the search results (and `lg` for events with calendarType single), and to always use `lg` for the detailpage. In some cases (e.g. mobile apps) calendar summary `xs` can be useful"
+            "description": "Defines the size of the summary. Larger summaries contain more detail for events with multiple dates/hours but will also take up more space when shown in a UI. We recommend to use the format `md` for the search results (and `lg` for events with calendarType single), and to always use `lg` for the detailpage. In some cases (e.g. mobile apps) calendar summary `xs` can be useful. The `xl` size adds the `openingHoursAdjustedDays` and the `openingHoursClosedDays` to the `lg` summary, which only mentions that the hours can differ during those periods. It is mostly useful on the detailpage of an event or place with calendarType `periodic` or `permanent`, since only those have opening hours. For calendarType `single` and `multiple` the `xl` summary is the same as the `lg` one."
           },
           {
             "schema": {
@@ -5469,7 +5472,8 @@
                 "xs",
                 "sm",
                 "md",
-                "lg"
+                "lg",
+                "xl"
               ]
             },
             "in": "query",
