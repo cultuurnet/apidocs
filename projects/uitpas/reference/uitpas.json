@@ -3287,6 +3287,48 @@
                         }
                       ]
                     }
+                  },
+                  "Example with client identification": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "id": "b5a5bb75-6cae-452b-b029-d12d3b425b1b",
+                          "uitpasNumber": "0900000045410",
+                          "cardStatus": "ACTIVE",
+                          "creationDate": "2019-08-24T14:15:22+00:00",
+                          "socialTariff": {
+                            "status": "ACTIVE",
+                            "endDate": "2024-12-31T01:00:00+00:00",
+                            "totalTicketsPerYear": 20,
+                            "availableTickets": 9
+                          },
+                          "cardSystem": {
+                            "id": 1,
+                            "name": "UiTPAS Dender",
+                            "branding": {
+                              "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                              "primaryColor": "rgba(0,0,0,1.0)",
+                              "secondaryColor": "rgba(97,166,14,1.0)"
+                            },
+                            "links": {
+                              "website": "https://www.uitpas.be"
+                            },
+                            "cities": [
+                              {
+                                "postalCode": "9300",
+                                "name": "Aalst"
+                              },
+                              {
+                                "postalCode": "9400",
+                                "name": "Ninove"
+                              }
+                            ],
+                            "permanent": true
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -3307,16 +3349,29 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "operationId": "get-grouppasses",
-        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:** This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n\nThe caller of this request must have `EVENTS_READ` permission for the organizer of this event.\n\nThe caller of this request must have `GROUPPASSES_SEARCH` permission.",
+        "description": "Retrieve grouppasses based on search parameters.\n\n**Note**: For now this endpoint requires either `uitpasNumber` or `chipNumber`, so this endpoint currently cannot be used to search _all_ grouppasses.\n\n<!-- theme: warning -->\n\n> **Important:**\n> * This endpoint might return `grouppass` entities for `BLOCKED` or `DELETED` cards. Clients using this endpoint MUST check `cardStatus` for `ACTIVE` cards before proceeding regular operations with this `grouppass`.\n> * When the caller is identified with [client identification](/docs/authentication/ZG9jOjExODE5NDY5-client-identification), this endpoint is rate limited (see the `429` response) and only a subset of the `grouppass` properties is returned. See the individual property descriptions.\n\nThe caller of this request, identified by client identification, client access token or user access token, must have `GROUPPASSES_SEARCH` permission.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
           },
           {
             "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_IDENTIFICATION": []
           }
         ],
         "parameters": [
@@ -12467,13 +12522,13 @@
             "description": "This field is always available in responses.",
             "readOnly": true
           },
-          "name": {
-            "type": "string",
-            "description": "Name of the grouppass."
-          },
           "uitpasNumber": {
             "type": "string",
             "description": "The UiTPAS number of this grouppass. This field is always available in responses."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the grouppass. Not available when the caller is identified with client identification."
           },
           "cardStatus": {
             "type": "string",
@@ -12491,7 +12546,7 @@
           },
           "email": {
             "type": "string",
-            "description": "Contact email address of the grouppass."
+            "description": "Contact email address of the grouppass. Not available when the caller is identified with client identification."
           },
           "creationDate": {
             "type": "string",
@@ -12549,11 +12604,7 @@
           },
           "address": {
             "type": "object",
-            "description": "Address of the grouppass. Always present in responses.",
-            "required": [
-              "postalCode",
-              "city"
-            ],
+            "description": "Address of the grouppass. Not available when the caller is identified with client identification.",
             "properties": {
               "street": {
                 "type": "string",
@@ -12571,21 +12622,23 @@
                 "type": "string",
                 "description": "ISO 3166-1 alpha-2 country code."
               }
-            }
+            },
+            "required": [
+              "postalCode",
+              "city"
+            ]
           },
           "telephone": {
             "type": "string",
             "x-stoplight": {
               "id": "46g76ybvflcsd"
             },
-            "description": "Telephone contact number of this grouppass"
+            "description": "Telephone contact number of this grouppass. Not available when the caller is identified with client identification."
           }
         },
         "required": [
-          "name",
           "cardStatus",
-          "cardSystem",
-          "address"
+          "cardSystem"
         ]
       },
       "PassholderSelfRegistration": {
