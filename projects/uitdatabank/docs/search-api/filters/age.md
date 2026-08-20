@@ -178,21 +178,16 @@ The derived value is returned under a separate name, so you can tell it apart fr
 * `typicalAgeRangeConverted` is returned when the event was entered with a birthdate range. It holds the matching age range, for example `6-7`.
 * `birthdateRangeConverted` is returned when the event was entered with an age range. It holds the matching birthdate range as a `from` and `to` pair. An unbounded range, such as for an all ages event, has no pair and is left out.
 
-When the editor entered both an age range and a birthdate range, both are returned as they were entered and no converted field is added.
+An event has one of the two, never both, so it carries one entered value and one derived one. Events that were entered with both before this rule can still carry both until either range is updated again, and for those no converted value is added.
 
 Converting between an age and a birth date needs a date to count from, and that is the start date of the event. The derived value therefore stays the same over time. An event with a `permanent` calendar has no start date, so its derived value is counted from the moment it was indexed and can shift as time passes.
 
 These fields are returned on events only, and only when the full result is requested with `embed=true`. They do not exist in Entry API.
 
-<!-- theme: warning -->
-
-> Every event carries a `typicalAgeRange`, and it falls back to `-` when the editor did not fill it in. So an event that was entered with a birthdate range shows a `typicalAgeRange` of `-` next to a `typicalAgeRangeConverted` that holds a real age range. In that case the `-` only means that no age was entered, not that the event suits all ages. Read `typicalAgeRangeConverted` to know the age the event is really aimed at.
-
-An event entered with a birthdate range therefore looks like this:
+An event entered with a birthdate range looks like this, without a `typicalAgeRange` of its own:
 
 ```json
 {
-  "typicalAgeRange": "-",
   "typicalAgeRangeConverted": "6-7",
   "birthdateRange": {
     "from": "2010-01-01",
