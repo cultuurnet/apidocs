@@ -3169,7 +3169,7 @@
             }
           }
         },
-        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n\nThe caller must have the `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`. Registering a passholder with a social tariff additionally requires `PASSHOLDERS_WRITE_SOCIAL_TARIFF`, and doing so in a city other than the `registrationOrganizer` additionally requires `PASSHOLDERS_WRITE_SOCIALTARIFF_FULL_CARDSYSTEM`. These permissions are cumulative.\n\n`PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission is needed when registering any passholder with a country other than `be`.",
+        "description": "Register a passholder\n\n<!-- theme: warning -->\n\n> IMPORTANT\n>\n> * Make sure to set `registrationCardType` to either `DIGITAL` or `NFC_CARD`. In case of `NFC_CARD` the field `registrationUitpasNumber` is required and has to be a card in status `LOCAL_STOCK`.\n>\n> * `registrationOrganizer` is always required to be set to the current organizer performing the register\n\nThe caller must have the `PASSHOLDERS_WRITE` permission for the `registrationOrganizer`. Registering a passholder with a social tariff additionally requires `PASSHOLDERS_WRITE_SOCIAL_TARIFF`, and doing so in a city other than the `registrationOrganizer` additionally requires `PASSHOLDERS_WRITE_SOCIALTARIFF_FULL_CARDSYSTEM`. These permissions are cumulative.\n\n`PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission is needed when registering any passholder with a country other than `be`.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -3752,7 +3752,7 @@
         "tags": [
           "Passholders"
         ],
-        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\nPlease note that this is a PUT endpoint, which performs a full replacement of the resource. You must include the complete resource payload in the request body, including all unchanged fields. Omitting optional fields may clear their existing values or cause validation errors.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the `registrationSocialTariffEndDate` field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a valid social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n> * Updating a passholder to a city outside Belgium requires the additional `PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
+        "description": "Update a passholder.\n\nOnly specific fields can be modified; please refer to the individual field descriptions to identify which fields are ignored during an update.\n\nPlease note that this is a PUT endpoint, which performs a full replacement of the resource. You must include the complete resource payload in the request body, including all unchanged fields. Omitting optional fields may clear their existing values or cause validation errors.\n\n<!-- theme: warning -->\n\n> The following additional rules apply:\n> * Social Tariff Permissions: Updating the `registrationSocialTariffEndDate` field requires the additional `PASSHOLDERS_WRITE_SOCIAL_TARIFF` permission.\n> * Regional Restrictions: If the passholder has a valid social tariff, the `postalCode` and `city` cannot be changed to a location outside the region of the current card system.\n> * Updating a passholder to a city outside Belgium requires the additional `PASSHOLDERS_WRITE_FOREIGN_COUNTRY` permission.\n> * `registrationOrganizer` is always required to be set to the current organizer performing the update\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -12116,7 +12116,13 @@
             "description": "Gender of the passholder."
           },
           "registrationOrganizer": {
-            "$ref": "#/components/schemas/Organizer"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
+            "writeOnly": true,
+            "description": "Only used in passholder creation or update."
           },
           "points": {
             "type": "integer",
