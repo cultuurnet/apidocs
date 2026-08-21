@@ -76,7 +76,7 @@ Use `allOf` when you need to reference a shared component **and** add or overrid
 ```json
 "capacity": {
   "allOf": [
-    { "$ref": "./common-bookingAvailability-capacity.json" },
+    { "$ref": "./common-bookingAvailability-type.json" },
     {
       "description": "Total number of seats or tickets for this subEvent."
     }
