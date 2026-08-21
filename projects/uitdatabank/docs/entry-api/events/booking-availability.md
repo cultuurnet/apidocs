@@ -38,14 +38,35 @@ By default, it looks like this:
 
 The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
-When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property in which case this field will overwrite the availibility type on each `subEvent`.
+When you set a top-level `bookingAvailability.type` on an event that has calendarType `single` or `multiple`, their `subEvent` objects will also automatically get the same `bookingAvailability.type`.
 
 For example on an event with multiple dates:
 
 ```json
 {
   "bookingAvailability": {
-    "type": "Available"
+    "type": "Unavailable"
+  },
+  "calendarType": "multiple",
+  "subEvent": [
+    {
+      "startDate": "2023-01-18T17:30:00+01:00",
+      "endDate": "2023-01-18T23:00:00+01:00"
+    },
+    {
+      "startDate": "2023-01-19T17:30:00+01:00",
+      "endDate": "2023-01-19T23:00:00+01:00"
+    }
+  ]
+}
+```
+
+Will automatically become:
+
+```
+{
+  "bookingAvailability": {
+    "type": "Unavailable"
   },
   "calendarType": "multiple",
   "subEvent": [
@@ -53,14 +74,14 @@ For example on an event with multiple dates:
       "startDate": "2023-01-18T17:30:00+01:00",
       "endDate": "2023-01-18T23:00:00+01:00",
       "bookingAvailability": {
-        "type": "Available"
+        "type": "Unavailable"
       }
     },
     {
       "startDate": "2023-01-19T17:30:00+01:00",
       "endDate": "2023-01-19T23:00:00+01:00",
       "bookingAvailability": {
-        "type": "Available"
+        "type": "Unavailable"
       }
     }
   ]
