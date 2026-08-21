@@ -104,12 +104,6 @@
             },
             {
               "type": "item",
-              "title": "Creating an event for children only",
-              "uri": "/docs/entry-api/events/create-children-only.md",
-              "slug": "entry-api/events/creating-an-event-for-children-only"
-            },
-            {
-              "type": "item",
               "title": "Updating an event",
               "uri": "/docs/entry-api/events/update.md",
               "slug": "entry-api/events/updating-an-event"
@@ -399,12 +393,6 @@
               "title": "Filtering by childcare",
               "uri": "/docs/search-api/filters/childcare.md",
               "slug": "search-api/filters/filtering-by-childcare"
-            },
-            {
-              "type": "item",
-              "title": "Filtering by children only",
-              "uri": "/docs/search-api/filters/children-only.md",
-              "slug": "search-api/filters/filtering-by-children-only"
             },
             {
               "type": "item",
