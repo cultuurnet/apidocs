@@ -32,7 +32,7 @@ We normally talk about **properties** in this context instead of fields.
 ## File Organization & Naming Conventions
 
 ### Naming Patterns
-- **Single property component files:** `common-` prefix (e.g., `common-capacity.json`)
+- **Single property component files:** `common-` prefix (e.g., `common-bookingAvailability.json`)
 - **Place-related files:** `place-` prefix (e.g., `place-bookingAvailability.json`)
 - **Event-related files:** `event-` prefix (e.g., `event-bookingAvailability.json`)
 - **Subevent files:** `event-subEvent-` prefix (e.g., `event-subEvent-bookingAvailability.json`)
@@ -47,12 +47,25 @@ For naming of properties and query parameters (including the `is`/`has` conventi
 ### Using `$ref` for Reusable Properties
 To eliminate property definition duplication, use `$ref` to reference reusable component files.
 
-**Component file structure** (e.g., `bookingAvailability-capacity.json`):
+**Component file structure** (e.g., `common-bookingAvailability.json`):
 ```json
 {
-  "type": "integer",
-  "minimum": 0,
-  "description": "Total number of seats or tickets."
+  "title": "bookingAvailability",
+  "type": "object",
+  "description": "Indicates whether there are tickets or reservations available. Currently only contains a `type` that can be `Available` or `Unavailable`, but can later be expanded with more detailed info.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Available",
+        "Unavailable"
+      ],
+      "description": "One of two possible types.\n\n- `Available`:Tickets or reservations available\n- `Unavailable`: No more tickets or reservations available."
+    }
+  },
+  "required": [
+    "type"
+  ]
 }
 ```
 
@@ -61,12 +74,15 @@ To eliminate property definition duplication, use `$ref` to reference reusable c
 {
   "title": "event.bookingAvailability",
   "type": "object",
+  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`.",
   "properties": {
-    "capacity": {
-      "$ref": "./bookingAvailability-capacity.json"
+    "type": {
+      "$ref": "./common-bookingAvailability-type.json"
     }
   },
-  "required": ["type"]
+  "required": [
+    "type"
+  ]
 }
 ```
 
@@ -74,13 +90,15 @@ To eliminate property definition duplication, use `$ref` to reference reusable c
 Use `allOf` when you need to reference a shared component **and** add or override a `description` or `example` for the specific context:
 
 ```json
-"type": {
-  "allOf": [
-    { "$ref": "./common-bookingAvailability-type.json" },
-    {
-      "description": "Total number of seats or tickets for this subEvent."
+{
+    "type": {
+      "allOf": [
+        { "$ref": "./common-bookingAvailability-type.json" },
+        {
+          "description": "Total number of seats or tickets for this subEvent."
+        }
+      ]
     }
-  ]
 }
 ```
 
@@ -99,10 +117,12 @@ Use `required` array for straightforward requirements:
 ### Flexible Requirements — Either/Or (`anyOf`)
 Use `anyOf` with `required` constraints when at least one property must be present:
 ```json
-"anyOf": [
-  { "required": ["type"] },
-  { "required": ["remainingCapacity"] }
-]
+{
+    "anyOf": [
+      { "required": ["property_1"] },
+      { "required": ["property_2"] }
+    ]
+}
 ```
 This means: **at least one of these properties must be present**. Multiple properties can be sent together.
 
@@ -110,16 +130,18 @@ This means: **at least one of these properties must be present**. Multiple prope
 Use `oneOf` with `required`/`not` constraints when exactly one of two properties must be present (but not both):
 
 ```json
-"oneOf": [
-  {
-    "required": ["type"],
-    "not": { "required": ["remainingCapacity"] }
-  },
-  {
-    "required": ["remainingCapacity"],
-    "not": { "required": ["type"] }
-  }
-]
+{
+    "oneOf": [
+      {
+        "required": ["property_1"],
+        "not": { "required": ["property_2"] }
+      },
+      {
+        "required": ["property_2"],
+        "not": { "required": ["property_1"] }
+      }
+    ]
+}
 ```
 
 Summary: `anyOf` = either or both allowed; `oneOf` = exactly one.
