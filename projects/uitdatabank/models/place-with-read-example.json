@@ -187,8 +187,7 @@
         "label2"
       ],
       "bookingAvailability": {
-        "type": "Available",
-        "capacity": 200
+        "type": "Available"
       },
       "contributors": [
         "info@publiq.be",

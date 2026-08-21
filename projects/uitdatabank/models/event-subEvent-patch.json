@@ -29,8 +29,7 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available",
-          "capacity": 100
+          "type": "Available"
         }
       },
       {
@@ -116,28 +115,11 @@
         "properties": {
           "type": {
             "$ref": "./common-bookingAvailability-type.json",
-            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.\n\n Required when `remainingCapacity` is not provided.",
+            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
             "example": "Available"
-          },
-          "capacity": {
-            "$ref": "./common-bookingAvailability-capacity.json",
-            "description": "Total number of seats or tickets for this subEvent. Can be set independently of `remainingCapacity`."
-          },
-          "remainingCapacity": {
-            "$ref": "./common-bookingAvailability-remainingCapacity.json",
-            "description": "Number of remaining seats or tickets for this subEvent. Cannot exceed `capacity` when both are provided. When supplied, `type` is derived automatically: `0` → `Unavailable`, `> 0` → `Available`."
           }
         },
-        "oneOf": [
-          {
-            "required": ["type"],
-            "not": { "required": ["remainingCapacity"] }
-          },
-          {
-            "required": ["remainingCapacity"],
-            "not": { "required": ["type"] }
-          }
-        ]
+        "required": ["type"]
       },
       "overnight": {
         "type": "boolean",

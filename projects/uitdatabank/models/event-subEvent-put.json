@@ -15,8 +15,7 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available",
-          "capacity": 100
+          "type": "Available"
         },
         "overnight": true
       }
@@ -33,9 +32,7 @@
           "type": "Available"
         },
         "bookingAvailability": {
-          "type": "Available",
-          "capacity": 100,
-          "remainingCapacity": 60
+          "type": "Available"
         }
       },
       {
@@ -45,9 +42,7 @@
           "type": "Unavailable"
         },
         "bookingAvailability": {
-          "type": "Unavailable",
-          "capacity": 50,
-          "remainingCapacity": 0
+          "type": "Unavailable"
         }
       }
     ]
