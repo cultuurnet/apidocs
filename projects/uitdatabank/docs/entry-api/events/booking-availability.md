@@ -38,30 +38,35 @@ By default, it looks like this:
 
 The nested `type` property can either be `Available` (tickets/reservations/seats available), or `Unavailable` (sold out/fully booked).
 
-For subEvents specifically, `bookingAvailability` also supports an additional optional numeric property:
-
-| Property            | Type | Description |
-|---------------------|---|---|
-| `remainingCapacity` | integer ≥ 0 | Number of remaining seats or tickets for this date |
-
-The booking availability of an event can include an optional `capacity` property. Sub-events can also define their own optional `capacity`.
-
-| Property   | Type | Description |
-|------------|---|---|
-| `capacity` | integer ≥ 0 | Total number of seats or tickets |
-
-All properties (`type`, `capacity`, and `remainingCapacity`) are optional and can be combined in any way.
-
-> **Capacity is only supported for events with calendarType `single` or `multiple`.** These events have concrete dates (`subEvent`), so a total and remaining number of seats/tickets is meaningful per date. Events with calendarType `periodic` or `permanent` do **not** support `capacity` — see [calendarType periodic/permanent](#calendartype-periodicpermanent) below. (For places, which always have calendarType `periodic` or `permanent`, capacity works differently — see the [place booking availability guide](../places/booking-availability.md).)
-
-When the event has calendarType `single` or `multiple`, the objects inside its `subEvent` property will also automatically get the same `bookingAvailability` property, except when sending `remainingCapacity`, in which case this field will overwrite the availibility type on each `subEvent`..
+When you set a top-level `bookingAvailability.type` on an event that has calendarType `single` or `multiple`, their `subEvent` objects will also automatically get the same `bookingAvailability.type`.
 
 For example on an event with multiple dates:
 
 ```json
 {
   "bookingAvailability": {
-    "type": "Available"
+    "type": "Unavailable"
+  },
+  "calendarType": "multiple",
+  "subEvent": [
+    {
+      "startDate": "2023-01-18T17:30:00+01:00",
+      "endDate": "2023-01-18T23:00:00+01:00"
+    },
+    {
+      "startDate": "2023-01-19T17:30:00+01:00",
+      "endDate": "2023-01-19T23:00:00+01:00"
+    }
+  ]
+}
+```
+
+Will automatically become:
+
+```
+{
+  "bookingAvailability": {
+    "type": "Unavailable"
   },
   "calendarType": "multiple",
   "subEvent": [
@@ -69,14 +74,14 @@ For example on an event with multiple dates:
       "startDate": "2023-01-18T17:30:00+01:00",
       "endDate": "2023-01-18T23:00:00+01:00",
       "bookingAvailability": {
-        "type": "Available"
+        "type": "Unavailable"
       }
     },
     {
       "startDate": "2023-01-19T17:30:00+01:00",
       "endDate": "2023-01-19T23:00:00+01:00",
       "bookingAvailability": {
-        "type": "Available"
+        "type": "Unavailable"
       }
     }
   ]
@@ -88,44 +93,6 @@ For example on an event with multiple dates:
 ### calendarType single/multiple
 
 If your event has calendarType `single` or `multiple` and one of its dates has no more bookings available, you can change that specific subEvent's `bookingAvailability.type` to `Unavailable`.
-
-#### Capacity and remaining capacity
-
-You can also report the concrete number of remaining seats or tickets per subEvent by including `capacity` and/or `remainingCapacity` in `bookingAvailability`. Use the [`PATCH /events/{eventId}/subEvents`](/reference/entry.json/paths/~1events~1{eventId}~1subEvents/patch) endpoint:
-
-```json
-[
-  {
-    "id": 0,
-    "bookingAvailability": {
-      "capacity": 100,
-      "remainingCapacity": 42
-    }
-  }
-]
-```
-
-You may also include `capacity` alone, without `remainingCapacity`:
-
-```json
-[
-  {
-    "id": 0,
-    "bookingAvailability": {
-      "capacity": 200
-    }
-  }
-]
-```
-
-#### Validation rules
-
-| Rule | Details                                                                                                            |
-| --- |--------------------------------------------------------------------------------------------------------------------|
-| `remainingCapacity` ≤ `capacity` | When both properties are present, `remainingCapacity` must not exceed `capacity`. Violating this returns HTTP 400. |
-| Non-negative integers | Both `capacity` and `remainingCapacity` must be integers ≥ 0.                                                      |
-| Any combination of fields | `type`, `capacity`, and `remainingCapacity` are all optional and can be combined in any way.                       |
-
 
 For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
 
@@ -168,5 +135,3 @@ Events with calendarType `periodic` and `permanent` span a larger period and hav
 Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
 
 It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
-
-For the same reason, **`capacity` is not supported for events with calendarType `periodic` or `permanent`**. Capacity can only be set on events with calendarType `single` or `multiple` (per `subEvent`, as described above).
