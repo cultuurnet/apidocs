@@ -119,7 +119,9 @@
             "example": "Available"
           }
         },
-        "required": ["type"]
+        "required": [
+          "type"
+        ]
       },
       "overnight": {
         "type": "boolean",
