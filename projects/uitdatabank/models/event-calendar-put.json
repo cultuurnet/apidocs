@@ -20,9 +20,6 @@
         "openingHours": {
           "$ref": "./event-openingHours.json"
         },
-        "openingHoursClosedDays": {
-          "$ref": "./common-openingHoursClosedDays.json"
-        },
         "startDate": {
           "$ref": "./event-startDate.json"
         },

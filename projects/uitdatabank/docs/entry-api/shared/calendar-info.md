@@ -278,47 +278,6 @@ When creating or updating an event or place with calendarType `permanent` you do
 }
 ```
 
-## Adjusted closed days (periodic/permanent)
-
-Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates.
-
-```json
-{
-  "calendarType": "periodic",
-  "startDate": "2026-01-01T00:00:00+01:00",
-  "endDate": "2026-12-31T23:59:59+01:00",
-  "openingHoursClosedDays": [
-    {
-      "startDate": "2026-04-06",
-      "endDate": "2026-04-06",
-      "description": {
-        "nl": "Paasmaandag",
-        "fr": "Lundi de Pâques"
-      }
-    }
-  ]
-}
-```
-
-Each entry defines a date range during which the event or place is considered closed. The `description` property is optional and translatable.
-
-**Validation rules:**
-
-* For `periodic` events and places: all exception dates must fall within the main `startDate` and `endDate`.
-* `startDate` must be on or before `endDate`.
-
-**Overwriting or clearing closed days:**
-
-Each `openingHoursClosedDays` array is independent: omitting the property preserves existing data. When updating:
-
-* **Omit `openingHoursClosedDays`** entirely → existing closed days are left unchanged.
-* **Send `"openingHoursClosedDays": []`** (empty array) → clears all previously set closed days.
-* **Send `"openingHoursClosedDays": [...]`** with values → replaces all closed days with the new list.
-
-**API behavior:**
-
-GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
-
 ## Read more
 
 * The [event model](../../../models/event-with-read-example.json) and [place model](../../../models/place-with-read-example.json) for detailed schemas of the `subEvent`, `startDate`, `endDate`, and `openingHours` properties (among others)

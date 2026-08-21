@@ -15,9 +15,6 @@
     "openingHours": {
       "$ref": "./place-openingHours.json"
     },
-    "openingHoursClosedDays": {
-      "$ref": "./common-openingHoursClosedDays.json"
-    },
     "startDate": {
       "$ref": "./place-startDate.json"
     },
