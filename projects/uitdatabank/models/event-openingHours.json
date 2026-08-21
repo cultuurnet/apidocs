@@ -1,28 +1,5 @@
 {
   "title": "event.openingHours",
   "description": "A list of multiple open/closed times and weekdays indicating when the event is happening when using the `periodic` calendarType.",
-  "$ref": "./common-openingHours.json",
-  "examples": [
-    [
-      {
-        "opens": "13:00",
-        "closes": "17:00",
-        "dayOfWeek": [
-          "monday"
-        ]
-      },
-      {
-        "opens": "09:00",
-        "closes": "17:00",
-        "dayOfWeek": [
-          "tuesday",
-          "wednesday",
-          "thursday",
-          "friday",
-          "saturday",
-          "sunday"
-        ]
-      }
-    ]
-  ]
+  "$ref": "./common-openingHours.json"
 }
