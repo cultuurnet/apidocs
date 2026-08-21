@@ -74,7 +74,7 @@ To eliminate property definition duplication, use `$ref` to reference reusable c
 Use `allOf` when you need to reference a shared component **and** add or override a `description` or `example` for the specific context:
 
 ```json
-"capacity": {
+"type": {
   "allOf": [
     { "$ref": "./common-bookingAvailability-type.json" },
     {
