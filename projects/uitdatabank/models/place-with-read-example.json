@@ -62,16 +62,6 @@
           ]
         }
       ],
-      "openingHoursClosedDays": [
-        {
-          "startDate": "2026-04-06",
-          "endDate": "2026-04-06",
-          "description": {
-            "nl": "Paasmaandag",
-            "fr": "Lundi de Pâques"
-          }
-        }
-      ],
       "availableFrom": "2026-01-01T00:00:00+01:00",
       "availableTo": "2026-12-31T23:59:59+01:00",
       "sameAs": [
