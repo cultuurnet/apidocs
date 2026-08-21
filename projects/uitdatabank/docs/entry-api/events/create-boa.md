@@ -15,7 +15,6 @@ To ensure parents and children easily find the right activities, data quality is
 | Target audience | `PUT /events/{eventId}/children-only` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
 | Age range | `PUT /events/{eventId}/typical-age-range` or `PUT /events/{eventId}/birthdate-range` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`), but never both. On these endpoints setting one removes the other, so there is no need to delete it first. | all | ✅ |
 | Pricing | `PUT /events/{eventId}/price-info` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
-| Capacity per timeslot | `PUT /events/{eventId}/calendar` or `PATCH /events/{eventId}/sub-events` | For holiday playground programmes, childcare, camps, and courses, always include the maximum and remaining [capacity per subEvent](./booking-availability.md). Essential for parents and crucial for local BOA-coordinators monitoring local capacity. | single, multiple | ✅ |
 | FAQ | `PUT /events/{eventId}/faqs` | Use the [FAQ fields](/docs/uitdatabank/event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
 | Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#adjusted-closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
 | Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
@@ -50,8 +49,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
         "end": "12:30"
       },
       "bookingAvailability": {
-        "capacity": 30,
-        "remainingCapacity": 12
+        "type": "Available"
       }
     }
   ],
