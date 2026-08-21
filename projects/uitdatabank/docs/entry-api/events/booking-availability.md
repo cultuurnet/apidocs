@@ -73,7 +73,6 @@ For example on an event with multiple dates:
 
 If your event has calendarType `single` or `multiple` and one of its dates has no more bookings available, you can change that specific subEvent's `bookingAvailability.type` to `Unavailable`.
 
-
 For example, when updating the event in its entirety using the [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) endpoint:
 
 ```json
