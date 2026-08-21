@@ -1,5 +1,0 @@
-{
-  "$ref": "./event-birthdateRange.json",
-  "title": "event.birthdateRangeConverted",
-  "description": "The birthdate range that Search API derived from the event's typical age range. Only appears in Search API results, and only when the event was entered with a `typicalAgeRange` instead of a `birthdateRange`. An unbounded range, such as for an all ages event, has no from and to pair and is left out. It lets you tell a derived value apart from one the editor entered."
-}
