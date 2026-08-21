@@ -115,7 +115,7 @@
         "properties": {
           "type": {
             "$ref": "./common-bookingAvailability-type.json",
-            "description": "One of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
+            "description": "Required if bookingAvailability is included.\n\nOne of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
             "example": "Available"
           }
         },
