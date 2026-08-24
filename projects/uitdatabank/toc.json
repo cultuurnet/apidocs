@@ -86,6 +86,12 @@
             },
             {
               "type": "item",
+              "title": "Creating a BOA event",
+              "uri": "/docs/entry-api/events/create-boa.md",
+              "slug": "entry-api/events/creating-a-boa-event"
+            },
+            {
+              "type": "item",
               "title": "Creating an online event",
               "uri": "/docs/entry-api/events/create-online.md",
               "slug": "entry-api/events/creating-an-online-event"
