@@ -7,19 +7,21 @@
     "$ref": "./event-faq.json"
   },
   "examples": [
-    {
-      "nl": {
-        "question": "Hoe geraak ik er?",
-        "answer": "Met de bus."
-      },
-      "fr": {
-        "question": "Comment puis-je y accéder?",
-        "answer": "En bus."
-      },
-      "en": {
-        "question": "How do I get there?",
-        "answer": "By bus."
+    [
+      {
+        "nl": {
+          "question": "Hoe geraak ik er?",
+          "answer": "Met de bus."
+        },
+        "fr": {
+          "question": "Comment puis-je y accéder?",
+          "answer": "En bus."
+        },
+        "en": {
+          "question": "How do I get there?",
+          "answer": "By bus."
+        }
       }
-    }
+    ]
   ]
 }
