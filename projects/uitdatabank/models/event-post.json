@@ -89,6 +89,7 @@
         "de": "Deutscher Name",
         "en": "English name"
       },
+      "childrenOnly": true,
       "calendarType": "single",
       "subEvent": [
         {
@@ -186,6 +187,31 @@
       ],
       "hiddenLabels": [
         "label2"
+      ],
+      "departurePlaces": [
+        "https://io-test.uitdatabank.be/places/e05edde5-2d2d-4857-9088-04e6e9b67bb5"
+      ],
+      "faqs": [
+        {
+          "nl": {
+            "question": "Hoe geraak ik er?",
+            "answer": "Met de bus."
+          },
+          "en": {
+            "question": "How do I get there?",
+            "answer": "By bus."
+          }
+        },
+        {
+          "nl": {
+            "question": "Is er eten voorzien?",
+            "answer": "Ja, we hebben verschillend opties, inclusief vegetarisch."
+          },
+          "en": {
+            "question": "Will food be provided?",
+            "answer": "Yes, we have various options, including vegetarian."
+          }
+        }
       ]
     }
   ]
