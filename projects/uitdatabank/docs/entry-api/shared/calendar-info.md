@@ -278,7 +278,7 @@ When creating or updating an event or place with calendarType `permanent` you do
 }
 ```
 
-## Adjusted closed days (periodic/permanent)
+### Closed days (periodic/permanent)
 
 Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates.
 
@@ -319,7 +319,7 @@ Each `openingHoursClosedDays` array is independent: omitting the property preser
 
 GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
 
-## Adjusted opening hours (periodic/permanent)
+### Adjusted opening hours (periodic/permanent)
 
 Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjustedDays` array to define temporary custom opening hours that override the default schedule for specific date ranges.
 
