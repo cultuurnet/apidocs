@@ -5,7 +5,7 @@
   "minItems": 0,
   "maxItems": 30,
   "items": {
-    "$ref": "./faq.json"
+    "$ref": "./event-faq.json"
   },
   "examples": [
     [
