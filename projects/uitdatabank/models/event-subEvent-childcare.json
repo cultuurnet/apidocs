@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "description": "Indicates when childcare is available during this sub event. Each property is independent: omitting a property clears any previously set value for it.",
+  "properties": {
+    "start": {
+      "$ref": "./common-string-time.json",
+      "description": "The time at which childcare becomes available, in H:MM or HH:MM format (24-hour notation). Must be earlier than the time portion of `startDate`."
+    },
+    "end": {
+        "$ref": "./common-string-time.json" ,
+          "description": "The time at which childcare ends, in H:MM or HH:MM format (24-hour notation). Must be later than the time portion of `endDate`."
+    }
+  }
+}

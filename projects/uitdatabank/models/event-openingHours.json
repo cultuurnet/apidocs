@@ -1,7 +1,18 @@
 {
   "title": "event.openingHours",
-  "description": "A list of multiple open/closed times and weekdays indicating when the event is happening when using the `periodic` calendarType.",
-  "$ref": "./common-openingHours.json",
+  "description": "A list of multiple open/closed times and weekdays indicating when the event is happening when using the `periodic` calendarType. Each item can optionally specify childcare availability times.",
+  "allOf": [
+    { "$ref": "./common-openingHours.json" },
+    {
+      "items": {
+        "properties": {
+          "childcare": {
+            "$ref": "./event-openingHours-childcare.json"
+          }
+        }
+      }
+    }
+  ],
   "examples": [
     [
       {
@@ -14,6 +25,10 @@
       {
         "opens": "09:00",
         "closes": "17:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "18:00"
+        },
         "dayOfWeek": [
           "tuesday",
           "wednesday",
