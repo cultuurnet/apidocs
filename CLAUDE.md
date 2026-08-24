@@ -95,7 +95,7 @@ Use `allOf` when you need to reference a shared component **and** add or overrid
       "allOf": [
         { "$ref": "./common-bookingAvailability-type.json" },
         {
-          "description": "Total number of seats or tickets for this subEvent."
+          "description": "Description override example"
         }
       ]
     }
@@ -249,7 +249,7 @@ When adding a new search filter parameter, update **all three** of the following
    - Add a component definition under `components.parameters` (use existing boolean params like `uitpas` or `allAges` as a template).
    - Add a `$ref` to it in the `parameters` array of each applicable endpoint (`/events`, `/offers`, `/places`).
 
-**Endpoint scope:** Not all parameters apply to all endpoints. Childcare, for example, is events-only and belongs on `/events` and `/offers` but not `/places`. Check the Entry API docs to confirm scope before wiring up refs.
+**Endpoint scope:** Not all parameters apply to all endpoints. Check the Entry API docs to confirm scope before wiring up refs.
 
 ---
 
