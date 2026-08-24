@@ -1,4 +1,4 @@
-# Creating BOA activities (Buitenschoolse Opvang en Activiteiten)
+# BOA events (Buitenschoolse Opvang en Activiteiten)
 
 > ⚠️ **Warning:** IN DEVELOPMENT! The BOA endpoints are still in development and subject to change. Do not rely on them in production integrations yet.
 
