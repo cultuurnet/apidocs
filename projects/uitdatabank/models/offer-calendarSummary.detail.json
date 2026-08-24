@@ -22,6 +22,10 @@
         "lg": {
           "type": "string",
           "description": "Large date, example: Maandag 28 november 2022 van 20:00 tot 21:00 (Volzet of uitverkocht)"
+        },
+        "xl": {
+          "type": "string",
+          "description": "Extra large date, the large date with the adjusted days and the closed days added, example: Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030 (maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00) (maandag opvang van 8:00 tot 18:00) Behalve tijdens Maandag 2 november 2026 tot en met zaterdag 7 november 2026 Maandag - dinsdag van 10:00 tot 15:00 Gesloten Donderdag 24 december 2026 tot en met zondag 3 januari 2027"
         }
       }
     },
@@ -44,6 +48,10 @@
         "lg": {
           "type": "string",
           "description": "Large date in HTML"
+        },
+        "xl": {
+          "type": "string",
+          "description": "Extra large date in HTML, with the adjusted days and the closed days each in a collapsible details element"
         }
       }
     }
@@ -51,7 +59,8 @@
   "examples": [
     {
       "text": {
-        "sm": "Tot 30 jun 2021"
+        "sm": "Tot 30 jun 2021",
+        "xl": "Van dinsdag 25 november 2025 tot en met zaterdag 30 november 2030\n(maandag van 9:00 tot 12:00 en van 13:00 tot 17:00, dinsdag van 9:00 tot 16:00)\n (maandag opvang van 8:00 tot 18:00)\n\nBehalve tijdens\nMaandag 2 november 2026 tot en met zaterdag 7 november 2026\nMaandag - dinsdag van 10:00 tot 15:00\n\nGesloten\nDonderdag 24 december 2026 tot en met zondag 3 januari 2027"
       },
       "html": {
         "lg": "<time itemprop=\"startDate\" datetime=\"2022-11-28T20:00:00+01:00\"><span class=\"cf-weekday cf-meta\">Maandag</span> <span class=\"cf-date\">28 november 2022</span> <span class=\"cf-from cf-meta\">van</span> <span class=\"cf-time\">20:00</span></time> <span class=\"cf-to cf-meta\">tot</span> <time itemprop=\"endDate\" datetime=\"2022-11-28T21:00:00+01:00\"><span class=\"cf-time\">21:00</span></time> <span class=\"cf-status\">(Volzet of uitverkocht)</span>"

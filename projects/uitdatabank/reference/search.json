@@ -1970,10 +1970,12 @@
               "sm-text",
               "md-text",
               "lg-text",
+              "xl-text",
               "xs-html",
               "sm-html",
               "md-html",
-              "lg-html"
+              "lg-html",
+              "xl-html"
             ]
           }
         },
