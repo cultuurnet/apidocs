@@ -216,7 +216,7 @@ If an event has a `typicalAgeRange` that falls within the birthdateRange, the ev
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Possible values**
 
