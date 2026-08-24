@@ -1,0 +1,4 @@
+{
+  "$ref": "./common-departurePlaces.json",
+  "title": "event.departurePlaces.put"
+}
