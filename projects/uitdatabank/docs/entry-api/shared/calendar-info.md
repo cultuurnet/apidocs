@@ -306,6 +306,7 @@ Each entry defines a date range during which the event or place is considered cl
 
 * For `periodic` events and places: all exception dates must fall within the main `startDate` and `endDate`.
 * `startDate` must be on or before `endDate`.
+* Overlapping date ranges are allowed.
 
 **Overwriting or clearing closed days:**
 
