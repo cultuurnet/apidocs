@@ -1,0 +1,25 @@
+{
+  "title": "event-faqs",
+  "type": "array",
+  "description": "A list of several FAQ items in various languages",
+  "maxItems": 30,
+  "items": {
+    "$ref": "./faq.json"
+  },
+  "examples": [
+    {
+      "nl": {
+        "question": "Hoe geraak ik er?",
+        "answer": "Met de bus."
+      },
+      "fr": {
+        "question": "Comment puis-je y accéder?",
+        "answer": "En bus."
+      },
+      "en": {
+        "question": "How do I get there?",
+        "answer": "By bus."
+      }
+    }
+  ]
+}

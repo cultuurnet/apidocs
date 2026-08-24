@@ -121,6 +121,9 @@
         },
         "calendarSummary": {
           "$ref": "./event-calendarSummary.json"
+        },
+        "faqs": {
+          "$ref": "./event-faqs.json"
         }
       },
       "required": [
