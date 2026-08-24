@@ -384,73 +384,73 @@
             },
             {
               "type": "item",
-              "title": "Filtering by booking availability",
+              "title": "Filtering on booking availability",
               "uri": "/docs/search-api/filters/booking-availability.md",
               "slug": "search-api/filters/filtering-by-booking-availability"
             },
             {
               "type": "item",
-              "title": "Filtering by date & time",
+              "title": "Filtering on date & time",
               "uri": "/docs/search-api/filters/datetime.md",
               "slug": "search-api/filters/filtering-by-date-and-time"
             },
             {
               "type": "item",
-              "title": "Filtering by childcare",
+              "title": "Filtering on childcare",
               "uri": "/docs/search-api/filters/childcare.md",
               "slug": "search-api/filters/filtering-by-childcare"
             },
             {
               "type": "item",
-              "title": "Filtering by children only",
+              "title": "Filtering on children only",
               "uri": "/docs/search-api/filters/children-only.md",
               "slug": "search-api/filters/filtering-by-children-only"
             },
             {
               "type": "item",
-              "title": "Filtering by departure places",
+              "title": "Filtering on departure places",
               "uri": "/docs/search-api/filters/departure-places.md",
               "slug": "search-api/filters/filtering-by-departure-places"
             },
             {
               "type": "item",
-              "title": "Filtering by labels",
+              "title": "Filtering on labels",
               "uri": "/docs/search-api/filters/labels.md",
               "slug": "search-api/filters/filtering-by-labels"
             },
             {
               "type": "item",
-              "title": "Filtering by location",
+              "title": "Filtering on location",
               "uri": "/docs/search-api/filters/location.md",
               "slug": "search-api/filters/filtering-by-location"
             },
             {
               "type": "item",
-              "title": "Filtering by language",
+              "title": "Filtering on language",
               "uri": "/docs/search-api/filters/language.md",
               "slug": "search-api/filters/filtering-by-language"
             },
             {
               "type": "item",
-              "title": "Filtering by status",
+              "title": "Filtering on status",
               "uri": "/docs/search-api/filters/status.md",
               "slug": "search-api/filters/filtering-by-status"
             },
             {
               "type": "item",
-              "title": "Filtering by target audience age",
+              "title": "Filtering on target audience age",
               "uri": "/docs/search-api/filters/age.md",
               "slug": "search-api/filters/filtering-by-target-audience-age"
             },
             {
               "type": "item",
-              "title": "Filtering by overnight",
+              "title": "Filtering on overnight",
               "uri": "/docs/search-api/filters/overnight.md",
               "slug": "search-api/filters/filtering-by-overnight"
             },
             {
               "type": "item",
-              "title": "Filtering by type or theme",
+              "title": "Filtering on type or theme",
               "uri": "/docs/search-api/filters/terms.md",
               "slug": "search-api/filters/filtering-by-type-or-theme"
             },

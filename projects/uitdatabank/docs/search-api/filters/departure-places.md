@@ -1,6 +1,6 @@
-# Filtering on departure places
+# Departure places
 
-## departurePlaces
+## Using the departurePlaces parameter
 
 Use the `departurePlaces[]` URL parameter or the `departurePlaces` advanced query field to find events that depart from one or more specific places.
 

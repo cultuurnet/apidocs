@@ -1,4 +1,4 @@
-# Filtering by childcare
+# Childcare
 
 Events in UiTdatabank can optionally provide [childcare times](../../entry-api/shared/calendar-info.md#childcare-times-events-only): a service offered before and/or after the activity itself. With the `hasChildcare` parameter you can filter events based on whether or not childcare is available.
 
