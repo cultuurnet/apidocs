@@ -1,5 +1,0 @@
-{
-  "$ref": "./common-typicalAgeRange.json",
-  "title": "event.typicalAgeRangeConverted",
-  "description": "The typical age range that Search API derived from the event's birthdate range. Only appears in Search API results, and only when the event was entered with a `birthdateRange` instead of a `typicalAgeRange`. It lets you tell a derived value apart from one the editor entered. For example `6-7`."
-}

@@ -208,28 +208,6 @@ Any dateFrom and dateTo date in ISO-8601.
 GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:59\:59%2B01\:00]&availableFrom=*&availableTo=*
 ```
 
-### birthdateRange
-
-The `birthdateRange` field is used to filter events by the birthdate range of their target audience.
-If an event has a `typicalAgeRange` that (combined with the current date) overlaps the requested range, the event will also be included in the result set.
-If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
-
-**Applicable on endpoints**
-
-`/events`
-
-**Possible values**
-
-A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. `[2020-01-01 TO 2020-12-31]`.
-
-**Example**
-
-Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
-
-```
-GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
-```
-
 ### bookingAvailability
 
 The `bookingAvailability` indicates whether there are still tickets or seats left for an event or not.
@@ -424,32 +402,6 @@ Retrieve all events that took place in the year 2020:
 
 ```
 GET /events/?q=dateRange:[2020-01-01T00\:00\:00%2B01\:00 TO 2021-12-31T23\:59\:59%2B01\:00]&availableTo=*&availableFrom=*
-```
-
-### departurePlaces
-
-Using the `departurePlaces` field, you can find events that have a specific place as a departure place. Departure places are indexed as UUIDs (not full place URLs).
-
-**Applicable on endpoints**
-
-`/events`
-
-**Possible values**
-
-Any UUID of a place in UiTdatabank.
-
-**Examples**
-
-Find events that depart from a specific place:
-
-```
-GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e
-```
-
-Use `OR` to find events that depart from either of two places. This is not possible with the `departurePlaces[]` URL parameter, which only supports AND logic:
-
-```
-GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
 ### id

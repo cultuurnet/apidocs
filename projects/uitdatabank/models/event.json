@@ -44,12 +44,6 @@
         "openingHours": {
           "$ref": "./event-openingHours.json"
         },
-        "openingHoursClosedDays": {
-          "$ref": "./common-openingHoursClosedDays.json"
-        },
-        "openingHoursAdjustedDays": {
-          "$ref": "./event-openingHoursAdjustedDays.json"
-        },
         "availableFrom": {
           "$ref": "./event-availableFrom.json"
         },
@@ -76,9 +70,6 @@
         },
         "typicalAgeRange": {
           "$ref": "./event-typicalAgeRange.json"
-        },
-        "birthdateRange": {
-          "$ref": "./event-birthdateRange.json"
         },
         "description": {
           "$ref": "./event-description.json"
@@ -130,15 +121,6 @@
         },
         "calendarSummary": {
           "$ref": "./event-calendarSummary.json"
-        },
-        "faqs": {
-          "$ref": "./event-faqs.json"
-        },
-        "departurePlaces": {
-          "$ref": "./event-departurePlaces.json"
-        },
-        "childrenOnly": {
-          "$ref": "./event-childrenOnly.json"
         }
       },
       "required": [
