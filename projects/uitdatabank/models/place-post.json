@@ -133,8 +133,7 @@
         "label2"
       ],
       "bookingAvailability": {
-        "type": "Available",
-        "capacity": 200
+        "type": "Available"
       }
     }
   ]
