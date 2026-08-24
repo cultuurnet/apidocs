@@ -54,7 +54,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
     }
   ],
   "childrenOnly": true,
-  "faq": [
+  "faqs": [
     {
       "nl": {
         "question": "Wat moet mijn kind meebrengen?",
@@ -146,7 +146,7 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
     }
   ],
   "childrenOnly": true,
-  "faq": [
+  "faqs": [
     {
       "nl": {
         "question": "Hoe schrijf ik mijn kind in?",
