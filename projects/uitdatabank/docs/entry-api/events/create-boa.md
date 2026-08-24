@@ -41,12 +41,23 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
   "calendarType": "single",
   "subEvent": [
     {
-      "startDate": "2026-06-15T09:00:00+02:00",
-      "endDate": "2026-06-15T12:00:00+02:00",
+      "startDate": "2026-07-01T09:00:00+02:00",
+      "endDate": "2026-07-05T17:00:00+02:00",
       "overnight": true,
       "childcare": {
         "start": "08:30",
-        "end": "12:30"
+        "end": "18:30"
+      },
+      "bookingAvailability": {
+        "type": "Available"
+      }
+    },
+    {
+      "startDate": "2026-07-08T09:00:00+02:00",
+      "endDate": "2026-07-12T17:00:00+02:00",
+      "childcare": {
+        "start": "08:30",
+        "end": "18:30"
       },
       "bookingAvailability": {
         "type": "Available"
