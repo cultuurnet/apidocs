@@ -1,0 +1,5 @@
+{
+  "$ref": "./event-birthdateRange.json",
+  "title": "event.birthdateRange.put",
+  "description": "Describes the request body to set the birthdate range for the attendees of the [event](./models/event.json)."
+}

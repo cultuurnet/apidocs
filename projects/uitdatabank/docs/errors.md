@@ -125,3 +125,15 @@ Subsequently, appropriate actions, such as updates to an existing Place, can be 
   "duplicatePlaceUrl": "/place/581314d4-637e-407b-ba35-8b60847012d0"
 }
 ```
+
+## cannot-combine-typical-age-and-birthdate-range
+
+* **Complete type:** `https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range`
+* **Title**: `Cannot combine typical age and birthdate range`
+* **Status**: `400`
+
+An [event](/models/event.json) describes the audience it is aimed at either with a [typicalAgeRange](/models/event-typicalAgeRange.json) or with a [birthdateRange](/models/event-birthdateRange.json), never with both. The request contained the two together.
+
+This only happens when both are sent in one event body: `POST /events`, `PUT /events/{eventId}` and their `/imports` variants. On `PUT /events/{eventId}/typical-age-range` and `PUT /events/{eventId}/birthdate-range` the range you send replaces the other one, so there is nothing to reject and no need to delete it first.
+
+Send only the range you want to set, and leave the other out. Search API derives the missing one for you, so filters on either still find the event. See the [age filter](./search-api/filters/age.md) page for the derived `typicalAgeRangeConverted` and `birthdateRangeConverted` values.

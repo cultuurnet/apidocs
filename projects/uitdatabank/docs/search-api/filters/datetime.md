@@ -1,4 +1,4 @@
-# Filtering on time
+# Date and time
 
 The Search API allows you to filter results using calendar information or metadata, such as creation and modification timestamps. This guide provides a comprehensive overview of the available filtering options.
 

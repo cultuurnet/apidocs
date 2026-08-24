@@ -7,18 +7,27 @@
       {
         "startDate": "2021-05-17T16:00:00+00:00",
         "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        },
         "status": {
           "type": "Available"
         },
         "bookingAvailability": {
           "type": "Available"
-        }
+        },
+        "overnight": true
       }
     ],
     [
       {
         "startDate": "2021-05-17T16:00:00+00:00",
         "endDate": "2021-05-17T22:00:00+00:00",
+        "childcare": {
+          "start": "08:00",
+          "end": "23:00"
+        },
         "status": {
           "type": "Available"
         },
@@ -48,11 +57,19 @@
       "endDate": {
         "$ref": "./event-endDate.json"
       },
+      "childcare": {
+        "$ref": "./event-subEvent-childcare.json"
+      },
       "status": {
         "$ref": "./event-status.json"
       },
       "bookingAvailability": {
         "$ref": "./event-bookingAvailability.json"
+      },
+      "overnight": {
+        "type": "boolean",
+        "description": "Indicates whether this occurrence involves an overnight stay. Only accepted when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\"). Defaults to `false` when omitted. Automatically reset to `false` when term `0.57.0.0.0` is removed from the event.",
+        "example": true
       }
     },
     "required": [

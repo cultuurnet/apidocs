@@ -49,7 +49,7 @@
                       "type": "array",
                       "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "$ref": "../models/event-search.json"
                       }
                     },
                     "facet": {
@@ -146,6 +146,12 @@
             "$ref": "#/components/parameters/allAges"
           },
           {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
+          },
+          {
             "$ref": "#/components/parameters/audienceType"
           },
           {
@@ -227,6 +233,12 @@
             "$ref": "#/components/parameters/locationId"
           },
           {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
+            "$ref": "#/components/parameters/hasOvernight"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
@@ -284,6 +296,12 @@
             "$ref": "#/components/parameters/uitpas"
           },
           {
+            "$ref": "#/components/parameters/hasChildcare"
+          },
+          {
+            "$ref": "#/components/parameters/childrenOnly"
+          },
+          {
             "$ref": "#/components/parameters/hasVideos"
           },
           {
@@ -327,7 +345,7 @@
                       "type": "array",
                       "description": "Search results (paginated). Note that the complete search results details will only be returned if `?embed=true` is used. Otherwise only the `@id` will be returned.",
                       "items": {
-                        "$ref": "../models/event.json"
+                        "$ref": "../models/event-search.json"
                       }
                     },
                     "facet": {
@@ -476,7 +494,7 @@
                       "items": {
                         "anyOf": [
                           {
-                            "$ref": "../models/event.json"
+                            "$ref": "../models/event-search.json"
                           },
                           {
                             "$ref": "../models/place.json"
@@ -578,6 +596,12 @@
             "$ref": "#/components/parameters/allAges"
           },
           {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
+          },
+          {
             "$ref": "#/components/parameters/audienceType"
           },
           {
@@ -662,6 +686,12 @@
             "$ref": "#/components/parameters/locationId"
           },
           {
+            "$ref": "#/components/parameters/hasOvernight"
+          },
+          {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
             "$ref": "#/components/parameters/organizerId"
           },
           {
@@ -719,6 +749,12 @@
             "$ref": "#/components/parameters/uitpas"
           },
           {
+            "$ref": "#/components/parameters/hasChildcare"
+          },
+          {
+            "$ref": "#/components/parameters/childrenOnly"
+          },
+          {
             "$ref": "#/components/parameters/hasVideos"
           },
           {
@@ -764,7 +800,7 @@
                       "items": {
                         "anyOf": [
                           {
-                            "$ref": "../models/event.json"
+                            "$ref": "../models/event-search.json"
                           },
                           {
                             "$ref": "../models/place.json"
@@ -1787,6 +1823,34 @@
         "name": "allAges",
         "description": "Returns only results that are suitable for participants/visitors of all ages if set to `true`, or only returns results that are suitable for a specific age group if set to `false`."
       },
+      "hasOvernight": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasOvernight",
+        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have overnight if at least one of its sub-events has `overnight: true` in the given daterange. Events with a `periodic` or `permanent` calendarType are always indexed as `overnight: false`."
+      },
+      "birthdateRangeFrom": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2020-01-01"
+        },
+        "in": "query",
+        "name": "birthdateRangeFrom",
+        "description": "Sets the earliest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeTo`. Events that only specify a `typicalAgeRange` also match when it covers the same audience."
+      },
+      "birthdateRangeTo": {
+        "schema": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "example": "2023-01-01"
+        },
+        "in": "query",
+        "name": "birthdateRangeTo",
+        "description": "Sets the latest birth date of the audience you are looking for. Formatted as one ISO 8601 date. Can be used on its own for an open-ended range, or combined with `birthdateRangeFrom`. Matching works the same way as for `birthdateRangeFrom`."
+      },
       "audienceType": {
         "schema": {
           "type": "string",
@@ -1970,10 +2034,12 @@
               "sm-text",
               "md-text",
               "lg-text",
+              "xl-text",
               "xs-html",
               "sm-html",
               "md-html",
-              "lg-html"
+              "lg-html",
+              "xl-html"
             ]
           }
         },
@@ -2074,6 +2140,19 @@
         "in": "query",
         "name": "locationId",
         "description": "Returns only results that are related to the given location id (= place id). A place's id can be extracted from its URI by taking all the characters after the last `/`. For example for the URI `https://io-test.uitdatabank.be/places/75573a64-ddc8-4fd0-8b07-d258939dd74f` the id is `75573a64-ddc8-4fd0-8b07-d258939dd74f`. Note that while it will be a UUID in most cases, it is not guaranteed to always be one!"
+      },
+      "departurePlaces": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": "query",
+        "name": "departurePlaces[]",
+        "style": "form",
+        "description": "Returns only events that have the given place(s) as a departure place. The value must be a place UUID. May be repeated to only return events that have all the given departure places (AND logic). For OR logic, use the `q` parameter with the `departurePlaces` field instead. See the operation's description above for more info on how to repeat parameters.",
+        "explode": true
       },
       "organizerId": {
         "schema": {
@@ -2318,6 +2397,22 @@
         "in": "query",
         "name": "uitpas",
         "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
+      },
+      "hasChildcare": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "hasChildcare",
+        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo` or the `dateRange` advanced query field, the childcare check is scoped to the matching period."
+      },
+      "childrenOnly": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "childrenOnly",
+        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`."
       },
       "hasVideos": {
         "schema": {

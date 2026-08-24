@@ -105,6 +105,119 @@ For example, in case of calendarType `multiple`:
 
 In case of calendarType `single`, the same logic is applied but in reality the `startDate`, `endDate`, `status` and `bookingAvailability` will be exactly the same on the top level as in the subEvent because there is only 1 subEvent to base them on.
 
+### Childcare times (events only)
+
+Events can optionally include a `childcare` object to indicate when childcare is provided. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
+
+**For single/multiple calendar types:**
+
+Events with calendarType `single` or `multiple` can include a `childcare` object on each `subEvent`:
+
+```json
+{
+  "calendarType": "single",
+  "subEvent": [
+    {
+      "startDate": "2023-01-12T10:00:00+01:00",
+      "endDate": "2023-01-12T12:00:00+01:00",
+      "childcare": {
+        "start": "09:30",
+        "end": "12:30"
+      }
+    }
+  ]
+}
+```
+
+**For periodic/permanent calendar types:**
+
+Events with calendarType `periodic` or `permanent` can include a `childcare` object on each `openingHours` item:
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2023-01-12T09:00:00+01:00",
+  "endDate": "2023-06-12T17:00:00+01:00",
+  "openingHours": [
+    {
+      "opens": "09:00",
+      "closes": "17:00",
+      "childcare": {
+        "start": "08:00",
+        "end": "18:00"
+      },
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ]
+}
+```
+
+**Overwriting or clearing childcare:**
+
+Each property within `childcare` is independent: omitting a property clears any previously set value for it. When updating:
+
+* **Omit `childcare`** entirely → existing childcare data is left unchanged.
+* **Send `"childcare": {}`** (empty object) → clears both `start` and `end`.
+* **Send `"childcare": { "start": "..." }`** → sets `start`, clears `end`.
+* **Send `"childcare": { "end": "..." }`** → clears `start`, sets `end`.
+* **Send `"childcare": { "start": "...", "end": "..." }`** → sets both.
+
+**Validation rules:**
+
+For single/multiple calendar types:
+* `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
+* `childcare.end` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcare.end` must be after `12:00`.
+* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
+
+For periodic/permanent calendar types:
+* `childcare.start` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcare.start` must be before `09:00`.
+* `childcare.end` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcare.end` must be after `17:00`.
+* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
+
+### Overnight (events only, single/multiple)
+
+Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include an `overnight` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay.
+
+```json
+{
+  "terms": [
+    {
+      "id": "0.57.0.0.0",
+      "label": "Kamp of vakantie",
+      "domain": "eventtype"
+    }
+  ],
+  "calendarType": "multiple",
+  "subEvent": [
+    {
+      "startDate": "2026-07-01T09:00:00+02:00",
+      "endDate": "2026-07-05T17:00:00+02:00",
+      "overnight": true
+    },
+    {
+      "startDate": "2026-07-08T09:00:00+02:00",
+      "endDate": "2026-07-12T17:00:00+02:00"
+    }
+  ]
+}
+```
+
+**Validation rules:**
+
+* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. 
+* `overnight` is optional and defaults to `false` when omitted.
+* When the term `0.57.0.0.0` is removed from the event, `overnight` is automatically reset to `false` on all subEvents.
+
+**API behavior:**
+
+In the read model (GET), `overnight` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
+
 ### periodic/permanent
 
 When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.
@@ -164,6 +277,150 @@ When creating or updating an event or place with calendarType `permanent` you do
   ]
 }
 ```
+
+### Closed days (periodic/permanent)
+
+Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursClosedDays` array to mark specific date ranges as closed, overriding the default opening hours for those dates.
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2026-01-01T00:00:00+01:00",
+  "endDate": "2026-12-31T23:59:59+01:00",
+  "openingHoursClosedDays": [
+    {
+      "startDate": "2026-04-06",
+      "endDate": "2026-04-06",
+      "description": {
+        "nl": "Paasmaandag",
+        "fr": "Lundi de Pâques"
+      }
+    }
+  ]
+}
+```
+
+Each entry defines a date range during which the event or place is considered closed. The `description` property is optional and translatable.
+
+**Validation rules:**
+
+* For `periodic` events and places: all exception dates must fall within the main `startDate` and `endDate`.
+* `startDate` must be on or before `endDate`.
+* Overlapping date ranges are allowed.
+
+**Overwriting or clearing closed days:**
+
+Each `openingHoursClosedDays` array is independent: omitting the property preserves existing data. When updating:
+
+* **Omit `openingHoursClosedDays`** entirely → existing closed days are left unchanged.
+* **Send `"openingHoursClosedDays": []`** (empty array) → clears all previously set closed days.
+* **Send `"openingHoursClosedDays": [...]`** with values → replaces all closed days with the new list.
+
+**API behavior:**
+
+GET endpoints return `openingHoursClosedDays` sorted by `startDate`.
+
+### Adjusted opening hours (periodic/permanent)
+
+Events and places with calendarType `periodic` or `permanent` can optionally include an `openingHoursAdjustedDays` array to define temporary custom opening hours that override the default schedule for specific date ranges.
+
+```json
+{
+  "calendarType": "periodic",
+  "startDate": "2026-01-01T00:00:00+01:00",
+  "endDate": "2026-12-31T23:59:59+01:00",
+  "openingHours": [
+    {
+      "opens": "09:00",
+      "closes": "17:00",
+      "dayOfWeek": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday"
+      ]
+    }
+  ],
+  "openingHoursAdjustedDays": [
+    {
+      "startDate": "2026-12-21",
+      "endDate": "2026-12-30",
+      "description": {
+        "nl": "Kerstvakantie",
+        "fr": "fêtes de Noël"
+      },
+      "openingHours": [
+        {
+          "opens": "13:00",
+          "closes": "15:00",
+          "dayOfWeek": [
+            "friday",
+            "saturday",
+            "sunday"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Each entry defines a date range during which the specified `openingHours` replace the default schedule. The `description` property is optional and translatable.
+
+For events, each opening hours item in `openingHoursAdjustedDays` can optionally include `childcare` information to specify adjusted childcare availability times for that period:
+
+```json
+{
+  "startDate": "2026-12-21",
+  "endDate": "2026-12-30",
+  "description": {
+    "nl": "Kerstvakantie"
+  },
+  "openingHours": [
+    {
+      "opens": "13:00",
+      "closes": "15:00",
+      "childcare": {
+        "start": "12:30",
+        "end": "15:30"
+      },
+      "dayOfWeek": [
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    }
+  ]
+}
+```
+
+**Validation rules:**
+
+* For `periodic` events and places: all adjusted dates must fall within the main `startDate` and `endDate`.
+* `startDate` must be on or before `endDate`.
+* No overlaps are allowed between entries in `openingHoursAdjustedDays`.
+* Description has a maximum length of 1000 characters per language.
+* For events: childcare validation rules apply to adjusted opening hours: `childcare.start` must be earlier than `opens`, and `childcare.end` must be later than `closes` on each opening hours item.
+
+**Interaction with closed days:**
+
+When `openingHoursClosedDays` and `openingHoursAdjustedDays` overlap, `openingHoursClosedDays` always take precedence. This means:
+* If a date is marked as closed in `openingHoursClosedDays`, the event or place is closed for that entire date, regardless of what `openingHoursAdjustedDays` specifies.
+* Use `openingHoursClosedDays` for holidays and closures.
+* Use `openingHoursAdjustedDays` for periods with modified (but non-zero) opening hours.
+
+**Overwriting or clearing adjusted hours:**
+
+Each `openingHoursAdjustedDays` array is independent: omitting the property preserves existing data. When updating:
+
+* **Omit `openingHoursAdjustedDays`** entirely → existing adjusted hours are left unchanged.
+* **Send `"openingHoursAdjustedDays": []`** (empty array) → clears all previously set adjusted hours.
+* **Send `"openingHoursAdjustedDays": [...]`** with values → replaces all adjusted hours with the new list.
+
+**API behavior:**
+
+GET endpoints return `openingHoursAdjustedDays` sorted by `startDate`.
 
 ## Read more
 
