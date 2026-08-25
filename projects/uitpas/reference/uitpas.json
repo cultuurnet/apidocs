@@ -3724,6 +3724,9 @@
                       "sms": false,
                       "post": true
                     },
+                    "registrationOrganizer": {
+                      "id": "abc12345"
+                    },                    
                     "nationality": "Belg",
                     "legalTermsPaper": false,
                     "legalTermsDigital": true,
@@ -11940,6 +11943,7 @@
           "name",
           "firstName",
           "dateOfBirth",
+          "registrationOrganizer",
           "address"
         ]
       },
