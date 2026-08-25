@@ -13,6 +13,7 @@ jobs:
           'cHJqOjEyNjc1Mg', # authentication
           'cHJqOjEyNjc2OQ', # errors
           'cHJqOjEyNjc0OA', # museumpassmusees
+          'cHJqOjIyMzUzOQ'  # release-notes
           'cHJqOjEyNzIzNg', # uitdatabank
           'cHJqOjEzNjk4MQ', # uitpas
           'cHJqOjEyNjI2MA', # widgets
