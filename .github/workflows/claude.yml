@@ -58,7 +58,8 @@ jobs:
                 - Use suggestion blocks liberally to make it easy for developers to apply fixes. But only when you have a concrete, actionable fix
                 - Include explanation text before or after the suggestion block
             4.  Bundle general observations and praise in the general, top-level review comment
-            5.  Submit for review: Use `mcp__github__submit_pending_pull_request_review` with the event type set to "COMMENT" (not "REQUEST_CHANGES") to publish all comments for non-blocking review.
+            5.  Submit for review: Use `mcp__github__submit_pending_pull_request_review` with the event type set to "COMMENT" (not "REQUEST_CHANGES") to publish all comments for non-blocking review. 
+                In this review comment, don't repeat any feedback that you have already commented inline.
             6.  When updating your initial comment to update the status of your job, don't repeat or summarize any info from your review comment(s), just mark it as done
           claude_args: |
             --allowedTools "mcp__github__get_pull_request,mcp__github__create_pending_pull_request_review,mcp__github__add_comment_to_pending_review,mcp__github__submit_pending_pull_request_review,mcp__github__get_pull_request_diff"
