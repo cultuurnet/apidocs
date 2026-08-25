@@ -16,7 +16,7 @@ Use the `hasOvernightStay` URL parameter to filter events based on whether they 
 
 * `true`: only returns events that have at least one sub-event with `hasOvernightStay: true`
 * `false`: only returns events that have no sub-event with `hasOvernightStay: true`
-* Omitting the parameter returns all events regardless of their overnight value
+* Omitting the parameter returns all events, regardless of whether they have an overnight stay
 
 An event is considered to have an overnight stay if **at least one** of its sub-events is marked as `hasOvernightStay: true`. An event where only some sub-events have `hasOvernightStay: true` still matches `hasOvernightStay=true` unless combined with a date filter (see below).
 
