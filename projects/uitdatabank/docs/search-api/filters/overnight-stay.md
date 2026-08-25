@@ -48,8 +48,6 @@ When combined with `dateFrom`/`dateTo`, `hasOvernightStay` is evaluated against 
 
 For example: an event with two weeks of sub-events where only week 2 has overnight sub-events will not match `hasOvernightStay=true` when searching exclusively within week 1.
 
-When `hasOvernightStay` is combined with a date filter (`dateFrom`/`dateTo` URL parameters), the overnight filter is scoped to the matching period: the API checks whether `hasOvernightStay` is enabled/disabled on the sub-events or opening hours that fall within that date range, not on the event as a whole.
-
 Retrieve all events in May 2025 that provide an overnight stay during that specific period:
 
 ```http
