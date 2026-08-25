@@ -36,12 +36,6 @@ Retrieve all events that do not provide an overnight stay:
 GET /events/?hasOvernightStay=false
 ```
 
-Combining with a date filter to find events with an overnight stay in a given period:
-
-```http
-GET /events/?hasOvernightStay=true&dateFrom=2026-07-01T00:00:00+02:00&dateTo=2026-08-31T23:59:59+02:00
-```
-
 ## Combining with a date filter
 
 When combined with `dateFrom`/`dateTo`, `hasOvernightStay` is evaluated against the sub-events that fall within the requested date range — not against the event as a whole. An event with overnight sub-events outside the searched period will not match `hasOvernightStay=true` for that period.
