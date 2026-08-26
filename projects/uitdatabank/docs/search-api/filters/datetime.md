@@ -114,6 +114,8 @@ You can filter on the date that an event is happening or place is open for visit
 **Advanced query fields**
 * `dateRange`: returns results that are happening / open in a given date range.
 
+> An event with [childcare](childcare.md#childcare-hours-extend-the-searchable-period) is available during its childcare hours as well, so those hours are matched too.
+
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for availability. You can reset this default as described in the [default filters guide](https://docs.publiq.be/docs/uitdatabank/search-api/filters/default-filters).
 
 **Applicable on endpoints**
@@ -200,6 +202,8 @@ However, these parts of the day are not pre-defined. Using an integer between 0 
 
 **Advanced query fields**
 * `localTimeRange`: returns results that are created in a given date range.
+
+> An event with [childcare](childcare.md#childcare-hours-extend-the-searchable-period) is available during its childcare hours as well, so those hours are matched too.
 
 **Applicable on endpoints**
 
