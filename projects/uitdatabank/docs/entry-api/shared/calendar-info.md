@@ -173,7 +173,7 @@ Each property within `childcare` is independent: omitting a property clears any 
 **Validation rules:**
 
 For all calendar types:
-* `childcare` cannot be set when the event has a term with id `K7mPx3nQrT9bWfH2zL5cYv` ("Kinderopvang").
+* `childcare` cannot be set when the event has at least one term with id `K7mPx3nQrT9bWfH2zL5cYv` ("Kinderopvang"). Returns a `400` error.
 * When the event type is changed to `K7mPx3nQrT9bWfH2zL5cYv`, childcare times are automatically removed from all `subEvent` and `openingHours` items, including those in `openingHoursAdjustedDays`.
 
 For single/multiple calendar types:
