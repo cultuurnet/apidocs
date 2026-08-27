@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "description": "Indicates when childcare is available during this sub event. Each property is independent: omitting a property clears any previously set value for it.",
+  "description": "Indicates when childcare is available during this sub event. Each property is independent: omitting a property clears any previously set value for it. Not applicable when the event has a term with id `K7mPx3nQrT9bWfH2zL5cYv` (\"Kinderopvang\"), because such an event is childcare itself. Changing the event type to that term removes any childcare times that were already set.",
   "properties": {
     "start": {
       "allOf": [
