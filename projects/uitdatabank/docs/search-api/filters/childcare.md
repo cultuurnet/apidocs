@@ -37,7 +37,7 @@ GET /events/?hasChildcare=false
 
 ## Childcare hours extend the searchable period
 
-A child is present for the childcare hours as well as for the activity, so UiTdatabank treats the whole of it as the period an event is available. Date and local time filters match against that extended period.
+A child can be present for the childcare hours as well as for the activity, so UiTdatabank treats the whole of it as the period an event is available. Date and local time filters match against that extended period.
 
 Take an event that runs from 10:00 until 18:00 with childcare from 08:00 until 19:00:
 
