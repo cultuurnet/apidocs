@@ -2006,9 +2006,10 @@
       },
       "localTimeFrom": {
         "schema": {
-          "type": "string",
-          "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
-          "example": "08:30"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2359,
+          "example": 830
         },
         "in": "query",
         "name": "localTimeFrom",
@@ -2016,9 +2017,10 @@
       },
       "localTimeTo": {
         "schema": {
-          "type": "string",
-          "pattern": "^([01]\\d|2[0123]):([012345]\\d)$",
-          "example": "23:59"
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2359,
+          "example": 2359
         },
         "in": "query",
         "name": "localTimeTo",
