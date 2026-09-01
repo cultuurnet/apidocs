@@ -186,9 +186,9 @@ For periodic/permanent calendar types:
 * `childcare.end` must be **later** than `closes`. For example, if `closes` is `17:00`, `childcare.end` must be after `17:00`.
 * These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
 
-### Overnight (events only, single/multiple)
+### Overnight stay (events only, single/multiple)
 
-Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include an `overnight` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay.
+Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include a `hasOvernightStay` boolean on each `subEvent` to indicate whether that occurrence involves an overnight stay.
 
 ```json
 {
@@ -204,7 +204,7 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
     {
       "startDate": "2026-07-01T09:00:00+02:00",
       "endDate": "2026-07-05T17:00:00+02:00",
-      "overnight": true
+      "hasOvernightStay": true
     },
     {
       "startDate": "2026-07-08T09:00:00+02:00",
@@ -216,13 +216,13 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 **Validation rules:**
 
-* `overnight` can only be set when the event has at least one term with id `0.57.0.0.0`. 
-* `overnight` is optional and defaults to `false` when omitted.
-* When the term `0.57.0.0.0` is removed from the event, `overnight` is automatically reset to `false` on all subEvents.
+* `hasOvernightStay` can only be set when the event has at least one term with id `0.57.0.0.0`. 
+* `hasOvernightStay` is optional and defaults to `false` when omitted.
+* When the term `0.57.0.0.0` is removed from the event, `hasOvernightStay` is automatically reset to `false` on all subEvents.
 
 **API behavior:**
 
-In the read model (GET), `overnight` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
+In the read model (GET), `hasOvernightStay` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
 
 ### periodic/permanent
 

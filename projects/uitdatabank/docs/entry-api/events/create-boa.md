@@ -17,12 +17,12 @@ To ensure parents and children easily find the right activities, data quality is
 | Pricing | `PUT /events/{eventId}/price-info` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
 | FAQ | `PUT /events/{eventId}/faqs` | Use the [FAQ fields](/docs/uitdatabank/entry-api/reference/operations/update-a-event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
 | Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
-| Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-events-only-singlemultiple) (`overnight`). | single, multiple | ✅ |
+| Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-stay-events-only-singlemultiple) (`hasOvernightStay`). | single, multiple | ✅ |
 | Departure places | `PUT /events/{eventId}/departure-places` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
 
 ## Request body example
 
-Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `overnight`:
+Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`:
 
 ```json
 {
@@ -43,7 +43,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
     {
       "startDate": "2026-07-01T09:00:00+02:00",
       "endDate": "2026-07-05T17:00:00+02:00",
-      "overnight": true,
+      "hasOvernightStay": true,
       "childcare": {
         "start": "08:30",
         "end": "18:30"

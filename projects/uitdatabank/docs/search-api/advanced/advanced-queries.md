@@ -452,6 +452,36 @@ Use `OR` to find events that depart from either of two places. This is not possi
 GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
+### hasOvernightStay
+
+The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event matches when at least one of its sub-events has `hasOvernightStay: true`. Events with a `periodic` or `permanent` calendarType have no sub-events and are always indexed as `false`.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+`true` `false`
+
+**Examples**
+
+Setting hasOvernightStay to `true` only returns events that involve an overnight stay:
+
+```
+GET /events/?q=hasOvernightStay:true
+```
+
+Setting hasOvernightStay to `false` only returns events that do not involve an overnight stay:
+
+```
+GET /events/?q=hasOvernightStay:false
+```
+
+<!-- theme: warning -->
+
+> Unlike the `hasOvernightStay` URL parameter, combining this field with `dateRange` in an advanced query does not scope the overnight stay to the matching period, due to how advanced queries are parsed.
+
 ### id
 
 Retrieve events that match a specific id with the `id` field. It is possible to search by an event id, place id or organizer id.

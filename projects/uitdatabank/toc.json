@@ -444,9 +444,9 @@
             },
             {
               "type": "item",
-              "title": "Filtering on overnight",
-              "uri": "/docs/search-api/filters/overnight.md",
-              "slug": "search-api/filters/filtering-by-overnight"
+              "title": "Filtering on overnight stay",
+              "uri": "/docs/search-api/filters/overnight-stay.md",
+              "slug": "search-api/filters/filtering-by-overnight-stay"
             },
             {
               "type": "item",
