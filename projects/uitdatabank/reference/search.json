@@ -200,6 +200,15 @@
             "$ref": "#/components/parameters/localTimeTo"
           },
           {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeTo"
+          },
+          {
             "$ref": "#/components/parameters/embed"
           },
           {
@@ -648,6 +657,15 @@
           },
           {
             "$ref": "#/components/parameters/localTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeTo"
           },
           {
             "$ref": "#/components/parameters/embed"
@@ -1403,6 +1421,15 @@
           },
           {
             "$ref": "#/components/parameters/localTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeTo"
           },
           {
             "$ref": "#/components/parameters/facets"
@@ -2398,7 +2425,36 @@
         "name": "uitpas",
         "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
       },
-      "hasChildcare": {
+      "recurringOnDayOfWeek": {
+      "schema": {
+        "type": "string",
+        "example": "wednesday,saturday"
+      },
+      "in": "query",
+      "name": "recurringOnDayOfWeek",
+      "description": "Returns only events and places that recur on the given day of week, meaning they take place on that day of week on at least four distinct days. Possible values are `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday` and `sunday`, case-insensitive. Multiple values are comma-separated and combined as an OR. Events with a `single` calendar are never returned."
+    },
+    "recurringOnLocalTimeFrom": {
+      "schema": {
+        "type": "integer",
+        "pattern": "^([01]\\d|2[0123])([012345]\\d)$",
+        "example": 1300
+      },
+      "in": "query",
+      "name": "recurringOnLocalTimeFrom",
+      "description": "Returns only events and places that recur at some point after the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. Requires `recurringOnDayOfWeek` and `recurringOnLocalTimeTo`."
+    },
+    "recurringOnLocalTimeTo": {
+      "schema": {
+        "type": "integer",
+        "pattern": "^([01]\\d|2[0123])([012345]\\d)$",
+        "example": 1700
+      },
+      "in": "query",
+      "name": "recurringOnLocalTimeTo",
+      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity ending at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Requires `recurringOnDayOfWeek` and `recurringOnLocalTimeFrom`."
+    },
+    "hasChildcare": {
         "schema": {
           "type": "boolean"
         },
