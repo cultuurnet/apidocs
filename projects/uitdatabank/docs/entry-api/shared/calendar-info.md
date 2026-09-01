@@ -109,6 +109,8 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 Events can optionally include a `childcare` object to indicate when childcare is provided. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
 
+Events of type "Kinderopvang" (term id `K7mPx3nQrT9bWfH2zL5cYv`) are childcare themselves and cannot have childcare times.
+
 **For single/multiple calendar types:**
 
 Events with calendarType `single` or `multiple` can include a `childcare` object on each `subEvent`:
@@ -169,6 +171,10 @@ Each property within `childcare` is independent: omitting a property clears any 
 * **Send `"childcare": { "start": "...", "end": "..." }`** → sets both.
 
 **Validation rules:**
+
+For all calendar types:
+* `childcare` cannot be set when the event has at least one term with id `K7mPx3nQrT9bWfH2zL5cYv` ("Kinderopvang"). Returns a `400` error.
+* When the event type is changed to `K7mPx3nQrT9bWfH2zL5cYv`, childcare times are automatically removed from all `subEvent` and `openingHours` items, including those in `openingHoursAdjustedDays`.
 
 For single/multiple calendar types:
 * `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
