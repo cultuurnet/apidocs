@@ -2437,7 +2437,8 @@
     "recurringOnLocalTimeFrom": {
       "schema": {
         "type": "integer",
-        "pattern": "^([01]\\d|2[0123])([012345]\\d)$",
+        "minimum": 0,
+        "maximum": 2359,
         "example": 1300
       },
       "in": "query",
@@ -2447,7 +2448,8 @@
     "recurringOnLocalTimeTo": {
       "schema": {
         "type": "integer",
-        "pattern": "^([01]\\d|2[0123])([012345]\\d)$",
+        "minimum": 0,
+        "maximum": 2359,
         "example": 1700
       },
       "in": "query",
