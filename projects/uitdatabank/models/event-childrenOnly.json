@@ -2,6 +2,6 @@
   "title": "event.childrenOnly",
   "type": "boolean",
   "default": false,
-  "description": "Indicates whether the event is intended for children only, without parents or guardians. Defaults to `false`. Must be `true` to set `departurePlaces`. Unlike other optional properties, it is not reset when it is omitted from a full `PUT /events/{eventId}` body, or sent as `null` there: the current value is kept, so send `false` to disable it. When `childrenOnly` is `false`, it is omitted from the event GET response.",
+  "description": "Indicates whether the event is intended for children only, without parents or guardians. Defaults to `false`. Must be `true` to set `departurePlaces`. When not sent in a later update, the value remains unchanged; send `false` to disable it. When `childrenOnly` is `false`, it is omitted from the event GET response.",
   "example": true
 }
