@@ -108,8 +108,6 @@ The hours are counted the same way as the days of week, and against the same thr
 
 The hours a result actually runs are used, not the hours rounded to a full or half hour. A place open from 08:30 to 09:17 is matched on 09:00 and is not matched on 09:20.
 
-Two slots on the same day of week stay two slots. A result open on Wednesday from 10:00 to 12:00 and from 14:00 to 18:00 is not matched on 13:00, even though that falls between its first and its last hour.
-
 Hours that shift between occurrences only keep what they have in common. An event that runs on six Wednesdays, three times from 10:00 to 12:00 and three times from 10:00 to 13:00, is matched on 11:00 but not on 12:15, because the last hour only happens three times.
 
 [Childcare](childcare.md) counts as part of the hours. An event open on Wednesday from 14:00 to 17:00 with childcare from 12:00 is matched from 12:00 on, because a child can be there from then.
