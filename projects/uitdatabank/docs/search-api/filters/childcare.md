@@ -35,11 +35,48 @@ Retrieve all events that do not offer childcare:
 GET /events/?hasChildcare=false
 ```
 
+## Childcare hours extend the searchable period
+
+A child can be present for the childcare hours as well as for the activity, so UiTdatabank treats the whole of it as the period an event is available. Date and local time filters match against that extended period.
+
+Take an event that runs from 10:00 until 18:00 with childcare from 08:00 until 19:00:
+
+```json
+{
+  "calendarType": "single",
+  "startDate": "2026-08-17T10:00:00+02:00",
+  "endDate": "2026-08-17T18:00:00+02:00",
+  "subEvent": [
+    {
+      "startDate": "2026-08-17T10:00:00+02:00",
+      "endDate": "2026-08-17T18:00:00+02:00",
+      "childcare": { "start": "08:00", "end": "19:00" }
+    }
+  ]
+}
+```
+
+A search for that morning returns the event, even though the activity has not started yet:
+
+```http
+GET /events/?dateFrom=2026-08-17T08:00:00%2B02:00&dateTo=2026-08-17T09:59:00%2B02:00
+```
+
+The same holds for [local time](datetime.md#filtering-on-local-time), where the event is available from `0800` until `1900` rather than from `1000` until `1800`:
+
+```http
+GET /events/?localTimeFrom=0800&localTimeTo=0959
+```
+
+Childcare has an optional `start` and an optional `end`, and only the one that is filled in moves the period. An event with a childcare `start` of 08:00 and no `end` is available from 08:00 until 18:00.
+
+This applies to every calendarType. For `periodic` and `permanent` events the childcare range of an opening hours entry extends every day that entry is open, so opening hours running 09:00 to 17:00 with childcare from 08:00 until 18:00 make the event available from 08:00 until 18:00 on each of those days.
+
 ## Combining with a date filter
 
 When `hasChildcare` is combined with a date filter (`dateFrom`/`dateTo` URL parameters), the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
 
-> The date filter itself still matches against the actual start and end times of the activity — childcare hours never influence which events are considered to fall within a date range.
+> The date filter itself matches against the extended period, so an event whose childcare hours fall in the range is returned even when the activity itself does not. See [Childcare hours extend the searchable period](#childcare-hours-extend-the-searchable-period) below.
 
 Retrieve all events in May 2025 that offer childcare during that specific period:
 
