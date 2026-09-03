@@ -114,7 +114,7 @@ Hours that shift between occurrences only keep what they have in common. An even
 
 A day of week can recur without having recurring hours. An event on six Wednesdays, three in the morning and three in the evening, recurs on Wednesday, but neither the morning nor the evening reaches four occurrences, so it is not matched on any hour.
 
-**The end of a range is exclusive.** An activity that ends at 12:00 does not occupy 12:00 any more, so it is not returned by a search starting at 12:00. A swimming lesson from 10:00 to 11:00 is not an answer to "what recurs between 11:00 and 16:00".
+**The end time of an activity does not count as an open hour.** A swimming lesson that ends at 11:00 is not returned by a search for activities open from 11:00 onwards.
 
 ## Combining days of week in advanced queries
 
