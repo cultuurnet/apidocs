@@ -903,6 +903,64 @@ Retrieve all events with a price equal to or higher than 50 EUR:
 GET /events/?q=priceRange:[50 TO *]
 ```
 
+### recurringOnDayOfWeek
+
+With the `recurringOnDayOfWeek` field you can look for results that recur on a given day of week, for example a market every Wednesday. Events that take place on a single date are never matched.
+
+For an in-depth understanding of the `recurringOnDayOfWeek` field we advise to read [our guide](../filters/recurring-day-of-week.md).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+`monday` `tuesday` `wednesday` `thursday` `friday` `saturday` `sunday`
+
+**Examples**
+
+Search for all events that recur on Wednesdays:
+
+```
+GET /events/?q=recurringOnDayOfWeek:wednesday
+```
+
+Unlike the URL parameter, which always combines multiple days of week as an OR, advanced queries allow you to combine them with other boolean operators. Search for all events that recur on both Saturday and Sunday:
+
+```
+GET /events/?q=recurringOnDayOfWeek:(saturday AND sunday)
+```
+
+### recurringOnLocalTimeRange
+
+The `recurringOnLocalTimeRange` field holds the hours a result recurs at, per day of week, as `recurringOnLocalTimeRange.{dayOfWeek}`. Unlike `localTimeRange`, which covers the hours of a result as a whole, this keeps the day of week and the hours together: a museum open Wednesday morning and Saturday afternoon is not matched on Wednesday afternoon.
+
+For an in-depth understanding of the `recurringOnLocalTimeRange` field we advise to read [our guide](../filters/recurring-day-of-week.md#filtering-on-the-hours-as-well).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+A range of two times of day as `HHMM` integers, e.g. `[1300 TO 1700]`. A day of week the result does not recur at any fixed hour on has no value and is never matched.
+
+**Examples**
+
+Search for all events that recur on Wednesday afternoons:
+
+```
+GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700]
+```
+
+Unlike the URL parameters, which apply one time frame to all the selected days of week, advanced queries allow different hours per day. Search for all events that recur on Wednesday afternoons and on Saturday mornings:
+
+```
+GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700] AND recurringOnLocalTimeRange.saturday:[0900 TO 1200]
+```
+
+Both ends of the range are inclusive here, so `[1000 TO 1100]` still matches an activity that ends at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
+
 ### regions
 
 publiq has a list of pre-indexed geographical shapes that represent the administrative state of Belgium. The geographical coördinates of events and places are then matched with pre-indexed geographical shapes for:
