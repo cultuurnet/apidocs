@@ -114,8 +114,6 @@ You can filter on the date that an event is happening or place is open for visit
 **Advanced query fields**
 * `dateRange`: returns results that are happening / open in a given date range.
 
-> An event with [childcare](childcare.md#childcare-hours-extend-the-searchable-period) is available during its childcare hours as well, so those hours are matched too.
-
 > By default, the search API will only return results that are currently available. In order to also retrieve results that are not available (yet), you'll need to disable the default filters for availability. You can reset this default as described in the [default filters guide](https://docs.publiq.be/docs/uitdatabank/search-api/filters/default-filters).
 
 **Applicable on endpoints**
@@ -197,13 +195,11 @@ Typically, this field is used to filter out events that are happening:
 However, these parts of the day are not pre-defined. Using an integer between 0 and 2359 you can define the timeRange yourself.
 
 **URL-parameters**
-* `localTimeFrom`: returns only results that are created after the given date-time. 
-* `localTimeTo`: returns only results that created up until the given date-time. 
+* `localTimeFrom`: returns only results that are open at some point after the given time of day.
+* `localTimeTo`: returns only results that are open at some point before the given time of day.
 
 **Advanced query fields**
-* `localTimeRange`: returns results that are created in a given date range.
-
-> An event with [childcare](childcare.md#childcare-hours-extend-the-searchable-period) is available during its childcare hours as well, so those hours are matched too.
+* `localTimeRange`: returns results that are open at some point within the given range of times of day.
 
 **Applicable on endpoints**
 
@@ -211,9 +207,9 @@ However, these parts of the day are not pre-defined. Using an integer between 0 
 
 **Possible values**
 
-Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
+A time of day as an `HHMM` integer between `0` and `2359`, so `0830` for half past eight in the morning and `1800` for six in the evening. Dates and timezones are not taken into account.
 
-> Note that the + sign must be encoded for URLs (as %2B). Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that these are not datetimes. A value written with a colon, such as `08:30`, is read as the number before the colon, so it silently searches for 00:08 instead of 08:30.
 
 **Examples**
 
@@ -241,7 +237,7 @@ GET /events/?q=localTimeRange:[0000 TO 0559]
 
 Get all events happening after 18:00
 ```
-GET /events/localTimeFrom=1800
+GET /events/?localTimeFrom=1800
 ```
 
 Since any overlap is a match with range queries, you can explicitly exclude anything that falls outside of your range using advanced queries. The query below will search for events happening in the morning, but that won't start earlier:
