@@ -70,8 +70,8 @@ A time of day as an `HHMM` integer, so `0900` for nine in the morning and `1730`
 
 **Rules**
 
-* Both parameters have to be used together. Sending only one of them returns a `404`.
 * Both require `recurringOnDayOfWeek`. The hours are kept per day of week, so there is nothing to search without one, and sending them on their own returns a `404`.
+* Each parameter can be used on its own. The side you leave out stays open, so `recurringOnLocalTimeFrom=1300` returns everything that recurs at some point after 13:00, however late it runs.
 * `recurringOnLocalTimeFrom` has to be equal to or smaller than `recurringOnLocalTimeTo`.
 
 One time frame applies to all the selected days of week, and the days stay combined as an OR. A result is returned when it recurs within those hours on **at least one** of them.
@@ -88,6 +88,18 @@ Retrieve all events that recur on a Wednesday or a Saturday afternoon, so events
 
 ```http
 GET /events/?recurringOnDayOfWeek=wednesday,saturday&recurringOnLocalTimeFrom=1300&recurringOnLocalTimeTo=1700
+```
+
+Retrieve all events that recur on a Wednesday evening, with no end to the hours:
+
+```http
+GET /events/?recurringOnDayOfWeek=wednesday&recurringOnLocalTimeFrom=1800
+```
+
+Retrieve all events that recur on a Wednesday morning, with no start to the hours, so the small hours are included:
+
+```http
+GET /events/?recurringOnDayOfWeek=wednesday&recurringOnLocalTimeTo=1200
 ```
 
 ## How the recurring hours are determined
