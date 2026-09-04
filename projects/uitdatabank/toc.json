@@ -31,6 +31,12 @@
       "slug": "exceptions"
     },
     {
+      "type": "item",
+      "title": "BOA",
+      "uri": "docs/boa.md",
+      "slug": "boa"
+    },
+    {
       "type": "divider",
       "title": "Entry API"
     },
