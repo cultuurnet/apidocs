@@ -17,8 +17,8 @@ Do you want to:
 * Expand an existing integration?
 
 We are happy to give you access to our documentation.
-Send an email to <technical-support@publiq.be> and state in the subject line that you are requesting access to the BOA documentation.
-State in the subject line of your email "Requesting access to the BOA documentation".
+
+Send an email to <technical-support@publiq.be> with the subject line "Requesting access to the BOA documentation".
 
 ## Preview of the new BOA features
 
