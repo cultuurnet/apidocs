@@ -2,7 +2,7 @@
 
 The BOA decree (*Buitenschoolse Opvang en Activiteiten*) aims to create a comprehensive and integrated offering of out-of-school care and leisure activities for school-aged children in Flanders. Local governments act as the central directors, coordinating with partners across education, youth work, sports, and culture. To properly capture this specific offering in UiTdatabank, several new features and fields have been added to the Entry API.
 
-For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](http://publiq.be/boa).
+For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
 <!-- theme: warning -->
 
