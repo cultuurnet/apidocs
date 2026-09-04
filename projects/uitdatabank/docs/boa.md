@@ -16,11 +16,11 @@ Get in touch with us via <technical-support@publiq.be> to get set up.
 
 ## Preview of the new BOA features
 
-|                            |                                                                                                                                                                                               |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **New types**              | Activiteit met de jeugdbeweging, Kinderopvang & Speelpleinwerking                                                                                                                             |
-| **Target audience**        | Indicate whether your activities are exclusively aimed at children                                                                                                                            |
-| **Age entry**              | You can specify target age ranges using birth dates                                                                                                                                           |
-| **FAQ**                    | Add frequently asked questions and answers to supplement your activity description                                                                                                            |
-| **Expanded Calendar Info** | <ul><li>Hours for pre- and post-activity childcare</li><li>Periods with adjusted opening hours</li><li>Closure periods</li><li>Camps: indicate whether overnight stays are included</li></ul> |
-| **Supervised Transport**   | Specify pickup locations offering supervised transport to your activity.                                                                                                                      |
+| Feature                    | Description                                                                        |
+| -------------------------- | ---------------------------------------------------------------------------------- |
+| **New types**              | Activiteit met de jeugdbeweging, Kinderopvang, Speelpleinwerking                     |
+| **Target audience**        | Indicate whether your activities are exclusively aimed at children                   |
+| **Age entry**              | You can specify target age ranges using birth dates                                  |
+| **FAQ**                    | Add frequently asked questions and answers to supplement your activity description   |
+| **Expanded calendar info** | <ul><li>Hours for pre- and post-activity childcare</li><li>Periods with adjusted opening hours</li><li>Closure periods</li><li>Camps: indicate whether overnight stays are included</li></ul> |
+| **Supervised transport**   | Specify pickup locations offering supervised transport to your activity              |
