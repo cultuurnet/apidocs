@@ -10,9 +10,15 @@ For more general information about publiq's role in the BOA decree, visit [publi
 
 ## Get access
 
-Ready to start using the new features and fields, or explore the technical documentation?
+Do you want to:
 
-Get in touch with us via <technical-support@publiq.be> to get set up.
+* Enter BOA activities in UiTdatabank?
+* Create an agenda featuring BOA-offerings?
+* Expand an existing integration?
+
+We are happy to give you access to our documentation.
+Send an email to <technical-support@publiq.be> and state in the subject line that you are requesting access to the BOA documentation.
+State in the subject line of your email "Requesting access to the BOA documentation".
 
 ## Preview of the new BOA features
 
