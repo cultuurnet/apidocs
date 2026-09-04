@@ -13,7 +13,7 @@ For more general information about publiq's role in the BOA decree, visit [publi
 Do you want to:
 
 * Enter BOA activities in UiTdatabank?
-* Create an agenda featuring BOA-offerings?
+* Create an agenda featuring BOA offerings?
 * Expand an existing integration?
 
 We are happy to give you access to our documentation.
