@@ -52,7 +52,7 @@ Which days of week a result recurs on depends on its [calendarType](datetime.md#
 
 Days are counted, not time slots. A day of week that is open twice on the same date, for example a morning and an afternoon slot, counts once for that date.
 
-For a `permanent` result there is no end date to count within, so the days of week are determined over a window running from six months in the past to twelve months in the future.
+The days of week are determined over a window running from six months in the past to twelve months in the future. Occurrences outside it are not counted, so a result that only starts recurring later is matched once it comes within the window.
 
 ## Filtering on the hours as well
 
@@ -104,7 +104,7 @@ GET /events/?recurringOnDayOfWeek=wednesday&recurringOnLocalTimeTo=1200
 
 ## How the recurring hours are determined
 
-The hours are counted the same way as the days of week, and against the same threshold. Per day of week, an hour is a recurring hour when the result is open at that hour on **at least four distinct days**.
+The hours are counted the same way as the days of week, over the same window and against the same threshold. Per day of week, an hour is a recurring hour when the result is open at that hour on **at least four distinct days**.
 
 The hours a result actually runs are used, not the hours rounded to a full or half hour. A place open from 08:30 to 09:17 is matched on 09:00 and is not matched on 09:20.
 
