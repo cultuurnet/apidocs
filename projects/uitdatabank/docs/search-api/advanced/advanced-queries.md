@@ -287,13 +287,13 @@ GET /offers/?q=calendarType:permanent
 
 ### childrenOnly
 
-The `childrenOnly` field can be used to filter events that are (not) targeted at children only, without parents or guardians present.
+The `childrenOnly` field can be used to filter offers that are (not) targeted at children only, without parents or guardians present.
 
 For an in-depth understanding of the `childrenOnly` field we advise to read [our guide](../filters/children-only.md).
 
 **Applicable on endpoints**
 
-`/events` `/offers`
+`/events` `/places` `/offers`
 
 **Possible values**
 
@@ -301,19 +301,19 @@ For an in-depth understanding of the `childrenOnly` field we advise to read [our
 
 **Examples**
 
-Setting childrenOnly to `true` only returns events that are targeted at children only:
+Setting childrenOnly to `true` only returns offers that are targeted at children only:
 
 ```
 GET /events/?q=childrenOnly:true
 ```
 
-Setting childrenOnly to `false` only returns events that are not targeted at children only:
+Setting childrenOnly to `false` only returns offers that are not targeted at children only:
 
 ```
 GET /events/?q=childrenOnly:false
 ```
 
-> Note that when using `childrenOnly:true`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
+> Note that when using `childrenOnly:true`, you will always find offers set to `childrenOnly: true` that have been created by *your* client. Offers created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to offers targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
 
 ### completedLanguages
 
