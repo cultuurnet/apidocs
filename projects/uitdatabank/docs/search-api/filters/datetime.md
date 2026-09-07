@@ -146,6 +146,15 @@ Since any overlap is a match with range queries, you can explicitly exclude anyt
 GET /events/?q=dateRange:[2025-07-01T00\:00\:00%2B02\:00 TO 2025-08-31T23\:59\:59%2B02\:00] NOT dateRange:[* TO 2025-06-30T23\:59\:59%2B02\:00] NOT dateRange:[2025-09-01T00\:00\:00%2B02\:0 TO *]&availableTo=*&availableFrom=*
 ```
 
+**How far do dates get indexed?**
+
+Results with `openingHours` are only indexed for a limited period ahead:
+
+* `periodic`: five years
+* `permanent`: twelve months
+
+A search for a later date does not return them, even if their calendar runs longer.
+
 
 ## Filtering on modified date
 
