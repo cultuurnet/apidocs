@@ -454,13 +454,13 @@ GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departure
 
 ### hasChildcare
 
-The `hasChildcare` field can be used to filter events that (do not) have childcare configured. An event matches when at least one of its sub-events or opening hours entries has childcare configured.
+The `hasChildcare` field can be used to filter events and places that (do not) have childcare configured. A result matches when at least one of its sub-events or opening hours entries has childcare configured.
 
 For an in-depth understanding of the `hasChildcare` field we advise to read [our guide](../filters/childcare.md).
 
 **Applicable on endpoints**
 
-`/events` `/offers`
+`/events` `/places` `/offers`
 
 **Possible values**
 
@@ -482,7 +482,9 @@ GET /events/?q=hasChildcare:false
 
 <!-- theme: warning -->
 
-> Unlike the `hasChildcare` URL parameter, combining this field with `dateRange` in an advanced query does not scope the childcare check to the matching period, due to how advanced queries are parsed.
+> The `hasChildcare:true` / `hasChildcare:false` syntax inside an advanced query is not scoped to a matching `dateRange` in the same query: each condition is checked independently, so a result can match even if the childcare and the date don't fall on the same sub-event or opening hours entry.
+>
+> If you need childcare filtering scoped to a specific period, use the dedicated `hasChildcare` URL parameter together with `dateFrom`/`dateTo` (or `localTimeFrom`/`localTimeTo`) instead of the advanced query — these are correctly scoped to the same sub-event or opening hours entry.
 
 ### hasOvernightStay
 
