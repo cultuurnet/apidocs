@@ -230,12 +230,6 @@
             },
             {
               "type": "item",
-              "title": "Sharing ticket/reservation availability",
-              "uri": "/docs/entry-api/places/booking-availability.md",
-              "slug": "entry-api/places/sharing-ticket-or-reservation-availability"
-            },
-            {
-              "type": "item",
               "title": "Marking a place as temporarily or permanently closed",
               "uri": "/docs/entry-api/places/status.md",
               "slug": "entry-api/places/marking-a-place-as-temporarily-or-permanently-closed"
