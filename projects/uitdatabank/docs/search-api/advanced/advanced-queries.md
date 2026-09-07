@@ -454,13 +454,13 @@ GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departure
 
 ### hasChildcare
 
-The `hasChildcare` field can be used to filter events and places that (do not) have childcare configured. A result matches when at least one of its sub-events or opening hours entries has childcare configured.
+The `hasChildcare` field can be used to filter events that (do not) have childcare configured. An event matches when at least one of its sub-events or opening hours entries has childcare configured.
 
 For an in-depth understanding of the `hasChildcare` field we advise to read [our guide](../filters/childcare.md).
 
 **Applicable on endpoints**
 
-`/events` `/places` `/offers`
+`/events` `/offers`
 
 **Possible values**
 
