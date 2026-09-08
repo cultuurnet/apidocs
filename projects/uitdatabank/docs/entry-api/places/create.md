@@ -120,7 +120,7 @@ Next, copy the `url` property and open it in your web browser to view the JSON o
 
 ![](../../../assets/images/place-detail.png)
 
-As you may have noticed, your place has automatically gotten some extra properties. These are the default values for some of the various optional properties on place like [`status`](status.md) and [`bookingAvailability`](booking-availability.md).
+As you may have noticed, your place has automatically gotten some extra properties. These are the default values for some of the various optional properties on place like [`status`](status.md) and [`bookingAvailability`](../../../models/place-bookingAvailability.json).
 
 An additional `sameAs` property has also been added, which contains a link to the place on [UiTinVlaanderen](https://www.uitinvlaanderen.be). However, when you follow the link you will get a "not found" error. This is because the place needs to be published first, which is [documented in another guide](publish.md).
 
