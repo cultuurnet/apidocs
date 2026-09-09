@@ -287,7 +287,7 @@ GET /offers/?q=calendarType:permanent
 
 ### childrenOnly
 
-The `childrenOnly` field can be used to filter events that are (not) targeted at children only, without parents or guardians present.
+The `childrenOnly` field can be used to filter events that are targeted at children only, without parents or guardians present.
 
 For an in-depth understanding of the `childrenOnly` field we advise to read [our guide](../filters/children-only.md).
 
