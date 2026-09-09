@@ -452,6 +452,40 @@ Use `OR` to find events that depart from either of two places. This is not possi
 GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
 ```
 
+### hasChildcare
+
+The `hasChildcare` field can be used to filter events that (do not) have childcare configured. An event matches when at least one of its sub-events or opening hours entries has childcare configured.
+
+For an in-depth understanding of the `hasChildcare` field we advise to read [our guide](../filters/childcare.md).
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+`true` `false`
+
+**Examples**
+
+Setting hasChildcare to `true` only returns events that have childcare configured:
+
+```
+GET /events/?q=hasChildcare:true
+```
+
+Setting hasChildcare to `false` only returns events that have no childcare configured:
+
+```
+GET /events/?q=hasChildcare:false
+```
+
+<!-- theme: warning -->
+
+> The `hasChildcare:true` / `hasChildcare:false` syntax inside an advanced query is not scoped to a matching `dateRange` in the same query: each condition is checked independently, so a result can match even if the childcare and the date don't fall on the same sub-event or opening hours entry.
+>
+> If you need childcare filtering scoped to a specific period, use the dedicated `hasChildcare` URL parameter together with `dateFrom`/`dateTo` (or `localTimeFrom`/`localTimeTo`) instead of the advanced query — these are correctly scoped to the same sub-event or opening hours entry.
+
 ### hasOvernightStay
 
 The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event matches when at least one of its sub-events has `hasOvernightStay: true`. Events with a `periodic` or `permanent` calendarType have no sub-events and are always indexed as `false`.
