@@ -11543,7 +11543,8 @@
           },
           "organizerId": {
             "type": "string",
-            "description": "ID of the UiTPAS organizer to register the ticket sale for. Only used when registering a ticket sale. If omitted, the organizer of the given event is used.",
+            "minLength": 1,
+            "description": "ID of the UiTPAS organizer to register the ticket sale for. Only used when registering a ticket sale. If omitted, the organizer of the given event is used. The caller must have `TICKETSALES_REGISTER` permission for this organizer.",
             "writeOnly": true
           },
           "organizer": {
