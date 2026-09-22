@@ -4355,6 +4355,298 @@
         ]
       }
     },
+    "/passholders/{passholderId}/memberships/{cardSystemId}/cards": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/passholderId"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the card system the membership belongs to."
+        }
+      ],
+      "post": {
+        "summary": "Replace card of passholder",
+        "operationId": "post-passholders-passholderId-memberships-cardSystemId-cards",
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Replace the current card of a passholder with a new card, inside the card system of the given membership. A card can only be replaced within its own card system: to give the passholder a membership in another card system, use [POST /passholders/{passholderId}/memberships/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}/post).\n\nThe new card can be a physical card (`NFC_CARD`) or a digital card (`DIGITAL`), independently of the type of the replaced card. The `cardType` of the new card must always be sent explicitly, also when the passholder keeps the same card type.\n\nThe `reason` of the replacement determines which `cardType` is allowed:\n\n* `LOSS_THEFT` and `DEFECT`: the new card must have the same `cardType` as the replaced card.\n* `SWAP`: the new card must have a different `cardType` than the replaced card.\n\nWhen the new `cardType` is `NFC_CARD`, the `uitpasNumber` of the new physical card is required. When it is `DIGITAL`, the `uitpasNumber` is assigned by UiTPAS and must not be sent. The `uitpasNumber` of the new card is always returned in the response.\n\nThe replaced card gets the status `DELETED` and can no longer be used.\n\nReplacing a card has a cost, which can be checked upfront with [GET /passholders/{passholderId}/memberships/{cardSystemId}/card-prices](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}~1card-prices/get). A `voucher` can be sent to reduce that price.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer` sent in the request body.",
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "requestBody": {
+          "description": "Card replacement request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardReplacementRequest"
+              },
+              "examples": {
+                "Lost physical card": {
+                  "value": {
+                    "cardType": "NFC_CARD",
+                    "uitpasNumber": "0900000095902",
+                    "reason": "LOSS_THEFT",
+                    "registrationOrganizer": {
+                      "id": "abc12345"
+                    }
+                  }
+                },
+                "Swap to a digital card": {
+                  "value": {
+                    "cardType": "DIGITAL",
+                    "reason": "SWAP",
+                    "registrationOrganizer": {
+                      "id": "abc12345"
+                    }
+                  }
+                },
+                "Swap to a physical card with a voucher": {
+                  "value": {
+                    "cardType": "NFC_CARD",
+                    "uitpasNumber": "0900000095902",
+                    "reason": "SWAP",
+                    "registrationOrganizer": {
+                      "id": "abc12345"
+                    },
+                    "voucher": "VERVANG2026"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                },
+                "examples": {
+                  "New physical card": {
+                    "value": {
+                      "uitpasNumber": "0900000095902",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "NFC_CARD",
+                      "status": "ACTIVE",
+                      "socialTariff": false
+                    }
+                  },
+                  "New digital card": {
+                    "value": {
+                      "uitpasNumber": "0900000106913",
+                      "cardSystem": {
+                        "id": 1,
+                        "name": "UiTPAS Dender",
+                        "branding": {
+                          "logo": "https://www.uitpas.be/_nuxt/img/1351557.svg",
+                          "primaryColor": "rgba(0,0,0,1.0)",
+                          "secondaryColor": "rgba(97,166,14,1.0)"
+                        },
+                        "links": {
+                          "website": "https://www.uitpas.be"
+                        },
+                        "cities": [
+                          {
+                            "postalCode": "9300",
+                            "name": "Aalst"
+                          },
+                          {
+                            "postalCode": "9400",
+                            "name": "Ninove"
+                          }
+                        ],
+                        "permanent": true
+                      },
+                      "cardType": "DIGITAL",
+                      "status": "ACTIVE",
+                      "socialTariff": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\n`invalid-data` is also returned when the `cardType` does not match the `reason`, when the `uitpasNumber` is missing for a new `NFC_CARD`, or when an `uitpasNumber` is sent for a new `DIGITAL` card.\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. Returned when the passholder does not exist, or when the passholder has no membership in the given card system.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/passholders/{passholderId}/memberships/{cardSystemId}/card-prices": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/passholderId"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "cardSystemId",
+          "in": "path",
+          "required": true,
+          "description": "ID of the card system the membership belongs to."
+        }
+      ],
+      "get": {
+        "summary": "Retrieve replacement card price",
+        "operationId": "get-passholders-passholderId-memberships-cardSystemId-card-prices",
+        "tags": [
+          "Passholders"
+        ],
+        "description": "Retrieve the exact price to replace the current card of a passholder inside the card system of the given membership. `cardType` and `reason` are mandatory to determine the correct price, `voucher` is optional.\n\nThis is the price of the card that would be created by [POST /passholders/{passholderId}/memberships/{cardSystemId}/cards](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}~1cards/post). To retrieve the price of a *membership* in a card system instead, use [GET /passholders/{passholderId}/membership-prices/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1membership-prices~1{cardSystemId}/get).\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` and `MEMBERSHIP_PRICES_READ` permission.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "NFC_CARD",
+                "DIGITAL"
+              ]
+            },
+            "in": "query",
+            "name": "cardType",
+            "description": "Type of the new card.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LOSS_THEFT",
+                "DEFECT",
+                "SWAP"
+              ]
+            },
+            "in": "query",
+            "name": "reason",
+            "description": "Reason why the current card is replaced.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "voucher",
+            "description": "optional voucher that might reduce the price of the new card"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MembershipPrice"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "price": 5,
+                      "label": "UiTPAS vervangkaart",
+                      "description": "Een vervangkaart kost 5 euro"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/passholders/{passholderId}/association-memberships": {
       "parameters": [
         {
@@ -11370,7 +11662,7 @@
       "MembershipPrice": {
         "type": "object",
         "title": "MembershipPrice",
-        "description": "The MembershipPrice describes the price an UiTPAS membership in a specific cardsystem for a new or existing passholder.  ",
+        "description": "The MembershipPrice describes the price of an UiTPAS membership in a specific cardsystem for a new or existing passholder, or the price of a replacement card for an existing passholder.",
         "x-internal": false,
         "example": {
           "price": 5,
@@ -14705,6 +14997,77 @@
         "required": [
           "cardType",
           "registrationOrganizer"
+        ]
+      },
+      "CardReplacementRequest": {
+        "title": "CardReplacementRequest",
+        "type": "object",
+        "x-tags": [
+          "Models"
+        ],
+        "description": "Request to replace the current card of a passholder with a new card, inside the same card system.",
+        "properties": {
+          "cardType": {
+            "type": "string",
+            "enum": [
+              "NFC_CARD",
+              "DIGITAL"
+            ],
+            "description": "Type of the new card. Must always be sent explicitly, also when the passholder keeps the same card type as the replaced card."
+          },
+          "uitpasNumber": {
+            "type": "string",
+            "description": "UiTPAS number of the new physical card. Required when `cardType` is `NFC_CARD`. Not allowed when `cardType` is `DIGITAL`, because UiTPAS assigns the number of a digital card."
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "LOSS_THEFT",
+              "DEFECT",
+              "SWAP"
+            ],
+            "description": "Reason why the current card is replaced. The reason determines which `cardType` the new card may have:\n\n- `LOSS_THEFT`: the card was lost or stolen. The new card must have the same `cardType` as the replaced card.\n- `DEFECT`: the card no longer works. The new card must have the same `cardType` as the replaced card.\n- `SWAP`: the passholder switches to the other card type, in either direction. The new `cardType` must differ from the `cardType` of the replaced card."
+          },
+          "registrationOrganizer": {
+            "$ref": "#/components/schemas/Organizer"
+          },
+          "voucher": {
+            "type": "string",
+            "description": "Voucher for price reduction of the new card."
+          }
+        },
+        "required": [
+          "cardType",
+          "reason",
+          "registrationOrganizer"
+        ],
+        "oneOf": [
+          {
+            "properties": {
+              "cardType": {
+                "enum": [
+                  "NFC_CARD"
+                ]
+              }
+            },
+            "required": [
+              "uitpasNumber"
+            ]
+          },
+          {
+            "properties": {
+              "cardType": {
+                "enum": [
+                  "DIGITAL"
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "uitpasNumber"
+              ]
+            }
+          }
         ]
       },
       "GrantedCoupon": {
