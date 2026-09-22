@@ -9073,7 +9073,7 @@
                   },
                   "organizerId": {
                     "type": "string",
-                    "description": "ID of the organizer where the reward is redeemed."
+                    "description": "ID of the organizer where the reward is redeemed. If omitted, it defaults to the first organizer of the reward."
                   }
                 },
                 "required": [
