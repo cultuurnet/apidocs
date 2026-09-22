@@ -8989,6 +8989,10 @@
                         "online": false
                       },
                       "redeemDate": "2019-08-24T14:15:22+00:00",
+                      "organizer": {
+                        "id": "abc12345",
+                        "name": "UiTPAS Test Organizer"
+                      },
                       "redeemInfo": {
                         "text": "Info on how to use the redeem code",
                         "link": "https://example.com/redeem-your-reward-here",
@@ -9033,7 +9037,7 @@
           "Rewards"
         ],
         "requestBody": {
-          "description": "Reward (id) to mark as redeemed, and for which UiTPAS number specifically.",
+          "description": "Reward (id) to mark as redeemed, and for which UiTPAS number specifically. Optionally the organizer where the reward is redeemed.",
           "content": {
             "application/json": {
               "schema": {
@@ -9046,6 +9050,10 @@
                   "uitpasNumber": {
                     "type": "string",
                     "description": "UiTPAS number of the passholder exchanging this reward."
+                  },
+                  "organizerId": {
+                    "type": "string",
+                    "description": "ID of the organizer where the reward is redeemed."
                   }
                 },
                 "required": [
@@ -9057,7 +9065,8 @@
                 "Example": {
                   "value": {
                     "uitpasNumber": "0930012345615",
-                    "rewardId": "fce4bd2f-4dca-4a44-9912-6168f0ac7e5e"
+                    "rewardId": "fce4bd2f-4dca-4a44-9912-6168f0ac7e5e",
+                    "organizerId": "abc12345"
                   }
                 }
               }
@@ -9138,6 +9147,10 @@
                             "lastChance": true
                           },
                           "redeemDate": "2019-08-24T14:15:22+00:00",
+                          "organizer": {
+                            "id": "abc12345",
+                            "name": "UiTPAS Test Organizer"
+                          },
                           "redeemInfo": {
                             "text": "Info on how to use the redeem code",
                             "link": "https://example.com/redeem-your-reward-here",
@@ -13616,6 +13629,14 @@
             "format": "date-time",
             "description": "Date of the redeem action."
           },
+          "organizer": {
+            "description": "Organizer where this reward was redeemed.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ]
+          },
           "redeemInfo": {
             "type": "object",
             "description": "Information about the redeem action.",
@@ -13643,7 +13664,8 @@
         "required": [
           "id",
           "reward",
-          "redeemDate"
+          "redeemDate",
+          "organizer"
         ]
       },
       "Facet": {
