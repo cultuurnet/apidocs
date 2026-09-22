@@ -932,6 +932,10 @@
                     "value": {
                       "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizer": {
+                        "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                        "name": "CC De Werf"
+                      },
                       "uitpasNumber": "0560002524314",
                       "points": 1,
                       "passholder": {
@@ -999,6 +1003,10 @@
                     "value": {
                       "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizer": {
+                        "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                        "name": "CC De Werf"
+                      },
                       "uitpasNumber": "0560002524314",
                       "points": 1
                     }
@@ -1088,6 +1096,10 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:02Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -1154,6 +1166,10 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:03Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -1220,6 +1236,10 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:04Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -11587,6 +11607,15 @@
               "id": "wh57n4ld630j5"
             },
             "description": "Title of the event where the passholder checked in",
+            "readOnly": true
+          },
+          "organizer": {
+            "description": "Organizer of the event where the passholder checked in. This field is always available in responses. It cannot be set when creating a check-in: the organizer is always derived from the event.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
