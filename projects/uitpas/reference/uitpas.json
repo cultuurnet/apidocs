@@ -13660,12 +13660,13 @@
             "description": "Date of the redeem action."
           },
           "organizer": {
-            "description": "Organizer where this reward was redeemed.",
+            "description": "Organizer where this reward was redeemed. This field is always available in responses.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Organizer"
               }
-            ]
+            ],
+            "readOnly": true
           },
           "redeemInfo": {
             "type": "object",
