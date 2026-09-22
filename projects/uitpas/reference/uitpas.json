@@ -403,6 +403,10 @@
                         },
                         "uitpasNumber": "0560002524314",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf"
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       }
@@ -420,6 +424,10 @@
                         },
                         "uitpasNumber": "0560002524314",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf"
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       },
@@ -433,6 +441,10 @@
                         },
                         "uitpasNumber": "0940002524123",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf"
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       }
@@ -468,7 +480,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALES_REGISTER`  permission for the organizer of the given event.\n",
+        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n- an `organizerId` of the UiTPAS organizer to register the ticket sale for. If omitted, the organizer of the given event is used.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` and `organizer` fields of `TicketSale` are ignored in the request body. The `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALES_REGISTER`  permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -499,6 +511,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     }
@@ -512,6 +525,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Base tariff"
                     },
@@ -521,6 +535,7 @@
                       },
                       "uitpasNumber": "0930002523422",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Base tariff"
                     },
@@ -530,6 +545,7 @@
                       },
                       "uitpasNumber": "0985002524385",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10
                     }
                   ]
@@ -542,6 +558,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -551,6 +568,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -560,6 +578,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -569,6 +588,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -578,6 +598,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     }
@@ -591,6 +612,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10
                     }
                   ]
@@ -630,6 +652,10 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                         },
@@ -644,6 +670,10 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                         }
@@ -665,6 +695,10 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting.",
                           "passholder": {
@@ -734,6 +768,10 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf"
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting.",
                           "passholder": {
@@ -11416,6 +11454,10 @@
             "id": "COUPON1234"
           },
           "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+          "organizer": {
+            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+            "name": "CC De Werf"
+          },
           "uitpasNumber": "1234567890"
         },
         "title": "TicketSale",
@@ -11464,6 +11506,20 @@
               "id": "werwwukp0fgy1"
             },
             "description": "Title of the event that the ticket sale was for",
+            "readOnly": true
+          },
+          "organizerId": {
+            "type": "string",
+            "description": "ID of the UiTPAS organizer to register the ticket sale for. Only used when registering a ticket sale. If omitted, the organizer of the given event is used.",
+            "writeOnly": true
+          },
+          "organizer": {
+            "description": "The UiTPAS organizer that the ticket sale was registered for. This field is always available in responses and ignored in ticket sale registrations.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
