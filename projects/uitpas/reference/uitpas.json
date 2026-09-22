@@ -4732,6 +4732,102 @@
         ]
       }
     },
+    "/passholders/{passholderId}/uitid/status": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/passholderId"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve UiTiD registration status of a passholder",
+        "operationId": "get-passholders-passholderId-uitid-status",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uitpasNumber": {
+                      "type": "string",
+                      "description": "UiTPAS number of the passholder"
+                    },
+                    "email": {
+                      "type": "string",
+                      "description": "Optionally the email address of the passholder"
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "REGISTERED",
+                        "UNREGISTERED"
+                      ],
+                      "description": "State of the passholder"
+                    }
+                  },
+                  "required": [
+                    "uitpasNumber",
+                    "state"
+                  ],
+                  "readOnly": true
+                },
+                "examples": {
+                  "Unregistered passholder without email": {
+                    "value": {
+                      "state": "UNREGISTERED",
+                      "uitpasNumber": "0900000008301"
+                    }
+                  },
+                  "Unregistered passholder including email": {
+                    "value": {
+                      "state": "UNREGISTERED",
+                      "uitpasNumber": "0900000008301",
+                      "email": "john@example.org"
+                    }
+                  },
+                  "Registered passholder": {
+                    "value": {
+                      "state": "REGISTERED",
+                      "uitpasNumber": "0900000008301",
+                      "email": "john@example.org"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the UiTiD registration status of a passholder by their ID.\n\nThis is the counterpart of [`GET /passholders/me/uitid/status`](/reference/uitpas.json/paths/~1passholders~1me~1uitid~1status/get), but instead of a registration token it requires a [user access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NTM5-user-access-token) or a [client access token](https://docs.publiq.be/docs/authentication/ZG9jOjExODE5NDcw-client-access-token).\n\nThe response contains a `state` property which can be one of the following values:\n\n* `UNREGISTERED` : the passholder has no linked UiTiD account yet. The response can include the linked `email` address of the passholder if one is known.\n* `REGISTERED` : the passholder already has a linked UiTiD account. The `email` property contains the email address of that account.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL` permission.",
+        "tags": [
+          "Passholders"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/passholders/me/uitid/registration-token": {
       "parameters": [],
       "get": {
