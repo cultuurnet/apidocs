@@ -4519,7 +4519,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found. Returned when the passholder does not exist, or when the passholder has no membership in the given card system.",
+            "description": "Not found. Returned when the passholder does not exist, or when the passholder has no membership in the given card system. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/cardsystem-not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
