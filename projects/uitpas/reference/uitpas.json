@@ -4376,7 +4376,7 @@
         "tags": [
           "Passholders"
         ],
-        "description": "Replace the current card of a passholder with a new card, inside the card system of the given membership. A card can only be replaced within its own card system: to give the passholder a membership in another card system, use [POST /passholders/{passholderId}/memberships/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}/post).\n\nThe new card can be a physical card (`NFC_CARD`) or a digital card (`DIGITAL`), independently of the type of the replaced card. The `cardType` of the new card must always be sent explicitly, also when the passholder keeps the same card type.\n\nThe `reason` of the replacement determines which `cardType` the new card may have:\n\n* `LOSS_THEFT` and `DEFECT`: the new card keeps the `cardType` of the replaced card, except that a physical card may also be replaced by a digital card. A digital card can never be replaced by a physical card for these reasons.\n* `SWAP`: the new card must have a different `cardType` than the replaced card. This is the only way to replace a digital card by a physical card.\n\nWhen the new `cardType` is `NFC_CARD`, the `uitpasNumber` of the new physical card is required. When it is `DIGITAL`, the `uitpasNumber` is assigned by UiTPAS and must not be sent. The `uitpasNumber` of the new card is always returned in the response.\n\nThe replaced card gets the status `DELETED` and can no longer be used.\n\nReplacing a card has a cost, which can be checked upfront with [GET /passholders/{passholderId}/memberships/{cardSystemId}/card-prices](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}~1card-prices/get). A `voucher` can be sent to reduce that price.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer` sent in the request body.",
+        "description": "Replace the current card of a passholder with a new card, inside the card system of the given membership. A card can only be replaced within its own card system: to give the passholder a membership in another card system, use [POST /passholders/{passholderId}/memberships/{cardSystemId}](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}/post).\n\nWhich `reason` is allowed depends on the type of the card that is replaced:\n\n* A physical card (`NFC_CARD`) can only be replaced with `LOSS_THEFT` or `DEFECT`. The new card can be a physical card or a digital card: this is the moment for a passholder to switch to a digital card.\n* A digital card (`DIGITAL`) can only be replaced with `SWAP_TO_NFC_CARD`, which always results in a new physical card. A digital card cannot get lost or become defective, so switching to a physical card is the only reason to replace it.\n\nThe `cardType` of the new card must always be sent explicitly, also when the passholder keeps the same card type.\n\nWhen the new `cardType` is `NFC_CARD`, the `uitpasNumber` of the new physical card is required. When it is `DIGITAL`, the `uitpasNumber` is assigned by UiTPAS and must not be sent. The `uitpasNumber` of the new card is always returned in the response.\n\nThe replaced card gets the status `DELETED` and can no longer be used.\n\nReplacing a card has a cost, which can be checked upfront with [GET /passholders/{passholderId}/memberships/{cardSystemId}/card-prices](/reference/uitpas.json/paths/~1passholders~1{passholderId}~1memberships~1{cardSystemId}~1card-prices/get). A `voucher` can be sent to reduce that price.\n\nThe caller of this request must have `PASSHOLDERS_WRITE` permission for the `registrationOrganizer` sent in the request body.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -4403,20 +4403,20 @@
                     }
                   }
                 },
-                "Swap to a digital card": {
+                "Defect physical card replaced by a digital card": {
                   "value": {
                     "cardType": "DIGITAL",
-                    "reason": "SWAP",
+                    "reason": "DEFECT",
                     "registrationOrganizer": {
                       "id": "abc12345"
                     }
                   }
                 },
-                "Swap to a physical card with a voucher": {
+                "Digital card replaced by a physical card": {
                   "value": {
                     "cardType": "NFC_CARD",
                     "uitpasNumber": "0900000095902",
-                    "reason": "SWAP",
+                    "reason": "SWAP_TO_NFC_CARD",
                     "registrationOrganizer": {
                       "id": "abc12345"
                     },
@@ -4503,7 +4503,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\n`invalid-data` is also returned when the `cardType` does not match the `reason`, when the `uitpasNumber` is missing for a new `NFC_CARD`, or when an `uitpasNumber` is sent for a new `DIGITAL` card.\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\n`invalid-data` is also returned when the `reason` is not allowed for the card that is replaced, when the `cardType` is not allowed for the `reason`, when the `uitpasNumber` is missing for a new `NFC_CARD`, or when an `uitpasNumber` is sent for a new `DIGITAL` card.\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4581,12 +4581,12 @@
               "enum": [
                 "LOSS_THEFT",
                 "DEFECT",
-                "SWAP"
+                "SWAP_TO_NFC_CARD"
               ]
             },
             "in": "query",
             "name": "reason",
-            "description": "Reason why the current card is replaced.",
+            "description": "Reason why the current card is replaced. Must be a reason that is allowed for the card that is replaced.",
             "required": true
           },
           {
@@ -15024,9 +15024,9 @@
             "enum": [
               "LOSS_THEFT",
               "DEFECT",
-              "SWAP"
+              "SWAP_TO_NFC_CARD"
             ],
-            "description": "Reason why the current card is replaced:\n\n- `LOSS_THEFT`: the card was lost or stolen.\n- `DEFECT`: the card no longer works.\n- `SWAP`: the passholder switches to the other card type, in either direction.\n\nThe reason determines which `cardType` the new card may have. With `LOSS_THEFT` and `DEFECT` the new card keeps the `cardType` of the replaced card, except that a physical card may also be replaced by a digital card. With `SWAP` the new `cardType` must differ from the `cardType` of the replaced card, which makes it the only way to replace a digital card by a physical card."
+            "description": "Reason why the current card is replaced:\n\n- `LOSS_THEFT`: the physical card was lost or stolen.\n- `DEFECT`: the physical card no longer works.\n- `SWAP_TO_NFC_CARD`: the passholder switches from a digital card to a physical card.\n\nThe allowed reasons depend on the type of the card that is replaced. A physical card can only be replaced with `LOSS_THEFT` or `DEFECT`, and the new card can then be a physical card (`NFC_CARD`) or a digital card (`DIGITAL`). A digital card can only be replaced with `SWAP_TO_NFC_CARD`, and the new card is then always a physical card (`NFC_CARD`)."
           },
           "registrationOrganizer": {
             "$ref": "#/components/schemas/Organizer"
