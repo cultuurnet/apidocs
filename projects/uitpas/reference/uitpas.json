@@ -4595,7 +4595,7 @@
             },
             "in": "query",
             "name": "voucher",
-            "description": "optional voucher that might reduce the price of the new card"
+            "description": "Optional voucher that might reduce the price of the new card."
           }
         ],
         "responses": {
