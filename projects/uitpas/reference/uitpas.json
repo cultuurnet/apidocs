@@ -4491,7 +4491,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\n`invalid-card-status` is about the *new* card: the card of the `uitpasNumber` sent in the request must be in status `LOCAL_STOCK`. The status of the current card is never a reason to refuse a replacement, as it can only be `ACTIVE` or `BLOCKED` and both can always be replaced.\n\n`invalid-data` is also returned when the `reason` is not allowed for the card that is replaced, when the `cardType` is not allowed for the `reason`, when the `uitpasNumber` is missing for a new `NFC_CARD`, when an `uitpasNumber` is sent for a new `DIGITAL` card, or when the new physical card does not have the same `socialTariff` as the card it replaces.\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-combination\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\n`invalid-combination` is returned when the combination of `reason` and `cardType` is not allowed for the card that is replaced, for example when `SWAP_TO_NFC_CARD` is sent while the current card is a physical card. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\n`invalid-card-status` is about the *new* card: the card of the `uitpasNumber` sent in the request must be in status `LOCAL_STOCK`. The status of the current card is never a reason to refuse a replacement, as it can only be `ACTIVE` or `BLOCKED` and both can always be replaced.\n\n`invalid-data` is also returned when the `uitpasNumber` is missing for a new `NFC_CARD`, when an `uitpasNumber` is sent for a new `DIGITAL` card, or when the new physical card does not have the same `socialTariff` as the card it replaces.\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4601,7 +4601,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\nThe detail property might include more information for the client developer.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/invalid-combination\n* https://api.publiq.be/probs/uitpas/invalid-voucher-code\n\n`invalid-combination` is returned when the requested combination of `reason` and `cardType` is not allowed for the card that is replaced, for example when `SWAP_TO_NFC_CARD` is requested while the current card is a physical card. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -4617,7 +4617,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found. Returned when the passholder does not exist, when the passholder has no membership in the given card system, or when there is no price for the requested combination of `reason` and `cardType`, for example because that combination is not allowed for the card that is replaced. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/url/not-found\n\nThe detail property might include more information for the client developer. The `endUserMessage` field of that error response will also contain a user-readable error message.",
+            "description": "Not found. Returned when the passholder does not exist, or when the passholder has no membership in the given card system. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/url/not-found\n\nThe detail property might include more information for the client developer.",
             "content": {
               "application/problem+json": {
                 "schema": {

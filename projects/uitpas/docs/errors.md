@@ -151,6 +151,14 @@ The request you are trying to perform cannot complete because the provided card 
 
 The request you are trying to perform cannot complete because the provided city is invalid.
 
+## invalid-combination
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/invalid-combination`
+* **Title**: `Invalid combination`
+* **Status**: `400`
+
+The request you are trying to perform cannot complete because the given combination of values is not allowed in this context.
+
 ## invalid-coupon
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/invalid-coupon`
