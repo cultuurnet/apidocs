@@ -9161,7 +9161,7 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
-            }
+        "description": "Redeem reward.\n\nIf `organizerId` is specified, the caller of this request must have `REWARDS_REDEEM` permission for that organizer. If it is omitted, the caller must have `REWARDS_REDEEM` permission for at least one of the organizers of the reward.",
           }
         },
         "description": "Redeem reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for any organizer of the reward or the given organizer if specified.",
