@@ -5025,6 +5025,84 @@
         ]
       }
     },
+    "/passholders/{passholderId}/uitid": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/passholderId"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve the UiTiD linked to a passholder",
+        "operationId": "get-passholders-passholderId-uitid",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "Email address of the UiTiD account linked to the passholder. Note that this is the email address the passholder uses to authenticate, which is not necessarily the same as the contact email address in the `email` property of the passholder."
+                    }
+                  },
+                  "required": [
+                    "email"
+                  ],
+                  "readOnly": true
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "email": "john@example.org"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK\n\nThe passholder has an UiTiD linked to them."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/uitid-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "No UiTiD linked to the passholder": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/uitid-not-found",
+                      "title": "UiTiD not found",
+                      "status": 404,
+                      "detail": "No UiTiD is linked to this passholder."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the UiTiD account linked to a passholder.\n\nWhether or not a passholder has an UiTiD is already available as the `uitidStatus` property of the passholder, for example in [`GET /passholders/{passholderId}`](/reference/uitpas.json/paths/~1passholders~1{passholderId}/get). Use this endpoint when the email address of the linked UiTiD account is needed as well, as retrieving it requires an extra call to the identity provider.\n\nIf no UiTiD is linked to the passholder, in other words when `uitidStatus` is `UNREGISTERED`, a `404` with type `https://api.publiq.be/probs/uitpas/uitid-not-found` is returned.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL` permission. Because this endpoint always looks up a passholder by ID, the result is never restricted to the allowed card systems of the caller, no matter which of these permissions they have.",
+        "tags": [
+          "UiTiD"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/passholders/membership-prices/{cardSystemId}": {
       "get": {
         "summary": "Retrieve new membership price",
