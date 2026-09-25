@@ -10,7 +10,7 @@ When you indicate that there are no more bookings available, your event will aut
 
 ![Screenshot of a summary of the event "De dichters - group 2" on UiTinVlaanderen, as an example of the "(Volzet of uitverkocht)" label](../../../assets/images/event-sold-out.png)
 
-In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API. You will also learn how to point interested attendees to a waiting list for the dates that are sold out.
+In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API. 
 
 Before getting started, we recommend that you have read the following guides:
 
@@ -151,41 +151,18 @@ When a specific date of your event is fully booked, you can add a `waitingListUr
 
 The waiting list is only available on events with calendarType `single` or `multiple`. On events with calendarType `periodic` or `permanent` a `waitingListUrl` is refused with a `400` error of type `https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported`.
 
+For adding or updating a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
+For overwriting or clearing a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
+
 ### Only on subEvents
 
 A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`, because a waiting list is specific to one date and has its own registration page per date.
 
 It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
 
-### Adding or updating a waiting list
-
-Use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint to set a waiting list on one or more dates, without having to send the other dates of your event:
-
-```json
-[
-  {
-    "id": 1,
-    "bookingAvailability": {
-      "type": "Unavailable",
-      "waitingListUrl": "https://www.example.com/wachtlijst"
-    }
-  }
-]
-```
-
-You can also include `waitingListUrl` in the `subEvent` objects when you update the event in its entirety via [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put), or when you update the calendar via [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put).
-
-### Overwriting or clearing a waiting list
-
-When updating subEvents via [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch):
+### Ommiting rules
 
 * **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.
 * **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
 * **Send `"waitingListUrl": null`** → the waiting list url is removed.
 * **Send `"waitingListUrl": "..."`** → the waiting list url is set to that value.
-
-Keep in mind that [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) and [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) replace the complete list of subEvents. Any `waitingListUrl` that is not included in the request body is removed, so make sure to [fetch the event details](/reference/entry.json/paths/~1events~1{eventId}/get) first and include the waiting list urls that should be kept.
-
-### API behavior
-
-In the read model (GET), `waitingListUrl` is only included in the `bookingAvailability` of a subEvent when it is set. When there is no waiting list, the property is omitted from the response.
