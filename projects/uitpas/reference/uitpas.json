@@ -5033,7 +5033,7 @@
       ],
       "get": {
         "summary": "Retrieve the UiTiD linked to a passholder",
-        "operationId": "get-uitid-passholder",
+        "operationId": "get-passholders-passholderId-uitid",
         "responses": {
           "200": {
             "content": {
