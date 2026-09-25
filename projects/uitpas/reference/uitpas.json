@@ -5025,7 +5025,7 @@
         ]
       }
     },
-    "/uitid/passholders/{passholderId}": {
+    "/passholders/{passholderId}/uitid": {
       "parameters": [
         {
           "$ref": "#/components/parameters/passholderId"
