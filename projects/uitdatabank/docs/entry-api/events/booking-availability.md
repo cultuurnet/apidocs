@@ -10,7 +10,7 @@ When you indicate that there are no more bookings available, your event will aut
 
 ![Screenshot of a summary of the event "De dichters - group 2" on UiTinVlaanderen, as an example of the "(Volzet of uitverkocht)" label](../../../assets/images/event-sold-out.png)
 
-In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API.
+In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API. 
 
 Before getting started, we recommend that you have read the following guides:
 
@@ -135,3 +135,34 @@ Events with calendarType `periodic` and `permanent` span a larger period and hav
 Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
 
 It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
+
+## Waiting list
+
+When a specific date of your event is fully booked, you can add a `waitingListUrl` to the `bookingAvailability` of that date. It points interested attendees to an external page where they can register for a waiting list, in case tickets or reservations become available again.
+
+```json
+{
+  "bookingAvailability": {
+    "type": "Unavailable",
+    "waitingListUrl": "https://www.example.com/wachtlijst"
+  }
+}
+```
+
+The waiting list is only available on events with calendarType `single` or `multiple`. On events with calendarType `periodic` or `permanent` a `waitingListUrl` is refused with a `400` error of type `https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported`.
+
+For adding or updating a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
+For overwriting or clearing a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
+
+### Only on subEvents
+
+A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`, because a waiting list is specific to one date and has its own registration page per date.
+
+It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
+
+### Ommiting rules
+
+* **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.
+* **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
+* **Send `"waitingListUrl": null`** → the waiting list url is removed.
+* **Send `"waitingListUrl": "..."`** → the waiting list url is set to that value.

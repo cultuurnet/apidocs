@@ -38,6 +38,21 @@
           "type": "Unavailable"
         }
       }
+    ],
+    [
+      {
+        "id": 0,
+        "bookingAvailability": {
+          "type": "Unavailable",
+          "waitingListUrl": "https://www.example.com/wachtlijst"
+        }
+      },
+      {
+        "id": 1,
+        "bookingAvailability": {
+          "type": "Available"
+        }
+      }
     ]
   ],
   "items": {
@@ -115,12 +130,24 @@
       },
       "bookingAvailability": {
         "type": "object",
-        "description": "Indicates if the subEvent still has tickets or places available for booking.",
+        "description": "Indicates if the subEvent still has tickets or places available for booking, and where interested attendees can register for a waiting list.",
         "properties": {
           "type": {
             "$ref": "./common-bookingAvailability-type.json",
             "description": "Required if bookingAvailability is included.\n\nOne of two possible booking availability types.\n\n- `Available`: The subEvent still has tickets or places available.\n- `Unavailable`: The subEvent has no more tickets or places available.",
             "example": "Available"
+          },
+          "waitingListUrl": {
+            "oneOf": [
+              {
+                "$ref": "./common-string-uri.json"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "URL of an external page where interested attendees can register for a waiting list.\n\nOptional. When omitted, the waiting list url of the subEvent is left unchanged. Send `null` to remove it. Only supported on events with calendarType `single` or `multiple`.",
+            "example": "https://www.example.com/wachtlijst"
           }
         },
         "required": [

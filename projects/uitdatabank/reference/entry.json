@@ -3505,6 +3505,17 @@
                     }
                   ]
                 },
+                "Setting a waiting list on the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable",
+                        "waitingListUrl": "https://www.example.com/wachtlijst"
+                      }
+                    }
+                  ]
+                },
                 "Updating multiple": {
                   "value": [
                     {
@@ -3532,7 +3543,7 @@
               }
             }
           },
-          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed."
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with one exception: sending `bookingAvailability.waitingListUrl` as `null` removes the waiting list url of that subEvent."
         },
         "security": [
           {
