@@ -18,11 +18,12 @@ To ensure parents and children easily find the right activities, data quality is
 | FAQ | `PUT /events/{eventId}/faqs` | Use the [FAQ fields](/docs/uitdatabank/entry-api/reference/operations/update-a-event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
 | Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
 | Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-stay-events-only-singlemultiple) (`hasOvernightStay`). | single, multiple | ✅ |
+| Waiting list | `PATCH /events/{eventId}/sub-events` | When a date is fully booked, do not leave parents without options: add a [`waitingListUrl`](./booking-availability.md#waiting-list) to the `bookingAvailability` of that date, pointing to an external page where they can register for a waiting list. | single, multiple | ✅ |
 | Departure places | `PUT /events/{eventId}/departure-places` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
 
 ## Request body example
 
-Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`:
+Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`. The second week is already fully booked and has a `waitingListUrl`:
 
 ```json
 {
@@ -60,7 +61,8 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
         "end": "18:30"
       },
       "bookingAvailability": {
-        "type": "Available"
+        "type": "Unavailable",
+        "waitingListUrl": "https://www.example.com/wachtlijst"
       }
     }
   ],
