@@ -53,6 +53,15 @@
           "type": "Available"
         }
       }
+    ],
+    [
+      {
+        "id": 0,
+        "bookingAvailability": {
+          "type": "Available",
+          "waitingListUrl": null
+        }
+      }
     ]
   ],
   "items": {

@@ -3516,6 +3516,17 @@
                     }
                   ]
                 },
+                "Removing the waiting list of the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Available",
+                        "waitingListUrl": null
+                      }
+                    }
+                  ]
+                },
                 "Updating multiple": {
                   "value": [
                     {
