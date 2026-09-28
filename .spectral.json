@@ -44,7 +44,7 @@
       "severity": "error"
     },
     "publiq-properties-description": {
-      "given": "$..[properties][?(@.type)]",
+      "given": "$..[properties][?(@ && @.type)]",
       "then": {
         "field": "description",
         "function": "truthyCustomErrorMessage"
@@ -173,7 +173,7 @@
     },
     "publiq-request-headers-casing": {
       "description": "Request header names must only contain lowercase characters and hyphens (-).",
-      "given": "$[paths]..[parameters][?(@.in == 'header')]",
+      "given": "$[paths]..[parameters][?(@ && @.in == 'header')]",
       "then": {
         "field": "name",
         "function": "pattern",
@@ -225,7 +225,7 @@
     },
     "publiq-strings-with-format-do-not-need-minLength": {
       "description": "Strings with a 'format' property should not have a 'minLength' property.",
-      "given": "$..[?(@.type == 'string' && @.format)]",
+      "given": "$..[?(@ && @.type == 'string' && @.format)]",
       "then": {
         "field": "minLength",
         "function": "falsy"
@@ -234,7 +234,7 @@
     },
     "publiq-strings-with-enum-do-not-need-minLength": {
       "description": "Strings with an 'enum' property should not have a 'minLength' property.",
-      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "given": "$..[?(@ && @.type == 'string' && @.enum)]",
       "then": {
         "field": "minLength",
         "function": "falsy"
@@ -243,7 +243,7 @@
     },
     "publiq-strings-with-enum-do-not-need-maxLength": {
       "description": "Strings with an 'enum' property should not have a 'maxLength' property.",
-      "given": "$..[?(@.type == 'string' && @.enum)]",
+      "given": "$..[?(@ && @.type == 'string' && @.enum)]",
       "then": {
         "field": "maxLength",
         "function": "falsy"
