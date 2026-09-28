@@ -10,7 +10,7 @@ When you indicate that there are no more bookings available, your event will aut
 
 ![Screenshot of a summary of the event "De dichters - group 2" on UiTinVlaanderen, as an example of the "(Volzet of uitverkocht)" label](../../../assets/images/event-sold-out.png)
 
-In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API. 
+In this guide you will learn how to share the booking availability of your event, or specific dates of your event, via Entry API.
 
 Before getting started, we recommend that you have read the following guides:
 
