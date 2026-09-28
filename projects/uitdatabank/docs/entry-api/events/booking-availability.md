@@ -160,7 +160,7 @@ A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`,
 
 It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
 
-### Ommiting rules
+### Omitting rules when patching subEvents
 
 * **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.
 * **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
