@@ -151,8 +151,11 @@ When a specific date of your event is fully booked, you can add a `waitingListUr
 
 The waiting list is only available on events with calendarType `single` or `multiple`. On events with calendarType `periodic` or `permanent` a `waitingListUrl` is refused with a `400` error of type `https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported`.
 
-For adding or updating a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
-For overwriting or clearing a waiting list use the [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) endpoint.
+A `waitingListUrl` can be set through the following endpoints:
+
+* [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) to add, update or remove the waiting list url of one or more specific dates, without touching the rest of the calendar. This is the recommended way.
+* [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put), which both replace the calendar of the event in its entirety.
+* [`POST /events`](/reference/entry.json/paths/~1events/post) and [`POST /events/{eventId}/copies`](/reference/entry.json/paths/~1events~1{eventId}~1copies/post), to include a waiting list right away when creating or copying an event.
 
 ### Only on subEvents
 
@@ -166,3 +169,5 @@ It cannot be set on the top-level `bookingAvailability` of the event, and it is 
 * **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
 * **Send `"waitingListUrl": null`** → the waiting list url is removed.
 * **Send `"waitingListUrl": "..."`** → the waiting list url is set to that value.
+
+The endpoints that replace the calendar in its entirety behave differently: on [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put), [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) and [`POST /events/{eventId}/copies`](/reference/entry.json/paths/~1events~1{eventId}~1copies/post) the subEvents in your request body replace the existing ones, so a `waitingListUrl` that you do not repeat in the body is removed, just like a `status` or a `bookingAvailability.type` that you leave out. If you only want to change the waiting list of one date, use the `PATCH` endpoint above.
