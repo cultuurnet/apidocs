@@ -149,8 +149,6 @@ When a specific date of your event is fully booked, you can add a `waitingListUr
 }
 ```
 
-The waiting list is only available on events with calendarType `single` or `multiple`. On events with calendarType `periodic` or `permanent` a `waitingListUrl` is refused with a `400` error of type `https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported`.
-
 A `waitingListUrl` can be set through the following endpoints:
 
 * [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) to add, update or remove the waiting list url of one or more specific dates, without touching the rest of the calendar. This is the recommended way.
@@ -159,7 +157,7 @@ A `waitingListUrl` can be set through the following endpoints:
 
 ### Only on subEvents
 
-A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`, because a waiting list is specific to one date and has its own registration page per date.
+A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`, because a waiting list is specific to one date and has its own registration page per date. Events with calendarType `periodic` or `permanent` have no `subEvent`, so they cannot have a waiting list.
 
 It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
 
