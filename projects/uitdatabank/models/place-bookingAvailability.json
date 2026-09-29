@@ -9,5 +9,6 @@
   },
   "required": [
     "type"
-  ]
+  ],
+  "additionalProperties": false
 }

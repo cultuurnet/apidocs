@@ -161,6 +161,24 @@ A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`,
 
 It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
 
+A top-level `waitingListUrl` is not silently ignored, but rejected with a `400` error of type `https://api.publiq.be/probs/body/invalid-data`, so that you do not end up believing you added a waiting list that is not there:
+
+```json
+{
+  "type": "https://api.publiq.be/probs/body/invalid-data",
+  "title": "Invalid body data",
+  "status": 400,
+  "schemaErrors": [
+    {
+      "jsonPointer": "/bookingAvailability/waitingListUrl",
+      "error": "Additional object properties are not allowed: waitingListUrl"
+    }
+  ]
+}
+```
+
+The `jsonPointer` points to the offending property in your request body, so it is `/waitingListUrl` on `PUT /events/{eventId}/booking-availability` (where the body *is* the `bookingAvailability` object) and `/bookingAvailability/waitingListUrl` on the endpoints that take a complete event or calendar body. Move the `waitingListUrl` to the `subEvent` of the date it applies to.
+
 ### Omitting rules when patching subEvents
 
 * **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.

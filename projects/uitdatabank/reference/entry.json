@@ -1120,6 +1120,19 @@
                       "status": 400,
                       "detail": "Not allowed to update booking availability on calendar type: \"permanent\". Only single and multiple calendar types can be updated."
                     }
+                  },
+                  "waitingListUrl not allowed on the top level": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/waitingListUrl",
+                          "error": "Additional object properties are not allowed: waitingListUrl"
+                        }
+                      ]
+                    }
                   }
                 }
               }
