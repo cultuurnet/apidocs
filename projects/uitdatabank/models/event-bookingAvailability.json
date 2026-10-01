@@ -1,7 +1,7 @@
 {
   "title": "event.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`.",
+  "description": "Indicates whether the event still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`.\n\nA `waitingListUrl` is not allowed here: a waiting list is specific to one date, so it can only be set on the [bookingAvailability of a subEvent](./event-subEvent-bookingAvailability.json).",
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
@@ -9,5 +9,6 @@
   },
   "required": [
     "type"
-  ]
+  ],
+  "additionalProperties": false
 }

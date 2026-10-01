@@ -42,7 +42,8 @@
           "type": "Unavailable"
         },
         "bookingAvailability": {
-          "type": "Unavailable"
+          "type": "Unavailable",
+          "waitingListUrl": "https://www.example.com/wachtlijst"
         }
       }
     ]
@@ -64,7 +65,7 @@
         "$ref": "./event-status.json"
       },
       "bookingAvailability": {
-        "$ref": "./event-bookingAvailability.json"
+        "$ref": "./event-subEvent-bookingAvailability.json"
       },
       "hasOvernightStay": {
         "type": "boolean",
