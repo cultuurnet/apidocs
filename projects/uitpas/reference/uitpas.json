@@ -14666,6 +14666,10 @@
                   "id": "vpmiuu2h7ju7c"
                 },
                 "description": "Human-readable name of the municipality."
+              },
+              "country": {
+                "type": "string",
+                "description": "ISO 3166-1 alpha-2 country code."
               }
             },
             "required": [
