@@ -4,7 +4,7 @@
       "$ref": "./common-departurePlaces.json"
     },
     {
-      "description": "A list of URIs representing departure places for this event. Each URI must reference an existing place in UiTdatabank. Only applicable when the event's `childrenOnly` flag is `true`. When not sent in a later update, the current departure places are kept; send an empty array to remove them. Explicitly setting `childrenOnly` to `false` also removes all departure places."
+      "description": "A list of URIs representing departure places for this event. Each URI must reference an existing place in UiTdatabank. Only applicable when the event's `childrenOnly` flag is `true`. When not sent in a later update (or sent as `null`), the current departure places are kept; send an empty array to remove them. Explicitly setting `childrenOnly` to `false` also removes all departure places."
     }
   ],
   "title": "event.departurePlaces"
