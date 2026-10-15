@@ -28,7 +28,7 @@ To contribute to our API documentation, some basic knowledge of [git](https://gi
 The following tools can also be helpful but are not strictly required:
 
 * [Stoplight Studio](https://stoplight.io/studio/), a GUI editor for API documentation built by <https://stoplight.io> (where our documentation is hosted). However technically any file editor is fine.
-* [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the [automatic checks](#automatic-checks-) on your own machine, and to run the [automatic fixer](#automatically-fixing-some-errors-) in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push, and you can also [run the automatic fixer online via GitHub Actions](https://github.com/cultuurnet/apidocs/actions/workflows/docs-linting-fix.yml).
+* [Node](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/getting-started/install) to run the [automatic checks](#automatic-checks-) on your own machine, and to run the [automatic fixer](#automatically-fixing-some-errors-) in case of problems. (Any recent version should be fine.) However, the automatic checks will also run in GitHub itself for every push, and you can also [run the automatic fixer online via GitHub Actions](https://github.com/cultuurnet/apidocs/blob/main/.github/workflows/linting-docs-fix.yml).
 
 ## Getting started 🚀
 
