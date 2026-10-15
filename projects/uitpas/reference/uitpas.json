@@ -10327,26 +10327,6 @@
                         "availableTickets": 10
                       }
                     ]
-                  },
-                  "Delta Example": {
-                    "value": [
-                      {
-                        "uitpasNumber": "0900000095902",
-                        "deltaOperation": "ADD",
-                        "cardType": "REGULAR"
-                      },
-                      {
-                        "uitpasNumber": "0900000067513",
-                        "deltaOperation": "DELETE",
-                        "cardType": "REGULAR"
-                      },
-                      {
-                        "uitpasNumber": "0900000045410",
-                        "cardType": "GROUP",
-                        "deltaOperation": "ADD",
-                        "availableTickets": 10
-                      }
-                    ]
                   }
                 }
               }
@@ -10370,7 +10350,7 @@
           }
         },
         "operationId": "get-cards-social-tariff-cardSystemId-active",
-        "description": "Retrieve all valid social tariff cards at this moment.\n\nThe response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\nThe caller of this request must have `SOCIALTARIFF_EXPORT` permission.",
+        "description": "Retrieve all valid social tariff cards at this moment.\n\nThe response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\nThe caller of this request must have `SOCIALTARIFF_EXPORT` permission.\n\n<!-- theme: warning -->\n> **Deprecated:** use [GET /cards/social-tariff/active](/reference/uitpas.json/paths/~1cards~1social-tariff~1active/get) with the `cardSystemId` query param instead.",
         "security": [
           {
             "CLIENT_ACCESS_TOKEN": []
@@ -10379,7 +10359,8 @@
             "USER_ACCESS_TOKEN": []
           }
         ],
-        "parameters": []
+        "parameters": [],
+        "deprecated": true
       },
       "parameters": [
         {
@@ -10392,6 +10373,119 @@
           "description": "ID of the card system"
         }
       ]
+    },
+    "/cards/social-tariff/active": {
+      "get": {
+        "summary": "Retrieve all valid social tariff cards",
+        "tags": [
+          "Cards"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "List of active social tariff cards",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "uitpasNumber": {
+                        "type": "string",
+                        "description": "uitpasNumber of the card",
+                        "readOnly": true
+                      },
+                      "cardType": {
+                        "type": "string",
+                        "enum": [
+                          "REGULAR",
+                          "GROUP"
+                        ],
+                        "description": "Type of the card",
+                        "readOnly": true
+                      },
+                      "availableTickets": {
+                        "type": "integer",
+                        "description": "Available tickets. Only present for cards of type `GROUP`.",
+                        "readOnly": true
+                      },
+                      "cardSystemId": {
+                        "type": "integer",
+                        "description": "ID of the card system of the card",
+                        "readOnly": true
+                      }
+                    },
+                    "required": [
+                      "uitpasNumber",
+                      "cardType",
+                      "cardSystemId"
+                    ]
+                  }
+                },
+                "examples": {
+                  "Full example": {
+                    "value": [
+                      {
+                        "uitpasNumber": "0900000095902",
+                        "cardType": "REGULAR",
+                        "cardSystemId": 1
+                      },
+                      {
+                        "uitpasNumber": "0900000067513",
+                        "cardType": "REGULAR",
+                        "cardSystemId": 1
+                      },
+                      {
+                        "uitpasNumber": "0900000045410",
+                        "cardType": "GROUP",
+                        "availableTickets": 10,
+                        "cardSystemId": 2
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Error type:\n\nhttps://api.publiq.be/probs/uitpas/cardsystem-not-found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "operationId": "get-cards-social-tariff-active",
+        "description": "Retrieve all valid social tariff cards at this moment.\n\nThe response contains all current social tariff cards. Previously valid social tariff cards are omitted from the response. Please note that it is possible for a card to appear in this response, disappear some time later (e.g. temporarily blocked), and reappears again later (e.g. when unblocked).\n\nUse the optional `cardSystemId` query parameter to only retrieve the social tariff cards of a specific card system. If omitted, the social tariff cards of all card systems are returned.\n\nThe caller of this request must have `SOCIALTARIFF_EXPORT` permission. This is a global permission: it is not linked to a specific card system and gives access to the social tariff cards of all card systems.\n\nThis endpoint is not paginated: all matching cards are returned in a single response.",
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          },
+          {
+            "USER_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query",
+            "name": "cardSystemId",
+            "description": "Optional ID of the card system. If specified, only social tariff cards of this card system are returned."
+          }
+        ]
+      }
     },
     "/kiosks": {
       "get": {
