@@ -170,14 +170,14 @@ A top-level `waitingListUrl` is not silently ignored, but rejected with a `400` 
   "status": 400,
   "schemaErrors": [
     {
-      "jsonPointer": "/bookingAvailability/waitingListUrl",
-      "error": "Additional object properties are not allowed: waitingListUrl"
+      "jsonPointer": "/bookingAvailability",
+      "error": "Property 'waitingListUrl' is not allowed"
     }
   ]
 }
 ```
 
-The `jsonPointer` points to the offending property in your request body, so it is `/waitingListUrl` on `PUT /events/{eventId}/booking-availability` (where the body *is* the `bookingAvailability` object) and `/bookingAvailability/waitingListUrl` on the endpoints that take a complete event or calendar body. Move the `waitingListUrl` to the `subEvent` of the date it applies to.
+The `jsonPointer` points to the `bookingAvailability` object that contains the `waitingListUrl`, so it is `/` on `PUT /events/{eventId}/booking-availability` (where the body *is* the `bookingAvailability` object) and `/bookingAvailability` on the endpoints that take a complete event or calendar body. Move the `waitingListUrl` to the `subEvent` of the date it applies to.
 
 ### Omitting rules when patching subEvents
 

@@ -5,10 +5,10 @@
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
-    }
+    },
+    "waitingListUrl": false
   },
   "required": [
     "type"
-  ],
-  "additionalProperties": false
+  ]
 }
