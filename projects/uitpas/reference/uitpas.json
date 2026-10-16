@@ -403,6 +403,14 @@
                         },
                         "uitpasNumber": "0560002524314",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          }
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       }
@@ -420,6 +428,14 @@
                         },
                         "uitpasNumber": "0560002524314",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          }
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       },
@@ -433,6 +449,14 @@
                         },
                         "uitpasNumber": "0940002524123",
                         "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                        "organizer": {
+                          "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                          "name": "CC De Werf",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          }
+                        },
                         "regularPrice": 10,
                         "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                       }
@@ -443,7 +467,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/social-tariff-suspended\n* https://api.publiq.be/probs/uitpas/maximum-reached\n* https://api.publiq.be/probs/uitpas/invalid-number-of-tickets\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/invalid-coupon\n\n\nThe type indicates the error on one of the failed ticket sale registrations. All other ticket sale registration in the request will be rolled back in case of an error.\n\nThe property `jsonPointer` will a referene to the erroneous `TicketSaleRequest` object if applicable.",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/social-tariff-expired\n* https://api.publiq.be/probs/uitpas/social-tariff-suspended\n* https://api.publiq.be/probs/uitpas/maximum-reached\n* https://api.publiq.be/probs/uitpas/invalid-number-of-tickets\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/invalid-coupon\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n\n\nThe type indicates the error on one of the failed ticket sale registrations. All other ticket sale registration in the request will be rolled back in case of an error.\n\nThe property `jsonPointer` will a referene to the erroneous `TicketSaleRequest` object if applicable.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -468,7 +492,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price \ncategories, which can be useful in the financial reporting overview.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` field of `TicketSale` is ignored in the request body. It is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALES_REGISTER`  permission for the organizer of the given event.\n",
+        "description": "Registers one or more new ticket sales **with a discounted UiTPAS tariff**, so the UiTPAS organiser can get reimbursed for the discount.\n\nBefore you can register a discounted ticket sale, you will need to request the possible discounted tariffs from the `GET /tariffs` endpoint and let your end user pick one of the available tariffs. Afterward, you can register a ticket sale using this endpoint. \n\nYou will need:\n\n- The `uitpasNumber` of the passholder buying the ticket.\n- The `eventId` of the UiTdatabank event.\n- The chosen `tariff` from the `GET /tariffs` request. (only the `id` is required)\n- The `regularPrice` the passholder would normally have to pay for this ticket\n\nOptionally you can include:\n- a `regularPriceLabel` describing the regular price if you have multiple price categories, which can be useful in the financial reporting overview.\n- an `organizerId` of the UiTPAS organizer to register the ticket sale for. If omitted, the organizer of the given event is used.\n\nIf you want to register more than one ticket sale for the same passholder, for the same event, at the same tariff, use multiple `TicketSale` objects in this request. Do note this is only possible if `remaining` was higher than one in the `GET /tariffs` request.\n\nThe `passholder` and `organizer` fields of `TicketSale` are ignored in the request body. The `passholder` is included in the response if applicable (passholder can be empty in some cases, e.g. for group passes), but only if the caller of this request has `PASSHOLDERS_SEARCH` permission.\n\n<!-- theme: warning -->\n\n> ##### Error handling\n> **If one of the ticket sales is invalid** (for example the chosen tariff is incorrect or expired), **none of the ticket sales will be registered**. You will instead get an error response with more details about the problem, and can then retry the registration without the incorrect ticket sales or ask the end user to change the tickets and/or tariffs that they want.\n\nThe caller of this request must have `TICKETSALES_REGISTER` permission for the given organizer (if `organizerId` is specified) or for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -499,6 +523,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     }
@@ -512,6 +537,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Base tariff"
                     },
@@ -521,6 +547,7 @@
                       },
                       "uitpasNumber": "0930002523422",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Base tariff"
                     },
@@ -530,6 +557,7 @@
                       },
                       "uitpasNumber": "0985002524385",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10
                     }
                   ]
@@ -542,6 +570,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -551,6 +580,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -560,6 +590,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -569,6 +600,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     },
@@ -578,6 +610,7 @@
                         "id": "SOCIALTARIFF"
                       },
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10,
                       "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                     }
@@ -591,6 +624,7 @@
                       },
                       "uitpasNumber": "0560002524314",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
                       "regularPrice": 10
                     }
                   ]
@@ -630,6 +664,14 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                         },
@@ -644,6 +686,14 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting."
                         }
@@ -665,6 +715,14 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting.",
                           "passholder": {
@@ -681,7 +739,11 @@
                             "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
-                              "name": "Example UiTPAS Organizer"
+                              "name": "Example UiTPAS Organizer",
+                              "address": {
+                                "postalCode": "9300",
+                                "city": "Aalst"
+                              }
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
@@ -734,6 +796,14 @@
                           },
                           "uitpasNumber": "0560002524314",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "regularPrice": 10,
                           "regularPriceLabel": "Optional descriptive label of the regular price. Used in financial reporting.",
                           "passholder": {
@@ -750,7 +820,11 @@
                             "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
-                              "name": "Example UiTPAS Organizer"
+                              "name": "Example UiTPAS Organizer",
+                              "address": {
+                                "postalCode": "9300",
+                                "city": "Aalst"
+                              }
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
@@ -862,7 +936,7 @@
             },
             "in": "query",
             "name": "organizerId",
-            "description": "Filter ticket sales for events of this organizer, or events taking place on the location of this organizer.",
+            "description": "Filter ticket sales for events of this organizer, for events taking place on the location of this organizer, or for ticket sales that were created by this organizer.",
             "explode": true
           },
           {
@@ -894,6 +968,14 @@
                     "value": {
                       "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizer": {
+                        "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                        "name": "CC De Werf",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
+                      },
                       "uitpasNumber": "0560002524314",
                       "points": 1,
                       "passholder": {
@@ -910,7 +992,11 @@
                         "creationDate": "2012-08-24T14:15:22+00:00",
                         "registrationOrganizer": {
                           "id": "1234",
-                          "name": "Example UiTPAS Organizer"
+                          "name": "Example UiTPAS Organizer",
+                          "address": {
+                            "postalCode": "9300",
+                            "city": "Aalst"
+                          }
                         },
                         "points": 10,
                         "uitidStatus": "UNREGISTERED",
@@ -961,6 +1047,14 @@
                     "value": {
                       "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                       "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                      "organizer": {
+                        "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                        "name": "CC De Werf",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
+                      },
                       "uitpasNumber": "0560002524314",
                       "points": 1
                     }
@@ -995,7 +1089,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\nNo `organizerId` has to be specified: points are always attributed to the organizer of the event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1050,6 +1144,14 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:02Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -1066,7 +1168,11 @@
                             "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
-                              "name": "Example UiTPAS Organizer"
+                              "name": "Example UiTPAS Organizer",
+                              "address": {
+                                "postalCode": "9300",
+                                "city": "Aalst"
+                              }
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
@@ -1116,6 +1222,14 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:03Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -1132,7 +1246,11 @@
                             "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
-                              "name": "Example UiTPAS Organizer"
+                              "name": "Example UiTPAS Organizer",
+                              "address": {
+                                "postalCode": "9300",
+                                "city": "Aalst"
+                              }
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
@@ -1182,6 +1300,14 @@
                           "id": "7b2547d6-0110-4a3c-9498-84a373d4ee5a",
                           "creationDate": "2026-08-24T12:57:04Z",
                           "eventId": "31e926e2-a35f-11eb-bcbc-0242ac130002",
+                          "organizer": {
+                            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+                            "name": "CC De Werf",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "uitpasNumber": "0560002524314",
                           "points": 1,
                           "passholder": {
@@ -1198,7 +1324,11 @@
                             "creationDate": "2012-08-24T14:15:22+00:00",
                             "registrationOrganizer": {
                               "id": "1234",
-                              "name": "Example UiTPAS Organizer"
+                              "name": "Example UiTPAS Organizer",
+                              "address": {
+                                "postalCode": "9300",
+                                "city": "Aalst"
+                              }
                             },
                             "points": 10,
                             "uitidStatus": "UNREGISTERED",
@@ -2845,7 +2975,11 @@
                           "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
-                            "name": "Example UiTPAS Organizer"
+                            "name": "Example UiTPAS Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           },
                           "points": 10,
                           "uitidStatus": "UNREGISTERED",
@@ -3096,7 +3230,11 @@
                       "creationDate": "2012-08-24T14:15:22+00:00",
                       "registrationOrganizer": {
                         "id": "1234",
-                        "name": "Example UiTPAS Organizer"
+                        "name": "Example UiTPAS Organizer",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
@@ -5299,6 +5437,84 @@
         ]
       }
     },
+    "/passholders/{passholderId}/uitid": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/passholderId"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve the UiTiD linked to a passholder",
+        "operationId": "get-passholders-passholderId-uitid",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "Email address of the UiTiD account linked to the passholder. Note that this is the email address the passholder uses to authenticate, which is not necessarily the same as the contact email address in the `email` property of the passholder."
+                    }
+                  },
+                  "required": [
+                    "email"
+                  ],
+                  "readOnly": true
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "email": "john@example.org"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "OK\n\nThe passholder has an UiTiD linked to them."
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not found. Possible error types:\n\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/uitid-not-found\n\nThe detail property might include more information for the client developer.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "No UiTiD linked to the passholder": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitpas/uitid-not-found",
+                      "title": "UiTiD not found",
+                      "status": 404,
+                      "detail": "No UiTiD is linked to this passholder."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Retrieves the UiTiD account linked to a passholder.\n\nWhether or not a passholder has an UiTiD is already available as the `uitidStatus` property of the passholder, for example in [`GET /passholders/{passholderId}`](/reference/uitpas.json/paths/~1passholders~1{passholderId}/get). Use this endpoint when the email address of the linked UiTiD account is needed as well, as retrieving it requires an extra call to the identity provider.\n\nIf no UiTiD is linked to the passholder, in other words when `uitidStatus` is `UNREGISTERED`, a `404` with type `https://api.publiq.be/probs/uitpas/uitid-not-found` is returned.\n\nThe caller of this request must have `PASSHOLDERS_SEARCH` or `PASSHOLDERS_SEARCH_BY_ID` or `PASSHOLDERS_SEARCH_ALL` permission. Because this endpoint always looks up a passholder by ID, the result is never restricted to the allowed card systems of the caller, no matter which of these permissions they have.",
+        "tags": [
+          "UiTiD"
+        ],
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/passholders/membership-prices/{cardSystemId}": {
       "get": {
         "summary": "Retrieve new membership price",
@@ -5609,7 +5825,11 @@
                       "creationDate": "2012-08-24T14:15:22+00:00",
                       "registrationOrganizer": {
                         "id": "1234",
-                        "name": "Example UiTPAS Organizer"
+                        "name": "Example UiTPAS Organizer",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
                       },
                       "points": 10,
                       "uitidStatus": "UNREGISTERED",
@@ -5752,7 +5972,11 @@
                       "dateOfBirth": "2000-08-24",
                       "registrationOrganizer": {
                         "id": "d2f898b1-455e-44ee-b08a-c4c05b1ab900",
-                        "name": "UiTPAS Example organizer"
+                        "name": "UiTPAS Example organizer",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
                       },
                       "points": 3
                     }
@@ -6065,7 +6289,11 @@
                           "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
-                            "name": "Example UiTPAS Organizer"
+                            "name": "Example UiTPAS Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           },
                           "points": 10,
                           "uitidStatus": "UNREGISTERED",
@@ -6131,7 +6359,11 @@
                           "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
-                            "name": "Example UiTPAS Organizer"
+                            "name": "Example UiTPAS Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           },
                           "points": 5,
                           "uitidStatus": "UNREGISTERED",
@@ -6196,7 +6428,11 @@
                           "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
-                            "name": "Example UiTPAS Organizer"
+                            "name": "Example UiTPAS Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           },
                           "points": 1,
                           "uitidStatus": "UNREGISTERED",
@@ -6266,7 +6502,11 @@
                           "creationDate": "2012-08-24T14:15:22+00:00",
                           "registrationOrganizer": {
                             "id": "1234",
-                            "name": "Example UiTPAS Organizer"
+                            "name": "Example UiTPAS Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           },
                           "points": 10,
                           "uitidStatus": "UNREGISTERED",
@@ -9191,7 +9431,11 @@
                         "organizers": [
                           {
                             "id": "abc12345",
-                            "name": "UiTPAS Test Organizer"
+                            "name": "UiTPAS Test Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
                           }
                         ],
                         "status": "ACTIVE",
@@ -9213,6 +9457,14 @@
                         "online": false
                       },
                       "redeemDate": "2019-08-24T14:15:22+00:00",
+                      "organizer": {
+                        "id": "abc12345",
+                        "name": "UiTPAS Test Organizer",
+                        "address": {
+                          "postalCode": "9300",
+                          "city": "Aalst"
+                        }
+                      },
                       "redeemInfo": {
                         "text": "Info on how to use the redeem code",
                         "link": "https://example.com/redeem-your-reward-here",
@@ -9226,7 +9478,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/reward-not-found\n* https://api.publiq.be/probs/uitpas/reward-period-constraint\n* https://api.publiq.be/probs/uitpas/reward-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-points-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-no-applicable-cardsystems\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-uitpas-number\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/reward-not-found\n* https://api.publiq.be/probs/uitpas/reward-period-constraint\n* https://api.publiq.be/probs/uitpas/reward-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-volume-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-points-constraint\n* https://api.publiq.be/probs/uitpas/reward-passholder-no-applicable-cardsystems\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -9252,12 +9504,12 @@
             }
           }
         },
-        "description": "Redeem reward.\n\nThe caller of this request must have `REWARDS_REDEEM` permission for the given organizer.",
+        "description": "Redeem reward.\n\nIf `organizerId` is specified, the caller of this request must have `REWARDS_REDEEM` permission for that organizer. If it is omitted, the caller must have `REWARDS_REDEEM` permission for at least one of the organizers of the reward.",
         "tags": [
           "Rewards"
         ],
         "requestBody": {
-          "description": "Reward (id) to mark as redeemed, and for which UiTPAS number specifically.",
+          "description": "Reward (id) to mark as redeemed, and for which UiTPAS number specifically. Optionally the organizer where the reward is redeemed.",
           "content": {
             "application/json": {
               "schema": {
@@ -9270,6 +9522,11 @@
                   "uitpasNumber": {
                     "type": "string",
                     "description": "UiTPAS number of the passholder exchanging this reward."
+                  },
+                  "organizerId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "ID of the organizer where the reward is redeemed. This organizer must be one of the reward's organizers. If omitted, it defaults to the first organizer of the reward."
                   }
                 },
                 "required": [
@@ -9281,7 +9538,8 @@
                 "Example": {
                   "value": {
                     "uitpasNumber": "0930012345615",
-                    "rewardId": "fce4bd2f-4dca-4a44-9912-6168f0ac7e5e"
+                    "rewardId": "fce4bd2f-4dca-4a44-9912-6168f0ac7e5e",
+                    "organizerId": "abc12345"
                   }
                 }
               }
@@ -9339,7 +9597,11 @@
                             "organizers": [
                               {
                                 "id": "abc12345",
-                                "name": "UiTPAS Test Organizer"
+                                "name": "UiTPAS Test Organizer",
+                                "address": {
+                                  "postalCode": "9300",
+                                  "city": "Aalst"
+                                }
                               }
                             ],
                             "status": "ACTIVE",
@@ -9362,6 +9624,14 @@
                             "lastChance": true
                           },
                           "redeemDate": "2019-08-24T14:15:22+00:00",
+                          "organizer": {
+                            "id": "abc12345",
+                            "name": "UiTPAS Test Organizer",
+                            "address": {
+                              "postalCode": "9300",
+                              "city": "Aalst"
+                            }
+                          },
                           "redeemInfo": {
                             "text": "Info on how to use the redeem code",
                             "link": "https://example.com/redeem-your-reward-here",
@@ -10648,7 +10918,11 @@
                           "organizers": [
                             {
                               "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
-                              "name": "CC De Schakel"
+                              "name": "CC De Schakel",
+                              "address": {
+                                "postalCode": "9400",
+                                "city": "Ninove"
+                              }
                             }
                           ],
                           "cardSystem": {
@@ -10897,7 +11171,11 @@
                       "organizers": [
                         {
                           "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
-                          "name": "CC De Schakel"
+                          "name": "CC De Schakel",
+                          "address": {
+                            "postalCode": "9400",
+                            "city": "Ninove"
+                          }
                         }
                       ],
                       "cardSystem": {
@@ -10999,7 +11277,11 @@
                       "organizers": [
                         {
                           "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
-                          "name": "CC De Schakel"
+                          "name": "CC De Schakel",
+                          "address": {
+                            "postalCode": "9400",
+                            "city": "Ninove"
+                          }
                         }
                       ],
                       "cardSystem": {
@@ -11648,6 +11930,14 @@
             "id": "COUPON1234"
           },
           "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+          "organizer": {
+            "id": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1",
+            "name": "CC De Werf",
+            "address": {
+              "postalCode": "9300",
+              "city": "Aalst"
+            }
+          },
           "uitpasNumber": "1234567890"
         },
         "title": "TicketSale",
@@ -11696,6 +11986,21 @@
               "id": "werwwukp0fgy1"
             },
             "description": "Title of the event that the ticket sale was for",
+            "readOnly": true
+          },
+          "organizerId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ID of the UiTPAS organizer to register the ticket sale for. Only used when registering a ticket sale. If omitted, the organizer of the given event is used. The caller must have `TICKETSALES_REGISTER` permission for this organizer.",
+            "writeOnly": true
+          },
+          "organizer": {
+            "description": "The UiTPAS organizer that the ticket sale was registered for. This field is always available in responses and ignored in ticket sale registrations.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
@@ -11750,6 +12055,15 @@
               "id": "wh57n4ld630j5"
             },
             "description": "Title of the event where the passholder checked in",
+            "readOnly": true
+          },
+          "organizer": {
+            "description": "Organizer of the event where the passholder checked in. This field is always available in responses. It cannot be set when creating a check-in: the organizer is always derived from the event.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
             "readOnly": true
           },
           "uitpasNumber": {
@@ -13792,6 +14106,15 @@
             "format": "date-time",
             "description": "Date of the redeem action."
           },
+          "organizer": {
+            "description": "Organizer where this reward was redeemed. This field is always available in responses.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organizer"
+              }
+            ],
+            "readOnly": true
+          },
           "redeemInfo": {
             "type": "object",
             "description": "Information about the redeem action.",
@@ -13819,7 +14142,8 @@
         "required": [
           "id",
           "reward",
-          "redeemDate"
+          "redeemDate",
+          "organizer"
         ]
       },
       "Facet": {
@@ -14280,7 +14604,11 @@
             "organizers": [
               {
                 "id": "fd7e6177-4add-4fa8-a7fe-6e60127bfb35",
-                "name": "CC De Schakel"
+                "name": "CC De Schakel",
+                "address": {
+                  "postalCode": "9400",
+                  "city": "Ninove"
+                }
               }
             ],
             "cardSystem": {
@@ -14898,6 +15226,10 @@
                   "id": "vpmiuu2h7ju7c"
                 },
                 "description": "Human-readable name of the municipality."
+              },
+              "country": {
+                "type": "string",
+                "description": "ISO 3166-1 alpha-2 country code. Defaults to `BE` when omitted."
               }
             },
             "required": [

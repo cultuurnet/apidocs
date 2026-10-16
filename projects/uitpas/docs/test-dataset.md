@@ -52,7 +52,7 @@ When testing ticket sale requests, you'll need an UitpasNumber of a passholder. 
 | `0900000002312` | `04B00412F15284` |       yes (Gent)      |     9000    |            no            |   **blocked**    | `71030360442` |                 -                |
 | `0900000058918` | `045157B2B63780` |      yes (expired)    |     1000    |            no            |      active      | `17010180147` |                 -                |
 | `1000000520006` | `045A4832633680` |           no          |     9000    |            no            |      active      | `80010101392` |                 -                |
-| `0900000093204` | `045D69DAEE3880` | yes (in other region) |     9000    | 2 coupons (other region) |      active      | `10010105762` |                 -                |
+| `0900000082009` | `047A1DDAEE3880` | yes (in other region) |     9000    | 2 coupons (other region) |      active      | `10010105762` |                 -                |
 | `0900004518305` |        -         |           no          |     9000    |            n/a           |      active      | `80010170282` | Online UiTPAS, family account    |
 | `0900004518305` |        -         |           no          |     9000    |            n/a           |      active      | `20010170215` | Daughter of above user, child    |
 | `0900011902815` |        -         |       yes (Gent)      |     9000    |            n/a           |      active      | `91063061055` | Online UiTPAS, family account    |
