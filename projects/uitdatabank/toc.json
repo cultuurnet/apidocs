@@ -31,6 +31,12 @@
       "slug": "exceptions"
     },
     {
+      "type": "item",
+      "title": "BOA",
+      "uri": "docs/boa.md",
+      "slug": "boa"
+    },
+    {
       "type": "divider",
       "title": "Entry API"
     },
@@ -227,12 +233,6 @@
               "title": "Publishing a place",
               "uri": "/docs/entry-api/places/publish.md",
               "slug": "entry-api/places/publishing-a-place"
-            },
-            {
-              "type": "item",
-              "title": "Sharing ticket/reservation availability",
-              "uri": "/docs/entry-api/places/booking-availability.md",
-              "slug": "entry-api/places/sharing-ticket-or-reservation-availability"
             },
             {
               "type": "item",
