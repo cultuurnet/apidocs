@@ -4,11 +4,7 @@ The BOA decree (*Buitenschoolse Opvang en Activiteiten*) aims to create a compre
 
 For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
-<!-- theme: warning -->
-
-> Since we are just rolling out the new features and fields, they remain subject to change.
-
-## Get access
+## Use the new BOA features
 
 Do you want to:
 
@@ -16,17 +12,15 @@ Do you want to:
 * Create an agenda featuring BOA offerings?
 * Expand an existing integration?
 
-We are happy to give you access to our documentation.
+Find all technical information in our [BOA guide](./entry-api/events/create-boa.md).
 
-Send an email to <technical-support@publiq.be> with the subject line "Requesting access to the BOA documentation".
-
-## Preview of the new BOA features
+## The new BOA features
 
 | Feature                    | Description                                                                        |
 | -------------------------- | ---------------------------------------------------------------------------------- |
-| **New types**              | Activiteit met de jeugdbeweging, Kinderopvang, Speelpleinwerking                     |
-| **Target audience**        | Indicate whether your activities are exclusively aimed at children                   |
-| **Age entry**              | You can specify target age ranges using birth dates                                  |
-| **FAQ**                    | Add frequently asked questions and answers to supplement your activity description   |
-| **Expanded calendar info** | <ul><li>Hours for pre- and post-activity childcare</li><li>Periods with adjusted opening hours</li><li>Closure periods</li><li>Camps: indicate whether overnight stays are included</li></ul> |
-| **Supervised transport**   | Specify pickup locations offering supervised transport to your activity              |
+| [**New types**](./taxonomy-api/terms.md#eventtype) | Activiteit met de jeugdbeweging, Kinderopvang, Speelpleinwerking                     |
+| [**Target audience**](/reference/entry.json/paths/~1events~1{eventId}~1children-only/put) | Indicate whether your activities are exclusively aimed at children                   |
+| [**Age entry**](/reference/entry.json/paths/~1events~1{eventId}~1birthdate-range/put) | You can specify target age ranges using birth dates                                  |
+| [**FAQ**](/reference/entry.json/paths/~1events~1{eventId}~1faqs/put) | Add frequently asked questions and answers to supplement your activity description   |
+| [**Expanded calendar info**](./entry-api/shared/calendar-info.md) | <ul><li><a href="./entry-api/shared/calendar-info.md#childcare-times-events-only">Hours for pre- and post-activity childcare</a></li><li><a href="./entry-api/shared/calendar-info.md#adjusted-opening-hours-periodicpermanent">Periods with adjusted opening hours</a></li><li><a href="./entry-api/shared/calendar-info.md#closed-days-periodicpermanent">Closure periods</a></li><li><a href="./entry-api/shared/calendar-info.md#overnight-stay-events-only-singlemultiple">Camps: indicate whether overnight stays are included</a></li></ul> |
+| [**Supervised transport**](/reference/entry.json/paths/~1events~1{eventId}~1departure-places/put) | Specify pickup locations offering supervised transport to your activity              |
