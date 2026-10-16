@@ -1,7 +1,7 @@
 {
   "title": "event.faqs",
   "type": "array",
-  "description": "A list of at most 30 frequently asked questions about the event. Each item contains a `question` and an `answer` in at least one of the languages `nl`, `fr`, `de` or `en`. When the event has no FAQs, `faqs` is omitted from the event GET response. When `faqs` is left out of a full `PUT /events/{eventId}` body, the existing FAQs are removed.",
+  "description": "A list of several FAQ items in various languages",
   "maxItems": 30,
   "items": {
     "$ref": "./event-faq.json"

@@ -128,6 +128,12 @@
             },
             {
               "type": "item",
+              "title": "Adding frequently asked questions (FAQs)",
+              "uri": "/docs/entry-api/events/faqs.md",
+              "slug": "entry-api/events/adding-faqs"
+            },
+            {
+              "type": "item",
               "title": "Cancelling or postponing an event",
               "uri": "/docs/entry-api/events/status.md",
               "slug": "entry-api/events/cancelling-or-postponing-an-event"
