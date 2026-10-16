@@ -1,0 +1,20 @@
+{
+  "title": "event",
+  "description": "An event as returned by Search API. It is the [event](./event.json) extended with the age and birthdate ranges that search derived, so a result can be found by both the age and the birthdate filters no matter which of the two the editor entered. These derived fields only appear here, not in Entry API.",
+  "allOf": [
+    {
+      "$ref": "./event.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "typicalAgeRangeConverted": {
+          "$ref": "./event-typicalAgeRangeConverted.json"
+        },
+        "birthdateRangeConverted": {
+          "$ref": "./event-birthdateRangeConverted.json"
+        }
+      }
+    }
+  ]
+}

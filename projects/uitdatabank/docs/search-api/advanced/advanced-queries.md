@@ -208,6 +208,28 @@ Any dateFrom and dateTo date in ISO-8601.
 GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:59\:59%2B01\:00]&availableFrom=*&availableTo=*
 ```
 
+### birthdateRange
+
+The `birthdateRange` field is used to filter events by the birthdate range of their target audience.
+If an event has a `typicalAgeRange` that (combined with the current date) overlaps the requested range, the event will also be included in the result set.
+If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. `[2020-01-01 TO 2020-12-31]`.
+
+**Example**
+
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
+
+```
+GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
+```
+
 ### bookingAvailability
 
 The `bookingAvailability` indicates whether there are still tickets or seats left for an event or not.
@@ -262,6 +284,36 @@ Retrieve all permanent events and places:
 ```
 GET /offers/?q=calendarType:permanent
 ```
+
+### childrenOnly
+
+The `childrenOnly` field can be used to filter events that are targeted at children only, without parents or guardians present.
+
+For an in-depth understanding of the `childrenOnly` field we advise to read [our guide](../filters/children-only.md).
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+`true` `false`
+
+**Examples**
+
+Setting childrenOnly to `true` only returns events that are targeted at children only:
+
+```
+GET /events/?q=childrenOnly:true
+```
+
+Setting childrenOnly to `false` only returns events that are not targeted at children only:
+
+```
+GET /events/?q=childrenOnly:false
+```
+
+> Note that when using `childrenOnly:true`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
 
 ### completedLanguages
 
@@ -403,6 +455,96 @@ Retrieve all events that took place in the year 2020:
 ```
 GET /events/?q=dateRange:[2020-01-01T00\:00\:00%2B01\:00 TO 2021-12-31T23\:59\:59%2B01\:00]&availableTo=*&availableFrom=*
 ```
+
+### departurePlaces
+
+Using the `departurePlaces` field, you can find events that have a specific place as a departure place. Departure places are indexed as UUIDs (not full place URLs).
+
+**Applicable on endpoints**
+
+`/events`
+
+**Possible values**
+
+Any UUID of a place in UiTdatabank.
+
+**Examples**
+
+Find events that depart from a specific place:
+
+```
+GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e
+```
+
+Use `OR` to find events that depart from either of two places. This is not possible with the `departurePlaces[]` URL parameter, which only supports AND logic:
+
+```
+GET /events/?q=departurePlaces:a0368d10-ded0-4925-b94a-2835f73e255e OR departurePlaces:f3c8a2d1-7b4e-49f6-b2c8-5e3b1d9f7a4c
+```
+
+### hasChildcare
+
+The `hasChildcare` field can be used to filter events that (do not) have childcare configured. An event matches when at least one of its sub-events or opening hours entries has childcare configured.
+
+For an in-depth understanding of the `hasChildcare` field we advise to read [our guide](../filters/childcare.md).
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+`true` `false`
+
+**Examples**
+
+Setting hasChildcare to `true` only returns events that have childcare configured:
+
+```
+GET /events/?q=hasChildcare:true
+```
+
+Setting hasChildcare to `false` only returns events that have no childcare configured:
+
+```
+GET /events/?q=hasChildcare:false
+```
+
+<!-- theme: warning -->
+
+> The `hasChildcare:true` / `hasChildcare:false` syntax inside an advanced query is not scoped to a matching `dateRange` in the same query: each condition is checked independently, so a result can match even if the childcare and the date don't fall on the same sub-event or opening hours entry.
+>
+> If you need childcare filtering scoped to a specific period, use the dedicated `hasChildcare` URL parameter together with `dateFrom`/`dateTo` (or `localTimeFrom`/`localTimeTo`) instead of the advanced query — these are correctly scoped to the same sub-event or opening hours entry.
+
+### hasOvernightStay
+
+The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event matches when at least one of its sub-events has `hasOvernightStay: true`. Events with a `periodic` or `permanent` calendarType have no sub-events and are always indexed as `false`.
+
+**Applicable on endpoints**
+
+`/events` `/offers`
+
+**Possible values**
+
+`true` `false`
+
+**Examples**
+
+Setting hasOvernightStay to `true` only returns events that involve an overnight stay:
+
+```
+GET /events/?q=hasOvernightStay:true
+```
+
+Setting hasOvernightStay to `false` only returns events that do not involve an overnight stay:
+
+```
+GET /events/?q=hasOvernightStay:false
+```
+
+<!-- theme: warning -->
+
+> Unlike the `hasOvernightStay` URL parameter, combining this field with `dateRange` in an advanced query does not scope the overnight stay to the matching period, due to how advanced queries are parsed.
 
 ### id
 
@@ -824,6 +966,64 @@ Retrieve all events with a price equal to or higher than 50 EUR:
 ```
 GET /events/?q=priceRange:[50 TO *]
 ```
+
+### recurringOnDayOfWeek
+
+With the `recurringOnDayOfWeek` field you can look for results that recur on a given day of week, for example a market every Wednesday. Events that take place on a single date are never matched.
+
+For an in-depth understanding of the `recurringOnDayOfWeek` field we advise to read [our guide](../filters/recurring-day-of-week.md).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+`monday` `tuesday` `wednesday` `thursday` `friday` `saturday` `sunday`
+
+**Examples**
+
+Search for all events that recur on Wednesdays:
+
+```
+GET /events/?q=recurringOnDayOfWeek:wednesday
+```
+
+Unlike the URL parameter, which always combines multiple days of week as an OR, advanced queries allow you to combine them with other boolean operators. Search for all events that recur on both Saturday and Sunday:
+
+```
+GET /events/?q=recurringOnDayOfWeek:(saturday AND sunday)
+```
+
+### recurringOnLocalTimeRange
+
+The `recurringOnLocalTimeRange` field holds the hours a result recurs at, per day of week, as `recurringOnLocalTimeRange.{dayOfWeek}`. Unlike `localTimeRange`, which covers the hours of a result as a whole, this keeps the day of week and the hours together: a museum open Wednesday morning and Saturday afternoon is not matched on Wednesday afternoon.
+
+For an in-depth understanding of the `recurringOnLocalTimeRange` field we advise to read [our guide](../filters/recurring-day-of-week.md#filtering-on-the-hours-as-well).
+
+**Applicable on endpoints**
+
+`/events` `/places` `/offers`
+
+**Possible values**
+
+A range of two times of day as `HHMM` integers, e.g. `[1300 TO 1700]`. A day of week the result does not recur at any fixed hour on has no value and is never matched.
+
+**Examples**
+
+Search for all events that recur on Wednesday afternoons:
+
+```
+GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700]
+```
+
+Unlike the URL parameters, which apply one time frame to all the selected days of week, advanced queries allow different hours per day. Search for all events that recur on Wednesday afternoons and on Saturday mornings:
+
+```
+GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700] AND recurringOnLocalTimeRange.saturday:[0900 TO 1200]
+```
+
+Both ends of the range are inclusive here, so `[1000 TO 1100]` still matches an activity that ends at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
 
 ### regions
 

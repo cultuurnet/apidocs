@@ -135,3 +135,55 @@ Events with calendarType `periodic` and `permanent` span a larger period and hav
 Because they do not have a `subEvent` property with specific dates, it is impossible to share their booking availability for certain dates at this moment.
 
 It is also not possible to change their top-level booking availability, because it is unlikely that such a long-running event is ever completely booked (especially in the case of permanent events).
+
+## Waiting list
+
+When a specific date of your event is fully booked, you can add a `waitingListUrl` to the `bookingAvailability` of that date. It points interested attendees to an external page where they can register for a waiting list, in case tickets or reservations become available again.
+
+```json
+{
+  "bookingAvailability": {
+    "type": "Unavailable",
+    "waitingListUrl": "https://www.example.com/wachtlijst"
+  }
+}
+```
+
+A `waitingListUrl` can be set through the following endpoints:
+
+* [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) to add, update or remove the waiting list url of one or more specific dates, without touching the rest of the calendar. This is the recommended way.
+* [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put), which both replace the calendar of the event in its entirety.
+* [`POST /events`](/reference/entry.json/paths/~1events/post), to include a waiting list right away when creating an event.
+
+### Only on subEvents
+
+A `waitingListUrl` can only be set on the `bookingAvailability` of a `subEvent`, because a waiting list is specific to one date and has its own registration page per date. Events with calendarType `periodic` or `permanent` have no `subEvent`, so they cannot have a waiting list.
+
+It cannot be set on the top-level `bookingAvailability` of the event, and it is not accepted by the [`PUT /events/{eventId}/booking-availability`](/reference/entry.json/paths/~1events~1{eventId}~1booking-availability/put) endpoint. Note that this is different from `bookingAvailability.type`, which *is* set on the top level and is then copied to every `subEvent`. That copy only overwrites the `type` of each subEvent: marking your event as sold out never removes the waiting list urls you have set on its dates.
+
+A top-level `waitingListUrl` is not silently ignored, but rejected with a `400` error of type `https://api.publiq.be/probs/body/invalid-data`, so that you do not end up believing you added a waiting list that is not there:
+
+```json
+{
+  "type": "https://api.publiq.be/probs/body/invalid-data",
+  "title": "Invalid body data",
+  "status": 400,
+  "schemaErrors": [
+    {
+      "jsonPointer": "/bookingAvailability/waitingListUrl",
+      "error": "Additional object properties are not allowed: waitingListUrl"
+    }
+  ]
+}
+```
+
+The `jsonPointer` points to the offending property in your request body, so it is `/waitingListUrl` on `PUT /events/{eventId}/booking-availability` (where the body *is* the `bookingAvailability` object) and `/bookingAvailability/waitingListUrl` on the endpoints that take a complete event or calendar body. Move the `waitingListUrl` to the `subEvent` of the date it applies to.
+
+### Omitting rules when patching subEvents
+
+* **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.
+* **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
+* **Send `"waitingListUrl": null`** → the waiting list url is removed.
+* **Send `"waitingListUrl": "..."`** → the waiting list url is set to that value.
+
+The endpoints that replace the calendar in its entirety behave differently: on [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) the subEvents in your request body replace the existing ones, so a `waitingListUrl` that you do not repeat in the body is removed, just like a `status` or a `bookingAvailability.type` that you leave out. If you only want to change the waiting list of one date, use the `PATCH` endpoint above.
