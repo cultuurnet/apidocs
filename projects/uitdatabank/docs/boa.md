@@ -4,7 +4,7 @@ The BOA decree (*Buitenschoolse Opvang en Activiteiten*) aims to create a compre
 
 For more general information about publiq's role in the BOA decree, visit [publiq.be/boa](https://publiq.be/boa).
 
-## Use the new BOA-features
+## Use the new BOA features
 
 Do you want to:
 
