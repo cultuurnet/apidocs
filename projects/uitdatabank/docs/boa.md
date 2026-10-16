@@ -12,7 +12,7 @@ Do you want to:
 * Create an agenda featuring BOA offerings?
 * Expand an existing integration?
 
-Find all technical information in our [BOA-guide](./entry-api/events/create-boa.md).
+Find all technical information in our [BOA guide](./entry-api/events/create-boa.md).
 
 ## The new BOA features
 
