@@ -2456,7 +2456,7 @@
       },
       "in": "query",
       "name": "recurringOnLocalTimeTo",
-      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity ending at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
+      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity starting at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
     },
     "hasChildcare": {
         "schema": {

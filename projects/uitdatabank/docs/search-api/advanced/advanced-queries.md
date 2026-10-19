@@ -1023,7 +1023,7 @@ Unlike the URL parameters, which apply one time frame to all the selected days o
 GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700] AND recurringOnLocalTimeRange.saturday:[0900 TO 1200]
 ```
 
-Both ends of the range are inclusive here, so `[1000 TO 1100]` still matches an activity that ends at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
+Both ends of the range are inclusive here, so `[1000 TO 1100]` also matches an activity that starts at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
 
 ### regions
 
