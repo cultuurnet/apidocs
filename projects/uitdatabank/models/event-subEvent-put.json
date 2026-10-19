@@ -68,7 +68,7 @@
       },
       "hasOvernightStay": {
         "type": "boolean",
-        "description": "Indicates whether this occurrence involves an overnight stay. Only accepted when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\"). Defaults to `false` when omitted. Automatically reset to `false` when term `0.57.0.0.0` is removed from the event.",
+        "description": "Indicates whether this occurrence involves an overnight stay. `true` is only accepted when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\"); `false` is accepted on other events but not stored. When omitted, the subEvent has no value. Removed when term `0.57.0.0.0` is removed from the event.",
         "example": true
       }
     },

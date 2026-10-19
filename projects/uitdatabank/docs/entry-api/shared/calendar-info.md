@@ -216,13 +216,13 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 **Validation rules:**
 
-* `hasOvernightStay` can only be set when the event has at least one term with id `0.57.0.0.0`. 
-* `hasOvernightStay` is optional and defaults to `false` when omitted.
-* When the term `0.57.0.0.0` is removed from the event, `hasOvernightStay` is automatically reset to `false` on all subEvents.
+* `hasOvernightStay: true` can only be set when the event has at least one term with id `0.57.0.0.0`. On other events it returns a `400` error, while `false` is accepted but not stored.
+* `hasOvernightStay` is optional. On [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) an omitted value is left unchanged. The endpoints that replace the calendar in its entirety ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put)) remove a value that is not repeated in the request body.
+* When the term `0.57.0.0.0` is removed from the event, `hasOvernightStay` is removed from all subEvents.
 
 **API behavior:**
 
-In the read model (GET), `hasOvernightStay` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
+In the read model (GET), `hasOvernightStay` is included in the subEvent object when it has been set, both as `true` and as `false`. When it was never set, the property is omitted from the response.
 
 ### periodic/permanent
 
