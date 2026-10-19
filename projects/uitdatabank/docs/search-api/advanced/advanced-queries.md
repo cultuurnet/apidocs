@@ -518,7 +518,7 @@ GET /events/?q=hasChildcare:false
 
 ### hasOvernightStay
 
-The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event matches when at least one of its sub-events has `hasOvernightStay: true`. Events with a `periodic` or `permanent` calendarType have no sub-events and are always indexed as `false`.
+The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event is indexed as `true` when at least one of its sub-events has `hasOvernightStay: true`, and as `false` when at least one sub-event has `hasOvernightStay: false` and none has `true`. Events whose sub-events never set `hasOvernightStay`, events with a `periodic` or `permanent` calendarType and places have no value, so they match neither `true` nor `false`.
 
 **Applicable on endpoints**
 
@@ -536,7 +536,7 @@ Setting hasOvernightStay to `true` only returns events that involve an overnight
 GET /events/?q=hasOvernightStay:true
 ```
 
-Setting hasOvernightStay to `false` only returns events that do not involve an overnight stay:
+Setting hasOvernightStay to `false` only returns events that are marked as not involving an overnight stay:
 
 ```
 GET /events/?q=hasOvernightStay:false

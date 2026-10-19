@@ -15,12 +15,12 @@ Use the `hasOvernightStay` URL parameter to filter events based on whether they 
 **Behavior**
 
 * `true`: only returns events that have at least one sub-event with `hasOvernightStay: true`
-* `false`: only returns events that have no sub-event with `hasOvernightStay: true`
+* `false`: only returns events that have at least one sub-event with `hasOvernightStay: false` and none with `hasOvernightStay: true`
 * Omitting the parameter returns all events, regardless of whether they have an overnight stay
 
 An event is considered to have an overnight stay if **at least one** of its sub-events is marked as `hasOvernightStay: true`. An event where only some sub-events have `hasOvernightStay: true` still matches `hasOvernightStay=true` unless combined with a date filter (see below).
 
-Events with a `periodic` or `permanent` calendarType have no explicit sub-events and are always indexed as `hasOvernightStay: false`. They will never match `hasOvernightStay=true`.
+Only an explicit value counts. Events whose sub-events never set `hasOvernightStay`, events with a `periodic` or `permanent` calendarType (they have no explicit sub-events) and places have no overnight stay value at all, so they match neither `hasOvernightStay=true` nor `hasOvernightStay=false`.
 
 **Examples**
 
@@ -30,7 +30,7 @@ Retrieve all events that provide an overnight stay:
 GET /events/?hasOvernightStay=true
 ```
 
-Retrieve all events that do not provide an overnight stay:
+Retrieve all events that are marked as not providing an overnight stay:
 
 ```http
 GET /events/?hasOvernightStay=false
