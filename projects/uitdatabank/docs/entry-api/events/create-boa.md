@@ -33,7 +33,8 @@ Example for a BOA event (calendarType `multiple`) with `childrenOnly` set to `tr
   },
   "terms": [
     {
-      "id": "0.57.0.0.0"
+      "id": "0.57.0.0.0",
+      "domain": "eventtype"
     }
   ],
   "calendarType": "multiple",
