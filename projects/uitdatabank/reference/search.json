@@ -2464,7 +2464,7 @@
         },
         "in": "query",
         "name": "hasChildcare",
-        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo` or the `dateRange` advanced query field, the childcare check is scoped to the matching period."
+        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo`, the childcare check is scoped to the matching period. This does not work with the `dateRange` field in an advanced query."
       },
       "childrenOnly": {
         "schema": {
