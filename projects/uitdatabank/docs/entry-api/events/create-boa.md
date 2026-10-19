@@ -10,7 +10,7 @@ To ensure parents and children easily find the right activities, data quality is
 
 | Type | Endpoint | Description | Calendar type |
 |---|---|---|---|
-| Target audience | `PUT /events/{eventId}/children-only` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all |
+| Children only | `PUT /events/{eventId}/children-only` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all |
 | Age range | `PUT /events/{eventId}/typical-age-range` or `PUT /events/{eventId}/birthdate-range` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`), but never both. On these endpoints setting one removes the other, so there is no need to delete it first. | all |
 | Pricing | `PUT /events/{eventId}/price-info` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all |
 | FAQ | `PUT /events/{eventId}/faqs` | Use the [FAQ fields](/docs/uitdatabank/entry-api/reference/operations/update-a-event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all |
