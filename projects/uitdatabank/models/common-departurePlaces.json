@@ -1,7 +1,7 @@
 {
   "type": "array",
   "title": "departurePlaces",
-  "description": "A list of URIs representing departure places. Each URI must reference an existing place in UiTdatabank.",
+  "description": "A list of URIs representing departure places. Each URI must reference a place in UiTdatabank. `PUT /events/{eventId}/departure-places` returns a `400` error when a place does not exist.",
   "uniqueItems": true,
   "maxItems": 20,
   "items": {
