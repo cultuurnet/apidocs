@@ -70,7 +70,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -210,7 +210,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -347,7 +347,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -466,7 +466,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1638,7 +1638,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the `childrenOnly` flag on the event.\n\nSet `childrenOnly` to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`. When `childrenOnly` is `false`, it is omitted from the event GET response.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event.\n",
+        "description": "Updates the `childrenOnly` flag on the event.\n\nSet `childrenOnly` to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`. When `childrenOnly` is `false`, it is omitted from the event GET response.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event. Setting it to `false` also removes all `departurePlaces` from the event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
