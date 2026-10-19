@@ -858,7 +858,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/audienceType",
-                          "error": "The data (int) should match the type: string"
+                          "error": "The data (int) must match the type: string"
                         }
                       ]
                     }
@@ -947,7 +947,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/availableFrom",
-                          "error": "The data (int) should match the type: date-time"
+                          "error": "The data (int) must match the type: date-time"
                         }
                       ]
                     }
@@ -1616,7 +1616,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/childrenOnly",
-                          "error": "The data (string) should match the type: boolean"
+                          "error": "The data (string) must match the type: boolean"
                         }
                       ]
                     }
@@ -5065,7 +5065,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/availableFrom",
-                          "error": "The data (int) should match the type: date-time"
+                          "error": "The data (int) must match the type: date-time"
                         }
                       ]
                     }
