@@ -1855,7 +1855,7 @@
             "description": "No Content. The departure places have been successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1867,6 +1867,14 @@
                       "type": "https://api.publiq.be/probs/body/invalid-data",
                       "title": "Invalid body data",
                       "status": 400
+                    }
+                  },
+                  "Event is not children only": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
+                      "title": "Incompatible audience type",
+                      "status": 400,
+                      "detail": "Departure places can only be set on events where \"childrenOnly\" is true. Event: 0e8a2b3e-a3cc-4559-99d5-d199522cbcf0"
                     }
                   }
                 }
