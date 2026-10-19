@@ -11,7 +11,7 @@ Events in UiTdatabank can optionally provide [childcare times](../../entry-api/s
 **Possible values**
 
 * `true`: only return events that have a `childcare` range configured on at least one sub-event (for `single`/`multiple` calendar types) or at least one opening hours entry (for `periodic`/`permanent` calendar types).
-* `false`: only return events that have no `childcare` configured on any sub-event or opening hours entry.
+* `false`: only return events that have no `childcare` configured on any sub-event or opening hours entry. On `/offers` this also returns places, since they never have childcare.
 
 When the parameter is omitted, all events are returned regardless of whether childcare is configured.
 
@@ -76,7 +76,7 @@ This applies to every calendarType. For `periodic` and `permanent` events the ch
 
 When `hasChildcare` is combined with a date filter (`dateFrom`/`dateTo` URL parameters), the childcare check is scoped to the matching period: the API checks whether childcare is configured on the sub-events or opening hours that fall within that date range, not on the event as a whole.
 
-> The date filter itself matches against the extended period, so an event whose childcare hours fall in the range is returned even when the activity itself does not. See [Childcare hours extend the searchable period](#childcare-hours-extend-the-searchable-period) below.
+> The date filter itself matches against the extended period, so an event whose childcare hours fall in the range is returned even when the activity itself does not. See [Childcare hours extend the searchable period](#childcare-hours-extend-the-searchable-period) above.
 
 Retrieve all events in May 2025 that offer childcare during that specific period:
 
@@ -86,4 +86,4 @@ GET /events/?hasChildcare=true&dateFrom=2025-05-01T00:00:00%2B02:00&dateTo=2025-
 
 <!-- theme: warning -->
 
-> While you can also filter on `childcare` and/or `dateRange` in advanced queries, this specific logic of checking whether the event has childcare during the specified date range does NOT work in advanced queries (`q` URL parameter) due to how they are parsed differently.
+> While you can also filter on `hasChildcare` and/or `dateRange` in advanced queries, this specific logic of checking whether the event has childcare during the specified date range does NOT work in advanced queries (`q` URL parameter) due to how they are parsed differently.
