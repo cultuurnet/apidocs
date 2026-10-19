@@ -462,7 +462,7 @@ Using the `departurePlaces` field, you can find events that have a specific plac
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Possible values**
 
