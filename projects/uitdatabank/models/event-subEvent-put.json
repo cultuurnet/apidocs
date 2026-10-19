@@ -42,8 +42,7 @@
           "type": "Unavailable"
         },
         "bookingAvailability": {
-          "type": "Unavailable",
-          "waitingListUrl": "https://www.example.com/wachtlijst"
+          "type": "Unavailable"
         }
       }
     ]
