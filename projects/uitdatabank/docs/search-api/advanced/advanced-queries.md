@@ -313,7 +313,7 @@ Setting childrenOnly to `false` only returns events that are not targeted at chi
 GET /events/?q=childrenOnly:false
 ```
 
-> Note that when using `childrenOnly:true`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
+> Events set to `childrenOnly: true` that were created by other clients are only returned if your client has been granted access by publiq. Without that access you only find the children-only events created by *your* client, in every search: with or without `childrenOnly` in your query. Requests that are not linked to a client never return children-only events. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
 
 ### completedLanguages
 

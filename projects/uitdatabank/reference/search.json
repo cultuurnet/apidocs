@@ -2472,7 +2472,7 @@
         },
         "in": "query",
         "name": "childrenOnly",
-        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`."
+        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`. Events set to `childrenOnly: true` by other clients are only returned if publiq granted your client access, whether or not you use this parameter; see [Children only](https://docs.publiq.be/docs/uitdatabank/search-api/filters/filtering-by-children-only)."
       },
       "hasVideos": {
         "schema": {
