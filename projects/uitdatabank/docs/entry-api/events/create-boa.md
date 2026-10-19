@@ -20,7 +20,7 @@ To ensure parents and children easily find the right activities, data quality is
 
 ## Request body example
 
-Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`. The second week is already fully booked:
+Example for a BOA event (calendarType `multiple`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`. The second week is already fully booked:
 
 ```json
 {
@@ -36,7 +36,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
       "id": "0.57.0.0.0"
     }
   ],
-  "calendarType": "single",
+  "calendarType": "multiple",
   "subEvent": [
     {
       "startDate": "2026-07-01T09:00:00+02:00",
@@ -132,8 +132,8 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
   ],
   "openingHoursAdjustedDays": [
     {
-      "startDate": "2026-12-18",
-      "endDate": "2026-12-20",
+      "startDate": "2026-12-14",
+      "endDate": "2026-12-17",
       "description": {
         "nl": "Verkorte week voor kerstvakantie"
       },
