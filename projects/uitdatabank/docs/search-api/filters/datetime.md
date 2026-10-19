@@ -1,4 +1,4 @@
-# Filtering on time
+# Date and time
 
 The Search API allows you to filter results using calendar information or metadata, such as creation and modification timestamps. This guide provides a comprehensive overview of the available filtering options.
 
@@ -146,6 +146,15 @@ Since any overlap is a match with range queries, you can explicitly exclude anyt
 GET /events/?q=dateRange:[2025-07-01T00\:00\:00%2B02\:00 TO 2025-08-31T23\:59\:59%2B02\:00] NOT dateRange:[* TO 2025-06-30T23\:59\:59%2B02\:00] NOT dateRange:[2025-09-01T00\:00\:00%2B02\:0 TO *]&availableTo=*&availableFrom=*
 ```
 
+**How far do dates get indexed?**
+
+Results with `openingHours` are only indexed for a limited period ahead:
+
+* `periodic`: five years
+* `permanent`: twelve months
+
+A search for a later date does not return them, even if their calendar runs longer.
+
 
 ## Filtering on modified date
 
@@ -195,11 +204,11 @@ Typically, this field is used to filter out events that are happening:
 However, these parts of the day are not pre-defined. Using an integer between 0 and 2359 you can define the timeRange yourself.
 
 **URL-parameters**
-* `localTimeFrom`: returns only results that are created after the given date-time. 
-* `localTimeTo`: returns only results that created up until the given date-time. 
+* `localTimeFrom`: returns only results that are open at some point after the given time of day.
+* `localTimeTo`: returns only results that are open at some point before the given time of day.
 
 **Advanced query fields**
-* `localTimeRange`: returns results that are created in a given date range.
+* `localTimeRange`: returns results that are open at some point within the given range of times of day.
 
 **Applicable on endpoints**
 
@@ -207,9 +216,9 @@ However, these parts of the day are not pre-defined. Using an integer between 0 
 
 **Possible values**
 
-Any ISO-8601 datetime, e.g. `2023-04-01T12:08:01+01:00`
+A time of day as an `HHMM` integer between `0` and `2359`, so `0830` for half past eight in the morning and `1800` for six in the evening. Dates and timezones are not taken into account.
 
-> Note that the + sign must be encoded for URLs (as %2B). Otherwise, it will be interpreted as whitespace and the given date time will be considered invalid.
+> Note that these are not datetimes. A value written with a colon, such as `08:30`, is read as the number before the colon, so it silently searches for 00:08 instead of 08:30.
 
 **Examples**
 
@@ -237,7 +246,7 @@ GET /events/?q=localTimeRange:[0000 TO 0559]
 
 Get all events happening after 18:00
 ```
-GET /events/localTimeFrom=1800
+GET /events/?localTimeFrom=1800
 ```
 
 Since any overlap is a match with range queries, you can explicitly exclude anything that falls outside of your range using advanced queries. The query below will search for events happening in the morning, but that won't start earlier:
