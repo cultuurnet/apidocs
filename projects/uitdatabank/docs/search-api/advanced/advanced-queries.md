@@ -211,8 +211,8 @@ GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:
 ### birthdateRange
 
 The `birthdateRange` field is used to filter events by the birthdate range of their target audience.
-If an event has a `typicalAgeRange` that (combined with the current date) overlaps the requested range, the event will also be included in the result set.
-If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
+If an event has a `typicalAgeRange` instead, it is converted to a birthdate range using the start date of the event (or the date it was indexed, for events with calendarType `permanent`). When that converted range overlaps the requested range, the event is also included in the result set.
+An event that is suitable for all ages matches every birthdate range. See [age filters vs. birthdate range filters](../filters/age.md#age-filters-vs-birthdate-range-filters).
 
 **Applicable on endpoints**
 
@@ -224,7 +224,7 @@ A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. 
 
 **Example**
 
-Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (counted from the start date of the event) overlaps that birthdate range.
 
 ```
 GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
