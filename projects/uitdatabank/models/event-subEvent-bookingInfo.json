@@ -1,0 +1,15 @@
+{
+  "title": "event.subEvent.bookingInfo",
+  "type": "object",
+  "description": "Reservation link for a single date of the event, containing only a `url`.",
+  "additionalProperties": false,
+  "properties": {
+    "url": {
+      "$ref": "./common-string-uri.json",
+      "description": "URL to a website where tickets can be bought or a reservation can be made for this date. Other booking info such as phone numbers, email addresses and availability dates stays on the event itself."
+    }
+  },
+  "required": [
+    "url"
+  ]
+}
