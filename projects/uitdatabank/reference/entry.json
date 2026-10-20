@@ -19344,7 +19344,7 @@
       "post": {
         "summary": "ticketing bookingAvailability - update",
         "operationId": "ticketing-bookingAvailability-post",
-        "description": "Lets a ticket sales provider (for now only Ticketmatic) push availability changes for a reservation link it has registered.\n\nUiTdatabank looks up the events that have this registration and updates the event or subEvent(s) whose `bookingInfo.url` matches the registered reservation link:\n\n* A reservation link on the top level updates the bookingAvailability of the whole event, and sets the `waitingListUrl` on all its subEvents.\n* A reservation link on one or more subEvents only updates those subEvents.\n\n<!-- theme: warning -->\n\n> Only available with a client access token of a client that is allowed to send availability updates.",
+        "description": "Lets a ticket sales provider (for now only Ticketmatic) push availability changes for a reservation link it has registered.\n\nUiTdatabank looks up the events that have this registration and updates the event or subEvent(s) whose `bookingInfo.url` matches the registered reservation link:\n\n* A reservation link on the top level updates the bookingAvailability of the whole event, and sets the `waitingListUrl` on all its subEvents.\n* A reservation link on one or more subEvents only updates those subEvents.\n\n<!-- theme: warning -->\n\n> Only for ticket sales providers that work with publiq (for now only Ticketmatic). Other clients get a 403.",
         "requestBody": {
           "content": {
             "application/json": {
@@ -19418,8 +19418,7 @@
           {
             "CLIENT_ACCESS_TOKEN": []
           }
-        ],
-        "x-internal": true
+        ]
       }
     }
   },
