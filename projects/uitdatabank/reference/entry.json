@@ -19339,6 +19339,88 @@
         "parameters": [],
         "description": "Returns a hierarchical list of education levels used on Cultuurkuur. Each level includes a label, value, and optional nested children, allowing integrators to display or process education structures ranging from early childhood to higher education."
       }
+    },
+    "/ticketing/booking-availability": {
+      "post": {
+        "summary": "ticketing bookingAvailability - update",
+        "operationId": "ticketing-bookingAvailability-post",
+        "description": "Lets a ticket sales provider (for now only Ticketmatic) push availability changes for a reservation link it has registered.\n\nUiTdatabank looks up the events that have this registration and updates the event or subEvent(s) whose `bookingInfo.url` matches the registered reservation link:\n\n* A reservation link on the top level updates the bookingAvailability of the whole event, and sets the `waitingListUrl` on all its subEvents.\n* A reservation link on one or more subEvents only updates those subEvents.\n\n<!-- theme: warning -->\n\n> Only available with a client access token of a client that is allowed to send availability updates.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/ticketing-bookingAvailability.json"
+              },
+              "examples": {
+                "Tickets available": {
+                  "value": {
+                    "identifier": "ticketmatic:cultuurhuis:1234",
+                    "type": "Available"
+                  }
+                },
+                "Sold out with a waiting list": {
+                  "value": {
+                    "identifier": "ticketmatic:cultuurhuis:1234",
+                    "type": "Unavailable",
+                    "waitingListUrl": "https://www.example.com/wachtlijst"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The availability of the registered reservation link."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingAvailability has been updated on all events with this registration."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. The `identifier` is unknown, or none of the events with this registration still has the reservation link.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/not-found",
+                      "title": "URL not found",
+                      "status": 404,
+                      "detail": "No registration found for identifier \"ticketmatic:cultuurhuis:1234\"."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ticketing"
+        ],
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "x-internal": true
+      }
     }
   },
   "components": {
@@ -19595,6 +19677,9 @@
     },
     {
       "name": "Taxonomy"
+    },
+    {
+      "name": "Ticketing"
     },
     {
       "name": "Users"
