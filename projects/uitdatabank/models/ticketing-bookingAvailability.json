@@ -5,8 +5,8 @@
   "properties": {
     "identifier": {
       "type": "string",
-      "description": "Identifies the registration at the ticket sales provider. Its shape depends on the provider, so treat it as an opaque value.\n\nFor Ticketmatic: `ticketmatic:<tmAccountId>:<tmEventId>`.",
-      "example": "ticketmatic:cultuurhuis:1234"
+      "description": "Identifies the registration at the ticket sales provider. Its shape depends on the provider, so treat it as an opaque value.",
+      "example": "example-provider:1234"
     },
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
