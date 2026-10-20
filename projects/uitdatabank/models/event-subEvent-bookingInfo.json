@@ -1,8 +1,7 @@
 {
   "title": "event.subEvent.bookingInfo",
   "type": "object",
-  "description": "Reservation link for a single date of the event, containing only a `url`.",
-  "additionalProperties": false,
+  "description": "Reservation link for a single date of the event. Only `url` is supported, other properties are ignored.",
   "properties": {
     "url": {
       "$ref": "./common-string-uri.json",
