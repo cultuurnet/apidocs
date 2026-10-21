@@ -8,9 +8,9 @@ Both flows are standard [OAuth 2.0](https://oauth.net/2/) flows and work largely
 
 ## Backward compatibility with Auth0
 
-In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant, so all authorization requests are backward compatible. Even if you are using Auth0 SDKs, everything should still work.
+In November 2024, publiq switched from Auth0 to another identity provider implementation. Both Auth0 and the new solution are [OAuth 2.0](https://oauth.net/2/) and [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) compliant, so authorization requests remained backward compatible at that time. From that point onward, however, Auth0 SDK updates may break functionality, so we strongly recommend against using the Auth0 SDK. If your integration still relies on an Auth0 SDK, migrate it to a standard OAuth 2.0 / OpenID Connect library.
 
-However, some paths have changed in the new implementation and this page documents the *new* behavior. All of the old paths forward or redirect the client to the *new* path:
+As part of this switch, some paths have changed in the new implementation and this page documents the *new* behavior. All of the old paths forward or redirect the client to the *new* path:
 
 * `/oauth/token` to `/realms/uitid/protocol/openid-connect/token`
 * `/authorize` to `/realms/uitid/protocol/openid-connect/auth`
