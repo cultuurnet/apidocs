@@ -1856,7 +1856,7 @@
         },
         "in": "query",
         "name": "hasOvernightStay",
-        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have an overnight stay if at least one of its sub-events has `hasOvernightStay: true` in the given daterange. Events with a `periodic` or `permanent` calendarType are always indexed as `hasOvernightStay: false`."
+        "description": "Returns only events that involve an overnight stay if set to `true`, or only events that do not involve an overnight stay if set to `false`. An event is considered to have an overnight stay if at least one of its sub-events has `hasOvernightStay: true` in the given daterange, and to have none if at least one of those sub-events has `hasOvernightStay: false` and none has `true`. Only an explicit value counts: events whose sub-events never set `hasOvernightStay`, events with a `periodic` or `permanent` calendarType and places match neither `true` nor `false`."
       },
       "birthdateRangeFrom": {
         "schema": {
@@ -2456,7 +2456,7 @@
       },
       "in": "query",
       "name": "recurringOnLocalTimeTo",
-      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity ending at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
+      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity starting at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
     },
     "hasChildcare": {
         "schema": {
@@ -2464,7 +2464,7 @@
         },
         "in": "query",
         "name": "hasChildcare",
-        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo` or the `dateRange` advanced query field, the childcare check is scoped to the matching period."
+        "description": "Returns only events that have childcare configured on at least one sub-event or opening hours entry if set to `true`. Returns only events that have no childcare configured if set to `false`. When combined with `dateFrom`/`dateTo`, the childcare check is scoped to the matching period. This does not work with the `dateRange` field in an advanced query."
       },
       "childrenOnly": {
         "schema": {
@@ -2472,7 +2472,7 @@
         },
         "in": "query",
         "name": "childrenOnly",
-        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`."
+        "description": "Returns only events that are targeted at children only, without parents or guardians, if set to `true`. Returns only events that are not targeted at children only if set to `false`. Events set to `childrenOnly: true` by other clients are only returned if publiq granted your client access, whether or not you use this parameter; see [Children only](https://docs.publiq.be/docs/uitdatabank/search-api/filters/filtering-by-children-only)."
       },
       "hasVideos": {
         "schema": {

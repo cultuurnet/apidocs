@@ -26,6 +26,8 @@ The provided audience type is incompatible. Check the `detail` of the error for 
 
 Most likely this is caused by updating the audience of an event that only supports `education` as audience type.
 
+It is also returned when you set departure places on an event that does not have `childrenOnly` set to `true`.
+
 ## resource-id-already-in-use
 
 * **Complete type:** `https://api.publiq.be/probs/uitdatabank/resource-id-already-in-use`

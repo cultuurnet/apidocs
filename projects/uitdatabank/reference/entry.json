@@ -70,7 +70,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -210,7 +210,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -347,7 +347,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -466,7 +466,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/cannot-combine-typical-age-and-birthdate-range\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -858,7 +858,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/audienceType",
-                          "error": "The data (int) should match the type: string"
+                          "error": "The data (int) must match the type: string"
                         }
                       ]
                     }
@@ -947,7 +947,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/availableFrom",
-                          "error": "The data (int) should match the type: date-time"
+                          "error": "The data (int) must match the type: date-time"
                         }
                       ]
                     }
@@ -1119,19 +1119,6 @@
                       "title": "Calendar type not supported",
                       "status": 400,
                       "detail": "Not allowed to update booking availability on calendar type: \"permanent\". Only single and multiple calendar types can be updated."
-                    }
-                  },
-                  "waitingListUrl not allowed on the top level": {
-                    "value": {
-                      "type": "https://api.publiq.be/probs/body/invalid-data",
-                      "title": "Invalid body data",
-                      "status": 400,
-                      "schemaErrors": [
-                        {
-                          "jsonPointer": "/waitingListUrl",
-                          "error": "Additional object properties are not allowed: waitingListUrl"
-                        }
-                      ]
                     }
                   }
                 }
@@ -1629,7 +1616,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/childrenOnly",
-                          "error": "The data (string) should match the type: boolean"
+                          "error": "The data (string) must match the type: boolean"
                         }
                       ]
                     }
@@ -1651,7 +1638,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the `childrenOnly` flag on the event.\n\nSet `childrenOnly` to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`. When `childrenOnly` is `false`, it is omitted from the event GET response.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event.\n",
+        "description": "Updates the `childrenOnly` flag on the event.\n\nSet `childrenOnly` to `true` to indicate that the event is intended for children only, without parents or guardians. Defaults to `false`. When `childrenOnly` is `false`, it is omitted from the event GET response.\n\nThe `childrenOnly` flag must be `true` before any `departurePlaces` can be set on the event. Setting it to `false` also removes all `departurePlaces` from the event.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1868,7 +1855,7 @@
             "description": "No Content. The departure places have been successfully updated."
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1880,6 +1867,14 @@
                       "type": "https://api.publiq.be/probs/body/invalid-data",
                       "title": "Invalid body data",
                       "status": 400
+                    }
+                  },
+                  "Event is not children only": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/incompatible-audience-type",
+                      "title": "Incompatible audience type",
+                      "status": 400,
+                      "detail": "Departure places can only be set on events where \"childrenOnly\" is true. Event: 0e8a2b3e-a3cc-4559-99d5-d199522cbcf0"
                     }
                   }
                 }
@@ -3521,28 +3516,6 @@
                     }
                   ]
                 },
-                "Setting a waiting list on the third subEvent": {
-                  "value": [
-                    {
-                      "id": 2,
-                      "bookingAvailability": {
-                        "type": "Unavailable",
-                        "waitingListUrl": "https://www.example.com/wachtlijst"
-                      }
-                    }
-                  ]
-                },
-                "Removing the waiting list of the third subEvent": {
-                  "value": [
-                    {
-                      "id": 2,
-                      "bookingAvailability": {
-                        "type": "Available",
-                        "waitingListUrl": null
-                      }
-                    }
-                  ]
-                },
                 "Updating multiple": {
                   "value": [
                     {
@@ -3570,7 +3543,7 @@
               }
             }
           },
-          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with one exception: sending `bookingAvailability.waitingListUrl` as `null` removes the waiting list url of that subEvent."
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with one exception: sending `\"childcare\": {}` removes the childcare times of that subEvent."
         },
         "security": [
           {
@@ -5095,7 +5068,7 @@
                       "schemaErrors": [
                         {
                           "jsonPointer": "/availableFrom",
-                          "error": "The data (int) should match the type: date-time"
+                          "error": "The data (int) must match the type: date-time"
                         }
                       ]
                     }

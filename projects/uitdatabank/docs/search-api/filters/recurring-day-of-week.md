@@ -132,4 +132,4 @@ The hours are available per day of week as [recurringOnLocalTimeRange](../advanc
 GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700] AND recurringOnLocalTimeRange.saturday:[0900 TO 1200]
 ```
 
-Mind the bounds when you write the range yourself: in an advanced query both ends are inclusive, so `[1000 TO 1100]` still matches an activity that ends at 11:00, where `recurringOnLocalTimeTo=1100` does not.
+Mind the bounds when you write the range yourself: in an advanced query both ends are inclusive, so `[1000 TO 1100]` also matches an activity that starts at 11:00, where `recurringOnLocalTimeTo=1100` does not.

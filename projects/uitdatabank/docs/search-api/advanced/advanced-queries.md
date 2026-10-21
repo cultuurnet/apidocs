@@ -211,8 +211,8 @@ GET /events/?q=availableRange:[2023-01-01T00\:00\:00%2B01\:00 TO 2023-03-31T23\:
 ### birthdateRange
 
 The `birthdateRange` field is used to filter events by the birthdate range of their target audience.
-If an event has a `typicalAgeRange` that (combined with the current date) overlaps the requested range, the event will also be included in the result set.
-If an event has a `typicalAgeRange` that falls within the birthdateRange, the event will also be included in the result set.
+If an event has a `typicalAgeRange` instead, it is converted to a birthdate range using the start date of the event (or the date it was indexed, for events with calendarType `permanent`). When that converted range overlaps the requested range, the event is also included in the result set.
+An event that is suitable for all ages matches every birthdate range. See [age filters vs. birthdate range filters](../filters/age.md#age-filters-vs-birthdate-range-filters).
 
 **Applicable on endpoints**
 
@@ -224,7 +224,7 @@ A range, consisting of two dates (lower & upper bound) in ISO 8601 format, e.g. 
 
 **Example**
 
-Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (combined with today's date) overlaps that birthdate range.
+Retrieve all events targeted at people born between 1 January 2020 and 31 December 2020, including events whose `typicalAgeRange` (counted from the start date of the event) overlaps that birthdate range.
 
 ```
 GET /events/?q=birthdateRange:[2020-01-01 TO 2020-12-31]
@@ -313,7 +313,7 @@ Setting childrenOnly to `false` only returns events that are not targeted at chi
 GET /events/?q=childrenOnly:false
 ```
 
-> Note that when using `childrenOnly:true`, you will always find events set to `childrenOnly: true` that have been created by *your* client. Events created by other users and set to `childrenOnly: true` are only returned if your account has been granted access by publiq. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
+> Events set to `childrenOnly: true` that were created by other clients are only returned if your client has been granted access by publiq. Without that access you only find the children-only events created by *your* client, in every search: with or without `childrenOnly` in your query. Requests that are not linked to a client never return children-only events. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
 
 ### completedLanguages
 
@@ -462,7 +462,7 @@ Using the `departurePlaces` field, you can find events that have a specific plac
 
 **Applicable on endpoints**
 
-`/events`
+`/events` `/offers`
 
 **Possible values**
 
@@ -518,7 +518,7 @@ GET /events/?q=hasChildcare:false
 
 ### hasOvernightStay
 
-The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event matches when at least one of its sub-events has `hasOvernightStay: true`. Events with a `periodic` or `permanent` calendarType have no sub-events and are always indexed as `false`.
+The `hasOvernightStay` field can be used to filter events that (do not) involve an overnight stay. An event is indexed as `true` when at least one of its sub-events has `hasOvernightStay: true`, and as `false` when at least one sub-event has `hasOvernightStay: false` and none has `true`. Events whose sub-events never set `hasOvernightStay`, events with a `periodic` or `permanent` calendarType and places have no value, so they match neither `true` nor `false`.
 
 **Applicable on endpoints**
 
@@ -536,7 +536,7 @@ Setting hasOvernightStay to `true` only returns events that involve an overnight
 GET /events/?q=hasOvernightStay:true
 ```
 
-Setting hasOvernightStay to `false` only returns events that do not involve an overnight stay:
+Setting hasOvernightStay to `false` only returns events that are marked as not involving an overnight stay:
 
 ```
 GET /events/?q=hasOvernightStay:false
@@ -1023,7 +1023,7 @@ Unlike the URL parameters, which apply one time frame to all the selected days o
 GET /events/?q=recurringOnLocalTimeRange.wednesday:[1300 TO 1700] AND recurringOnLocalTimeRange.saturday:[0900 TO 1200]
 ```
 
-Both ends of the range are inclusive here, so `[1000 TO 1100]` still matches an activity that ends at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
+Both ends of the range are inclusive here, so `[1000 TO 1100]` also matches an activity that starts at 11:00, where the `recurringOnLocalTimeTo=1100` URL parameter does not.
 
 ### regions
 

@@ -164,7 +164,7 @@ Events with calendarType `periodic` or `permanent` can include a `childcare` obj
 
 Each property within `childcare` is independent: omitting a property clears any previously set value for it. When updating:
 
-* **Omit `childcare`** entirely → existing childcare data is left unchanged.
+* **Omit `childcare`** entirely → on [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) the existing childcare data is left unchanged. The endpoints that replace the calendar in its entirety ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put)) remove childcare that is not repeated in the request body.
 * **Send `"childcare": {}`** (empty object) → clears both `start` and `end`.
 * **Send `"childcare": { "start": "..." }`** → sets `start`, clears `end`.
 * **Send `"childcare": { "end": "..." }`** → clears `start`, sets `end`.
@@ -179,7 +179,7 @@ For all calendar types:
 For single/multiple calendar types:
 * `childcare.start` must be **earlier** than the time portion of `startDate`. For example, if `startDate` is `2023-01-12T10:00:00+01:00`, `childcare.start` must be before `10:00`.
 * `childcare.end` must be **later** than the time portion of `endDate`. For example, if `endDate` is `2023-01-12T12:00:00+01:00`, `childcare.end` must be after `12:00`.
-* These rules are also enforced when updating `opens` or `closes` on an existing item that already has childcare times set.
+* These rules are also enforced when updating `startDate` or `endDate` on an existing subEvent that already has childcare times set.
 
 For periodic/permanent calendar types:
 * `childcare.start` must be **earlier** than `opens`. For example, if `opens` is `09:00`, `childcare.start` must be before `09:00`.
@@ -216,13 +216,13 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 **Validation rules:**
 
-* `hasOvernightStay` can only be set when the event has at least one term with id `0.57.0.0.0`. 
-* `hasOvernightStay` is optional and defaults to `false` when omitted.
-* When the term `0.57.0.0.0` is removed from the event, `hasOvernightStay` is automatically reset to `false` on all subEvents.
+* `hasOvernightStay: true` can only be set when the event has at least one term with id `0.57.0.0.0`. On other events it returns a `400` error, while `false` is accepted but not stored.
+* `hasOvernightStay` is optional. On [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) an omitted value is left unchanged. The endpoints that replace the calendar in its entirety ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put)) remove a value that is not repeated in the request body.
+* When the term `0.57.0.0.0` is removed from the event, `hasOvernightStay` is removed from all subEvents.
 
 **API behavior:**
 
-In the read model (GET), `hasOvernightStay` is only included in the subEvent object when its value is `true`. When `false`, the property is omitted from the response.
+In the read model (GET), `hasOvernightStay` is included in the subEvent object when it has been set, both as `true` and as `false`. When it was never set, the property is omitted from the response.
 
 ### periodic/permanent
 
@@ -316,9 +316,9 @@ Each entry defines a date range during which the event or place is considered cl
 
 **Overwriting or clearing closed days:**
 
-Each `openingHoursClosedDays` array is independent: omitting the property preserves existing data. When updating:
+The calendar is replaced in its entirety on every update ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put), [`PUT /places/{placeId}/calendar`](/reference/entry.json/paths/~1places~1{placeId}~1calendar/put), [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) and [`PUT /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/put)), so always send the complete list of closed days. When updating:
 
-* **Omit `openingHoursClosedDays`** entirely → existing closed days are left unchanged.
+* **Omit `openingHoursClosedDays`** entirely → existing closed days are removed.
 * **Send `"openingHoursClosedDays": []`** (empty array) → clears all previously set closed days.
 * **Send `"openingHoursClosedDays": [...]`** with values → replaces all closed days with the new list.
 
@@ -418,9 +418,9 @@ When `openingHoursClosedDays` and `openingHoursAdjustedDays` overlap, `openingHo
 
 **Overwriting or clearing adjusted hours:**
 
-Each `openingHoursAdjustedDays` array is independent: omitting the property preserves existing data. When updating:
+The calendar is replaced in its entirety on every update ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put), [`PUT /places/{placeId}/calendar`](/reference/entry.json/paths/~1places~1{placeId}~1calendar/put), [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) and [`PUT /places/{placeId}`](/reference/entry.json/paths/~1places~1{placeId}/put)), so always send the complete list of adjusted hours. When updating:
 
-* **Omit `openingHoursAdjustedDays`** entirely → existing adjusted hours are left unchanged.
+* **Omit `openingHoursAdjustedDays`** entirely → existing adjusted hours are removed.
 * **Send `"openingHoursAdjustedDays": []`** (empty array) → clears all previously set adjusted hours.
 * **Send `"openingHoursAdjustedDays": [...]`** with values → replaces all adjusted hours with the new list.
 
