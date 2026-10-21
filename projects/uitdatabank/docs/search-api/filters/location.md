@@ -1,4 +1,4 @@
-# Filtering on location
+# Location
 
 It is possible to filter the results from Search API based on the geographical information. There are many different options, which we outline in detail in this guide.
 

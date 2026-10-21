@@ -1,0 +1,12 @@
+{
+  "title": "event.childrenOnly.put",
+  "type": "object",
+  "properties": {
+    "childrenOnly": {
+      "$ref": "./event-childrenOnly.json"
+    }
+  },
+  "required": [
+    "childrenOnly"
+  ]
+}
