@@ -5,8 +5,8 @@
   "properties": {
     "identifier": {
       "type": "string",
-      "description": "Identifies the registration at the ticket sales provider. Its shape depends on the provider, so treat it as an opaque value.",
-      "example": "example-provider:1234"
+      "description": "Identifies the registration at the ticket sales provider, as `<provider>:<account>:<event>`: the name of the provider, the account of the organiser at the provider, and the event within that account.",
+      "example": "example-provider:cultuurhuis:1001"
     },
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
