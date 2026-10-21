@@ -19365,13 +19365,13 @@
               "examples": {
                 "Tickets available": {
                   "value": {
-                    "identifier": "example-provider:1234",
+                    "identifier": "example-provider:cultuurhuis:1001",
                     "type": "Available"
                   }
                 },
                 "Sold out with a waiting list": {
                   "value": {
-                    "identifier": "example-provider:1234",
+                    "identifier": "example-provider:cultuurhuis:1001",
                     "type": "Unavailable",
                     "waitingListUrl": "https://www.example.com/wachtlijst"
                   }
@@ -19414,7 +19414,7 @@
                       "type": "https://api.publiq.be/probs/url/not-found",
                       "title": "URL not found",
                       "status": 404,
-                      "detail": "No registration found for identifier \"example-provider:1234\"."
+                      "detail": "No registration found for identifier \"example-provider:cultuurhuis:1001\"."
                     }
                   }
                 }
