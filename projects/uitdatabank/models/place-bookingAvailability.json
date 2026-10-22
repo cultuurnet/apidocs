@@ -1,10 +1,14 @@
 {
   "title": "place.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the place still has tickets or reservations available. The `type` can only be `Available` for places (as opposed to events that can also have `Unavailable` when sold out), as a place can never be completely sold out forever.",
+  "description": "Indicates whether the place still has tickets or reservations available. The `type` can only be `Available` for places (as opposed to events that can also have `Unavailable` when sold out), as a place can never be completely sold out forever.\n\nA `waitingListUrl` is not allowed here: a waiting list is specific to one date of an event, so it can only be set on the [bookingAvailability of an event subEvent](./event-subEvent-bookingAvailability.json).",
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
+    },
+    "waitingListUrl": {
+      "not": {},
+      "description": "Not allowed on the `bookingAvailability` of a place. A waiting list can only be set on the `bookingAvailability` of an event `subEvent`."
     }
   },
   "required": [
