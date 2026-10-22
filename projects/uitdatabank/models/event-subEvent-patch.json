@@ -36,6 +36,9 @@
         "id": 1,
         "status": {
           "type": "Unavailable"
+        },
+        "bookingInfo": {
+          "url": "https://www.example.com/reserve"
         }
       }
     ]
@@ -125,6 +128,16 @@
         },
         "required": [
           "type"
+        ]
+      },
+      "bookingInfo": {
+        "allOf": [
+          {
+            "$ref": "./event-subEvent-bookingInfo.json"
+          },
+          {
+            "description": "Reservation link for this date. If this property is omitted entirely, the existing reservation link is not altered. If included, the given `url` replaces the current reservation link. To remove a reservation link, use `PUT /events/{id}/calendar`, which replaces all subEvents."
+          }
         ]
       },
       "hasOvernightStay": {
