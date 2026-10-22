@@ -2428,37 +2428,37 @@
         "description": "Returns only results that are related to UiTPAS if set to `true`. Returns only results that are not related to UiTPAS if set to `false`."
       },
       "recurringOnDayOfWeek": {
-      "schema": {
-        "type": "string",
-        "example": "wednesday,saturday"
+        "schema": {
+          "type": "string",
+          "example": "wednesday,saturday"
+        },
+        "in": "query",
+        "name": "recurringOnDayOfWeek",
+        "description": "Returns only events and places that recur on the given day of week, meaning they take place on that day of week on at least four distinct days. Possible values are `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday` and `sunday`, case-insensitive. Multiple values are comma-separated and combined as an OR. Events with a `single` calendar are never returned."
       },
-      "in": "query",
-      "name": "recurringOnDayOfWeek",
-      "description": "Returns only events and places that recur on the given day of week, meaning they take place on that day of week on at least four distinct days. Possible values are `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday` and `sunday`, case-insensitive. Multiple values are comma-separated and combined as an OR. Events with a `single` calendar are never returned."
-    },
-    "recurringOnLocalTimeFrom": {
-      "schema": {
-        "type": "integer",
-        "minimum": 0,
-        "maximum": 2359,
-        "example": 1300
+      "recurringOnLocalTimeFrom": {
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2359,
+          "example": 1300
+        },
+        "in": "query",
+        "name": "recurringOnLocalTimeFrom",
+        "description": "Returns only events and places that recur at some point after the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. Can be used without `recurringOnLocalTimeTo`, which leaves the end of the range open. Requires `recurringOnDayOfWeek`."
       },
-      "in": "query",
-      "name": "recurringOnLocalTimeFrom",
-      "description": "Returns only events and places that recur at some point after the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. Can be used without `recurringOnLocalTimeTo`, which leaves the end of the range open. Requires `recurringOnDayOfWeek`."
-    },
-    "recurringOnLocalTimeTo": {
-      "schema": {
-        "type": "integer",
-        "minimum": 0,
-        "maximum": 2359,
-        "example": 1700
+      "recurringOnLocalTimeTo": {
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2359,
+          "example": 1700
+        },
+        "in": "query",
+        "name": "recurringOnLocalTimeTo",
+        "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity starting at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
       },
-      "in": "query",
-      "name": "recurringOnLocalTimeTo",
-      "description": "Returns only events and places that recur at some point before the given time, as an `HHMM` integer, on at least one of the days of week given in `recurringOnDayOfWeek`. The end of the range is exclusive, so an activity starting at 12:00 is not returned by `recurringOnLocalTimeTo=1200`. Can be used without `recurringOnLocalTimeFrom`, which leaves the start of the range open. Requires `recurringOnDayOfWeek`."
-    },
-    "hasChildcare": {
+      "hasChildcare": {
         "schema": {
           "type": "boolean"
         },

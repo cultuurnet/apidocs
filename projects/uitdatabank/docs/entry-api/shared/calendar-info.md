@@ -107,7 +107,7 @@ In case of calendarType `single`, the same logic is applied but in reality the `
 
 ### Childcare times (events only)
 
-Events can optionally include a `childcare` object to indicate when childcare is provided. The object has two properties, `start` and `end`, both using `H:MM` or `HH:MM` format in 24-hour notation (as per ISO 8601).
+Events can optionally include a `childcare` object to indicate when childcare is provided. The object has two properties, `start` and `end`, both using the ISO 8601 `HH:MM` format in 24-hour notation (a single-digit hour like `8:30` is also accepted).
 
 Events of type "Kinderopvang" (term id `K7mPx3nQrT9bWfH2zL5cYv`) are childcare themselves and cannot have childcare times.
 

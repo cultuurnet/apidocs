@@ -33,7 +33,8 @@ Example for a BOA event (calendarType `multiple`) with `childrenOnly` set to `tr
   },
   "terms": [
     {
-      "id": "0.57.0.0.0"
+      "id": "0.57.0.0.0",
+      "domain": "eventtype"
     }
   ],
   "calendarType": "multiple",
@@ -73,7 +74,7 @@ Example for a BOA event (calendarType `multiple`) with `childrenOnly` set to `tr
   ],
   "departurePlaces": [
     "https://io-test.uitdatabank.be/places/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
-    "https://io-test.uitdatabank.be/places/a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    "https://io-test.uitdatabank.be/places/85b04295-479c-40f5-b3dd-469dfb4387b3"
   ]
 }
 ```
@@ -84,14 +85,19 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
 {
   "mainLanguage": "nl",
   "name": {
-    "nl": "Naschoolse opvang De Beuk"
+    "nl": "Naschoolse circusschool De Beuk"
   },
   "location": {
     "@id": "https://io-test.uitdatabank.be/places/787d7420-c06f-4935-b3c5-5cd5a1276796"
   },
   "terms": [
     {
-      "id": "0.52.0.0.0"
+      "id": "0.3.1.0.0",
+      "domain": "eventtype"
+    },
+    {
+      "id": "0.52.0.0.0",
+      "domain": "theme"
     }
   ],
   "calendarType": "periodic",
