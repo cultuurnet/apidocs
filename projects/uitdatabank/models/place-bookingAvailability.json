@@ -6,10 +6,7 @@
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
     },
-    "waitingListUrl": {
-      "not": {},
-      "description": "Not allowed on the `bookingAvailability` of a place. A waiting list can only be set on the `bookingAvailability` of an event `subEvent`."
-    }
+    "waitingListUrl": false
   },
   "required": [
     "type"
