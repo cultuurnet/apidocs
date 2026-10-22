@@ -8,20 +8,19 @@ For more general information about publiq's role in the BOA decree, visit [publi
 ## Best Practices: Optimizing your reach
 To ensure parents and children easily find the right activities, data quality is crucial. When publishing BOA-related events, we highly recommend sending the following information:
 
-| Type | Endpoint | Description | Calendar type | BOA specific |
-|---|---|---|---|---|
-| Target audience | `PUT /events/{eventId}/children-only` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all | ✅ |
-| Age range | `PUT /events/{eventId}/typical-age-range` or `PUT /events/{eventId}/birthdate-range` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`), but never both. On these endpoints setting one removes the other, so there is no need to delete it first. | all | ✅ |
-| Pricing | `PUT /events/{eventId}/price-info` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all | ❌ |
-| FAQ | `PUT /events/{eventId}/faqs` | Use the [FAQ fields](/docs/uitdatabank/entry-api/reference/operations/update-a-event-faqs) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all | ✅ |
-| Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#closed-days-periodicpermanent). | single, multiple, periodic, permanent | ✅ |
-| Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-stay-events-only-singlemultiple) (`hasOvernightStay`). | single, multiple | ✅ |
-| Waiting list | `PATCH /events/{eventId}/sub-events` | When a date is fully booked, do not leave parents without options: add a [`waitingListUrl`](./booking-availability.md#waiting-list) to the `bookingAvailability` of that date, pointing to an external page where they can register for a waiting list. | single, multiple | ✅ |
-| Departure places | `PUT /events/{eventId}/departure-places` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) | ✅ |
+| Type | Endpoint | Description | Calendar type |
+|---|---|---|---|
+| Children only | `PUT /events/{eventId}/children-only` | Always explicitly indicate if an activity is meant for [children only](/docs/uitdatabank/entry-api/reference/operations/update-a-event-children-only) (without parents). This helps our publication channels distinguish BOA activities from general family events. | all |
+| Age range | `PUT /events/{eventId}/typical-age-range` or `PUT /events/{eventId}/birthdate-range` | Always communicate the age group your activity is intended for. You can pass a generic age range (`typicalAgeRange`), or the specific birth date range (`birthdateRange`), but never both. On these endpoints setting one removes the other, so there is no need to delete it first. | all |
+| Pricing | `PUT /events/{eventId}/price-info` | Be transparent about pricing: always send prices per logical "bookable unit" (e.g., per hour, per day, or per week) so the cost is clear to parents. | all |
+| FAQ | `PUT /events/{eventId}/faqs` | Use [FAQs](./faqs.md) to structure practical information. The ideal place to answer questions about accessibility, required care needs, meals, and what children need to bring. | all |
+| Full schedule | `PUT /events/{eventId}/calendar` | Parents plan full days. Explicitly pass before- and after-school care hours ([`childcare`](../shared/calendar-info.md#childcare-times-events-only)), [adjusted opening hours](../shared/calendar-info.md#adjusted-opening-hours-periodicpermanent), and [specific holiday closures](../shared/calendar-info.md#closed-days-periodicpermanent). | single, multiple, periodic, permanent |
+| Overnight stays | `PATCH /events/{eventId}/sub-events` | For camps, clearly specify if the activity includes an [overnight stay](../shared/calendar-info.md#overnight-stay-events-only-singlemultiple) (`hasOvernightStay`). | single, multiple |
+| Departure places | `PUT /events/{eventId}/departure-places` | If guided transport is provided from a school or another care location to the activity, [link these locations](/docs/uitdatabank/entry-api/reference/operations/update-a-event-departure-places). | all (requires `childrenOnly: true`) |
 
 ## Request body example
 
-Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`. The second week is already fully booked and has a `waitingListUrl`:
+Example for a BOA event (calendarType `multiple`) with `childrenOnly` set to `true`, using the term `0.57.0.0.0` ("Kamp of vakantie") which also enables `hasOvernightStay`. The second week is already fully booked:
 
 ```json
 {
@@ -37,7 +36,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
       "id": "0.57.0.0.0"
     }
   ],
-  "calendarType": "single",
+  "calendarType": "multiple",
   "subEvent": [
     {
       "startDate": "2026-07-01T09:00:00+02:00",
@@ -59,8 +58,7 @@ Example for a BOA event (calendarType `single`) with `childrenOnly` set to `true
         "end": "18:30"
       },
       "bookingAvailability": {
-        "type": "Unavailable",
-        "waitingListUrl": "https://www.example.com/wachtlijst"
+        "type": "Unavailable"
       }
     }
   ],
@@ -134,8 +132,8 @@ Example for a BOA event (calendarType `periodic`) showing `openingHoursClosedDay
   ],
   "openingHoursAdjustedDays": [
     {
-      "startDate": "2026-12-18",
-      "endDate": "2026-12-20",
+      "startDate": "2026-12-14",
+      "endDate": "2026-12-17",
       "description": {
         "nl": "Verkorte week voor kerstvakantie"
       },
