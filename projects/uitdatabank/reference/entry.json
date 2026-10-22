@@ -2100,7 +2100,7 @@
         "tags": [
           "Events"
         ],
-        "description": "Updates the FAQs of an event. FAQs previously set on the event, but not included in this list will be removed.",
+        "description": "Updates the FAQs of an event. FAQs previously set on the event, but not included in this list will be removed.\n\nSend an empty list (`[]`) to remove all FAQs. When the event has no FAQs, `faqs` is omitted from the event GET response.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -2130,6 +2130,9 @@
                       }
                     }
                   ]
+                },
+                "Remove all FAQs": {
+                  "value": []
                 }
               }
             }
