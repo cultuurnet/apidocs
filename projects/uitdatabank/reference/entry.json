@@ -3543,7 +3543,7 @@
                       "id": 2,
                       "bookingAvailability": {
                         "type": "Available",
-                        "waitingListUrl": null
+                        "waitingListUrl": ""
                       }
                     }
                   ]
@@ -3575,7 +3575,7 @@
               }
             }
           },
-          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with two exceptions: sending `\"childcare\": {}` removes the childcare times of that subEvent, and sending `bookingAvailability.waitingListUrl` as `null` removes the waiting list url of that subEvent."
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with two exceptions: sending `\"childcare\": {}` removes the childcare times of that subEvent, and sending `bookingAvailability.waitingListUrl` as an empty string (`\"\"`) removes the waiting list url of that subEvent."
         },
         "security": [
           {

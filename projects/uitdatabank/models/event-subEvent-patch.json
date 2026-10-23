@@ -59,7 +59,7 @@
         "id": 0,
         "bookingAvailability": {
           "type": "Available",
-          "waitingListUrl": null
+          "waitingListUrl": ""
         }
       }
     ]
@@ -152,10 +152,10 @@
                 "$ref": "./common-string-uri.json"
               },
               {
-                "type": "null"
+                "const": ""
               }
             ],
-            "description": "URL of an external page where interested attendees can register for a waiting list.\n\nOptional. When omitted, the waiting list url of the subEvent is left unchanged. Send `null` to remove it. Only supported on events with calendarType `single` or `multiple`.",
+            "description": "URL of an external page where interested attendees can register for a waiting list.\n\nOptional. When omitted, the waiting list url of the subEvent is left unchanged. Send an empty string (`\"\"`) to remove it. Only supported on events with calendarType `single` or `multiple`.",
             "example": "https://www.example.com/wachtlijst"
           }
         },

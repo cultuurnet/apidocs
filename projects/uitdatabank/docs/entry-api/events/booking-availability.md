@@ -183,7 +183,7 @@ The `jsonPointer` points to the `bookingAvailability` object that contains the `
 
 * **Omit `bookingAvailability`** entirely → the waiting list url of that subEvent is left unchanged.
 * **Send `bookingAvailability` without `waitingListUrl`** → the waiting list url is left unchanged. (Note that `type` is required whenever you send a `bookingAvailability` object, so leaving out `waitingListUrl` is the normal case when you only want to change the availability.)
-* **Send `"waitingListUrl": null`** → the waiting list url is removed.
+* **Send `"waitingListUrl": ""`** → the waiting list url is removed.
 * **Send `"waitingListUrl": "..."`** → the waiting list url is set to that value.
 
 The endpoints that replace the calendar in its entirety behave differently: on [`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put) the subEvents in your request body replace the existing ones, so a `waitingListUrl` that you do not repeat in the body is removed, just like a `status` or a `bookingAvailability.type` that you leave out. If you only want to change the waiting list of one date, use the `PATCH` endpoint above.
