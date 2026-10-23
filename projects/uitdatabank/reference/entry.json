@@ -19339,6 +19339,87 @@
         "parameters": [],
         "description": "Returns a hierarchical list of education levels used on Cultuurkuur. Each level includes a label, value, and optional nested children, allowing integrators to display or process education structures ranging from early childhood to higher education."
       }
+    },
+    "/ticketing/booking-availability": {
+      "post": {
+        "summary": "ticketing bookingAvailability - update",
+        "operationId": "ticketing-bookingAvailability-post",
+        "description": "Lets a ticket sales provider push availability changes for a reservation link it has registered.\n\nUiTdatabank looks up the events that have this registration and updates the `bookingAvailability` of the subEvents whose `bookingInfo.url` matches the registered reservation link. Only events with a `single` or `multiple` calendar have a reservation link per subEvent; the `bookingInfo.url` of the event itself is not used for this.\n\nWhen `waitingListUrl` is given, it is set on the same subEvents.\n\n<!-- theme: warning -->\n\n> Only for ticket sales providers that work with publiq. Other clients get a 403.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/ticketing-bookingAvailability.json"
+              },
+              "examples": {
+                "Tickets available": {
+                  "value": {
+                    "identifier": "example-provider:cultuurhuis:1001",
+                    "type": "Available"
+                  }
+                },
+                "Sold out with a waiting list": {
+                  "value": {
+                    "identifier": "example-provider:cultuurhuis:1001",
+                    "type": "Unavailable",
+                    "waitingListUrl": "https://www.example.com/wachtlijst"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The availability of the registered reservation link."
+        },
+        "responses": {
+          "204": {
+            "description": "No Content. The bookingAvailability has been updated on all events with this registration."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "Not Found. The `identifier` is unknown, or none of the events with this registration still has the reservation link.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/url/not-found",
+                      "title": "URL not found",
+                      "status": 404,
+                      "detail": "No registration found for identifier \"example-provider:cultuurhuis:1001\"."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ticketing"
+        ],
+        "security": [
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -19595,6 +19676,9 @@
     },
     {
       "name": "Taxonomy"
+    },
+    {
+      "name": "Ticketing"
     },
     {
       "name": "Users"
