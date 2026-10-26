@@ -151,6 +151,14 @@ The request you are trying to perform cannot complete because the provided card 
 
 The request you are trying to perform cannot complete because the provided city is invalid.
 
+## invalid-combination
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/invalid-combination`
+* **Title**: `Invalid combination`
+* **Status**: `400`
+
+The request you are trying to perform cannot complete because the given combination of values is not allowed in this context.
+
 ## invalid-coupon
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/invalid-coupon`
@@ -370,7 +378,15 @@ The request you are trying to perform cannot complete because the family of the 
 ## uitid-already-registered
 
 * **Complete type:** `https://api.publiq.be/probs/uitpas/uitid-already-registered`
-* **Title**: `UiTID already registered`
+* **Title**: `UiTiD already registered`
 * **Status**: `400`
 
 The request you are trying to perform cannot complete because the given uitid is already used to register another passholder.
+
+## uitid-not-found
+
+* **Complete type:** `https://api.publiq.be/probs/uitpas/uitid-not-found`
+* **Title**: `UiTiD not found`
+* **Status**: `404`
+
+The request you are trying to perform cannot complete because there is no UiTiD linked to the given passholder.
