@@ -15,7 +15,8 @@
         "thumbnailUrl": "https://images-test.uitdatabank.be/546a90cd-a238-417b-aa98-1b6c50c1345c.jpeg",
         "description": "Een voorbeeld beschrijving",
         "copyrightHolder": "Jan",
-        "inLanguage": "nl"
+        "inLanguage": "nl",
+        "isAiGenerated": true
       }
     ]
   ]
