@@ -1,0 +1,25 @@
+{
+  "title": "ticketing.bookingAvailability",
+  "type": "object",
+  "description": "Availability update sent by a ticket sales provider for one of its registered reservation links.",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Identifies the registration at the ticket sales provider, as `<provider>:<account>:<event>`: the name of the provider, the account of the organiser at the provider, and the event within that account.",
+      "example": "example-provider:cultuurhuis:1001"
+    },
+    "type": {
+      "$ref": "./common-bookingAvailability-type.json"
+    },
+    "waitingListUrl": {
+      "allOf": [
+        { "$ref": "./common-string-uri.json" },
+        {
+          "description": "URL of an external page where interested attendees can register for a waiting list. Optional.",
+          "example": "https://www.example.com/wachtlijst"
+        }
+      ]
+    }
+  },
+  "required": ["identifier", "type"]
+}
