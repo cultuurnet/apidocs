@@ -17,6 +17,9 @@
         "bookingAvailability": {
           "type": "Available"
         },
+        "bookingInfo": {
+          "url": "https://www.example.com/reserve"
+        },
         "hasOvernightStay": true
       }
     ],
@@ -65,6 +68,9 @@
       },
       "bookingAvailability": {
         "$ref": "./event-subEvent-bookingAvailability.json"
+      },
+      "bookingInfo": {
+        "$ref": "./event-subEvent-bookingInfo.json"
       },
       "hasOvernightStay": {
         "type": "boolean",
