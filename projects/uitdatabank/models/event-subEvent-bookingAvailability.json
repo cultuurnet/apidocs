@@ -1,10 +1,19 @@
 {
   "title": "event.subEvent.bookingAvailability",
   "type": "object",
-  "description": "Indicates whether the subevent still has tickets or reservations available. Currently contains a `type` that can be `Available` or `Unavailable`.",
+  "description": "Indicates whether the subevent still has tickets or reservations available, and - when it is sold out - where interested attendees can register for a waiting list.",
   "properties": {
     "type": {
       "$ref": "./common-bookingAvailability-type.json"
+    },
+    "waitingListUrl": {
+      "allOf": [
+        { "$ref": "./common-string-uri.json" },
+        {
+          "description": "URL of an external page where interested attendees can register for a waiting list, in case tickets or reservations become available again after this date was fully booked.\n\nOptional, and only supported on events with calendarType `single` or `multiple`. Only present in the response when it is set.",
+          "example": "https://www.example.com/wachtlijst"
+        }
+      ]
     }
   },
   "required": ["type"]

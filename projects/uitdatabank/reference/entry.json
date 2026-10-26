@@ -1120,6 +1120,19 @@
                       "status": 400,
                       "detail": "Not allowed to update booking availability on calendar type: \"permanent\". Only single and multiple calendar types can be updated."
                     }
+                  },
+                  "waitingListUrl not allowed on the top level": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/",
+                          "error": "Property 'waitingListUrl' is not allowed"
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -3516,6 +3529,28 @@
                     }
                   ]
                 },
+                "Setting a waiting list on the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Unavailable",
+                        "waitingListUrl": "https://www.example.com/wachtlijst"
+                      }
+                    }
+                  ]
+                },
+                "Removing the waiting list of the third subEvent": {
+                  "value": [
+                    {
+                      "id": 2,
+                      "bookingAvailability": {
+                        "type": "Available",
+                        "waitingListUrl": ""
+                      }
+                    }
+                  ]
+                },
                 "Updating multiple": {
                   "value": [
                     {
@@ -3543,7 +3578,7 @@
               }
             }
           },
-          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with one exception: sending `\"childcare\": {}` removes the childcare times of that subEvent."
+          "description": "The subEvents to update, with the properties to update. \n\nEach subEvent must have an `id` property to indicate which subEvent should be updated. This `id` is the position of the subEvent in the list of subEvents on the parent event. For example `0` for the first subEvent, `1` for the second subEvent, and so on.\n\nAll other properties are optional, and only properties that are included will be updated. No subEvents or properties will be removed, with two exceptions: sending `\"childcare\": {}` removes the childcare times of that subEvent, and sending `bookingAvailability.waitingListUrl` as an empty string (`\"\"`) removes the waiting list URL of that subEvent."
         },
         "security": [
           {
