@@ -2439,7 +2439,8 @@
                 "Example": {
                   "value": {
                     "description": "Picture of the last publiq event",
-                    "copyrightHolder": "publiq"
+                    "copyrightHolder": "publiq",
+                    "isAiGenerated": false
                   }
                 }
               }
@@ -6112,7 +6113,8 @@
                 "Example": {
                   "value": {
                     "description": "Picture of the publiq office",
-                    "copyrightHolder": "publiq"
+                    "copyrightHolder": "publiq",
+                    "isAiGenerated": false
                   }
                 }
               }
@@ -8365,7 +8367,8 @@
                     "id": "546a90cd-a238-417b-aa98-1b6c50c1345c",
                     "language": "nl",
                     "copyrightHolder": "publiq",
-                    "description": "Picture of the last publiq event"
+                    "description": "Picture of the last publiq event",
+                    "isAiGenerated": false
                   }
                 }
               }
