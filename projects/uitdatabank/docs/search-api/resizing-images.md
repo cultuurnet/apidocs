@@ -17,7 +17,7 @@ GET /image/{imageId}?maxwidth=800&maxheight=600
 Use `width` and/or `height` instead if the image must have exactly the given dimensions. If the aspect ratio of the original image is different, whitespace is added to fill the remaining space. You can set the color of this whitespace with `bgcolor`.
 
 ```
-GET /image/{imageId}?width=800&height=600&bgcolor=fff
+GET /image/{imageId}?width=800&height=600&bgcolor=ffffff
 ```
 
 ## How to crop
