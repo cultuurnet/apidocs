@@ -488,7 +488,7 @@ You can also set or change it per event, place or organizer, in the same ways as
 
 * By including `isAiGenerated` in the `mediaObject` (events and places) or `images` (organizers) list when creating or updating an event, place or organizer in its entirety.
 * Via [`PUT /events/{eventId}/images/{imageId}`](/reference/entry.json/paths/~1events~1{eventId}~1images~1{imageId}/put) and [`PUT /places/{placeId}/images/{imageId}`](/reference/entry.json/paths/~1places~1{placeId}~1images~1{imageId}/put).
-* Via the [`PATCH /organizers/{organizerId}/images`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/patch) endpoint.
+* Via the [`POST /organizers/{organizerId}/images`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/post) and [`PATCH /organizers/{organizerId}/images`](/reference/entry.json/paths/~1organizers~1{organizerId}~1images/patch) endpoints.
 
 For example:
 
