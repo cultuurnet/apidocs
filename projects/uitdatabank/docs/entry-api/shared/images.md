@@ -503,7 +503,7 @@ For example:
 }
 ```
 
-The `isAiGenerated` property is only included in the JSON of an image when it has a value. Once it has a value, you can change it from `true` to `false` or vice versa, but you cannot remove it anymore. If you omit `isAiGenerated` or send `null` in an update, the current value is kept.
+The `isAiGenerated` property is only included in the JSON of an image when it has a value. Once it has a value, you can change it from `true` to `false` or vice versa, but you cannot remove it anymore. If you omit `isAiGenerated` in an update, the current value is kept.
 
 ## Removing a linked image
 
