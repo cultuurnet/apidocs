@@ -6,7 +6,7 @@ Images in UiTdatabank can have a size up to 20MB. Therefore, we highly recommend
 
 ## How to resize
 
-To resize an image, add one or more parameters to the URL of the image.
+To resize an image, add one or more parameters to the image URL found in the `contentUrl` property of the image (e.g. `https://images.uitdatabank.be/{imageId}.jpeg`).
 
 Use `maxwidth` and/or `maxheight` to scale the image down so it fits within the given bounds. The aspect ratio of the image is preserved, so no whitespace is added and nothing is cut off.
 
