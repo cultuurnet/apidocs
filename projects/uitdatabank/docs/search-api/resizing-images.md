@@ -28,7 +28,7 @@ If you need an image with exact dimensions but don't want whitespace, you can cr
 GET /image/{imageId}?width=800&height=600&crop=auto
 ```
 
-With `crop=auto` the image is centered and cropped as little as possible. You can also let the crop focus on a specific area of the image, for example on faces (`crop=faces`) or on the busiest part of the image (`crop=entropy`). See [crop](#crop) for all possible values.
+With `crop=auto` the crop focuses on the busiest part of the image (the same as `crop=entropy`). See [crop](#crop) for all possible values.
 
 ## AI label
 
