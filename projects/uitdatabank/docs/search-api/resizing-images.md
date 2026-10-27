@@ -61,7 +61,7 @@ With the `crop` parameter unwanted outer areas from the image will be removed. D
 * `auto`: crops the image to the size specified by width and height. This parameter centers and minimally crops to preserve aspect ratio.
 * `bottom`: crops from the bottom of the image, up.
 * `edges`: crops the image to the size specified by width and height. This parameter finds and crops to an area of interest by performing edge detection, looking for objects within the image.
-* `entropy`: crops the image to an aera of interest by looking for busy sections in the image.
+* `entropy`: crops the image to an area of interest by looking for busy sections in the image.
 * `faces`: centers the crop to faces, if faces are detected in the image.
 * `focalPoint`: targets and zooms to a portion of the image.
 * `left`: crops from the left of the image, right.
@@ -141,7 +141,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?madwidth=
+GET /image/{imageId}?maxwidth=
 ```
 
 ### paddingWidth
@@ -164,7 +164,7 @@ With the `rotate` parameter you can change the orientation of the image, by rota
 
 **Possible values**
 
-Possitive integers in the range of `0` - `359`
+Positive integers in the range of `0` - `359`
 
 **Example**
 
@@ -174,7 +174,7 @@ GET /image/{imageId}?rot=180
 
 ### width
 
-Width the `width` parameter you can force the width to certain dimensions. Whitespace will be added if the aspect ratio is different.
+With the `width` parameter you can force the width to certain dimensions. Whitespace will be added if the aspect ratio is different.
 
 **Possible values**
 
