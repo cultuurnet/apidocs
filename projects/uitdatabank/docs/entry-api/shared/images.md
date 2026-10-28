@@ -519,4 +519,6 @@ Alternatively you can use one of the following endpoints to remove a specific li
 
 ## Resizing an image
 
-Coming soon. <!-- @todo link to resizing guide in Search API when finished -->
+Uploaded images are stored in their original size, which can be quite large. We highly recommend not showing these originals directly on your website or app. Instead, request a resized version that fits your layout, so your pages load faster without visible loss of quality.
+
+You can do this by adding resize parameters to the URL of an image. See [Resizing images](../../search-api/resizing-images.md) for the available parameters and examples.
