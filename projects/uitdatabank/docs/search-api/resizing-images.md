@@ -17,7 +17,7 @@ GET /image/{imageId}?maxwidth=800&maxheight=600
 Use `width` and/or `height` instead if the image must have exactly the given dimensions. If the aspect ratio of the original image is different, whitespace is added to fill the remaining space. You can set the color of this whitespace with `bgcolor`.
 
 ```
-GET /image/{imageId}?width=800&height=600&bgcolor=ffffff
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?width=800&height=600&bgcolor=ffffff
 ```
 
 ## How to crop
@@ -25,7 +25,7 @@ GET /image/{imageId}?width=800&height=600&bgcolor=ffffff
 If you need an image with exact dimensions but don't want whitespace, you can crop it instead. Combine `width` and `height` with the `crop` parameter to remove the outer areas of the image that don't fit.
 
 ```
-GET /image/{imageId}?width=800&height=600&crop=auto
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?width=800&height=600&crop=auto
 ```
 
 With `crop=auto` the crop focuses on the busiest part of the image (the same as `crop=entropy`). See [crop](#crop) for all possible values.
@@ -49,7 +49,7 @@ Any hex code (3 or 6 characters), without `#`
 **Example**
 
 ```
-GET /image/{imageId}?bgcolor=fff
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?bgcolor=fff
 ```
 
 ### crop
@@ -64,7 +64,7 @@ With the `crop` parameter unwanted outer areas from the image will be removed. C
 **Example**
 
 ```
-GET /image/{imageId}?width=800&height=600&crop=edges
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?width=800&height=600&crop=edges
 ```
 
 ### format
@@ -78,7 +78,7 @@ See [imgix documentation](https://docs.imgix.com/apis/rendering/format/fm)
 **Example**
 
 ```
-GET /image/{imageId}?format=png
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?format=png
 ```
 
 ### flip
@@ -92,7 +92,7 @@ GET /image/{imageId}?format=png
 **Example**
 
 ```
-GET /image/{imageId}?flip=h
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?flip=h
 ```
 
 ### height
@@ -106,7 +106,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?height=400
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?height=400
 ```
 
 ### maxheight
@@ -120,7 +120,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?maxheight=
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?maxheight=
 ```
 
 ### maxwidth
@@ -134,7 +134,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?maxwidth=
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?maxwidth=
 ```
 
 ### paddingWidth
@@ -148,7 +148,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?paddingWidth=
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?paddingWidth=
 ```
 
 ### rotate
@@ -162,7 +162,7 @@ Positive integers in the range of `0` - `359`
 **Example**
 
 ```
-GET /image/{imageId}?rotate=180
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?rotate=180
 ```
 
 ### width
@@ -176,7 +176,7 @@ Any positive integer.
 **Example**
 
 ```
-GET /image/{imageId}?width=
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?width=
 ```
 
 ## Examples
