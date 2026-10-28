@@ -11,7 +11,7 @@ To resize an image, add one or more parameters to the image URL found in the `co
 Use `maxwidth` and/or `maxheight` to scale the image down so it fits within the given bounds. The aspect ratio of the image is preserved, so no whitespace is added and nothing is cut off.
 
 ```
-GET /image/{imageId}?maxwidth=800&maxheight=600
+GET https://images.uitdatabank.be/{imageId}.{fileExtension}?maxwidth=800&maxheight=600
 ```
 
 Use `width` and/or `height` instead if the image must have exactly the given dimensions. If the aspect ratio of the original image is different, whitespace is added to fill the remaining space. You can set the color of this whitespace with `bgcolor`.
