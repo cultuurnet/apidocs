@@ -44,7 +44,7 @@ With the `bgcolor` parameter you can set the background / whitespace color of an
 
 **Possible values**
 
-Any hex code (6-char)
+Any hex code (3 or 6 characters), without `#`
 
 **Example**
 
@@ -54,24 +54,17 @@ GET /image/{imageId}?bgcolor=fff
 
 ### crop
 
-With the `crop` parameter unwanted outer areas from the image will be removed. Depending on the value you add to this parameter, different areas will be removed.
+With the `crop` parameter unwanted outer areas from the image will be removed. Cropping only works in combination with both `width` and `height`; without them, `crop` has no effect.
 
 **Possible values**
 
-* `auto`: crops the image to the size specified by width and height. This parameter centers and minimally crops to preserve aspect ratio.
-* `bottom`: crops from the bottom of the image, up.
-* `edges`: crops the image to the size specified by width and height. This parameter finds and crops to an area of interest by performing edge detection, looking for objects within the image.
-* `entropy`: crops the image to an area of interest by looking for busy sections in the image.
-* `faces`: centers the crop to faces, if faces are detected in the image.
-* `focalPoint`: targets and zooms to a portion of the image.
-* `left`: crops from the left of the image, right.
-* `right`: crops from the right of the image, left.
-* `top`: crops from the top of the image, down.
+* `auto`: crops the image to the size specified by `width` and `height`, focusing on the busiest part of the image.
+* `edges`: crops the image to the size specified by `width` and `height`, focusing on an area of interest found by edge detection (looking for objects within the image).
 
 **Example**
 
 ```
-GET /image/{imageId}?crop=entropy
+GET /image/{imageId}?width=800&height=600&crop=edges
 ```
 
 ### format
@@ -169,7 +162,7 @@ Positive integers in the range of `0` - `359`
 **Example**
 
 ```
-GET /image/{imageId}?rot=180
+GET /image/{imageId}?rotate=180
 ```
 
 ### width
