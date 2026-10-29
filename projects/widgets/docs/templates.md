@@ -59,3 +59,12 @@ Dit is hetzelfde template als het [agenda template](#Agenda), met alle UiTPAS-in
 * ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
 
 Als je het UiTPAS en Paspartoe template kies, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).
+
+## Buitenschoolse opvang en activiteiten (BOA)
+
+Dit is hetzelfde template als het [agenda template](#Agenda), maar de inhoud, weergave en filters van deze kalender zijn specifiek afgestemd op activiteiten voor kinderen alleen (BOA).
+
+* ✅ Geschikt wanneer je een doorzoekbare agenda met opvang en (naschoolse) activiteiten voor kinderen wilt configureren.
+* ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
+
+Als je het BOA template kies, kan je meteen starten met het configureren van de verschillende blokken in je agenda ([zoekbox](./configureren/zoekbox.md), [zoekresultaten](./configureren/zoekresultaten.md), [verfijningen](./configureren/verfijningen.md)).
