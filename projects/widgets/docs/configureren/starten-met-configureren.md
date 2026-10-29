@@ -27,7 +27,7 @@ Binnen dit template kies je zelf welke blokken je toevoegt en je dus kan configu
 
 > Als je nog geen rijen en blokken aan je leeg template hebt toegevoegd, lees dan eerst de documentatie over [rijen en blokken](../rijen-en-blokken.md).
 
-## Agenda & UiTPAS en Paspartoe template
+## Agenda, BOA & UiTPAS en Paspartoe template
 
 Deze templates bevatten 4 verschillende blokken, die je elk apart dient te configureren:
 
