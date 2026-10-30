@@ -23,7 +23,7 @@
         },
         "hasOvernightStay": true,
         "capacity": {
-          "type": "limited",
+          "type": "Limited",
           "maximum": 30,
           "taken": 12
         }
@@ -97,7 +97,7 @@
             "$ref": "./event-subEvent-capacity.json"
           },
           {
-            "description": "The capacity of this occurrence. Only present in the response when it is known and the caller is allowed to edit the event.\n\nWhen replacing an existing event, a subEvent without `capacity` keeps the capacity of the current subEvent with the same `startDate`. If the `startDate` changed, there is no match and the capacity becomes unknown. Send an empty object (`{}`) to clear it."
+            "description": "The capacity of this occurrence. Only present in the response when it is known and the caller is allowed to edit the event.\n\nWhen replacing an existing event, a subEvent without `capacity` keeps the capacity of the current subEvent with the same `startDate` and `endDate`. If there is no such subEvent, or more than one, the capacity becomes unknown. Send an empty object (`{}`) to clear it."
           }
         ]
       }
