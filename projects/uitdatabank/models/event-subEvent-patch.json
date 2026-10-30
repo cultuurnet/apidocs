@@ -13,7 +13,25 @@
           "start": "08:00",
           "end": "23:00"
         },
-        "hasOvernightStay": true
+        "hasOvernightStay": true,
+        "capacity": {
+          "type": "limited",
+          "maximum": 30,
+          "taken": 12
+        }
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "capacity": {
+          "type": "unlimited",
+          "taken": 140
+        }
+      },
+      {
+        "id": 1,
+        "capacity": {}
       }
     ],
     [
@@ -180,6 +198,16 @@
         "type": "boolean",
         "description": "Indicates whether this occurrence involves an overnight stay. `true` is only accepted when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\"); `false` is accepted on other events but not stored. When omitted, the current value of the subEvent is left unchanged. Removed when term `0.57.0.0.0` is removed from the event.",
         "example": true
+      },
+      "capacity": {
+        "allOf": [
+          {
+            "$ref": "./event-subEvent-capacity.json"
+          },
+          {
+            "description": "The capacity of this occurrence. If this property is omitted entirely, the existing capacity is not altered, also when `startDate` or `endDate` change. If included, it replaces the current capacity. Send an empty object (`{}`) to clear it."
+          }
+        ]
       }
     },
     "required": [

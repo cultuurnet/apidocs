@@ -20,7 +20,12 @@
         "bookingInfo": {
           "url": "https://www.example.com/reserve"
         },
-        "hasOvernightStay": true
+        "hasOvernightStay": true,
+        "capacity": {
+          "type": "limited",
+          "maximum": 30,
+          "taken": 12
+        }
       }
     ],
     [
@@ -77,6 +82,16 @@
         "type": "boolean",
         "description": "Indicates whether this occurrence involves an overnight stay. `true` is only accepted when the event has a term with id `0.57.0.0.0` (\"Kamp of vakantie\"); `false` is accepted on other events but not stored. When omitted, the subEvent has no value. Removed when term `0.57.0.0.0` is removed from the event.",
         "example": true
+      },
+      "capacity": {
+        "allOf": [
+          {
+            "$ref": "./event-subEvent-capacity.json"
+          },
+          {
+            "description": "The capacity of this occurrence. When included, it replaces the current capacity. Send an empty object (`{}`) to clear it.\n\nWhen omitted, the subEvent keeps the capacity of the current subEvent with the same `startDate`. If the `startDate` changed, there is no match and the capacity becomes unknown."
+          }
+        ]
       }
     },
     "required": [
