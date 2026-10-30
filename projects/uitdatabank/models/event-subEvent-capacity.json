@@ -1,0 +1,72 @@
+{
+  "title": "event.subEvent.capacity",
+  "type": "object",
+  "description": "The capacity of this occurrence: whether the number of places is limited, and how many places are taken. Only supported on events with calendarType `single` or `multiple`.\n\nWhen a subEvent has no `capacity`, its capacity is unknown. Send an empty object (`{}`) to clear the capacity and make it unknown again.\n\nCapacity is commercially sensitive and is only returned to callers that are allowed to edit the event. It is never available through the Search API.",
+  "examples": [
+    {
+      "type": "limited",
+      "maximum": 30,
+      "taken": 12
+    },
+    {
+      "type": "unlimited",
+      "taken": 140
+    },
+    {}
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "limited",
+        "unlimited"
+      ],
+      "description": "Required, unless `capacity` is an empty object.\n\n- `limited`: There is a maximum number of places, given in `maximum`.\n- `unlimited`: There is deliberately no maximum number of places.",
+      "example": "limited"
+    },
+    "maximum": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The maximum number of places. Required when `type` is `limited`, not allowed when `type` is `unlimited`.",
+      "example": 30
+    },
+    "taken": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of places that are booked, as an absolute number. Optional for both types. Can be higher than `maximum`, because overbooking happens.",
+      "example": 12
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "maxProperties": 0
+    }
+  ],
+  "if": {
+    "required": [
+      "type"
+    ],
+    "properties": {
+      "type": {
+        "const": "limited"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "maximum"
+    ]
+  },
+  "else": {
+    "not": {
+      "required": [
+        "maximum"
+      ]
+    }
+  }
+}
