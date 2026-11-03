@@ -284,6 +284,12 @@
             },
             {
               "type": "item",
+              "title": "Resizing images",
+              "uri": "/docs/search-api/resizing-images.md",
+              "slug": "search-api/resizing-images"
+            },
+            {
+              "type": "item",
               "title": "Labels",
               "uri": "/docs/entry-api/shared/labels.md",
               "slug": "entry-api/shared/labels"
