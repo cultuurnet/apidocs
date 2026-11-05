@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "type": "item",
+      "title": "Introduction",
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
+    },
+    {
+      "type": "divider",
+      "title": "API References"
+    },
+    {
+      "type": "item",
+      "title": "Example API",
+      "uri": "reference/example-api.json"
+    }
+  ]
+}

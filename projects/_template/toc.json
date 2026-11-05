@@ -3,7 +3,8 @@
     {
       "type": "item",
       "title": "Introduction",
-      "uri": "docs/introduction.md"
+      "uri": "docs/introduction.md",
+      "slug": "introduction"
     },
     {
       "type": "divider",
