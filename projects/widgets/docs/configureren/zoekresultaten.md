@@ -69,29 +69,18 @@ De header is een HTML-blok waarin je tekst of afbeeldingen kan toevoegen.
 
 In de lijstelementen bepaal je welke informatieve elementen zichtbaar moeten zijn in het agendaoverzicht.
 
-#### Type
+#### Badges
+Badges tonen in één oogopslag de belangrijkste eigenschappen van een activiteit, zoals het type of thema of de doelgroep. Je kan zelf bepalen welke badges zichtbaar zijn in je widget.
+* `Type`: toont een badge met het evenementtype (bijvoorbeeld `concert`) 
+* `Thema`: toont een badge met het thema (bijvoorbeeld `pop en rock`) 
+* `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen (zonder hun ouders) zij (bijvoorbeeld kampen)
+* `Overnachting`: toont in een badge of de activiteit (kamp) met, zonder of deels met overnachting is.
 
-Bepaal of voor elk evenement een badge met het evenementtype (bijvoorbeeld `concert`) mag worden getoond of niet.
-
-#### Thema
-
-Bepaal of voor elk evenement een badge met het thema (bijvoorbeeld `pop en rock`) mag worden getoond of niet.
-
-#### Vlieg-logo
-
-Bepaal of bij evenementen voor kinderen een "Vlieg" mag worden weergegeven of niet.
-
-#### UiTPAS-logo
-
-Bepaal of het UiTPAS-logo mag worden weergegeven bij evenementen voor UiTPAS en Paspartoe of niet.
-
-#### Museumpas-logo
-
-Bepaal of het Museumpas-logo mag worden weergegeven bij evenementen die toegankelijk zijn met Museumpassmusées of niet.
-
-#### UiTX-logo
-
-Bepaal of het UiTX-logo mag worden weergegeven bij culturele evenementen die geschikt zijn voor jongeren tussen 16 en 26 jaar.
+#### Logo's
+* `Vlieg-logo`: toont een Vlieg-label bij activiteiten voor kinderen.
+* `UiTPAS-logo`: toont een UiTPAS-logo bij activiteiten voor UiTPAS en Paspartoe.
+* `Museumpas-logo`: toont een Museumpas-logo bij activiteiten waar je aan kan deelnemen met Museumpassmusées.
+* `UiTX-logo`: toont een UiTX-logo bij activiteiten voor jongeren (16-26 jaar).
 
 #### Beschrijving
 
@@ -213,14 +202,6 @@ Hier kan je bepalen welke elementen (informatie) getoond mag worden op de detail
 
 > In tegenstelling tot bij de zoekresultaten is het niet mogelijk om voor de detailpagina een preview van je aanpassingen te zien.
 
-#### Type
-
-Bepaal of een badge met het type (bijvoorbeeld `concert`) mag worden getoond of niet.
-
-#### Thema
-
-Bepaal of een badge met het thema van het evenement (bijvoorbeeld `pop en rock`) getoond mag worden of niet.
-
 #### Google Maps kaart
 
 Bepaal of een link naar Google Maps met de route naar de locatie van het evenement mag worden getoond of niet.
@@ -267,18 +248,6 @@ Standaard stuurt de terugknop de bezoeker altijd terug naar de laatst bezochte p
 * **URL terugknop**
 
 Hiermee kan je de exacte bestemming (url) voor de terugknop instellen, bijvoorbeeld `https://www.uitinvlaanderen.be/agenda`.
-
-#### Vlieg-logo
-
-Bepaal of een "Vlieg" mag worden getoond naast evenementen voor kinderen of niet.
-
-#### UiTPAS-logo
-
-Bepaal of het UiTPAS-logo mag worden getoond naast evenementen voor UiTPAS en Paspartoe of niet.
-
-#### Museumpas-logo
-
-Bepaal of het Museumpas-logo mag worden getoond bij evenementen die toegankelijk zijn met Museumpassmusées of niet.
 
 #### Beschrijving
 
@@ -366,6 +335,17 @@ Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdat
 
 > Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
+#### Begeleid vervoer
+
+Bepaal of je vertreklocaties met begeleid vervoer wilt tonen bij de activiteit. Zo zien bezoekers meteen waar ze kunnen verzamelen of opstappen. 
+In UiTdatabank kunnen organisatoren opstapplaatsen koppelen wanneer er gezamenlijk vervoer of begeleiding naar de eindlocatie is. Voorbeelden:
+* Naschoolse activiteit: Een school organiseert begeleiding (bv. een wandelrij of schoolbus) naar de tekenacademie. De school wordt dan als vertreklocatie getoond.
+* Groepsuitstap: Een vereniging organiseert een museumbezoek met een gezamenlijke busrit. De opstapplaats wordt getoond als locatie met begeleid vervoer.
+
+#### Veelgestelde vragen
+
+Kies of je de veelgestelde vragen over een activiteit toont. Dit onderdeel bundelt praktische informatie voor bezoekers, zoals richtlijnen rond bereikbaarheid, faciliteiten of wat zij zelf moeten voorzien.
+
 #### Toon gerelateerde artikels
 
 Bepaal of aan evenementen gekoppelde redactionele content (zoals recensies, aankondigingen van evenementen, interviews) mogen worden getoond of niet.
@@ -380,9 +360,22 @@ Met deze instelling kan je bepalen om alleen redactionele content van van specif
 
 Als je meerdere waarden wilt toevoegen, moet je ze scheiden met een puntkomma (`;`).
 
-### Extra parameters
+#### Badges
+Badges tonen in één oogopslag de belangrijkste eigenschappen van een activiteit, zoals het type of thema of de doelgroep. Je kan zelf bepalen welke badges zichtbaar zijn in je widget.
+* `Type`: toont een badge met het evenementtype (bijvoorbeeld `concert`) 
+* `Thema`: toont een badge met het thema (bijvoorbeeld `pop en rock`) 
+* `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen (zonder hun ouders) zij (bijvoorbeeld kampen)
+* `Overnachting`: toont in een badge of de activiteit (kamp) met, zonder of deels met overnachting is.
 
-In de sectie extra parameters bepaal je welke evenementen in je agenda worden weergegeven.
+#### Logo's
+* `Vlieg-logo`: toont een Vlieg-label bij activiteiten voor kinderen.
+* `UiTPAS-logo`: toont een UiTPAS-logo bij activiteiten voor UiTPAS en Paspartoe.
+* `Museumpas-logo`: toont een Museumpas-logo bij activiteiten waar je aan kan deelnemen met Museumpassmusées.
+* `UiTX-logo`: toont een UiTX-logo bij activiteiten voor jongeren (16-26 jaar).
+
+### Zoekparameters
+
+In de sectie zoekparameters bepaal je welke evenementen in je agenda worden weergegeven.
 
 #### Query
 
