@@ -362,9 +362,9 @@ Badges tonen in één oogopslag de belangrijkste eigenschappen van een activitei
 * `Museumpas-logo`: toont een Museumpas-logo bij activiteiten waar je aan kan deelnemen met Museumpassmusées.
 * `UiTX-logo`: toont een UiTX-logo bij activiteiten voor jongeren (16-26 jaar).
 
-### Extra parameters
+### Zoekparameters
 
-In de sectie extra parameters bepaal je welke evenementen in je agenda worden weergegeven.
+In de sectie zoekparameters bepaal je welke evenementen in je agenda worden weergegeven.
 
 #### Query
 
