@@ -121,7 +121,7 @@ Badges tonen in één oogopslag de belangrijkste eigenschappen van een activitei
 * `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen (zonder hun ouders) zij (bijvoorbeeld kampen)
 * `Overnachting`: toont in een badge of de activiteit (kamp) met, zonder of deels met overnachting is.
 
-### Logo's
+#### Logo's
 * `Vlieg-logo`: toont een Vlieg-label bij activiteiten voor kinderen.
 * `UiTPAS-logo`: toont een UiTPAS-logo bij activiteiten voor UiTPAS en Paspartoe.
 * `Museumpas-logo`: toont een Museumpas-logo bij activiteiten waar je aan kan deelnemen met Museumpassmusées.
