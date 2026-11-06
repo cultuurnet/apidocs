@@ -69,29 +69,18 @@ De header is een HTML-blok waarin je tekst of afbeeldingen kan toevoegen.
 
 In de lijstelementen bepaal je welke informatieve elementen zichtbaar moeten zijn in het agendaoverzicht.
 
-#### Type
+#### Badges
+Badges tonen in één oogopslag de belangrijkste eigenschappen van een activiteit, zoals het type of thema of de doelgroep. Je kan zelf bepalen welke badges zichtbaar zijn in je widget.
+* `Type`: toont een badge met het evenementtype (bijvoorbeeld `concert`) 
+* `Thema`: toont een badge met het thema (bijvoorbeeld `pop en rock`) 
+* `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen (zonder hun ouders) zij (bijvoorbeeld kampen)
+* `Overnachting`: toont in een badge of de activiteit (kamp) met, zonder of deels met overnachting is.
 
-Bepaal of voor elk evenement een badge met het evenementtype (bijvoorbeeld `concert`) mag worden getoond of niet.
-
-#### Thema
-
-Bepaal of voor elk evenement een badge met het thema (bijvoorbeeld `pop en rock`) mag worden getoond of niet.
-
-#### Vlieg-logo
-
-Bepaal of bij evenementen voor kinderen een "Vlieg" mag worden weergegeven of niet.
-
-#### UiTPAS-logo
-
-Bepaal of het UiTPAS-logo mag worden weergegeven bij evenementen voor UiTPAS en Paspartoe of niet.
-
-#### Museumpas-logo
-
-Bepaal of het Museumpas-logo mag worden weergegeven bij evenementen die toegankelijk zijn met Museumpassmusées of niet.
-
-#### UiTX-logo
-
-Bepaal of het UiTX-logo mag worden weergegeven bij culturele evenementen die geschikt zijn voor jongeren tussen 16 en 26 jaar.
+### Logo's
+* `Vlieg-logo`: toont een Vlieg-label bij activiteiten voor kinderen.
+* `UiTPAS-logo`: toont een UiTPAS-logo bij activiteiten voor UiTPAS en Paspartoe.
+* `Museumpas-logo`: toont een Museumpas-logo bij activiteiten waar je aan kan deelnemen met Museumpassmusées.
+* `UiTX-logo`: toont een UiTX-logo bij activiteiten voor jongeren (16-26 jaar).
 
 #### Beschrijving
 
