@@ -335,6 +335,17 @@ Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdat
 
 > Wil je meer informatie over het verrijken van voorzieningen voor mensen met een beperking? Contacteer <partnerships@publiq.be>.
 
+#### Begeleid vervoer
+
+Bepaal of je vertreklocaties met begeleid vervoer wilt tonen bij de activiteit. Zo zien bezoekers meteen waar ze kunnen verzamelen of opstappen. 
+In UiTdatabank kunnen organisatoren opstapplaatsen koppelen wanneer er gezamenlijk vervoer of begeleiding naar de eindlocatie is. Voorbeelden:
+* Naschoolse activiteit: Een school organiseert begeleiding (bv. een wandelrij of schoolbus) naar de tekenacademie. De school wordt dan als vertreklocatie getoond.
+* Groepsuitstap: Een vereniging organiseert een museumbezoek met een gezamenlijke busrit. De opstapplaats wordt getoond als locatie met begeleid vervoer.
+
+#### Veelgestelde vragen
+
+Kies of je de veelgestelde vragen over een activiteit toont. Dit onderdeel bundelt praktische informatie voor bezoekers, zoals richtlijnen rond bereikbaarheid, faciliteiten of wat zij zelf moeten voorzien.
+
 #### Toon gerelateerde artikels
 
 Bepaal of aan evenementen gekoppelde redactionele content (zoals recensies, aankondigingen van evenementen, interviews) mogen worden getoond of niet.
