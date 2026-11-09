@@ -43,4 +43,4 @@ The API looks the text up in several sources in a fixed order, and returns the r
 
 ## Do not search on every keystroke
 
-The Geo API is not an autocomplete service. Call it when the user has finished typing (after a pause of a few hundred milliseconds, or on submit), and only for queries of three characters or more. Requests are rate limited per client.
+The Geo API is not an autocomplete service. Call it when the user has finished typing (after a pause of a few hundred milliseconds, or on submit), and only for queries of two characters or more.

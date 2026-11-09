@@ -56,7 +56,8 @@ When a text does not match any location, the response is a `404` with type `http
 * `via`: points the route must pass, in order. Repeat the parameter: `?via=51.05,3.72&via=51.04,3.73`.
 * `mode`: `car` (default), `bicycle` or `pedestrian`.
 * `alternatives`: ask for up to 3 alternative routes next to the recommended one. They follow in `member` after the recommended route; fewer may be returned when no sensible alternatives exist. Alternatives cannot be combined with `via` or `departAt`.
-* `departAt`: an ISO 8601 date and time, for roads that are closed at certain hours. The time is interpreted as local time at the origin.
+* `departAt`: an ISO 8601 date and time with an offset or `Z`, for roads that are closed at certain hours. The instant is converted to local time at the origin.
+* `country`: the country used to resolve `origin`, `destination` and `via` when they are text (`BE` by default). It does not restrict the route itself, which may cross a border.
 
 ## Drawing the route
 

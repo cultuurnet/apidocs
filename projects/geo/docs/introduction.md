@@ -31,4 +31,4 @@ Behind the scenes the API combines several sources, for example the places in Ui
 | Testing     | `https://geo-test.publiq.be` |
 | Production  | `https://geo.publiq.be`      |
 
-Both environments return the same data. Use the testing environment while you build, and switch to production when you go live.
+Use the testing environment while you build, and switch to production when you go live. The testing environment may be connected to the test environments of the sources behind the API, so results can differ from production.

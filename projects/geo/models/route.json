@@ -21,8 +21,14 @@
       "description": "The means of transport the route was calculated for."
     },
     "bounds": {
-      "$ref": "./bounds.json",
-      "description": "The extent of the route, enlarged by `boundsPadding` metres on every side when you pass that parameter. Meant to fit a map or to search for events near the route."
+      "allOf": [
+        {
+          "$ref": "./bounds.json"
+        },
+        {
+          "description": "The extent of the route, enlarged by `boundsPadding` metres on every side when you pass that parameter. Meant to fit a map or to search for events near the route."
+        }
+      ]
     },
     "geometry": {
       "$ref": "./geometry.json"

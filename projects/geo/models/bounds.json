@@ -4,12 +4,24 @@
   "description": "A rectangular area on the map, given by its south-west and north-east corners. Use it to fit a map, or as the `bounds` filter of UiTdatabank's Search API (`southWest.latitude,southWest.longitude|northEast.latitude,northEast.longitude`).",
   "properties": {
     "southWest": {
-      "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/uitdatabank/models/common-coordinates.json",
-      "description": "The south-west (bottom-left) corner."
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/uitdatabank/models/common-coordinates.json"
+        },
+        {
+          "description": "The south-west (bottom-left) corner."
+        }
+      ]
     },
     "northEast": {
-      "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/uitdatabank/models/common-coordinates.json",
-      "description": "The north-east (top-right) corner."
+      "allOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/uitdatabank/models/common-coordinates.json"
+        },
+        {
+          "description": "The north-east (top-right) corner."
+        }
+      ]
     }
   },
   "required": [

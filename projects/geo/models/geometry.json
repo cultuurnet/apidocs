@@ -4,7 +4,7 @@
   "oneOf": [
     {
       "type": "string",
-      "description": "Encoded polyline, precision 6."
+      "description": "Encoded polyline, precision 6. The example encodes the three points of the GeoJSON example."
     },
     {
       "type": "object",
@@ -43,7 +43,7 @@
     }
   ],
   "examples": [
-    "ouhzBuzrdHtAiB|@}@",
+    "_aak`BokjbF~|I_jAvvIod@",
     {
       "type": "LineString",
       "coordinates": [
