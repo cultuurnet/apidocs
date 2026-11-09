@@ -46,26 +46,40 @@
       "maxProperties": 0
     }
   ],
-  "if": {
-    "required": [
-      "type"
-    ],
-    "properties": {
-      "type": {
-        "const": "Limited"
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "Limited"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "maximum"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "const": "Unlimited"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "maximum": false
+        }
       }
     }
-  },
-  "then": {
-    "required": [
-      "maximum"
-    ]
-  },
-  "else": {
-    "not": {
-      "required": [
-        "maximum"
-      ]
-    }
-  }
+  ]
 }
