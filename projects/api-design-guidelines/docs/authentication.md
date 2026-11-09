@@ -18,7 +18,7 @@ The full configuration of each environment can be found in its OpenID Connect di
 
 ## Client identification guidelines
 
-* Read [how client identification must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/client-identification).
+* Read [how client identification must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/methods/client-identification).
 
 When using client identification, APIs should support both the `x-client-id` header and `clientId` URL query parameter. If both are provided, preference should be given to the header.
 
@@ -49,8 +49,8 @@ The above example indicates that the client has access to UiTdatabank's Search A
 
 ## Token guidelines
 
-* Read [how client access tokens must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/client-access-token).
-* Read [how user access tokens must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/user-access-token).
+* Read [how client access tokens must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/methods/client-access-token).
+* Read [how user access tokens must work from an integrator's perspective](https://docs.publiq.be/docs/authentication/methods/user-access-token).
 
 When using tokens, endpoints should support both client and user access tokens wherever possible.
 
@@ -149,7 +149,7 @@ This is safe because in Keycloak, a client can only get scopes that are assigned
 
 A client cannot get a scope that is not assigned to it, even if it requests it.
 
-Read how integrators request optional API scopes for [client access tokens](https://docs.publiq.be/docs/authentication/client-access-token#api-scopes) and [user access tokens](https://docs.publiq.be/docs/authentication/user-access-token#api-scopes).
+Read how integrators request optional API scopes for [client access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token#api-scopes) and [user access tokens](https://docs.publiq.be/docs/authentication/methods/user-access-token#api-scopes).
 
 <!-- theme: danger -->
 
