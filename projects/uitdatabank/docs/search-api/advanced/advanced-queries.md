@@ -313,8 +313,6 @@ Setting childrenOnly to `false` only returns events that are not targeted at chi
 GET /events/?q=childrenOnly:false
 ```
 
-> Events set to `childrenOnly: true` that were created by other clients are only returned if your client has been granted access by publiq. Without that access you only find the children-only events created by *your* client, in every search: with or without `childrenOnly` in your query. Requests that are not linked to a client never return children-only events. If you have a use case that requires broader access to events targeted towards children only, please contact us via [publiq.be/boa](https://publiq.be/boa).
-
 ### completedLanguages
 
 All documents created in UiTdatabank are available in Dutch (NL). Besides Dutch, content editors can use UiTdatabank to translate the name and description of their documents in French (FR), German (DE) and English (EN). The API supports translations in every [two-letter language ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
