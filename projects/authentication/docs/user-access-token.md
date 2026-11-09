@@ -291,7 +291,7 @@ The following table gives an overview of all the required/optional parameters:
 | `response_type`         | `code`                                                                                                                                                                                               | **Required**                                                          | Indicates which OAuth2 grant type will be used. **Must** be set to `code` for the "Authorization Code" flows documented on this page.                                                                                                                            |
 | `client_id`             | Your application's client id                                                                                                                                                                         | **Required**                                                          | Used to validate the authorization code when exchanging it for a user access token.                                                                                                                                                                              |
 | `redirect_uri`          | For example `https://your-application.com/authorize`                                                                                                                                                 | **Required**                                                          | A URL of your application starting with `https://` to redirect the user back to after logging in. A `code` query parameter with the authorization code that can be exchanged for a user access token by your application will be appended at the end.            |
-| `scope`                 | A space-delimited string with one or more of the following values: `openid`, `email`, `offline_access`                                                                                               | Required if you want to fetch **user info** or use **refresh tokens** | Determines which user info will be shared with your application, and if you want a refresh token or not. Suggested to always be set to `openid email offline_access` for best results. See [scopes](#scopes) for more info.                                      |
+| `scope`                 | A space-delimited string with one or more of the following values: `openid`, `email`, `offline_access`, and optional [API scopes](#api-scopes) like `publiq-api-sapi-scope`                         | Required if you want to fetch **user info**, use **refresh tokens**, or need an **optional API scope** | Determines which user info will be shared with your application, if you want a refresh token or not, and which optional API scopes you need. Suggested to always be set to `openid email offline_access` for best results. See [scopes](#scopes) for more info. |
 | `code_challenge`        | String generated from a cryptographically-random code verifier.                                                                                                                                      | Required if using **PKCE**                                            | See the [PKCE example](#example-1) for more info.                                                                                                                                                                                                                |
 | `code_challenge_method` | `S256`                                                                                                                                                                                               | Required if using **PKCE**                                            | **Must** be set to `S256`. See the [PKCE example](#example-1) for more info.                                                                                                                                                                                     |
 | `prompt`                | `login` or omitted (default)                                                                                                                                                                         | Optional                                                              | If set to `login`, the user will always be asked to login even if they still have an active session on the authorization server.                                                                                                                                 |
@@ -323,6 +323,20 @@ If you want to specify **multiple** values, combine them as a single space-delim
 ```
 /realms/uitid/protocol/openid-connect/auth?scope=openid email offline_access&...
 ```
+
+### API scopes
+
+publiq decides which APIs your client can access. Each API has its own scope, for example `publiq-api-sapi-scope` for UiTdatabank's Search API.
+
+Most API scopes are **default** scopes for your client. These are always included in your access token, so you do not need to add them to the `scope` parameter.
+
+Some API scopes can be configured as **optional** scopes for your client. These are only included in your access token if you add them to the `scope` parameter. For example:
+
+```
+/realms/uitid/protocol/openid-connect/auth?scope=openid email offline_access publiq-api-sapi-scope&...
+```
+
+You can only get scopes that are assigned to your client. Requesting other scopes will not give you access to other APIs. If you get a `403 Forbidden` response from an API with a valid token, your client might not have access to that API, or the API scope is optional for your client and you did not request it.
 
 ## User info
 

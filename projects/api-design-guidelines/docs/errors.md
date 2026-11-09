@@ -25,7 +25,7 @@ Additionally, the following extensions are encouraged:
 
 #### When using client identification
 
-Always use `401` <https://api.publiq.be/probs/auth/unauthorized> when the client id is missing or the client id does not exist in Auth0.
+Always use `401` <https://api.publiq.be/probs/auth/unauthorized> when the client id is missing or the client id does not exist in Keycloak.
 
 Always use `403` <https://api.publiq.be/probs/auth/forbidden> when the client is not allowed to access your API ([Read how to determine this](./authentication.md)).
 
