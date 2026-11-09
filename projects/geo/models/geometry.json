@@ -1,0 +1,66 @@
+{
+  "title": "geometry",
+  "description": "The shape of a route, in the format chosen with the `geometry` query parameter.\n\n* `polyline6` (default): a string in the Google encoded polyline format with 6 decimals of precision. Decoders are available for every platform.\n* `geojson`: a GeoJSON `LineString` with `[longitude, latitude]` pairs, ready for Leaflet, MapLibre or Mapbox.\n* `none`: `null`, for when you only need distance, duration or bounds.",
+  "oneOf": [
+    {
+      "type": "string",
+      "description": "Encoded polyline, precision 6."
+    },
+    {
+      "type": "object",
+      "description": "GeoJSON LineString.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "LineString"
+          ],
+          "description": "Always `LineString`."
+        },
+        "coordinates": {
+          "type": "array",
+          "description": "The points of the line as `[longitude, latitude]` pairs, following the GeoJSON order.",
+          "items": {
+            "type": "array",
+            "description": "One `[longitude, latitude]` pair.",
+            "items": {
+              "type": "number",
+              "description": "Longitude, then latitude, in decimal degrees."
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ]
+    },
+    {
+      "type": "null",
+      "description": "No geometry was requested."
+    }
+  ],
+  "examples": [
+    "ouhzBuzrdHtAiB|@}@",
+    {
+      "type": "LineString",
+      "coordinates": [
+        [
+          3.725,
+          51.0536
+        ],
+        [
+          3.7262,
+          51.048
+        ],
+        [
+          3.7268,
+          51.0425
+        ]
+      ]
+    },
+    null
+  ]
+}

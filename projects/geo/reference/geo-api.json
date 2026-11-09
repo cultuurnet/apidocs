@@ -1,0 +1,636 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Geo API",
+    "version": "1.0",
+    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.",
+    "contact": {
+      "name": "publiq helpdesk",
+      "email": "technical-support@publiq.be",
+      "url": "https://docs.publiq.be"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://geo-test.publiq.be",
+      "description": "Testing"
+    },
+    {
+      "url": "https://geo.publiq.be",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Coordinates"
+    },
+    {
+      "name": "Routes"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Error": {
+        "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/errors/models/Error.json",
+        "x-internal": true
+      },
+      "Location": {
+        "$ref": "../models/location.json"
+      },
+      "LocationCollection": {
+        "title": "locationCollection",
+        "type": "object",
+        "description": "The locations that matched a query, best match first.",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Number of locations in `member`. `0` when nothing matched."
+          },
+          "member": {
+            "type": "array",
+            "description": "The matching locations, best match first.",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            }
+          },
+          "attribution": {
+            "type": "string",
+            "description": "Credit for the source of these results, for example `© OpenStreetMap contributors` or `Geocoding by Google`. You must show this text next to the results, see [finding coordinates](../docs/finding-coordinates.md#attribution-and-caching)."
+          }
+        },
+        "required": [
+          "totalItems",
+          "member",
+          "attribution"
+        ]
+      },
+      "RouteCollection": {
+        "title": "routeCollection",
+        "type": "object",
+        "description": "The calculated route(s) and the waypoints they run through.",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "description": "Number of routes in `member`: `1`, plus the number of alternatives that could be found."
+          },
+          "member": {
+            "type": "array",
+            "description": "The recommended route first, then the alternatives if requested.",
+            "items": {
+              "$ref": "../models/route.json"
+            }
+          },
+          "waypoints": {
+            "type": "array",
+            "description": "The origin, the via points in order, and the destination, as coordinates, as the API resolved them. Check these when you passed text instead of coordinates.",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            }
+          }
+        },
+        "required": [
+          "totalItems",
+          "member",
+          "waypoints"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "CLIENT_IDENTIFICATION": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-client-id",
+        "description": "Your client id, sent as the `x-client-id` header (preferred) or as the `clientId` query parameter. See the [authentication docs about client identification](https://docs.publiq.be/docs/authentication/methods/client-identification) for more info."
+      },
+      "CLIENT_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://account-test.uitid.be/oauth/token",
+            "scopes": {}
+          }
+        },
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token) for more info."
+      }
+    },
+    "parameters": {
+      "query": {
+        "name": "query",
+        "in": "query",
+        "required": true,
+        "description": "The text to find coordinates for: an address (`Sint-Pietersplein 1, Gent`), a venue or point of interest (`Vooruit Gent`), or just a municipality (`Gent`). Add the municipality for better results.",
+        "schema": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "example": "Sint-Pietersplein 1, Gent"
+      },
+      "country": {
+        "name": "country",
+        "in": "query",
+        "required": false,
+        "description": "Only return locations in this country. ISO 3166-1 alpha-2 code.",
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2}$",
+          "default": "BE"
+        },
+        "example": "BE"
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "description": "Maximum number of locations to return. Results are ordered best match first, so the default of 1 gives you the best match.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 1
+        },
+        "example": 1
+      },
+      "origin": {
+        "name": "origin",
+        "in": "query",
+        "required": true,
+        "description": "Where the route starts. Either coordinates as `latitude,longitude` in decimal degrees, or free text that is resolved like the `query` parameter of `GET /coordinates` (the best match is used). See [calculating routes](../docs/calculating-routes.md#coordinates-or-text).",
+        "schema": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "examples": {
+          "Coordinates": {
+            "value": "51.0536,3.7250"
+          },
+          "Text": {
+            "value": "Korenmarkt, Gent"
+          }
+        }
+      },
+      "destination": {
+        "name": "destination",
+        "in": "query",
+        "required": true,
+        "description": "Where the route ends. Same format as `origin`.",
+        "schema": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "examples": {
+          "Coordinates": {
+            "value": "51.0425,3.7268"
+          },
+          "Text": {
+            "value": "Vooruit, Gent"
+          }
+        }
+      },
+      "via": {
+        "name": "via",
+        "in": "query",
+        "required": false,
+        "description": "Points the route must pass through, in order. Same format as `origin`. Repeat the parameter for several points: `?via=51.05,3.72&via=51.04,3.73`. Cannot be combined with `alternatives`.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 200
+          }
+        },
+        "example": [
+          "51.0474,3.7284"
+        ]
+      },
+      "mode": {
+        "name": "mode",
+        "in": "query",
+        "required": false,
+        "description": "The means of transport.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "car",
+            "bicycle",
+            "pedestrian"
+          ],
+          "default": "car"
+        },
+        "example": "bicycle"
+      },
+      "geometry": {
+        "name": "geometry",
+        "in": "query",
+        "required": false,
+        "description": "Format of the route shape in the response: an encoded polyline (precision 6), a GeoJSON LineString, or no shape at all.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "polyline6",
+            "geojson",
+            "none"
+          ],
+          "default": "polyline6"
+        },
+        "example": "geojson"
+      },
+      "alternatives": {
+        "name": "alternatives",
+        "in": "query",
+        "required": false,
+        "description": "Number of alternative routes to return next to the recommended one. Fewer may be returned when no sensible alternatives exist. Cannot be combined with `via` or `departAt`.",
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "default": 0
+        },
+        "example": 2
+      },
+      "departAt": {
+        "name": "departAt",
+        "in": "query",
+        "required": false,
+        "description": "Departure date and time in ISO 8601 format, used for time-dependent restrictions such as roads closed at certain hours. The offset is ignored: the time is interpreted as local time at the origin. Defaults to no time dependency. Cannot be combined with `alternatives`.",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "example": "2026-11-20T18:30:00+01:00"
+      },
+      "boundsPadding": {
+        "name": "boundsPadding",
+        "in": "query",
+        "required": false,
+        "description": "Metres added to every side of the route extent to produce `bounds`. Use it to search for events within walking distance of the route.",
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000,
+          "default": 500
+        },
+        "example": 500
+      }
+    },
+    "headers": {
+      "CacheControl": {
+        "description": "How long you (and shared caches) may reuse this response without asking again. Respect the `max-age`: the sources of the Geo API only allow coordinates to be cached for a limited time.",
+        "schema": {
+          "type": "string",
+          "example": "public, max-age=86400"
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Unauthorized. Your request is missing the required credentials to authenticate. See the [authentication docs](../docs/authentication.md) for more info.\n\n* type: https://api.publiq.be/probs/auth/unauthorized\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/unauthorized",
+                  "title": "Unauthorized",
+                  "status": 401
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. Your request was successfully authenticated but your client does not have access to the Geo API.\n\n* type: https://api.publiq.be/probs/auth/forbidden\n* detail: might contain a developer-readable explanation of the reason",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/forbidden",
+                  "title": "Forbidden",
+                  "status": 403,
+                  "detail": "Client abcd1234 does not have access to the Geo API"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "The requested resource (URL) could not be found. This can be due to one of multiple reasons:\n\n* The endpoint has a typo and/or does not exist on the API\n* One of the required query parameters is missing\n* One of the query parameters has an invalid value\n\nThe `detail` property of the response contains more specific information.\n\nThe `type` is always `https://api.publiq.be/probs/url/not-found`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/url/not-found",
+                  "title": "Not Found",
+                  "status": 404,
+                  "detail": "Query parameter \"query\" is required"
+                }
+              }
+            }
+          }
+        }
+      },
+      "RouteNotFound": {
+        "description": "The requested resource (URL) could not be found. Next to the generic reasons (a required query parameter is missing or has an invalid value, `type` `https://api.publiq.be/probs/url/not-found`), this operation has two domain-specific reasons. See the [errors page](../docs/errors.md) for details.\n\n* `https://api.publiq.be/probs/geo-api/location-not-found`: `origin`, `destination` or a `via` point was given as text and no location matched it\n* `https://api.publiq.be/probs/geo-api/route-not-found`: all points were resolved but no route exists between them for the given `mode`\n\nThe `detail` property of the response contains more specific information.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Invalid query parameter": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/url/not-found",
+                  "title": "Not Found",
+                  "status": 404,
+                  "detail": "Query parameter \"alternatives\" cannot be combined with \"via\""
+                }
+              },
+              "Location not found": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/geo-api/location-not-found",
+                  "title": "Location not found",
+                  "status": 404,
+                  "detail": "No location matched destination \"Vooruitstraat 999, Nergens\""
+                }
+              },
+              "Route not found": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/geo-api/route-not-found",
+                  "title": "Route not found",
+                  "status": 404,
+                  "detail": "No pedestrian route exists between the origin and the destination"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BadGateway": {
+        "description": "One of the sources the Geo API depends on did not answer or answered with an error. Retry the request after a short delay. If the problem persists, contact the publiq helpdesk.\n\n* type: about:blank\n* title: Bad Gateway",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "about:blank",
+                  "title": "Bad Gateway",
+                  "status": 502
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/coordinates": {
+      "get": {
+        "operationId": "get-coordinates",
+        "summary": "Find coordinates",
+        "description": "Returns the locations that match a free-text `query`, best match first, as coordinates.\n\nThe query can be an address, a venue or point of interest, or just a municipality. The API looks the text up in several sources in a fixed order and returns the results of the first source that knows it: places in UiTdatabank first, then an address database. This is why the `attribution` differs per response.\n\nA query that matches nothing returns `200` with an empty `member`, not an error.\n\nRead the [finding coordinates](../docs/finding-coordinates.md) guide for tips and the rules on caching and attribution.",
+        "tags": [
+          "Coordinates"
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/query"
+          },
+          {
+            "$ref": "#/components/parameters/country"
+          },
+          {
+            "$ref": "#/components/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The matching locations, best match first. An empty `member` means nothing matched.",
+            "headers": {
+              "cache-control": {
+                "$ref": "#/components/headers/CacheControl"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationCollection"
+                },
+                "examples": {
+                  "Address": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "coordinates": {
+                            "latitude": 51.0425,
+                            "longitude": 3.7268
+                          }
+                        }
+                      ],
+                      "attribution": "© OpenStreetMap contributors"
+                    }
+                  },
+                  "Place": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "coordinates": {
+                            "latitude": 51.0474,
+                            "longitude": 3.7284
+                          }
+                        }
+                      ],
+                      "attribution": "UiTdatabank"
+                    }
+                  },
+                  "No match": {
+                    "value": {
+                      "totalItems": 0,
+                      "member": [],
+                      "attribution": "© OpenStreetMap contributors"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        }
+      }
+    },
+    "/routes": {
+      "get": {
+        "operationId": "get-routes",
+        "summary": "Calculate routes",
+        "description": "Returns the recommended route between `origin` and `destination` (through the `via` points, in order), and up to three `alternatives` when asked.\n\nEach point is either `latitude,longitude` or free text. Text is resolved the same way as [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) and the best match is used; the `waypoints` in the response show what was used, so you can check it.\n\nEvery route comes with `bounds`: its extent plus `boundsPadding` metres on every side, ready to pass to the `bounds` filter of UiTdatabank's Search API to find events along the way. Read the [calculating routes](../docs/calculating-routes.md) guide for that flow.",
+        "tags": [
+          "Routes"
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/origin"
+          },
+          {
+            "$ref": "#/components/parameters/destination"
+          },
+          {
+            "$ref": "#/components/parameters/via"
+          },
+          {
+            "$ref": "#/components/parameters/mode"
+          },
+          {
+            "$ref": "#/components/parameters/geometry"
+          },
+          {
+            "$ref": "#/components/parameters/alternatives"
+          },
+          {
+            "$ref": "#/components/parameters/departAt"
+          },
+          {
+            "$ref": "#/components/parameters/boundsPadding"
+          },
+          {
+            "$ref": "#/components/parameters/country"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The recommended route first, then the alternatives if any, plus the resolved waypoints.",
+            "headers": {
+              "cache-control": {
+                "$ref": "#/components/headers/CacheControl"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteCollection"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalItems": 1,
+                      "member": [
+                        {
+                          "distance": 1377,
+                          "duration": 310,
+                          "mode": "bicycle",
+                          "bounds": {
+                            "southWest": {
+                              "latitude": 51.038,
+                              "longitude": 3.71785
+                            },
+                            "northEast": {
+                              "latitude": 51.0581,
+                              "longitude": 3.73395
+                            }
+                          },
+                          "geometry": {
+                            "type": "LineString",
+                            "coordinates": [
+                              [
+                                3.725,
+                                51.0536
+                              ],
+                              [
+                                3.7262,
+                                51.048
+                              ],
+                              [
+                                3.7268,
+                                51.0425
+                              ]
+                            ]
+                          }
+                        }
+                      ],
+                      "waypoints": [
+                        {
+                          "coordinates": {
+                            "latitude": 51.0536,
+                            "longitude": 3.725
+                          }
+                        },
+                        {
+                          "coordinates": {
+                            "latitude": 51.0425,
+                            "longitude": 3.7268
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/RouteNotFound"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          }
+        }
+      }
+    }
+  }
+}
