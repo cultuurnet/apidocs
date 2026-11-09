@@ -134,6 +134,17 @@
         "tags": [
           "Events"
         ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "name": "embedCapacities",
+            "description": "Includes the `capacity` of the subEvents in the response. Only works when you are allowed to edit the event, otherwise the capacities are left out. By default, capacities are not included."
+          }
+        ],
         "responses": {
           "200": {
             "description": "Event details.",

@@ -1,7 +1,7 @@
 {
   "title": "event.subEvent.capacity",
   "type": "object",
-  "description": "The capacity of this occurrence: whether the number of places is limited, and how many places are taken. Only supported on events with calendarType `single` or `multiple`.\n\nWhen a subEvent has no `capacity`, its capacity is unknown. Send an empty object (`{}`) to clear the capacity and make it unknown again.\n\nCapacity is commercially sensitive and is only returned to callers that are allowed to edit the event. It is never available through the Search API.",
+  "description": "The capacity of this occurrence: whether the number of places is limited, and how many places are taken. Only supported on events with calendarType `single` or `multiple`.\n\nWhen a subEvent has no `capacity`, its capacity is unknown. Send an empty object (`{}`) to clear the capacity and make it unknown again.\n\nCapacity is commercially sensitive. It is only returned by `GET /events/{eventId}` when you add `embedCapacities=true` and are allowed to edit the event. It is never available through the Search API.",
   "examples": [
     {
       "type": "Limited",

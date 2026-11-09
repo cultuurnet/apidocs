@@ -267,7 +267,7 @@ Events with calendarType `single` or `multiple` can optionally include a `capaci
 
 **API behavior:**
 
-In the read model (GET), `capacity` is only included when it is known and the caller is allowed to edit the event. It is never available through Search API.
+In the read model ([`GET /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/get)), `capacity` is left out by default. Add `embedCapacities=true` to include it. It is only included when it is known and you are allowed to edit the event; otherwise it is left out, without an error. It is never available through Search API.
 
 ### periodic/permanent
 
