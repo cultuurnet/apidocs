@@ -1,0 +1,56 @@
+{
+  "title": "event.capacities.patch",
+  "type": "array",
+  "minItems": 1,
+  "description": "The capacities to set, one entry per timeslot. Each entry is matched to exactly one subEvent of the event on its `startDate` and `endDate`. SubEvents that are not in the list keep their current capacity.",
+  "examples": [
+    [
+      {
+        "startDate": "2026-06-10T10:00:00+02:00",
+        "endDate": "2026-06-10T16:00:00+02:00",
+        "capacity": {
+          "type": "Limited",
+          "maximum": 30,
+          "taken": 12
+        }
+      },
+      {
+        "startDate": "2026-06-11T10:00:00+02:00",
+        "endDate": "2026-06-11T16:00:00+02:00",
+        "capacity": {}
+      }
+    ]
+  ],
+  "items": {
+    "type": "object",
+    "properties": {
+      "startDate": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The start date of the subEvent to update. Compared to the start dates of the subEvents as a point in time, so `2026-06-10T10:00:00+02:00` and `2026-06-10T08:00:00Z` match the same subEvent.",
+        "example": "2026-06-10T10:00:00+02:00"
+      },
+      "endDate": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The end date of the subEvent to update. Compared to the end dates of the subEvents as a point in time, so `2026-06-10T16:00:00+02:00` and `2026-06-10T14:00:00Z` match the same subEvent.",
+        "example": "2026-06-10T16:00:00+02:00"
+      },
+      "capacity": {
+        "allOf": [
+          {
+            "$ref": "./event-subEvent-capacity.json"
+          },
+          {
+            "description": "The capacity of the matched subEvent. Replaces its current capacity. Send an empty object (`{}`) to clear it."
+          }
+        ]
+      }
+    },
+    "required": [
+      "startDate",
+      "endDate",
+      "capacity"
+    ]
+  }
+}

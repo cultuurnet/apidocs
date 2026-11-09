@@ -265,6 +265,26 @@ Events with calendarType `single` or `multiple` can optionally include a `capaci
 * **Omit `capacity`** on [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) → the existing capacity is left unchanged, also when `startDate` or `endDate` change.
 * **Omit `capacity`** on the endpoints that replace the calendar in its entirety ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put)) → the subEvent keeps the capacity of the current subEvent with the same `startDate` and `endDate`. If there is no such subEvent, or more than one, the capacity becomes unknown. Unlike `childcare` and `hasOvernightStay`, leaving `capacity` out of these requests never removes a capacity that still matches, because capacity is often managed by another system than the calendar.
 
+**Updating capacity per timeslot:**
+
+If your system manages capacity per timeslot (for example a ticketing system) and doesn't keep track of the position of each subEvent, use [`PATCH /events/{eventId}/capacities`](/reference/entry.json/paths/~1events~1{eventId}~1capacities/patch). Instead of an `id`, each entry has the `startDate` and `endDate` of the subEvent to update:
+
+```json
+[
+  {
+    "startDate": "2026-06-10T10:00:00+02:00",
+    "endDate": "2026-06-10T16:00:00+02:00",
+    "capacity": {
+      "type": "Limited",
+      "maximum": 30,
+      "taken": 12
+    }
+  }
+]
+```
+
+Each entry must match exactly one subEvent on both `startDate` and `endDate`, compared as points in time. If one entry matches no subEvent or more than one, nothing is saved. SubEvents that are not in the request keep their current capacity.
+
 **API behavior:**
 
 In the read model (GET), `capacity` is only included when it is known and the caller is allowed to edit the event. It is never available through Search API.

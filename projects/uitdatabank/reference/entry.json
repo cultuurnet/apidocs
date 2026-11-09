@@ -1600,6 +1600,148 @@
         "x-internal": false
       }
     },
+    "/events/{eventId}/capacities": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/eventId"
+        }
+      ],
+      "patch": {
+        "summary": "capacities - patch",
+        "operationId": "event-capacities-patch",
+        "description": "Sets the capacity of one or more subEvents of the event with the given `eventId`, identified by their `startDate` and `endDate`.\n\nThis is an alternative to [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) for systems that manage capacity per timeslot, such as ticketing systems, and don't know the position of each subEvent in the calendar.\n\nEach entry is matched to exactly one subEvent of the current calendar on both its `startDate` and `endDate`. Dates are compared as points in time, so `2026-06-10T10:00:00+02:00` and `2026-06-10T08:00:00Z` are the same. The request fails when an entry matches no subEvent, when it matches more than one subEvent, or when the same `startDate` and `endDate` appear more than once in the request.\n\nThe update is all or nothing: if one entry is invalid, no capacity is saved. All problems are returned at once, each pointing to the failing entry.\n\nSubEvents that are not in the request keep their current capacity. Send `\"capacity\": {}` to clear the capacity of a subEvent.\n\nOnly events with calendar type `single` and `multiple` have subEvents, so only events with those calendar types support this endpoint.\n\nSee [calendar](/docs/entry-api/shared/calendar-info.md#capacity-events-only-singlemultiple) for more info about capacity.",
+        "tags": [
+          "Events"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content. The capacities have been updated successfully."
+          },
+          "400": {
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Invalid data": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/body/invalid-data",
+                      "title": "Invalid body data",
+                      "status": 400,
+                      "schemaErrors": [
+                        {
+                          "jsonPointer": "/1",
+                          "error": "No subEvent found with startDate '2026-06-11T10:00:00+02:00' and endDate '2026-06-11T16:00:00+02:00'."
+                        },
+                        {
+                          "jsonPointer": "/3",
+                          "error": "Multiple subEvents found with startDate '2026-06-12T10:00:00+02:00' and endDate '2026-06-12T16:00:00+02:00'."
+                        },
+                        {
+                          "jsonPointer": "/4/capacity/maximum",
+                          "error": "maximum is required when type is 'Limited'."
+                        }
+                      ]
+                    }
+                  },
+                  "Calendar type not supported": {
+                    "value": {
+                      "type": "https://api.publiq.be/probs/uitdatabank/calendar-type-not-supported",
+                      "title": "Calendar type not supported",
+                      "status": 400,
+                      "detail": "Not allowed to update capacities on calendar type: \"permanent\". Only capacities on single and multiple calendar types can be updated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../models/event-capacities-patch.json"
+              },
+              "examples": {
+                "Setting the capacity of one timeslot": {
+                  "value": [
+                    {
+                      "startDate": "2026-06-10T10:00:00+02:00",
+                      "endDate": "2026-06-10T16:00:00+02:00",
+                      "capacity": {
+                        "type": "Limited",
+                        "maximum": 30,
+                        "taken": 12
+                      }
+                    }
+                  ]
+                },
+                "Setting an unlimited capacity": {
+                  "value": [
+                    {
+                      "startDate": "2026-06-10T10:00:00+02:00",
+                      "endDate": "2026-06-10T16:00:00+02:00",
+                      "capacity": {
+                        "type": "Unlimited",
+                        "taken": 140
+                      }
+                    }
+                  ]
+                },
+                "Clearing the capacity of one timeslot": {
+                  "value": [
+                    {
+                      "startDate": "2026-06-11T10:00:00+02:00",
+                      "endDate": "2026-06-11T16:00:00+02:00",
+                      "capacity": {}
+                    }
+                  ]
+                },
+                "Updating multiple": {
+                  "value": [
+                    {
+                      "startDate": "2026-06-10T10:00:00+02:00",
+                      "endDate": "2026-06-10T16:00:00+02:00",
+                      "capacity": {
+                        "type": "Limited",
+                        "maximum": 30,
+                        "taken": 12
+                      }
+                    },
+                    {
+                      "startDate": "2026-06-11T10:00:00+02:00",
+                      "endDate": "2026-06-11T16:00:00+02:00",
+                      "capacity": {}
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "The capacities to set, one entry per timeslot. Each entry has a `startDate` and `endDate` to identify the subEvent, and the `capacity` to set on it."
+        },
+        "security": [
+          {
+            "USER_ACCESS_TOKEN": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/events/{eventId}/children-only": {
       "parameters": [
         {
