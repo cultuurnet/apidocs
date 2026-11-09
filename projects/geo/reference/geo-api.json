@@ -3,7 +3,7 @@
   "info": {
     "title": "Geo API",
     "version": "1.0",
-    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.",
+    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.\n\nAuthentication is not part of this version of the contract yet; it will be added in a later version.",
     "contact": {
       "name": "publiq helpdesk",
       "email": "technical-support@publiq.be",
@@ -93,24 +93,6 @@
           "member",
           "waypoints"
         ]
-      }
-    },
-    "securitySchemes": {
-      "CLIENT_IDENTIFICATION": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "x-client-id",
-        "description": "Your client id, sent as the `x-client-id` header (preferred) or as the `clientId` query parameter. See the [authentication docs about client identification](https://docs.publiq.be/docs/authentication/methods/client-identification) for more info."
-      },
-      "CLIENT_ACCESS_TOKEN": {
-        "type": "oauth2",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://account-test.uitid.be/oauth/token",
-            "scopes": {}
-          }
-        },
-        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server. See the [authentication docs about client access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token) for more info."
       }
     },
     "parameters": {
@@ -289,45 +271,6 @@
       }
     },
     "responses": {
-      "Unauthorized": {
-        "description": "Unauthorized. Your request is missing the required credentials to authenticate. See the [authentication docs](../docs/authentication.md) for more info.\n\n* type: https://api.publiq.be/probs/auth/unauthorized\n* detail: might contain a developer-readable explanation of the reason",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/auth/unauthorized",
-                  "title": "Unauthorized",
-                  "status": 401
-                }
-              }
-            }
-          }
-        }
-      },
-      "Forbidden": {
-        "description": "Forbidden. Your request was successfully authenticated but your client does not have access to the Geo API.\n\n* type: https://api.publiq.be/probs/auth/forbidden\n* detail: might contain a developer-readable explanation of the reason",
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "Example": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/auth/forbidden",
-                  "title": "Forbidden",
-                  "status": 403,
-                  "detail": "Client abcd1234 does not have access to the Geo API"
-                }
-              }
-            }
-          }
-        }
-      },
       "NotFound": {
         "description": "The requested resource (URL) could not be found. This can be due to one of multiple reasons:\n\n* The endpoint has a typo and/or does not exist on the API\n* One of the required query parameters is missing\n* One of the query parameters has an invalid value\n\nThe `detail` property of the response contains more specific information.\n\nThe `type` is always `https://api.publiq.be/probs/url/not-found`.",
         "content": {
@@ -414,14 +357,6 @@
         "tags": [
           "Coordinates"
         ],
-        "security": [
-          {
-            "CLIENT_IDENTIFICATION": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
-        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/query"
@@ -486,12 +421,6 @@
               }
             }
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
@@ -508,14 +437,6 @@
         "description": "Returns the recommended route between `origin` and `destination` (through the `via` points, in order), and up to three `alternatives` when asked.\n\nEach point is either `latitude,longitude` or free text. Text is resolved the same way as [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) and the best match is used; the `waypoints` in the response show what was used, so you can check it.\n\nEvery route comes with `bounds`: its extent plus `boundsPadding` metres on every side, ready to pass to the `bounds` filter of UiTdatabank's Search API to find events along the way. Read the [calculating routes](../docs/calculating-routes.md) guide for that flow.",
         "tags": [
           "Routes"
-        ],
-        "security": [
-          {
-            "CLIENT_IDENTIFICATION": []
-          },
-          {
-            "CLIENT_ACCESS_TOKEN": []
-          }
         ],
         "parameters": [
           {
@@ -616,12 +537,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/RouteNotFound"

@@ -2,7 +2,7 @@
 
 This page contains an overview of all error types inside the `https://api.publiq.be/probs/geo-api/` namespace that the Geo API can return.
 
-> For more info about error handling on our APIs in general, see the dedicated [Errors](https://docs.publiq.be/docs/errors/d6a8ba3f3c186-introduction) space. The Geo API also returns the generic error types described there, for example `https://api.publiq.be/probs/url/not-found` when a query parameter is missing or invalid, and `https://api.publiq.be/probs/auth/unauthorized` or `https://api.publiq.be/probs/auth/forbidden` for [authentication](./authentication.md) problems.
+> For more info about error handling on our APIs in general, see the dedicated [Errors](https://docs.publiq.be/docs/errors/d6a8ba3f3c186-introduction) space. The Geo API also returns the generic error types described there, for example `https://api.publiq.be/probs/url/not-found` when a query parameter is missing or invalid.
 
 ## location-not-found
 

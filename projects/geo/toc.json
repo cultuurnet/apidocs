@@ -8,12 +8,6 @@
     },
     {
       "type": "item",
-      "title": "Authentication",
-      "uri": "docs/authentication.md",
-      "slug": "authentication"
-    },
-    {
-      "type": "item",
       "title": "Terminology",
       "uri": "docs/terminology.md",
       "slug": "terminology"

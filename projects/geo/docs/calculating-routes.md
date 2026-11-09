@@ -7,7 +7,6 @@ This guide shows how to calculate a route with [`GET /routes`](/reference/geo-ap
 ```http
 GET /routes?origin=51.0536,3.7250&destination=51.0425,3.7268&mode=bicycle&geometry=geojson HTTP/1.1
 Host: geo-test.publiq.be
-x-client-id: your-client-id
 ```
 
 The response is a collection with the recommended route in `member[0]`, and the resolved `waypoints`:
@@ -74,7 +73,6 @@ Every route comes with `bounds`: its extent enlarged by `boundsPadding` metres o
 ```http
 GET /events/?bounds=51.038,3.71785|51.0581,3.73395&embed=true HTTP/1.1
 Host: search-test.uitdatabank.be
-x-client-id: your-client-id
 ```
 
 Choose `boundsPadding` for your use case: a few hundred metres for events within walking distance of a cycling route, a few kilometres for a car trip. Keep in mind that a rectangle around a long diagonal route covers a lot of area far from the route itself; for those cases, filter the events further on your side using the route `geometry`.

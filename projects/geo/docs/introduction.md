@@ -17,12 +17,13 @@ Behind the scenes the API combines several sources, for example the places in Ui
 
 ## In this documentation
 
-* [Authentication](./authentication.md): which credentials to use
 * [Terminology](./terminology.md): coordinates, locations, routes and bounds
 * [Errors](./errors.md): the error types specific to the Geo API
 * [Finding coordinates](./finding-coordinates.md): how to get good matches, and the rules on caching and attribution
 * [Calculating routes](./calculating-routes.md): routes from text or coordinates, and finding events along a route
 * The [API reference](/reference/geo-api.json) with every parameter and property
+
+Authentication is not described yet; it will be added in a later version of this documentation.
 
 ## Environments
 
