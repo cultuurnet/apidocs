@@ -1,6 +1,6 @@
 # Finding coordinates
 
-This guide shows how to turn text into coordinates with [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get), how to get good matches, and what the licences of the sources require from you.
+This guide shows how to turn text into coordinates with [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get) and how to get good matches.
 
 ## A first request
 
@@ -16,8 +16,7 @@ Host: geo-test.publiq.be
     {
       "coordinates": { "latitude": 51.0425, "longitude": 3.7268 }
     }
-  ],
-  "attribution": "© OpenStreetMap contributors"
+  ]
 }
 ```
 
@@ -33,7 +32,7 @@ The `query` parameter accepts any of these:
 * A venue or point of interest: `Vooruit Gent`, `Gravensteen`
 * A municipality: `Gent`
 
-The API looks the text up in several sources in a fixed order, and returns the results of the first source that recognises it. Venues known in UiTdatabank come first, so `Vooruit Gent` gives you the coordinates of the venue rather than of a street called Vooruit. Addresses come from an address database. The `attribution` in the response tells you which source answered.
+The API looks the text up in several sources in a fixed order, and returns the results of the first source that recognises it. Venues known in UiTdatabank come first, so `Vooruit Gent` gives you the coordinates of the venue rather than of a street called Vooruit. Addresses come from an address database.
 
 ## Getting good matches
 
@@ -45,12 +44,3 @@ The API looks the text up in several sources in a fixed order, and returns the r
 ## Do not search on every keystroke
 
 The Geo API is not an autocomplete service. Call it when the user has finished typing (after a pause of a few hundred milliseconds, or on submit), and only for queries of three characters or more. Requests are rate limited per client.
-
-## Attribution and caching
-
-The sources behind the Geo API have licences with two obligations that pass on to you:
-
-* **Show the attribution.** Display the `attribution` text of the response next to the results, for example under the list or in the corner of the map. The text differs per source, so always take it from the response instead of hard-coding it.
-* **Respect the cache limit.** You may store coordinates in your own application, but not forever. The `cache-control` header of the response tells you for how long (`max-age`, in seconds). After that, ask the Geo API again. Store the original query text next to the coordinates so you can refresh them.
-
-If you store coordinates in UiTdatabank as part of a place, those rules are handled there and do not apply to you.

@@ -13,13 +13,13 @@ The Geo API follows the [REST](https://en.wikipedia.org/wiki/Representational_st
 
 It is a read-only API. Both resources are `GET` requests with query parameters, which makes them safe to retry and cache.
 
-Behind the scenes the API combines several sources, for example the places in UiTdatabank, OpenStreetMap and a routing engine. You never talk to those sources directly, and the response format does not change when a source is added or replaced. Each response does tell you which source it came from in its `attribution`, because the licences of those sources require you to show it.
+Behind the scenes the API combines several sources, for example the places in UiTdatabank, OpenStreetMap and a routing engine. You never talk to those sources directly, and the response format does not change when a source is added or replaced.
 
 ## In this documentation
 
 * [Terminology](./terminology.md): coordinates, locations, routes and bounds
 * [Errors](./errors.md): the error types specific to the Geo API
-* [Finding coordinates](./finding-coordinates.md): how to get good matches, and the rules on caching and attribution
+* [Finding coordinates](./finding-coordinates.md): how to get good matches
 * [Calculating routes](./calculating-routes.md): routes from text or coordinates, and finding events along a route
 * The [API reference](/reference/geo-api.json) with every parameter and property
 

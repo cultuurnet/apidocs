@@ -22,7 +22,7 @@
     },
     "bounds": {
       "$ref": "./bounds.json",
-      "description": "The extent of the route, enlarged by `boundsPadding` metres on every side. Meant to fit a map or to search for events near the route."
+      "description": "The extent of the route, enlarged by `boundsPadding` metres on every side when you pass that parameter. Meant to fit a map or to search for events near the route."
     },
     "geometry": {
       "$ref": "./geometry.json"

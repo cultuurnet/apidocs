@@ -52,16 +52,11 @@
             "items": {
               "$ref": "#/components/schemas/Location"
             }
-          },
-          "attribution": {
-            "type": "string",
-            "description": "Credit for the source of these results, for example `© OpenStreetMap contributors` or `Geocoding by Google`. You must show this text next to the results, see [finding coordinates](../docs/finding-coordinates.md#attribution-and-caching)."
           }
         },
         "required": [
           "totalItems",
-          "member",
-          "attribution"
+          "member"
         ]
       },
       "RouteCollection": {
@@ -251,23 +246,14 @@
         "name": "boundsPadding",
         "in": "query",
         "required": false,
-        "description": "Metres added to every side of the route extent to produce `bounds`. Use it to search for events within walking distance of the route.",
+        "description": "Metres added to every side of the route extent to produce `bounds`. `0` (the default) gives the exact extent of the route; pass a few hundred metres to search for events within walking distance of the route.",
         "schema": {
           "type": "integer",
           "minimum": 0,
           "maximum": 10000,
-          "default": 500
+          "default": 0
         },
         "example": 500
-      }
-    },
-    "headers": {
-      "CacheControl": {
-        "description": "How long you (and shared caches) may reuse this response without asking again. Respect the `max-age`: the sources of the Geo API only allow coordinates to be cached for a limited time.",
-        "schema": {
-          "type": "string",
-          "example": "public, max-age=86400"
-        }
       }
     },
     "responses": {
@@ -353,7 +339,7 @@
       "get": {
         "operationId": "get-coordinates",
         "summary": "Find coordinates",
-        "description": "Returns the locations that match a free-text `query`, best match first, as coordinates.\n\nThe query can be an address, a venue or point of interest, or just a municipality. The API looks the text up in several sources in a fixed order and returns the results of the first source that knows it: places in UiTdatabank first, then an address database. This is why the `attribution` differs per response.\n\nA query that matches nothing returns `200` with an empty `member`, not an error.\n\nRead the [finding coordinates](../docs/finding-coordinates.md) guide for tips and the rules on caching and attribution.",
+        "description": "Returns the locations that match a free-text `query`, best match first, as coordinates.\n\nThe query can be an address, a venue or point of interest, or just a municipality. The API looks the text up in several sources in a fixed order and returns the results of the first source that knows it: places in UiTdatabank first, then an address database.\n\nA query that matches nothing returns `200` with an empty `member`, not an error.\n\nRead the [finding coordinates](../docs/finding-coordinates.md) guide for tips.",
         "tags": [
           "Coordinates"
         ],
@@ -371,11 +357,6 @@
         "responses": {
           "200": {
             "description": "The matching locations, best match first. An empty `member` means nothing matched.",
-            "headers": {
-              "cache-control": {
-                "$ref": "#/components/headers/CacheControl"
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
@@ -392,8 +373,7 @@
                             "longitude": 3.7268
                           }
                         }
-                      ],
-                      "attribution": "© OpenStreetMap contributors"
+                      ]
                     }
                   },
                   "Place": {
@@ -406,15 +386,13 @@
                             "longitude": 3.7284
                           }
                         }
-                      ],
-                      "attribution": "UiTdatabank"
+                      ]
                     }
                   },
                   "No match": {
                     "value": {
                       "totalItems": 0,
-                      "member": [],
-                      "attribution": "© OpenStreetMap contributors"
+                      "member": []
                     }
                   }
                 }
@@ -470,11 +448,6 @@
         "responses": {
           "200": {
             "description": "The recommended route first, then the alternatives if any, plus the resolved waypoints.",
-            "headers": {
-              "cache-control": {
-                "$ref": "#/components/headers/CacheControl"
-              }
-            },
             "content": {
               "application/json": {
                 "schema": {
@@ -491,12 +464,12 @@
                           "mode": "bicycle",
                           "bounds": {
                             "southWest": {
-                              "latitude": 51.038,
-                              "longitude": 3.71785
+                              "latitude": 51.0425,
+                              "longitude": 3.725
                             },
                             "northEast": {
-                              "latitude": 51.0581,
-                              "longitude": 3.73395
+                              "latitude": 51.0536,
+                              "longitude": 3.7268
                             }
                           },
                           "geometry": {

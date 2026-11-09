@@ -40,12 +40,8 @@ A rectangle on the map, given by its `southWest` and `northEast` corners:
 }
 ```
 
-The `bounds` of a route are the extent of its geometry, enlarged by `boundsPadding` metres on every side (500 by default). Use it to fit a map with some margin, or as the `bounds` filter of UiTdatabank's Search API to find events within walking distance of the route.
+The `bounds` of a route are the extent of its geometry, enlarged by `boundsPadding` metres on every side when you pass that parameter. Use it to fit a map, or with some padding as the `bounds` filter of UiTdatabank's Search API to find events within walking distance of the route.
 
 ## Mode
 
 The means of transport a route is calculated for: `car`, `bicycle` or `pedestrian`. The mode changes which roads are used and the duration.
-
-## Attribution
-
-The credit for the source of a response, for example `© OpenStreetMap contributors`. The licences of the sources behind the Geo API require you to show it next to the results. See [finding coordinates](./finding-coordinates.md#attribution-and-caching).

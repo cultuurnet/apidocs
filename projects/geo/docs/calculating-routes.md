@@ -20,8 +20,8 @@ The response is a collection with the recommended route in `member[0]`, and the 
       "duration": 310,
       "mode": "bicycle",
       "bounds": {
-        "southWest": { "latitude": 51.038, "longitude": 3.71785 },
-        "northEast": { "latitude": 51.0581, "longitude": 3.73395 }
+        "southWest": { "latitude": 51.0425, "longitude": 3.725 },
+        "northEast": { "latitude": 51.0536, "longitude": 3.7268 }
       },
       "geometry": {
         "type": "LineString",
@@ -62,13 +62,13 @@ When a text does not match any location, the response is a `404` with type `http
 
 With `geometry=geojson`, the `geometry` of a route drops straight into Leaflet, MapLibre or Mapbox GL. Note that GeoJSON uses `[longitude, latitude]` order.
 
-Fit the map to `bounds`, a `{ southWest, northEast }` object, to show the whole route with some margin. Pass `boundsPadding=0` for a tight fit.
+Fit the map to `bounds`, a `{ southWest, northEast }` object with the exact extent of the route. Pass `boundsPadding` (in metres) when you want a margin around it.
 
 With the default `geometry=polyline6`, decode the string with any Google encoded polyline decoder, using precision 6 (not the default 5).
 
 ## Finding events along the route
 
-Every route comes with `bounds`: its extent enlarged by `boundsPadding` metres on every side, 500 by default. That rectangle is exactly what the `bounds` filter of UiTdatabank's Search API expects, as `southWestLatitude,southWestLongitude|northEastLatitude,northEastLongitude`:
+Every route comes with `bounds`. Pass `boundsPadding` to enlarge it by that many metres on every side, for example `boundsPadding=500` for events within walking distance. That rectangle is exactly what the `bounds` filter of UiTdatabank's Search API expects, as `southWestLatitude,southWestLongitude|northEastLatitude,northEastLongitude`:
 
 ```http
 GET /events/?bounds=51.038,3.71785|51.0581,3.73395&embed=true HTTP/1.1
@@ -78,7 +78,3 @@ Host: search-test.uitdatabank.be
 Choose `boundsPadding` for your use case: a few hundred metres for events within walking distance of a cycling route, a few kilometres for a car trip. Keep in mind that a rectangle around a long diagonal route covers a lot of area far from the route itself; for those cases, filter the events further on your side using the route `geometry`.
 
 Read more about the `bounds` filter in the [Search API documentation](https://docs.publiq.be/docs/uitdatabank/search-api/filters/filtering-by-location).
-
-## Caching
-
-Routes change rarely. The `cache-control` header tells you how long you may reuse a response for the same request.
