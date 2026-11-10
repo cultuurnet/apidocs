@@ -339,7 +339,7 @@ Bepaal of de [toegankelijkheidsvoorzieningen](https://docs.publiq.be/docs/uitdat
 
 Bepaal of je vertreklocaties met begeleid vervoer wilt tonen bij de activiteit. Zo zien bezoekers meteen waar ze kunnen verzamelen of opstappen. 
 In UiTdatabank kunnen organisatoren opstapplaatsen koppelen wanneer er gezamenlijk vervoer of begeleiding naar de eindlocatie is. Voorbeelden:
-* Naschoolse activiteit: Een school organiseert begeleiding (bv. een wandelrij of schoolbus) naar de tekenacademie. De school wordt dan als vertreklocatie getoond.
+* Naschoolse activiteit: Een school organiseert begeleiding (bv. een wandelrij of schoolbus) naar de locatie van de activiteit (bv. tekenacademie). De locatie (bv. school) wordt dan als vertreklocatie getoond.
 * Groepsuitstap: Een vereniging organiseert een museumbezoek met een gezamenlijke busrit. De opstapplaats wordt getoond als locatie met begeleid vervoer.
 
 #### Veelgestelde vragen
