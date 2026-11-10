@@ -6,7 +6,7 @@ This guide shows how to calculate a route with [`GET /routes`](/reference/geo-ap
 
 ```http
 GET /routes?origin=51.0536,3.7250&destination=51.0425,3.7268&mode=bicycle&geometry=geojson HTTP/1.1
-Host: geo-test.publiq.be
+Host: geo-api-test.publiq.be
 ```
 
 The response is a collection with the recommended route in `member[0]`, and the resolved `waypoints`:

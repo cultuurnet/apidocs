@@ -12,11 +12,11 @@
   },
   "servers": [
     {
-      "url": "https://geo-test.publiq.be",
+      "url": "https://geo-api-test.publiq.be",
       "description": "Testing"
     },
     {
-      "url": "https://geo.publiq.be",
+      "url": "https://geo-api.publiq.be",
       "description": "Production"
     }
   ],
