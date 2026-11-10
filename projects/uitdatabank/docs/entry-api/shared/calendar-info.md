@@ -283,7 +283,7 @@ If your system manages capacity per timeslot (for example a ticketing system) an
 ]
 ```
 
-Each entry must match exactly one subEvent on both `startDate` and `endDate`, compared as points in time. If one entry matches no subEvent or more than one, nothing is saved. SubEvents that are not in the request keep their current capacity.
+Each entry must match exactly one subEvent on both `startDate` and `endDate`, compared as points in time. Each `startDate` and `endDate` combination can only appear once in the request. If one entry is invalid, nothing is saved. SubEvents that are not in the request keep their current capacity.
 
 **API behavior:**
 
