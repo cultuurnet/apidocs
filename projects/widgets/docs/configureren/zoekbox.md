@@ -8,7 +8,7 @@ In een zoekbox kan je verschillende elementen selecteren die naast of onder elka
 
 ## Instellingen
 
-#### Naam zoekbox
+### Naam zoekbox
 
 Met dit veld kan je de naam van de zoekbox wijzigen.
 
@@ -110,13 +110,21 @@ Bepaal welke tekst boven het dropdown-menu op datum moet verschijnen.
 
 Kies een tekst die je standaard in het dropdown-menu wilt tonen. Je kan dit gebruiken om de bezoeker van je agenda duidelijk te maken waarvoor het dropdown-menu dient. Je kan deze optie ook overslaan en een standaardkeuze instellen.
 
-* **Opties**
+* **Weergave**
 
-Hier kan je aan -en afvinken welke opties in het dropdown-menu voor het zoeken op datum mogen verschijnen: `Vandaag` `Morgen` `Dit weekend` `Volgende 7 dagen` `Volgende 14 dagen` `Volgende 30 dagen` `Specifieke datum`
+We bieden 2 soorten weergaven aan
+1. `Nieuwe versie`: deze weergave biedt een kalender met snelkoppelingen, schoolvakanties en wekelijkse dagen. Deze weergave is erg geschikt als je een agenda bouwt met activiteiten voor kinderen. Als je deze versie kiest kan je er voor kiezen om schoolvakanties als snelkoppeling te tonen
+2. `Klassieke versie`: deze weergave toont een vaste lijst met periodes zoals vandaag, dit weekend en volgende 7 dagen. Als je deze versie kiest kan je kiezen welke mogelijkheden in de dropdown verschijnen, en wat de standaardkeuze is binnen het dropdown menu. 
 
-* **Standaardkeuze**
+#### Groepfilters
 
-Bepaal welke van de gekozen opties de standaardkeuze is. Je kan hier één van de opties aanduiden, of de zelf ingestelde suggestietekst.
+Je kan in deze kolom of rij ook [extra groepfilters](#groepfilters) toevoegen. Deze filters laten je toe eigen filters te maken op maat van je doelgroep.
+
+### Leeftijd
+
+Dit is de vierde kolom (desktopweergave) of rij (mobiele weergave) van je zoekbox en stelt de bezoeker van je agenda in de mogelijkheid te op één of meerdere leeftijden of geboortejaren. 
+
+> We raden het gebruik van leeftijdfilters sterk aan in agenda's met activiteiten voor families of voor kinderen alleen (Buitenschoolse Opvang en Activiteiten (BOA)). 
 
 #### Groepfilters
 
