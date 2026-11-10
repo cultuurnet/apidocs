@@ -118,7 +118,7 @@ In de tipselementen bepaal je welke informatieve elementen zichtbaar moeten zijn
 Badges tonen in één oogopslag de belangrijkste eigenschappen van een activiteit, zoals het type of thema of de doelgroep. Je kan zelf bepalen welke badges zichtbaar zijn in je widget.
 * `Type`: toont een badge met het evenementtype (bijvoorbeeld `concert`) 
 * `Thema`: toont een badge met het thema (bijvoorbeeld `pop en rock`) 
-* `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen (zonder hun ouders) zij (bijvoorbeeld kampen)
+* `Alleen voor kinderen`: toont een badge `alleen voor kinderen` bij activiteiten die enkel voor kinderen zonder hun ouders zijn (bijvoorbeeld kampen)
 * `Overnachting`: toont in een badge of de activiteit (kamp) met, zonder of deels met overnachting is.
 
 #### Logo's
