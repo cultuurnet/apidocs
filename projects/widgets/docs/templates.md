@@ -62,7 +62,7 @@ Als je het UiTPAS en Paspartoe template kies, kan je meteen starten met het conf
 
 ## Buitenschoolse opvang en activiteiten (BOA)
 
-Dit is hetzelfde template als het [agenda template](#Agenda), maar de inhoud, weergave en filters van deze kalender zijn specifiek afgestemd op activiteiten voor kinderen alleen (BOA).
+Dit is hetzelfde template als het [agenda template](#Agenda), maar de inhoud, weergave en filters van deze kalender zijn specifiek afgestemd op activiteiten voor kinderen alleen ([BOA](https://www.vlaanderen.be/cjm/nl/cultuur/cultuureducatie/cultuur-en-boa/wat-boa)).
 
 * ✅ Geschikt wanneer je een doorzoekbare agenda met opvang en (naschoolse) activiteiten voor kinderen wilt configureren.
 * ❌ Niet aanbevolen wanneer je een beperkte hoeveelheid (visuele) ruimte hebt op je website om de widget te integreren. We raden in plaats daarvan aan de [tips template](#Tips) te gebruiken
