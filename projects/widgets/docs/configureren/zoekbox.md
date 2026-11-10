@@ -114,7 +114,7 @@ Kies een tekst die je standaard in het dropdown-menu wilt tonen. Je kan dit gebr
 
 We bieden 2 soorten weergaven aan
 1. `Nieuwe versie`: deze weergave biedt een kalender met snelkoppelingen, schoolvakanties en wekelijkse dagen. Deze weergave is erg geschikt als je een agenda bouwt met activiteiten voor kinderen. Als je deze versie kiest kan je er voor kiezen om schoolvakanties als snelkoppeling te tonen
-2. `Klassieke versie`: deze weergave toont een vaste lijst met periodes zoals vandaag, dit weekend en volgende 7 dagen. Als je deze versie kiest kan je kiezen welke mogelijkheden in de dropdown verschijnen, en wat de standaardkeuze is binnen het dropdown menu. 
+2. `Klassieke versie`: deze weergave toont een vaste lijst met periodes zoals vandaag, dit weekend en de volgende 7 dagen. Als je deze versie kiest kan je kiezen welke mogelijkheden in de dropdown verschijnen, en wat de standaardkeuze is binnen het dropdown menu. 
 
 #### Groepfilters
 
