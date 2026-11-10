@@ -1636,6 +1636,10 @@
                           "error": "No subEvent found with startDate '2026-06-11T10:00:00+02:00' and endDate '2026-06-11T16:00:00+02:00'."
                         },
                         {
+                          "jsonPointer": "/2",
+                          "error": "Duplicate entry with startDate '2026-06-10T10:00:00+02:00' and endDate '2026-06-10T16:00:00+02:00'."
+                        },
+                        {
                           "jsonPointer": "/3",
                           "error": "Multiple subEvents found with startDate '2026-06-12T10:00:00+02:00' and endDate '2026-06-12T16:00:00+02:00'."
                         },
