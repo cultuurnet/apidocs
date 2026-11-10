@@ -37,7 +37,7 @@ The API looks the text up in several sources in a fixed order, and returns the r
 ## Getting good matches
 
 * **Add the municipality.** `Korenmarkt` exists in several cities; `Korenmarkt, Gent` does not.
-* **Take the first match.** Results are ordered best first and `limit` is `1` by default. Ask for more only when you filter them yourself, for example by distance to a point you already know.
+* **Take the first match.** Results are ordered best first and `limit` is `1` by default; you can ask for up to 10. Ask for more only when you filter them yourself, for example by distance to a point you already know.
 * **Route from text directly.** When the coordinates are only needed to calculate a route, pass the text as `origin` or `destination` of [`GET /routes`](/reference/geo-api.json/paths/~1routes/get); it resolves the text the same way and saves you a request.
 * **Restrict the country.** `country` defaults to `BE`. Pass another ISO 3166-1 code for addresses abroad.
 

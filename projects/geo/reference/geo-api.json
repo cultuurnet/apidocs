@@ -119,7 +119,7 @@
         "name": "limit",
         "in": "query",
         "required": false,
-        "description": "Maximum number of locations to return. Results are ordered best match first, so the default of 1 gives you the best match. This collection is not paginated: `totalItems` is the number of returned locations.",
+        "description": "Maximum number of locations to return, at most 10. Results are ordered best match first, so the default of 1 gives you the best match.",
         "schema": {
           "type": "integer",
           "minimum": 1,
