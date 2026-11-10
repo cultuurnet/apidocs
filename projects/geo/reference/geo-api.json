@@ -66,7 +66,7 @@
         "properties": {
           "totalItems": {
             "type": "integer",
-            "description": "Number of routes in `member`: `1`, plus the number of alternatives that could be found. The collection is not paginated."
+            "description": "Number of routes in `member`: the recommended route plus any alternatives found, so between 1 and 4. The collection is not paginated."
           },
           "member": {
             "type": "array",
@@ -222,7 +222,7 @@
         "name": "alternatives",
         "in": "query",
         "required": false,
-        "description": "Number of alternative routes to return next to the recommended one. Fewer may be returned when no sensible alternatives exist. Cannot be combined with `via` or `departAt`.",
+        "description": "Number of alternative routes to return next to the recommended one, at most 3. Fewer may be returned when no sensible alternatives exist. Cannot be combined with `via` or `departAt`.",
         "schema": {
           "type": "integer",
           "minimum": 0,
