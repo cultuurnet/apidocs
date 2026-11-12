@@ -222,7 +222,7 @@
         "name": "alternatives",
         "in": "query",
         "required": false,
-        "description": "Number of alternative routes to return next to the recommended one, at most 3. Fewer may be returned when no sensible alternatives exist. Cannot be combined with `via` or `departAt`.",
+        "description": "Number of alternative routes to return next to the recommended one, at most 3. Fewer may be returned when no sensible alternatives exist. Cannot be combined with `via`.",
         "schema": {
           "type": "integer",
           "minimum": 0,
@@ -230,17 +230,6 @@
           "default": 0
         },
         "example": 2
-      },
-      "departAt": {
-        "name": "departAt",
-        "in": "query",
-        "required": false,
-        "description": "Departure date and time, ISO 8601 with an offset or `Z`, for time-dependent restrictions such as roads closed at certain hours. The instant is converted to local time at the origin. Defaults to no time dependency. Cannot be combined with `alternatives`.",
-        "schema": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "example": "2026-11-20T18:30:00+01:00"
       },
       "boundsPadding": {
         "name": "boundsPadding",
@@ -446,9 +435,6 @@
           },
           {
             "$ref": "#/components/parameters/alternatives"
-          },
-          {
-            "$ref": "#/components/parameters/departAt"
           },
           {
             "$ref": "#/components/parameters/boundsPadding"
