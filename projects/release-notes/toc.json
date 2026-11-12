@@ -66,6 +66,12 @@
          "type":"divider",
          "title":"Widgets"
       },
+            {
+               "type":"item",
+               "title":"2026",
+               "uri":"docs/widgets/2026.md",
+               "slug":"wid-2026"
+      },
       {
                "type":"item",
                "title":"2024",
