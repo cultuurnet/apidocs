@@ -29,6 +29,8 @@ What `GET /routes` returns: one way to travel from the origin to the destination
 
 A point the route passes through: the origin, each via point, and the destination. The response lists the waypoints as locations (coordinates), resolved from the text or coordinates you passed, so you can check which points the route was calculated between.
 
+The waypoints are only the points you route between. The `geometry` is the full line along the roads, for drawing the route on a map. Every route has its own geometry, but all routes share the same waypoints.
+
 ## Bounds
 
 A rectangle on the map, given by its `southWest` and `northEast` corners:
