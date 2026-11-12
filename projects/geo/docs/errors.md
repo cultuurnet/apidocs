@@ -8,23 +8,13 @@ This page contains an overview of all error types inside the `https://api.publiq
 
 * **Complete type:** `https://api.publiq.be/probs/geo-api/location-not-found`
 * **Title**: `Location not found`
-* **Status**: `404`
+* **Status**: `400`
 
 You asked for a route and gave the `origin`, the `destination` or a `via` point as text, but no location matched that text. The `detail` property tells you which parameter could not be resolved.
 
 Check the spelling, add the municipality, or resolve the text yourself first with [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get) and let the user pick from the results.
 
 Note that [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get) itself never returns this error: a query that matches nothing gives a `200` with an empty `member`.
-
-## route-not-found
-
-* **Complete type:** `https://api.publiq.be/probs/geo-api/route-not-found`
-* **Title**: `Route not found`
-* **Status**: `404`
-
-All points were resolved, but no route exists between them for the requested `mode`. This happens when a point lies outside the area covered by the routing engine, on an island without a ferry, or when the only way between the points is not allowed for the mode (for example a highway for `bicycle`).
-
-Try another `mode`, or check that the waypoints are where you expect them to be by resolving them with [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get).
 
 ## Other status codes
 

@@ -66,11 +66,11 @@
         "properties": {
           "totalItems": {
             "type": "integer",
-            "description": "Number of routes in `member`: the recommended route plus any alternatives found, so between 1 and 4. The collection is not paginated."
+            "description": "Number of routes in `member`: `0` when no route exists between the waypoints, otherwise the recommended route plus any alternatives found, so at most 4. The collection is not paginated."
           },
           "member": {
             "type": "array",
-            "description": "The recommended route first, then the alternatives if requested.",
+            "description": "The recommended route first, then the alternatives if requested. Empty when no route exists between the waypoints.",
             "items": {
               "$ref": "../models/route.json"
             }
@@ -278,36 +278,20 @@
           }
         }
       },
-      "RouteNotFound": {
-        "description": "The requested resource (URL) could not be found. Next to the generic reasons (a required query parameter is missing or has an invalid value, `type` `https://api.publiq.be/probs/url/not-found`), this operation has two domain-specific reasons. See the [errors page](../docs/errors.md) for details.\n\n* `https://api.publiq.be/probs/geo-api/location-not-found`: `origin`, `destination` or a `via` point was given as text and no location matched it\n* `https://api.publiq.be/probs/geo-api/route-not-found`: all points were resolved but no route exists between them for the given `mode`\n\nThe `detail` property of the response contains more specific information.",
+      "LocationNotFound": {
+        "description": "`origin`, `destination` or a `via` point was given as text and no location matched it. See the [errors page](../docs/errors.md) for details.\n\nThe `detail` property of the response names the parameter that could not be resolved.\n\nThe `type` is always `https://api.publiq.be/probs/geo-api/location-not-found`.",
         "content": {
           "application/problem+json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
             },
             "examples": {
-              "Invalid query parameter": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/url/not-found",
-                  "title": "Not Found",
-                  "status": 404,
-                  "detail": "Query parameter \"alternatives\" cannot be combined with \"via\""
-                }
-              },
               "Location not found": {
                 "value": {
                   "type": "https://api.publiq.be/probs/geo-api/location-not-found",
                   "title": "Location not found",
-                  "status": 404,
-                  "detail": "No location matched destination \"Vooruitstraat 999, Nergens\""
-                }
-              },
-              "Route not found": {
-                "value": {
-                  "type": "https://api.publiq.be/probs/geo-api/route-not-found",
-                  "title": "Route not found",
-                  "status": 404,
-                  "detail": "No pedestrian route exists between the origin and the destination"
+                  "status": 400,
+                  "detail": "Query parameter \"destination\" did not match any location"
                 }
               }
             }
@@ -445,7 +429,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The recommended route first, then the alternatives if any, plus the resolved waypoints.",
+            "description": "The recommended route first, then the alternatives if any, plus the resolved waypoints. The list of routes is empty when no route exists between the waypoints.",
             "content": {
               "application/json": {
                 "schema": {
@@ -503,13 +487,38 @@
                         }
                       ]
                     }
+                  },
+                  "No route": {
+                    "summary": "No route",
+                    "description": "No route exists between the waypoints.",
+                    "value": {
+                      "totalItems": 0,
+                      "member": [],
+                      "waypoints": [
+                        {
+                          "coordinates": {
+                            "latitude": 51.0536,
+                            "longitude": 3.725
+                          }
+                        },
+                        {
+                          "coordinates": {
+                            "latitude": 51.0176,
+                            "longitude": 3.6871
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/LocationNotFound"
+          },
           "404": {
-            "$ref": "#/components/responses/RouteNotFound"
+            "$ref": "#/components/responses/NotFound"
           },
           "502": {
             "$ref": "#/components/responses/BadGateway"

@@ -48,7 +48,9 @@ Text is resolved exactly like the `query` of [`GET /coordinates`](/reference/geo
 
 Pass text when you want one request and the best guess is good enough, for example a route from the user's own address. Pass coordinates when you already have them, or when the user should choose between candidates first; then call `GET /coordinates`, let the user pick, and pass the coordinates of the pick.
 
-When a text does not match any location, the response is a `404` with type `https://api.publiq.be/probs/geo-api/location-not-found` and a `detail` naming the parameter. See [errors](./errors.md).
+When a text does not match any location, the response is a `400` with type `https://api.publiq.be/probs/geo-api/location-not-found` and a `detail` naming the parameter. See [errors](./errors.md).
+
+When no route exists between the points, the response is a normal `200` with `totalItems` `0` and an empty `member`. This can happen, for example, when the only way is a highway and you asked for `bicycle`. The `waypoints` are still returned, so you can check where the points are or try another `mode`.
 
 ## Via points, modes and alternatives
 
