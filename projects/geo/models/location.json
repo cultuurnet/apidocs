@@ -1,0 +1,21 @@
+{
+  "title": "location",
+  "type": "object",
+  "description": "A point on the map that matched a text query: an address, a venue or a point of interest. Only the coordinates are returned for now; descriptive properties such as a name or address may be added later in a backwards compatible way.",
+  "properties": {
+    "coordinates": {
+      "$ref": "https://raw.githubusercontent.com/cultuurnet/apidocs/main/projects/uitdatabank/models/common-coordinates.json"
+    }
+  },
+  "required": [
+    "coordinates"
+  ],
+  "examples": [
+    {
+      "coordinates": {
+        "latitude": 51.0474,
+        "longitude": 3.7284
+      }
+    }
+  ]
+}
