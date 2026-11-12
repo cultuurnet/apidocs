@@ -206,17 +206,17 @@
         "name": "geometry",
         "in": "query",
         "required": false,
-        "description": "Format of the route shape in the response: an encoded polyline (precision 6), a GeoJSON LineString, or no shape at all.",
+        "description": "Format of the route shape in the response: a GeoJSON LineString, an encoded polyline (precision 6), or no shape at all.",
         "schema": {
           "type": "string",
           "enum": [
-            "polyline6",
             "geojson",
+            "polyline6",
             "none"
           ],
-          "default": "polyline6"
+          "default": "geojson"
         },
-        "example": "geojson"
+        "example": "polyline6"
       },
       "alternatives": {
         "name": "alternatives",

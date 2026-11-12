@@ -1,6 +1,6 @@
 {
   "title": "geometry",
-  "description": "The shape of a route, in the format chosen with the `geometry` query parameter.\n\n* `polyline6` (default): a string in the Google encoded polyline format with 6 decimals of precision. Decoders are available for every platform.\n* `geojson`: a GeoJSON `LineString` with `[longitude, latitude]` pairs, ready for Leaflet, MapLibre or Mapbox.\n* `none`: `null`, for when you only need distance or bounds.",
+  "description": "The shape of a route, in the format chosen with the `geometry` query parameter.\n\n* `geojson` (default): a GeoJSON `LineString` with `[longitude, latitude]` pairs, ready for Leaflet, MapLibre or Mapbox.\n* `polyline6`: a string in the Google encoded polyline format with 6 decimals of precision. Decoders are available for every platform.\n* `none`: `null`, for when you only need distance or bounds.",
   "oneOf": [
     {
       "type": "string",

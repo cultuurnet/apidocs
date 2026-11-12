@@ -5,7 +5,7 @@ This guide shows how to calculate a route with [`GET /routes`](/reference/geo-ap
 ## A first request
 
 ```http
-GET /routes?origin=51.0536,3.7250&destination=51.0425,3.7268&mode=bicycle&geometry=geojson HTTP/1.1
+GET /routes?origin=51.0536,3.7250&destination=51.0425,3.7268&mode=bicycle HTTP/1.1
 Host: geo-api-test.publiq.be
 ```
 
@@ -35,7 +35,7 @@ The response is a collection with the recommended route in `member[0]`, and the 
 }
 ```
 
-`distance` is in metres. The `geometry` of the route is in the format you asked for with `geometry`: a GeoJSON `LineString` here, an encoded polyline by default, or `null` with `geometry=none` when you only need numbers and bounds.
+`distance` is in metres. The `geometry` of the route is a GeoJSON `LineString` by default. Use `geometry=polyline6` for an encoded polyline, or `geometry=none` to get `null` when you only need numbers and bounds.
 
 ## Coordinates or text
 
@@ -59,11 +59,11 @@ When a text does not match any location, the response is a `404` with type `http
 
 ## Drawing the route
 
-With `geometry=geojson`, the `geometry` of a route drops straight into Leaflet, MapLibre or Mapbox GL. Note that GeoJSON uses `[longitude, latitude]` order.
+By default, the `geometry` of a route is GeoJSON and drops straight into Leaflet, MapLibre or Mapbox GL. Note that GeoJSON uses `[longitude, latitude]` order.
 
 Fit the map to `bounds`, a `{ southWest, northEast }` object with the exact extent of the route. Pass `boundsPadding` (in metres) when you want a margin around it.
 
-With the default `geometry=polyline6`, decode the string with any Google encoded polyline decoder, using precision 6 (not the default 5).
+With `geometry=polyline6`, decode the string with any Google encoded polyline decoder, using precision 6 (not the default 5).
 
 ## Finding events along the route
 
