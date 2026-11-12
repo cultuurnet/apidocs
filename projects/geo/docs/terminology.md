@@ -23,7 +23,7 @@ A location is not a UiTdatabank place. It has no id and no URL, because it comes
 
 ## Route
 
-What `GET /routes` returns: one way to travel from the origin to the destination with a given means of transport (`mode`). A route has a total `distance` in metres and `duration` in seconds, a `geometry` (its shape) and `bounds` (the area it covers).
+What `GET /routes` returns: one way to travel from the origin to the destination with a given means of transport (`mode`). A route has a total `distance` in metres, a `geometry` (its shape) and `bounds` (the area it covers).
 
 ## Waypoint
 
@@ -46,4 +46,4 @@ The `bounds` of a route are the extent of its geometry, enlarged by `boundsPaddi
 
 ## Mode
 
-The means of transport a route is calculated for: `car`, `bicycle` or `pedestrian`. The mode changes which roads are used and the duration.
+The means of transport a route is calculated for: `car`, `bicycle` or `pedestrian`. The mode changes which roads are used.

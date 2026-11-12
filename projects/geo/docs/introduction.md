@@ -3,7 +3,7 @@
 The Geo API answers two questions for the applications built on publiq's platform:
 
 * **Where is this?** Turn an address, a venue or a point of interest into coordinates with [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get).
-* **How do I get there?** Calculate a route between two points, with distance, duration, its shape and the area it covers, with [`GET /routes`](/reference/geo-api.json/paths/~1routes/get).
+* **How do I get there?** Calculate a route between two points, with distance, its shape and the area it covers, with [`GET /routes`](/reference/geo-api.json/paths/~1routes/get).
 
 Typical uses are a "near me" or "along my route" search for events in UiTdatabank, showing a venue on a map, or validating the address of a new place.
 

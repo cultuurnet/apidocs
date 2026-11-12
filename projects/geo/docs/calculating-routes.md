@@ -17,7 +17,6 @@ The response is a collection with the recommended route in `member[0]`, and the 
   "member": [
     {
       "distance": 1377,
-      "duration": 310,
       "mode": "bicycle",
       "bounds": {
         "southWest": { "latitude": 51.0425, "longitude": 3.725 },
@@ -36,7 +35,7 @@ The response is a collection with the recommended route in `member[0]`, and the 
 }
 ```
 
-`distance` is in metres and `duration` in seconds. The `geometry` of the route is in the format you asked for with `geometry`: a GeoJSON `LineString` here, an encoded polyline by default, or `null` with `geometry=none` when you only need numbers and bounds.
+`distance` is in metres. The `geometry` of the route is in the format you asked for with `geometry`: a GeoJSON `LineString` here, an encoded polyline by default, or `null` with `geometry=none` when you only need numbers and bounds.
 
 ## Coordinates or text
 

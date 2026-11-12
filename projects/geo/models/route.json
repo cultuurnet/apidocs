@@ -7,10 +7,6 @@
       "type": "integer",
       "description": "Total length in metres."
     },
-    "duration": {
-      "type": "integer",
-      "description": "Estimated travel time in seconds."
-    },
     "mode": {
       "type": "string",
       "enum": [
@@ -36,7 +32,6 @@
   },
   "required": [
     "distance",
-    "duration",
     "mode",
     "bounds",
     "geometry"
