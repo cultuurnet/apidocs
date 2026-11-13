@@ -134,6 +134,17 @@
         "tags": [
           "Events"
         ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "name": "embedCapacities",
+            "description": "Includes the `capacity` of the subEvents in the response. Requires authentication: without a token, the request returns a `401`. When you are authenticated but not allowed to edit the event, the capacities are left out. By default, capacities are not included."
+          }
+        ],
         "responses": {
           "200": {
             "description": "Event details.",
@@ -144,6 +155,9 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"

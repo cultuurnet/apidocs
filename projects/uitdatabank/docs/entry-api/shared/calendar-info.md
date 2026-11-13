@@ -224,6 +224,51 @@ Events of type "Kamp of vakantie" (term id `0.57.0.0.0`) can optionally include 
 
 In the read model (GET), `hasOvernightStay` is included in the subEvent object when it has been set, both as `true` and as `false`. When it was never set, the property is omitted from the response.
 
+### Capacity (events only, single/multiple)
+
+Events with calendarType `single` or `multiple` can optionally include a `capacity` object on each `subEvent` to indicate whether the number of places for that occurrence is limited, and how many places are taken.
+
+```json
+{
+  "calendarType": "multiple",
+  "subEvent": [
+    {
+      "startDate": "2026-07-01T20:00:00+02:00",
+      "endDate": "2026-07-01T22:00:00+02:00",
+      "capacity": {
+        "type": "Limited",
+        "maximum": 30,
+        "taken": 12
+      }
+    },
+    {
+      "startDate": "2026-07-08T20:00:00+02:00",
+      "endDate": "2026-07-08T22:00:00+02:00",
+      "capacity": {
+        "type": "Unlimited",
+        "taken": 140
+      }
+    }
+  ]
+}
+```
+
+**Validation rules:**
+
+* `type` is required and is either `Limited` or `Unlimited`.
+* `maximum` is required when `type` is `Limited`, and not allowed when `type` is `Unlimited`.
+* `taken` is optional for both types, and can be higher than `maximum`.
+
+**Overwriting or clearing capacity:**
+
+* **Send `"capacity": {}`** (empty object) → clears the capacity, so it becomes unknown again.
+* **Omit `capacity`** on [`PATCH /events/{eventId}/sub-events`](/reference/entry.json/paths/~1events~1{eventId}~1sub-events/patch) → the existing capacity is left unchanged, also when `startDate` or `endDate` change.
+* **Omit `capacity`** on the endpoints that replace the calendar in its entirety ([`PUT /events/{eventId}/calendar`](/reference/entry.json/paths/~1events~1{eventId}~1calendar/put) and [`PUT /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/put)) → the subEvent keeps the capacity of the current subEvent with the same `startDate` and `endDate`. If there is no such subEvent, or more than one, the capacity becomes unknown. Unlike `childcare` and `hasOvernightStay`, leaving `capacity` out of these requests never removes a capacity that still matches, because capacity is often managed by another system than the calendar.
+
+**API behavior:**
+
+In the read model ([`GET /events/{eventId}`](/reference/entry.json/paths/~1events~1{eventId}/get)), `capacity` is left out by default. Add `embedCapacities=true` to include it. This requires authentication: without a token, the request returns a `401`. It is only included when it is known and you are allowed to edit the event; otherwise it is left out, without an error. It is never available through Search API.
+
 ### periodic/permanent
 
 When creating or updating an event or place with calendarType `periodic`, you must include `startDate` and `endDate` properties that define the period during which the event or place are scheduled. Additionally, you can include an optional `openingHours` property to indicate on which (recurring) weekdays the event or place is available.
