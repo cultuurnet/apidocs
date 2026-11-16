@@ -1,1 +1,4 @@
 node_modules
+.lycheecache
+lychee-files.txt
+lychee-report.md

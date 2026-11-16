@@ -1,0 +1,46 @@
+# Configuration for the external link check (.github/workflows/linting-links.yml).
+# Links between files in this repository are checked by remark-validate-links in `yarn docs:lint`.
+# See https://lychee.cli.rs/guides/config/ for all options.
+
+# Only check web links. Relative links and links to other files in this repository are left to remark.
+scheme = ["https", "http"]
+
+# Be gentle on every host, so rate limiting or bot protection (e.g. Cloudflare in front of docs.publiq.be) does not
+# kick in and report working links as dead.
+max_concurrency = 16
+host_concurrency = 2
+host_request_interval = "250ms"
+
+# Retry flaky answers before reporting a link as dead.
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+
+# 429 means the host is rate limiting us, not that the link is dead.
+accept = ["200..=299", "429"]
+
+user_agent = "apidocs-link-checker (cultuurnet/apidocs)"
+
+# Remember results between runs, so the same URLs are not requested over and over.
+cache = true
+max_cache_age = "1d"
+
+exclude_loopback = true
+
+exclude_path = ["node_modules"]
+
+# URLs that cannot be checked by a bot (login required, private, or not meant to be resolved like the problem type URIs
+# under api.publiq.be). Regular expressions.
+exclude = [
+  "^https://helpdesk\\.publiq\\.be",
+  "^https://github\\.com/cultuurnet/udb3-acceptance-tests",
+  "^https://github\\.com/cultuurnet/apidocs/settings/secrets/actions",
+  "^https://www\\.uitinvlaanderen\\.be/agenda/e/horta-van-de-velde-de-trein-der-ontwerpers/ffe4f207-2f8d-4dce-87a6-08abf59aefbe",
+  "^https://api\\.publiq\\.be",
+  # TEMPORARY: docs hosted on Stoplight (docs.publiq.be, publiq.stoplight.io and even Stoplight's own meta.stoplight.io)
+  # currently answer a large share of the requests for existing pages with a 404, at random (seen November 2026).
+  # Retrying does not help (404 is not retried), so every run would report dozens of working links as dead.
+  # Remove these lines once Stoplight answers consistently again.
+  "^https://docs\\.publiq\\.be",
+  "^https://[a-z-]+\\.stoplight\\.io",
+]

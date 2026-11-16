@@ -217,7 +217,7 @@ Second, run `yarn install` in the root of your local clone of this repository to
 Then, run any of the following commands in the root of the cloned repository:
 
 * `yarn api:lint` to check for syntax errors or design guidelines violations inside the OpenAPI files
-* `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors
+* `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors, including links to other files in this repository
 
 If you want to automatically run these checks on your local machine for every new commit, you can execute the following command in the root of your cloned repository (once) to install a [`pre-commit` hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks):
 
@@ -234,11 +234,20 @@ rm .git/hooks/pre-commit
 In any case the checks will also run on GitHub and you should receive an email if they fail.
 If you open a pull request it will also include the status of the checks.
 
+### External links
+
+Links to other websites (`https://...`) are checked separately by [lychee](https://lychee.cli.rs), configured in [`lychee.toml`](./lychee.toml). Because other websites can be slow or down for a moment, this check (`Linting (Links)` on GitHub) does not block your pull request:
+
+* On a pull request it only checks the `.md` files you changed. Have a look when it fails, but you can still merge.
+* Every night it checks all docs on `main`. When it finds dead links, it opens (or updates) an issue labelled `dead-links`, and closes it again once all links work.
+
+To run it locally, [install lychee](https://lychee.cli.rs/guides/getting-started/) and run `lychee --config lychee.toml --root-dir "$PWD" projects README.md`.
+
 ## Automatically fixing (some) errors 🧹
 
 Warnings or errors reported by `yarn api:lint` (a.k.a. the `Linting / openapi` check on GitHub) always need to be fixed manually in the OpenAPI file(s) of your project.
 
-Warnings or errors reported by `yarn docs:lint` (a.k.a. the `Linting / docs` check on GitHub) can sometimes be fixed automatically, depending on the exact issue. For example formatting issues can be fixed automatically, but dead links not.
+Warnings or errors reported by `yarn docs:lint` (a.k.a. the `Linting / docs` check on GitHub) can sometimes be fixed automatically, depending on the exact issue. For example formatting issues can be fixed automatically, but broken links not.
 
 If you have `node` and `yarn` installed locally and ran `yarn install` to install all required packages, you can run `yarn docs:lint:fix` to try to fix the linting issues. Any issues that can be fixed will be fixed, and you can then commit them.
 
