@@ -35,7 +35,7 @@ The response is a collection with the recommended route in `member[0]`, and the 
 }
 ```
 
-`distance` is in metres. The `geometry` of the route is a GeoJSON `LineString` by default. Use `geometry=polyline6` for an encoded polyline, or `geometry=none` to get `null` when you only need numbers and bounds.
+`distance` is in metres. The `geometry` of the route is a GeoJSON `LineString`.
 
 ## Coordinates or text
 
@@ -61,11 +61,9 @@ When no route exists between the points, the response is a normal `200` with `to
 
 ## Drawing the route
 
-By default, the `geometry` of a route is GeoJSON and drops straight into Leaflet, MapLibre or Mapbox GL. Note that GeoJSON uses `[longitude, latitude]` order.
+The `geometry` of a route is GeoJSON and drops straight into Leaflet, MapLibre or Mapbox GL. Note that GeoJSON uses `[longitude, latitude]` order.
 
 Fit the map to `bounds`, a `{ southWest, northEast }` object with the exact extent of the route. Pass `boundsPadding` (in metres) when you want a margin around it.
-
-With `geometry=polyline6`, decode the string with any Google encoded polyline decoder, using precision 6 (not the default 5).
 
 ## Finding events along the route
 

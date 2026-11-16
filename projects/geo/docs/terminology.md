@@ -13,7 +13,7 @@ A point on the earth as `latitude` and `longitude` in decimal degrees (WGS 84, t
 
 In query parameters, coordinates are written as one string: `latitude,longitude`, for example `51.0425,3.7268`.
 
-> GeoJSON reverses the order: `[longitude, latitude]`. The `geometry` of a route in GeoJSON format follows the GeoJSON order, as every map library expects.
+> GeoJSON reverses the order: `[longitude, latitude]`. The `geometry` of a route is GeoJSON and follows that order, as every map library expects.
 
 ## Location
 

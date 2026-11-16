@@ -202,22 +202,6 @@
         },
         "example": "bicycle"
       },
-      "geometry": {
-        "name": "geometry",
-        "in": "query",
-        "required": false,
-        "description": "Format of the route shape in the response: a GeoJSON LineString, an encoded polyline (precision 6), or no shape at all.",
-        "schema": {
-          "type": "string",
-          "enum": [
-            "geojson",
-            "polyline6",
-            "none"
-          ],
-          "default": "geojson"
-        },
-        "example": "polyline6"
-      },
       "alternatives": {
         "name": "alternatives",
         "in": "query",
@@ -413,9 +397,6 @@
           },
           {
             "$ref": "#/components/parameters/mode"
-          },
-          {
-            "$ref": "#/components/parameters/geometry"
           },
           {
             "$ref": "#/components/parameters/alternatives"
