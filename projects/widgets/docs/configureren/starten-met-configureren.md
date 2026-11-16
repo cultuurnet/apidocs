@@ -38,4 +38,4 @@ Deze templates bevatten 4 verschillende blokken, die je elk apart dient te confi
 
 ## Tips template
 
-Dit blok bevat enkel een tipsblok. Je vindt de documentatie over het over configureren van het tipsblok [hier](/tips.md).
+Dit blok bevat enkel een tipsblok. Je vindt de documentatie over het over configureren van het tipsblok [hier](./tips.md).

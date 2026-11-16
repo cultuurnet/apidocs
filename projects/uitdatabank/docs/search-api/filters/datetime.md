@@ -10,7 +10,7 @@ You can filter results from Search API based on the date(range) that the items a
 * `availableFrom`: returns only results that should (still) be visible on online calendars after the given date-time. Defaults to the current date-time of the request.
 * `availableTo`: returns only results that should be visible on online calendars up until the given date-time. Defaults to the current date-time of the request.
 
-> The default values can be disabled by setting the value to `*` or by using the [disableDefaultFilters](/default-filters.md) query parameter. 
+> The default values can be disabled by setting the value to `*` or by using the [disableDefaultFilters](./default-filters.md) query parameter. 
 
 **Advanced query fields**
 * `availableRange`: returns results that should be visible on online calendars in a given time range.

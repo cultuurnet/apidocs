@@ -21,6 +21,7 @@
     "remark-frontmatter": null,
     "remark-gfm": null,
     "remark-validate-links": null,
+    "./scripts/remark-lint-publiq-links.mjs": null,
     "remark-preset-lint-consistent": null,
     "remark-preset-lint-recommended": null,
     "remark-lint-blockquote-indentation": 2,

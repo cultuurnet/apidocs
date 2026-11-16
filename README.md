@@ -217,7 +217,7 @@ Second, run `yarn install` in the root of your local clone of this repository to
 Then, run any of the following commands in the root of the cloned repository:
 
 * `yarn api:lint` to check for syntax errors or design guidelines violations inside the OpenAPI files
-* `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors, including links to other files in this repository
+* `yarn docs:lint` to check the `.md` files (guides) for mistakes or syntax errors, including links to other files in this repository, to OpenAPI operations and models (`/reference/...`, `/models/...`), and to pages of other projects on `https://docs.publiq.be` (checked against their `toc.json`, see [`scripts/remark-lint-publiq-links.mjs`](./scripts/remark-lint-publiq-links.mjs))
 
 If you want to automatically run these checks on your local machine for every new commit, you can execute the following command in the root of your cloned repository (once) to install a [`pre-commit` hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks):
 

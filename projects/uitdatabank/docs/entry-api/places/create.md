@@ -26,7 +26,7 @@ The user or client that created the place will become the `creator` of the place
 
 ## Overview
 
-You can create a new place by making a single HTTP request to the [`POST /places`](/reference/entry.json/paths/~places/post) endpoint. If successful, the place will be created and the response will contain the place's id and URL which you can store to make changes to the place later.
+You can create a new place by making a single HTTP request to the [`POST /places`](/reference/entry.json/paths/~1places/post) endpoint. If successful, the place will be created and the response will contain the place's id and URL which you can store to make changes to the place later.
 
 A request to create a the new place "Basiliek van Koekelberg", with only the required fields, looks like this:
 
@@ -128,7 +128,7 @@ Let's take a closer look at the properties of an place.
 
 ## Required properties
 
-Every place has a couple of properties that are required to create it, and that are always guaranteed to be on existing places. A summary of every required property is provided below, but you can find more details in the [complete place model](../../../models/place-with-read-example.json) and [`POST /places`](/reference/entry.json/paths/~places/post) endpoint documentation.
+Every place has a couple of properties that are required to create it, and that are always guaranteed to be on existing places. A summary of every required property is provided below, but you can find more details in the [complete place model](../../../models/place-with-read-example.json) and [`POST /places`](/reference/entry.json/paths/~1places/post) endpoint documentation.
 
 ### mainLanguage
 
