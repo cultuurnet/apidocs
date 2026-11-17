@@ -1,0 +1,51 @@
+{
+  "title": "geometry",
+  "type": "object",
+  "description": "The shape of a route along the roads, as a GeoJSON `LineString` with `[longitude, latitude]` pairs, ready for Leaflet, MapLibre or Mapbox.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "LineString"
+      ],
+      "description": "Always `LineString`."
+    },
+    "coordinates": {
+      "type": "array",
+      "description": "The points of the line as `[longitude, latitude]` pairs, following the GeoJSON order.",
+      "items": {
+        "type": "array",
+        "description": "One `[longitude, latitude]` pair.",
+        "items": {
+          "type": "number",
+          "description": "Longitude, then latitude, in decimal degrees."
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  },
+  "required": [
+    "type",
+    "coordinates"
+  ],
+  "examples": [
+    {
+      "type": "LineString",
+      "coordinates": [
+        [
+          3.725,
+          51.0536
+        ],
+        [
+          3.7262,
+          51.048
+        ],
+        [
+          3.7268,
+          51.0425
+        ]
+      ]
+    }
+  ]
+}
