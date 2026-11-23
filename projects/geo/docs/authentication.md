@@ -17,13 +17,13 @@ Send your client id in the `x-client-id` header:
 ```http
 GET /coordinates?query=Vooruit,%20Gent HTTP/1.1
 Host: geo-api-test.publiq.be
-x-client-id: YrgBoha6aRSrfIcsFt8PISe4u0EoM45k
+x-client-id: YOUR_CLIENT_ID
 ```
 
 Or, when you cannot send headers, as the `clientId` query parameter:
 
 ```http
-GET /coordinates?query=Vooruit,%20Gent&clientId=YrgBoha6aRSrfIcsFt8PISe4u0EoM45k HTTP/1.1
+GET /coordinates?query=Vooruit,%20Gent&clientId=YOUR_CLIENT_ID HTTP/1.1
 Host: geo-api-test.publiq.be
 ```
 

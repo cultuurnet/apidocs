@@ -17,7 +17,7 @@ Behind the scenes the API combines several sources, for example the places in Ui
 
 ## In this documentation
 
-* [Authentication](./authentication.md): work in progress
+* [Authentication](./authentication.md): identify your integration with its client id
 * [Terminology](./terminology.md): coordinates, locations, routes and bounds
 * [Errors](./errors.md): the error types specific to the Geo API
 * [Finding coordinates](./finding-coordinates.md): how to get good matches

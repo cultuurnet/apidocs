@@ -18,6 +18,8 @@ Note that [`GET /coordinates`](/reference/geo-api.json/paths/~1coordinates/get) 
 
 ## Other status codes
 
+* `401` `https://api.publiq.be/probs/auth/unauthorized`: the client id is missing, or no client with that id exists. See [Authentication](./authentication.md).
+* `403` `https://api.publiq.be/probs/auth/forbidden`: the client exists, but has no access to the Geo API.
 * `404` `https://api.publiq.be/probs/url/not-found`: a required query parameter is missing, has an invalid value, or two parameters cannot be combined (for example `alternatives` with `via`). The `detail` names the parameter.
 * `502` `about:blank`, title `Bad Gateway`: one of the sources behind the Geo API did not answer. Retry after a short delay.
 * `500` `about:blank`, title `Internal Server Error`: something went wrong on our side. Contact the helpdesk if it keeps happening.

@@ -3,7 +3,7 @@
   "info": {
     "title": "Geo API",
     "version": "1.0",
-    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.\n\nAuthentication is not part of this version of the contract yet; it will be added in a later version.",
+    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.\n\nEvery request carries your client id in the `x-client-id` header; see [Authentication](../docs/authentication.md).",
     "contact": {
       "name": "publiq helpdesk",
       "email": "technical-support@publiq.be",
