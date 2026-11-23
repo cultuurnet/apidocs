@@ -262,6 +262,46 @@
           }
         }
       },
+      "Unauthorized": {
+        "description": "Unauthorized. The client id is missing, or no client with that id exists. See [Authentication](../docs/authentication.md).\n\nThe `type` is always `https://api.publiq.be/probs/auth/unauthorized`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/unauthorized",
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "Send your client id in the x-client-id header"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. The client exists but has no access to the Geo API. See [Authentication](../docs/authentication.md).\n\nThe `type` is always `https://api.publiq.be/probs/auth/forbidden`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/forbidden",
+                  "title": "Forbidden",
+                  "status": 403,
+                  "detail": "This client has no access to the Geo API"
+                }
+              }
+            }
+          }
+        }
+      },
       "LocationNotFound": {
         "description": "`origin`, `destination` or a `via` point was given as text and no location matched it. See the [errors page](../docs/errors.md) for details.\n\nThe `detail` property of the response names the parameter that could not be resolved.\n\nThe `type` is always `https://api.publiq.be/probs/geo-api/location-not-found`.",
         "content": {
@@ -301,8 +341,30 @@
           }
         }
       }
+    },
+    "securitySchemes": {
+      "CLIENT_IDENTIFICATION": {
+        "name": "x-client-id",
+        "type": "apiKey",
+        "in": "header",
+        "description": "Your client id, from a client with access to the Geo API. See [client identification](https://docs.publiq.be/docs/authentication/methods/client-identification)."
+      },
+      "CLIENT_IDENTIFICATION_QUERY": {
+        "name": "clientId",
+        "type": "apiKey",
+        "in": "query",
+        "description": "The same client id as a query parameter, for when you cannot send headers. The `x-client-id` header takes precedence when both are given."
+      }
     }
   },
+  "security": [
+    {
+      "CLIENT_IDENTIFICATION": []
+    },
+    {
+      "CLIENT_IDENTIFICATION_QUERY": []
+    }
+  ],
   "paths": {
     "/coordinates": {
       "get": {
@@ -367,6 +429,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -497,6 +565,12 @@
           },
           "400": {
             "$ref": "#/components/responses/LocationNotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
