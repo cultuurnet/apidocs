@@ -524,10 +524,6 @@
                         {
                           "type": "municipality",
                           "label": "Kessel-Lo (3010)",
-                          "geo": {
-                            "latitude": 50.88952,
-                            "longitude": 4.72031
-                          },
                           "searchFilter": {
                             "regions": [
                               "nis-24062C"
@@ -537,10 +533,6 @@
                         {
                           "type": "street",
                           "label": "Diestsesteenweg, 3010 Kessel-Lo",
-                          "geo": {
-                            "latitude": 50.88556,
-                            "longitude": 4.73549
-                          },
                           "searchFilter": {
                             "coordinates": "50.88556,4.73549"
                           }

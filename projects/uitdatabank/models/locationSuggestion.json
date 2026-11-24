@@ -17,16 +17,6 @@
       "description": "The text to show to the user.",
       "example": "Lentedreef, 3010 Kessel-Lo"
     },
-    "geo": {
-      "allOf": [
-        {
-          "$ref": "./common-coordinates.json"
-        },
-        {
-          "description": "The coordinates of the location. For a street or an area, the average of the coordinates of its addresses. Use `searchFilter` to search, not these coordinates."
-        }
-      ]
-    },
     "searchFilter": {
       "$ref": "./locationSuggestion-searchFilter.json"
     }
@@ -34,17 +24,12 @@
   "required": [
     "type",
     "label",
-    "geo",
     "searchFilter"
   ],
   "examples": [
     {
       "type": "street",
       "label": "Lentedreef, 3010 Kessel-Lo",
-      "geo": {
-        "latitude": 50.88943,
-        "longitude": 4.72002
-      },
       "searchFilter": {
         "coordinates": "50.88943,4.72002"
       }
@@ -52,10 +37,6 @@
     {
       "type": "municipality",
       "label": "Kessel-Lo (3010)",
-      "geo": {
-        "latitude": 50.88952,
-        "longitude": 4.72031
-      },
       "searchFilter": {
         "regions": [
           "nis-24062C"
