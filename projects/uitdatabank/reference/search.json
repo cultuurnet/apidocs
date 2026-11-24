@@ -473,6 +473,97 @@
         ]
       }
     },
+    "/location-suggestions": {
+      "get": {
+        "summary": "Suggest locations",
+        "operationId": "get-location-suggestions",
+        "x-internal": true,
+        "tags": [
+          "Location suggestions"
+        ],
+        "description": "Suggests locations while a user types, for example in a location field of a search form. Every suggestion comes with a `searchFilter` that you pass to `GET /events`, `GET /places` or `GET /offers` when the user picks it.\n\nReturns at most 10 suggestions, the best match first. There is no pagination.\n\n### How the typed text is matched\n\n- Every typed word must match. The last word may be the beginning of a word, because the user is still typing it: `lentedreef leuv` finds the Lentedreef in Leuven.\n- Capitals, accents and punctuation don't matter: `rue des brasseurs liege` finds Rue des Brasseurs, 4000 Liège.\n- A number at the end must match a whole house number or postal code: `kerkstraat 9` finds Kerkstraat 9, not 90 or postal code 9000.\n- Addresses are only suggested when a house number is typed. Without one, the user gets the street instead of every house number on it.\n- Only numbers is a postal code being typed. Then only parts of municipalities are suggested, by the beginning of their postal code: `30` finds `Leuven (3000)` and `Kessel-Lo (3010)`.\n\n### Order\n\nA suggestion whose name is exactly what was typed comes first. Of suggestions that match equally well, the one with the most addresses comes first, so `leuven` shows the municipality Leuven above the streets named after it.\n\n### Using a suggestion\n\nPass the `searchFilter` of the picked suggestion as URL parameters to Search API, as it is. A point (`coordinates`) needs your own `distance` parameter. An area (`regions`) can be used on its own, or with a `distance` to also include its surroundings.\n\n```\nGET /events?coordinates=50.88943,4.72002&distance=5km\nGET /events?regions[]=nis-24062C\n```",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "description": "The text the user typed so far, for example `lentedreef leuv`, `kerkstraat 12 gent` or `3010`. At most 120 characters.",
+            "example": "lentedreef leuv"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The suggestions, the best match first. An empty `member` list when nothing matches.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "maxItems": 10,
+                      "description": "At most 10 suggestions.",
+                      "items": {
+                        "$ref": "../models/locationSuggestion.json"
+                      }
+                    }
+                  },
+                  "required": [
+                    "member"
+                  ]
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "member": [
+                        {
+                          "type": "municipality",
+                          "label": "Kessel-Lo (3010)",
+                          "geo": {
+                            "latitude": 50.88952,
+                            "longitude": 4.72031
+                          },
+                          "searchFilter": {
+                            "regions": [
+                              "nis-24062C"
+                            ]
+                          }
+                        },
+                        {
+                          "type": "street",
+                          "label": "Diestsesteenweg, 3010 Kessel-Lo",
+                          "geo": {
+                            "latitude": 50.88556,
+                            "longitude": 4.73549
+                          },
+                          "searchFilter": {
+                            "coordinates": "50.88556,4.73549"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
     "/offers": {
       "get": {
         "summary": "Search events & places (offers)",
@@ -1206,7 +1297,7 @@
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
-           "415": {
+          "415": {
             "$ref": "#/components/responses/UnsupportedMediaType"
           }
         },
@@ -1679,6 +1770,9 @@
   "tags": [
     {
       "name": "Events & places"
+    },
+    {
+      "name": "Location suggestions"
     },
     {
       "name": "Organizers"
