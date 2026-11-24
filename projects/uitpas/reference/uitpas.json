@@ -1064,7 +1064,7 @@
             }
           },
           "400": {
-            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
+            "description": "Bad Request. Possible error types:\n\n* https://api.publiq.be/probs/body/missing\n* https://api.publiq.be/probs/body/invalid-syntax\n* https://api.publiq.be/probs/body/invalid-data\n* https://api.publiq.be/probs/uitpas/checkin-not-allowed\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/organizer-not-found\n* https://api.publiq.be/probs/uitpas/invalid-uitpasnumber\n* https://api.publiq.be/probs/uitpas/invalid-card\n* https://api.publiq.be/probs/uitpas/invalid-card-status\n* https://api.publiq.be/probs/uitpas/passholder-no-active-cardsystems\n",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1089,7 +1089,7 @@
             "$ref": "#/components/responses/Forbidden"
           }
         },
-        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\nNo `organizerId` has to be specified: points are always attributed to the organizer of the event.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Check in a passholder at a given event.\n\nYou will need:\n- The `uitpasNumber` of the passholder\n- The `eventId` of the UiTdatabank event.\n\nOptionally, an `organizerId` can be given: the UiTPAS organizer that registers the check-in. If omitted, the organizer of the event is used. The given organizer is allowed when:\n- its `id` is the organizer of the event, or its `linkedLocationId` (see the [Organizer](/reference/uitpas.json/components/schemas/Organizer) model) is the location of the event, or\n- one of its `linkedOrganizers` (see [GET /permissions](/reference/uitpas.json/paths/~1permissions/get)) matches the event in the same way.\n\nAn error of type `https://api.publiq.be/probs/auth/forbidden` is returned when the given organizer is not allowed for the event, and an error of type `https://api.publiq.be/probs/uitpas/organizer-not-found` when the `organizerId` is unknown.\n\nPoints are always earned within the card systems of the organizer of the event, also when another `organizerId` is given.\n\n> Checking in a passholder is only possible during the opening hours of the event and a certain period before and after. A client will receive an error of type `https://api.publiq.be/probs/uitpas/checkin-not-allowed` when a check-in is not allowed. The `endUserMessage` field of that error response will also contain a user-readable error message.\n\nIf you need to check-in a passholder based on a check-in code (e.g. a QR code), use [POST /passholders/passholderId/checkins](/reference/uitpas.json/paths/~1passholders~1passholderId~1checkins/post) instead.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the given `organizerId`, or for the organizer of the given event if `organizerId` is omitted. When a user access token is used and the organizer is allowed via one of its `linkedOrganizers`, the user must be a member of the given organizer and have `CHECKINS_WRITE` permission for that linked organizer, as listed in [GET /permissions](/reference/uitpas.json/paths/~1permissions/get).\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": [
@@ -1113,6 +1113,13 @@
                   "value": {
                     "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
                     "uitpasNumber": "0900000095902"
+                  }
+                },
+                "Example with organizerId": {
+                  "value": {
+                    "eventId": "CBA2D826-9E85-47BD-8E0B-2BC7882E68FB",
+                    "uitpasNumber": "0900000095902",
+                    "organizerId": "c097fa2e-d9be-42e6-b41a-ec3d4d4cbad1"
                   }
                 }
               }
@@ -1422,7 +1429,7 @@
             },
             "in": "query",
             "name": "organizerId",
-            "description": "ID of the organizer of the event of the check-in.",
+            "description": "Only return check-ins registered by one of these organizers, or on an event organized by one of these organizers.",
             "required": true,
             "explode": true
           },
@@ -1479,7 +1486,7 @@
         "tags": [
           "Checkins"
         ],
-        "description": "Delete a checkin.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.\n",
+        "description": "Delete a checkin.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the event, or for the organizer that registered the check-in.\n",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1528,7 +1535,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not Found\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found",
+            "description": "Not Found\n\nPossible error types:\n\n* https://api.publiq.be/probs/uitpas/event-not-found\n* https://api.publiq.be/probs/uitpas/passholder-not-found\n* https://api.publiq.be/probs/uitpas/organizer-not-found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1538,7 +1545,7 @@
             }
           }
         },
-        "description": "Retrieves the current checkin status for a passholder and a given event.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the organizer of the given event.",
+        "description": "Retrieves the current checkin status for a passholder and a given event.\n\nThe caller of this request must have `CHECKINS_WRITE` permission for the given `organizerId`, or for the organizer of the given event if `organizerId` is omitted. See [POST /checkins](/reference/uitpas.json/paths/~1checkins/post) for the organizers that are allowed. An error of type `https://api.publiq.be/probs/auth/forbidden` is returned when the given organizer is not allowed for the event.",
         "security": [
           {
             "USER_ACCESS_TOKEN": []
@@ -1565,6 +1572,15 @@
             "name": "eventId",
             "required": true,
             "description": "Id of the event where the passholder wants to checkin"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "organizerId",
+            "required": false,
+            "description": "ID of the UiTPAS organizer that will register the check-in. If omitted, the organizer of the given event is used."
           }
         ],
         "tags": [
@@ -12151,8 +12167,14 @@
             "description": "Title of the event where the passholder checked in",
             "readOnly": true
           },
+          "organizerId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ID of the UiTPAS organizer that registers the check-in. Only used when registering a check-in. If omitted, the organizer of the given event is used. The organizer's `id` must be the organizer of the event or its `linkedLocationId` the location of the event, or one of its `linkedOrganizers` (see [GET /permissions](/reference/uitpas.json/paths/~1permissions/get)) must match the event that way. See [POST /checkins](/reference/uitpas.json/paths/~1checkins/post) for the required permissions.",
+            "writeOnly": true
+          },
           "organizer": {
-            "description": "Organizer of the event where the passholder checked in. This field is always available in responses. It cannot be set when creating a check-in: the organizer is always derived from the event.",
+            "description": "The UiTPAS organizer that registered the check-in. This field is always available in responses and ignored in check-in registrations.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/Organizer"
