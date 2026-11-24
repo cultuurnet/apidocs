@@ -45,7 +45,7 @@ For example, the Keycloak admin API can return the following client scopes for a
 }
 ```
 
-The above example indicates that the client has access to UiTdatabank's Search API and Entry API. Check `defaultClientScopes` for your API scope, and ignore all other scopes.
+The above example indicates that the client has access to UiTdatabank's Search API and Entry API. Check `defaultClientScopes` for your API scope, and **ignore all other scopes**.
 
 ## Token guidelines
 
