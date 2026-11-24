@@ -1,0 +1,39 @@
+{
+  "title": "route",
+  "type": "object",
+  "description": "One way to travel from the origin to the destination, through the via points in order.",
+  "properties": {
+    "distance": {
+      "type": "integer",
+      "description": "Total length in metres."
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "car",
+        "bicycle",
+        "pedestrian"
+      ],
+      "description": "The means of transport the route was calculated for."
+    },
+    "bounds": {
+      "allOf": [
+        {
+          "$ref": "./bounds.json"
+        },
+        {
+          "description": "The extent of the route, enlarged by `boundsPadding` metres on every side when you pass that parameter. Meant to fit a map or to search for events near the route."
+        }
+      ]
+    },
+    "geometry": {
+      "$ref": "./geometry.json"
+    }
+  },
+  "required": [
+    "distance",
+    "mode",
+    "bounds",
+    "geometry"
+  ]
+}

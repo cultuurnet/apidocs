@@ -7,13 +7,47 @@
       "slug": "introduction"
     },
     {
-      "type": "divider",
-      "title": "API References"
+      "type": "item",
+      "title": "Authentication",
+      "uri": "docs/authentication.md",
+      "slug": "authentication"
     },
     {
       "type": "item",
-      "title": "Example API",
-      "uri": "reference/example-api.json"
+      "title": "Terminology",
+      "uri": "docs/terminology.md",
+      "slug": "terminology"
+    },
+    {
+      "type": "item",
+      "title": "Errors",
+      "uri": "docs/errors.md",
+      "slug": "errors"
+    },
+    {
+      "type": "divider",
+      "title": "Guides"
+    },
+    {
+      "type": "item",
+      "title": "Finding coordinates",
+      "uri": "docs/finding-coordinates.md",
+      "slug": "finding-coordinates"
+    },
+    {
+      "type": "item",
+      "title": "Calculating routes",
+      "uri": "docs/calculating-routes.md",
+      "slug": "calculating-routes"
+    },
+    {
+      "type": "divider",
+      "title": "API reference"
+    },
+    {
+      "type": "item",
+      "title": "Geo API",
+      "uri": "reference/geo-api.json"
     }
   ]
 }
