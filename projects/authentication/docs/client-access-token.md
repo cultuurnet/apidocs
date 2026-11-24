@@ -60,6 +60,25 @@ grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT
 
 * The `client_id` and `client_secret` properties have to contain your client id and secret respectively. They will be validated to check that you can get an access token.
 * The `grant_type` determines which authentication flow should be used. In this case it has to be `client_credentials` to get a client access token.
+* The optional `scope` property can be used to request access to APIs that are configured as an **optional** API scope for your client. See [API scopes](#api-scopes).
+
+### API scopes
+
+publiq decides which APIs your client can access. Each API has its own scope, for example `publiq-api-sapi-scope` for UiTdatabank's Search API.
+
+Most API scopes are **default** scopes for your client. These are always included in your access token, so you do not need to do anything.
+
+Some API scopes can be configured as **optional** scopes for your client. These are only included in your access token if you request them in the `scope` property, as a space-delimited string. For example:
+
+```http
+POST /realms/uitid/protocol/openid-connect/token HTTP/1.1
+Host: https://account-test.uitid.be
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&scope=publiq-api-sapi-scope publiq-api-entry-scope
+```
+
+You can only get scopes that are assigned to your client. Requesting other scopes will not give you access to other APIs. If you get a `403 Forbidden` response from an API with a valid token, your client might not have access to that API, or the API scope is optional for your client and you did not request it.
 
 After sending your request you will get a response with a JSON body like this:
 
@@ -112,7 +131,7 @@ Make sure to set replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with your own
 
 ```shell
 curl --request POST \
-  --url https://account-test.uitid.be/oauth/token \
-  --header 'application/x-www-form-urlencoded' \
+  --url https://account-test.uitid.be/realms/uitid/protocol/openid-connect/token \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET'
 ```
