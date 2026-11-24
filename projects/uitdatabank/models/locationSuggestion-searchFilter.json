@@ -1,42 +1,41 @@
 {
   "title": "locationSuggestion.searchFilter",
-  "type": "object",
   "description": "The Search API filter for this suggestion. Pass its property as a URL parameter to `GET /events`, `GET /places` or `GET /offers`, as it is, to find the results at or around the suggested location.\n\nThe suggestion contains exactly one of these properties:\n\n- `coordinates`: for a point, like a street or an address. Add your own `distance` parameter, for example `?coordinates=50.88943,4.72002&distance=5km`.\n- `regions`: for an area, like a municipality. Pass every value as a `regions[]` parameter, for example `?regions[]=nis-24062`. You can combine it with your own `distance` parameter to also find results within that distance of the area.",
-  "properties": {
-    "coordinates": {
-      "type": "string",
-      "description": "The latitude and longitude of a point, separated by a comma, in the format of the `coordinates` URL parameter.",
-      "example": "50.88943,4.72002"
-    },
-    "regions": {
-      "type": "array",
-      "description": "The ids of the regions of an area, in the format of the `regions[]` URL parameter.",
-      "items": {
-        "type": "string",
-        "example": "nis-24062"
-      }
-    }
-  },
   "oneOf": [
     {
+      "title": "Point",
+      "type": "object",
+      "description": "For a street or an address.",
+      "properties": {
+        "coordinates": {
+          "type": "string",
+          "description": "The latitude and longitude of a point, separated by a comma, in the format of the `coordinates` URL parameter.",
+          "example": "50.88943,4.72002"
+        }
+      },
       "required": [
         "coordinates"
       ],
-      "not": {
-        "required": [
-          "regions"
-        ]
-      }
+      "additionalProperties": false
     },
     {
+      "title": "Area",
+      "type": "object",
+      "description": "For a municipality or a part of one.",
+      "properties": {
+        "regions": {
+          "type": "array",
+          "description": "The ids of the regions of an area, in the format of the `regions[]` URL parameter.",
+          "items": {
+            "type": "string",
+            "example": "nis-24062"
+          }
+        }
+      },
       "required": [
         "regions"
       ],
-      "not": {
-        "required": [
-          "coordinates"
-        ]
-      }
+      "additionalProperties": false
     }
   ],
   "examples": [
