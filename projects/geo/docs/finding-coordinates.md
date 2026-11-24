@@ -7,7 +7,7 @@ This guide shows how to turn text into coordinates with [`GET /coordinates`](/re
 ```http
 GET /coordinates?query=Sint-Pietersplein%201,%20Gent HTTP/1.1
 Host: geo-api-test.publiq.be
-x-client-id: YOUR_CLIENT_ID
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 ```json
