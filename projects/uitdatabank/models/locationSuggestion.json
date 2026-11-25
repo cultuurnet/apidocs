@@ -8,9 +8,10 @@
       "enum": [
         "street",
         "address",
-        "municipality"
+        "municipality",
+        "place"
       ],
-      "description": "What kind of location is suggested.\n\n- `street`: a street within one postal code, like `Lentedreef, 3010 Kessel-Lo`.\n- `address`: a house number on a street, like `Lentedreef 27, 3010 Kessel-Lo`. Only suggested when a house number is typed.\n- `municipality`: a municipality, like `Leuven`, or a part of one with its own postal code, like `Kessel-Lo (3010)`.\n\nMore types can be added later, so ignore a type you don't know or treat it by its `searchFilter`."
+      "description": "What kind of location is suggested.\n\n- `street`: a street within one postal code, like `Lentedreef, 3010 Kessel-Lo`.\n- `address`: a house number on a street, like `Lentedreef 27, 3010 Kessel-Lo`. Only suggested when a house number is typed.\n- `municipality`: a municipality, like `Leuven`, or a part of one with its own postal code, like `Kessel-Lo (3010)`.\n- `place`: a UiTdatabank place where activities happen, like `Het Depot (Martelarenplein 12, 3000 Leuven)`. Only places that Search API returns by default, with coordinates, in Belgium.\n\nMore types can be added later, so ignore a type you don't know or treat it by its `searchFilter`."
     },
     "label": {
       "type": "string",
@@ -41,6 +42,13 @@
         "regions": [
           "nis-24062C"
         ]
+      }
+    },
+    {
+      "type": "place",
+      "label": "Het Depot (Martelarenplein 12, 3000 Leuven)",
+      "searchFilter": {
+        "coordinates": "50.88151,4.71383"
       }
     }
   ]
