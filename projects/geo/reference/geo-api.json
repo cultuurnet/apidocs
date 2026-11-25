@@ -3,7 +3,7 @@
   "info": {
     "title": "Geo API",
     "version": "1.0",
-    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.\n\nAuthentication is not part of this version of the contract yet; it will be added in a later version.",
+    "description": "Find the coordinates of an address or a place, and calculate a route between two points.\n\nThe Geo API is a read-only API with two resources:\n\n* [`GET /coordinates`](./geo-api.json/paths/~1coordinates/get) turns free text (an address, a venue, a point of interest) into coordinates.\n* [`GET /routes`](./geo-api.json/paths/~1routes/get) calculates a route between an origin and a destination, each given as coordinates or as free text.\n\nRead the [introduction](../docs/introduction.md) and the guides before you start.\n\nEvery request carries an access token in the `Authorization` header; see [Authentication](../docs/authentication.md).",
     "contact": {
       "name": "publiq helpdesk",
       "email": "technical-support@publiq.be",
@@ -262,6 +262,46 @@
           }
         }
       },
+      "Unauthorized": {
+        "description": "Unauthorized. The access token is missing, invalid or expired. See [Authentication](../docs/authentication.md).\n\nThe `type` is always `https://api.publiq.be/probs/auth/unauthorized`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/unauthorized",
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "Send an access token in the Authorization header"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Forbidden. The access token is valid, but its client has no access to the Geo API. See [Authentication](../docs/authentication.md).\n\nThe `type` is always `https://api.publiq.be/probs/auth/forbidden`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "type": "https://api.publiq.be/probs/auth/forbidden",
+                  "title": "Forbidden",
+                  "status": 403,
+                  "detail": "This token has no access to the Geo API"
+                }
+              }
+            }
+          }
+        }
+      },
       "LocationNotFound": {
         "description": "`origin`, `destination` or a `via` point was given as text and no location matched it. See the [errors page](../docs/errors.md) for details.\n\nThe `detail` property of the response names the parameter that could not be resolved.\n\nThe `type` is always `https://api.publiq.be/probs/geo-api/location-not-found`.",
         "content": {
@@ -301,8 +341,28 @@
           }
         }
       }
+    },
+    "securitySchemes": {
+      "CLIENT_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {},
+        "description": "A client access token, obtained by exchanging your client id and client secret for a token via an HTTP request to publiq's authorization server using the **Client Credentials OAuth Flow**. For requests from a backend. See the [authentication docs about client access tokens](https://docs.publiq.be/docs/authentication/methods/client-access-token) for more info."
+      },
+      "USER_ACCESS_TOKEN": {
+        "type": "oauth2",
+        "flows": {},
+        "description": "A user access token, obtained by redirecting the end user to publiq's authorization server to login using the **Authorization Code OAuth Flow**. See the [authentication docs about user access tokens](https://docs.publiq.be/docs/authentication/methods/user-access-token) for more info."
+      }
     }
   },
+  "security": [
+    {
+      "CLIENT_ACCESS_TOKEN": []
+    },
+    {
+      "USER_ACCESS_TOKEN": []
+    }
+  ],
   "paths": {
     "/coordinates": {
       "get": {
@@ -367,6 +427,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -497,6 +563,12 @@
           },
           "400": {
             "$ref": "#/components/responses/LocationNotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
