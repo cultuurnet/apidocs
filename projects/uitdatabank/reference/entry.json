@@ -19449,14 +19449,14 @@
       "get": {
         "summary": "ticketing registrations - get",
         "operationId": "ticketing-registrations-get",
-        "description": "Looks up the events that have a reservation link registered at a ticket sales provider, for one or more identifiers.\n\nThe answer has one item per requested identifier. An identifier without registered events gets an empty `events` list.\n\n<!-- theme: warning -->\n\n> Only for clients that work with publiq on ticketing. Other clients get a 403.",
+        "description": "Looks up the events that currently have a reservation link registered at a ticket sales provider, for one or more identifiers.\n\nThe answer has one item per requested identifier, in the order they were requested. An identifier without events, or one that is not in the `<provider>:<account>:<event>` format, gets an empty `events` list instead of an error, so one unknown identifier doesn't fail the whole lookup.\n\n<!-- theme: warning -->\n\n> Only for clients that work with publiq on ticketing. Other clients get a 403.",
         "x-internal": true,
         "parameters": [
           {
             "name": "identifiers",
             "in": "query",
             "required": true,
-            "description": "Comma-separated list of registration identifiers, each as `<provider>:<account>:<event>`.",
+            "description": "Comma-separated list of registration identifiers, each as `<provider>:<account>:<event>`. Whitespace around the commas is ignored.",
             "schema": {
               "type": "string",
               "example": "example-provider:cultuurhuis:1001,example-provider:cultuurhuis:1002"
