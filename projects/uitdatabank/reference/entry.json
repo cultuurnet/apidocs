@@ -19425,7 +19425,7 @@
                   "Example": {
                     "value": {
                       "type": "https://api.publiq.be/probs/url/not-found",
-                      "title": "URL not found",
+                      "title": "Not Found",
                       "status": 404,
                       "detail": "No registration found for identifier \"example-provider:cultuurhuis:1001\"."
                     }
