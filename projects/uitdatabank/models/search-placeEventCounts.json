@@ -1,0 +1,49 @@
+{
+  "title": "search.placeEventCounts",
+  "type": "object",
+  "description": "The places with the most matching events, with the number of events on each place.",
+  "properties": {
+    "totalEvents": {
+      "type": "integer",
+      "description": "All events that match the filters, including online events, events without coordinates and events on places outside the list. It is not the sum of the `eventCount` of the places.",
+      "example": 7
+    },
+    "places": {
+      "type": "array",
+      "description": "At most 50 places, the place with the most events first. Only places with coordinates are included.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "@id": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the place.",
+            "example": "https://io-test.uitdatabank.be/place/5cf42d51-3a4f-46f0-a8af-1cf672be8c84"
+          },
+          "name": {
+            "type": "object",
+            "description": "Name of the place per language. Empty when the place has no name.",
+            "additionalProperties": { "type": "string" },
+            "example": { "nl": "Het Depot" }
+          },
+          "geo": {
+            "type": "object",
+            "description": "Coordinates of the place.",
+            "properties": {
+              "latitude": { "type": "number", "description": "Latitude of the place.", "example": 50.88 },
+              "longitude": { "type": "number", "description": "Longitude of the place.", "example": 4.7 }
+            },
+            "required": ["latitude", "longitude"]
+          },
+          "eventCount": {
+            "type": "integer",
+            "description": "Number of matching events on this place. With large result sets the count can be slightly too low.",
+            "example": 3
+          }
+        },
+        "required": ["@id", "name", "geo", "eventCount"]
+      }
+    }
+  },
+  "required": ["totalEvents", "places"]
+}

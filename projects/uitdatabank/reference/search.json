@@ -473,6 +473,254 @@
         ]
       }
     },
+    "/events/places": {
+      "get": {
+        "summary": "Search places with their number of events",
+        "operationId": "get-events-places",
+        "description": "Returns the places with the most events that match the filters, with the number of events on each place. Meant for a map that shows one marker per place.\n\nIt takes the same filters as `GET /events` and returns at most 50 places, the place with the most events first. Only events on a place with coordinates count for a place, and online events are not counted for any place.\n\n`start`, `limit`, sorting, facets and `embed` have no effect. `groupBy` is refused.",
+        "x-internal": true,
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/x-client-id"
+          },
+          {
+            "$ref": "#/components/parameters/x-api-key"
+          },
+          {
+            "$ref": "#/components/parameters/text"
+          },
+          {
+            "$ref": "#/components/parameters/q"
+          },
+          {
+            "$ref": "#/components/parameters/postalCode"
+          },
+          {
+            "$ref": "#/components/parameters/addressCountry"
+          },
+          {
+            "$ref": "#/components/parameters/maxAge"
+          },
+          {
+            "$ref": "#/components/parameters/minAge"
+          },
+          {
+            "$ref": "#/components/parameters/allAges"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/birthdateRangeTo"
+          },
+          {
+            "$ref": "#/components/parameters/audienceType"
+          },
+          {
+            "$ref": "#/components/parameters/availableFrom"
+          },
+          {
+            "$ref": "#/components/parameters/availableTo"
+          },
+          {
+            "$ref": "#/components/parameters/attendanceMode"
+          },
+          {
+            "$ref": "#/components/parameters/bookingAvailability"
+          },
+          {
+            "$ref": "#/components/parameters/calendarType"
+          },
+          {
+            "$ref": "#/components/parameters/createdFrom"
+          },
+          {
+            "$ref": "#/components/parameters/createdTo"
+          },
+          {
+            "$ref": "#/components/parameters/modifiedFrom"
+          },
+          {
+            "$ref": "#/components/parameters/modifiedTo"
+          },
+          {
+            "$ref": "#/components/parameters/contributors"
+          },
+          {
+            "$ref": "#/components/parameters/creator"
+          },
+          {
+            "$ref": "#/components/parameters/dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/dateTo"
+          },
+          {
+            "$ref": "#/components/parameters/localTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/localTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnDayOfWeek"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeFrom"
+          },
+          {
+            "$ref": "#/components/parameters/recurringOnLocalTimeTo"
+          },
+          {
+            "$ref": "#/components/parameters/regions"
+          },
+          {
+            "$ref": "#/components/parameters/coordinates"
+          },
+          {
+            "$ref": "#/components/parameters/distance"
+          },
+          {
+            "$ref": "#/components/parameters/bounds"
+          },
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/locationId"
+          },
+          {
+            "$ref": "#/components/parameters/departurePlaces"
+          },
+          {
+            "$ref": "#/components/parameters/hasOvernightStay"
+          },
+          {
+            "$ref": "#/components/parameters/organizerId"
+          },
+          {
+            "$ref": "#/components/parameters/labels"
+          },
+          {
+            "$ref": "#/components/parameters/locationLabels"
+          },
+          {
+            "$ref": "#/components/parameters/organizerLabels"
+          },
+          {
+            "$ref": "#/components/parameters/mainLanguage"
+          },
+          {
+            "$ref": "#/components/parameters/languages"
+          },
+          {
+            "$ref": "#/components/parameters/completedLanguages"
+          },
+          {
+            "$ref": "#/components/parameters/hasMediaObjects"
+          },
+          {
+            "$ref": "#/components/parameters/price"
+          },
+          {
+            "$ref": "#/components/parameters/minPrice"
+          },
+          {
+            "$ref": "#/components/parameters/maxPrice"
+          },
+          {
+            "$ref": "#/components/parameters/status"
+          },
+          {
+            "$ref": "#/components/parameters/termIds"
+          },
+          {
+            "$ref": "#/components/parameters/uitpas"
+          },
+          {
+            "$ref": "#/components/parameters/hasChildcare"
+          },
+          {
+            "$ref": "#/components/parameters/childrenOnly"
+          },
+          {
+            "$ref": "#/components/parameters/hasVideos"
+          },
+          {
+            "$ref": "#/components/parameters/workflowStatusOffer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../models/search-placeEventCounts.json"
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "totalEvents": 7,
+                      "places": [
+                        {
+                          "@id": "https://io-test.uitdatabank.be/place/5cf42d51-3a4f-46f0-a8af-1cf672be8c84",
+                          "name": {
+                            "nl": "Het Depot"
+                          },
+                          "geo": {
+                            "latitude": 50.88,
+                            "longitude": 4.7
+                          },
+                          "eventCount": 3
+                        },
+                        {
+                          "@id": "https://io-test.uitdatabank.be/place/85b04295-479c-40f5-b3dd-469dfb4387b3",
+                          "name": {
+                            "nl": "Stuk"
+                          },
+                          "geo": {
+                            "latitude": 50.87,
+                            "longitude": 4.71
+                          },
+                          "eventCount": 2
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. A filter has an invalid value, or `groupBy` is used.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        },
+        "tags": [
+          "Events & places"
+        ],
+        "security": [
+          {
+            "CLIENT_IDENTIFICATION": []
+          },
+          {
+            "CLIENT_ACCESS_TOKEN": []
+          }
+        ]
+      }
+    },
     "/offers": {
       "get": {
         "summary": "Search events & places (offers)",
