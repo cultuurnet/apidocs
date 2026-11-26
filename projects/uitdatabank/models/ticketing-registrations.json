@@ -16,30 +16,22 @@
           },
           "events": {
             "type": "array",
-            "description": "The events with a reservation link registered under this identifier. Empty when none is found. One identifier can belong to several events, for example after a copy.",
+            "description": "URLs of the events that currently have a reservation link registered under this identifier. Deleted events, and events whose reservation link has been removed or changed since, are not included. One identifier can belong to several events, for example after a copy. Empty when no event is found, also for an identifier that is not in the `<provider>:<account>:<event>` format.",
             "items": {
-              "type": "object",
-              "properties": {
-                "@id": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL of the event.",
-                  "example": "https://io.uitdatabank.be/events/5a0e7b3b-6d3a-4f0e-9b1c-2f6c3e7d8a91"
-                },
-                "id": {
-                  "type": "string",
-                  "format": "uuid",
-                  "description": "ID of the event.",
-                  "example": "5a0e7b3b-6d3a-4f0e-9b1c-2f6c3e7d8a91"
-                }
-              },
-              "required": ["@id", "id"]
+              "type": "string",
+              "format": "uri",
+              "example": "https://io-test.uitdatabank.be/events/5a0e7b3b-6d3a-4f0e-9b1c-2f6c3e7d8a91"
             }
           }
         },
-        "required": ["identifier", "events"]
+        "required": [
+          "identifier",
+          "events"
+        ]
       }
     }
   },
-  "required": ["registrations"]
+  "required": [
+    "registrations"
+  ]
 }
