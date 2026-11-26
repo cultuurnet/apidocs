@@ -1,0 +1,45 @@
+{
+  "title": "ticketing.registrations",
+  "type": "object",
+  "description": "The events registered at a ticket sales provider, per requested identifier.",
+  "properties": {
+    "registrations": {
+      "type": "array",
+      "description": "One item per requested identifier, in the order they were requested.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "description": "Identifies the registration at the ticket sales provider, as `<provider>:<account>:<event>`: the name of the provider, the account of the organiser at the provider, and the event within that account.",
+            "example": "example-provider:cultuurhuis:1001"
+          },
+          "events": {
+            "type": "array",
+            "description": "The events with a reservation link registered under this identifier. Empty when none is found. One identifier can belong to several events, for example after a copy.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URL of the event.",
+                  "example": "https://io.uitdatabank.be/events/5a0e7b3b-6d3a-4f0e-9b1c-2f6c3e7d8a91"
+                },
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "ID of the event.",
+                  "example": "5a0e7b3b-6d3a-4f0e-9b1c-2f6c3e7d8a91"
+                }
+              },
+              "required": ["@id", "id"]
+            }
+          }
+        },
+        "required": ["identifier", "events"]
+      }
+    }
+  },
+  "required": ["registrations"]
+}
